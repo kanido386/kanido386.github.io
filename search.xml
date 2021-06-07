@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title>test</title>
-    <url>/2021/06/04/test/</url>
-    <content><![CDATA[<h3 id="米奇"><a href="#米奇" class="headerlink" title="米奇"></a>米奇</h3><img src="/2021/06/04/test/mickey.jpg" class="">]]></content>
+    <url>/2021/06/test/</url>
+    <content><![CDATA[<h3 id="米奇"><a href="#米奇" class="headerlink" title="米奇"></a>米奇</h3><img src="/2021/06/test/mickey.jpg" class="">]]></content>
       <tags>
         <tag>tag1</tag>
         <tag>tag2</tag>
@@ -12,7 +12,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2021/06/04/hello-world/</url>
+    <url>/2021/06/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
