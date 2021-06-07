@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用一點樂理和音訊處理技術做簡單的音色轉換">
+<meta property="og:url" content="https://kanido386.github.io/2020/09/summer-project/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/1.jpeg">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/22d22a83403f9d39.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/2c03857179f3c285.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/2.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/3.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/f6576ad5edcadf43.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/4.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/ce76456e87ee97c2.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/5.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/625f058dba3db937.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/6.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/ede9088994b2a6b4.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/7.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/d19848cbba1eb5ba.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/8.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/f615f911b624c2a1.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/9.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/19b7c6548bc8fcfd.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/10.png">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2020/09/ce7ecf082f96bce6.png">
+<meta property="og:image" content="https://kanido386.github.io/2020/09/summer-project/11.png">
+<meta property="article:published_time" content="2020-09-05T10:30:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T08:12:14.052Z">
+<meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="音訊處理">
+<meta property="article:tag" content="交大">
+<meta property="article:tag" content="專題">
+<meta property="article:tag" content="樂理">
+<meta property="article:tag" content="音色">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80">
+
+<link rel="canonical" href="https://kanido386.github.io/2020/09/summer-project/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>用一點樂理和音訊處理技術做簡單的音色轉換 | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2020/09/summer-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用一點樂理和音訊處理技術做簡單的音色轉換
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-05 18:30:00" itemprop="dateCreated datePublished" datetime="2020-09-05T18:30:00+08:00">2020-09-05</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/09/summer-project/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/summer-project/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" />
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。</p>
+<span id="more"></span>
+
+<p>（康明軒教授提供數學上的幫助、恩衍做降噪、育浚做其他也很有趣的聲音處理）</p>
+<h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p>先給大家聽聽看我最後上台發表的成果吧！</p>
+<h2 id="分析＆合成音色"><a href="#分析＆合成音色" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><table>
+<thead>
+<tr>
+<th align="center">樂器</th>
+<th align="center">待分析的音檔</th>
+<th align="center">合成出來</th>
+<th align="center">演奏音階</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">小號</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=1" target="_blank">01</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=4" target="_blank">02</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=7" target="_blank">03</a></td>
+</tr>
+<tr>
+<td align="center">雙簧管</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=12" target="_blank">04</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=15" target="_blank">05</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=18" target="_blank">06</a></td>
+</tr>
+<tr>
+<td align="center">管風琴</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=24" target="_blank">07</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=27" target="_blank">08</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=30" target="_blank">09</a></td>
+</tr>
+</tbody></table>
+<h2 id="改變音色"><a href="#改變音色" class="headerlink" title="改變音色"></a>改變音色</h2><table>
+<thead>
+<tr>
+<th align="center">音樂</th>
+<th align="center">原音檔</th>
+<th align="center">小號</th>
+<th align="center">雙簧管</th>
+<th align="center">管風琴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">生命之名</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=36" target="_blank">10</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=46" target="_blank">11</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=54" target="_blank">12</a></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">New Thang</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=64" target="_blank">13</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=75" target="_blank">14</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="預備知識"><a href="#預備知識" class="headerlink" title="預備知識"></a>預備知識</h1><h2 id="音訊預處理"><a href="#音訊預處理" class="headerlink" title="音訊預處理"></a>音訊預處理</h2><h3 id="為何要數位化"><a href="#為何要數位化" class="headerlink" title="為何要數位化"></a>為何要數位化</h3><p><span style="color:blue;">電腦如何將聲音訊號由類比轉成數位呢？</span><br>先講為什麼要轉成數位好了。<br>「電腦處理聲音」這件事情，其實就是在對聲音做運算，<br>和類比也就是連續訊號相比，離散訊號的運算量小多了！<br>所以在電腦處理聲音之前，必須先讓聲音變成離散資料。<br>那該怎麼轉成數位呢？<br>只要讓聲音經過 <span style="color:red;">取樣 (sampling)</span> 以及 <span style="color:red;">量化 (quantization)</span> 的過程就可以囉！</p>
+<h3 id="音檔參數"><a href="#音檔參數" class="headerlink" title="音檔參數"></a>音檔參數</h3><p>在介紹取樣、量化之前，先給大家認識一下<span style="color:blue;">聲音檔案的重要參數</span>。</p>
+<ul>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">取樣頻率 (sampling rate)</span></strong>：一秒鐘要取多少個取樣點（聲音檔案通常會採用 48000 或 44100 赫茲，跟取樣定理有關）</li>
+<li><strong><span style="color:black;">位元深度 (bit depth)</span></strong>：一個取樣點要用多少個位元紀錄（位元深度越大的話，會越精準，但相對而言，資料量也就越大！）</li>
+<li><strong><span style="color:black;">聲道數 (channel)</span></strong>：其實就是我們常聽到的單聲道、雙聲道等等的<br></li>
+</ul>
+<h3 id="取樣＆量化"><a href="#取樣＆量化" class="headerlink" title="取樣＆量化"></a><span style="color:blue;">取樣＆量化</span><br></h3><div style="padding:11px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/22d22a83403f9d39.png" style="width:43vw;" />
+  <img src="https://ftp.bmp.ovh/imgs/2020/09/2c03857179f3c285.png" style="width:43vw;" />
+   -->
+  <img src="2.png" style="width:43vw;" />
+  <img src="3.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">取樣 (sampling)</span></strong>：透過<span style="color:red;">取樣頻率</span>，也就是一秒鐘要取多少個取樣點，將<span style="color:red;">時間軸</span>上的資料離散化，得到一串取樣點（如上圖）</li>
+<li><strong><span style="color:black;">量化 (quantization)</span></strong>：依照<span style="color:red;">位元深度</span>，也就是一個取樣點要用多少個位元紀錄，分別對每個取樣點做四捨五入，將<span style="color:red;">振幅軸</span>上的資料離散化，最後就會得到一串數列（如下圖）<br></li>
+</ul>
+<h3 id="聲音訊號如何被處理"><a href="#聲音訊號如何被處理" class="headerlink" title="聲音訊號如何被處理"></a>聲音訊號如何被處理</h3><p>訊號轉成數位了，那<span style="color:blue;">電腦如何處理聲音訊號呢？</span><br>打個比方好了：<br>在開始進行一個大任務之前，我們通常會先拆解成多個小行動，然後再各個擊破！<br>處理聲音也是同樣道理，<br>我們只要把一段音訊切成一個一個小<span style="color:red;">音框</span>，乘上<span style="color:red;">窗函數</span>重疊以後，就可以開始做後續的處理。</p>
+<h3 id="切取音框"><a href="#切取音框" class="headerlink" title="切取音框"></a><span style="color:blue;">切取音框</span><br></h3><div style="padding:22px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f6576ad5edcadf43.png" style="width:43vw;" /> -->
+  <img src="4.png" style="width:43vw;" />
+</div>
+
+<p>在分析一段音訊的時候，我們通常是以<span style="color:red;">短時距分析</span>為主，<br>因為聲音訊號在短時間之內是<span style="color:red;">相對穩定</span>的！<br>所以我們通常會將音訊切成比較短的單位，稱為<span style="color:red;">音框</span> (frame)。<br>那為了方便使用<span style="color:red;">快速傅立葉轉換</span>，我們通常會取 <span style="color:red;">2 的 n 次方</span>個取樣點當作一個音框。<br>然後要注意，音框不能切太大或太小，這樣才能充分擷取音訊的特徵！<br>那為了避免相鄰兩音框的特徵變化過大，一般會讓音框之間有一段<span style="color:red;">重疊</span>的區域，<br>當然重疊的部分越多，對應的<span style="color:red;">運算量</span>也就越大！</p>
+<h3 id="音框參數"><a href="#音框參數" class="headerlink" title="音框參數"></a>音框參數</h3><p>帶大家認識一下<span style="color:blue;">切取音框的重要參數</span>。<br></p>
+<div style="padding:23px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce76456e87ee97c2.png" style="width:43vw;" /> -->
+  <img src="5.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">音框大小 (frame size)</span></strong>：每一個音框內所含有的取樣點個數</li>
+<li><strong><span style="color:black;">音框重疊量 (frame overlap)</span></strong>：兩音框間重疊的取樣點個數</li>
+<li><strong><span style="color:black;">音框跳距 (hop size)</span></strong>：兩音框起點距離的取樣點個數，相當於 <span style="color:red;">音框大小 - 音框重疊量</span></li>
+<li><strong><span style="color:black;">音框率 (frame rate)</span></strong>：每秒出現的音框數目，相當於 <span style="color:red;">取樣頻率 / 音框跳距</span><br></li>
+</ul>
+<h3 id="套上窗函數"><a href="#套上窗函數" class="headerlink" title="套上窗函數"></a><span style="color:blue;">套上窗函數</span><br></h3><div style="padding:32px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/625f058dba3db937.png" style="width:52vw;" /> -->
+  <img src="6.png" style="width:52vw;" />
+</div>
+
+<p>原本完整的聲音波形，<span style="color:red;">被音框硬生生地截斷</span>，頻譜將會產生誤差，該怎麼辦呢？<br>我們只要透過乘上一個<span style="color:red;">中央高、兩側低的窗函數 (window function)</span>，<br>讓音框內兩端的訊號達到 fade-in、fade-out 的效果，就可以增加音框左右兩端的<span style="color:red;">連續性</span>了！</p>
+<hr>
+<h2 id="音色"><a href="#音色" class="headerlink" title="音色"></a>音色</h2><h3 id="聲音三要素"><a href="#聲音三要素" class="headerlink" title="聲音三要素"></a><span style="color:blue;">聲音三要素</span><br></h3><div style="padding:5px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ede9088994b2a6b4.png" style="width:52vw;" /> -->
+  <img src="7.png" style="width:52vw;" />
+</div>
+待會只會介紹音色。<br>
+
+<h3 id="什麼是音色"><a href="#什麼是音色" class="headerlink" title="什麼是音色"></a>什麼是<span style="color:blue;">音色</span></h3><p>音色是一個可以讓聆聽者<span style="color:red;">分辨</span>出聲音聽起來不同的聲音特性，<br>藉由音色資訊，我們可以分辨出究竟現在聽到的聲音是人聲還是某種樂器聲，<br>不受音高不同及音量大小的影響！</p>
+<h3 id="影響聲音的要素"><a href="#影響聲音的要素" class="headerlink" title="影響聲音的要素"></a>影響聲音的要素</h3><p><span style="color:blue;">哪些要素影響著音色呢？</span><br></p>
+<ul>
+<li>ADSR Envelope</li>
+<li>Tremolo ＆ Vibrato</li>
+<li>泛音列</li>
+<li>可能還有其他 (?)</li>
+</ul>
+<h3 id="ADSR-Envelope"><a href="#ADSR-Envelope" class="headerlink" title="ADSR Envelope"></a><span style="color:blue;">ADSR Envelope</span><br></h3><div style="padding:7px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/d19848cbba1eb5ba.png" style="width:50vw;" /> -->
+  <img src="8.png" style="width:50vw;" />
+</div>
+
+<p>它是什麼呢？<br>它是描述 Attack、Decay、Sustain、Release 四階段的一個包絡！<br>這樣講其實蠻抽象的，<br>可以把它想像成聲音的 schedule，讓聲音的某個<span style="color:red;">參數隨著時間做改變</span>。<br><strong><span style="color:black;">那 Attack、Decay、Sustain、Release 又分別是什麼呢？</span></strong><br>觀察上圖：</p>
+<ul>
+<li><strong><span style="color:black;">Attack</span></strong>：一個參數從 0 到最大值所需要的<span style="color:red;">時間</span></li>
+<li><strong><span style="color:black;">Decay</span></strong>：一個參數從最大值降到 Sustain 所需要的<span style="color:red;">時間</span></li>
+<li><strong><span style="color:black;">Sustain</span></strong>：它比較特別，它是一個<span style="color:red;">程度</span>的參數，代表在 Release 之前維持的一個量</li>
+<li><strong><span style="color:black;">Release</span></strong>：一個參數從 Sustain 降回 0 所需要的<span style="color:red;">時間</span></li>
+</ul>
+<p>這樣可能還是很抽象，沒關係，到 Ableton Live 的<a href="https://learningsynths.ableton.com/en/envelopes/change-over-time" target="_blank">合成器教學頁面</a>玩玩吧！<br></p>
+<h3 id="Tremolo-＆-Vibrato"><a href="#Tremolo-＆-Vibrato" class="headerlink" title="Tremolo ＆ Vibrato"></a><span style="color:blue;">Tremolo ＆ Vibrato</span><br></h3><ul>
+<li><strong><span style="color:black;">Tremolo</span></strong>：讓<span style="color:red;">音量</span>呈現忽大忽小的<span style="color:red;">顫音</span>效果，可以讓長音有起伏變化不再呆板，也可以讓每個音符呈現若隱若現的效果</li>
+<li><strong><span style="color:black;">Vibrato</span></strong>：讓<span style="color:red;">音高</span>呈現忽高忽低的<span style="color:red;">顫音</span>效果，比方擦弦樂器可以靠<span style="color:red;">揉弦</span>來達到這種效果</li>
+</ul>
+<h3 id="泛音列"><a href="#泛音列" class="headerlink" title="泛音列"></a><span style="color:blue;">泛音列</span><br></h3><p>泛音列是一系列頻率為<span style="color:red;">基音頻率 (fundamental frequency)  整數倍</span>的聲音，<br>這些聲音都是純音，可以分別用正弦波來表示。<br>那和音色有什麼關係呢？<br>強烈推薦大家看 <a href="https://www.youtube.com/channel/UCVXstWyJeO6No3jYELxYrjg" target="_blank">NiceChord (好和弦)</a> 的 <a href="https://www.youtube.com/watch?v=0iJmDhNocaQ" target="_blank">一次搞懂「泛音列」！</a><br>看完了一切都豁然開朗了呢 😎</p>
+<h3 id="波形"><a href="#波形" class="headerlink" title="波形"></a>波形</h3><p><span style="color:blue;">波形何以如此多元？</span><br></p>
+<div style="padding:6px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f615f911b624c2a1.png" style="width:39vw;" /> -->
+  <img src="9.png" style="width:39vw;" />
+</div>
+
+<p>不同樂器，組成「一個音」的泛音列佔比都不太一樣。<br>那剛剛提過，泛音列上的每個音都是純音，可以分別用正弦波來表示，<br>然後再根據波的疊加原理，依照泛音列佔比，疊加出新的波形，<br>疊加後的波形就是我們最後觀察到的波形！<br>如上圖。</p>
+<h3 id="感受聲音"><a href="#感受聲音" class="headerlink" title="感受聲音"></a>感受聲音</h3><p><span style="color:blue;">再用聽的和看的來感受一次吧！</span><br></p>
+<div style="padding:3px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/19b7c6548bc8fcfd.png" style="width:55vw;" /> -->
+  <img src="10.png" style="width:55vw;" />
+</div>
+
+<p>以基頻為 220 赫茲的音來說明好了：<br>先給大家聽 <a href="https://youtu.be/VWO0FyNmOBw?t=87" target="_blank">220 赫茲的純音</a>。<br>接著是 <a href="https://youtu.be/VWO0FyNmOBw?t=90" target="_blank">440 赫茲的純音</a>。<br>然後我們再用一比一的比例，來調配出<a href="https://youtu.be/VWO0FyNmOBw?t=93" target="_blank">新的音色</a>。<br>新音色聽起來就像是「一個音」，但實際上卻是由兩個純音組合而成的！</p>
+<h3 id="泛音列＆音色"><a href="#泛音列＆音色" class="headerlink" title="泛音列＆音色"></a>泛音列＆音色</h3><p><span style="color:blue;">泛音列與音色之間的關係</span>：</p>
+<ul>
+<li>基本頻率決定了一個音的音高</li>
+<li>其他泛音與基頻的音量佔比決定了一個音的音色</li>
+</ul>
+<hr>
+<h1 id="所以，我是怎麼做出來的呀？"><a href="#所以，我是怎麼做出來的呀？" class="headerlink" title="所以，我是怎麼做出來的呀？"></a>所以，我是怎麼做出來的呀？</h1><h2 id="分析＆合成音色-1"><a href="#分析＆合成音色-1" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><div style="padding:30px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce7ecf082f96bce6.png" style="width:30vw;" /> -->
+  <img src="11.png" style="width:30vw;" />
+</div>
+
+<ol>
+<li>用 <code>scipy.io.wavfile.read</code> ，將待分析的音檔讀進來</li>
+<li>用 <code>scipy.fftpack.fft</code> ，將原本 time domain 的 data 轉換到 frequency domain 上</li>
+<li>透過 <code>matplotlib.pyplot.plot</code> ，把圖給畫出來（如上圖，頻率取 0~1000）</li>
+<li>由圖可以觀察到基頻大概是 100 赫茲左右，也可以觀察到其泛音列的數值大小</li>
+<li>利用 <code>max</code> ，一個一個找出每個小區間內的最大值為何，即為圖中的明顯高起處</li>
+<li>由求出來的所有值，可以推算出基頻及其所有泛音列的數值大小佔比</li>
+<li>透過自己寫的 <a href="https://github.com/kanido386/playground/blob/master/2020-summer-project/timbre%20synthesizer/synthesizer.py" target="_blank">synthesizer</a>，依照上步驟的佔比，即可合成出該音色的聲音</li>
+</ol>
+<h2 id="改變音色-1"><a href="#改變音色-1" class="headerlink" title="改變音色"></a>改變音色</h2><p>以一個音框來說明，單音音樂效果較佳！</p>
+<ol>
+<li>用 <code>scipy.fftpack.fft</code> ，將該音框內的 data 轉換到 frequency domain 上</li>
+<li>透過自己獨創但效果很陽春 (?) 的方法運算以後，可以粗略找到基頻</li>
+<li>該<span style="color:red;">基頻及其整數倍的泛音</span>，透過剛剛分析出來的<span style="color:red;">佔比</span>來改變數值大小，即可轉換為新音色的音樂</li>
+</ol>
+<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>除了學到一些音訊處理的技巧以外，最大的收穫是，「態度」才是最重要的關鍵啊！<br>目前在其他很多方面還是不夠及格，期望帶著這次的寶貴經驗，讓自己漸入佳境。</p>
+<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>再次感謝康明軒教授、恩衍、育浚，沒有你們，就沒有這一切！<br>另外，也非常感謝柏毅給予我簡報上的指點，讓我學到一些很重要也很實用的簡報技巧！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9F%B3%E8%A8%8A%E8%99%95%E7%90%86/" rel="tag"># 音訊處理</a>
+              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
+              <a href="/tags/%E5%B0%88%E9%A1%8C/" rel="tag"># 專題</a>
+              <a href="/tags/%E6%A8%82%E7%90%86/" rel="tag"># 樂理</a>
+              <a href="/tags/%E9%9F%B3%E8%89%B2/" rel="tag"># 音色</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/asp-final-project/" rel="next" title="用 Pure Data 打造吉他效果器">
+      用 Pure Data 打造吉他效果器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">成果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%EF%BC%86%E5%90%88%E6%88%90%E9%9F%B3%E8%89%B2"><span class="nav-number">1.1.</span> <span class="nav-text">分析＆合成音色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%AE%8A%E9%9F%B3%E8%89%B2"><span class="nav-number">1.2.</span> <span class="nav-text">改變音色</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A0%90%E5%82%99%E7%9F%A5%E8%AD%98"><span class="nav-number">2.</span> <span class="nav-text">預備知識</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E8%A8%8A%E9%A0%90%E8%99%95%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">音訊預處理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E6%95%B8%E4%BD%8D%E5%8C%96"><span class="nav-number">2.1.1.</span> <span class="nav-text">為何要數位化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E6%AA%94%E5%8F%83%E6%95%B8"><span class="nav-number">2.1.2.</span> <span class="nav-text">音檔參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%A8%A3%EF%BC%86%E9%87%8F%E5%8C%96"><span class="nav-number">2.1.3.</span> <span class="nav-text">取樣＆量化
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%B2%E9%9F%B3%E8%A8%8A%E8%99%9F%E5%A6%82%E4%BD%95%E8%A2%AB%E8%99%95%E7%90%86"><span class="nav-number">2.1.4.</span> <span class="nav-text">聲音訊號如何被處理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E5%8F%96%E9%9F%B3%E6%A1%86"><span class="nav-number">2.1.5.</span> <span class="nav-text">切取音框
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E6%A1%86%E5%8F%83%E6%95%B8"><span class="nav-number">2.1.6.</span> <span class="nav-text">音框參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%97%E4%B8%8A%E7%AA%97%E5%87%BD%E6%95%B8"><span class="nav-number">2.1.7.</span> <span class="nav-text">套上窗函數
+</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E8%89%B2"><span class="nav-number">2.2.</span> <span class="nav-text">音色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%B2%E9%9F%B3%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">2.2.1.</span> <span class="nav-text">聲音三要素
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF%E9%9F%B3%E8%89%B2"><span class="nav-number">2.2.2.</span> <span class="nav-text">什麼是音色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%B1%E9%9F%BF%E8%81%B2%E9%9F%B3%E7%9A%84%E8%A6%81%E7%B4%A0"><span class="nav-number">2.2.3.</span> <span class="nav-text">影響聲音的要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADSR-Envelope"><span class="nav-number">2.2.4.</span> <span class="nav-text">ADSR Envelope
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tremolo-%EF%BC%86-Vibrato"><span class="nav-number">2.2.5.</span> <span class="nav-text">Tremolo ＆ Vibrato
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E9%9F%B3%E5%88%97"><span class="nav-number">2.2.6.</span> <span class="nav-text">泛音列
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A2%E5%BD%A2"><span class="nav-number">2.2.7.</span> <span class="nav-text">波形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E5%8F%97%E8%81%B2%E9%9F%B3"><span class="nav-number">2.2.8.</span> <span class="nav-text">感受聲音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E9%9F%B3%E5%88%97%EF%BC%86%E9%9F%B3%E8%89%B2"><span class="nav-number">2.2.9.</span> <span class="nav-text">泛音列＆音色</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%80%E4%BB%A5%EF%BC%8C%E6%88%91%E6%98%AF%E6%80%8E%E9%BA%BC%E5%81%9A%E5%87%BA%E4%BE%86%E7%9A%84%E5%91%80%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">所以，我是怎麼做出來的呀？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%EF%BC%86%E5%90%88%E6%88%90%E9%9F%B3%E8%89%B2-1"><span class="nav-number">3.1.</span> <span class="nav-text">分析＆合成音色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%AE%8A%E9%9F%B3%E8%89%B2-1"><span class="nav-number">3.2.</span> <span class="nav-text">改變音色</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%84%9F%E6%83%B3"><span class="nav-number">4.</span> <span class="nav-text">感想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%BE%8C"><span class="nav-number">5.</span> <span class="nav-text">最後</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="E-Mail → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yanting.lin.tim" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yanting.lin.tim" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCa73p-0ChCqtxubUc4Lq41A" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2020/09/summer-project/";
+    this.page.identifier = "2020/09/summer-project/";
+    this.page.title = "用一點樂理和音訊處理技術做簡單的音色轉換";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

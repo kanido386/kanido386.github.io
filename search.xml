@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>用 Pure Data 打造吉他效果器</title>
+    <url>/2021/01/asp-final-project/</url>
+    <content><![CDATA[<img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" />
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>大三上修「互動式音訊處理導論」時所做的期末專題。</p>
+<span id="more"></span>
+
+<h2 id="特別感謝"><a href="#特別感謝" class="headerlink" title="特別感謝"></a>特別感謝</h2><p>首先，非常幸運能夠和來自越南的朋友 Son Tran 同一組，沒有他，就不會有這段有趣的旅程！<br>（他自彈自唱真的超好聽的，而且竟然還會做電子音樂！）<br>（在這邊偷偷放他的 YouTube channel: <a href="https://www.youtube.com/channel/UCm6tcNSqAYVqZpA8pm4-T5A" target="_blank">MadSon TR</a> 🎧）</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>強烈建議搭配後面的說明聽會比較知道在做什麼 😏</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7F14-C7rrmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="課程內容簡介"><a href="#課程內容簡介" class="headerlink" title="課程內容簡介"></a>課程內容簡介</h2><p>這學期修了電機系張文輝教授開的<a href="https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=109&Sem=1&CrsNo=1078&lang=zh-tw" target="_blank">互動式音訊處理導論</a>，接觸到很多很酷的玩意兒：</p>
+<ol>
+<li>學一點聲音訊號處理的概念以後，用 MATLAB 做簡單的分析與處理</li>
+<li>認識<a href="https://zh.wikipedia.org/wiki/%E5%90%88%E6%88%90%E5%99%A8" target="_blank">合成器</a>的基本運作原理之後，用線上數位音樂工作站 <a href="http://www.audiosauna.com/" target="_blank">AudioSauna</a> 自製音色並用新音色做一首簡單的曲子</li>
+<li><strong><span style="color:black;">（本篇主角！）使用視覺化程式語言 <a href="http://puredata.info/" target="_blank">Pure Data</a> 做一些簡單的音訊處理</span></strong></li>
+<li>用音訊編輯軟體 Adobe Audition 消除歌曲中的人聲</li>
+<li>用助教訓練好的 HMM 模型，做音樂的音值識別、拍號判定、樂譜追蹤，並為一段只有主旋律的譜生成和弦伴奏</li>
+<li>用一套叫 HTK 的自由軟體做一個簡單的歌手辨識系統</li>
+<li>認識「動態時間伸縮」的原理以後，直接拿助教寫好的 C 程式來做一個簡單的歌曲查詢系統</li>
+</ol>
+<hr>
+<h2 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h2><p>期末的時候必須選個相關主題來發展成一個專題。<br>我們原本打算是要做 source separation，也就是一種能夠把完整樂曲分離出 bass、鋼琴、吉他、鼓等獨立音訊的技術。<br>但後來想說，既然之前實驗課有接觸過 Pure Data，再加上我們都有玩過吉他效果器，所以我們就想結合兩者，並兼合我們的創意，打造屬於我們的吉他效果器！（而且還不用花錢）</p>
+<h2 id="實作方法"><a href="#實作方法" class="headerlink" title="實作方法"></a>實作方法</h2><h3 id="找相關資料"><a href="#找相關資料" class="headerlink" title="找相關資料"></a>找相關資料</h3><p><em><span style="color:gray;">（研究別⼈是如何實作吉他效果器的）</span></em><br>我們在查資料的過程中找到了 <a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a> 這一篇文章，裡頭有很多吉他效果器的實作及實際用吉他去測試效果器的 demo！<br>只能說，網路世界無奇不有，這聽起來偏冷門的東西居然也找得到資源，酷斃了 😎</p>
+<h3 id="吸收及內化"><a href="#吸收及內化" class="headerlink" title="吸收及內化"></a>吸收及內化</h3><p><em><span style="color:gray;">（將那些⽅法盡可能內化成我們⾃⼰的能⼒）</span></em><br>像海綿一樣，一直吸收、一直吸收，去讀懂為什麼他要這樣寫而不是那樣寫。<br>如此一來，不僅讓我們更清楚該如何開始，也讓我們更加了解每個效果器的運作原理，一舉兩得！</p>
+<h3 id="著手打造"><a href="#著手打造" class="headerlink" title="著手打造"></a>著手打造</h3><p><em><span style="color:gray;">（利⽤我們對於吉他效果器的⾒解，打造屬於我們的吉他效果器）</span></em><br>其實大部分還是參考那篇文章的做法居多xD<br>雖然是這樣，但我們在過程中也更加熟悉了 Pure Data 的操作，若之後想嘗試同樣是視覺化程式語言但較為熱門的 Max/MSP，相信很快就能上手了吧！</p>
+<h3 id="嘗試優化"><a href="#嘗試優化" class="headerlink" title="嘗試優化"></a>嘗試優化</h3><p><em><span style="color:gray;">（考慮⽤ Pure Data Externals 的⽅式讓界⾯看起來更加簡潔）</span></em><br>不過後來我們找到了 <a href="http://write.flossmanuals.net/pure-data/subpatches/" target="_blank">Subpatch</a> 的做法，它其實就是 Pure Data 界的 Function，可以自己定義在一個區塊當中你的 input／output 是什麼、要做哪些操作。<br></p>
+<p>什麼意思？<br></p>
+<p>比方說你現在不得不設計一部機器，需要餵給它的是好幾個單元的上課投影片和好多年份的考古題，你期望從這部機器當中獲得的僅僅是一張寫著好看分數的考卷，但過程中你卻得犧牲人生無數的可能性⋯⋯<br></p>
+<p>為了解釋 Function 的概念，扯遠了。<br></p>
+<p>拉回來。<br></p>
+<p>利用 Subpatch，可以方便我們管理圖形化的程式，除了能讓畫面看起來比較乾淨之外，也可以讓整個程式邏輯以及架構更有條理！</p>
+<h3 id="測試成品"><a href="#測試成品" class="headerlink" title="測試成品"></a>測試成品</h3><p><em><span style="color:gray;">（實際拿吉他測試我們的效果器，若有可以再改進的地⽅，就再改進）</span></em><br>星期日 (2021.01.03) 晚上，我們去九舍地下二樓試我們的吉他效果器。<br>提個外話，那邊的裝潢真的超棒的，走的是酒吧風、殘響效果又棒，若有酒保為我們調製上等的雞尾酒那就更完美了！</p>
+<p>再拉回來。<br></p>
+<p>原本我們是不抱持著什麼期待啦，想說市面上賣的效果器都不便宜，啊我們只不過是用程式語言來模擬出效果器，聲音是能有多好？<br>沒想到！當我們打開「Wha-wha」的效果，Son Tran 刷了第一個和弦以後，我們都被嚇到了！那令人驚豔的聲響效果，真的會讓人誤以為此時此刻、這個地方有什麼專業樂團正在現場演出！</p>
+<p>我們從七點半一路弄到差不多快十一點，過程中調整了很多次程式，為的是讓聲音更符合我們的需求以及讓介面看起來比較不會那麼凌亂（雖然介面看起來還是很「科技風」就是了 😂）</p>
+<hr>
+<h2 id="結果分析"><a href="#結果分析" class="headerlink" title="結果分析"></a>結果分析</h2><p>廢話不多說，直接給大家看我們的程式圖吧！</p>
+<h3 id="整體架構"><a href="#整體架構" class="headerlink" title="整體架構"></a>整體架構</h3><figure>
+  <!-- <img src="https://i.imgur.com/5GYRnqu.png" style="width:43vw;" /> -->
+  <img src="2.png" style="width:43vw;" />
+  <figcaption>使用者介面</figcaption>
+</figure>
+
+<ul>
+<li><code>pd 某某某</code> 的小方塊就是前面所說的 Subpatch，除了 <code>pd file</code> 是用來開啟音檔並加以讀取的功能以外，其他的 <code>pd 某某某</code> 就都是吉他效果器了！</li>
+<li>吉他效果器左邊一排的正方形框框是開關（Pure Data 稱它為 Toggle），打開代表說我要讓這個效果器處理我們的聲音，關掉的話就表示我們要讓聲音直接通過，不處理，即 <code>output = input</code></li>
+<li><code>adc~</code> (類比轉數位) 是我們的聲音輸入，我們選擇用錄音介面；<code>dac~</code> (數位轉類比) 則是輸出，不管是筆電內建的輸出或者是音箱都行，我們選擇用音箱，這樣聽起來比較震撼 😈</li>
+<li><code>adc~</code> 和 <code>dac~</code> 後面的抖抖線意思是，通過這個有抖抖線的 Object 以後，它 output 出來的東西會是可以畫成波形圖的「訊號」，圖中黑線（Pure Data 稱它為 thin cable）代表控制資料的傳輸，藍線（Pure Data 稱它為 thick cable）代表訊號的傳輸</li>
+<li>圖中一條一條的 slider 就是用來調整效果器參數的控制器（最下面的 slider 用來調控音量），藉由拉動 slider，就可以聽到聲音有趣的變化！（不然一成不變實在無趣）</li>
+<li>後來我們決定把其他效果器的參數 slider 放進效果器 Subpatch 裡面，不然介面看起來會有點亂</li>
+<li>中間偏右看起來像是按鈕的東西（Pure Data 稱它為 Bang），其功能是把參數設定到我們預設好的預設值，為的是方便回到預設值（有說跟沒說一樣），按下 Bang 以後，<code>s reset</code> (send) 就會幫我們把 Bang 的訊號傳到 <code>r reset</code> (receive) 的 output 給有數字的 Message，繼而引發更動 slider 的數值，於是乎，效果器的參數就回到預設值啦！</li>
+</ul>
+<h3 id="Subpatch-小介紹"><a href="#Subpatch-小介紹" class="headerlink" title="Subpatch 小介紹"></a>Subpatch 小介紹</h3><figure>
+  <!-- <img src="https://i.imgur.com/rPCYoPY.png" style="width:33vw;" /> -->
+  <img src="3.png" style="width:33vw;" />
+  <figcaption>用 pd file 來簡單介紹</figcaption>
+</figure>
+
+<ul>
+<li>剛剛說過，Subpatch 是 Pure Data 界的 Function！</li>
+<li><code>inlet</code> 就是 input，<code>outlet</code> 就是 output</li>
+<li>紅色圈起來的部分就是在區別究竟 input／output 是控制資料還是訊號</li>
+<li>input／output 之間的東西就是一些操作，本例在做打開音檔並讀取的動作</li>
+<li>有了 Subpatch 的協助以後，開發的過程就更加愉悅了呢！</li>
+</ul>
+<h3 id="Distortion-破音效果器"><a href="#Distortion-破音效果器" class="headerlink" title="Distortion 破音效果器"></a>Distortion 破音效果器</h3><p>把訊號的振幅拉大再擷取一小部分，聽起來就會有種失真的破音效果，<a href="https://youtu.be/7F14-C7rrmg?t=77" target="_blank">像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/ziLZyCF.png" style="width:33vw;" /> -->
+  <img src="4.png" style="width:33vw;" />
+  <figcaption>Distortion 破音效果器</figcaption>
+</figure>
+
+<h3 id="Tremolo-顫音效果器"><a href="#Tremolo-顫音效果器" class="headerlink" title="Tremolo 顫音效果器"></a>Tremolo 顫音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變音量，讓音量呈現忽大忽小的效果，<a href="https://youtu.be/7F14-C7rrmg" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/esTVil5.png" style="width:33vw;" /> -->
+  <img src="5.png" style="width:33vw;" />
+  <figcaption>Tremolo 顫音效果器</figcaption>
+</figure>
+
+<h3 id="Vibrato-抖音效果器"><a href="#Vibrato-抖音效果器" class="headerlink" title="Vibrato 抖音效果器"></a>Vibrato 抖音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變頻率，讓音高呈現忽高忽低的效果，<a href="https://youtu.be/7F14-C7rrmg?t=30" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/O0g8FsR.png" style="width:38vw;" /> -->
+  <img src="6.png" style="width:38vw;" />
+  <figcaption>Vibrato 抖音效果器</figcaption>
+</figure>
+
+<h3 id="Wha-wha-娃娃效果器"><a href="#Wha-wha-娃娃效果器" class="headerlink" title="Wha-wha 娃娃效果器"></a>Wha-wha 娃娃效果器</h3><p>細節頗複雜就不解釋了，其原理跟頻率有關。那為什麼叫娃娃效果器呢？<a href="https://youtu.be/7F14-C7rrmg?t=123" target="_blank">聽聽看就知道了</a>xD</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/n7iksIE.png" style="width:38vw;" /> -->
+  <img src="7.png" style="width:38vw;" />
+  <figcaption>Wha-wha 娃娃效果器</figcaption>
+</figure>
+
+<h3 id="Delay-延遲效果器"><a href="#Delay-延遲效果器" class="headerlink" title="Delay 延遲效果器"></a>Delay 延遲效果器</h3><p>上面的 slider 控制聲音衰減的快慢（這就是為什麼要乘上一個介於 0 到 1 之間不包含 1 的值），下面的 slider 則是控制多久重複一次（不過每重複一次，聲音會越來越小聲），<a href="https://youtu.be/7F14-C7rrmg?t=169" target="_blank">讓我們來聽聽看它的效果吧</a>！</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/922G06G.png" style="width:38vw;" /> -->
+  <img src="8.png" style="width:38vw;" />
+  <figcaption>Delay 延遲效果器</figcaption>
+</figure>
+
+<h3 id="Reverb-殘響效果器"><a href="#Reverb-殘響效果器" class="headerlink" title="Reverb 殘響效果器"></a>Reverb 殘響效果器</h3><p>一種營造空間感的效果器。我們直接拿 Pure Data 內建的 <code>freeverb~</code> 來用，<a href="https://youtu.be/7F14-C7rrmg?t=210" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/7Sjp3w0.png" style="width:38vw;" /> -->
+  <img src="9.png" style="width:38vw;" />
+  <figcaption>Reverb 殘響效果器</figcaption>
+</figure>
+
+<h3 id="Chorus-合聲效果器"><a href="#Chorus-合聲效果器" class="headerlink" title="Chorus 合聲效果器"></a>Chorus 合聲效果器</h3><p>製造一個和原來聲音有微小時間差和頻率差的聲音，然後再同時放。<br>就像是一群人在合唱的時候，即使是唱同個旋律，也會因為進來的時間點有微小的差異、各自的不同音準，而形成一種亂中有序的感覺。<a href="https://youtu.be/7F14-C7rrmg?t=357" target="_blank">聽聽看吧</a>！</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/rmj9qr6.png" style="width:38vw;" /> -->
+  <img src="10.png" style="width:38vw;" />
+  <figcaption>Chorus 合聲效果器</figcaption>
+</figure>
+
+<hr>
+<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><p><a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a></p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>前面其實已經講得差不多了，就用三個字來描述吧：「真有趣！」<br>能創造出一個可以用五官感受的東西真的超有成就感的，很享受那個過程 🏝</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
+]]></content>
+      <tags>
+        <tag>音訊處理</tag>
+        <tag>吉他</tag>
+        <tag>效果器</tag>
+        <tag>Pure Data</tag>
+        <tag>交大</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>test</title>
     <url>/2021/06/test/</url>
     <content><![CDATA[<h3 id="米奇"><a href="#米奇" class="headerlink" title="米奇"></a>米奇</h3><img src="/2021/06/test/mickey.jpg" class="">]]></content>
@@ -29,5 +161,255 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
+    <url>/2020/09/summer-project/</url>
+    <content><![CDATA[<img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" />
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。</p>
+<span id="more"></span>
+
+<p>（康明軒教授提供數學上的幫助、恩衍做降噪、育浚做其他也很有趣的聲音處理）</p>
+<h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p>先給大家聽聽看我最後上台發表的成果吧！</p>
+<h2 id="分析＆合成音色"><a href="#分析＆合成音色" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><table>
+<thead>
+<tr>
+<th align="center">樂器</th>
+<th align="center">待分析的音檔</th>
+<th align="center">合成出來</th>
+<th align="center">演奏音階</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">小號</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=1" target="_blank">01</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=4" target="_blank">02</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=7" target="_blank">03</a></td>
+</tr>
+<tr>
+<td align="center">雙簧管</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=12" target="_blank">04</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=15" target="_blank">05</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=18" target="_blank">06</a></td>
+</tr>
+<tr>
+<td align="center">管風琴</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=24" target="_blank">07</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=27" target="_blank">08</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=30" target="_blank">09</a></td>
+</tr>
+</tbody></table>
+<h2 id="改變音色"><a href="#改變音色" class="headerlink" title="改變音色"></a>改變音色</h2><table>
+<thead>
+<tr>
+<th align="center">音樂</th>
+<th align="center">原音檔</th>
+<th align="center">小號</th>
+<th align="center">雙簧管</th>
+<th align="center">管風琴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">生命之名</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=36" target="_blank">10</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=46" target="_blank">11</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=54" target="_blank">12</a></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">New Thang</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=64" target="_blank">13</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=75" target="_blank">14</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="預備知識"><a href="#預備知識" class="headerlink" title="預備知識"></a>預備知識</h1><h2 id="音訊預處理"><a href="#音訊預處理" class="headerlink" title="音訊預處理"></a>音訊預處理</h2><h3 id="為何要數位化"><a href="#為何要數位化" class="headerlink" title="為何要數位化"></a>為何要數位化</h3><p><span style="color:blue;">電腦如何將聲音訊號由類比轉成數位呢？</span><br>先講為什麼要轉成數位好了。<br>「電腦處理聲音」這件事情，其實就是在對聲音做運算，<br>和類比也就是連續訊號相比，離散訊號的運算量小多了！<br>所以在電腦處理聲音之前，必須先讓聲音變成離散資料。<br>那該怎麼轉成數位呢？<br>只要讓聲音經過 <span style="color:red;">取樣 (sampling)</span> 以及 <span style="color:red;">量化 (quantization)</span> 的過程就可以囉！</p>
+<h3 id="音檔參數"><a href="#音檔參數" class="headerlink" title="音檔參數"></a>音檔參數</h3><p>在介紹取樣、量化之前，先給大家認識一下<span style="color:blue;">聲音檔案的重要參數</span>。</p>
+<ul>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">取樣頻率 (sampling rate)</span></strong>：一秒鐘要取多少個取樣點（聲音檔案通常會採用 48000 或 44100 赫茲，跟取樣定理有關）</li>
+<li><strong><span style="color:black;">位元深度 (bit depth)</span></strong>：一個取樣點要用多少個位元紀錄（位元深度越大的話，會越精準，但相對而言，資料量也就越大！）</li>
+<li><strong><span style="color:black;">聲道數 (channel)</span></strong>：其實就是我們常聽到的單聲道、雙聲道等等的<br></li>
+</ul>
+<h3 id="取樣＆量化"><a href="#取樣＆量化" class="headerlink" title="取樣＆量化"></a><span style="color:blue;">取樣＆量化</span><br></h3><div style="padding:11px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/22d22a83403f9d39.png" style="width:43vw;" />
+  <img src="https://ftp.bmp.ovh/imgs/2020/09/2c03857179f3c285.png" style="width:43vw;" />
+   -->
+  <img src="2.png" style="width:43vw;" />
+  <img src="3.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">取樣 (sampling)</span></strong>：透過<span style="color:red;">取樣頻率</span>，也就是一秒鐘要取多少個取樣點，將<span style="color:red;">時間軸</span>上的資料離散化，得到一串取樣點（如上圖）</li>
+<li><strong><span style="color:black;">量化 (quantization)</span></strong>：依照<span style="color:red;">位元深度</span>，也就是一個取樣點要用多少個位元紀錄，分別對每個取樣點做四捨五入，將<span style="color:red;">振幅軸</span>上的資料離散化，最後就會得到一串數列（如下圖）<br></li>
+</ul>
+<h3 id="聲音訊號如何被處理"><a href="#聲音訊號如何被處理" class="headerlink" title="聲音訊號如何被處理"></a>聲音訊號如何被處理</h3><p>訊號轉成數位了，那<span style="color:blue;">電腦如何處理聲音訊號呢？</span><br>打個比方好了：<br>在開始進行一個大任務之前，我們通常會先拆解成多個小行動，然後再各個擊破！<br>處理聲音也是同樣道理，<br>我們只要把一段音訊切成一個一個小<span style="color:red;">音框</span>，乘上<span style="color:red;">窗函數</span>重疊以後，就可以開始做後續的處理。</p>
+<h3 id="切取音框"><a href="#切取音框" class="headerlink" title="切取音框"></a><span style="color:blue;">切取音框</span><br></h3><div style="padding:22px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f6576ad5edcadf43.png" style="width:43vw;" /> -->
+  <img src="4.png" style="width:43vw;" />
+</div>
+
+<p>在分析一段音訊的時候，我們通常是以<span style="color:red;">短時距分析</span>為主，<br>因為聲音訊號在短時間之內是<span style="color:red;">相對穩定</span>的！<br>所以我們通常會將音訊切成比較短的單位，稱為<span style="color:red;">音框</span> (frame)。<br>那為了方便使用<span style="color:red;">快速傅立葉轉換</span>，我們通常會取 <span style="color:red;">2 的 n 次方</span>個取樣點當作一個音框。<br>然後要注意，音框不能切太大或太小，這樣才能充分擷取音訊的特徵！<br>那為了避免相鄰兩音框的特徵變化過大，一般會讓音框之間有一段<span style="color:red;">重疊</span>的區域，<br>當然重疊的部分越多，對應的<span style="color:red;">運算量</span>也就越大！</p>
+<h3 id="音框參數"><a href="#音框參數" class="headerlink" title="音框參數"></a>音框參數</h3><p>帶大家認識一下<span style="color:blue;">切取音框的重要參數</span>。<br></p>
+<div style="padding:23px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce76456e87ee97c2.png" style="width:43vw;" /> -->
+  <img src="5.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">音框大小 (frame size)</span></strong>：每一個音框內所含有的取樣點個數</li>
+<li><strong><span style="color:black;">音框重疊量 (frame overlap)</span></strong>：兩音框間重疊的取樣點個數</li>
+<li><strong><span style="color:black;">音框跳距 (hop size)</span></strong>：兩音框起點距離的取樣點個數，相當於 <span style="color:red;">音框大小 - 音框重疊量</span></li>
+<li><strong><span style="color:black;">音框率 (frame rate)</span></strong>：每秒出現的音框數目，相當於 <span style="color:red;">取樣頻率 / 音框跳距</span><br></li>
+</ul>
+<h3 id="套上窗函數"><a href="#套上窗函數" class="headerlink" title="套上窗函數"></a><span style="color:blue;">套上窗函數</span><br></h3><div style="padding:32px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/625f058dba3db937.png" style="width:52vw;" /> -->
+  <img src="6.png" style="width:52vw;" />
+</div>
+
+<p>原本完整的聲音波形，<span style="color:red;">被音框硬生生地截斷</span>，頻譜將會產生誤差，該怎麼辦呢？<br>我們只要透過乘上一個<span style="color:red;">中央高、兩側低的窗函數 (window function)</span>，<br>讓音框內兩端的訊號達到 fade-in、fade-out 的效果，就可以增加音框左右兩端的<span style="color:red;">連續性</span>了！</p>
+<hr>
+<h2 id="音色"><a href="#音色" class="headerlink" title="音色"></a>音色</h2><h3 id="聲音三要素"><a href="#聲音三要素" class="headerlink" title="聲音三要素"></a><span style="color:blue;">聲音三要素</span><br></h3><div style="padding:5px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ede9088994b2a6b4.png" style="width:52vw;" /> -->
+  <img src="7.png" style="width:52vw;" />
+</div>
+待會只會介紹音色。<br>
+
+<h3 id="什麼是音色"><a href="#什麼是音色" class="headerlink" title="什麼是音色"></a>什麼是<span style="color:blue;">音色</span></h3><p>音色是一個可以讓聆聽者<span style="color:red;">分辨</span>出聲音聽起來不同的聲音特性，<br>藉由音色資訊，我們可以分辨出究竟現在聽到的聲音是人聲還是某種樂器聲，<br>不受音高不同及音量大小的影響！</p>
+<h3 id="影響聲音的要素"><a href="#影響聲音的要素" class="headerlink" title="影響聲音的要素"></a>影響聲音的要素</h3><p><span style="color:blue;">哪些要素影響著音色呢？</span><br></p>
+<ul>
+<li>ADSR Envelope</li>
+<li>Tremolo ＆ Vibrato</li>
+<li>泛音列</li>
+<li>可能還有其他 (?)</li>
+</ul>
+<h3 id="ADSR-Envelope"><a href="#ADSR-Envelope" class="headerlink" title="ADSR Envelope"></a><span style="color:blue;">ADSR Envelope</span><br></h3><div style="padding:7px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/d19848cbba1eb5ba.png" style="width:50vw;" /> -->
+  <img src="8.png" style="width:50vw;" />
+</div>
+
+<p>它是什麼呢？<br>它是描述 Attack、Decay、Sustain、Release 四階段的一個包絡！<br>這樣講其實蠻抽象的，<br>可以把它想像成聲音的 schedule，讓聲音的某個<span style="color:red;">參數隨著時間做改變</span>。<br><strong><span style="color:black;">那 Attack、Decay、Sustain、Release 又分別是什麼呢？</span></strong><br>觀察上圖：</p>
+<ul>
+<li><strong><span style="color:black;">Attack</span></strong>：一個參數從 0 到最大值所需要的<span style="color:red;">時間</span></li>
+<li><strong><span style="color:black;">Decay</span></strong>：一個參數從最大值降到 Sustain 所需要的<span style="color:red;">時間</span></li>
+<li><strong><span style="color:black;">Sustain</span></strong>：它比較特別，它是一個<span style="color:red;">程度</span>的參數，代表在 Release 之前維持的一個量</li>
+<li><strong><span style="color:black;">Release</span></strong>：一個參數從 Sustain 降回 0 所需要的<span style="color:red;">時間</span></li>
+</ul>
+<p>這樣可能還是很抽象，沒關係，到 Ableton Live 的<a href="https://learningsynths.ableton.com/en/envelopes/change-over-time" target="_blank">合成器教學頁面</a>玩玩吧！<br></p>
+<h3 id="Tremolo-＆-Vibrato"><a href="#Tremolo-＆-Vibrato" class="headerlink" title="Tremolo ＆ Vibrato"></a><span style="color:blue;">Tremolo ＆ Vibrato</span><br></h3><ul>
+<li><strong><span style="color:black;">Tremolo</span></strong>：讓<span style="color:red;">音量</span>呈現忽大忽小的<span style="color:red;">顫音</span>效果，可以讓長音有起伏變化不再呆板，也可以讓每個音符呈現若隱若現的效果</li>
+<li><strong><span style="color:black;">Vibrato</span></strong>：讓<span style="color:red;">音高</span>呈現忽高忽低的<span style="color:red;">顫音</span>效果，比方擦弦樂器可以靠<span style="color:red;">揉弦</span>來達到這種效果</li>
+</ul>
+<h3 id="泛音列"><a href="#泛音列" class="headerlink" title="泛音列"></a><span style="color:blue;">泛音列</span><br></h3><p>泛音列是一系列頻率為<span style="color:red;">基音頻率 (fundamental frequency)  整數倍</span>的聲音，<br>這些聲音都是純音，可以分別用正弦波來表示。<br>那和音色有什麼關係呢？<br>強烈推薦大家看 <a href="https://www.youtube.com/channel/UCVXstWyJeO6No3jYELxYrjg" target="_blank">NiceChord (好和弦)</a> 的 <a href="https://www.youtube.com/watch?v=0iJmDhNocaQ" target="_blank">一次搞懂「泛音列」！</a><br>看完了一切都豁然開朗了呢 😎</p>
+<h3 id="波形"><a href="#波形" class="headerlink" title="波形"></a>波形</h3><p><span style="color:blue;">波形何以如此多元？</span><br></p>
+<div style="padding:6px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f615f911b624c2a1.png" style="width:39vw;" /> -->
+  <img src="9.png" style="width:39vw;" />
+</div>
+
+<p>不同樂器，組成「一個音」的泛音列佔比都不太一樣。<br>那剛剛提過，泛音列上的每個音都是純音，可以分別用正弦波來表示，<br>然後再根據波的疊加原理，依照泛音列佔比，疊加出新的波形，<br>疊加後的波形就是我們最後觀察到的波形！<br>如上圖。</p>
+<h3 id="感受聲音"><a href="#感受聲音" class="headerlink" title="感受聲音"></a>感受聲音</h3><p><span style="color:blue;">再用聽的和看的來感受一次吧！</span><br></p>
+<div style="padding:3px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/19b7c6548bc8fcfd.png" style="width:55vw;" /> -->
+  <img src="10.png" style="width:55vw;" />
+</div>
+
+<p>以基頻為 220 赫茲的音來說明好了：<br>先給大家聽 <a href="https://youtu.be/VWO0FyNmOBw?t=87" target="_blank">220 赫茲的純音</a>。<br>接著是 <a href="https://youtu.be/VWO0FyNmOBw?t=90" target="_blank">440 赫茲的純音</a>。<br>然後我們再用一比一的比例，來調配出<a href="https://youtu.be/VWO0FyNmOBw?t=93" target="_blank">新的音色</a>。<br>新音色聽起來就像是「一個音」，但實際上卻是由兩個純音組合而成的！</p>
+<h3 id="泛音列＆音色"><a href="#泛音列＆音色" class="headerlink" title="泛音列＆音色"></a>泛音列＆音色</h3><p><span style="color:blue;">泛音列與音色之間的關係</span>：</p>
+<ul>
+<li>基本頻率決定了一個音的音高</li>
+<li>其他泛音與基頻的音量佔比決定了一個音的音色</li>
+</ul>
+<hr>
+<h1 id="所以，我是怎麼做出來的呀？"><a href="#所以，我是怎麼做出來的呀？" class="headerlink" title="所以，我是怎麼做出來的呀？"></a>所以，我是怎麼做出來的呀？</h1><h2 id="分析＆合成音色-1"><a href="#分析＆合成音色-1" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><div style="padding:30px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce7ecf082f96bce6.png" style="width:30vw;" /> -->
+  <img src="11.png" style="width:30vw;" />
+</div>
+
+<ol>
+<li>用 <code>scipy.io.wavfile.read</code> ，將待分析的音檔讀進來</li>
+<li>用 <code>scipy.fftpack.fft</code> ，將原本 time domain 的 data 轉換到 frequency domain 上</li>
+<li>透過 <code>matplotlib.pyplot.plot</code> ，把圖給畫出來（如上圖，頻率取 0~1000）</li>
+<li>由圖可以觀察到基頻大概是 100 赫茲左右，也可以觀察到其泛音列的數值大小</li>
+<li>利用 <code>max</code> ，一個一個找出每個小區間內的最大值為何，即為圖中的明顯高起處</li>
+<li>由求出來的所有值，可以推算出基頻及其所有泛音列的數值大小佔比</li>
+<li>透過自己寫的 <a href="https://github.com/kanido386/playground/blob/master/2020-summer-project/timbre%20synthesizer/synthesizer.py" target="_blank">synthesizer</a>，依照上步驟的佔比，即可合成出該音色的聲音</li>
+</ol>
+<h2 id="改變音色-1"><a href="#改變音色-1" class="headerlink" title="改變音色"></a>改變音色</h2><p>以一個音框來說明，單音音樂效果較佳！</p>
+<ol>
+<li>用 <code>scipy.fftpack.fft</code> ，將該音框內的 data 轉換到 frequency domain 上</li>
+<li>透過自己獨創但效果很陽春 (?) 的方法運算以後，可以粗略找到基頻</li>
+<li>該<span style="color:red;">基頻及其整數倍的泛音</span>，透過剛剛分析出來的<span style="color:red;">佔比</span>來改變數值大小，即可轉換為新音色的音樂</li>
+</ol>
+<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>除了學到一些音訊處理的技巧以外，最大的收穫是，「態度」才是最重要的關鍵啊！<br>目前在其他很多方面還是不夠及格，期望帶著這次的寶貴經驗，讓自己漸入佳境。</p>
+<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>再次感謝康明軒教授、恩衍、育浚，沒有你們，就沒有這一切！<br>另外，也非常感謝柏毅給予我簡報上的指點，讓我學到一些很重要也很實用的簡報技巧！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
+]]></content>
+      <tags>
+        <tag>音訊處理</tag>
+        <tag>交大</tag>
+        <tag>專題</tag>
+        <tag>樂理</tag>
+        <tag>音色</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
+    <url>/2021/01/microprocessor-project/</url>
+    <content><![CDATA[<img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" />
+
+<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
+<span id="more"></span>
+
+<p>這次僅做簡單的紀錄。</p>
+<hr>
+<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
+<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
+<hr>
+<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
+  <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" />
+  <figcaption>來玩機台囉！</figcaption>
+</figure>
+<figure>
+  <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" />
+  <figcaption>挖掉杯子底部，讓球通過</figcaption>
+</figure>
+<figure>
+  <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" />
+  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
+</figure>
+<figure>
+  <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" />
+  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
+</figure>
+
+<hr>
+<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
+<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
+]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+        <tag>微處理機</tag>
+        <tag>STM32</tag>
+        <tag>開發板</tag>
+        <tag>投籃機</tag>
+      </tags>
   </entry>
 </search>
