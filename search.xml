@@ -3,7 +3,7 @@
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
     <url>/2021/01/asp-final-project/</url>
-    <content><![CDATA[<img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" />
+    <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
 <!-- <img src="1.jpeg" style="width:50vw;" /> -->
 
 <p>大三上修「互動式音訊處理導論」時所做的期末專題。</p>
@@ -135,7 +135,7 @@
   <entry>
     <title>JavaScript ES6 Cheatsheet</title>
     <url>/2020/04/javascript-es6-cheatsheet/</url>
-    <content><![CDATA[<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" />
+    <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
 <!-- <img src="1.jpeg" style="width:50vw;" /> -->
 
 <p>之前學 ES6 時整理的筆記😀</p>
@@ -216,9 +216,68 @@
       </tags>
   </entry>
   <entry>
+    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
+    <url>/2021/01/microprocessor-project/</url>
+    <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
+<span id="more"></span>
+
+<p>這次僅做簡單的紀錄。</p>
+<hr>
+<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
+<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
+<hr>
+<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
+  <!-- <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" /> -->
+  <img src="2.jpg" style="width:30vw;" />
+  <figcaption>來玩機台囉！</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" /> -->
+  <img src="3.jpg" style="width:30vw;" />
+  <figcaption>挖掉杯子底部，讓球通過</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" /> -->
+  <img src="4.jpg" style="width:30vw;" />
+  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" /> -->
+  <img src="5.jpg" style="width:30vw;" />
+  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
+</figure>
+
+<hr>
+<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
+<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
+]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+        <tag>微處理機</tag>
+        <tag>STM32</tag>
+        <tag>開發板</tag>
+        <tag>投籃機</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Moleculer CRUD Guide</title>
     <url>/2020/05/moleculer-crud-guide/</url>
-    <content><![CDATA[<img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" />
+    <content><![CDATA[<p><a href="/2020/05/moleculer-crud-guide"><img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" /></a></p>
 <!-- <img src="1.jpeg" style="width:50vw;" /> -->
 
 <p>之前在「梅竹黑客松開發部」時整理的 guide。</p>
@@ -369,63 +428,9 @@
       </tags>
   </entry>
   <entry>
-    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
-    <url>/2021/01/microprocessor-project/</url>
-    <content><![CDATA[<img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" />
-
-<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
-<span id="more"></span>
-
-<p>這次僅做簡單的紀錄。</p>
-<hr>
-<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
-<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
-<hr>
-<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
-  <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" />
-  <figcaption>來玩機台囉！</figcaption>
-</figure>
-<figure>
-  <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" />
-  <figcaption>挖掉杯子底部，讓球通過</figcaption>
-</figure>
-<figure>
-  <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" />
-  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
-</figure>
-<figure>
-  <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" />
-  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
-</figure>
-
-<hr>
-<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
-<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
-]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>課程</tag>
-        <tag>專題</tag>
-        <tag>微處理機</tag>
-        <tag>STM32</tag>
-        <tag>開發板</tag>
-        <tag>投籃機</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
     <url>/2020/09/summer-project/</url>
-    <content><![CDATA[<img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" />
+    <content><![CDATA[<p><a href="/2020/09/summer-project"><img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" /></a></p>
 <!-- <img src="1.jpeg" style="width:50vw;" /> -->
 
 <p>2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。</p>
