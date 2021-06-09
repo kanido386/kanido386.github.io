@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="卡尼多隨筆">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-06-04T09:29:23.000Z">
-<meta property="article:modified_time" content="2021-06-04T09:31:12.406Z">
+<meta property="article:modified_time" content="2021-06-09T08:24:58.737Z">
 <meta property="article:author" content="卡尼多">
 <meta name="twitter:card" content="summary">
 
@@ -225,13 +225,6 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-  </div>
-  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -485,26 +478,6 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://kanido386.github.io/tags/index.html";
-    this.page.identifier = "tags/index.html";
-    this.page.title = "所有標籤";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://kanido386.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
 </script>
 
 </body>
