@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="之前學 ES6 時整理的筆記😀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript ES6 Cheatsheet">
+<meta property="og:url" content="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="之前學 ES6 時整理的筆記😀">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/1.jpeg">
+<meta property="article:published_time" content="2020-04-27T09:25:02.000Z">
+<meta property="article:modified_time" content="2021-06-09T09:45:28.234Z">
+<meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="Cheatsheet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80">
+
+<link rel="canonical" href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>JavaScript ES6 Cheatsheet | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript ES6 Cheatsheet
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-27 17:25:02" itemprop="dateCreated datePublished" datetime="2020-04-27T17:25:02+08:00">2020-04-27</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/04/javascript-es6-cheatsheet/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/javascript-es6-cheatsheet/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" />
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>之前學 ES6 時整理的筆記😀</p>
+<span id="more"></span>
+
+<p>參考自：<a target="_blank" rel="noopener" href="https://peter-chang.medium.com/es6-10-features-javascript-developer-must-know-98b9782bef44">[ES6] Javascript 開發者必須知道的 10 個新功能</a></p>
+<h2 id="Default-Parameters"><a href="#Default-Parameters" class="headerlink" title="Default Parameters"></a>Default Parameters</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters">MDN</a>:<br><strong>Default function parameters</strong> allow named parameters to be initialized with default values if no value or <code>undefined</code> is passed.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">height = <span class="number">173</span>, weight = <span class="number">66</span>, college = <span class="string">&#x27;NCTU&#x27;</span></span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Template-Literals"><a href="#Template-Literals" class="headerlink" title="Template Literals"></a>Template Literals</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a>:<br>Template literals are string literals allowing embedded expressions. You can use multi-line strings and <a target="_blank" rel="noopener" href="https://dmitripavlutin.com/string-interpolation-in-javascript/">string interpolation</a> features with them.</p>
+<h3 id="Multi-line-Strings"><a href="#Multi-line-Strings" class="headerlink" title="Multi-line Strings"></a>Multi-line Strings</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;first line\n&#x27;</span></span><br><span class="line">+ <span class="string">&#x27;second line&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`first line</span></span><br><span class="line"><span class="string">second line`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-Interpolation"><a href="#String-Interpolation" class="headerlink" title="String Interpolation"></a>String Interpolation</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;My name is &#x27;</span> + first + <span class="string">&#x27; &#x27;</span> + last + <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`My name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>.`</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Destructuring-Assignment"><a href="#Destructuring-Assignment" class="headerlink" title="Destructuring Assignment"></a>Destructuring Assignment</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>:<br>The <strong>destructuring assignment</strong> syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; &#125;, gender: &#x27;male&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; ...me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; , gender: &#x27;male&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-destructuring"><a href="#Array-destructuring" class="headerlink" title="Array destructuring"></a>Array destructuring</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> [red, yellow, green] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(red); <span class="comment">// one</span></span><br><span class="line"><span class="built_in">console</span>.log(yellow); <span class="comment">// two</span></span><br><span class="line"><span class="built_in">console</span>.log(green); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-destructuring"><a href="#Object-destructuring" class="headerlink" title="Object destructuring"></a>Object destructuring</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; name, college &#125; = me;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// Tim</span></span><br><span class="line"><span class="built_in">console</span>.log(college); <span class="comment">// NCTU</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h2><p><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記] JavaScript ES6 中的物件的擴展（object literal extension）</a></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMachine</span>(<span class="params">name, year, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// name: name,</span></span><br><span class="line">    name,</span><br><span class="line">    year,</span><br><span class="line">    <span class="comment">// 也可以覆蓋掉傳進來的值</span></span><br><span class="line">    <span class="attr">price</span>: <span class="number">810000</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ⽅法 methods 也能放進來</span></span><br><span class="line">    <span class="attr">description</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 簡寫</span></span><br><span class="line">    <span class="function"><span class="title">description</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 允許將表達式 expression 作為屬性名稱，以達到動態賦值的效果（包在[]裡⾯）</span></span><br><span class="line">    [year+<span class="string">&#x27;machine&#x27;</span>]: price,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> machine = makeMachine(<span class="string">&#x27;Switch&#x27;</span>, <span class="number">2020</span>, <span class="number">9780</span>);</span><br><span class="line"></span><br><span class="line">machine.description();</span><br><span class="line"><span class="comment">// 2020 machine Switch is 9780 dollars</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(machine.price);</span><br><span class="line"><span class="comment">// 810000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Arrow-Functions"><a href="#Arrow-Functions" class="headerlink" title="Arrow Functions"></a>Arrow Functions</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN</a>:<br>An <strong>arrow function expression</strong> is a compact alternative to a traditional <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">function expression</a>, but is limited and can’t be used in all situations.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多個參數</span></span><br><span class="line">(param1, param2, ..., paramN) =&gt; &#123; statements &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> &#123; <span class="keyword">return</span> expression; &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⼀個參數</span></span><br><span class="line"><span class="function">(<span class="params">singleParam</span>) =&gt;</span> &#123; statements &#125;;</span><br><span class="line"><span class="function"><span class="params">singleParam</span> =&gt;</span> &#123; statements &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 沒有參數</span></span><br><span class="line"><span class="function">() =&gt;</span> &#123; statements &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p><a target="_blank" rel="noopener" href="https://andyyou.github.io/2017/06/27/js-promise/">Promise 學習筆記 | DEVLOG of andyyou</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>:<br>The <strong><code>Promise</code></strong> object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
+<h3 id="建⽴-Promise"><a href="#建⽴-Promise" class="headerlink" title="建⽴ Promise"></a>建⽴ Promise</h3><p>把 <code>Promise</code> 想成是⼀個 object！</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hasEnoughMoney = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pleaseBuyMeSwitch = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasEnoughMoney) &#123;</span><br><span class="line">    <span class="keyword">const</span> gift = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Switch&#x27;</span>,</span><br><span class="line">      <span class="attr">price</span>: <span class="number">9780</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    resolve(gift); <span class="comment">// 回傳 gift 這個物件</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;I lost my 20000 dollars at the gym!!!&#x27;</span>);</span><br><span class="line">    reject(reason); <span class="comment">// 回傳 reason 這個 Error 物件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使⽤-Promise"><a href="#使⽤-Promise" class="headerlink" title="使⽤ Promise"></a>使⽤ Promise</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">askJoeman();</span><br></pre></td></tr></table></figure>
+
+<h3 id="簡化寫法"><a href="#簡化寫法" class="headerlink" title="簡化寫法"></a>簡化寫法</h3><p>若某個 function 沒呼叫 <code>reject</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">    resolve(message);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可簡寫成</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ES7-async-await-⾮同步寫法"><a href="#ES7-async-await-⾮同步寫法" class="headerlink" title="ES7 async/await ⾮同步寫法"></a>ES7 async/await ⾮同步寫法</h3><p>原本的寫法</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>新寫法</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">askJoeman</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> something = <span class="keyword">await</span> pleaseBuyMeSwitch;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> showoff(something.name);</span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">  &#125; <span class="keyword">catch</span>(error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// await ⼀定要包在 async function 裡⾯才能⽤</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> askJoeman();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<p>cleaner and more readable!</p>
+<h2 id="Let-amp-Const-Block-Scoped"><a href="#Let-amp-Const-Block-Scoped" class="headerlink" title="Let &amp; Const, Block-Scoped"></a>Let &amp; Const, Block-Scoped</h2><p><code>let</code> 僅在當前的 block 內有效，重複定義時會 throw error。<br><code>const</code> 同樣只在當前的 block 內有效，定義時必須 initialize，且不能更改。</p>
+<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">MDN</a>:<br>Classes are a template for creating objects. They encapsulate data with code to work on that data.</p>
+<h3 id="Class-Declaration-類別宣告"><a href="#Class-Declaration-類別宣告" class="headerlink" title="Class Declaration 類別宣告"></a>Class Declaration 類別宣告</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Class-Expression-類別敘述"><a href="#Class-Expression-類別敘述" class="headerlink" title="Class Expression 類別敘述"></a>Class Expression 類別敘述</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// unnamed</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// named</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> PG = <span class="keyword">new</span> People(<span class="string">&#x27;Curry&#x27;</span>, <span class="number">32</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-Methods-原型⽅法"><a href="#Prototype-Methods-原型⽅法" class="headerlink" title="Prototype Methods 原型⽅法"></a>Prototype Methods 原型⽅法</h3><p>可包 getter、setter、method 等等的進到 class 定義裡⾯，詳⾒ <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#prototype_methods">MDN</a>。</p>
+<h3 id="Static-methods-靜態⽅法"><a href="#Static-methods-靜態⽅法" class="headerlink" title="Static methods 靜態⽅法"></a>Static methods 靜態⽅法</h3><p>不需要實體化就可以被呼叫，也無法被已實體化的類別物件呼叫。<br>經常被⽤來建⽴給應⽤程式使⽤的⼯具函數。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">greeting</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`My name is <span class="subst">$&#123;name&#125;</span>. I&#x27;m <span class="subst">$&#123;age&#125;</span> years old now.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> SG = <span class="keyword">new</span> People(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">SG.greeting(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// Thrown:</span></span><br><span class="line"><span class="comment">// TypeError: SG.greeting is not a function</span></span><br><span class="line"></span><br><span class="line">People.greeting(<span class="string">&#x27;Green&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// My name is Green. I&#x27;m 30 years old now.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別"><a href="#⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別" class="headerlink" title="⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別"></a>⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(`I&#x27;m $&#123;name&#125;.`); name 前⾯沒加上 this 會報錯</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="keyword">extends</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, number, position</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name);</span><br><span class="line">    <span class="built_in">this</span>.number = number;</span><br><span class="line">    <span class="built_in">this</span>.position = position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.introduce();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I wear number <span class="subst">$&#123;<span class="built_in">this</span>.number&#125;</span>. I play <span class="subst">$&#123;<span class="built_in">this</span>.position&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> star = <span class="keyword">new</span> Star(<span class="string">&#x27;Antetokounmpo&#x27;</span>, <span class="number">34</span>, <span class="string">&#x27;PF&#x27;</span>);</span><br><span class="line">star.introduce();</span><br><span class="line"><span class="comment">// I&#x27;m Antetokounmpo.</span></span><br><span class="line"><span class="comment">// I wear number 34. I play PF!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之前幻想字母哥來勇士xD</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN</a>:<br>providing mechanisms for splitting JavaScript programs up into separate modules that can be imported when needed.</p>
+<h3 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">MDN</a>:<br>The <code>export</code> statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the <code>import</code> statement.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> password = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params">id</span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN</a>:<br>The <strong>static</strong> <code>import</code> statement is used to import read only live bindings which are exported by another module.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; password, getStatus &#125; <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(password); <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Export-Default"><a href="#Export-Default" class="headerlink" title="Export Default"></a>Export Default</h3><p>可以讓要使⽤ module 的 client，在不知道 module export 了哪些名稱的情況下，能⾃訂名稱取⽤ module 裡⾯定義的東西。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">greeting</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hello!&#x27;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ================================================== */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> any-name-you-want-to-take <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(any-name-you-want-to-take.name);</span><br><span class="line"><span class="comment">// Tim</span></span><br><span class="line"></span><br><span class="line">any-name-you-want-to-take.greeting();</span><br><span class="line"><span class="comment">// Hello!</span></span><br></pre></td></tr></table></figure>
+
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/ES6/" rel="tag"># ES6</a>
+              <a href="/tags/Cheatsheet/" rel="tag"># Cheatsheet</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/summer-project/" rel="next" title="用一點樂理和音訊處理技術做簡單的音色轉換">
+      用一點樂理和音訊處理技術做簡單的音色轉換 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Default-Parameters"><span class="nav-number">1.</span> <span class="nav-text">Default Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Literals"><span class="nav-number">2.</span> <span class="nav-text">Template Literals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-line-Strings"><span class="nav-number">2.1.</span> <span class="nav-text">Multi-line Strings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-Interpolation"><span class="nav-number">2.2.</span> <span class="nav-text">String Interpolation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Destructuring-Assignment"><span class="nav-number">3.</span> <span class="nav-text">Destructuring Assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-destructuring"><span class="nav-number">3.1.</span> <span class="nav-text">Array destructuring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-destructuring"><span class="nav-number">3.2.</span> <span class="nav-text">Object destructuring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Literals"><span class="nav-number">4.</span> <span class="nav-text">Object Literals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrow-Functions"><span class="nav-number">5.</span> <span class="nav-text">Arrow Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promises"><span class="nav-number">6.</span> <span class="nav-text">Promises</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E2%BD%B4-Promise"><span class="nav-number">6.1.</span> <span class="nav-text">建⽴ Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E2%BD%A4-Promise"><span class="nav-number">6.2.</span> <span class="nav-text">使⽤ Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B0%A1%E5%8C%96%E5%AF%AB%E6%B3%95"><span class="nav-number">6.3.</span> <span class="nav-text">簡化寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES7-async-await-%E2%BE%AE%E5%90%8C%E6%AD%A5%E5%AF%AB%E6%B3%95"><span class="nav-number">6.4.</span> <span class="nav-text">ES7 async&#x2F;await ⾮同步寫法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Let-amp-Const-Block-Scoped"><span class="nav-number">7.</span> <span class="nav-text">Let &amp; Const, Block-Scoped</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classes"><span class="nav-number">8.</span> <span class="nav-text">Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Declaration-%E9%A1%9E%E5%88%A5%E5%AE%A3%E5%91%8A"><span class="nav-number">8.1.</span> <span class="nav-text">Class Declaration 類別宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Expression-%E9%A1%9E%E5%88%A5%E6%95%98%E8%BF%B0"><span class="nav-number">8.2.</span> <span class="nav-text">Class Expression 類別敘述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">8.3.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-Methods-%E5%8E%9F%E5%9E%8B%E2%BD%85%E6%B3%95"><span class="nav-number">8.4.</span> <span class="nav-text">Prototype Methods 原型⽅法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-methods-%E9%9D%9C%E6%85%8B%E2%BD%85%E6%B3%95"><span class="nav-number">8.5.</span> <span class="nav-text">Static methods 靜態⽅法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%BD%A4-extends-%E5%BB%BA%E2%BD%B4%E2%BC%A6%E9%A1%9E%E5%88%A5-%EF%BC%86-%E2%BD%A4-super-%E5%91%BC%E5%8F%AB%E2%BD%97%E9%A1%9E%E5%88%A5"><span class="nav-number">8.6.</span> <span class="nav-text">⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module"><span class="nav-number">9.</span> <span class="nav-text">Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Export"><span class="nav-number">9.1.</span> <span class="nav-text">Export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import"><span class="nav-number">9.2.</span> <span class="nav-text">Import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Export-Default"><span class="nav-number">9.3.</span> <span class="nav-text">Export Default</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="E-Mail → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yanting.lin.tim" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yanting.lin.tim" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCa73p-0ChCqtxubUc4Lq41A" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/";
+    this.page.identifier = "2020/04/javascript-es6-cheatsheet/";
+    this.page.title = "JavaScript ES6 Cheatsheet";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
