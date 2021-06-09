@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="之前在「梅竹黑客松開發部」時整理的 guide。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moleculer CRUD Guide">
+<meta property="og:url" content="https://kanido386.github.io/2020/05/moleculer-crud-guide/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="之前在「梅竹黑客松開發部」時整理的 guide。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2020/05/moleculer-crud-guide/1.jpeg">
+<meta property="og:image" content="https://kanido386.github.io/2020/05/moleculer-crud-guide/2.png">
+<meta property="article:published_time" content="2020-05-16T13:26:39.000Z">
+<meta property="article:modified_time" content="2021-06-09T13:48:59.141Z">
+<meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Moleculer">
+<meta property="article:tag" content="CRUD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80">
+
+<link rel="canonical" href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>Moleculer CRUD Guide | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Moleculer CRUD Guide
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-16 21:26:39" itemprop="dateCreated datePublished" datetime="2020-05-16T21:26:39+08:00">2020-05-16</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/moleculer-crud-guide/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/moleculer-crud-guide/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" />
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>之前在「梅竹黑客松開發部」時整理的 guide。</p>
+<span id="more"></span>
+
+<p>因為把其他部分的 code 也貼上來好像不太好，沒有全部放，所以有些地方可能會不知道在表達什麼。<br>但應該還是能從本文中知悉一點大概念～</p>
+<blockquote>
+<p>以 Server / Build Informations Related Service 為例</p>
+</blockquote>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><p>在 git 上建立新分支並用程式碼編輯器打開 project</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 為了接下來的操作，先切換路徑到 mc-landing-server 的所在位置</span></span><br><span class="line"><span class="built_in">cd</span> path/to/mc-landing-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 這時你可能會發現目前所在的 branch 是 master 或是上次離開前待的 branch，</span></span><br><span class="line"><span class="comment">#    我們要切回 dev 這個分支</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 可能有新的 code 被 merged 到 dev，在開始之前，我們得先更新 dev</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 建立並切換到新分支，準備開始這次的任務！</span></span><br><span class="line">git checkout -b feature/build-informations-related-service-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 如果是用 VSCode 當作程式碼編輯器，下下面的指令就能用 VSCode 打開 project</span></span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+
+<h1 id="開始寫-model-囉"><a href="#開始寫-model-囉" class="headerlink" title="開始寫 model 囉"></a>開始寫 model 囉</h1><ol>
+<li><p>先打開 mc-landing API server spec 這個頁面，我們以這個頁面的 schema 定義來寫我們的 model</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">informations: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  user_id: &lt;ObjectId&gt;,</span><br><span class="line">  tag_id: &lt;ObjectId&gt;,</span><br><span class="line">  title: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  content: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  created_at: &lt;<span class="built_in">Number</span>&gt;,</span><br><span class="line">  updated_at: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">Index</span>:</span><br><span class="line">&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;</span><br><span class="line">&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">tags</span>: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  name: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  color: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>開好之前定的 schema 以後，我們就準備依樣畫葫蘆囉～ （這就是為什麼我們要分兩階段進行：第一個階段在我們還不需要實際打 code 的時候，專心一意地去想我們的 schema 要怎麼規劃才能符合需求，然後把它寫下來；第二個階段就直接照第一階段寫的，實際去寫成 code。就好像蓋房子的時候：畫藍圖 → 開始動工！）</p>
+</li>
+<li><p>回到 VSCode，在 models 資料夾底下建一個 informations.js （如果是做 Server / Build Posts Related Service 就建 posts.js，以此類推）</p>
+</li>
+<li><p><del>複製 users.js 裡面的 code 到 informations.js 裡面，然後開始改</del></p>
+</li>
+</ol>
+<h2 id="正式開始寫-model-的-code"><a href="#正式開始寫-model-的-code" class="headerlink" title="正式開始寫 model 的 code"></a>正式開始寫 model 的 code</h2><ul>
+<li>從 mongoose 裡面取用 Schema，準備用 Schema 自定義我們的 schema！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; Schema &#125; = Mongoose;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把我們定義的 schema 命名為 informationsSchema（或 postsSchema）</li>
+<li>最下面的 <code>strict: &#39;throw&#39;</code> 是一種 optional 的設定，意思是： 若 insert 一個不符合我們 schema 的新 <a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/document/">document</a> 時，會直接 drop 掉也會報出錯誤</li>
+<li>灰色被 comment 掉的部分是我們要改的部分！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="comment">// username: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;,</span></span><br><span class="line">  <span class="comment">// password: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>_id</code> 不用寫上去，mongoose 會幫我們建好～</li>
+<li><code>user_id</code>、<code>tag_id</code> 是指外部 schema (users、tags) 的 _id，所以用 <code>Mongoose.Types.ObjectId</code> 當作 type，這就是資料庫裡面常聽到的 relation， 有看過「<a target="_blank" rel="noopener" href="https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1">6 Rules of Thumb for MongoDB Schema Design</a>」這篇文章大概就會懂</li>
+<li><code>required: true</code> 意思是：insert 新 document 時必須有這個欄位 （像 tag 可以之後再加上去，所以就不用 required 了）</li>
+<li>至於有什麼 type 呢？參考 <a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/schematypes.html">Mongoose</a> 吧！（我們是用 Mongoose 來建 model）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="attr">user_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tag_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>進行 index 吧！index 是為了方便之後搜尋排序等等的操作。</li>
+<li><code>&#39;text&#39;</code> <a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/core/index-text/">Text indexes</a>? To support text search queries on string content.</li>
+<li><code>1</code>：由小排到大  <code>-1</code>：由大排到小</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">informationsSchema.index(&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以 informations 這個 name 把我們定義好的 informationsSchema export 出去</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = Mongoose.model(<span class="string">&#x27;informations&#x27;</span>, informationsSchema);</span><br></pre></td></tr></table></figure>
+
+<h1 id="為待會-service-的參數驗證做準備"><a href="#為待會-service-的參數驗證做準備" class="headerlink" title="為待會 service 的參數驗證做準備"></a>為待會 service 的參數驗證做準備</h1><ol>
+<li>打開 libs/validates.js</li>
+<li>在 users service related 下面，加入新的參數驗證，一樣參考 <a target="_blank" rel="noopener" href="https://www.notion.so/mc-landing-API-server-spec-344a5417ba5b40c09a633f1754215931">mc-landing API server spec</a> <br>（type 有哪些？參考 <a target="_blank" rel="noopener" href="https://github.com/icebob/fastest-validator">fastest-validator</a>，因為 Moleculer 的參數驗證 based on it）<br>（為什麼不用加入 <code>_id</code>、<code>user_id</code>、<code>tag_id</code> 呢？因為第八行已經寫好 _id 類的了xD）</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// users service related</span></span><br><span class="line"><span class="attr">users</span>: &#123;</span><br><span class="line">  <span class="attr">username</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">password</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">6</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// informations service related</span></span><br><span class="line"><span class="attr">informations</span>: &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h1 id="重頭戲：API-本體（service）"><a href="#重頭戲：API-本體（service）" class="headerlink" title="重頭戲：API 本體（service）"></a>重頭戲：API 本體（service）</h1><ol>
+<li>在 services 資料夾底下新增 informations.service.js（posts.service.js）</li>
+<li>直接複製貼上 users.service.js 的 code 吧！（實在不少行xD 當然自己打過印象會更深刻）</li>
+<li>來改 code 吧！<br>（細節上次開會的時候講過了，如果忘記的話，可以上網查或是直接來問我們～）</li>
+</ol>
+<ul>
+<li>第 4 行改 model 的名字（左右都要改哦～）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> InformationsModel = <span class="built_in">require</span>(<span class="string">&#x27;../models/informations&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 9 行改 name</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name: <span class="string">&#x27;informations&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 21 行改 model name</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model: InformationsModel,</span><br></pre></td></tr></table></figure>
+
+<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><h3 id="addInformation"><a href="#addInformation" class="headerlink" title="addInformation"></a>addInformation</h3><ul>
+<li>從 addUser 改的，以下以此類推</li>
+<li>params 裡面的東西就是 schema 的那些</li>
+<li>為什麼沒 created_at、updated_at？它們由系統生成！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">addInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">user_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.create(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="getInformation"><a href="#getInformation" class="headerlink" title="getInformation"></a>getInformation</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="getInformations"><a href="#getInformations" class="headerlink" title="getInformations"></a>getInformations</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">getInformations: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">filter</span>: &#123;</span><br><span class="line">      ...ValidateType.filter</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limit</span>: &#123;</span><br><span class="line">      ...ValidateType.limit</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">skip</span>: &#123;</span><br><span class="line">      ...ValidateType.skip</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">sort</span>: &#123;</span><br><span class="line">      ...ValidateType.sort</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findAll(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="modifyInformation"><a href="#modifyInformation" class="headerlink" title="modifyInformation"></a>modifyInformation</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">modifyInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">user_id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立者不會變</span></span><br><span class="line">    <span class="attr">created_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立時間不會變</span></span><br><span class="line">    <span class="attr">updated_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125; <span class="comment">// 由系統生成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.updateOne(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="removeInformation"><a href="#removeInformation" class="headerlink" title="removeInformation"></a>removeInformation</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">removeInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.deleteOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h2><h3 id="create"><a href="#create" class="headerlink" title="create"></a>create</h3><ul>
+<li>中間那一塊就是所謂的「系統生成」啦～</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">create</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.created_at = timestamp;</span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.create(params); <span class="comment">// Return Promise</span></span><br><span class="line">    logger.info(<span class="string">&#x27;Create information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1000</span>, <span class="string">&#x27;Failed to create information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="findOne"><a href="#findOne" class="headerlink" title="findOne"></a>findOne</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.findOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find information in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="findAll"><a href="#findAll" class="headerlink" title="findAll"></a>findAll</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findAll</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; filter, limit, skip, sort &#125; = params;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> total = <span class="keyword">await</span> model.countDocuments(filter).lean();</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> model.find(filter, <span class="literal">null</span>, &#123; limit, skip, sort &#125;).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find informations successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123; total, data &#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find informations in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="updateOne"><a href="#updateOne" class="headerlink" title="updateOne"></a>updateOne</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">updateOne</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; _id &#125; = params;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.updateOne(&#123; _id &#125;, params).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Update information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1002</span>, <span class="string">&#x27;Failed to update information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="deleteOne"><a href="#deleteOne" class="headerlink" title="deleteOne"></a>deleteOne</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">deleteOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.deleteOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Delete information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1003</span>, <span class="string">&#x27;Failed to remove information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="把-API-加進-api-service-js"><a href="#把-API-加進-api-service-js" class="headerlink" title="把 API 加進 api.service.js"></a>把 API 加進 api.service.js</h1><ul>
+<li>直接看第 99 行 ～ 第 125 行那邊</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// No authentication, authorization needed</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/api&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/addUser&#x27;</span>: <span class="string">&#x27;v1.users.addUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// <span class="doctag">TODO:</span> Authentication, Authorization</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/admin&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/getUser&#x27;</span>: <span class="string">&#x27;v1.users.getUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/getUsers&#x27;</span>: <span class="string">&#x27;v1.users.getUsers&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/modifyUser&#x27;</span>: <span class="string">&#x27;v1.users.modifyUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/removeUser&#x27;</span>: <span class="string">&#x27;v1.users.removeUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/addInformation&#x27;</span>: <span class="string">&#x27;v1.informations.addInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/modifyInformation&#x27;</span>: <span class="string">&#x27;v1.informations.modifyInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/removeInformation&#x27;</span>: <span class="string">&#x27;v1.informations.removeInformation&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此一來， <code>npm run dev</code> 後就能夠使用 API 了！</p>
+<blockquote>
+<p>用 Postman 測試的時候，tags_id 隨便給一個值就好（只要是 string 都行）</p>
+</blockquote>
+<h1 id="一些-Q＆A"><a href="#一些-Q＆A" class="headerlink" title="一些 Q＆A"></a>一些 Q＆A</h1><h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>Ｑ：關於 services/student.service.js 裡⾯第 16 ⾏的 adapter 是什麼東西？我 google 不太到我想要的資訊。</strong></p>
+<p>我先 google「adapter 中⽂」，得到了「適配器」這個答案，那因為我不知道「適配器」到底是什麼東西，所有我就改⽤「圖⽚」來搜尋，（欣賞 adapter），欣賞了好幾張以後我猜測它應該就是類似「轉接頭」的東西吧？</p>
+<p>「轉接頭」跟「開發」到底有什麼關係啊？我⼼中萌⽣了這個疑問。</p>
+<p>後來我再回去看 students.service.js，裡⾯第 19 ⾏有個叫「MongooseAdapter」的 keyword，想說這詞結合了我們開發⽤的「mongoose」⼜有個「adapter」，也許 google 它會有我們想得到的資訊吧？</p>
+<p>搜尋「MongooseAdapter」得到了很雜的資訊，改搜尋「database adapter」，上⾯的⽂字敘述看了還是沒很清楚，就⼜改⽤「圖⽚」，找到了這張：</p>
+<p><img src="2.png"></p>
+<p>再結合剛剛猜測的「轉接頭」，我就認為說「adapter」就是⼀個讓使⽤者更好操作 DB 的「轉接頭」，我們只要專注在別⼈幫我們包好、⽐較好寫、不必擔⼼語⾔障礙的「這⼀端」就好，「另外⼀端」就讓 adapter 去跟 DB 做交涉。</p>
+<h2 id="JavaScript-解構"><a href="#JavaScript-解構" class="headerlink" title="JavaScript 解構"></a>JavaScript 解構</h2><p><strong>Ｑ：還有想簡單問⼀下 StudentModel 裡⾯的 param 為什麼 ValidateTypes 前⾯要加「…」？ （services/students.service.js 的 addStudent 的 params)</strong></p>
+<p>那個是 JS 的「解構」語法。</p>
+<p>我下的關鍵字是「js …」，google 會推薦我搜尋「js …args」，於是我找到了「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42184674/what-is-the-meaning-of-args-three-dots-in-a-function-definition">What is the meaning of “…args” (three dots) in a function definition?</a>」，⼜間接找到了「Spread syntax」，看⼀看裡⾯的範例就⼤概知道那是⽤來做什麼的了。</p>
+<p>舉個例⼦，有個 object 定義為 <code>me = &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;</code></p>
+<p>當我要定義另外⼀個 object 但沒加上 <code>...</code> 時：</p>
+<p><code>moreAboutMe = &#123; me, gender: &#39;male&#39; &#125;</code> 它會是 <code>&#123; &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;, gender: &#39;male&#39; &#125;</code></p>
+<p>另外⼀種也就是有加上 <code>...</code> 的版本：</p>
+<p><code>moreAboutMe = &#123; ...me, gender: &#39;male&#39; &#125;</code> 它就會是 <code>&#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39;, gender: &#39;male&#39; &#125;</code></p>
+<p>從上⾯的例⼦可以看出它發揮「解構」的功⽤了！</p>
+<h2 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h2><p><strong>Ｑ：validator 那邊，你給的⽂檔只有 validateBeforeSave 跟 validateSync ⽽已，沒有看到類似validator 的寫法。可以說是在哪⼀段有嗎？我是有看到 mongoDB 有 validate 這個 commend 跟這個有關係嗎？</strong></p>
+<p>後來我在左側欄位「Guides」底下有個叫「Validation」的那邊有看到〜 <a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/validation.html#custom-validators">Custom Validators</a></p>
+<h2 id="type-forbidden"><a href="#type-forbidden" class="headerlink" title="type forbidden"></a>type forbidden</h2><p><strong>Ｑ：然後最後⾯有⼀個 key 是⽤來寄推薦信的驗證碼的，這裡 type <code>forbidden</code> 這個是你訂的嗎？ 因為我去 mongoDB 查沒有這個 type，這個意思是說使⽤者不能輸⼊的意思嗎？所以打這樣電腦會⾃動⽣ key？</strong></p>
+<p>可能是為了防⽌ client 在 addStudent 的時候也⾃⼰指定了 key 的值，所以⽤「forbidden」把它擋下來。</p>
+<p>我猜 key 可能是讓 account service 來⽣成，因為那邊有個「TODO{ create password to accounts service」</p>
+<p>等等……好像真的找不到 forbidden 的 type 誒XD</p>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p><strong>Ｑ：第 38 ⾏的 handler 是哪裡的？ mongoDB mongoose？ 不太理解 handler 的意思🤔🤔</strong></p>
+<p>我覺得它的作⽤應該就像 eggjs「controller 調⽤ service」那樣，所以應該是屬於「Moleculer」的，也許可以把「handler」想成像是 addStudent 的 function 本體，上⾯的 params 就僅僅是定義參數的規則。</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/Moleculer/" rel="tag"># Moleculer</a>
+              <a href="/tags/CRUD/" rel="tag"># CRUD</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/javascript-es6-cheatsheet/" rel="prev" title="JavaScript ES6 Cheatsheet">
+      <i class="fa fa-chevron-left"></i> JavaScript ES6 Cheatsheet
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/summer-project/" rel="next" title="用一點樂理和音訊處理技術做簡單的音色轉換">
+      用一點樂理和音訊處理技術做簡單的音色轉換 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E5%AF%AB-model-%E5%9B%89"><span class="nav-number">2.</span> <span class="nav-text">開始寫 model 囉</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E9%96%8B%E5%A7%8B%E5%AF%AB-model-%E7%9A%84-code"><span class="nav-number">2.1.</span> <span class="nav-text">正式開始寫 model 的 code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%BA%E5%BE%85%E6%9C%83-service-%E7%9A%84%E5%8F%83%E6%95%B8%E9%A9%97%E8%AD%89%E5%81%9A%E6%BA%96%E5%82%99"><span class="nav-number">3.</span> <span class="nav-text">為待會 service 的參數驗證做準備</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E9%A0%AD%E6%88%B2%EF%BC%9AAPI-%E6%9C%AC%E9%AB%94%EF%BC%88service%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">重頭戲：API 本體（service）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#actions"><span class="nav-number">4.1.</span> <span class="nav-text">actions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addInformation"><span class="nav-number">4.1.1.</span> <span class="nav-text">addInformation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getInformation"><span class="nav-number">4.1.2.</span> <span class="nav-text">getInformation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getInformations"><span class="nav-number">4.1.3.</span> <span class="nav-text">getInformations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modifyInformation"><span class="nav-number">4.1.4.</span> <span class="nav-text">modifyInformation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#removeInformation"><span class="nav-number">4.1.5.</span> <span class="nav-text">removeInformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">4.2.</span> <span class="nav-text">methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create"><span class="nav-number">4.2.1.</span> <span class="nav-text">create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findOne"><span class="nav-number">4.2.2.</span> <span class="nav-text">findOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findAll"><span class="nav-number">4.2.3.</span> <span class="nav-text">findAll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#updateOne"><span class="nav-number">4.2.4.</span> <span class="nav-text">updateOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deleteOne"><span class="nav-number">4.2.5.</span> <span class="nav-text">deleteOne</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%8A-API-%E5%8A%A0%E9%80%B2-api-service-js"><span class="nav-number">5.</span> <span class="nav-text">把 API 加進 api.service.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B-Q%EF%BC%86A"><span class="nav-number">6.</span> <span class="nav-text">一些 Q＆A</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Adapter"><span class="nav-number">6.1.</span> <span class="nav-text">Adapter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-%E8%A7%A3%E6%A7%8B"><span class="nav-number">6.2.</span> <span class="nav-text">JavaScript 解構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Validator"><span class="nav-number">6.3.</span> <span class="nav-text">Validator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-forbidden"><span class="nav-number">6.4.</span> <span class="nav-text">type forbidden</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler"><span class="nav-number">6.5.</span> <span class="nav-text">Handler</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="E-Mail → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yanting.lin.tim" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yanting.lin.tim" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCa73p-0ChCqtxubUc4Lq41A" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2020/05/moleculer-crud-guide/";
+    this.page.identifier = "2020/05/moleculer-crud-guide/";
+    this.page.title = "Moleculer CRUD Guide";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
