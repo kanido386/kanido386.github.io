@@ -133,6 +133,294 @@
       </tags>
   </entry>
   <entry>
+    <title>用 Hexo 及 GitHub Pages 打造部落格</title>
+    <url>/2021/06/hexo-github-pages-blog/</url>
+    <content><![CDATA[<p><a href="/2021/06/hexo-github-pages-blog"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>此篇教學文仿寫自「<a href="https://yogapan.github.io/">小蛇蛇的筆記</a>」的「<a href="https://yogapan.github.io/2017/08/11/%E7%94%A8Hexo-Github-Pages%E6%90%AD%E5%BB%BA%E5%80%8B%E4%BA%BA%E9%83%A8%E8%90%BD%E6%A0%BC/">用Hexo + Github Pages搭建個人部落格</a>」</p>
+<p>除了是為了學習怎麼用 Hexo 及 GitHub Pages 打造屬於自己的部落格之外，也希望在過程中看看別人是怎樣寫技術文章的，並從中得到收穫。</p>
+<span id="more"></span>
+
+<h2 id="用-npm-安裝-Hexo"><a href="#用-npm-安裝-Hexo" class="headerlink" title="用 npm 安裝 Hexo"></a>用 npm 安裝 Hexo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<h2 id="裝完來測試一下"><a href="#裝完來測試一下" class="headerlink" title="裝完來測試一下"></a>裝完來測試一下</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>居然噴出錯誤 <code>TypeError: line.matchAll is not a function</code></p>
+<p>google「<code>上面的錯誤訊息</code> hexo」找到了<a href="https://stackoverflow.com/questions/67516168/i-just-installed-hexo-static-site-generator-on-debian-and-ran-hexo-server-to-see">這篇</a><br>原來是因為 <code>12.0.0</code> 版以後的 Node.js 才有 <code>String.matchAll()</code> 這個 function 啊！<br>那就來更新 Node.js 吧！</p>
+<h2 id="更新-Node-js"><a href="#更新-Node-js" class="headerlink" title="更新 Node.js"></a>更新 Node.js</h2><p>google「update nodejs」找到了<a href="https://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version">這篇</a>，他是這麼做的：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install n -g  <span class="comment"># n: Interactively Manage Your Node.js Versions</span></span><br><span class="line">n stable          <span class="comment"># upgrade Node.js to the latest stable version</span></span><br><span class="line">n latest          <span class="comment"># upgrade Node.js to the latest version</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="更新-Node-js-後再次測試"><a href="#更新-Node-js-後再次測試" class="headerlink" title="更新 Node.js 後再次測試"></a>更新 Node.js 後再次測試</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>出現下面的訊息就代表成功囉！</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+
+<p>打開瀏覽器，輸入 <code>localhost:4000</code></p>
+<p><img src="1.png"></p>
+<p>讚啦！我們的部落格誕生啦！</p>
+<h2 id="看一下-blog-裡面的目錄結構"><a href="#看一下-blog-裡面的目錄結構" class="headerlink" title="看一下 blog 裡面的目錄結構"></a>看一下 blog 裡面的目錄結構</h2><p>用 <code>tree -C -I node_modules</code> 這個指令印一下它的結構：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── db.json</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">│   ├── draft.md</span><br><span class="line">│   ├── page.md</span><br><span class="line">│   └── post.md</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">│   └── _posts</span><br><span class="line">│       └── hello-world.md</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+
+<p>不懂欸怎麼辦？不用怕！<a href="https://hexo.io/docs/setup">官方文檔</a>寫得超清楚，設定的時候有不懂的地方再去查就行囉！</p>
+<p>補充說明：</p>
+<ul>
+<li><code>-C</code> 是為了讓印出來的內容有顏色做區別，看起來更清楚明瞭</li>
+<li><code>-I &lt;pattern&gt;</code> 則是為了排除不想要印出來的部分</li>
+<li>tree 還有很多種 options 可以設定，詳細可以用 <code>man tree</code> 這個指令去了解</li>
+</ul>
+<h2 id="更換主題"><a href="#更換主題" class="headerlink" title="更換主題"></a>更換主題</h2><p>到<a href="https://hexo.io/themes/">這裡</a>挑選喜歡的主題吧！</p>
+<p><img src="2.png"></p>
+<p>右上方有個「Search」欄位，輸入 keyword 以後可以快速找到目標主題哦！<br>如下：</p>
+<p><img src="3.png"></p>
+<p>接下來就依照選定主題的文檔進行安裝啦！<br>（不見得每個主題都有清楚的安裝教學，可能要自己研究一下）<br>如果跟我一樣是選「<a href="https://theme-next.js.org/docs/getting-started/">NexT</a>」這個主題，可以照下面的步驟安裝～</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>修改一下 <code>_config.yml</code> 這個檔案 Extensions 的部分，把 theme 改成新主題：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+
+<p>再用 <code>hexo server</code> 測試看看。</p>
+<p><img src="4.png"></p>
+<p>哇嗚～<br>成功了！We did it!</p>
+<p>主題更換完畢～</p>
+<h2 id="更多關於-NexT-的設定"><a href="#更多關於-NexT-的設定" class="headerlink" title="更多關於 NexT 的設定"></a>更多關於 NexT 的設定</h2><p>到 <code>themes/next/_config.yml</code> 去做設定吧！</p>
+<h3 id="更改其他樣式"><a href="#更改其他樣式" class="headerlink" title="更改其他樣式"></a>更改其他樣式</h3><p><a href="https://github.com/theme-next/awesome-next#live-preview">這裡</a>有 live preview 可以參考。<br>喜歡哪一款，去掉那一行的註解就行囉！</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="code-highlight-樣式"><a href="#code-highlight-樣式" class="headerlink" title="code highlight 樣式"></a>code highlight 樣式</h3><p>為什要有 code highlight？<br>因為有了 code highlight，在文章上面分享 code 就可以被美美地呈現😀<br>我個人是比較喜歡 normal 啦～</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Code Highlight theme</span></span><br><span class="line"><span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line"><span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line"><span class="attr">highlight_theme:</span> <span class="string">normal</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="其他設定"><a href="#其他設定" class="headerlink" title="其他設定"></a>其他設定</h3><p><code>themes/next/_config.yml</code> 裡面其實有蠻多註解可以協助我們做設定。<br>如果再有不清楚的地方，相信丟給 google 大神應該都可以順利解決～</p>
+<h2 id="設定作者相關資訊"><a href="#設定作者相關資訊" class="headerlink" title="設定作者相關資訊"></a>設定作者相關資訊</h2><h3 id="設置頭像"><a href="#設置頭像" class="headerlink" title="設置頭像"></a>設置頭像</h3><ol>
+<li><code>mkdir source/images</code></li>
+<li>頭像照片放進去</li>
+<li>到 <code>themes/next/_config.yml</code>（以下稱為 theme 的 config 檔）設定 avatar 的路徑，如下：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be dispalyed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣就完成頭像的設置囉！</p>
+<h3 id="更改網站資訊"><a href="#更改網站資訊" class="headerlink" title="更改網站資訊"></a>更改網站資訊</h3><p>修改 <code>_config.yml</code>（跟 theme 的 config 是不一樣的檔案哦，以下稱為 site 的 config 檔）</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">卡尼多隨筆</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;認識自我 • 感受世界 • 創造價值&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">卡尼多</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-tw</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;Asia/Taipei&#x27;</span>   <span class="comment"># 不是 TW 哦！</span></span><br></pre></td></tr></table></figure>
+
+<p>每個 setting 分別代表什麼意思可以參閱 Hexo 的<a href="https://hexo.io/docs/configuration.html">官方文檔</a>。</p>
+<h3 id="開啟社群帳號連結"><a href="#開啟社群帳號連結" class="headerlink" title="開啟社群帳號連結"></a>開啟社群帳號連結</h3><p>到 theme 的 config 檔做設定，把想要開啟的連結都去掉註解吧！<br>（或是照著格式自己新增其他連結）</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/kanido386</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:kanido386@gmail.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新增「關於我」的頁面"><a href="#新增「關於我」的頁面" class="headerlink" title="新增「關於我」的頁面"></a>新增「關於我」的頁面</h3><ol>
+<li><p><code>hexo new page &quot;about&quot;</code></p>
+</li>
+<li><p>修改 theme 的 config 檔，去掉 menu 底下 about 那一行的註解：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br></pre></td></tr></table></figure></li>
+<li><p>編輯 <code>source/about/index.md</code></p>
+</li>
+<li><p>用 <code>hexo server</code> 測試看看</p>
+</li>
+</ol>
+<p>如果噴出 <code>TypeError: Cannot read property &#39;utcOffset&#39; of null</code> 這個錯誤，代表說上面在填時區的時候可能有填錯，像我原本是把時區填成 <code>TW</code> 😂</p>
+<h2 id="發表文章"><a href="#發表文章" class="headerlink" title="發表文章"></a>發表文章</h2><h3 id="新增一篇文章"><a href="#新增一篇文章" class="headerlink" title="新增一篇文章"></a>新增一篇文章</h3><ol>
+<li><p>先到 site 的 config 檔做個設定：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p> 如此一來，每當新增一個 post 的時候，Hexo 會自動幫你在 <code>source/_posts/</code> 底下新增一個跟 post 同名的 <a href="https://hexo.io/docs/asset-folders">asset folder</a>！<br> 這樣放圖片之類的靜態檔案會比較方便，看起來也會比較有條理。</p>
+</li>
+<li><p>輸入 <code>hexo new post &quot;&lt;title&gt;&quot;</code> 並編輯</p>
+</li>
+<li><p>加圖片進文章裡面</p>
+<ol>
+<li>先把圖片放進 <code>source/_posts/&lt;title&gt;/</code> 裡</li>
+<li>post 裡面加上 <code>&#123;% asset_img (img_name) %&#125;</code> 或是用其他像是 <code>![](img_name)</code> 的方式（<code>img_name</code> 包含副檔名哦）</li>
+</ol>
+</li>
+<li><p>這樣文章裡面就有圖片囉 🎉</p>
+</li>
+</ol>
+<h3 id="替文章加上標籤"><a href="#替文章加上標籤" class="headerlink" title="替文章加上標籤"></a>替文章加上標籤</h3><p>如果之前已經建了 tags 頁面，就直接跳到步驟 4. 吧！</p>
+<ol>
+<li><p><code>hexo new page &quot;tags&quot;</code></p>
+</li>
+<li><p>編輯 <code>source/tags/index.md</code>，記得加上 <code>type: &quot;tags&quot;</code>：</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 所有標籤</span><br><span class="line">date: 2021-06-04 17:29:23</span><br><span class="line"><span class="section">type: &quot;tags&quot;</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure></li>
+<li><p>修改 theme 的 config 檔，去掉 menu 底下 tags 那一行的註解：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure></li>
+<li><p>替剛剛新增的文章加上標籤</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- 只有一個 tag 時 --&gt;</span><br><span class="line">tags: tag</span><br><span class="line"></span><br><span class="line">&lt;!-- 有多個 tag 時 --&gt;</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">  -</span> tag1</span><br><span class="line"><span class="bullet">  -</span> tag2</span><br><span class="line"><span class="bullet">  -</span> tag3</span><br></pre></td></tr></table></figure></li>
+<li><p>用 <code>hexo server</code> 測試看看</p>
+</li>
+</ol>
+<h3 id="設定文章網址格式"><a href="#設定文章網址格式" class="headerlink" title="設定文章網址格式"></a>設定文章網址格式</h3><p>修改 site 的 config 檔：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:title/</span></span><br></pre></td></tr></table></figure>
+
+<p>還有很多種設定方式呢！詳見<a href="https://hexo.io/docs/permalinks">官方文檔</a>～</p>
+<h2 id="為部落格加上搜尋功能"><a href="#為部落格加上搜尋功能" class="headerlink" title="為部落格加上搜尋功能"></a>為部落格加上搜尋功能</h2><ol>
+<li><p>裝 plugin：<code>npm install hexo-generator-searchdb</code></p>
+</li>
+<li><p>修改 theme 的 config 檔，開啟 local search 的功能：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li><p>左上方的 menu 就多了個 Search 囉！</p>
+</li>
+</ol>
+<p><img src="5.png"></p>
+<p>就是這麼簡單。</p>
+<h2 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h2><p><code>hexo server</code> 以後，看到部落格美美呈現在瀏覽器上就算完成了嗎？還沒呢！</p>
+<p>記得嗎？我們測試時輸入的網址可是 <code>localhost:4000</code>，這代表說只有本機端才能看得到。<br>所以如果想要讓網路上的大家能找到自己美美的部落格，首先必須要把部落格部署在某個地方。<br>其中一種很簡單的方式就是用 GitHub Pages 來部署哦！</p>
+<p>＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝</p>
+<p>如果之前已經設定過了，就直接跳到步驟 5. 吧！</p>
+<ol>
+<li><p>還沒有 GitHub 帳戶的話先去註冊一個</p>
+</li>
+<li><p>創建一個名為 <code>&lt;username&gt;.github.io</code> 的 repository，其中 <code>&lt;username&gt;</code> 就是你 GitHub 帳戶的 username（交叉比對<a href="https://ithelp.ithome.com.tw/articles/10199169">這篇</a>和<a href="https://hexo.io/docs/one-command-deployment#Git">官方文檔</a>，疑似任何 repo name 都行，不過用前面說的 name 就能直接用 <code>&lt;username&gt;.github.io</code> 這個網址進到部落格，比較簡單也比較直覺）</p>
+</li>
+<li><p>裝 plugin：<code>npm install hexo-deployer-git --save</code></p>
+</li>
+<li><p>修改 site 的 config 檔，設定網站 URL＆部署資訊：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://&lt;username&gt;.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ==============================</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p> 詳細的設定可以參閱<a href="https://hexo.io/docs/one-command-deployment">官方文檔</a>，還有其他種部署方式的教學呢！</p>
+</li>
+<li><p>清空 public 裡面的東西（如果有的話）：<code>hexo clean</code></p>
+</li>
+<li><p>產生靜態檔案＆部署到 GitHub Pages：<code>hexo generate &amp; hexo deploy</code><br> （注意：第一次使用時，如果原本 <code>&lt;username&gt;.github.io</code>  裡面有東西的話都會被吃掉，就連之前的 commit 也都會不見 😱）</p>
+</li>
+<li><p>打開瀏覽器，輸入 <code>&lt;username&gt;.github.io</code> 就可以看到自己的部落格囉！</p>
+</li>
+</ol>
+<p><img src="6.png"></p>
+<p>酷斃了！</p>
+<h2 id="加上「繼續閱讀」"><a href="#加上「繼續閱讀」" class="headerlink" title="加上「繼續閱讀」"></a>加上「繼續閱讀」</h2><p>非常簡單，只要在文章裡面加上 <code>&lt;!-- more --&gt;</code> 就行了！</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">預覽看得到我</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">預覽看不到我</span><br></pre></td></tr></table></figure>
+
+<p>用 <code>hexo server</code> 去查看，沒錯，多了一個「Read more」繼續閱讀的按鈕了 🎉</p>
+<p><img src="7.png"></p>
+<p>Nice!</p>
+<h2 id="顯示文章閱讀次數"><a href="#顯示文章閱讀次數" class="headerlink" title="顯示文章閱讀次數"></a>顯示文章閱讀次數</h2><p>我是參考<a href="https://www.larrynote.com/website-service/15/">這篇文章</a>弄的。<br>（注意：文章標題中不能含有 <code>/</code> 斜槓符號，不然會出問題！）</p>
+<h3 id="建立-Firebase-專案"><a href="#建立-Firebase-專案" class="headerlink" title="建立 Firebase 專案"></a>建立 Firebase 專案</h3><ol>
+<li><p>想要啟用這個功能，可以使用 Firebase 的 Firestore 服務，因此，先到<a href="https://firebase.google.com/">官網</a>註冊一下 Firebase 吧！</p>
+</li>
+<li><p>新增專案</p>
+<p> <img src="8.png"></p>
+</li>
+<li><p>照著步驟走，即可建立一個 Firebase 專案！</p>
+</li>
+</ol>
+<h3 id="產生網路-API-金鑰"><a href="#產生網路-API-金鑰" class="headerlink" title="產生網路 API 金鑰"></a>產生網路 API 金鑰</h3><ol>
+<li><p>進到專案裡頭，左上方有個「Authentication」，點一下，再點「開始使用」，跑完以後，金鑰就生成囉！</p>
+<p> <img src="9.png"></p>
+</li>
+<li><p>進到「專案設定」的「一般設定」查看一下～</p>
+<p> <img src="10.png"></p>
+<p> 真的有了欸！</p>
+<p> <img src="11.png"></p>
+</li>
+</ol>
+<h3 id="設定-Firestore"><a href="#設定-Firestore" class="headerlink" title="設定 Firestore"></a>設定 Firestore</h3><ol>
+<li><p>Firestore Database → 建立資料庫</p>
+<p> <img src="12.png"></p>
+</li>
+<li><p>以測試模式啟動 → 繼續 → Cloud Firestore 位置選比較近的 → 啟用</p>
+<p> <img src="13.png"></p>
+<p> <img src="14.png"></p>
+</li>
+<li><p>編輯規則，把原本的規則改成下面的 code → 發布</p>
+ <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">service cloud.firestore &#123;</span><br><span class="line">  match /databases/&#123;database&#125;/documents &#123;</span><br><span class="line">    match /articles/&#123;any&#125; &#123;</span><br><span class="line">      allow read: <span class="keyword">if</span> <span class="literal">true</span>;</span><br><span class="line">      allow write: <span class="keyword">if</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="15.png"></p>
+</li>
+</ol>
+<p>這樣 Firestore 的設定就完成囉！</p>
+<h3 id="開啟功能"><a href="#開啟功能" class="headerlink" title="開啟功能"></a>開啟功能</h3><p>到 theme 的 config 檔，修改關於 firestore 的設置。<br>除了 <code>enable</code> 改為 <code>true</code> 之外，<code>apiKey</code> 和 <code>projectId</code> 也要設定哦！<br>值要怎麼設定呢？到上面那一張圖的頁面去找找吧～</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">collection:</span> <span class="string">articles</span> <span class="comment"># Required, a string collection name to access firestore database</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&lt;網路</span> <span class="string">API</span> <span class="string">金鑰&gt;</span></span><br><span class="line">  <span class="attr">projectId:</span> <span class="string">&lt;專案</span> <span class="string">ID&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h3><ol>
+<li><p>清空 public 裡面的東西（如果有的話）：<code>hexo clean</code></p>
+</li>
+<li><p>產生靜態檔案＆部署最新版的 code 上去：<code>hexo generate &amp; hexo deploy</code><br> （注意：<code>localhost:4000</code> 不能測試哦！因為我們在 site 的 config 檔裡面，url 設的是 <code>https://&lt;username&gt;.github.io</code>）</p>
+</li>
+<li><p>打開瀏覽器，輸入 <code>&lt;username&gt;.github.io</code>，神奇的事情發生了！</p>
+</li>
+</ol>
+<p>＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝</p>
+<p>（點進去文章前）頁面多了個「Views」</p>
+<p><img src="16.png"></p>
+<p>（點進去文章後）+1 了!!!</p>
+<p><img src="17.png"></p>
+<p>到 Firestore Database 去看到底發生了什麼事：</p>
+<p><img src="18.png"></p>
+<p>哇嗚～酷欸！</p>
+<h3 id="NexT-是怎麼實作的呢？"><a href="#NexT-是怎麼實作的呢？" class="headerlink" title="NexT 是怎麼實作的呢？"></a>NexT 是怎麼實作的呢？</h3><p>主要用的技術是 Firestore Database + localStorage。</p>
+<p>好想知道實作細節哦！怎麼辦？</p>
+<p>從檔案裡面找的話，應該能找到那個部分的 source code。<br>果然被我找到了：<code>/themes/next/layout/_third-party/statistics/firestore.swig</code></p>
+<p>聽說原本沒有 Firestore 版的「統計閱讀次數」功能，是後來<a href="https://blog.maple3142.net/2017/11/04/hexo-next-readcount/">有人</a>發 PR 上去的。<br>所以或許我們也可以自己加上想要的功能，然後發 PR，造福自己，也造福大家！</p>
+<h2 id="加入-Disqus-留言板"><a href="#加入-Disqus-留言板" class="headerlink" title="加入 Disqus 留言板"></a>加入 Disqus 留言板</h2><h3 id="加入留言板"><a href="#加入留言板" class="headerlink" title="加入留言板"></a>加入留言板</h3><ol>
+<li><p>註冊 <a href="https://disqus.com/">Disqus</a> 帳戶</p>
+</li>
+<li><p>選 <code>I want to install Disqus on my site</code></p>
+<p> <img src="19.png"></p>
+</li>
+<li><p>把該填的填一填，其中圈起來的部分下一步會用到<br> （可以點按 <code>Customize Your URL</code> 來分別設定 <code>Website Name</code> 和 <code>Shortname</code>）</p>
+<p> <img src="20.png"></p>
+</li>
+<li><p>修改 theme 的 config 檔，enable 之後，把 shortname 給加上去：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Disqus</span></span><br><span class="line"><span class="attr">disqus:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">shortname:</span> <span class="string">&lt;shortname&gt;</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li><p>用 <code>hexo server</code> 去查看，酷， 文章底下有留言板囉！</p>
+</li>
+</ol>
+<p><img src="21.png"></p>
+<h3 id="關掉某篇文的留言板"><a href="#關掉某篇文的留言板" class="headerlink" title="關掉某篇文的留言板"></a>關掉某篇文的留言板</h3><p>預設會在所有文章裡面加入留言板。<br>如果某篇文章不想要有留言板的話，在那篇文 <code>&lt;post&gt;.md</code> 的一開始加上：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section">comments: false</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="SEO（搜尋引擎最佳化）"><a href="#SEO（搜尋引擎最佳化）" class="headerlink" title="SEO（搜尋引擎最佳化）"></a>SEO（搜尋引擎最佳化）</h2><p>讓自己的部落格更容易被找到！</p>
+<h3 id="驗證網站"><a href="#驗證網站" class="headerlink" title="驗證網站"></a>驗證網站</h3><ol>
+<li><p>進到 <a href="https://search.google.com/search-console/welcome">Google Search Console</a></p>
+</li>
+<li><p>在右側「網址前置字元」處，輸入網址 <code>https://&lt;username&gt;.github.io</code> 後，按繼續。</p>
+<p> <img src="22.png"></p>
+</li>
+<li><p>點按「HTML 標記」展開資訊卡，再按「複製」</p>
+<p> <img src="23.png"></p>
+</li>
+<li><p>進到 theme 的 config 檔，把剛剛複製起來 content 裡面的東西加進去</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Google Webmaster tools verification.</span></span><br><span class="line"><span class="comment"># See: https://www.google.com/webmasters</span></span><br><span class="line"><span class="attr">google_site_verification:</span> <span class="string">&lt;content&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>清空 public 裡面的東西（如果有的話）：<code>hexo clean</code></p>
+</li>
+<li><p>產生靜態檔案＆部署最新版的 code 上去：<code>hexo generate &amp; hexo deploy</code></p>
+</li>
+<li><p>部署最新版以後，就能驗證囉！</p>
+<p> <img src="24.png"></p>
+</li>
+</ol>
+<p>驗證完畢 🎉</p>
+<p><img src="25.png"></p>
+<h3 id="提交-Sitemap"><a href="#提交-Sitemap" class="headerlink" title="提交 Sitemap"></a>提交 Sitemap</h3><ol>
+<li><p>裝 plugin：<code>npm install hexo-generator-sitemap --save</code></p>
+</li>
+<li><p>打開 site 的 config 檔，在最後面貼上：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sitemap</span></span><br><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br></pre></td></tr></table></figure>
+
+<p> （注意縮排，不要附屬在 deploy 底下）</p>
+</li>
+<li><p>產生 sitemap.xml ＆部署：<code>hexo generate &amp; hexo deploy</code></p>
+</li>
+<li><p>回到 Google Search Console，點左側的 Sitemap → 填 <code>sitemap.xml</code> → 提交！</p>
+<p> <img src="26.png"></p>
+</li>
+<li><p>居然無法擷取⋯⋯</p>
+<p> <img src="27.png"></p>
+</li>
+</ol>
+<p>後來找到<a href="https://kyiplay.com/2020/04/google-search-console-coudnt-fetch-sitemap/">這篇</a>，結論就是：等一周左右！<br>就等吧。</p>
+<p>更新：</p>
+<p><img src="28.png"></p>
+<p>不需要一個禮拜～</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+        <tag>部落格</tag>
+        <tag>教學</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript ES6 Cheatsheet</title>
     <url>/2020/04/javascript-es6-cheatsheet/</url>
     <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
