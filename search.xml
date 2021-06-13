@@ -716,6 +716,73 @@
       </tags>
   </entry>
   <entry>
+    <title>用 Python 將 PDF 文檔轉成 PNG 圖檔</title>
+    <url>/2021/06/python-pdf-to-png/</url>
+    <content><![CDATA[<p><a href="/2021/06/python-pdf-to-png"><img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2691&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>想把 PDF 轉成圖檔，卻又擔心交給線上工具處理會不會有什麼安全上的疑慮？交給 Python 吧！</p>
+<span id="more"></span>
+
+<p>本篇大量包含解決問題的思考過程，想省略，裝完套件以後就直接跳到最後面吧！</p>
+<h3 id="上網找解決辦法"><a href="#上網找解決辦法" class="headerlink" title="上網找解決辦法"></a>上網找解決辦法</h3><p>試著 google「pdf to png python」，找到了 <a href="https://pypi.org/project/pdf2image/">pdf2image</a>。</p>
+<blockquote>
+<p>A python (3.6+) module that wraps pdftoppm and pdftocairo to convert PDF to a PIL Image object</p>
+</blockquote>
+<p>看起來，這就是我們要的！</p>
+<h3 id="安裝相關套件"><a href="#安裝相關套件" class="headerlink" title="安裝相關套件"></a>安裝相關套件</h3><p>本教學以 Mac 為例，其他作業系統的安裝方式請參見 <a href="https://pypi.org/project/pdf2image/">PyPI 上面的說明</a>。</p>
+<p>因為 pdf2image 是基於 Poppler 開發出來的，所以在安裝 pdf2image 前，先來裝 Poppler 吧！</p>
+<ol>
+<li>打開 Terminal 或 iTerm 之類的終端機</li>
+<li>輸入 <code>brew</code> 看有沒有裝 Homebrew，如果還沒裝就上網找資料裝一裝吧！<br>不過 <a href="http://macappstore.org/poppler/">Poppler 的安裝頁面</a>有提供我們裝 Homebrew 的指令，就看要不要直接用，或是另找其他安裝方式也行。</li>
+<li>用 Homebrew 裝 Poppler：在終端機上輸入 <code>brew install poppler</code> 就行囉！<br>（如果出現 <code>Updating Homebrew...</code> 可以用 <code>Ctrl+C</code> 跳過更新的程序，不然可能會卡很久）</li>
+<li>用 pip 裝 pdf2image：<code>pip install pdf2image</code></li>
+</ol>
+<p>這樣相關套件就裝完囉，準備來使用吧！</p>
+<h3 id="簡單玩一下套件"><a href="#簡單玩一下套件" class="headerlink" title="簡單玩一下套件"></a>簡單玩一下套件</h3><p>畢竟之前沒弄過，不確定這符不符合我們的需求。<br>所以在嘗試解決問題之前，先小玩一下～<br><a href="https://pypi.org/project/pdf2image/">pdf2image 頁面</a>有程式碼，就照上面的 code 試試：</p>
+<ol>
+<li><p>import pdf2image 相關套件</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>第一段程式碼看起來比較簡單，就試那個吧：（檔案的 path 記得要改，可以用相對路徑）</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">images = convert_from_path(<span class="string">&#x27;/home/belval/example.pdf&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>images</code> 不知道該怎麼用，就 print 出來看一下囉，<code>print(images)</code>，輸出了這些：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B32D90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B50&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2BD0&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2FD0&gt;]</span><br></pre></td></tr></table></figure>
+
+<p> （list 裡面 PIL 的個數取決於 PDF 檔的頁數）</p>
+</li>
+<li><p>PIL 是什麼東西啊？應該跟 image 有關吧？於是我 google「PIL Image」，找到了<a href="https://ithelp.ithome.com.tw/articles/10226578">這篇</a>。<br>看那篇文裡面的 code 有 <code>from PIL import Image</code>，該不會又要裝套件了吧⋯⋯<br>不管，先試著直接 import PIL，發現可以欸，代表說本機端已經有 PIL 套件了！<br><a href="https://github.com/Belval/pdf2image/blob/master/.travis.yml">後來發現</a>，原來在裝 pdf2image 時，它就幫我們裝好了 pillow (PIL)。</p>
+</li>
+<li><p>有點不務正業，來照<a href="https://ithelp.ithome.com.tw/articles/10226578">剛剛那篇文</a>試試 PIL 吧，說不定能有什麼新發現。</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&quot;test.jpeg&quot;</span>)</span><br><span class="line">im.save(<span class="string">&quot;test.png&quot;</span>,<span class="string">&quot;png&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 還真的生成「test.png」了呢！那 <code>im</code> 又是什麼呢？好奇 print 一下，輸出了這個：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1500x1000 at 0x10D9FAE50&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 咦？這跟剛剛 <code>images</code> print 出來的東西很像欸，該不會⋯⋯</p>
+</li>
+<li><p>柳暗花明又一村：（承接剛剛的 <code>images</code>）</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):</span><br><span class="line">  image.save(<span class="string">f&#x27;<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>)   <span class="comment"># 如果想從 1 開始數的話</span></span><br></pre></td></tr></table></figure>
+
+<p> 還真的可以欸😂</p>
+</li>
+</ol>
+<h3 id="用套件解決問題"><a href="#用套件解決問題" class="headerlink" title="用套件解決問題"></a>用套件解決問題</h3><p>過程中有不懂或忘記的就 google 吧：</p>
+<ul>
+<li>忘記怎麼判斷字串中有無某 substring → google「python test substring」→ 找到「<a href="https://www.afternerd.com/blog/python-string-contains/">Check if a String Contains Another String</a>」</li>
+<li>忘記怎麼用 Python 創建資料夾 → google「python os mkdir」→ 找到「<a href="https://www.runoob.com/python/os-mkdir.html">Python os.mkdir()</a>」</li>
+</ul>
+<p>最後生出來的 code：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br><span class="line"><span class="comment"># from PIL import image                         # 後來發現不需要 import 這個</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">&quot;.&quot;</span>):                    <span class="comment"># 取得當前目錄下的所有檔名</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">&#x27;.pdf&#x27;</span> <span class="keyword">in</span> name:                            <span class="comment"># 只對 PDF 做處理</span></span><br><span class="line">    the_dir = <span class="string">f&#x27;<span class="subst">&#123;name[:-<span class="number">4</span>]&#125;</span>&#x27;</span>                    <span class="comment"># 用 PDF 的檔名當作新資料夾的名稱</span></span><br><span class="line">    os.mkdir(the_dir)                           <span class="comment"># 新建該檔名的資料夾</span></span><br><span class="line">    images = convert_from_path(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span>&#x27;</span>)       <span class="comment"># 將 PDF 轉成多個 PIL 相關物件</span></span><br><span class="line">    <span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):          <span class="comment"># 針對每個物件去做處理</span></span><br><span class="line">      image.save(<span class="string">f&#x27;<span class="subst">&#123;the_dir&#125;</span>/<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>) <span class="comment"># 在新資料夾底下存成 PNG 檔</span></span><br></pre></td></tr></table></figure>
+
+<p>如此一來，就不必丟到網路上給別人處理了呢！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>小工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
     <url>/2020/09/summer-project/</url>
     <content><![CDATA[<p><a href="/2020/09/summer-project"><img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" /></a></p>
@@ -906,9 +973,9 @@
         <tag>音訊處理</tag>
         <tag>交大</tag>
         <tag>專題</tag>
+        <tag>Python</tag>
         <tag>樂理</tag>
         <tag>音色</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
 </search>

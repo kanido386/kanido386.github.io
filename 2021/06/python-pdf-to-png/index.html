@@ -21,37 +21,24 @@
     var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="大三上修「微處理機系統實驗」時所做的期末專題。">
+  <meta name="description" content="想把 PDF 轉成圖檔，卻又擔心交給線上工具處理會不會有什麼安全上的疑慮？交給 Python 吧！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用 STM32 開發板做一台類似投籃機的遊戲機台">
-<meta property="og:url" content="https://kanido386.github.io/2021/01/microprocessor-project/index.html">
+<meta property="og:title" content="用 Python 將 PDF 文檔轉成 PNG 圖檔">
+<meta property="og:url" content="https://kanido386.github.io/2021/06/python-pdf-to-png/index.html">
 <meta property="og:site_name" content="卡尼多隨筆">
-<meta property="og:description" content="大三上修「微處理機系統實驗」時所做的期末專題。">
+<meta property="og:description" content="想把 PDF 轉成圖檔，卻又擔心交給線上工具處理會不會有什麼安全上的疑慮？交給 Python 吧！">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80">
-<meta property="og:image" content="https://kanido386.github.io/2021/01/microprocessor-project/1.jpeg">
-<meta property="og:image" content="https://i.imgur.com/4S5wvKm.jpg">
-<meta property="og:image" content="https://kanido386.github.io/2021/01/microprocessor-project/2.jpg">
-<meta property="og:image" content="https://i.imgur.com/vXYNK6y.jpg">
-<meta property="og:image" content="https://kanido386.github.io/2021/01/microprocessor-project/3.jpg">
-<meta property="og:image" content="https://i.imgur.com/qbR9bUC.jpg">
-<meta property="og:image" content="https://kanido386.github.io/2021/01/microprocessor-project/4.jpg">
-<meta property="og:image" content="https://i.imgur.com/jPt5Qn1.jpg">
-<meta property="og:image" content="https://kanido386.github.io/2021/01/microprocessor-project/5.jpg">
-<meta property="article:published_time" content="2021-01-13T05:20:53.000Z">
-<meta property="article:modified_time" content="2021-06-09T14:49:48.728Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2691&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2021/06/python-pdf-to-png/0.jpeg">
+<meta property="article:published_time" content="2021-06-13T04:51:50.000Z">
+<meta property="article:modified_time" content="2021-06-13T05:06:33.976Z">
 <meta property="article:author" content="卡尼多">
-<meta property="article:tag" content="交大">
-<meta property="article:tag" content="課程">
-<meta property="article:tag" content="專題">
-<meta property="article:tag" content="微處理機">
-<meta property="article:tag" content="STM32">
-<meta property="article:tag" content="開發板">
-<meta property="article:tag" content="投籃機">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="小工具">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2691&q=80">
 
-<link rel="canonical" href="https://kanido386.github.io/2021/01/microprocessor-project/">
+<link rel="canonical" href="https://kanido386.github.io/2021/06/python-pdf-to-png/">
 
 
 <script id="page-configurations">
@@ -64,7 +51,7 @@
   };
 </script>
 
-  <title>用 STM32 開發板做一台類似投籃機的遊戲機台 | 卡尼多隨筆</title>
+  <title>用 Python 將 PDF 文檔轉成 PNG 圖檔 | 卡尼多隨筆</title>
   
 
 
@@ -203,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2021/01/microprocessor-project/">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2021/06/python-pdf-to-png/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -216,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          用 STM32 開發板做一台類似投籃機的遊戲機台
+          用 Python 將 PDF 文檔轉成 PNG 圖檔
         </h1>
 
         <div class="post-meta">
@@ -226,7 +213,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-01-13 13:20:53" itemprop="dateCreated datePublished" datetime="2021-01-13T13:20:53+08:00">2021-01-13</time>
+              <time title="Created: 2021-06-13 12:51:50" itemprop="dateCreated datePublished" datetime="2021-06-13T12:51:50+08:00">2021-06-13</time>
             </span>
 
           
@@ -245,8 +232,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/01/microprocessor-project/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/01/microprocessor-project/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/06/python-pdf-to-png/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/06/python-pdf-to-png/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -261,52 +248,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+        <p><a href="/2021/06/python-pdf-to-png"><img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2691&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
 
-<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
+<p>想把 PDF 轉成圖檔，卻又擔心交給線上工具處理會不會有什麼安全上的疑慮？交給 Python 吧！</p>
 <span id="more"></span>
 
-<p>這次僅做簡單的紀錄。</p>
-<hr>
-<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
-<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
-<hr>
-<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>本篇大量包含解決問題的思考過程，想省略，裝完套件以後就直接跳到最後面吧！</p>
+<h3 id="上網找解決辦法"><a href="#上網找解決辦法" class="headerlink" title="上網找解決辦法"></a>上網找解決辦法</h3><p>試著 google「pdf to png python」，找到了 <a target="_blank" rel="noopener" href="https://pypi.org/project/pdf2image/">pdf2image</a>。</p>
+<blockquote>
+<p>A python (3.6+) module that wraps pdftoppm and pdftocairo to convert PDF to a PIL Image object</p>
+</blockquote>
+<p>看起來，這就是我們要的！</p>
+<h3 id="安裝相關套件"><a href="#安裝相關套件" class="headerlink" title="安裝相關套件"></a>安裝相關套件</h3><p>本教學以 Mac 為例，其他作業系統的安裝方式請參見 <a target="_blank" rel="noopener" href="https://pypi.org/project/pdf2image/">PyPI 上面的說明</a>。</p>
+<p>因為 pdf2image 是基於 Poppler 開發出來的，所以在安裝 pdf2image 前，先來裝 Poppler 吧！</p>
+<ol>
+<li>打開 Terminal 或 iTerm 之類的終端機</li>
+<li>輸入 <code>brew</code> 看有沒有裝 Homebrew，如果還沒裝就上網找資料裝一裝吧！<br>不過 <a target="_blank" rel="noopener" href="http://macappstore.org/poppler/">Poppler 的安裝頁面</a>有提供我們裝 Homebrew 的指令，就看要不要直接用，或是另找其他安裝方式也行。</li>
+<li>用 Homebrew 裝 Poppler：在終端機上輸入 <code>brew install poppler</code> 就行囉！<br>（如果出現 <code>Updating Homebrew...</code> 可以用 <code>Ctrl+C</code> 跳過更新的程序，不然可能會卡很久）</li>
+<li>用 pip 裝 pdf2image：<code>pip install pdf2image</code></li>
+</ol>
+<p>這樣相關套件就裝完囉，準備來使用吧！</p>
+<h3 id="簡單玩一下套件"><a href="#簡單玩一下套件" class="headerlink" title="簡單玩一下套件"></a>簡單玩一下套件</h3><p>畢竟之前沒弄過，不確定這符不符合我們的需求。<br>所以在嘗試解決問題之前，先小玩一下～<br><a target="_blank" rel="noopener" href="https://pypi.org/project/pdf2image/">pdf2image 頁面</a>有程式碼，就照上面的 code 試試：</p>
+<ol>
+<li><p>import pdf2image 相關套件</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>第一段程式碼看起來比較簡單，就試那個吧：（檔案的 path 記得要改，可以用相對路徑）</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">images = convert_from_path(<span class="string">&#x27;/home/belval/example.pdf&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>images</code> 不知道該怎麼用，就 print 出來看一下囉，<code>print(images)</code>，輸出了這些：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B32D90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B50&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2BD0&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2FD0&gt;]</span><br></pre></td></tr></table></figure>
 
-<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p> （list 裡面 PIL 的個數取決於 PDF 檔的頁數）</p>
+</li>
+<li><p>PIL 是什麼東西啊？應該跟 image 有關吧？於是我 google「PIL Image」，找到了<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10226578">這篇</a>。<br>看那篇文裡面的 code 有 <code>from PIL import Image</code>，該不會又要裝套件了吧⋯⋯<br>不管，先試著直接 import PIL，發現可以欸，代表說本機端已經有 PIL 套件了！<br><a target="_blank" rel="noopener" href="https://github.com/Belval/pdf2image/blob/master/.travis.yml">後來發現</a>，原來在裝 pdf2image 時，它就幫我們裝好了 pillow (PIL)。</p>
+</li>
+<li><p>有點不務正業，來照<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10226578">剛剛那篇文</a>試試 PIL 吧，說不定能有什麼新發現。</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&quot;test.jpeg&quot;</span>)</span><br><span class="line">im.save(<span class="string">&quot;test.png&quot;</span>,<span class="string">&quot;png&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p> 還真的生成「test.png」了呢！那 <code>im</code> 又是什麼呢？好奇 print 一下，輸出了這個：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1500x1000 at 0x10D9FAE50&gt;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
-  <!-- <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" /> -->
-  <img src="2.jpg" style="width:30vw;" />
-  <figcaption>來玩機台囉！</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" /> -->
-  <img src="3.jpg" style="width:30vw;" />
-  <figcaption>挖掉杯子底部，讓球通過</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" /> -->
-  <img src="4.jpg" style="width:30vw;" />
-  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" /> -->
-  <img src="5.jpg" style="width:30vw;" />
-  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
-</figure>
+<p> 咦？這跟剛剛 <code>images</code> print 出來的東西很像欸，該不會⋯⋯</p>
+</li>
+<li><p>柳暗花明又一村：（承接剛剛的 <code>images</code>）</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):</span><br><span class="line">  image.save(<span class="string">f&#x27;<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>)   <span class="comment"># 如果想從 1 開始數的話</span></span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
-<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
+<p> 還真的可以欸😂</p>
+</li>
+</ol>
+<h3 id="用套件解決問題"><a href="#用套件解決問題" class="headerlink" title="用套件解決問題"></a>用套件解決問題</h3><p>過程中有不懂或忘記的就 google 吧：</p>
+<ul>
+<li>忘記怎麼判斷字串中有無某 substring → google「python test substring」→ 找到「<a target="_blank" rel="noopener" href="https://www.afternerd.com/blog/python-string-contains/">Check if a String Contains Another String</a>」</li>
+<li>忘記怎麼用 Python 創建資料夾 → google「python os mkdir」→ 找到「<a target="_blank" rel="noopener" href="https://www.runoob.com/python/os-mkdir.html">Python os.mkdir()</a>」</li>
+</ul>
+<p>最後生出來的 code：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br><span class="line"><span class="comment"># from PIL import image                         # 後來發現不需要 import 這個</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">&quot;.&quot;</span>):                    <span class="comment"># 取得當前目錄下的所有檔名</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">&#x27;.pdf&#x27;</span> <span class="keyword">in</span> name:                            <span class="comment"># 只對 PDF 做處理</span></span><br><span class="line">    the_dir = <span class="string">f&#x27;<span class="subst">&#123;name[:-<span class="number">4</span>]&#125;</span>&#x27;</span>                    <span class="comment"># 用 PDF 的檔名當作新資料夾的名稱</span></span><br><span class="line">    os.mkdir(the_dir)                           <span class="comment"># 新建該檔名的資料夾</span></span><br><span class="line">    images = convert_from_path(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span>&#x27;</span>)       <span class="comment"># 將 PDF 轉成多個 PIL 相關物件</span></span><br><span class="line">    <span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):          <span class="comment"># 針對每個物件去做處理</span></span><br><span class="line">      image.save(<span class="string">f&#x27;<span class="subst">&#123;the_dir&#125;</span>/<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>) <span class="comment"># 在新資料夾底下存成 PNG 檔</span></span><br></pre></td></tr></table></figure>
 
+<p>如此一來，就不必丟到網路上給別人處理了呢！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃
     </div>
 
     
@@ -315,13 +315,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
-              <a href="/tags/%E8%AA%B2%E7%A8%8B/" rel="tag"># 課程</a>
-              <a href="/tags/%E5%B0%88%E9%A1%8C/" rel="tag"># 專題</a>
-              <a href="/tags/%E5%BE%AE%E8%99%95%E7%90%86%E6%A9%9F/" rel="tag"># 微處理機</a>
-              <a href="/tags/STM32/" rel="tag"># STM32</a>
-              <a href="/tags/%E9%96%8B%E7%99%BC%E6%9D%BF/" rel="tag"># 開發板</a>
-              <a href="/tags/%E6%8A%95%E7%B1%83%E6%A9%9F/" rel="tag"># 投籃機</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/" rel="tag"># 小工具</a>
           </div>
 
         
@@ -330,13 +325,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/asp-final-project/" rel="prev" title="用 Pure Data 打造吉他效果器">
-      <i class="fa fa-chevron-left"></i> 用 Pure Data 打造吉他效果器
+    <a href="/2021/06/hexo-github-pages-blog/" rel="prev" title="用 Hexo 及 GitHub Pages 打造部落格">
+      <i class="fa fa-chevron-left"></i> 用 Hexo 及 GitHub Pages 打造部落格
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/06/hexo-github-pages-blog/" rel="next" title="用 Hexo 及 GitHub Pages 打造部落格">
-      用 Hexo 及 GitHub Pages 打造部落格 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -402,7 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E7%99%BC%E9%81%8E%E7%A8%8B%E5%AF%AB%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">開發過程寫的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%88%E9%A1%8C%E6%8F%90%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">專題提案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E6%96%B9%E5%90%91"><span class="nav-number">1.2.</span> <span class="nav-text">實作方向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E5%BD%B1%E7%89%87%E4%BE%86%E8%A8%98%E9%8C%84"><span class="nav-number">2.</span> <span class="nav-text">用影片來記錄</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E4%B8%80%E5%A4%A9%E6%B8%AC%E8%A9%A6"><span class="nav-number">2.1.</span> <span class="nav-text">前一天測試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo%E7%95%B6%E5%A4%A9%E5%86%8D%E6%B8%AC%E8%A9%A6"><span class="nav-number">2.2.</span> <span class="nav-text">demo當天再測試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A9%9F%E5%8F%B0%E6%8B%86%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">機台拆解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%85%A7%E7%89%87"><span class="nav-number">3.</span> <span class="nav-text">一些照片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%B3%E5%B0%91%E7%A8%8B%E5%BC%8F%E7%A2%BC%E4%B8%8D%E6%9C%83%E5%92%8C%E6%88%91%E5%88%86%E9%96%8B"><span class="nav-number">4.</span> <span class="nav-text">至少程式碼不會和我分開</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E7%B6%B2%E6%89%BE%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">上網找解決辦法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E7%9B%B8%E9%97%9C%E5%A5%97%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">安裝相關套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E7%8E%A9%E4%B8%80%E4%B8%8B%E5%A5%97%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">簡單玩一下套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E5%A5%97%E4%BB%B6%E8%A7%A3%E6%B1%BA%E5%95%8F%E9%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">用套件解決問題</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -613,9 +605,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://kanido386.github.io/2021/01/microprocessor-project/";
-    this.page.identifier = "2021/01/microprocessor-project/";
-    this.page.title = "用 STM32 開發板做一台類似投籃機的遊戲機台";
+    this.page.url = "https://kanido386.github.io/2021/06/python-pdf-to-png/";
+    this.page.identifier = "2021/06/python-pdf-to-png/";
+    this.page.title = "用 Python 將 PDF 文檔轉成 PNG 圖檔";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
