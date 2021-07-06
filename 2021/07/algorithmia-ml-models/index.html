@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Algorithmia 部署 ML Models">
+<meta property="og:url" content="https://kanido386.github.io/2021/07/algorithmia-ml-models/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/algorithmia-ml-models/0.jpeg">
+<meta property="article:published_time" content="2021-07-06T15:40:40.000Z">
+<meta property="article:modified_time" content="2021-07-06T15:53:07.216Z">
+<meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Deploy">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="黑客松">
+<meta property="article:tag" content="交大">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80">
+
+<link rel="canonical" href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>用 Algorithmia 部署 ML Models | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用 Algorithmia 部署 ML Models
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-06 23:40:40" itemprop="dateCreated datePublished" datetime="2021-07-06T23:40:40+08:00">2021-07-06</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/07/algorithmia-ml-models/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/07/algorithmia-ml-models/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+<span id="more"></span>
+
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a target="_blank" rel="noopener" href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a target="_blank" rel="noopener" href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a target="_blank" rel="noopener" href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a target="_blank" rel="noopener" href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a target="_blank" rel="noopener" href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！</p>
+<p>就是這麼簡單 😎</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Deploy/" rel="tag"># Deploy</a>
+              <a href="/tags/API/" rel="tag"># API</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/" rel="tag"># 黑客松</a>
+              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/python-android-phone/" rel="prev" title="用 Python 操作 Android 手機">
+      <i class="fa fa-chevron-left"></i> 用 Python 操作 Android 手機
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5%E4%B8%80%E4%B8%8B"><span class="nav-number">1.</span> <span class="nav-text">碎碎念一下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%82%BA%E4%BD%95%E7%A0%94%E7%A9%B6%E9%80%99%E5%80%8B%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">我為何研究這個？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E6%80%8E%E9%BA%BC%E6%89%BE%E5%88%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">我怎麼找到的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Server-%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">Server 端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">2.1.</span> <span class="nav-text">前置作業</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%AB%E5%A5%BD-model%EF%BC%88%E6%88%96-function%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">寫好 model（或 function）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%BB%E5%86%8A-Algorithmia-%E5%B8%B3%E6%88%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">註冊 Algorithmia 帳戶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-%E4%B8%80%E5%80%8B%E6%96%B0%E7%9A%84-Algorithm"><span class="nav-number">2.1.3.</span> <span class="nav-text">Create 一個新的 Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E5%82%B3%E9%9D%9C%E6%85%8B%E6%AA%94%E6%A1%88"><span class="nav-number">2.1.4.</span> <span class="nav-text">上傳靜態檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A-code-%E5%8A%A0%E9%80%B2%E5%8E%BB"><span class="nav-number">2.2.</span> <span class="nav-text">把 code 加進去</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#import-%E5%A5%97%E4%BB%B6"><span class="nav-number">2.2.1.</span> <span class="nav-text">import 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%8F%96%E9%9D%9C%E6%85%8B%E6%AA%94%E6%A1%88"><span class="nav-number">2.2.2.</span> <span class="nav-text">存取靜態檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">2.2.3.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input"><span class="nav-number">2.2.4.</span> <span class="nav-text">input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BC%E5%B8%83"><span class="nav-number">2.3.</span> <span class="nav-text">發布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-%E7%AB%AF"><span class="nav-number">3.</span> <span class="nav-text">Client 端</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="E-Mail → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yanting.lin.tim" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yanting.lin.tim" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCa73p-0ChCqtxubUc4Lq41A" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2021/07/algorithmia-ml-models/";
+    this.page.identifier = "2021/07/algorithmia-ml-models/";
+    this.page.title = "用 Algorithmia 部署 ML Models";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
