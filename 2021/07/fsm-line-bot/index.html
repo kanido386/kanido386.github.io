@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="還帶了一點 Heroku 跟 ngrok 的介紹。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 FSM 及 LINE Messaging API 做一個聊天機器人">
+<meta property="og:url" content="https://kanido386.github.io/2021/07/fsm-line-bot/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="還帶了一點 Heroku 跟 ngrok 的介紹。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/0.jpeg">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/1.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/2.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/2.5.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/3.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/4.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/5.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/6.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/7.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/8.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/9.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/10.png">
+<meta property="article:published_time" content="2021-07-10T13:48:48.000Z">
+<meta property="article:modified_time" content="2021-07-10T14:15:26.147Z">
+<meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="黑客松">
+<meta property="article:tag" content="交大">
+<meta property="article:tag" content="LINE">
+<meta property="article:tag" content="Bot">
+<meta property="article:tag" content="Heroku">
+<meta property="article:tag" content="ngrok">
+<meta property="article:tag" content="Flask">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80">
+
+<link rel="canonical" href="https://kanido386.github.io/2021/07/fsm-line-bot/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>用 FSM 及 LINE Messaging API 做一個聊天機器人 | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2021/07/fsm-line-bot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用 FSM 及 LINE Messaging API 做一個聊天機器人
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-10 21:48:48" itemprop="dateCreated datePublished" datetime="2021-07-10T21:48:48+08:00">2021-07-10</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/07/fsm-line-bot/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/07/fsm-line-bot/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/2021/07/fsm-line-bot"><img src="https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>還帶了一點 Heroku 跟 ngrok 的介紹。</p>
+<span id="more"></span>
+
+<p>2021 升大四那場黑客松的因緣際會之下，讓我接觸到了這一塊，挺有趣的！</p>
+<hr>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><h2 id="LINE-Developers"><a href="#LINE-Developers" class="headerlink" title="LINE Developers"></a>LINE Developers</h2><h3 id="登入-LINE-Developers"><a href="#登入-LINE-Developers" class="headerlink" title="登入 LINE Developers"></a>登入 LINE Developers</h3><p>還沒註冊的話，先註冊吧！</p>
+<h3 id="Create-a-new-provider"><a href="#Create-a-new-provider" class="headerlink" title="Create a new provider"></a>Create a new provider</h3><p>使用者看得到 provider 的名稱哦～</p>
+<h3 id="Create-a-new-channel"><a href="#Create-a-new-channel" class="headerlink" title="Create a new channel"></a>Create a new channel</h3><p>選 Messaging API</p>
+<p><img src="1.png"></p>
+<p>填一填 Channel name、Channel description、Category、Subcategory → 勾一勾 → Create<br>（注意：The channel name can’t be changed for seven days.）</p>
+<h3 id="更改設定"><a href="#更改設定" class="headerlink" title="更改設定"></a>更改設定</h3><p>進到 <a target="_blank" rel="noopener" href="https://manager.line.biz/">LINE Official Account Manager</a> → 選本次 project 的帳號 → 照下面那張圖更改設定</p>
+<p><img src="2.png"></p>
+<p>進到自己的 channel → Messaging API → <code>Webhook settings</code> 下面的 <code>Use webhook</code> 也別忘了打開</p>
+<p><img src="2.5.png"></p>
+<p>這樣等等在測試的時候，就不會沒反應囉！</p>
+<h2 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h2><p>為何需要 Heroku？因為 Messaging API 需要綁定 Webhook URL，讓我們的 server 能從 LINE Platform 接收到 <a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/receiving-messages/">webhook events</a> 並加以處理。</p>
+<p>還是不清楚什麼是 webhook events？<a target="_blank" rel="noopener" href="https://developers.facebook.com/docs/messenger-platform/reference/webhook-events/">Messenger Platform</a> 的解釋我蠻喜歡的：</p>
+<blockquote>
+<p>Webhook events are how the XXX Platform notifies your bot when a variety of interactions or events happen, including when a person sends a message. Webhook events are sent by the XXX Platform as POST requests to your webhook.</p>
+</blockquote>
+<p>如果 server 只在 local 端運行，沒有個 public 的 endpoint，LINE Platform 怎能傳送 webhook events 給我們的 server？所以我們需要透過把 code 部署到 Heroku，Heroku 會為我們部署上去的 server 生出一個 public 的 endpoint，把這個 endpoint (或是說 URL) 貼到 <code>Webhook settings → Webhook URL</code> 就行囉！</p>
+<p>（別忘了 <code>Webhook URL</code> 下面的 <code>Use webhook</code> 也要打開哦）</p>
+<p>後來發現前期用 ngrok 測試比較有效率也比較優雅，不然每次要測試，還要等待 Heroku 的部署 ＆ commit message 都會亂寫 (畢竟不確定 code 是否會有 bug)</p>
+<p>ngrok 是什麼？怎麼用？後面會介紹！</p>
+<h3 id="登入-Heroku"><a href="#登入-Heroku" class="headerlink" title="登入 Heroku"></a>登入 Heroku</h3><p>還沒註冊的話，先註冊吧！</p>
+<h3 id="Create-New-App"><a href="#Create-New-App" class="headerlink" title="Create New App"></a>Create New App</h3><p>New → Create new app</p>
+<p><img src="3.png"></p>
+<p>輸入 App name → 出現綠色的 <code>&lt;app-name&gt; is available</code> 提示訊息代表沒跟其他 Heroku App 撞名 → 地區目前只有美國、歐洲可以選，我選美國 → Create app</p>
+<p><img src="4.png"></p>
+<h3 id="登入-Heroku-CLI"><a href="#登入-Heroku-CLI" class="headerlink" title="登入 Heroku CLI"></a>登入 Heroku CLI</h3><p>如果還沒安裝 Heroku CLI，可以到<a target="_blank" rel="noopener" href="https://devcenter.heroku.com/articles/heroku-cli">這邊</a>照著指示裝～<br>安裝完以後，輸入下面的指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku login</span><br></pre></td></tr></table></figure>
+
+<p>跳轉到瀏覽器，按下 Log In 後就行囉！</p>
+<p><img src="5.png"></p>
+<h3 id="Create-a-new-Git-repo"><a href="#Create-a-new-Git-repo" class="headerlink" title="Create a new Git repo"></a>Create a new Git repo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir &lt;project-name&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;project-name&gt;</span><br><span class="line">git init</span><br><span class="line">heroku git:remote -a &lt;app-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;project-name&gt;</code> 可以跟 <code>&lt;app-name&gt;</code> 一樣哦～<br>（我個人認為一樣的話會比較好，沒有為什麼，就感覺比較好）</p>
+<h2 id="ngrok"><a href="#ngrok" class="headerlink" title="ngrok"></a>ngrok</h2><p>透過 <a target="_blank" rel="noopener" href="https://ngrok.com/">ngrok</a>，不必部署就能在 local 端測試了！<br><a target="_blank" rel="noopener" href="https://5xruby.tw/posts/easy-ngrok-by-nginx-ssh-tunnel">這一篇</a>應該能幫助你了解 ngrok 是什麼。<br>（看「ngrok 服務簡介」這個部分就行了，然後其實沒註冊 ngrok 也能用）</p>
+<h3 id="安裝-ngrok"><a href="#安裝-ngrok" class="headerlink" title="安裝 ngrok"></a>安裝 ngrok</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew cask install ngrok       <span class="comment"># for Homebrew v2.6.x and below</span></span><br><span class="line">brew install --cask ngrok     <span class="comment"># for Homebrew v2.7.x and above</span></span><br></pre></td></tr></table></figure>
+
+<p>安裝完後，在終端機輸入 <code>ngrok</code> 有出現東西就代表成功了！</p>
+<hr>
+<h1 id="正式開發！"><a href="#正式開發！" class="headerlink" title="正式開發！"></a>正式開發！</h1><h2 id="用-Pipenv-管理專案套件"><a href="#用-Pipenv-管理專案套件" class="headerlink" title="用 Pipenv 管理專案套件"></a>用 Pipenv 管理專案套件</h2><p>沒裝過的話，跟著<a target="_blank" rel="noopener" href="https://pipenv.pypa.io/en/latest/#install-pipenv-today">這篇文</a>裝吧！</p>
+<h3 id="建-Python-虛擬環境"><a href="#建-Python-虛擬環境" class="headerlink" title="建 Python 虛擬環境"></a>建 Python 虛擬環境</h3><p>Create a new project using Python 3.9（其他版本的也行）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv --python 3.9</span><br></pre></td></tr></table></figure>
+
+<p>如此一來，專案多了個 <code>Pipfile</code>。<br>是不是長得很像 npm 的 <code>package.json</code> 呢？其實功能也差不多哦！<br>想徹底了解那是什麼的話就 google 吧！</p>
+<h3 id="裝套件"><a href="#裝套件" class="headerlink" title="裝套件"></a>裝套件</h3><p>用 Pipenv 裝個套件試試</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv install line-bot-sdk     <span class="comment"># LINE Messaging API</span></span><br></pre></td></tr></table></figure>
+
+<p>除了 <code>Pipfile</code> 的 <code>[packages]</code> 底下多了個 <code>line-bot-sdk = &quot;*&quot;</code> 之外，還多生成了一個 <code>Pipfile.lock</code>。<br>我是把它理解成 npm 的 <code>node_modules</code> 資料夾啦！</p>
+<h3 id="裝其他-dependency"><a href="#裝其他-dependency" class="headerlink" title="裝其他 dependency"></a>裝其他 dependency</h3><p>把其他需要的套件也裝一裝：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pipenv install flask          <span class="comment"># 處理 webhook</span></span><br><span class="line">pipenv install python-dotenv  <span class="comment"># 可將重要資料存成環境變數</span></span><br><span class="line">pipenv install transitions    <span class="comment"># 別人用 Python 實作好的 FSM</span></span><br><span class="line">pipenv install pygraphviz     <span class="comment"># 不裝這個會報錯，或許是因為 transitions 需要(?)</span></span><br></pre></td></tr></table></figure>
+
+<p>如果還有其它套件要安裝，就一律把 <code>pip install xxx</code> 改成 <code>pipenv install xxx</code> 就可以囉！</p>
+<p>（話說在安裝前已經 <code>pipenv shell</code> 進到虛擬環境的話，記得先 <code>exit</code> 離開虛擬環境以後再安裝，不然 <code>Pipfile</code> 可能不會更新到。我測試的時候是這樣啦，不知道有沒有錯🤔）</p>
+<h3 id="進虛擬環境"><a href="#進虛擬環境" class="headerlink" title="進虛擬環境"></a>進虛擬環境</h3><p>如何進到有裝那些套件的環境呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pipenv shell   <span class="comment"># 進去</span></span><br><span class="line"><span class="built_in">exit</span>           <span class="comment"># 離開</span></span><br></pre></td></tr></table></figure>
+
+<p>進到虛擬環境以後，輸入 <code>pip list</code> 終端機就會列出你在這個環境中裝了哪些套件～</p>
+<h2 id="簡單試-LINE-Bot"><a href="#簡單試-LINE-Bot" class="headerlink" title="簡單試 LINE Bot"></a>簡單試 LINE Bot</h2><p>寫個「你傳什麼文字它就回什麼文字」的 Bot。</p>
+<h3 id="將機密存成環境變數"><a href="#將機密存成環境變數" class="headerlink" title="將機密存成環境變數"></a>將機密存成環境變數</h3><ol>
+<li><p>打開 LINE Developers，進到你的 channel</p>
+</li>
+<li><p>Basic settings 滑到底，有個 Channel secret，第四步會需要</p>
+<p> <img src="6.png"></p>
+</li>
+<li><p>Messaging API 滑到底，issue 一個 channel access token，一樣第四步會需要</p>
+<p> <img src="7.png"></p>
+</li>
+<li><p>新增 <code>.env</code>：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LINE_CHANNEL_SECRET=&lt;channel-secret&gt;</span><br><span class="line">LINE_CHANNEL_ACCESS_TOKEN=&lt;channel-access-token&gt;</span><br><span class="line">PORT=8000</span><br></pre></td></tr></table></figure>
+
+<h3 id="程式主體"><a href="#程式主體" class="headerlink" title="程式主體"></a>程式主體</h3><p>參考官方的 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python">line-bot-sdk-python</a>，新增 <code>src/app.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, abort</span><br><span class="line"><span class="keyword">from</span> linebot <span class="keyword">import</span> LineBotApi, WebhookParser</span><br><span class="line"><span class="keyword">from</span> linebot.exceptions <span class="keyword">import</span> InvalidSignatureError</span><br><span class="line"><span class="keyword">from</span> linebot.models <span class="keyword">import</span> MessageEvent, TextMessage, TextSendMessage</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"></span><br><span class="line">load_dotenv()</span><br><span class="line">app = Flask(__name__, static_url_path=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get channel_secret and channel_access_token from environment variable</span></span><br><span class="line">channel_access_token = os.getenv(<span class="string">&#x27;LINE_CHANNEL_ACCESS_TOKEN&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">channel_secret = os.getenv(<span class="string">&#x27;LINE_CHANNEL_SECRET&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">line_bot_api = LineBotApi(channel_access_token)</span><br><span class="line">parser = WebhookParser(channel_secret)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/webhook&quot;</span>, methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">webhook_handler</span>():</span></span><br><span class="line">  signature = request.headers[<span class="string">&quot;X-Line-Signature&quot;</span>]</span><br><span class="line">  <span class="comment"># get request body as text</span></span><br><span class="line">  body = request.get_data(as_text=<span class="literal">True</span>)</span><br><span class="line">  app.logger.info(<span class="string">f&quot;Request body: <span class="subst">&#123;body&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># parse webhook body</span></span><br><span class="line">  <span class="keyword">try</span>:</span><br><span class="line">    events = parser.parse(body, signature)</span><br><span class="line">  <span class="keyword">except</span> InvalidSignatureError:</span><br><span class="line">    abort(<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> event <span class="keyword">in</span> events:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(event, MessageEvent):</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(event.message, TextMessage):</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(event.message.text, <span class="built_in">str</span>):</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    line_bot_api.reply_message(</span><br><span class="line">      event.reply_token,</span><br><span class="line">      TextSendMessage(text=event.message.text)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  port = os.environ.get(<span class="string">&quot;PORT&quot;</span>, <span class="number">8000</span>)</span><br><span class="line">  app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>, port=port)</span><br></pre></td></tr></table></figure>
+
+<p>提個外話：為何要把 <code>app.py</code> 放進資料夾 <code>src</code> 裡面？因為當你的 project 越長越大，檔案也會跟著越來越多，這麼做的話可以讓程式看起來有條不紊！</p>
+<h3 id="ngrok-免部署測試"><a href="#ngrok-免部署測試" class="headerlink" title="ngrok 免部署測試"></a>ngrok 免部署測試</h3><p>（這時候如果用 Heroku 測會失敗，因為我們還沒在 Heroku 上面裝偏底層的套件，待會就會知道什麼意思了）</p>
+<ol>
+<li><p>運行 Flask server</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python src/app.py</span><br></pre></td></tr></table></figure>
+
+<p> 我這邊出現了</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Running on http://192.168.0.101:8000/</span><br></pre></td></tr></table></figure>
+
+<p> 後面的 <code>8000</code> 是 port number，待會會需要。</p>
+</li>
+<li><p>終端機開啟新分頁，輸入 <code>ngrok http 8000</code>，最後面的 <code>8000</code> 是剛剛的 port number，會輸出：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ngrok by @inconshreveable                                       (Ctrl+C to quit)</span><br><span class="line"></span><br><span class="line">Session Status                online</span><br><span class="line">Session Expires               1 hour, 59 minutes</span><br><span class="line">Version                       2.3.40</span><br><span class="line">Region                        United States (us)</span><br><span class="line">Web Interface                 http://127.0.0.1:4040</span><br><span class="line">Forwarding                    http://f47ec0b1e3d6.ngrok.io -&gt; http://localhost:8000</span><br><span class="line">Forwarding                    https://f47ec0b1e3d6.ngrok.io -&gt; http://localhost:8000</span><br><span class="line"></span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90</span><br><span class="line">                              0       0       0.00    0.00    0.00    0.00</span><br></pre></td></tr></table></figure>
+
+<p> 第二個 Forwarding 的網址 <code>https://f47ec0b1e3d6.ngrok.io</code> 待會會需要。<br> （注意：每次網址都不一樣，所以如果關掉重開，LINE 那邊的 Webhook URL 也要跟著改哦）</p>
+</li>
+<li><p>把剛剛的網址貼進 Webhook URL，別忘了後面還要加上 <code>/webhook</code></p>
+<p> <img src="8.png"></p>
+</li>
+<li><p>Update → Verify → 出現 Success 就代表成功囉！</p>
+</li>
+</ol>
+<h3 id="用-LINE-測試一下"><a href="#用-LINE-測試一下" class="headerlink" title="用 LINE 測試一下"></a>用 LINE 測試一下</h3><p>手機掃 channel 裡面的 QR code，加入好友就能測試囉～<br>試試看，當你隨便輸入一段訊息，Bot 是不是就會回跟你一樣的訊息呢？酷吧！<br>（更酷的在後頭呢。不過我後面不會分享得太細，主要是 share 我在網路上找到的實用資源給大家）</p>
+<h2 id="用-FSM-的概念擴增功能"><a href="#用-FSM-的概念擴增功能" class="headerlink" title="用 FSM 的概念擴增功能"></a>用 FSM 的概念擴增功能</h2><p>因為我很喜歡 NBA，所以找到了 <a target="_blank" rel="noopener" href="https://github.com/chonyy/daily-nba">daily-nba</a> 這個 repo，也就因此間接學到了用 FSM 做 Bot 的技巧！</p>
+<p>我的作法就是仔細研究它每個部分的 code 分別是用來做什麼的，過程中還蠻愉快的，畢竟是自己感興趣的內容（所以說，如果想學某塊技術，找個自己感興趣的 repo 來邊研究邊學吧！）</p>
+<p>如果覺得上面那個 repo 有點複雜，可以參考 <a target="_blank" rel="noopener" href="https://github.com/NCKU-CCS/TOC-Project-2020">TOC-Project-2020</a> 這一個 repo。<br>（畢竟有很多是 author 自己額外加的功能，跟 FSM 的核心架構沒什麼關係）<br>（後來才發現原來這是成大資工某門課的 homework project，酷斃了！）</p>
+<h3 id="程式架構"><a href="#程式架構" class="headerlink" title="程式架構"></a>程式架構</h3><p>以 <a target="_blank" rel="noopener" href="https://github.com/chonyy/daily-nba">daily-nba</a> 為例，還是簡單說明一下好了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .gitignore        <span class="comment"># 讓 git 忽略的檔案們</span></span><br><span class="line">├── .travis.yml       <span class="comment"># Travis CI 的設定，可以不用管它</span></span><br><span class="line">├── Aptfile           <span class="comment"># ***** 待會會介紹 *****</span></span><br><span class="line">├── Pipfile           <span class="comment"># 對我來說，它就像是 npm 的 package.json</span></span><br><span class="line">├── Pipfile.lock      <span class="comment"># 對我來說，它就像是 npm 的 node_modules 資料夾</span></span><br><span class="line">├── Procfile          <span class="comment"># ***** 待會會介紹 *****</span></span><br><span class="line">├── README.md         <span class="comment"># repo 主頁往下滑看到的那些就是這個</span></span><br><span class="line">├── img               <span class="comment"># 作者 demo 用的圖片檔，可以不用管它</span></span><br><span class="line">├── requirements.txt  <span class="comment"># 告訴 Heroku 要裝哪些套件，但其實用 Pipfile、Pipfile.lock 就行</span></span><br><span class="line">└── src               <span class="comment"># ----------- 下面四個是重點 -----------</span></span><br><span class="line">    ├── app.py        <span class="comment"># 1. 接收 webhook events 的主體</span></span><br><span class="line">    ├── machine.py    <span class="comment"># 2. 定義狀態機</span></span><br><span class="line">    ├── fsm.py        <span class="comment"># 3. is_going_to_xxx: 進到 xxx state 的條件</span></span><br><span class="line">    │                 <span class="comment">#       on_enter_xxx: 進到 xxx state 後要做什麼事</span></span><br><span class="line">    └── utils.py      <span class="comment"># 4. 功能實作細節分離出來，讓 code 看起來乾淨些</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Aptfile"><a href="#Aptfile" class="headerlink" title="Aptfile"></a>Aptfile</h3><p>告訴 Heroku 要在我們部署上去的 server 上裝哪些偏底層的套件。<br>在開始前，先裝 <a target="_blank" rel="noopener" href="https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-apt">heroku-buildpack-apt</a> 這個 Buildpack 吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku buildpacks:add --index 1 heroku-community/apt</span><br></pre></td></tr></table></figure>
+
+<p>接著，新增一個 <code>Aptfile</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graphviz</span><br><span class="line">libgraphviz-dev</span><br><span class="line">pkg-config</span><br></pre></td></tr></table></figure>
+
+<p>待會部署的時候，Heroku 就會幫我們裝這些套件囉！</p>
+<h3 id="Procfile"><a href="#Procfile" class="headerlink" title="Procfile"></a>Procfile</h3><p><a target="_blank" rel="noopener" href="https://devcenter.heroku.com/articles/procfile">官方文檔</a>上有清楚的解釋。</p>
+<p>以 <code>web: python src/app.py</code> 為例，它的意思是：幫我用 <code>python src/app.py</code> 這個指令開啟 <code>web</code> 這個 type 的 process，也就是像 local 端的開啟 server 啦！</p>
+<h3 id="用-Heroku-測試"><a href="#用-Heroku-測試" class="headerlink" title="用 Heroku 測試"></a>用 Heroku 測試</h3><p>（當然用 ngrok 測也行）</p>
+<p>如果你 <code>.gitignore</code> 有 <code>.env</code> 的話，Heroku 上面的 server 會讀不到環境變數。<br>所以在部署前，我們可以先在 Heroku 上面手動添加那些環境變數：<br>Settings → Reveal Config Vars</p>
+<p><img src="9.png"></p>
+<p>照著 <code>.env</code>，把環境變數給填上。</p>
+<p><img src="10.png"></p>
+<p>環境變數加上去以後，來<a target="_blank" rel="noopener" href="https://devcenter.heroku.com/articles/git#deploying-code">部署</a>吧！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;make it better&quot;</span></span><br><span class="line">git push heroku master</span><br><span class="line"><span class="comment"># git push heroku dev:main         # branch 是 dev 而不是 main 時</span></span><br></pre></td></tr></table></figure>
+
+<p>跑的過程中，會看到 Heroku 在幫我們裝各種套件呢xD<br>部署完後，別忘了把 Webhook URL 改成 <code>https://&lt;app-name&gt;.herokuapp.com/webhook</code>！<br>再用 LINE 測試 😎</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/" rel="tag"># 黑客松</a>
+              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
+              <a href="/tags/LINE/" rel="tag"># LINE</a>
+              <a href="/tags/Bot/" rel="tag"># Bot</a>
+              <a href="/tags/Heroku/" rel="tag"># Heroku</a>
+              <a href="/tags/ngrok/" rel="tag"># ngrok</a>
+              <a href="/tags/Flask/" rel="tag"># Flask</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/python-line-blockchain/" rel="prev" title="當 Python 遇上了 LINE Blockchain">
+      <i class="fa fa-chevron-left"></i> 當 Python 遇上了 LINE Blockchain
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.</span> <span class="nav-text">前置作業</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LINE-Developers"><span class="nav-number">1.1.</span> <span class="nav-text">LINE Developers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%85%A5-LINE-Developers"><span class="nav-number">1.1.1.</span> <span class="nav-text">登入 LINE Developers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-provider"><span class="nav-number">1.1.2.</span> <span class="nav-text">Create a new provider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-channel"><span class="nav-number">1.1.3.</span> <span class="nav-text">Create a new channel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.1.4.</span> <span class="nav-text">更改設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heroku"><span class="nav-number">1.2.</span> <span class="nav-text">Heroku</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%85%A5-Heroku"><span class="nav-number">1.2.1.</span> <span class="nav-text">登入 Heroku</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-New-App"><span class="nav-number">1.2.2.</span> <span class="nav-text">Create New App</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%85%A5-Heroku-CLI"><span class="nav-number">1.2.3.</span> <span class="nav-text">登入 Heroku CLI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-Git-repo"><span class="nav-number">1.2.4.</span> <span class="nav-text">Create a new Git repo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngrok"><span class="nav-number">1.3.</span> <span class="nav-text">ngrok</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-ngrok"><span class="nav-number">1.3.1.</span> <span class="nav-text">安裝 ngrok</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E9%96%8B%E7%99%BC%EF%BC%81"><span class="nav-number">2.</span> <span class="nav-text">正式開發！</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-Pipenv-%E7%AE%A1%E7%90%86%E5%B0%88%E6%A1%88%E5%A5%97%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">用 Pipenv 管理專案套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="nav-number">2.1.1.</span> <span class="nav-text">建 Python 虛擬環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9D%E5%A5%97%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">裝套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9D%E5%85%B6%E4%BB%96-dependency"><span class="nav-number">2.1.3.</span> <span class="nav-text">裝其他 dependency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%B2%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="nav-number">2.1.4.</span> <span class="nav-text">進虛擬環境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E8%A9%A6-LINE-Bot"><span class="nav-number">2.2.</span> <span class="nav-text">簡單試 LINE Bot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87%E6%A9%9F%E5%AF%86%E5%AD%98%E6%88%90%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="nav-number">2.2.1.</span> <span class="nav-text">將機密存成環境變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E4%B8%BB%E9%AB%94"><span class="nav-number">2.2.2.</span> <span class="nav-text">程式主體</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ngrok-%E5%85%8D%E9%83%A8%E7%BD%B2%E6%B8%AC%E8%A9%A6"><span class="nav-number">2.2.3.</span> <span class="nav-text">ngrok 免部署測試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-LINE-%E6%B8%AC%E8%A9%A6%E4%B8%80%E4%B8%8B"><span class="nav-number">2.2.4.</span> <span class="nav-text">用 LINE 測試一下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-FSM-%E7%9A%84%E6%A6%82%E5%BF%B5%E6%93%B4%E5%A2%9E%E5%8A%9F%E8%83%BD"><span class="nav-number">2.3.</span> <span class="nav-text">用 FSM 的概念擴增功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E6%9E%B6%E6%A7%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">程式架構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aptfile"><span class="nav-number">2.3.2.</span> <span class="nav-text">Aptfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Procfile"><span class="nav-number">2.3.3.</span> <span class="nav-text">Procfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-Heroku-%E6%B8%AC%E8%A9%A6"><span class="nav-number">2.3.4.</span> <span class="nav-text">用 Heroku 測試</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="E-Mail → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yanting.lin.tim" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yanting.lin.tim" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCa73p-0ChCqtxubUc4Lq41A" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2021/07/fsm-line-bot/";
+    this.page.identifier = "2021/07/fsm-line-bot/";
+    this.page.title = "用 FSM 及 LINE Messaging API 做一個聊天機器人";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
