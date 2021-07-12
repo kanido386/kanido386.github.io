@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="簡單和大家分享適合搭配黑客松 LINE Bot 的相關技術～">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑客松 LINE Bot 賽前補帖">
+<meta property="og:url" content="https://kanido386.github.io/2021/07/hackathon-line-hint/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="簡單和大家分享適合搭配黑客松 LINE Bot 的相關技術～">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/hackathon-line-hint/0.jpeg">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/hackathon-line-hint/1.jpg">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/hackathon-line-hint/2.jpg">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/hackathon-line-hint/3.png">
+<meta property="og:image" content="https://kanido386.github.io/2021/07/hackathon-line-hint/4.png">
+<meta property="article:published_time" content="2021-07-12T13:39:14.000Z">
+<meta property="article:modified_time" content="2021-07-12T14:05:09.753Z">
+<meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="黑客松">
+<meta property="article:tag" content="交大">
+<meta property="article:tag" content="LINE">
+<meta property="article:tag" content="Bot">
+<meta property="article:tag" content="Firebase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80">
+
+<link rel="canonical" href="https://kanido386.github.io/2021/07/hackathon-line-hint/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>黑客松 LINE Bot 賽前補帖 | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2021/07/hackathon-line-hint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          黑客松 LINE Bot 賽前補帖
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-12 21:39:14" itemprop="dateCreated datePublished" datetime="2021-07-12T21:39:14+08:00">2021-07-12</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/07/hackathon-line-hint/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/07/hackathon-line-hint/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/2021/07/hackathon-line-hint"><img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>簡單和大家分享適合搭配黑客松 LINE Bot 的相關技術～</p>
+<span id="more"></span>
+
+<p>2021 升大四的暑假 (7/1~7/3)，和 Justin、Frank、Jennie、Henry 參加了由<a target="_blank" rel="noopener" href="https://oia.nctu.edu.tw/">交大國際事務處</a>主辦的「<a target="_blank" rel="noopener" href="https://event.oia.nycu.edu.tw/">NYCU Global Design &amp; Innovation Competition</a>」黑客松競賽，有不少收穫！<br>（這場黑客松很特別，因為疫情的關係，原本是實體的，改採線上競賽）</p>
+<hr>
+<h1 id="我那場黑客松"><a href="#我那場黑客松" class="headerlink" title="我那場黑客松"></a>我那場黑客松</h1><h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h2><p>How to use Open Data combined with LINE Bot to improve medical and health care<br>（以 LINE 的聊天機器人結合 Open Data，在醫療、照護、健康領域進行創意發想）</p>
+<h2 id="Presentation-Video"><a href="#Presentation-Video" class="headerlink" title="Presentation Video"></a>Presentation Video</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=djUoMO8IMcU">https://www.youtube.com/watch?v=djUoMO8IMcU</a></p>
+<h2 id="System-Design"><a href="#System-Design" class="headerlink" title="System Design"></a>System Design</h2><p><img src="1.jpg"></p>
+<ul>
+<li>我們用 Flask 後端及 FSM model 當作 LINE Bot 的基本架構<ul>
+<li>之所以選擇用 FSM model 而不是簡單的 if else 是因為，我們認為和 Bot 對話的情境就像是一個 FSM，所以用 FSM model 去描述再適合不過了！</li>
+</ul>
+</li>
+<li>用 Firebase Firestore 做資料庫的讀寫</li>
+<li>用 Firebase Storage 做圖片的上傳及 URL 生成</li>
+<li>用 Heroku 部署 LINE Bot server</li>
+<li>用 Algorithmia 平台部署我們的 ML model 和一個 function<ul>
+<li>為何不和 LINE Bot server 一起部署？因為這麼做不但能減輕 server 的負擔，也不必安裝 ML 相關的套件，減少空間的使用</li>
+</ul>
+</li>
+<li>用 GitHub Pages 部署 LIFF 頁面</li>
+</ul>
+<h2 id="FSM-狀態圖"><a href="#FSM-狀態圖" class="headerlink" title="FSM 狀態圖"></a>FSM 狀態圖</h2><p><img src="2.jpg"></p>
+<ul>
+<li>在開始打 code 前，我們用 FSM 狀態圖設計了整個 project 功能的架構</li>
+<li>有了這個狀態圖，掌握整個 project 的輪廓，打 code 的過程就比較不會那麼雜亂！</li>
+</ul>
+<hr>
+<h1 id="實用技術分享"><a href="#實用技術分享" class="headerlink" title="實用技術分享"></a>實用技術分享</h1><h2 id="LINE-Bot-本體"><a href="#LINE-Bot-本體" class="headerlink" title="LINE Bot 本體"></a>LINE Bot 本體</h2><!-- 可以參考我「[用 FSM 及 LINE Messaging API 做一個聊天機器人](https://kanido386.github.io/2021/07/fsm-line-bot/)」這一篇文。 -->
+<p>可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這一篇文。<br>我將會帶大家用 <a target="_blank" rel="noopener" href="https://developers.line.biz/zh-hant/">LINE Developers</a>、<a target="_blank" rel="noopener" href="https://pypi.org/project/pipenv/">Pipenv</a> 及 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA">FSM (有限狀態機)</a> 的概念，做一個簡單的 LINE Bot。<br>並用 <a target="_blank" rel="noopener" href="https://www.heroku.com/about">Heroku</a> 及 <a target="_blank" rel="noopener" href="https://ngrok.com/">ngrok</a> 部署程式碼以測試我們的 LINE Bot！</p>
+<h2 id="Messaging-API"><a href="#Messaging-API" class="headerlink" title="Messaging API"></a>Messaging API</h2><p>待會我會簡單帶一下 quick reply、flex message、carousel template、rich menu，<br>其他還有很多很酷的功能詳見<a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/">官方文檔</a>～</p>
+<h3 id="Quick-Reply"><a href="#Quick-Reply" class="headerlink" title="Quick Reply"></a>Quick Reply</h3><p><img src="3.png"></p>
+<p><strong>官方文檔：<a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/using-quick-reply/">Using quick replies</a></strong></p>
+<p>你可能會很好奇，該怎麼把官方文檔上的 <a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/using-quick-reply/#set-quick-reply-buttons">JSON</a> 轉換成 Python code 呢？</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;text&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;Select your favorite food category or send me your location!&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;quickReply&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;items&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;action&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;imageUrl&quot;</span>: <span class="string">&quot;https://example.com/sushi.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;action&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;message&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;Sushi&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;Sushi&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;action&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;imageUrl&quot;</span>: <span class="string">&quot;https://example.com/tempura.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;action&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;message&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;Tempura&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;Tempura&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;action&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;action&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;location&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;Send location&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我是這麼做的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> linebot <span class="keyword">import</span> LineBotApi</span><br><span class="line"><span class="keyword">from</span> linebot.models <span class="keyword">import</span> (</span><br><span class="line">  TextSendMessage, QuickReply, QuickReplyButton,</span><br><span class="line">  MessageAction, LocationAction</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">access_token = os.getenv(<span class="string">&quot;LINE_CHANNEL_ACCESS_TOKEN&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">line_bot_api = LineBotApi(access_token)</span><br><span class="line"></span><br><span class="line">user_id = event.source.user_id</span><br><span class="line"></span><br><span class="line">message = TextSendMessage(</span><br><span class="line">  text=<span class="string">&#x27;Select your favorite food category or send me your location!&#x27;</span>,</span><br><span class="line">  quick_reply=QuickReply(</span><br><span class="line">    items=[</span><br><span class="line">      QuickReplyButton(</span><br><span class="line">        image_url=<span class="string">&#x27;https://example.com/sushi.png&#x27;</span>,</span><br><span class="line">        action=MessageAction(label=<span class="string">&quot;Sushi&quot;</span>, text=<span class="string">&quot;Sushi&quot;</span>)</span><br><span class="line">      ),</span><br><span class="line">      QuickReplyButton(</span><br><span class="line">        image_url=<span class="string">&#x27;https://example.com/tempura.png&#x27;</span>,</span><br><span class="line">        action=MessageAction(label=<span class="string">&quot;Tempura&quot;</span>, text=<span class="string">&quot;Tempura&quot;</span>)</span><br><span class="line">      ),</span><br><span class="line">      QuickReplyButton(</span><br><span class="line">        action=LocationAction(label=<span class="string">&quot;Send location&quot;</span>)</span><br><span class="line">      ),</span><br><span class="line">    ]</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">line_bot_api.push_message(user_id, message)</span><br></pre></td></tr></table></figure>
+
+<p>還有很多 <a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/actions/">Actions</a> 可以用呢！其他 Actions 的寫法以此類推～</p>
+<p>跟大家分享個小技巧：<br>如果不確定某個部份該怎麼用，像是 <code>LocationAction</code>，可以直接去看 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/blob/master/linebot/models/actions.py#L253">source code</a> 哦！</p>
+<h3 id="Flex-Message"><a href="#Flex-Message" class="headerlink" title="Flex Message"></a>Flex Message</h3><p><strong>官方文檔：<a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/using-flex-messages/">Sending Flex Messages</a></strong></p>
+<p>可以先用 <a target="_blank" rel="noopener" href="https://developers.line.biz/flex-simulator/">Flex Message Simulator</a> 做出自己滿意的樣子，再把 JSON 貼到 Python code 裡面去。<br>問題來了，該怎麼弄呢？我來教你！</p>
+<ol>
+<li><p>先用一個 string 存 JSON</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex_message_json_string = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;Flex Message Simulator 做好的 JSON 貼到這邊&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>轉成 <code>dict</code> 後，包成 <code>FlexSendMessage</code> 就行囉（需要但不是重點的我把它註解掉了）</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># from linebot import LineBotApi</span></span><br><span class="line"><span class="comment"># from linebot.models import FlexSendMessage</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># access_token = os.getenv(&quot;LINE_CHANNEL_ACCESS_TOKEN&quot;, None)</span></span><br><span class="line"><span class="comment"># line_bot_api = LineBotApi(access_token)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># user_id = event.source.user_id</span></span><br><span class="line"></span><br><span class="line">flex_message_json_dict = json.loads(flex_message_json_string)</span><br><span class="line">message = FlexSendMessage(</span><br><span class="line">  alt_text=<span class="string">&quot;xxx&quot;</span>,</span><br><span class="line">  contents=flex_message_json_dict</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不推 push_message，因為有額度限制</span></span><br><span class="line">line_bot_api.push_message(user_id, message)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>想看看做出來的效果如何？<br>Flex Message Simulator 右上角有個 <code>Send...</code> button，可以用那個測試哦！</p>
+<h3 id="Carousel-Template"><a href="#Carousel-Template" class="headerlink" title="Carousel Template"></a>Carousel Template</h3><p><strong>官方文檔：<a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/message-types/#carousel-template">Carousel template</a></strong></p>
+<p>可以直接參考「<a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python#templatesendmessage---carouseltemplate">LINE Messaging API SDK for Python</a>」來做。<br>不知道某個部份怎麼用？以 <code>CarouselColumn</code> 為例，一樣去翻 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/blob/master/linebot/models/template.py#L215">source code</a> 吧！<br>再隨便舉個例子，若是 <code>CameraAction</code> 呢？一樣直接去洽詢 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/blob/master/linebot/models/actions.py#L209">source code</a>。</p>
+<h2 id="Rich-Menu"><a href="#Rich-Menu" class="headerlink" title="Rich Menu"></a>Rich Menu</h2><p><strong>官方文檔：<a target="_blank" rel="noopener" href="https://developers.line.biz/en/reference/messaging-api/#rich-menu">Rich menu</a></strong></p>
+<p>有兩種方式做這部分：</p>
+<ol>
+<li><p>直接用官方後台做簡單的圖文選單<br> （<a target="_blank" rel="noopener" href="https://manager.line.biz/">LINE Official Account Manager</a> → 選帳號 → 左側欄滑到底 → 聊天室相關 → 圖文選單）</p>
+</li>
+<li><p>用 code 來做圖文選單</p>
+</li>
+</ol>
+<p>我等等簡單介紹一下第二種方式，先給大家兩個不錯的參考資源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/blob/master/README.rst#get_rich_menuself-rich_menu_id-timeoutnone">line-bot-sdk-python</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10229397">[Day06] 如何建立 LINE Bot 的圖文選單 - Rich Menu</a></li>
+</ul>
+<h3 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> linebot <span class="keyword">import</span> LineBotApi</span><br><span class="line"><span class="keyword">from</span> linebot.models <span class="keyword">import</span> (</span><br><span class="line">  RichMenu, RichMenuSize, RichMenuArea, RichMenuBounds,</span><br><span class="line">  URIAction, PostbackAction</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">channel_access_token = <span class="string">&#x27;&lt;your channel access token&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line">line_bot_api = LineBotApi(channel_access_token)</span><br></pre></td></tr></table></figure>
+
+<h3 id="描述圖文選單"><a href="#描述圖文選單" class="headerlink" title="描述圖文選單"></a>描述圖文選單</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rich_menu_to_create = RichMenu(</span><br><span class="line">  size=RichMenuSize(width=<span class="number">2500</span>, height=<span class="number">843</span>),</span><br><span class="line">  selected=<span class="literal">True</span>,</span><br><span class="line">  name=<span class="string">&quot;Menu&quot;</span>,</span><br><span class="line">  chat_bar_text=<span class="string">&quot;Menu&quot;</span>,</span><br><span class="line">  areas=[</span><br><span class="line">    RichMenuArea(</span><br><span class="line">    bounds=RichMenuBounds(x=<span class="number">0</span>, y=<span class="number">0</span>, width=<span class="number">833</span>, height=<span class="number">843</span>),</span><br><span class="line">    action=PostbackAction(label=<span class="string">&#x27;Record Taker&#x27;</span>, data=<span class="string">&#x27;menu0&#x27;</span>, text=<span class="string">&#x27;Record Taker&#x27;</span>)),</span><br><span class="line">    RichMenuArea(</span><br><span class="line">    bounds=RichMenuBounds(x=<span class="number">833</span>, y=<span class="number">0</span>, width=<span class="number">833</span>, height=<span class="number">843</span>),</span><br><span class="line">    action=PostbackAction(label=<span class="string">&#x27;Cheer-up Buddy&#x27;</span>, data=<span class="string">&#x27;menu1&#x27;</span>, text=<span class="string">&#x27;Cheer-up Buddy&#x27;</span>)),</span><br><span class="line">    RichMenuArea(</span><br><span class="line">    bounds=RichMenuBounds(x=<span class="number">1666</span>, y=<span class="number">0</span>, width=<span class="number">833</span>, height=<span class="number">843</span>),</span><br><span class="line">    action=PostbackAction(label=<span class="string">&#x27;Health Assistant&#x27;</span>, data=<span class="string">&#x27;menu2&#x27;</span>, text=<span class="string">&#x27;Health Assistant&#x27;</span>)),</span><br><span class="line">  ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果有地方不確定怎麼用該怎麼辦？<br>應該已經聽到很厭煩了吧，沒錯，以 <code>RichMenuArea</code> 為例，去找 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/blob/master/linebot/models/rich_menu.py#L85">source code</a>！</p>
+<h3 id="創建圖文選單"><a href="#創建圖文選單" class="headerlink" title="創建圖文選單"></a>創建圖文選單</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)</span><br><span class="line"><span class="built_in">print</span>(rich_menu_id)</span><br></pre></td></tr></table></figure>
+
+<h3 id="為圖文選單設圖"><a href="#為圖文選單設圖" class="headerlink" title="為圖文選單設圖"></a>為圖文選單設圖</h3><p>圖片的長寬大小要照前面的設定去製作哦！<br>以前面的描述為例，圖片尺寸必須要是 2500 × 843，像是：</p>
+<p><img src="4.png"></p>
+<p>（實用技巧：如果不擅長美工，可以用官方後台做完以後再下載下來，像我一樣xD）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;richmenu.png&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">  line_bot_api.set_rich_menu_image(rich_menu_id, <span class="string">&#x27;image/png&#x27;</span>, f)</span><br></pre></td></tr></table></figure>
+
+<h3 id="綁定圖文選單"><a href="#綁定圖文選單" class="headerlink" title="綁定圖文選單"></a>綁定圖文選單</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">line_bot_api.set_default_rich_menu(rich_menu_id)</span><br></pre></td></tr></table></figure>
+
+<p>其他操作詳見 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python/blob/master/README.rst#get_rich_menuself-rich_menu_id-timeoutnone">line-bot-sdk-python</a>。</p>
+<h2 id="LIFF"><a href="#LIFF" class="headerlink" title="LIFF"></a>LIFF</h2><p><strong>官方文檔：<a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/liff/overview/">LINE Front-end Framework</a></strong></p>
+<p>把它想成是一般的網頁，只是是開在 LINE 裡面。<br>（注意：<a target="_blank" rel="noopener" href="https://developers.line.biz/en/news/2019/11/11/liff-cannot-be-used-with-messaging-api-channels/">Messaging API channel 不能添加 LIFF</a>，不過因為我是創 Blockchain Service 的 channel，所以不受影響。想了解更多關於 LINE Blockchain？我後面會介紹到，期待一下～）<br>（上面的問題，如果仍舊想創 Messaging API channel，可以再創個 Login channel 解決）</p>
+<h3 id="製作教學"><a href="#製作教學" class="headerlink" title="製作教學"></a>製作教學</h3><ol>
+<li><p>先寫好網頁的部分（HTML、CSS、JavaScript）</p>
+</li>
+<li><p>HTML 檔的 <code>&lt;body&gt; &lt;/body&gt;</code> 裡面加上</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://static.line-scdn.net/liff/edge/2.1/sdk.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>HTML 檔的 <code>&lt;script&gt; &lt;/script&gt;</code> 或 JS 檔裡面加上</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initializeLiff</span>(<span class="params">myLiffId</span>) </span>&#123;</span><br><span class="line">  liff.init(&#123;</span><br><span class="line">    <span class="attr">liffId</span>: myLiffId</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// start to use LIFF&#x27;s api</span></span><br><span class="line">    initializeApp();</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">initializeLiff(<span class="string">&#x27;&lt;LIFF ID&gt;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 以初始化</p>
+</li>
+<li><p>發送訊息到 LINE 聊天室＆關閉頁面（其他功能請參見 <a target="_blank" rel="noopener" href="https://developers.line.biz/en/reference/liff/">LIFF v2 API reference</a>）</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">liff.sendMessages([&#123;</span><br><span class="line">  <span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;text&#x27;</span>: <span class="string">&#x27;要傳到聊天室的文字&#x27;</span></span><br><span class="line">&#125;])</span><br><span class="line">liff.closeWindow();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="生成-Endpoint-URL"><a href="#生成-Endpoint-URL" class="headerlink" title="生成 Endpoint URL"></a>生成 Endpoint URL</h3><p>這個 URL 要提供給 LIFF。</p>
+<p>我目前有試過兩種方法：</p>
+<ol>
+<li>用 GitHub 的 gh-pages 分支部署，可參考<a target="_blank" rel="noopener" href="https://medium.com/%E9%80%B2%E6%93%8A%E7%9A%84-git-git-git/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E7%94%A8github-pages-%E4%B8%8A%E5%82%B3%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-fa2ae83e6276">這一篇</a>，建議從「建立其他專案Repository」開始讀。完成後，就會拿到 <code>https://&lt;account&gt;.github.io/&lt;repo&gt;/&lt;folder&gt;</code> 這樣的 URL， <code>index.html</code>、<code>main.js</code> 這些靜態檔案要放在 <code>&lt;repo&gt;/&lt;folder&gt;/</code> 底下哦！</li>
+<li>用 ngrok，完成後會拿到 <code>https://xxxxxxxxxxxx.ngrok.io</code> 這樣的 URL</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install --global http-server  <span class="comment"># 裝 http-server</span></span><br><span class="line">brew install --cask ngrok         <span class="comment"># 裝 ngrok</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 開始前，先 cd 到 index.html 的目錄下</span></span><br><span class="line">http-server                       <span class="comment"># 開啟 http-server</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 開新的終端機輸入</span></span><br><span class="line">ngrok http 8080                   <span class="comment"># 讓 ngrok 幫我們做 forwarding</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="設定＆測試"><a href="#設定＆測試" class="headerlink" title="設定＆測試"></a>設定＆測試</h3><p>把該填的都填進 LIFF application 裡面吧。<br>LIFF URL 丟進聊天室，點開來，很酷的事情就會發生了xD</p>
+<h2 id="LINE-Blockchain"><a href="#LINE-Blockchain" class="headerlink" title="LINE Blockchain"></a>LINE Blockchain</h2><!-- 可以參考我「[當 Python 遇上了 LINE Blockchain](https://kanido386.github.io/2021/07/python-line-blockchain/)」這一篇文。 -->
+<p>可以參考我「<a href="https://kanido386.github.io/2021/07/python-line-blockchain/" target="_blank">當 Python 遇上了 LINE Blockchain</a>」這一篇文。<br>我將會帶大家介紹 <a target="_blank" rel="noopener" href="https://docs-blockchain.line.biz/overview/">LINE Blockchain</a> 的啟用以及設定，並用 Python 撰寫相關的 code。</p>
+<h2 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h2><h3 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv install firebase-admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="產生私密金鑰"><a href="#產生私密金鑰" class="headerlink" title="產生私密金鑰"></a>產生私密金鑰</h3><p>專案總覽旁邊的⚙️ → 專案設定 → 服務帳戶 → 產生新的私密金鑰</p>
+<h3 id="讀寫資料庫"><a href="#讀寫資料庫" class="headerlink" title="讀寫資料庫"></a>讀寫資料庫</h3><p>可以用 Firebase 的 Cloud Firestore，詳見<a target="_blank" rel="noopener" href="https://firebase.google.com/docs/firestore/quickstart">官方文檔</a>。</p>
+<p><strong>初始化</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> firebase_admin</span><br><span class="line"><span class="keyword">from</span> firebase_admin <span class="keyword">import</span> credentials</span><br><span class="line"><span class="keyword">from</span> firebase_admin <span class="keyword">import</span> firestore</span><br><span class="line"></span><br><span class="line"><span class="comment"># 引用私密金鑰</span></span><br><span class="line">cred = credentials.Certificate(<span class="string">&quot;path/to/serviceAccountKey.json&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 firebase，注意不能重複初始化</span></span><br><span class="line">firebase_admin.initialize_app(credential=cred)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 firestore</span></span><br><span class="line">db = firestore.client()</span><br></pre></td></tr></table></figure>
+
+<p><strong>寫入資料庫</strong>（user_id 不用理它）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_db</span>(<span class="params">user_id, key, value</span>):</span></span><br><span class="line">  user_doc_ref = db.collection(<span class="string">&#x27;users&#x27;</span>).document(user_id)</span><br><span class="line">  user_doc = user_doc_ref.get().to_dict()</span><br><span class="line">  user_doc[key] = value</span><br><span class="line">  user_doc_ref.<span class="built_in">set</span>(user_doc)</span><br></pre></td></tr></table></figure>
+
+<p><strong>讀取資料庫</strong>（user_id 不用理它）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_from_db</span>(<span class="params">user_id, key</span>):</span></span><br><span class="line">  <span class="keyword">try</span>:</span><br><span class="line">    user_doc_ref = db.collection(<span class="string">&#x27;users&#x27;</span>).document(user_id)</span><br><span class="line">    user_doc = user_doc_ref.get().to_dict()</span><br><span class="line">    value = user_doc[key]</span><br><span class="line">  <span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
+
+<p>上面那些 code 僅供參考，應該會有更好的寫法！</p>
+<h3 id="儲存圖片"><a href="#儲存圖片" class="headerlink" title="儲存圖片"></a>儲存圖片</h3><p>可以用 Firebase 的 Storage，詳見<a target="_blank" rel="noopener" href="https://firebase.google.com/docs/storage/admin/start#python">官方文檔</a>。</p>
+<p><strong>初始化</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> firebase_admin</span><br><span class="line"><span class="keyword">from</span> firebase_admin <span class="keyword">import</span> credentials</span><br><span class="line"><span class="keyword">from</span> firebase_admin <span class="keyword">import</span> storage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 引用私密金鑰</span></span><br><span class="line">cred = credentials.Certificate(<span class="string">&quot;path/to/serviceAccountKey.json&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 firebase，注意不能重複初始化</span></span><br><span class="line">firebase_admin.initialize_app(credential=cred, options=&#123;<span class="string">&quot;storageBucket&quot;</span>: <span class="string">&quot;&lt;project&gt;.appspot.com&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 storage</span></span><br><span class="line">bucket = storage.bucket()</span><br></pre></td></tr></table></figure>
+
+<p><strong>從 LINE 上傳圖片</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload_skin_image</span>(<span class="params">user_id, message_id, file_name</span>):</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 下載使用者傳的圖片到 server 上</span></span><br><span class="line">  message_content = line_bot_api.get_message_content(message_id)</span><br><span class="line">  temp_file_path = user_id</span><br><span class="line">  <span class="keyword">with</span> <span class="built_in">open</span>(temp_file_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fd:</span><br><span class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> message_content.iter_content():</span><br><span class="line">      fd.write(chunk)</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 設定 blob 資訊</span></span><br><span class="line">  saving_path = <span class="string">f&#x27;<span class="subst">&#123;user_id&#125;</span>/<span class="subst">&#123;file_name&#125;</span>&#x27;</span></span><br><span class="line">  blob = bucket.blob(saving_path)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 上傳到 Firebase Storage</span></span><br><span class="line">  <span class="keyword">with</span> <span class="built_in">open</span>(temp_file_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> photo:</span><br><span class="line">    blob.upload_from_file(photo)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 從 server 上移除</span></span><br><span class="line">  os.remove(temp_file_path)</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 檔案名稱寫到 db 上，方便之後取用</span></span><br><span class="line">  user_doc_ref = db.collection(<span class="string">&#x27;users&#x27;</span>).document(user_id)</span><br><span class="line">  user_doc = user_doc_ref.get().to_dict()</span><br><span class="line">  user_doc[<span class="string">&#x27;skin_image&#x27;</span>] = saving_path</span><br><span class="line">  user_doc_ref.<span class="built_in">set</span>(user_doc)</span><br></pre></td></tr></table></figure>
+
+<p><strong>拿圖片的 URL</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_skin_image_url</span>(<span class="params">user_id</span>):</span></span><br><span class="line">  user_doc_ref = db.collection(<span class="string">&#x27;users&#x27;</span>).document(user_id)</span><br><span class="line">  user_doc = user_doc_ref.get().to_dict()</span><br><span class="line">  image = user_doc[<span class="string">&#x27;skin_image&#x27;</span>]</span><br><span class="line">  blob = bucket.blob(image)</span><br><span class="line">  img_url = blob.generate_signed_url(datetime.timedelta(seconds=<span class="number">300</span>), method=<span class="string">&#x27;GET&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> img_url</span><br></pre></td></tr></table></figure>
+
+<p>一樣，上面那些 code 僅供參考，應該會有更好的寫法！</p>
+<h2 id="部署-ML-Models"><a href="#部署-ML-Models" class="headerlink" title="部署 ML Models"></a>部署 ML Models</h2><!-- 可以參考我「[用 Algorithmia 部署 ML Models](https://kanido386.github.io/2021/07/algorithmia-ml-models/)」這一篇文。 -->
+<p>可以參考我「<a href="https://kanido386.github.io/2021/07/algorithmia-ml-models/" target="_blank">用 Algorithmia 部署 ML Models</a>」這一篇文。<br>我將會帶大家用 Algorithmia 這個平台，把自己寫好的 ML model 包成 API，供其他 client 使用。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="LINE-Bot-專屬-URL"><a href="#LINE-Bot-專屬-URL" class="headerlink" title="LINE Bot 專屬 URL"></a>LINE Bot 專屬 URL</h3><p>可以用點連結的方式進頻道，詳見 <a target="_blank" rel="noopener" href="https://developers.line.biz/en/docs/messaging-api/using-line-url-scheme/#sharing-line-official-account">Sharing a LINE Official Account</a>。</p>
+<h3 id="主動傳訊息"><a href="#主動傳訊息" class="headerlink" title="主動傳訊息"></a>主動傳訊息</h3><p>不需要 reply token，就能夠主動推訊息給使用者，詳見 <a target="_blank" rel="noopener" href="https://developers.line.biz/en/reference/messaging-api/#send-push-message">Send push message</a>。<br>（注意：有使用上限額度，除非升級帳戶！我黑客松時，因為沒注意到這一點，讓我得重新註冊一個新的 channel，搞得我有點煩躁xD）</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/" rel="tag"># 黑客松</a>
+              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
+              <a href="/tags/LINE/" rel="tag"># LINE</a>
+              <a href="/tags/Bot/" rel="tag"># Bot</a>
+              <a href="/tags/Firebase/" rel="tag"># Firebase</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/fsm-line-bot/" rel="prev" title="用 FSM 及 LINE Messaging API 做一個聊天機器人">
+      <i class="fa fa-chevron-left"></i> 用 FSM 及 LINE Messaging API 做一個聊天機器人
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E9%82%A3%E5%A0%B4%E9%BB%91%E5%AE%A2%E6%9D%BE"><span class="nav-number">1.</span> <span class="nav-text">我那場黑客松</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Presentation-Video"><span class="nav-number">1.2.</span> <span class="nav-text">Presentation Video</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Design"><span class="nav-number">1.3.</span> <span class="nav-text">System Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FSM-%E7%8B%80%E6%85%8B%E5%9C%96"><span class="nav-number">1.4.</span> <span class="nav-text">FSM 狀態圖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E7%94%A8%E6%8A%80%E8%A1%93%E5%88%86%E4%BA%AB"><span class="nav-number">2.</span> <span class="nav-text">實用技術分享</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LINE-Bot-%E6%9C%AC%E9%AB%94"><span class="nav-number">2.1.</span> <span class="nav-text">LINE Bot 本體</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Messaging-API"><span class="nav-number">2.2.</span> <span class="nav-text">Messaging API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Reply"><span class="nav-number">2.2.1.</span> <span class="nav-text">Quick Reply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flex-Message"><span class="nav-number">2.2.2.</span> <span class="nav-text">Flex Message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Carousel-Template"><span class="nav-number">2.2.3.</span> <span class="nav-text">Carousel Template</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rich-Menu"><span class="nav-number">2.3.</span> <span class="nav-text">Rich Menu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">2.3.1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E5%9C%96%E6%96%87%E9%81%B8%E5%96%AE"><span class="nav-number">2.3.2.</span> <span class="nav-text">描述圖文選單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E5%9C%96%E6%96%87%E9%81%B8%E5%96%AE"><span class="nav-number">2.3.3.</span> <span class="nav-text">創建圖文選單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E5%9C%96%E6%96%87%E9%81%B8%E5%96%AE%E8%A8%AD%E5%9C%96"><span class="nav-number">2.3.4.</span> <span class="nav-text">為圖文選單設圖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%81%E5%AE%9A%E5%9C%96%E6%96%87%E9%81%B8%E5%96%AE"><span class="nav-number">2.3.5.</span> <span class="nav-text">綁定圖文選單</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LIFF"><span class="nav-number">2.4.</span> <span class="nav-text">LIFF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%BD%E4%BD%9C%E6%95%99%E5%AD%B8"><span class="nav-number">2.4.1.</span> <span class="nav-text">製作教學</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90-Endpoint-URL"><span class="nav-number">2.4.2.</span> <span class="nav-text">生成 Endpoint URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%EF%BC%86%E6%B8%AC%E8%A9%A6"><span class="nav-number">2.4.3.</span> <span class="nav-text">設定＆測試</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LINE-Blockchain"><span class="nav-number">2.5.</span> <span class="nav-text">LINE Blockchain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Firebase"><span class="nav-number">2.6.</span> <span class="nav-text">Firebase</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D"><span class="nav-number">2.6.1.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A2%E7%94%9F%E7%A7%81%E5%AF%86%E9%87%91%E9%91%B0"><span class="nav-number">2.6.2.</span> <span class="nav-text">產生私密金鑰</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%80%E5%AF%AB%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">2.6.3.</span> <span class="nav-text">讀寫資料庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%84%B2%E5%AD%98%E5%9C%96%E7%89%87"><span class="nav-number">2.6.4.</span> <span class="nav-text">儲存圖片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-ML-Models"><span class="nav-number">2.7.</span> <span class="nav-text">部署 ML Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.8.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LINE-Bot-%E5%B0%88%E5%B1%AC-URL"><span class="nav-number">2.8.1.</span> <span class="nav-text">LINE Bot 專屬 URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%8B%95%E5%82%B3%E8%A8%8A%E6%81%AF"><span class="nav-number">2.8.2.</span> <span class="nav-text">主動傳訊息</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="E-Mail → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yanting.lin.tim" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yanting.lin.tim" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCa73p-0ChCqtxubUc4Lq41A" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2021/07/hackathon-line-hint/";
+    this.page.identifier = "2021/07/hackathon-line-hint/";
+    this.page.title = "黑客松 LINE Bot 賽前補帖";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
