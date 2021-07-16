@@ -193,6 +193,127 @@
       </tags>
   </entry>
   <entry>
+    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
+    <url>/2021/07/baymax-with-us/</url>
+    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpg" style="width:50vw;" /> -->
+
+<p>做一個 LINE Bot 版的杯麵～</p>
+<span id="more"></span>
+
+<div class="note success">
+    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
+</div>
+
+<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
+<hr>
+<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
+<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
+<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
+<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
+<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
+<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
+<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
+</ol>
+<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
+<hr>
+<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
+</ul>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>隨機聽</code></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
+<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
+<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
+<li>後面就是「指定聽歌」的步驟了</li>
+</ol>
+<hr>
+<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
+</ul>
+<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
+<hr>
+<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
+</ul>
+<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
+<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
+<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
+<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
+<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
+</ol>
+<hr>
+<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
+<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
+</ul>
+<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
+<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
+</ol>
+<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
+<hr>
+<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
+<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
+</ul>
+<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
+<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
+<hr>
+<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
+<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
+</ul>
+<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
+<li>將新功能的名稱和描述填入 email 的 content 當中</li>
+<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
+<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
+</ol>
+<hr>
+<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
+<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
+</ul>
+<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>端午節立蛋</title>
     <url>/2021/06/dragon-boat-festival/</url>
     <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
