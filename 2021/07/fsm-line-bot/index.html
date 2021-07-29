@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/9.png">
 <meta property="og:image" content="https://kanido386.github.io/2021/07/fsm-line-bot/10.png">
 <meta property="article:published_time" content="2021-07-10T13:48:48.000Z">
-<meta property="article:modified_time" content="2021-07-16T09:20:52.470Z">
+<meta property="article:modified_time" content="2021-07-29T07:58:31.323Z">
 <meta property="article:author" content="卡尼多">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="黑客松">
@@ -322,6 +322,11 @@
 <p>除了 <code>Pipfile</code> 的 <code>[packages]</code> 底下多了個 <code>line-bot-sdk = &quot;*&quot;</code> 之外，還多生成了一個 <code>Pipfile.lock</code>。<br>我是把它理解成 npm 的 <code>node_modules</code> 資料夾啦！</p>
 <h3 id="裝其他-dependency"><a href="#裝其他-dependency" class="headerlink" title="裝其他 dependency"></a>裝其他 dependency</h3><p>把其他需要的套件也裝一裝：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pipenv install flask          <span class="comment"># 處理 webhook</span></span><br><span class="line">pipenv install python-dotenv  <span class="comment"># 可將重要資料存成環境變數</span></span><br><span class="line">pipenv install transitions    <span class="comment"># 別人用 Python 實作好的 FSM</span></span><br><span class="line">pipenv install pygraphviz     <span class="comment"># 不裝這個會報錯，或許是因為 transitions 需要(?)</span></span><br></pre></td></tr></table></figure>
+
+<div class="note warning">
+    在裝 pygraphviz 之前，必須先用 Homebrew 之類的套件管理工具裝 graphviz。<br>
+    不過，很可能還是會噴出錯誤訊息，這就必須靠 google 解決了⋯⋯
+</div>
 
 <p>如果還有其它套件要安裝，就一律把 <code>pip install xxx</code> 改成 <code>pipenv install xxx</code> 就可以囉！</p>
 <p>（話說在安裝前已經 <code>pipenv shell</code> 進到虛擬環境的話，記得先 <code>exit</code> 離開虛擬環境以後再安裝，不然 <code>Pipfile</code> 可能不會更新到。我測試的時候是這樣啦，不知道有沒有錯🤔）</p>

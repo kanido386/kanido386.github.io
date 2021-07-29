@@ -391,6 +391,11 @@
 <h3 id="裝其他-dependency"><a href="#裝其他-dependency" class="headerlink" title="裝其他 dependency"></a>裝其他 dependency</h3><p>把其他需要的套件也裝一裝：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipenv install flask          <span class="comment"># 處理 webhook</span></span><br><span class="line">pipenv install python-dotenv  <span class="comment"># 可將重要資料存成環境變數</span></span><br><span class="line">pipenv install transitions    <span class="comment"># 別人用 Python 實作好的 FSM</span></span><br><span class="line">pipenv install pygraphviz     <span class="comment"># 不裝這個會報錯，或許是因為 transitions 需要(?)</span></span><br></pre></td></tr></table></figure>
 
+<div class="note warning">
+    在裝 pygraphviz 之前，必須先用 Homebrew 之類的套件管理工具裝 graphviz。<br>
+    不過，很可能還是會噴出錯誤訊息，這就必須靠 google 解決了⋯⋯
+</div>
+
 <p>如果還有其它套件要安裝，就一律把 <code>pip install xxx</code> 改成 <code>pipenv install xxx</code> 就可以囉！</p>
 <p>（話說在安裝前已經 <code>pipenv shell</code> 進到虛擬環境的話，記得先 <code>exit</code> 離開虛擬環境以後再安裝，不然 <code>Pipfile</code> 可能不會更新到。我測試的時候是這樣啦，不知道有沒有錯🤔）</p>
 <h3 id="進虛擬環境"><a href="#進虛擬環境" class="headerlink" title="進虛擬環境"></a>進虛擬環境</h3><p>如何進到有裝那些套件的環境呢？</p>
