@@ -1032,6 +1032,25 @@
 ]]></content>
   </entry>
   <entry>
+    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
+    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
+    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
+<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+<span id="more"></span>
+
+<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
+<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
+<p><img src="2.png" alt="2.png"></p>
+<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
+<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
+<p><img src="3.png" alt="3.png"></p>
+<br>
+這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
     <url>/2021/01/microprocessor-project/</url>
     <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
