@@ -332,6 +332,66 @@
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
+    <title>【職涯路上】100~97，開始行動！</title>
+    <url>/2022/03/freshman-career-100-97/</url>
+    <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
+<span id="more"></span>
+
+<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>3/4 禮拜五那天，突然想到說可以來倒數看看離畢業 (6/12) 還剩下幾天，一數發現剛好剩下 100 天！<br>之所以這麼做，是因為我原本很可能有個實習機會，某些原因的關係，我選擇婉拒。<br>因此覺得自己得開始做點什麼，希望自己回頭來看這件事的時候，會認為是值得的！</p>
+<h2 id="儀式感"><a href="#儀式感" class="headerlink" title="儀式感"></a>儀式感</h2><p>對於職涯方面，實在不想一直拖延，於是乎，我那天下午向朋友做了一個宣誓：</p>
+<blockquote>
+<p>今天我要盡我所能做一個簡單能用的 LINE 聊天機器人，主要功能是使用者能先挑感興趣的 KKBOX 排行榜(會先隨機秀出幾個)，接著會隨機跳出排行榜裡面的幾首歌，使用者點他想聽的，就能用 YouTube 或 Spotify 聽那首，適用情境可能就是當使用者不知道要聽什麼歌的時候，可以有個小幫手能夠幫忙推薦這樣。</p>
+</blockquote>
+<p>因為如果不讓別人知道，很可能會偷懶不做，但如果真的這樣的話，不就顯得「放棄實習機會」很愚蠢了嗎？</p>
+<p>我還說：</p>
+<blockquote>
+<p>我想讓自己習慣每天都花點心思在開發這件事情上，累積一點東西，多積極參與對求職有幫助的活動！</p>
+</blockquote>
+<p>就真的很希望自己能跳脫懶惰拖延的圈圈裡面！</p>
+<h2 id="小成果"><a href="#小成果" class="headerlink" title="小成果"></a>小成果</h2><p>最後當天有做出來那個聊天機器人嗎？有的，我把它叫做「推歌小幫手」。<br>然而，過程可真是不輕鬆，就跟現在寫這篇文一樣⋯⋯<br>（太久沒寫文章，現在回頭看之前寫的教學文，不禁讓我懷疑那些真的是我寫的嗎，怎麼感覺現在要重回之前的狀態還有一段路要走😂）</p>
+<!-- ![](result.gif) -->
+
+<img src="result.gif" alt="Demo" width="250" />
+
+<h2 id="困難與挑戰"><a href="#困難與挑戰" class="headerlink" title="困難與挑戰"></a>困難與挑戰</h2><p>為什麼做那個聊天機器人不太輕鬆？太久沒發揮創意然後實作出東西是其中一個原因，但主要是心理層面的掙扎與糾結。</p>
+<p>還是會有點擔心說會不會其實去實習是個比較好的選項。</p>
+<p>因為希望自己在投履歷和面試的時候，能有些像樣的 side project 提出來分享，但要做出像樣的 side project，就得花心思去思考怎樣的 project 才能吸引到人，無論是 project 的完整性與成熟度、與⽬標職缺及產業的相關性、企業端要求的技術能⼒，都得去顧慮到。</p>
+<p>那一整個過程光是用想的，就覺得，哇天啊，好像很不輕鬆啊！而選擇實習的話，就可以照著主管為我規劃的步調走，比較不用去煩惱這些。</p>
+<p>除此之外，因為生疏，會覺得自己頓頓的，甚至大部分的 code 和實作過程還是參考之前自己寫的「<a href="https://kanido386.github.io/2021/07/baymax-with-us/" target="_blank">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」才順利完成，就會覺得自己是不是在作弊都不動腦⋯⋯</p>
+<h2 id="豁然開朗"><a href="#豁然開朗" class="headerlink" title="豁然開朗"></a>豁然開朗</h2><p>直到我前天讀了「<a href="https://blog.niclin.tw/2019/09/03/start-your-side-project-beiyi-app-1/">2 個月擁有 6000 用戶 Side project 這樣做（一）</a>」這篇文章，才明白原來我這麼做是沒問題的，這是「平時養 code、寫技術⽂章」所帶來的好處：</p>
+<ul>
+<li>要做 LINE 聊天機器人？我之前已經做過兩次了，<strong>直接搬來⽤！</strong></li>
+<li>要串接 YouTube 和 KKBOX 的 API？我之前有把它們包成適合用於 LINE Bot 的 function 了，<strong>直接搬來⽤！</strong></li>
+<li>要做 LINE 或 Heroku 之類東西的設定？以前寫過教學⽂，<strong>直接看⾃⼰的筆記實作！</strong></li>
+</ul>
+<p>頓時欣慰了不少。<br>但這樣我那個聊天機器人有多什麼功能嗎？有的，多嘗試串接了 Spotify 的 API，用的是「Spotipy」這個別人封裝好的 Python 套件。（Spotipy is a lightweight Python library for the Spotify Web API.）</p>
+<h2 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h2><p>雖然很沒什麼，但我覺得還是要給自己一點鼓勵，畢竟願意起身行動，比自己一直在那邊踟躕不前好多了（不行動雖然「看似完美」，但是是不會有任何成果產生的）</p>
+<p>認真考慮那個聊天機器人的功能可以加進之前做的「<a href="https://github.com/kanido386/baymax-with-us#readme">杯麵</a>」裡面！（杯麵功能豐富多啦，而且 README 已經有點樣子了，可以再作延伸）</p>
+<h2 id="尋求建議"><a href="#尋求建議" class="headerlink" title="尋求建議"></a>尋求建議</h2><p>到了隔天，也就是 3/5 禮拜六，我去參加了由 104 主辦的「新世代求職趨勢&amp;人資獨家徵才解密」活動，聽企業講座之外，也去做了履歷健診。</p>
+<p>邊聽講座邊記筆記，除此之外也趁機看了一些別人對於 side project 的建議，「<a href="https://tw.alphacamp.co/blog/side-project-guide">好的 Side Project 和作品集如何做？給新⼿⼯程師的懶⼈包</a>」這篇文真的很讚，整理了一些優質的建議文，然後我也做了點筆記，希望自己能常常回憶起來那些建議並加以行動！</p>
+<p>履歷健診的部分真的很不錯，因為人很多要排隊等待，本來想說就算了反正之後還是有機會 (但我快畢業啦)，幸好沒懶惰，跟對方聊聊以後，對於職涯方面和履歷修改上真的有不少收穫，還建議我可以經營 LinkedIn，我們後來「建立關係」，對方很好心地說之後如果有什麼疑惑可以再跟他聯絡，覺得挺有意思的！</p>
+<h2 id="砥礪心智"><a href="#砥礪心智" class="headerlink" title="砥礪心智"></a>砥礪心智</h2><p>而昨天早上到駕訓班練車，整個下午到傍晚燙了個鳥巢頭QQ，晚上因為鳥巢頭而沒什麼心情做正事xD，就這樣那天也沒什麼行動，睡前還有點過意不去呢😅</p>
+<h2 id="繼續寫下去"><a href="#繼續寫下去" class="headerlink" title="繼續寫下去"></a>繼續寫下去</h2><p>今天主要就是這篇文啦～（真的太久沒寫，都不知道自己到底在寫什麼，語句通順與否還是會很在意，慢慢來吧，今天這樣寫感覺好像有點回來了，還行，但花了兩小時多😢）</p>
+<h2 id="指點迷津"><a href="#指點迷津" class="headerlink" title="指點迷津"></a>指點迷津</h2><p>跳 tone 一下，剛好很適合這個階段多提醒自己！</p>
+<p>最近聽了「<a href="https://open.spotify.com/show/1xpiKWtcLQcYALGHBw4SbP">職涯履行家 Creating Our Future</a>」的一集 podcast「<a href="https://open.spotify.com/episode/64Y8HF2iPtZh5KvRIlKtyV?si=3LMAAPj9QamiOOfP8HWEQQ">剛踏入社會，你也好迷茫嗎？深度聊聊迷茫怎麼來＆如何解決它！</a>」，何則文分享了一些點，我覺得很不錯，把它記下來了：</p>
+<ul>
+<li>我們為何迷茫？從⼩被⽤「標準答案」來教育，但未來的時代其實是沒有標準答案的，你必須要找到⾃⼰的解答！</li>
+<li>過去的成功(模式)，不代表會帶來未來的成功</li>
+<li>最重要的是回到⾃⼰的初⼼，不要問說社會覺得怎麼樣好，⽽是我做什麼事情我會開⼼，做什麼會覺得我的⼈⽣是幸福、是快樂的，往內求⽽⾮往外求</li>
+<li>不要跟別⼈⽐，跟過去的⾃⼰⽐就好 (成⻑型思維)！⾄於別⼈怎麼樣，那是他家的事情，他可能只是個 NPC (⼈⽣或許只是個遊戲，是被更⾼層次的東⻄建構出來的，像是元宇宙的概念)</li>
+<li>真正的學習是怎麼樣？學到⼀個東⻄然後它變成⼀個 module 或 function (可重複拿來⽤，不同 input 進來可得到不同 output，⽽不是只是⼀個 constant)。學習不是記憶，⽽是想辦法建⽴⼀個機制，讓未來⾃⼰可以找到答案</li>
+<li>只有你可以對你的⼈⽣負起你的責任，不能像機器⼀樣很被動，別⼈推我們才去做，⽽是要開始找到⾃⼰⼈⽣的解答</li>
+<li>要有跨域思維，不要被⾃⼰的科系、背景、社會環境給綁住，⾛出⾃⼰的道路！</li>
+</ul>
+<p>總結：不要追求外在的成功⽽是內在的幸福、不要讓你的過去(像是學經歷)限制你的未來、要有危機意識，不斷學習，了解⾃⼰！</p>
+<br>
+加油！接下來這條路肯定不輕鬆，別怕，一起克服心理障礙、戰勝心魔吧！]]></content>
+      <tags>
+        <tag>職涯</tag>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 FSM 及 LINE Messaging API 做一個聊天機器人</title>
     <url>/2021/07/fsm-line-bot/</url>
     <content><![CDATA[<p><a href="/2021/07/fsm-line-bot"><img src="https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
