@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="昨晚參加了 LINE Developers 的實體 Meetup，這也是我參與開發社群活動的初體驗，有不少收穫，在此做分享！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【心得】LINE Developers Meetup &amp;#35;16">
+<meta property="og:url" content="https://kanido386.github.io/2022/03/line-developers-meetup-16/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="昨晚參加了 LINE Developers 的實體 Meetup，這也是我參與開發社群活動的初體驗，有不少收穫，在此做分享！">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/lQVnBtc.jpg">
+<meta property="og:image" content="https://kanido386.github.io/2022/03/line-developers-meetup-16/1.png">
+<meta property="article:published_time" content="2022-03-25T06:03:08.000Z">
+<meta property="article:modified_time" content="2022-03-25T06:35:48.237Z">
+<meta property="article:author" content="卡尼多">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/lQVnBtc.jpg">
+
+<link rel="canonical" href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>【心得】LINE Developers Meetup &#35;16 | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【心得】LINE Developers Meetup &#35;16
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-25 14:03:08" itemprop="dateCreated datePublished" datetime="2022-03-25T14:03:08+08:00">2022-03-25</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/03/line-developers-meetup-16/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/line-developers-meetup-16/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
+<!-- <img src="1.png" style="width:50vw;" /> -->
+
+<p>昨晚參加了 LINE Developers 的實體 Meetup，這也是我參與開發社群活動的初體驗，有不少收穫，在此做分享！</p>
+<span id="more"></span>
+
+<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>這次的 Meetup 辦在台大體育館二樓的「後台Backstage Café」。</p>
+<p>18:30 開放入場，而我也差不多那個時間到，沒想到當我上階梯，一看，哇，怎麼已經那麼多人在排隊了啊！距離活動開始不是還有半小時嗎？</p>
+<h3 id="抓住機會"><a href="#抓住機會" class="headerlink" title="抓住機會"></a>抓住機會</h3><p>Anyway，進去了以後，吧台前面的桌上擺滿了吐司三明治和飲料，拿了一份，正準備要進裡面找位子時，聽到 LINE 的 HR 說還有限量十位的「快速面試」名額還沒額滿，於是這讓我沒多思考一秒，快快把東西放好在隨便一個位子上，拿著手機走到報名面試處的附近，深怕錯過了這個難得的機會！</p>
+<p>其實好幾天前就已經知道有這個特別活動，原本也打算投履歷來體驗一下快速面試 (哦對了那個面試是在面一個叫做 LINE TECH FRESH 的實習)，也上網查了一下，有找到說好像要投英文履歷錄取的機會比較高，但我目前只有中文履歷，最近嘗試做英文履歷也不太順利 (比想像中難做好幾倍啊)，再加上覺得身為應屆畢業生而且暫時不打算繼續念研究所的我應該會比其他還是在校生的應徵者機會低很多，所以就決定放棄不嘗試了。</p>
+<p>時間拉回到昨晚那個 moment，HR 說還有名額，而我的手機也握在手了，我當時似乎沒多思考什麼，什麼根本完全沒準備面試啊、履歷還是用中文而且沒修改啊、我之後不是在校生啊，都拋在腦後了，趕快找那個實習申請的頁面，也快點複製我 CakeResume 履歷的網址，倉促填一填勾一勾申請完以後就趕快找 HR 報名快速面試。</p>
+<p>很怕已經沒有名額了，都已經填好資料，錯失嘗試機會我覺得會比面試出糗還讓我後悔好一段時間⋯⋯</p>
+<h3 id="第七位"><a href="#第七位" class="headerlink" title="第七位"></a>第七位</h3><p>幸好後來有報成功，HR 還一個一個問報名快速面試的人說這份是不是你的履歷，跟我們做確認，我還趁機瞄到前一位的履歷，哇，是英文的欸，是沒仔細去看，但感覺內容好豐富啊！而當 HR 把她的筆電轉過來秀出我的履歷時，那股羞恥感還不小欸😂</p>
+<p>「你是第七位，8.30 先來這邊準備，大概 8.40 開始面試」，我不知道我是誰、我在哪，帶著一股奇妙的感受，回到位子上準備迎接前面的 talk。</p>
+<hr>
+<h2 id="TECH-FRESH-實習生分享心得"><a href="#TECH-FRESH-實習生分享心得" class="headerlink" title="TECH FRESH 實習生分享心得"></a>TECH FRESH 實習生分享心得</h2><p>一開始是由 LINE TAIWAN 的技術長為我們說明 LINE 的願景之類的，有點忘了，那個時候正享用著活動為我們準備的餐點，還蠻好吃的，但很可惜沒一邊專心邊聽講一邊做筆記😅</p>
+<p>接著分別是 LINE TODAY、LINE SHOPPING、LINE SPOT 的三位實習生輪番上陣，和我們分享了產品服務的介紹、架構以及他們透過實習學到了什麼。</p>
+<p>雖說不要做無謂的比較，但當知道身邊周遭年紀跟你差不多的同儕比你優秀很多的時候，真的會後悔為什麼當初應該怎樣怎樣或是不要怎樣而我卻怎樣，但畢竟時光一去不復返，人只能向前看，我們應該要做的，是秉持著「成長性思維」讓自己繼續前進，最該比較的是過去的自己，而不是一直拿別人去批評自己！當然，向他人看齊是很好的，能藉此激勵自我讓自己成長，但不要過度，否則陷入情緒漩渦而停滯不前就很可惜了。</p>
+<h3 id="分享學到什麼的好架構"><a href="#分享學到什麼的好架構" class="headerlink" title="分享學到什麼的好架構"></a>分享學到什麼的好架構</h3><p>好像有點扯遠了，這個 part 我只有簡短紀錄第二位實習生分享的東西：</p>
+<blockquote>
+<p>這是什麼：產品的簡介<br>我學到了什麼：程式語言、框架、CI/CD 工具之類的，好像也有軟實力的部分<br>完成/達到了什麼：最後多少人使用、成效如何、對於個人有怎麼樣的啟發(?)</p>
+</blockquote>
+<p>她用這個架構來闡述她在一個 project 當中具體學到了什麼，我覺得這個架構方式還蠻棒的，之後或許能嘗試看看用這個來架構我的分享🤔，如果有機會做分享的話xD</p>
+<p>三位都還有很多不錯的分享，但因為沒做筆記，也忘了差不多，所以這個部分就到這邊吧！<br>（所以真的要做記錄啊，不管是打字或是拍照，這樣方便自己回憶起來，才不會白聽啊OTZ）</p>
+<hr>
+<h2 id="和-Automation-Engineer-聊聊"><a href="#和-Automation-Engineer-聊聊" class="headerlink" title="和 Automation Engineer 聊聊"></a>和 Automation Engineer 聊聊</h2><p>其實這個 Meetup 不必得一直坐在位子上聽分享，你也可以到處走走然後到處跟別人聊，跟小時候玩神奇寶貝電玩走草叢的概念很像xD</p>
+<p>原本我是想找 Evan 聊關於部落格的事情，因為我<a target="_blank" rel="noopener" href="http://www.evanlin.com/">就是因為他</a>才開啟<a href="https://kanido386.github.io" target="_blank">我的部落格之路</a>啊！</p>
+<p>但看到大家都在問跟 LINE 工作有關的問題，突然問部落格好像有點突兀，所以我就問了 Server-side Engineer 這個職位，然後我也忘了為什麼，不知不覺輾轉提到了 Service QA Engineer，於是 Evan 就帶我引介給一位 Automation Engineer。</p>
+<h3 id="Side-Project-建議"><a href="#Side-Project-建議" class="headerlink" title="Side Project 建議"></a>Side Project 建議</h3><p>我有提到說我希望能透過 side project 來幫助我面試正職的工作。</p>
+<p>（他說）</p>
+<p>做 side project 在深不在廣，要展現出來給面試你的人看的，是你在短時間之內能自學到什麼程度，以及中間的思考流程。最重要的就是展現出自學能力及你對於這方面的熱忱，畢竟剛畢業真正會很多東西、很厲害的人佔少數，你的 potential 如何才是他們最 care 的！</p>
+<p>想學什麼？怎麼學？現在網路上學習資源真的非常多，YouTube 各種教學影片，隨便 google 幾乎能找得到各種教學文，所以他又再次提到，最重要的真的就是學習能力，一個能讓你快速上手新知識和技術的學習能力，至於學習的內容本身，我這樣聽下來，反倒是其次，因為新進公司時通常對他們來說你就像是一張白紙，差別在於品質的好壞，也就是 potential 啦，你能快速學習新事物，比你現在會什麼，還要來得重要！（當然通常會越多東西，也會有一定的快速學習能力）</p>
+<p>（我反思）</p>
+<p>或許之後有做 side project 真的可以寫 blog post 或是錄影片做分享，一方面能 show 給面試官看我的學習能力、熱忱、思考方式，最重要的是讓自己更清楚知道自己在做什麼，被面試官問到的時候才比較不會被問倒QQ（快速面試的體悟，見下面的分享）</p>
+<h3 id="關於未來職涯選擇"><a href="#關於未來職涯選擇" class="headerlink" title="關於未來職涯選擇"></a>關於未來職涯選擇</h3><p>我說我職涯初期想先走後端，因為我之前在梅竹黑客松開發部就是在寫後端。</p>
+<p>（他說）</p>
+<p>不要只因為現在會什麼就決定未來走哪方面，而是自己熱忱的地方在哪，然後再去靠自學補足！</p>
+<p>（我反思）</p>
+<p>也是，畢竟人生的路還很長，而且網路上資源豐富，想學什麼或是想報名什麼都很方便，不必完全因為之前會什麼而就那樣走下去。當然熱忱不是想找就找得到的，而是在不斷的嘗試當中，逐漸被激發出來的，沒嘗試，永遠不會知道自己對這一塊是不是有熱忱！</p>
+<p>所以我職涯初期真的會走後端？或許吧，但如果近期在什麼因緣際會之下接觸到什麼對它產生極大的興趣和熱忱，而決定先往那方面嘗試，那也挺不錯的不是嗎？</p>
+<hr>
+<h2 id="快速面試"><a href="#快速面試" class="headerlink" title="快速面試"></a>快速面試</h2><p>面試前超級緊張的，腦海裡只有，完蛋，完全沒準備，等等自我介紹該說什麼啊？我是不是不應該貿然報名這個面試的，不應該挖坑給自己跳？我可以強烈感受到我在活著，好久沒這樣了。</p>
+<p>一進去，有三位面試官，那感覺是沒想像中恐怖啦。中間的面試官請我簡單的自我介紹，於是我就語無倫次地說我是誰、我讀哪、我職涯初期打算先做後端，然後直接表明我是大四生，應該沒資格報名吧？但他們說剛剛甚至還有高中生來面試呢！所以這不該是理由。而我也再表明我主要是來了解 LINE 相關的工作跟來面試看看，感受一下的，應徵實習不是我的目的。不知道是不是因為這樣，還是其實面試就是這樣，或是因為快速面試只有 15 分鐘，他們就沒讓我繼續自我介紹，而是直接問我履歷上的內容。</p>
+<p>中間的過程我就不照時間順序來敘述了，等等也會穿插提到，接下來就來分享我面試完後，透過「自由書寫」的方式寫下來的種種心得和體悟。（當然寫在這邊的內容是有經過整理和潤飾的）</p>
+<h3 id="面試官想知道你什麼？"><a href="#面試官想知道你什麼？" class="headerlink" title="面試官想知道你什麼？"></a>面試官想知道你什麼？</h3><p>面試官會希望透過你的自我介紹，知道你的特質、表達能力，以及問你問題時，你能不能夠很快聽懂，並且回答得得體合宜。</p>
+<p>這次的快速面試，讓我有著最深的體悟，就是「回答得讓人聽得懂」這一點啊！（這是我最自卑也最想改善的一環…）</p>
+<p>面試官真的不那麼 care 面試者現階段會不會很多東西，而是他多有 potential，畢竟進公司以後，很多東西都要從頭學習。</p>
+<p>最該展現出來的，就是你是一個資質很好的紙張，你能夠快速學習新事物、溝通表達上ok(QQ)、特質是否符合該職位、甚至可能是企業文化的適配性，當然你會什麼、曾經做過什麼，能用面試官聽得懂的方式表達出來是最好！</p>
+<h3 id="對履歷要有著絕對的了解"><a href="#對履歷要有著絕對的了解" class="headerlink" title="對履歷要有著絕對的了解"></a>對履歷要有著絕對的了解</h3><p>今天三位面試官真的都從履歷上面我有列出來的專案來問我問題！</p>
+<p>這邊以我為例，去年(2021)暑假的黑客松競賽、交大藝趣節拼貼專案 Android APP、梅竹黑客松開發部。</p>
+<p>被問到：</p>
+<ol>
+<li>開發部開發出來的活動平台一共幾個人使用</li>
+<li>因為拼貼專案有提到，請比較 Kotlin、Java 的差別，以及自己覺得寫起來有什麼差別，為什麼要同時用兩種程式語言開發呢？</li>
+<li>開發部那邊有列出 Nuxt.js，你能不能簡述它是什麼呢？</li>
+<li>去年的黑客松競賽你負責什麼呢？請簡單介紹一下那個聊天機器人。為什麼是用 Flask 呢？上面有列出「串接第三方 API」請問是什麼呢？</li>
+</ol>
+<p>然而我⋯⋯ 完全不知道自己在回答什麼⋯⋯</p>
+<p>關於履歷，不太會補充說明或是那個 part 不是你做的部分，真的就不要列在履歷上面了，不然就是要準備足夠，因為面試官真的都是從履歷上有寫的 project 來問問題！</p>
+<h3 id="怎麼練習？"><a href="#怎麼練習？" class="headerlink" title="怎麼練習？"></a>怎麼練習？</h3><p>至於準備方式，我覺得要多練習說說那些東西，最好找不同人練習，對於那些 project 或是你履歷上有提到的，讓他們問他們想問的，真的什麼問題都可以問，重要的就是訓練那個臨場反應，以及確認自己到底懂多少、能否闡述得讓人聽得懂。</p>
+<p>對於我個人來說，之後或許可以開 YouTube 直播之類的來練習這一塊，多練習口語表達！</p>
+<p>面試的時候連自己都不知道在講什麼了，更何況是面試官😂</p>
+<p>真的真的真的要足夠了解自己列出來的所有東西，一開始先掌握這一個最基本的點，熱忱、學習能力的展現可以之後再慢慢加進來。</p>
+<h3 id="可以嘗試抱持的心態"><a href="#可以嘗試抱持的心態" class="headerlink" title="可以嘗試抱持的心態"></a>可以嘗試抱持的心態</h3><p>面試的時候其實氣氛挺輕鬆的，不用想得那麼恐怖，面試官人很 nice 的～</p>
+<p>大不了就這次面試表現很爛、沒被錄取而已。</p>
+<p>去跟面試官聊聊真的會有收穫，可以當成是去成長的，幫自己迭代改進！</p>
+<h3 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h3><p>真的就是大量嘗試！</p>
+<p>幸好今天有報這個快速面試讓自己被慘電，雖然有點丟臉 (但其實那感覺也還行)，但收穫真的滿滿，才知道自己可以往哪方面去改進！</p>
+<p>丟臉只是一時的，然而，那收穫或許可以為自己的人生帶來長遠的效益啊！</p>
+<p>有一句話很適合放在這邊：「當一切努力看似無用，我會去看石匠敲打石頭。可能敲了一百下，石頭上連一條裂縫都沒有，但就在第一百零一下，石頭斷裂為兩半。然後我了解到，把石頭劈成兩半的不是最後那一下，而是先前的每一次敲擊。」</p>
+<p>加油，路是不會白走的！</p>
+<hr>
+<h2 id="向-Evan-請教部落格"><a href="#向-Evan-請教部落格" class="headerlink" title="向 Evan 請教部落格"></a>向 Evan 請教部落格</h2><p>之前大三修「正規語言概論」，因為準備考試的需要，讓我無意間找到了 Evan 的<a target="_blank" rel="noopener" href="https://www.evanlin.com/moocs-coursera-automata-note1/">相關系列文</a>，也間接讓我知道 Evan，但那個時候還不知道他在 LINE 工作。</p>
+<p>2020 梅竹黑客松，因為出題企業有 LINE，沒想到 Evan 居然是評審之一，才知道原來他是 LINE 的開發技術推廣工程師，讓我想抓住機會討教一番，於是乎，活動最後一天找上 Evan 聊聊，向他請教部落格，也就因為這樣，從那個時候到現在，我部落格多誕生了 28 篇文章，其中有些文章感覺有幫助到他人 (從不重複點閱數猜測的啦xD)，能夠更靠近「認識自我 • 感受世界 • 創造價值」的理念，著實讓我很有成就感！</p>
+<p>啊，廢話不多說，趕快進到重點好了。</p>
+<h3 id="覺得內容沒什麼而不敢寫，怎麼辦？"><a href="#覺得內容沒什麼而不敢寫，怎麼辦？" class="headerlink" title="覺得內容沒什麼而不敢寫，怎麼辦？"></a>覺得內容沒什麼而不敢寫，怎麼辦？</h3><p>寫就對了。</p>
+<p>透過寫部落格，對於你不熟悉的東西，你就會去查嘛，然後寫一寫又卡住，那就再去查嘛，久而久之，覺得自己好像不知不覺也學到了什麼，這樣對自己很有幫助不是嗎？最重要的是你透過寫部落格，有怎麼樣的成長，至於別人覺得怎樣，那倒是其次。</p>
+<p><strong>如果真的希望自己的文章能幫助到他人呢？</strong></p>
+<p>其實不用擔心說自己寫的東西太簡單、跟大神的分享差十萬八千里會不會顯得沒價值什麼的。當你懂的比別人多那麼一點，對方不懂，而你剛好懂，不就是一個可以分享的契機嗎？只要能讓對方收穫到一點什麼，就是一種價值！</p>
+<p>像我之前有寫 LINE Bot 的相關文章，除了能幫助想嘗試做 LINE Bot 的朋友，甚至還能造福到之後也要做相關 project 的自己，因為可以直接拿之前的筆記參考來做啊，超方便的xD</p>
+<p><strong>怕寫出來的東西內容有錯？</strong></p>
+<p>可以試著丟社群分享，如果有錯了，別人說不定會告訴你哪些地方可以修正，多棒的一件事啊！</p>
+<p>就是不要怕丟臉，很多時候真的是從「看起來愚蠢」開始慢慢成長的！</p>
+<h3 id="如何定期輸出？"><a href="#如何定期輸出？" class="headerlink" title="如何定期輸出？"></a>如何定期輸出？</h3><p>可以試著規定自己，每個禮拜要有固定產出，最重要的就是定期讓自己輸出成長。</p>
+<p>不知道寫什麼嗎？</p>
+<p>這週有聽到什麼分享覺得還不錯的，或是也可以藉機閱讀來寫東西，抑或是學點新技術然後來分享、再查資料、再分享，不斷迭代下去。真的不要去過度擔心內容很差怎麼樣，那是自己的部落格啊！</p>
+<p>可以造福到未來的自己，而且透過這個過程成長，那才是最重要的！</p>
+<p>文章看起來廢廢的又怎樣？多輸出、整理思緒、遇到卡住就查資料順便學習。目前不是大神，但一定有人可以向你學習，不斷反覆這個過程，久了，就如同 Evan 說的，說不定也能成為別人眼中的大神，當然那不是目的，而是一個可能伴隨而來的附屬品，再說一次，最重要的是能夠讓自己成長！</p>
+<h3 id="口語表達怎麼練呢？"><a href="#口語表達怎麼練呢？" class="headerlink" title="口語表達怎麼練呢？"></a>口語表達怎麼練呢？</h3><p>寫部落格能訓練文字表達能力，那口語表達怎麼辦呢？</p>
+<p>可以試著發 YouTube 影片，因為為了錄製影片，你會去想辦法控制表達的時間掌握、口條、聲音、語氣等等的，這些都是很好的練習。</p>
+<p>甚至，還可以去參加社群的分享，報名當上台分享的那個人。</p>
+<p>不用擔心說自己講的東西是不是太簡單或者是沒什麼價值什麼的，Evan 說，啊就是會有人沒聽過啊，分享了以後可以造福給不知道的人聽，也是一種很棒的分享啊！</p>
+<p>最重要的是，也能藉由那個機會訓練自己的口語表達能力，不是很讚嗎？</p>
+<h3 id="對讀研究所的看法"><a href="#對讀研究所的看法" class="headerlink" title="對讀研究所的看法"></a>對讀研究所的看法</h3><p>我目前打算先去工作，想聽聽看 Evan 對於讀研究所的看法。</p>
+<p>（他說）</p>
+<p>研究所是訓練那整個深入研究東西的過程，研究什麼東西倒是其次，最重要的就是那整個做學問的心法！</p>
+<p>（我反思）</p>
+<p>因為目前真的沒有很想念研究所，怕先念了也只是拿來逃避找工作，這樣子我覺得有點可惜。</p>
+<p>或許未來工作一段時間之後再回去讀吧？感覺帶著更正確的心態去讀研究所會更有收獲！</p>
+<hr>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一次參加社群活動，覺得滿載而歸，會讓我想繼續參加類似的活動！</p>
+<p>加油，多方嘗試、比過去的自己更進步、不要怕出糗、多接收外界刺激讓自己體會不一樣的事物，你我都可以越來越來靠近心目中的理想自我的！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/freshman-career-85/" rel="prev" title="【職涯路上】85，不想徒具形式">
+      <i class="fa fa-chevron-left"></i> 【職涯路上】85，不想徒具形式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E9%96%8B%E5%A7%8B"><span class="nav-number">1.</span> <span class="nav-text">一開始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%93%E4%BD%8F%E6%A9%9F%E6%9C%83"><span class="nav-number">1.1.</span> <span class="nav-text">抓住機會</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E4%BD%8D"><span class="nav-number">1.2.</span> <span class="nav-text">第七位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TECH-FRESH-%E5%AF%A6%E7%BF%92%E7%94%9F%E5%88%86%E4%BA%AB%E5%BF%83%E5%BE%97"><span class="nav-number">2.</span> <span class="nav-text">TECH FRESH 實習生分享心得</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E4%BA%AB%E5%AD%B8%E5%88%B0%E4%BB%80%E9%BA%BC%E7%9A%84%E5%A5%BD%E6%9E%B6%E6%A7%8B"><span class="nav-number">2.1.</span> <span class="nav-text">分享學到什麼的好架構</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-Automation-Engineer-%E8%81%8A%E8%81%8A"><span class="nav-number">3.</span> <span class="nav-text">和 Automation Engineer 聊聊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Side-Project-%E5%BB%BA%E8%AD%B0"><span class="nav-number">3.1.</span> <span class="nav-text">Side Project 建議</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E6%9C%AA%E4%BE%86%E8%81%B7%E6%B6%AF%E9%81%B8%E6%93%87"><span class="nav-number">3.2.</span> <span class="nav-text">關於未來職涯選擇</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E9%9D%A2%E8%A9%A6"><span class="nav-number">4.</span> <span class="nav-text">快速面試</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E8%A9%A6%E5%AE%98%E6%83%B3%E7%9F%A5%E9%81%93%E4%BD%A0%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">面試官想知道你什麼？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8D%E5%B1%A5%E6%AD%B7%E8%A6%81%E6%9C%89%E8%91%97%E7%B5%95%E5%B0%8D%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="nav-number">4.2.</span> <span class="nav-text">對履歷要有著絕對的了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E9%BA%BC%E7%B7%B4%E7%BF%92%EF%BC%9F"><span class="nav-number">4.3.</span> <span class="nav-text">怎麼練習？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E5%98%97%E8%A9%A6%E6%8A%B1%E6%8C%81%E7%9A%84%E5%BF%83%E6%85%8B"><span class="nav-number">4.4.</span> <span class="nav-text">可以嘗試抱持的心態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E6%82%9F"><span class="nav-number">4.5.</span> <span class="nav-text">感悟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91-Evan-%E8%AB%8B%E6%95%99%E9%83%A8%E8%90%BD%E6%A0%BC"><span class="nav-number">5.</span> <span class="nav-text">向 Evan 請教部落格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%BA%E5%BE%97%E5%85%A7%E5%AE%B9%E6%B2%92%E4%BB%80%E9%BA%BC%E8%80%8C%E4%B8%8D%E6%95%A2%E5%AF%AB%EF%BC%8C%E6%80%8E%E9%BA%BC%E8%BE%A6%EF%BC%9F"><span class="nav-number">5.1.</span> <span class="nav-text">覺得內容沒什麼而不敢寫，怎麼辦？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9A%E6%9C%9F%E8%BC%B8%E5%87%BA%EF%BC%9F"><span class="nav-number">5.2.</span> <span class="nav-text">如何定期輸出？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A3%E8%AA%9E%E8%A1%A8%E9%81%94%E6%80%8E%E9%BA%BC%E7%B7%B4%E5%91%A2%EF%BC%9F"><span class="nav-number">5.3.</span> <span class="nav-text">口語表達怎麼練呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8D%E8%AE%80%E7%A0%94%E7%A9%B6%E6%89%80%E7%9A%84%E7%9C%8B%E6%B3%95"><span class="nav-number">5.4.</span> <span class="nav-text">對讀研究所的看法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%8C%E8%A8%98"><span class="nav-number">6.</span> <span class="nav-text">後記</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="寫信給我 → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>寫信給我</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/kanido386/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;kanido386&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw" title="卡尼多 → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCVJOQCQI-lK7bTcKVG7ArYw" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>卡尼多</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2022/03/line-developers-meetup-16/";
+    this.page.identifier = "2022/03/line-developers-meetup-16/";
+    this.page.title = "【心得】LINE Developers Meetup &#35;16";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
