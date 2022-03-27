@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>【心得】2022 Yourator 數位職涯博覽會</title>
+    <url>/2022/03/2022-yourator-career-fair/</url>
+    <content><![CDATA[<p>簡單分享昨天參加職涯博覽會的收穫～</p>
+<span id="more"></span>
+
+<h2 id="做一對一職涯諮詢"><a href="#做一對一職涯諮詢" class="headerlink" title="做一對一職涯諮詢"></a>做一對一職涯諮詢</h2><p>雖然只有短短 15 分鐘，但還挺不錯的！</p>
+<h3 id="面試官看重什麼"><a href="#面試官看重什麼" class="headerlink" title="面試官看重什麼"></a>面試官看重什麼</h3><p>和面試官對談時，他們看的是你的邏輯、想法，也藉機了解你對程式語言、框架的熟悉程度。</p>
+<p>會某個技術，但覺得自己還不夠好嗎？以新鮮人求職來說，他們不是非得要即戰力，所以職務上面列出來的條件不需要真的到非常熟，進到公司以後內部可以再做培訓。他們最看重的，就是你多有 potential！</p>
+<p>所以如果要做 side project，做深入一點，重質不重量，可以敘述你做了什麼、為什麼做、遇到什麼挑戰、如何解決等等的，讓面試官清楚知道你的技術能力之外，也能更了解你的軟實力。</p>
+<h3 id="呈現自我的小建議"><a href="#呈現自我的小建議" class="headerlink" title="呈現自我的小建議"></a>呈現自我的小建議</h3><ul>
+<li>履歷上的經歷可以用 STAR 原則來撰寫：Situation (情境)、Task (任務)、Action (行動)、Result (結果)</li>
+<li>在面試前，可以先做一份簡報，面試時，可以拿出來輔助自我介紹，或許還可以列出之前做過的 project，讓自己在描述的時候能更加順利（上一次聽到這個建議是在交大就業博覽會）</li>
+</ul>
+<h3 id="擔心口語表達方面？"><a href="#擔心口語表達方面？" class="headerlink" title="擔心口語表達方面？"></a>擔心口語表達方面？</h3><p>面試前先準備好面試官可能會問到的問題，尤其是自己履歷上頭有提到的，一定要練到非常熟！</p>
+<p>可以對鏡子說，也可以找朋友練習，訓練臨場反應之外，也練習不讓緊張影響到太多表現。</p>
+<p>有趣的建議：每天起床對鏡子說十次我很好！（覺得蠢？換個角度想，你不用正面思考去說服自己，平常不是都洗腦自己說自己不夠好不是嗎？只是換個台詞、換個想法而已）</p>
+<hr>
+<h2 id="逛攤心得大集合"><a href="#逛攤心得大集合" class="headerlink" title="逛攤心得大集合"></a>逛攤心得大集合</h2><p>按照類別彙整在一起～</p>
+<h3 id="平時的精進"><a href="#平時的精進" class="headerlink" title="平時的精進"></a>平時的精進</h3><p>做相關 side project 真的很吃香，不用到很複雜，而是那個 project 的完整性！</p>
+<p>以 PHP 相關開發為例，我問了某間企業的技術 leader。怎麼學 PHP 呢？直接去 GitHub 上面找相關的 project 模仿、學習，對於有其他程式語言開發經驗的人來說，直接做一個 project，而不是很制式地從頭學語法一步一步慢慢來，畢竟開發這一塊就是重實作！<br>（他後來還推薦了我他之前寫的「<a href="https://medium.com/parenting-tw/web%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E6%87%89%E6%9C%89%E7%9A%84%E4%B8%83%E5%80%8B%E7%89%B9%E8%B3%AA-f4ea03270a04">Web程式設計師應有的七個特質</a>」這篇文章，感覺不錯，可以找時間來拜讀個，啊，但這樣你就知道他是哪個企業的了xD）</p>
+<p>做 project 的同時，可以試著完善 readme 之類的說明，或許也可以寫成文章，以便於在未來面試時，分享你做這個 project 是為了解決什麼樣的問題、你用什麼方法去實作、中間遇到困難是如何解決的。</p>
+<p>面試官真的很愛從你做過的 project 上去問你問題，還有履歷上有提到的東西，真的大概就是這樣！</p>
+<h3 id="關於投遞履歷"><a href="#關於投遞履歷" class="headerlink" title="關於投遞履歷"></a>關於投遞履歷</h3><p>（這是某間企業的 HR 分享給我的，一樣是比較適合給新鮮人的建議）</p>
+<p>職務敘述上面寫到的需要幾年工作經驗、要會某個程式語言、開發框架需要有幾年的經驗，真的參考就好，即便沒完全達到上面的條件要求，也去投履歷看看，HR 看到覺得不錯的，也是有可能會給內部負責的人看，因此也有可能會有面試機會！</p>
+<p>所以，投就對了！管它上面寫需要幾年，大不了沒收到任何回應，多投多試，就是多一份機會！</p>
+<p>還有，不要看到有些技術不太熟甚至不會就不敢投，如果每個技術都會，雖然拿到 offer 的機會可能會比較高，但我們更應該在乎的，是這個工作對自己的職涯發展有無幫助。</p>
+<p>而且別忘了，人是可以學習的，不要覺得現在不會就永遠不會，你只是暫時不會而已，進去再補足對職涯也是個不錯的成長方式！</p>
+<p>（當然企業不見得會錄取你就是了，那也沒關係，還有下一間啊）</p>
+<h3 id="面試前怎麼準備？"><a href="#面試前怎麼準備？" class="headerlink" title="面試前怎麼準備？"></a>面試前怎麼準備？</h3><p>一定要對企業有足夠的了解、知道他們有什麼產品、在做什麼，不然會顯得亂槍打鳥！</p>
+<p>而且別忘了，務必要準備好要問面試官的問題，不然會讓面試官覺得你沒準備充分（我禮拜五的那場 AppWorks School 面試還真忘記準備要提問的問題，覺得很嘔😢）</p>
+<h3 id="面試官看重什麼-1"><a href="#面試官看重什麼-1" class="headerlink" title="面試官看重什麼"></a>面試官看重什麼</h3><p>以新鮮人來說，面試官很注重的是你的 <strong>potential</strong>，展現出來的感覺面試官真的很看重！（詢問了很多間，真的很多攤位都有提到 potential 這個英文單字啊！）</p>
+<p>所以，真的可以嘗試做 side project，然後深入一點讓它具有一定的完整性，不要這個只做一點、那個也只做一點，很難更深入了解所選用程式語言、框架的知識技術之外，也很難有著對一個較為完整 project 的思考。</p>
+<p>此外，<strong>求職期間也要持續學習，不要只是參加就業博覽會、寫履歷這種形式上的努力而已，不然空窗期在那邊，面試官也會好奇難道這段期間都沒寫 code？</strong></p>
+<p>（AppWorks School 面試也被問到最近在寫什麼程式，答不太出來覺得有點糗⋯⋯）</p>
+<h3 id="覺得面試講得不好？"><a href="#覺得面試講得不好？" class="headerlink" title="覺得面試講得不好？"></a>覺得面試講得不好？</h3><p>博覽會快結束的時候，很榮幸能和<a href="https://www.facebook.com/W.Herder">則文老師</a>請教有關於口語表達方面的事情，因為我真的很欣賞他的表達方式，覺得很有內容和條理，最後還跟他合了照，回去之後還私訊詢問一些事情～<br>（我真的很想要突破這一點啊！）</p>
+<p>肌肉怎麼練？就是一直練。口語表達也是一樣，可以多做上台分享的那一個！</p>
+<p>可以在面試前，去預想面試官可能會問到什麼問題，列出來，然後大量練習，腦海中要先有個脈絡，<strong>要先有個劇本</strong>，正式講的時候就循著那個脈絡表達出來，總而言之，就是大量練習！</p>
+<p>如果擔心事先準備的話會不會很像在背稿，那就不要逐字稿，而是列出大綱、脈絡，說不定就能改善這個部分。</p>
+<br>
+加油，在精進自我的路上，你，並不孤單！]]></content>
+  </entry>
+  <entry>
     <title>用 Algorithmia 部署 ML Models</title>
     <url>/2021/07/algorithmia-ml-models/</url>
     <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
@@ -1056,87 +1098,101 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript ES6 Cheatsheet</title>
-    <url>/2020/04/javascript-es6-cheatsheet/</url>
-    <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>之前學 ES6 時整理的筆記😀</p>
+    <title>助你行動</title>
+    <url>/2022/01/help-you-take-action/</url>
+    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
 <span id="more"></span>
 
-<p>參考自：<a href="https://peter-chang.medium.com/es6-10-features-javascript-developer-must-know-98b9782bef44">[ES6] Javascript 開發者必須知道的 10 個新功能</a></p>
-<h2 id="Default-Parameters"><a href="#Default-Parameters" class="headerlink" title="Default Parameters"></a>Default Parameters</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters">MDN</a>:<br><strong>Default function parameters</strong> allow named parameters to be initialized with default values if no value or <code>undefined</code> is passed.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">height = <span class="number">173</span>, weight = <span class="number">66</span>, college = <span class="string">&#x27;NCTU&#x27;</span></span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Template-Literals"><a href="#Template-Literals" class="headerlink" title="Template Literals"></a>Template Literals</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a>:<br>Template literals are string literals allowing embedded expressions. You can use multi-line strings and <a href="https://dmitripavlutin.com/string-interpolation-in-javascript/">string interpolation</a> features with them.</p>
-<h3 id="Multi-line-Strings"><a href="#Multi-line-Strings" class="headerlink" title="Multi-line Strings"></a>Multi-line Strings</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;first line\n&#x27;</span></span><br><span class="line">+ <span class="string">&#x27;second line&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`first line</span></span><br><span class="line"><span class="string">second line`</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="String-Interpolation"><a href="#String-Interpolation" class="headerlink" title="String Interpolation"></a>String Interpolation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;My name is &#x27;</span> + first + <span class="string">&#x27; &#x27;</span> + last + <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`My name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>.`</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Destructuring-Assignment"><a href="#Destructuring-Assignment" class="headerlink" title="Destructuring Assignment"></a>Destructuring Assignment</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>:<br>The <strong>destructuring assignment</strong> syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; &#125;, gender: &#x27;male&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; ...me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; , gender: &#x27;male&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-destructuring"><a href="#Array-destructuring" class="headerlink" title="Array destructuring"></a>Array destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> [red, yellow, green] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(red); <span class="comment">// one</span></span><br><span class="line"><span class="built_in">console</span>.log(yellow); <span class="comment">// two</span></span><br><span class="line"><span class="built_in">console</span>.log(green); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Object-destructuring"><a href="#Object-destructuring" class="headerlink" title="Object destructuring"></a>Object destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; name, college &#125; = me;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// Tim</span></span><br><span class="line"><span class="built_in">console</span>.log(college); <span class="comment">// NCTU</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h2><p><a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記] JavaScript ES6 中的物件的擴展（object literal extension）</a></p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMachine</span>(<span class="params">name, year, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// name: name,</span></span><br><span class="line">    name,</span><br><span class="line">    year,</span><br><span class="line">    <span class="comment">// 也可以覆蓋掉傳進來的值</span></span><br><span class="line">    <span class="attr">price</span>: <span class="number">810000</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ⽅法 methods 也能放進來</span></span><br><span class="line">    <span class="attr">description</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 簡寫</span></span><br><span class="line">    <span class="function"><span class="title">description</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 允許將表達式 expression 作為屬性名稱，以達到動態賦值的效果（包在[]裡⾯）</span></span><br><span class="line">    [year+<span class="string">&#x27;machine&#x27;</span>]: price,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> machine = makeMachine(<span class="string">&#x27;Switch&#x27;</span>, <span class="number">2020</span>, <span class="number">9780</span>);</span><br><span class="line"></span><br><span class="line">machine.description();</span><br><span class="line"><span class="comment">// 2020 machine Switch is 9780 dollars</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(machine.price);</span><br><span class="line"><span class="comment">// 810000</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Arrow-Functions"><a href="#Arrow-Functions" class="headerlink" title="Arrow Functions"></a>Arrow Functions</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN</a>:<br>An <strong>arrow function expression</strong> is a compact alternative to a traditional <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">function expression</a>, but is limited and can’t be used in all situations.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多個參數</span></span><br><span class="line">(param1, param2, ..., paramN) =&gt; &#123; statements &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> &#123; <span class="keyword">return</span> expression; &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⼀個參數</span></span><br><span class="line"><span class="function">(<span class="params">singleParam</span>) =&gt;</span> &#123; statements &#125;;</span><br><span class="line"><span class="function"><span class="params">singleParam</span> =&gt;</span> &#123; statements &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 沒有參數</span></span><br><span class="line"><span class="function">() =&gt;</span> &#123; statements &#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p><a href="https://andyyou.github.io/2017/06/27/js-promise/">Promise 學習筆記 | DEVLOG of andyyou</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>:<br>The <strong><code>Promise</code></strong> object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
-<h3 id="建⽴-Promise"><a href="#建⽴-Promise" class="headerlink" title="建⽴ Promise"></a>建⽴ Promise</h3><p>把 <code>Promise</code> 想成是⼀個 object！</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">hasEnoughMoney = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pleaseBuyMeSwitch = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasEnoughMoney) &#123;</span><br><span class="line">    <span class="keyword">const</span> gift = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Switch&#x27;</span>,</span><br><span class="line">      <span class="attr">price</span>: <span class="number">9780</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    resolve(gift); <span class="comment">// 回傳 gift 這個物件</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;I lost my 20000 dollars at the gym!!!&#x27;</span>);</span><br><span class="line">    reject(reason); <span class="comment">// 回傳 reason 這個 Error 物件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="使⽤-Promise"><a href="#使⽤-Promise" class="headerlink" title="使⽤ Promise"></a>使⽤ Promise</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">askJoeman();</span><br></pre></td></tr></table></figure>
-
-<h3 id="簡化寫法"><a href="#簡化寫法" class="headerlink" title="簡化寫法"></a>簡化寫法</h3><p>若某個 function 沒呼叫 <code>reject</code></p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">    resolve(message);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>可簡寫成</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ES7-async-await-⾮同步寫法"><a href="#ES7-async-await-⾮同步寫法" class="headerlink" title="ES7 async/await ⾮同步寫法"></a>ES7 async/await ⾮同步寫法</h3><p>原本的寫法</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>新寫法</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">askJoeman</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> something = <span class="keyword">await</span> pleaseBuyMeSwitch;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> showoff(something.name);</span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">  &#125; <span class="keyword">catch</span>(error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// await ⼀定要包在 async function 裡⾯才能⽤</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> askJoeman();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-
-<p>cleaner and more readable!</p>
-<h2 id="Let-amp-Const-Block-Scoped"><a href="#Let-amp-Const-Block-Scoped" class="headerlink" title="Let &amp; Const, Block-Scoped"></a>Let &amp; Const, Block-Scoped</h2><p><code>let</code> 僅在當前的 block 內有效，重複定義時會 throw error。<br><code>const</code> 同樣只在當前的 block 內有效，定義時必須 initialize，且不能更改。</p>
-<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">MDN</a>:<br>Classes are a template for creating objects. They encapsulate data with code to work on that data.</p>
-<h3 id="Class-Declaration-類別宣告"><a href="#Class-Declaration-類別宣告" class="headerlink" title="Class Declaration 類別宣告"></a>Class Declaration 類別宣告</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Class-Expression-類別敘述"><a href="#Class-Expression-類別敘述" class="headerlink" title="Class Expression 類別敘述"></a>Class Expression 類別敘述</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// unnamed</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// named</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> PG = <span class="keyword">new</span> People(<span class="string">&#x27;Curry&#x27;</span>, <span class="number">32</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Prototype-Methods-原型⽅法"><a href="#Prototype-Methods-原型⽅法" class="headerlink" title="Prototype Methods 原型⽅法"></a>Prototype Methods 原型⽅法</h3><p>可包 getter、setter、method 等等的進到 class 定義裡⾯，詳⾒ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#prototype_methods">MDN</a>。</p>
-<h3 id="Static-methods-靜態⽅法"><a href="#Static-methods-靜態⽅法" class="headerlink" title="Static methods 靜態⽅法"></a>Static methods 靜態⽅法</h3><p>不需要實體化就可以被呼叫，也無法被已實體化的類別物件呼叫。<br>經常被⽤來建⽴給應⽤程式使⽤的⼯具函數。</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">greeting</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`My name is <span class="subst">$&#123;name&#125;</span>. I&#x27;m <span class="subst">$&#123;age&#125;</span> years old now.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> SG = <span class="keyword">new</span> People(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">SG.greeting(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// Thrown:</span></span><br><span class="line"><span class="comment">// TypeError: SG.greeting is not a function</span></span><br><span class="line"></span><br><span class="line">People.greeting(<span class="string">&#x27;Green&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// My name is Green. I&#x27;m 30 years old now.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別"><a href="#⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別" class="headerlink" title="⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別"></a>⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(`I&#x27;m $&#123;name&#125;.`); name 前⾯沒加上 this 會報錯</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="keyword">extends</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, number, position</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name);</span><br><span class="line">    <span class="built_in">this</span>.number = number;</span><br><span class="line">    <span class="built_in">this</span>.position = position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.introduce();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I wear number <span class="subst">$&#123;<span class="built_in">this</span>.number&#125;</span>. I play <span class="subst">$&#123;<span class="built_in">this</span>.position&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> star = <span class="keyword">new</span> Star(<span class="string">&#x27;Antetokounmpo&#x27;</span>, <span class="number">34</span>, <span class="string">&#x27;PF&#x27;</span>);</span><br><span class="line">star.introduce();</span><br><span class="line"><span class="comment">// I&#x27;m Antetokounmpo.</span></span><br><span class="line"><span class="comment">// I wear number 34. I play PF!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之前幻想字母哥來勇士xD</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN</a>:<br>providing mechanisms for splitting JavaScript programs up into separate modules that can be imported when needed.</p>
-<h3 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">MDN</a>:<br>The <code>export</code> statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the <code>import</code> statement.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> password = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params">id</span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN</a>:<br>The <strong>static</strong> <code>import</code> statement is used to import read only live bindings which are exported by another module.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; password, getStatus &#125; <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(password); <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Export-Default"><a href="#Export-Default" class="headerlink" title="Export Default"></a>Export Default</h3><p>可以讓要使⽤ module 的 client，在不知道 module export 了哪些名稱的情況下，能⾃訂名稱取⽤ module 裡⾯定義的東西。</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">greeting</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hello!&#x27;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ================================================== */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> any-name-you-want-to-take <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(any-name-you-want-to-take.name);</span><br><span class="line"><span class="comment">// Tim</span></span><br><span class="line"></span><br><span class="line">any-name-you-want-to-take.greeting();</span><br><span class="line"><span class="comment">// Hello!</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
+<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
+</blockquote>
+<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
+<blockquote>
+<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
+</blockquote>
+<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
+<blockquote>
+<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
+</blockquote>
+<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
+<blockquote>
+<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
+</blockquote>
+<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
+<blockquote>
+<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
+</blockquote>
+<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
+<hr>
+<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
+<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
+</blockquote>
+<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
+<blockquote>
+<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
+</blockquote>
+<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
+<blockquote>
+<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
+</blockquote>
+<p>時間有限，為自己的人生鮮艷上色！</p>
+<blockquote>
+<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
+</blockquote>
+<p>別完全被「應該怎樣」束縛住啦！</p>
+<hr>
+<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
+<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
+</blockquote>
+<p>讓自己在混亂中整理出一點頭緒。</p>
+<blockquote>
+<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
+</blockquote>
+<p>當你真心想做一件事，全世界都會幫你。</p>
+<blockquote>
+<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
+</blockquote>
+<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
+<blockquote>
+<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
+</blockquote>
+<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
+<hr>
+<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
+<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
+<hr>
+<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
+<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
+</blockquote>
+<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
+<blockquote>
+<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
+</blockquote>
+<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
+<blockquote>
+<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
+</blockquote>
+<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
+<hr>
+<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
+<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
+</blockquote>
+<p>專注當下。</p>
+<blockquote>
+<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
+</blockquote>
+<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
+<hr>
+<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
+<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
+</blockquote>
+<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
+<blockquote>
+<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
+</blockquote>
+<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
 <br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-        <tag>Cheatsheet</tag>
-      </tags>
+希望這篇文章能助你一臂之力💪]]></content>
   </entry>
   <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
@@ -1427,6 +1483,89 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript ES6 Cheatsheet</title>
+    <url>/2020/04/javascript-es6-cheatsheet/</url>
+    <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>之前學 ES6 時整理的筆記😀</p>
+<span id="more"></span>
+
+<p>參考自：<a href="https://peter-chang.medium.com/es6-10-features-javascript-developer-must-know-98b9782bef44">[ES6] Javascript 開發者必須知道的 10 個新功能</a></p>
+<h2 id="Default-Parameters"><a href="#Default-Parameters" class="headerlink" title="Default Parameters"></a>Default Parameters</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters">MDN</a>:<br><strong>Default function parameters</strong> allow named parameters to be initialized with default values if no value or <code>undefined</code> is passed.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">height = <span class="number">173</span>, weight = <span class="number">66</span>, college = <span class="string">&#x27;NCTU&#x27;</span></span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Template-Literals"><a href="#Template-Literals" class="headerlink" title="Template Literals"></a>Template Literals</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a>:<br>Template literals are string literals allowing embedded expressions. You can use multi-line strings and <a href="https://dmitripavlutin.com/string-interpolation-in-javascript/">string interpolation</a> features with them.</p>
+<h3 id="Multi-line-Strings"><a href="#Multi-line-Strings" class="headerlink" title="Multi-line Strings"></a>Multi-line Strings</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;first line\n&#x27;</span></span><br><span class="line">+ <span class="string">&#x27;second line&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`first line</span></span><br><span class="line"><span class="string">second line`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-Interpolation"><a href="#String-Interpolation" class="headerlink" title="String Interpolation"></a>String Interpolation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;My name is &#x27;</span> + first + <span class="string">&#x27; &#x27;</span> + last + <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`My name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>.`</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Destructuring-Assignment"><a href="#Destructuring-Assignment" class="headerlink" title="Destructuring Assignment"></a>Destructuring Assignment</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>:<br>The <strong>destructuring assignment</strong> syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; &#125;, gender: &#x27;male&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; ...me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; , gender: &#x27;male&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-destructuring"><a href="#Array-destructuring" class="headerlink" title="Array destructuring"></a>Array destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> [red, yellow, green] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(red); <span class="comment">// one</span></span><br><span class="line"><span class="built_in">console</span>.log(yellow); <span class="comment">// two</span></span><br><span class="line"><span class="built_in">console</span>.log(green); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-destructuring"><a href="#Object-destructuring" class="headerlink" title="Object destructuring"></a>Object destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; name, college &#125; = me;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// Tim</span></span><br><span class="line"><span class="built_in">console</span>.log(college); <span class="comment">// NCTU</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h2><p><a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記] JavaScript ES6 中的物件的擴展（object literal extension）</a></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMachine</span>(<span class="params">name, year, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// name: name,</span></span><br><span class="line">    name,</span><br><span class="line">    year,</span><br><span class="line">    <span class="comment">// 也可以覆蓋掉傳進來的值</span></span><br><span class="line">    <span class="attr">price</span>: <span class="number">810000</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ⽅法 methods 也能放進來</span></span><br><span class="line">    <span class="attr">description</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 簡寫</span></span><br><span class="line">    <span class="function"><span class="title">description</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 允許將表達式 expression 作為屬性名稱，以達到動態賦值的效果（包在[]裡⾯）</span></span><br><span class="line">    [year+<span class="string">&#x27;machine&#x27;</span>]: price,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> machine = makeMachine(<span class="string">&#x27;Switch&#x27;</span>, <span class="number">2020</span>, <span class="number">9780</span>);</span><br><span class="line"></span><br><span class="line">machine.description();</span><br><span class="line"><span class="comment">// 2020 machine Switch is 9780 dollars</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(machine.price);</span><br><span class="line"><span class="comment">// 810000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Arrow-Functions"><a href="#Arrow-Functions" class="headerlink" title="Arrow Functions"></a>Arrow Functions</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN</a>:<br>An <strong>arrow function expression</strong> is a compact alternative to a traditional <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">function expression</a>, but is limited and can’t be used in all situations.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多個參數</span></span><br><span class="line">(param1, param2, ..., paramN) =&gt; &#123; statements &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> &#123; <span class="keyword">return</span> expression; &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⼀個參數</span></span><br><span class="line"><span class="function">(<span class="params">singleParam</span>) =&gt;</span> &#123; statements &#125;;</span><br><span class="line"><span class="function"><span class="params">singleParam</span> =&gt;</span> &#123; statements &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 沒有參數</span></span><br><span class="line"><span class="function">() =&gt;</span> &#123; statements &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p><a href="https://andyyou.github.io/2017/06/27/js-promise/">Promise 學習筆記 | DEVLOG of andyyou</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>:<br>The <strong><code>Promise</code></strong> object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
+<h3 id="建⽴-Promise"><a href="#建⽴-Promise" class="headerlink" title="建⽴ Promise"></a>建⽴ Promise</h3><p>把 <code>Promise</code> 想成是⼀個 object！</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">hasEnoughMoney = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pleaseBuyMeSwitch = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasEnoughMoney) &#123;</span><br><span class="line">    <span class="keyword">const</span> gift = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Switch&#x27;</span>,</span><br><span class="line">      <span class="attr">price</span>: <span class="number">9780</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    resolve(gift); <span class="comment">// 回傳 gift 這個物件</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;I lost my 20000 dollars at the gym!!!&#x27;</span>);</span><br><span class="line">    reject(reason); <span class="comment">// 回傳 reason 這個 Error 物件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使⽤-Promise"><a href="#使⽤-Promise" class="headerlink" title="使⽤ Promise"></a>使⽤ Promise</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">askJoeman();</span><br></pre></td></tr></table></figure>
+
+<h3 id="簡化寫法"><a href="#簡化寫法" class="headerlink" title="簡化寫法"></a>簡化寫法</h3><p>若某個 function 沒呼叫 <code>reject</code></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">    resolve(message);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可簡寫成</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ES7-async-await-⾮同步寫法"><a href="#ES7-async-await-⾮同步寫法" class="headerlink" title="ES7 async/await ⾮同步寫法"></a>ES7 async/await ⾮同步寫法</h3><p>原本的寫法</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>新寫法</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">askJoeman</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> something = <span class="keyword">await</span> pleaseBuyMeSwitch;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> showoff(something.name);</span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">  &#125; <span class="keyword">catch</span>(error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// await ⼀定要包在 async function 裡⾯才能⽤</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> askJoeman();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<p>cleaner and more readable!</p>
+<h2 id="Let-amp-Const-Block-Scoped"><a href="#Let-amp-Const-Block-Scoped" class="headerlink" title="Let &amp; Const, Block-Scoped"></a>Let &amp; Const, Block-Scoped</h2><p><code>let</code> 僅在當前的 block 內有效，重複定義時會 throw error。<br><code>const</code> 同樣只在當前的 block 內有效，定義時必須 initialize，且不能更改。</p>
+<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">MDN</a>:<br>Classes are a template for creating objects. They encapsulate data with code to work on that data.</p>
+<h3 id="Class-Declaration-類別宣告"><a href="#Class-Declaration-類別宣告" class="headerlink" title="Class Declaration 類別宣告"></a>Class Declaration 類別宣告</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Class-Expression-類別敘述"><a href="#Class-Expression-類別敘述" class="headerlink" title="Class Expression 類別敘述"></a>Class Expression 類別敘述</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// unnamed</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// named</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> PG = <span class="keyword">new</span> People(<span class="string">&#x27;Curry&#x27;</span>, <span class="number">32</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-Methods-原型⽅法"><a href="#Prototype-Methods-原型⽅法" class="headerlink" title="Prototype Methods 原型⽅法"></a>Prototype Methods 原型⽅法</h3><p>可包 getter、setter、method 等等的進到 class 定義裡⾯，詳⾒ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#prototype_methods">MDN</a>。</p>
+<h3 id="Static-methods-靜態⽅法"><a href="#Static-methods-靜態⽅法" class="headerlink" title="Static methods 靜態⽅法"></a>Static methods 靜態⽅法</h3><p>不需要實體化就可以被呼叫，也無法被已實體化的類別物件呼叫。<br>經常被⽤來建⽴給應⽤程式使⽤的⼯具函數。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">greeting</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`My name is <span class="subst">$&#123;name&#125;</span>. I&#x27;m <span class="subst">$&#123;age&#125;</span> years old now.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> SG = <span class="keyword">new</span> People(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">SG.greeting(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// Thrown:</span></span><br><span class="line"><span class="comment">// TypeError: SG.greeting is not a function</span></span><br><span class="line"></span><br><span class="line">People.greeting(<span class="string">&#x27;Green&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// My name is Green. I&#x27;m 30 years old now.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別"><a href="#⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別" class="headerlink" title="⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別"></a>⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(`I&#x27;m $&#123;name&#125;.`); name 前⾯沒加上 this 會報錯</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="keyword">extends</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, number, position</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name);</span><br><span class="line">    <span class="built_in">this</span>.number = number;</span><br><span class="line">    <span class="built_in">this</span>.position = position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.introduce();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I wear number <span class="subst">$&#123;<span class="built_in">this</span>.number&#125;</span>. I play <span class="subst">$&#123;<span class="built_in">this</span>.position&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> star = <span class="keyword">new</span> Star(<span class="string">&#x27;Antetokounmpo&#x27;</span>, <span class="number">34</span>, <span class="string">&#x27;PF&#x27;</span>);</span><br><span class="line">star.introduce();</span><br><span class="line"><span class="comment">// I&#x27;m Antetokounmpo.</span></span><br><span class="line"><span class="comment">// I wear number 34. I play PF!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之前幻想字母哥來勇士xD</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN</a>:<br>providing mechanisms for splitting JavaScript programs up into separate modules that can be imported when needed.</p>
+<h3 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">MDN</a>:<br>The <code>export</code> statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the <code>import</code> statement.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> password = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params">id</span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN</a>:<br>The <strong>static</strong> <code>import</code> statement is used to import read only live bindings which are exported by another module.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; password, getStatus &#125; <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(password); <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Export-Default"><a href="#Export-Default" class="headerlink" title="Export Default"></a>Export Default</h3><p>可以讓要使⽤ module 的 client，在不知道 module export 了哪些名稱的情況下，能⾃訂名稱取⽤ module 裡⾯定義的東西。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">greeting</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hello!&#x27;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ================================================== */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> any-name-you-want-to-take <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(any-name-you-want-to-take.name);</span><br><span class="line"><span class="comment">// Tim</span></span><br><span class="line"></span><br><span class="line">any-name-you-want-to-take.greeting();</span><br><span class="line"><span class="comment">// Hello!</span></span><br></pre></td></tr></table></figure>
+
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+        <tag>Cheatsheet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>不完美行動</title>
     <url>/2021/09/just-do-it/</url>
     <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
@@ -1451,110 +1590,6 @@
 <hr>
 <p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>助你行動</title>
-    <url>/2022/01/help-you-take-action/</url>
-    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
-<span id="more"></span>
-
-<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
-<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
-</blockquote>
-<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
-<blockquote>
-<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
-</blockquote>
-<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
-<blockquote>
-<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
-</blockquote>
-<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
-<blockquote>
-<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
-</blockquote>
-<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
-<blockquote>
-<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
-</blockquote>
-<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
-<hr>
-<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
-<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
-</blockquote>
-<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
-<blockquote>
-<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
-</blockquote>
-<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
-<blockquote>
-<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
-</blockquote>
-<p>時間有限，為自己的人生鮮艷上色！</p>
-<blockquote>
-<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
-</blockquote>
-<p>別完全被「應該怎樣」束縛住啦！</p>
-<hr>
-<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
-<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
-</blockquote>
-<p>讓自己在混亂中整理出一點頭緒。</p>
-<blockquote>
-<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
-</blockquote>
-<p>當你真心想做一件事，全世界都會幫你。</p>
-<blockquote>
-<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
-</blockquote>
-<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
-<blockquote>
-<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
-</blockquote>
-<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
-<hr>
-<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
-<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
-<hr>
-<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
-<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
-</blockquote>
-<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
-<blockquote>
-<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
-</blockquote>
-<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
-<blockquote>
-<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
-</blockquote>
-<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
-<hr>
-<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
-<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
-</blockquote>
-<p>專注當下。</p>
-<blockquote>
-<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
-</blockquote>
-<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
-<hr>
-<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
-<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
-</blockquote>
-<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
-<blockquote>
-<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
-</blockquote>
-<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
-<br>
-希望這篇文章能助你一臂之力💪]]></content>
   </entry>
   <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
@@ -1664,6 +1699,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
     <url>/2021/10/logic-pro-plug-in-compatibility/</url>
     <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
@@ -1739,57 +1781,6 @@
         <tag>STM32</tag>
         <tag>開發板</tag>
         <tag>投籃機</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 Python 操作 Android 手機</title>
-    <url>/2021/07/python-android-phone/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
-<span id="more"></span>
-
-<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
-<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
-<p><img src="1.png"></p>
-<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
-<hr>
-<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
-<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
-<hr>
-<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
-<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
-<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
-<hr>
-<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
-<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
-
-<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
-<hr>
-<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
-<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
-<p><img src="2.gif"></p>
-<p>拍賣的畫面更有感！</p>
-<p><img src="3.gif"></p>
-<p>酷斃了 😎</p>
-<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>Android</tag>
-        <tag>小工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1946,6 +1937,116 @@
       </tags>
   </entry>
   <entry>
+    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
+    <url>/2021/11/next-10000-hours/</url>
+    <content><![CDATA[<p>給正在思索未來的你～</p>
+<span id="more"></span>
+
+<br>
+（本篇由書中引起我共鳴的句子集結而成）
+
+<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
+<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
+<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
+<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
+<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
+<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
+<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
+<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
+<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
+</ul>
+<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
+<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
+<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
+<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
+<li>選擇比努力重要！</li>
+<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
+<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
+<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
+</ul>
+<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
+<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
+<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
+</ul>
+<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
+<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
+<li>窮困不怕，怕的是窮的心態。</li>
+<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
+</ul>
+<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
+<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
+<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
+<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
+<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
+</ul>
+<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
+<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
+<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
+<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
+<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
+<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
+<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
+<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
+<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
+</ul>
+<br>
+希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
+      <tags>
+        <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Python 操作 Android 手機</title>
+    <url>/2021/07/python-android-phone/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
+<span id="more"></span>
+
+<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
+<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
+<p><img src="1.png"></p>
+<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
+<hr>
+<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
+<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
+<hr>
+<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
+<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
+<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
+<hr>
+<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
+<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
+<hr>
+<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
+<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
+<p><img src="2.gif"></p>
+<p>拍賣的畫面更有感！</p>
+<p><img src="3.gif"></p>
+<p>酷斃了 😎</p>
+<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Android</tag>
+        <tag>小工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>當 Python 遇上了 LINE Blockchain</title>
     <url>/2021/07/python-line-blockchain/</url>
     <content><![CDATA[<p><a href="/2021/07/python-line-blockchain"><img src="https://images.unsplash.com/photo-1561451213-d5c9f0951fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" style="width:50vw;" /></a></p>
@@ -2008,65 +2109,6 @@
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Blockchain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
-    <url>/2021/11/next-10000-hours/</url>
-    <content><![CDATA[<p>給正在思索未來的你～</p>
-<span id="more"></span>
-
-<br>
-（本篇由書中引起我共鳴的句子集結而成）
-
-<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
-<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
-<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
-<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
-<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
-<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
-<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
-<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
-<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
-</ul>
-<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
-<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
-<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
-<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
-<li>選擇比努力重要！</li>
-<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
-<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
-<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
-</ul>
-<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
-<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
-<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
-</ul>
-<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
-<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
-<li>窮困不怕，怕的是窮的心態。</li>
-<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
-</ul>
-<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
-<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
-<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
-<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
-<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
-</ul>
-<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
-<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
-<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
-<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
-<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
-<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
-<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
-<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
-<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
-</ul>
-<br>
-希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
-      <tags>
-        <tag>閱讀</tag>
       </tags>
   </entry>
   <entry>
@@ -2297,243 +2339,6 @@
 大概是這樣，這學期就好好充實自己吧😎
 <br>
 <br>]]></content>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
-    <url>/2020/09/summer-project/</url>
-    <content><![CDATA[<p><a href="/2020/09/summer-project"><img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。</p>
-<span id="more"></span>
-
-<p>（康明軒教授提供數學上的幫助、恩衍做降噪、育浚做其他也很有趣的聲音處理）</p>
-<h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p>先給大家聽聽看我最後上台發表的成果吧！</p>
-<h2 id="分析＆合成音色"><a href="#分析＆合成音色" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><table>
-<thead>
-<tr>
-<th align="center">樂器</th>
-<th align="center">待分析的音檔</th>
-<th align="center">合成出來</th>
-<th align="center">演奏音階</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">小號</td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=1" target="_blank">01</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=4" target="_blank">02</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=7" target="_blank">03</a></td>
-</tr>
-<tr>
-<td align="center">雙簧管</td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=12" target="_blank">04</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=15" target="_blank">05</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=18" target="_blank">06</a></td>
-</tr>
-<tr>
-<td align="center">管風琴</td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=24" target="_blank">07</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=27" target="_blank">08</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=30" target="_blank">09</a></td>
-</tr>
-</tbody></table>
-<h2 id="改變音色"><a href="#改變音色" class="headerlink" title="改變音色"></a>改變音色</h2><table>
-<thead>
-<tr>
-<th align="center">音樂</th>
-<th align="center">原音檔</th>
-<th align="center">小號</th>
-<th align="center">雙簧管</th>
-<th align="center">管風琴</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">生命之名</td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=36" target="_blank">10</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=46" target="_blank">11</a></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=54" target="_blank">12</a></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">New Thang</td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=64" target="_blank">13</a></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=75" target="_blank">14</a></td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="預備知識"><a href="#預備知識" class="headerlink" title="預備知識"></a>預備知識</h1><h2 id="音訊預處理"><a href="#音訊預處理" class="headerlink" title="音訊預處理"></a>音訊預處理</h2><h3 id="為何要數位化"><a href="#為何要數位化" class="headerlink" title="為何要數位化"></a>為何要數位化</h3><p><span style="color:blue;">電腦如何將聲音訊號由類比轉成數位呢？</span><br>先講為什麼要轉成數位好了。<br>「電腦處理聲音」這件事情，其實就是在對聲音做運算，<br>和類比也就是連續訊號相比，離散訊號的運算量小多了！<br>所以在電腦處理聲音之前，必須先讓聲音變成離散資料。<br>那該怎麼轉成數位呢？<br>只要讓聲音經過 <span style="color:red;">取樣 (sampling)</span> 以及 <span style="color:red;">量化 (quantization)</span> 的過程就可以囉！</p>
-<h3 id="音檔參數"><a href="#音檔參數" class="headerlink" title="音檔參數"></a>音檔參數</h3><p>在介紹取樣、量化之前，先給大家認識一下<span style="color:blue;">聲音檔案的重要參數</span>。</p>
-<ul>
-<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
-<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
-<li><strong><span style="color:black;">取樣頻率 (sampling rate)</span></strong>：一秒鐘要取多少個取樣點（聲音檔案通常會採用 48000 或 44100 赫茲，跟取樣定理有關）</li>
-<li><strong><span style="color:black;">位元深度 (bit depth)</span></strong>：一個取樣點要用多少個位元紀錄（位元深度越大的話，會越精準，但相對而言，資料量也就越大！）</li>
-<li><strong><span style="color:black;">聲道數 (channel)</span></strong>：其實就是我們常聽到的單聲道、雙聲道等等的<br></li>
-</ul>
-<h3 id="取樣＆量化"><a href="#取樣＆量化" class="headerlink" title="取樣＆量化"></a><span style="color:blue;">取樣＆量化</span><br></h3><div style="padding:11px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/22d22a83403f9d39.png" style="width:43vw;" />
-  <img src="https://ftp.bmp.ovh/imgs/2020/09/2c03857179f3c285.png" style="width:43vw;" />
-   -->
-  <img src="2.png" style="width:43vw;" />
-  <img src="3.png" style="width:43vw;" />
-</div>
-
-<ul>
-<li><strong><span style="color:black;">取樣 (sampling)</span></strong>：透過<span style="color:red;">取樣頻率</span>，也就是一秒鐘要取多少個取樣點，將<span style="color:red;">時間軸</span>上的資料離散化，得到一串取樣點（如上圖）</li>
-<li><strong><span style="color:black;">量化 (quantization)</span></strong>：依照<span style="color:red;">位元深度</span>，也就是一個取樣點要用多少個位元紀錄，分別對每個取樣點做四捨五入，將<span style="color:red;">振幅軸</span>上的資料離散化，最後就會得到一串數列（如下圖）<br></li>
-</ul>
-<h3 id="聲音訊號如何被處理"><a href="#聲音訊號如何被處理" class="headerlink" title="聲音訊號如何被處理"></a>聲音訊號如何被處理</h3><p>訊號轉成數位了，那<span style="color:blue;">電腦如何處理聲音訊號呢？</span><br>打個比方好了：<br>在開始進行一個大任務之前，我們通常會先拆解成多個小行動，然後再各個擊破！<br>處理聲音也是同樣道理，<br>我們只要把一段音訊切成一個一個小<span style="color:red;">音框</span>，乘上<span style="color:red;">窗函數</span>重疊以後，就可以開始做後續的處理。</p>
-<h3 id="切取音框"><a href="#切取音框" class="headerlink" title="切取音框"></a><span style="color:blue;">切取音框</span><br></h3><div style="padding:22px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f6576ad5edcadf43.png" style="width:43vw;" /> -->
-  <img src="4.png" style="width:43vw;" />
-</div>
-
-<p>在分析一段音訊的時候，我們通常是以<span style="color:red;">短時距分析</span>為主，<br>因為聲音訊號在短時間之內是<span style="color:red;">相對穩定</span>的！<br>所以我們通常會將音訊切成比較短的單位，稱為<span style="color:red;">音框</span> (frame)。<br>那為了方便使用<span style="color:red;">快速傅立葉轉換</span>，我們通常會取 <span style="color:red;">2 的 n 次方</span>個取樣點當作一個音框。<br>然後要注意，音框不能切太大或太小，這樣才能充分擷取音訊的特徵！<br>那為了避免相鄰兩音框的特徵變化過大，一般會讓音框之間有一段<span style="color:red;">重疊</span>的區域，<br>當然重疊的部分越多，對應的<span style="color:red;">運算量</span>也就越大！</p>
-<h3 id="音框參數"><a href="#音框參數" class="headerlink" title="音框參數"></a>音框參數</h3><p>帶大家認識一下<span style="color:blue;">切取音框的重要參數</span>。<br></p>
-<div style="padding:23px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce76456e87ee97c2.png" style="width:43vw;" /> -->
-  <img src="5.png" style="width:43vw;" />
-</div>
-
-<ul>
-<li><strong><span style="color:black;">音框大小 (frame size)</span></strong>：每一個音框內所含有的取樣點個數</li>
-<li><strong><span style="color:black;">音框重疊量 (frame overlap)</span></strong>：兩音框間重疊的取樣點個數</li>
-<li><strong><span style="color:black;">音框跳距 (hop size)</span></strong>：兩音框起點距離的取樣點個數，相當於 <span style="color:red;">音框大小 - 音框重疊量</span></li>
-<li><strong><span style="color:black;">音框率 (frame rate)</span></strong>：每秒出現的音框數目，相當於 <span style="color:red;">取樣頻率 / 音框跳距</span><br></li>
-</ul>
-<h3 id="套上窗函數"><a href="#套上窗函數" class="headerlink" title="套上窗函數"></a><span style="color:blue;">套上窗函數</span><br></h3><div style="padding:32px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/625f058dba3db937.png" style="width:52vw;" /> -->
-  <img src="6.png" style="width:52vw;" />
-</div>
-
-<p>原本完整的聲音波形，<span style="color:red;">被音框硬生生地截斷</span>，頻譜將會產生誤差，該怎麼辦呢？<br>我們只要透過乘上一個<span style="color:red;">中央高、兩側低的窗函數 (window function)</span>，<br>讓音框內兩端的訊號達到 fade-in、fade-out 的效果，就可以增加音框左右兩端的<span style="color:red;">連續性</span>了！</p>
-<hr>
-<h2 id="音色"><a href="#音色" class="headerlink" title="音色"></a>音色</h2><h3 id="聲音三要素"><a href="#聲音三要素" class="headerlink" title="聲音三要素"></a><span style="color:blue;">聲音三要素</span><br></h3><div style="padding:5px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ede9088994b2a6b4.png" style="width:52vw;" /> -->
-  <img src="7.png" style="width:52vw;" />
-</div>
-待會只會介紹音色。<br>
-
-<h3 id="什麼是音色"><a href="#什麼是音色" class="headerlink" title="什麼是音色"></a>什麼是<span style="color:blue;">音色</span></h3><p>音色是一個可以讓聆聽者<span style="color:red;">分辨</span>出聲音聽起來不同的聲音特性，<br>藉由音色資訊，我們可以分辨出究竟現在聽到的聲音是人聲還是某種樂器聲，<br>不受音高不同及音量大小的影響！</p>
-<h3 id="影響聲音的要素"><a href="#影響聲音的要素" class="headerlink" title="影響聲音的要素"></a>影響聲音的要素</h3><p><span style="color:blue;">哪些要素影響著音色呢？</span><br></p>
-<ul>
-<li>ADSR Envelope</li>
-<li>Tremolo ＆ Vibrato</li>
-<li>泛音列</li>
-<li>可能還有其他 (?)</li>
-</ul>
-<h3 id="ADSR-Envelope"><a href="#ADSR-Envelope" class="headerlink" title="ADSR Envelope"></a><span style="color:blue;">ADSR Envelope</span><br></h3><div style="padding:7px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/d19848cbba1eb5ba.png" style="width:50vw;" /> -->
-  <img src="8.png" style="width:50vw;" />
-</div>
-
-<p>它是什麼呢？<br>它是描述 Attack、Decay、Sustain、Release 四階段的一個包絡！<br>這樣講其實蠻抽象的，<br>可以把它想像成聲音的 schedule，讓聲音的某個<span style="color:red;">參數隨著時間做改變</span>。<br><strong><span style="color:black;">那 Attack、Decay、Sustain、Release 又分別是什麼呢？</span></strong><br>觀察上圖：</p>
-<ul>
-<li><strong><span style="color:black;">Attack</span></strong>：一個參數從 0 到最大值所需要的<span style="color:red;">時間</span></li>
-<li><strong><span style="color:black;">Decay</span></strong>：一個參數從最大值降到 Sustain 所需要的<span style="color:red;">時間</span></li>
-<li><strong><span style="color:black;">Sustain</span></strong>：它比較特別，它是一個<span style="color:red;">程度</span>的參數，代表在 Release 之前維持的一個量</li>
-<li><strong><span style="color:black;">Release</span></strong>：一個參數從 Sustain 降回 0 所需要的<span style="color:red;">時間</span></li>
-</ul>
-<p>這樣可能還是很抽象，沒關係，到 Ableton Live 的<a href="https://learningsynths.ableton.com/en/envelopes/change-over-time" target="_blank">合成器教學頁面</a>玩玩吧！<br></p>
-<h3 id="Tremolo-＆-Vibrato"><a href="#Tremolo-＆-Vibrato" class="headerlink" title="Tremolo ＆ Vibrato"></a><span style="color:blue;">Tremolo ＆ Vibrato</span><br></h3><ul>
-<li><strong><span style="color:black;">Tremolo</span></strong>：讓<span style="color:red;">音量</span>呈現忽大忽小的<span style="color:red;">顫音</span>效果，可以讓長音有起伏變化不再呆板，也可以讓每個音符呈現若隱若現的效果</li>
-<li><strong><span style="color:black;">Vibrato</span></strong>：讓<span style="color:red;">音高</span>呈現忽高忽低的<span style="color:red;">顫音</span>效果，比方擦弦樂器可以靠<span style="color:red;">揉弦</span>來達到這種效果</li>
-</ul>
-<h3 id="泛音列"><a href="#泛音列" class="headerlink" title="泛音列"></a><span style="color:blue;">泛音列</span><br></h3><p>泛音列是一系列頻率為<span style="color:red;">基音頻率 (fundamental frequency)  整數倍</span>的聲音，<br>這些聲音都是純音，可以分別用正弦波來表示。<br>那和音色有什麼關係呢？<br>強烈推薦大家看 <a href="https://www.youtube.com/channel/UCVXstWyJeO6No3jYELxYrjg" target="_blank">NiceChord (好和弦)</a> 的 <a href="https://www.youtube.com/watch?v=0iJmDhNocaQ" target="_blank">一次搞懂「泛音列」！</a><br>看完了一切都豁然開朗了呢 😎</p>
-<h3 id="波形"><a href="#波形" class="headerlink" title="波形"></a>波形</h3><p><span style="color:blue;">波形何以如此多元？</span><br></p>
-<div style="padding:6px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f615f911b624c2a1.png" style="width:39vw;" /> -->
-  <img src="9.png" style="width:39vw;" />
-</div>
-
-<p>不同樂器，組成「一個音」的泛音列佔比都不太一樣。<br>那剛剛提過，泛音列上的每個音都是純音，可以分別用正弦波來表示，<br>然後再根據波的疊加原理，依照泛音列佔比，疊加出新的波形，<br>疊加後的波形就是我們最後觀察到的波形！<br>如上圖。</p>
-<h3 id="感受聲音"><a href="#感受聲音" class="headerlink" title="感受聲音"></a>感受聲音</h3><p><span style="color:blue;">再用聽的和看的來感受一次吧！</span><br></p>
-<div style="padding:3px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/19b7c6548bc8fcfd.png" style="width:55vw;" /> -->
-  <img src="10.png" style="width:55vw;" />
-</div>
-
-<p>以基頻為 220 赫茲的音來說明好了：<br>先給大家聽 <a href="https://youtu.be/VWO0FyNmOBw?t=87" target="_blank">220 赫茲的純音</a>。<br>接著是 <a href="https://youtu.be/VWO0FyNmOBw?t=90" target="_blank">440 赫茲的純音</a>。<br>然後我們再用一比一的比例，來調配出<a href="https://youtu.be/VWO0FyNmOBw?t=93" target="_blank">新的音色</a>。<br>新音色聽起來就像是「一個音」，但實際上卻是由兩個純音組合而成的！</p>
-<h3 id="泛音列＆音色"><a href="#泛音列＆音色" class="headerlink" title="泛音列＆音色"></a>泛音列＆音色</h3><p><span style="color:blue;">泛音列與音色之間的關係</span>：</p>
-<ul>
-<li>基本頻率決定了一個音的音高</li>
-<li>其他泛音與基頻的音量佔比決定了一個音的音色</li>
-</ul>
-<hr>
-<h1 id="所以，我是怎麼做出來的呀？"><a href="#所以，我是怎麼做出來的呀？" class="headerlink" title="所以，我是怎麼做出來的呀？"></a>所以，我是怎麼做出來的呀？</h1><h2 id="分析＆合成音色-1"><a href="#分析＆合成音色-1" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><div style="padding:30px;">
-  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce7ecf082f96bce6.png" style="width:30vw;" /> -->
-  <img src="11.png" style="width:30vw;" />
-</div>
-
-<ol>
-<li>用 <code>scipy.io.wavfile.read</code> ，將待分析的音檔讀進來</li>
-<li>用 <code>scipy.fftpack.fft</code> ，將原本 time domain 的 data 轉換到 frequency domain 上</li>
-<li>透過 <code>matplotlib.pyplot.plot</code> ，把圖給畫出來（如上圖，頻率取 0~1000）</li>
-<li>由圖可以觀察到基頻大概是 100 赫茲左右，也可以觀察到其泛音列的數值大小</li>
-<li>利用 <code>max</code> ，一個一個找出每個小區間內的最大值為何，即為圖中的明顯高起處</li>
-<li>由求出來的所有值，可以推算出基頻及其所有泛音列的數值大小佔比</li>
-<li>透過自己寫的 <a href="https://github.com/kanido386/playground/blob/master/2020-summer-project/timbre%20synthesizer/synthesizer.py" target="_blank">synthesizer</a>，依照上步驟的佔比，即可合成出該音色的聲音</li>
-</ol>
-<h2 id="改變音色-1"><a href="#改變音色-1" class="headerlink" title="改變音色"></a>改變音色</h2><p>以一個音框來說明，單音音樂效果較佳！</p>
-<ol>
-<li>用 <code>scipy.fftpack.fft</code> ，將該音框內的 data 轉換到 frequency domain 上</li>
-<li>透過自己獨創但效果很陽春 (?) 的方法運算以後，可以粗略找到基頻</li>
-<li>該<span style="color:red;">基頻及其整數倍的泛音</span>，透過剛剛分析出來的<span style="color:red;">佔比</span>來改變數值大小，即可轉換為新音色的音樂</li>
-</ol>
-<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>除了學到一些音訊處理的技巧以外，最大的收穫是，「態度」才是最重要的關鍵啊！<br>目前在其他很多方面還是不夠及格，期望帶著這次的寶貴經驗，讓自己漸入佳境。</p>
-<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>再次感謝康明軒教授、恩衍、育浚，沒有你們，就沒有這一切！<br>另外，也非常感謝柏毅給予我簡報上的指點，讓我學到一些很重要也很實用的簡報技巧！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
-]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>交大</tag>
-        <tag>音訊處理</tag>
-        <tag>專題</tag>
-        <tag>樂理</tag>
-        <tag>音色</tag>
-      </tags>
   </entry>
   <entry>
     <title>停下來思考</title>
@@ -2818,6 +2623,243 @@ go go!!!]]></content>
 希望這篇文章能對你有幫助，我們下次見囉😀]]></content>
       <tags>
         <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
+    <url>/2020/09/summer-project/</url>
+    <content><![CDATA[<p><a href="/2020/09/summer-project"><img src="https://images.unsplash.com/photo-1530623288743-52a89e908add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>2020 升大三的暑假，和康明軒教授、恩衍、育浚一起做了「音訊處理」的專題。</p>
+<span id="more"></span>
+
+<p>（康明軒教授提供數學上的幫助、恩衍做降噪、育浚做其他也很有趣的聲音處理）</p>
+<h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p>先給大家聽聽看我最後上台發表的成果吧！</p>
+<h2 id="分析＆合成音色"><a href="#分析＆合成音色" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><table>
+<thead>
+<tr>
+<th align="center">樂器</th>
+<th align="center">待分析的音檔</th>
+<th align="center">合成出來</th>
+<th align="center">演奏音階</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">小號</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=1" target="_blank">01</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=4" target="_blank">02</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=7" target="_blank">03</a></td>
+</tr>
+<tr>
+<td align="center">雙簧管</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=12" target="_blank">04</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=15" target="_blank">05</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=18" target="_blank">06</a></td>
+</tr>
+<tr>
+<td align="center">管風琴</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=24" target="_blank">07</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=27" target="_blank">08</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=30" target="_blank">09</a></td>
+</tr>
+</tbody></table>
+<h2 id="改變音色"><a href="#改變音色" class="headerlink" title="改變音色"></a>改變音色</h2><table>
+<thead>
+<tr>
+<th align="center">音樂</th>
+<th align="center">原音檔</th>
+<th align="center">小號</th>
+<th align="center">雙簧管</th>
+<th align="center">管風琴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">生命之名</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=36" target="_blank">10</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=46" target="_blank">11</a></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=54" target="_blank">12</a></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">New Thang</td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=64" target="_blank">13</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><a href="https://youtu.be/VWO0FyNmOBw?t=75" target="_blank">14</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="預備知識"><a href="#預備知識" class="headerlink" title="預備知識"></a>預備知識</h1><h2 id="音訊預處理"><a href="#音訊預處理" class="headerlink" title="音訊預處理"></a>音訊預處理</h2><h3 id="為何要數位化"><a href="#為何要數位化" class="headerlink" title="為何要數位化"></a>為何要數位化</h3><p><span style="color:blue;">電腦如何將聲音訊號由類比轉成數位呢？</span><br>先講為什麼要轉成數位好了。<br>「電腦處理聲音」這件事情，其實就是在對聲音做運算，<br>和類比也就是連續訊號相比，離散訊號的運算量小多了！<br>所以在電腦處理聲音之前，必須先讓聲音變成離散資料。<br>那該怎麼轉成數位呢？<br>只要讓聲音經過 <span style="color:red;">取樣 (sampling)</span> 以及 <span style="color:red;">量化 (quantization)</span> 的過程就可以囉！</p>
+<h3 id="音檔參數"><a href="#音檔參數" class="headerlink" title="音檔參數"></a>音檔參數</h3><p>在介紹取樣、量化之前，先給大家認識一下<span style="color:blue;">聲音檔案的重要參數</span>。</p>
+<ul>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">取樣頻率 (sampling rate)</span></strong>：一秒鐘要取多少個取樣點（聲音檔案通常會採用 48000 或 44100 赫茲，跟取樣定理有關）</li>
+<li><strong><span style="color:black;">位元深度 (bit depth)</span></strong>：一個取樣點要用多少個位元紀錄（位元深度越大的話，會越精準，但相對而言，資料量也就越大！）</li>
+<li><strong><span style="color:black;">聲道數 (channel)</span></strong>：其實就是我們常聽到的單聲道、雙聲道等等的<br></li>
+</ul>
+<h3 id="取樣＆量化"><a href="#取樣＆量化" class="headerlink" title="取樣＆量化"></a><span style="color:blue;">取樣＆量化</span><br></h3><div style="padding:11px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/22d22a83403f9d39.png" style="width:43vw;" />
+  <img src="https://ftp.bmp.ovh/imgs/2020/09/2c03857179f3c285.png" style="width:43vw;" />
+   -->
+  <img src="2.png" style="width:43vw;" />
+  <img src="3.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">取樣 (sampling)</span></strong>：透過<span style="color:red;">取樣頻率</span>，也就是一秒鐘要取多少個取樣點，將<span style="color:red;">時間軸</span>上的資料離散化，得到一串取樣點（如上圖）</li>
+<li><strong><span style="color:black;">量化 (quantization)</span></strong>：依照<span style="color:red;">位元深度</span>，也就是一個取樣點要用多少個位元紀錄，分別對每個取樣點做四捨五入，將<span style="color:red;">振幅軸</span>上的資料離散化，最後就會得到一串數列（如下圖）<br></li>
+</ul>
+<h3 id="聲音訊號如何被處理"><a href="#聲音訊號如何被處理" class="headerlink" title="聲音訊號如何被處理"></a>聲音訊號如何被處理</h3><p>訊號轉成數位了，那<span style="color:blue;">電腦如何處理聲音訊號呢？</span><br>打個比方好了：<br>在開始進行一個大任務之前，我們通常會先拆解成多個小行動，然後再各個擊破！<br>處理聲音也是同樣道理，<br>我們只要把一段音訊切成一個一個小<span style="color:red;">音框</span>，乘上<span style="color:red;">窗函數</span>重疊以後，就可以開始做後續的處理。</p>
+<h3 id="切取音框"><a href="#切取音框" class="headerlink" title="切取音框"></a><span style="color:blue;">切取音框</span><br></h3><div style="padding:22px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f6576ad5edcadf43.png" style="width:43vw;" /> -->
+  <img src="4.png" style="width:43vw;" />
+</div>
+
+<p>在分析一段音訊的時候，我們通常是以<span style="color:red;">短時距分析</span>為主，<br>因為聲音訊號在短時間之內是<span style="color:red;">相對穩定</span>的！<br>所以我們通常會將音訊切成比較短的單位，稱為<span style="color:red;">音框</span> (frame)。<br>那為了方便使用<span style="color:red;">快速傅立葉轉換</span>，我們通常會取 <span style="color:red;">2 的 n 次方</span>個取樣點當作一個音框。<br>然後要注意，音框不能切太大或太小，這樣才能充分擷取音訊的特徵！<br>那為了避免相鄰兩音框的特徵變化過大，一般會讓音框之間有一段<span style="color:red;">重疊</span>的區域，<br>當然重疊的部分越多，對應的<span style="color:red;">運算量</span>也就越大！</p>
+<h3 id="音框參數"><a href="#音框參數" class="headerlink" title="音框參數"></a>音框參數</h3><p>帶大家認識一下<span style="color:blue;">切取音框的重要參數</span>。<br></p>
+<div style="padding:23px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce76456e87ee97c2.png" style="width:43vw;" /> -->
+  <img src="5.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">音框大小 (frame size)</span></strong>：每一個音框內所含有的取樣點個數</li>
+<li><strong><span style="color:black;">音框重疊量 (frame overlap)</span></strong>：兩音框間重疊的取樣點個數</li>
+<li><strong><span style="color:black;">音框跳距 (hop size)</span></strong>：兩音框起點距離的取樣點個數，相當於 <span style="color:red;">音框大小 - 音框重疊量</span></li>
+<li><strong><span style="color:black;">音框率 (frame rate)</span></strong>：每秒出現的音框數目，相當於 <span style="color:red;">取樣頻率 / 音框跳距</span><br></li>
+</ul>
+<h3 id="套上窗函數"><a href="#套上窗函數" class="headerlink" title="套上窗函數"></a><span style="color:blue;">套上窗函數</span><br></h3><div style="padding:32px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/625f058dba3db937.png" style="width:52vw;" /> -->
+  <img src="6.png" style="width:52vw;" />
+</div>
+
+<p>原本完整的聲音波形，<span style="color:red;">被音框硬生生地截斷</span>，頻譜將會產生誤差，該怎麼辦呢？<br>我們只要透過乘上一個<span style="color:red;">中央高、兩側低的窗函數 (window function)</span>，<br>讓音框內兩端的訊號達到 fade-in、fade-out 的效果，就可以增加音框左右兩端的<span style="color:red;">連續性</span>了！</p>
+<hr>
+<h2 id="音色"><a href="#音色" class="headerlink" title="音色"></a>音色</h2><h3 id="聲音三要素"><a href="#聲音三要素" class="headerlink" title="聲音三要素"></a><span style="color:blue;">聲音三要素</span><br></h3><div style="padding:5px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ede9088994b2a6b4.png" style="width:52vw;" /> -->
+  <img src="7.png" style="width:52vw;" />
+</div>
+待會只會介紹音色。<br>
+
+<h3 id="什麼是音色"><a href="#什麼是音色" class="headerlink" title="什麼是音色"></a>什麼是<span style="color:blue;">音色</span></h3><p>音色是一個可以讓聆聽者<span style="color:red;">分辨</span>出聲音聽起來不同的聲音特性，<br>藉由音色資訊，我們可以分辨出究竟現在聽到的聲音是人聲還是某種樂器聲，<br>不受音高不同及音量大小的影響！</p>
+<h3 id="影響聲音的要素"><a href="#影響聲音的要素" class="headerlink" title="影響聲音的要素"></a>影響聲音的要素</h3><p><span style="color:blue;">哪些要素影響著音色呢？</span><br></p>
+<ul>
+<li>ADSR Envelope</li>
+<li>Tremolo ＆ Vibrato</li>
+<li>泛音列</li>
+<li>可能還有其他 (?)</li>
+</ul>
+<h3 id="ADSR-Envelope"><a href="#ADSR-Envelope" class="headerlink" title="ADSR Envelope"></a><span style="color:blue;">ADSR Envelope</span><br></h3><div style="padding:7px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/d19848cbba1eb5ba.png" style="width:50vw;" /> -->
+  <img src="8.png" style="width:50vw;" />
+</div>
+
+<p>它是什麼呢？<br>它是描述 Attack、Decay、Sustain、Release 四階段的一個包絡！<br>這樣講其實蠻抽象的，<br>可以把它想像成聲音的 schedule，讓聲音的某個<span style="color:red;">參數隨著時間做改變</span>。<br><strong><span style="color:black;">那 Attack、Decay、Sustain、Release 又分別是什麼呢？</span></strong><br>觀察上圖：</p>
+<ul>
+<li><strong><span style="color:black;">Attack</span></strong>：一個參數從 0 到最大值所需要的<span style="color:red;">時間</span></li>
+<li><strong><span style="color:black;">Decay</span></strong>：一個參數從最大值降到 Sustain 所需要的<span style="color:red;">時間</span></li>
+<li><strong><span style="color:black;">Sustain</span></strong>：它比較特別，它是一個<span style="color:red;">程度</span>的參數，代表在 Release 之前維持的一個量</li>
+<li><strong><span style="color:black;">Release</span></strong>：一個參數從 Sustain 降回 0 所需要的<span style="color:red;">時間</span></li>
+</ul>
+<p>這樣可能還是很抽象，沒關係，到 Ableton Live 的<a href="https://learningsynths.ableton.com/en/envelopes/change-over-time" target="_blank">合成器教學頁面</a>玩玩吧！<br></p>
+<h3 id="Tremolo-＆-Vibrato"><a href="#Tremolo-＆-Vibrato" class="headerlink" title="Tremolo ＆ Vibrato"></a><span style="color:blue;">Tremolo ＆ Vibrato</span><br></h3><ul>
+<li><strong><span style="color:black;">Tremolo</span></strong>：讓<span style="color:red;">音量</span>呈現忽大忽小的<span style="color:red;">顫音</span>效果，可以讓長音有起伏變化不再呆板，也可以讓每個音符呈現若隱若現的效果</li>
+<li><strong><span style="color:black;">Vibrato</span></strong>：讓<span style="color:red;">音高</span>呈現忽高忽低的<span style="color:red;">顫音</span>效果，比方擦弦樂器可以靠<span style="color:red;">揉弦</span>來達到這種效果</li>
+</ul>
+<h3 id="泛音列"><a href="#泛音列" class="headerlink" title="泛音列"></a><span style="color:blue;">泛音列</span><br></h3><p>泛音列是一系列頻率為<span style="color:red;">基音頻率 (fundamental frequency)  整數倍</span>的聲音，<br>這些聲音都是純音，可以分別用正弦波來表示。<br>那和音色有什麼關係呢？<br>強烈推薦大家看 <a href="https://www.youtube.com/channel/UCVXstWyJeO6No3jYELxYrjg" target="_blank">NiceChord (好和弦)</a> 的 <a href="https://www.youtube.com/watch?v=0iJmDhNocaQ" target="_blank">一次搞懂「泛音列」！</a><br>看完了一切都豁然開朗了呢 😎</p>
+<h3 id="波形"><a href="#波形" class="headerlink" title="波形"></a>波形</h3><p><span style="color:blue;">波形何以如此多元？</span><br></p>
+<div style="padding:6px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f615f911b624c2a1.png" style="width:39vw;" /> -->
+  <img src="9.png" style="width:39vw;" />
+</div>
+
+<p>不同樂器，組成「一個音」的泛音列佔比都不太一樣。<br>那剛剛提過，泛音列上的每個音都是純音，可以分別用正弦波來表示，<br>然後再根據波的疊加原理，依照泛音列佔比，疊加出新的波形，<br>疊加後的波形就是我們最後觀察到的波形！<br>如上圖。</p>
+<h3 id="感受聲音"><a href="#感受聲音" class="headerlink" title="感受聲音"></a>感受聲音</h3><p><span style="color:blue;">再用聽的和看的來感受一次吧！</span><br></p>
+<div style="padding:3px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/19b7c6548bc8fcfd.png" style="width:55vw;" /> -->
+  <img src="10.png" style="width:55vw;" />
+</div>
+
+<p>以基頻為 220 赫茲的音來說明好了：<br>先給大家聽 <a href="https://youtu.be/VWO0FyNmOBw?t=87" target="_blank">220 赫茲的純音</a>。<br>接著是 <a href="https://youtu.be/VWO0FyNmOBw?t=90" target="_blank">440 赫茲的純音</a>。<br>然後我們再用一比一的比例，來調配出<a href="https://youtu.be/VWO0FyNmOBw?t=93" target="_blank">新的音色</a>。<br>新音色聽起來就像是「一個音」，但實際上卻是由兩個純音組合而成的！</p>
+<h3 id="泛音列＆音色"><a href="#泛音列＆音色" class="headerlink" title="泛音列＆音色"></a>泛音列＆音色</h3><p><span style="color:blue;">泛音列與音色之間的關係</span>：</p>
+<ul>
+<li>基本頻率決定了一個音的音高</li>
+<li>其他泛音與基頻的音量佔比決定了一個音的音色</li>
+</ul>
+<hr>
+<h1 id="所以，我是怎麼做出來的呀？"><a href="#所以，我是怎麼做出來的呀？" class="headerlink" title="所以，我是怎麼做出來的呀？"></a>所以，我是怎麼做出來的呀？</h1><h2 id="分析＆合成音色-1"><a href="#分析＆合成音色-1" class="headerlink" title="分析＆合成音色"></a>分析＆合成音色</h2><div style="padding:30px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/ce7ecf082f96bce6.png" style="width:30vw;" /> -->
+  <img src="11.png" style="width:30vw;" />
+</div>
+
+<ol>
+<li>用 <code>scipy.io.wavfile.read</code> ，將待分析的音檔讀進來</li>
+<li>用 <code>scipy.fftpack.fft</code> ，將原本 time domain 的 data 轉換到 frequency domain 上</li>
+<li>透過 <code>matplotlib.pyplot.plot</code> ，把圖給畫出來（如上圖，頻率取 0~1000）</li>
+<li>由圖可以觀察到基頻大概是 100 赫茲左右，也可以觀察到其泛音列的數值大小</li>
+<li>利用 <code>max</code> ，一個一個找出每個小區間內的最大值為何，即為圖中的明顯高起處</li>
+<li>由求出來的所有值，可以推算出基頻及其所有泛音列的數值大小佔比</li>
+<li>透過自己寫的 <a href="https://github.com/kanido386/playground/blob/master/2020-summer-project/timbre%20synthesizer/synthesizer.py" target="_blank">synthesizer</a>，依照上步驟的佔比，即可合成出該音色的聲音</li>
+</ol>
+<h2 id="改變音色-1"><a href="#改變音色-1" class="headerlink" title="改變音色"></a>改變音色</h2><p>以一個音框來說明，單音音樂效果較佳！</p>
+<ol>
+<li>用 <code>scipy.fftpack.fft</code> ，將該音框內的 data 轉換到 frequency domain 上</li>
+<li>透過自己獨創但效果很陽春 (?) 的方法運算以後，可以粗略找到基頻</li>
+<li>該<span style="color:red;">基頻及其整數倍的泛音</span>，透過剛剛分析出來的<span style="color:red;">佔比</span>來改變數值大小，即可轉換為新音色的音樂</li>
+</ol>
+<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>除了學到一些音訊處理的技巧以外，最大的收穫是，「態度」才是最重要的關鍵啊！<br>目前在其他很多方面還是不夠及格，期望帶著這次的寶貴經驗，讓自己漸入佳境。</p>
+<h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>再次感謝康明軒教授、恩衍、育浚，沒有你們，就沒有這一切！<br>另外，也非常感謝柏毅給予我簡報上的指點，讓我學到一些很重要也很實用的簡報技巧！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>交大</tag>
+        <tag>音訊處理</tag>
+        <tag>專題</tag>
+        <tag>樂理</tag>
+        <tag>音色</tag>
       </tags>
   </entry>
   <entry>
