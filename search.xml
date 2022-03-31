@@ -103,127 +103,6 @@
       </tags>
   </entry>
   <entry>
-    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
-    <url>/2021/07/baymax-with-us/</url>
-    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpg" style="width:50vw;" /> -->
-
-<p>做一個 LINE Bot 版的杯麵～</p>
-<span id="more"></span>
-
-<div class="note success">
-    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
-</div>
-
-<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
-<hr>
-<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
-</ul>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
-<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
-<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
-<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
-<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
-<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
-<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
-</ol>
-<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
-<hr>
-<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
-</ul>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>隨機聽</code></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
-<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
-<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
-<li>後面就是「指定聽歌」的步驟了</li>
-</ol>
-<hr>
-<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
-<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
-</ul>
-<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
-<hr>
-<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
-<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
-</ul>
-<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
-<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
-<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
-<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
-<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
-</ol>
-<hr>
-<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
-<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
-</ul>
-<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
-<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
-</ol>
-<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
-<hr>
-<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
-<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
-</ul>
-<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
-<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
-<hr>
-<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
-<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
-</ul>
-<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
-<li>將新功能的名稱和描述填入 email 的 content 當中</li>
-<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
-<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
-</ol>
-<hr>
-<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
-<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
-</ul>
-<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>LINE</tag>
-        <tag>Bot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 Pure Data 打造吉他效果器</title>
     <url>/2021/01/asp-final-project/</url>
     <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
@@ -356,6 +235,127 @@
       </tags>
   </entry>
   <entry>
+    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
+    <url>/2021/07/baymax-with-us/</url>
+    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpg" style="width:50vw;" /> -->
+
+<p>做一個 LINE Bot 版的杯麵～</p>
+<span id="more"></span>
+
+<div class="note success">
+    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
+</div>
+
+<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
+<hr>
+<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
+<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
+<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
+<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
+<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
+<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
+<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
+</ol>
+<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
+<hr>
+<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
+</ul>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>隨機聽</code></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
+<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
+<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
+<li>後面就是「指定聽歌」的步驟了</li>
+</ol>
+<hr>
+<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
+</ul>
+<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
+<hr>
+<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
+</ul>
+<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
+<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
+<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
+<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
+<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
+</ol>
+<hr>
+<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
+<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
+</ul>
+<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
+<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
+</ol>
+<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
+<hr>
+<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
+<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
+</ul>
+<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
+<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
+<hr>
+<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
+<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
+</ul>
+<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
+<li>將新功能的名稱和描述填入 email 的 content 當中</li>
+<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
+<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
+</ol>
+<hr>
+<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
+<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
+</ul>
+<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>端午節立蛋</title>
     <url>/2021/06/dragon-boat-festival/</url>
     <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -374,13 +374,93 @@
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
-]]></content>
+    <title>駕訓班裡的點點滴滴</title>
+    <url>/2022/03/driving-school/</url>
+    <content><![CDATA[<p>簡單記錄一下～</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>原本打算趁寒假比較閒的時候上駕訓班，但因為比較晚才去注意相關資訊，就只能報年後開始上課的期別。（當時心想：早知道就早一點去了解，這樣開學後就不用再去駕訓班練車了，但沒有早知道這回事啊xD 就警惕自己，這就是拖延的後果，之後盡量不要再犯了）</p>
+<p>扯遠了，所以我 1/26 到附近的診所體檢，<a href="https://www.mvdis.gov.tw/m3-emv-hca/agency/query">這邊</a>可以查詢最近的體檢代辦所。然後接著就去駕訓班報名。</p>
+<p>原本我打算報的是「手排」，但教練知道了以後，立馬試著說服我報「自排」，他說現在幾乎都是自排車了，不必去學手排。</p>
+<p>報名駕訓班前是有做一點功課，有查到說教練很可能會說服你學自排，因為比較好教、好學，而且男女學員的待遇還可能不一樣xD 那個時候想說，哪有可能那麼容易被說服，我想學手排，是因為我想更了解開車的原理啊，管它好學不好學！</p>
+<p>沒想到才聽了教練幾句話的我，很快就被說服了xD 後來想說，家裡的人沒在開車，對於車子，我實在超級無敵不熟，腦袋裡面沒什麼開車上路的 data，學比較難的手排也只是在刁難自己而已，真的需要，之後再說好像也是可🤔</p>
+<p>真的要長話短說了⋯⋯</p>
+<h2 id="我的第一堂駕駛課"><a href="#我的第一堂駕駛課" class="headerlink" title="我的第一堂駕駛課"></a>我的第一堂駕駛課</h2><p>第一次上課是在 2/6，也就是年後的禮拜日。</p>
+<p>一剛開始，教練帶我到模擬機台練習轉⽅向盤，我那時候才知道，原來方向盤左右的極限是各⼀圈半啊，我還以為像電玩一樣，只能轉那麼一點點。教練教我怎麼轉以後，就要我自己練習 15 分鐘，然後他就去其他地方了。當時的我心想，哇嗚，網路上說的果然是真的，可能我是男生的關係吧？但後來經過一次又一次的上課，我才明白，很多東西教練真的只需要提點一下，其他靠學員自己練真的就行了。重點是：教練並不像網路上說的那種模樣啊！而且之後仔細想想，難道轉方向盤這種沒什麼技術的東西也要教練全程都在一旁陪我轉嗎xD</p>
+<p>無腦轉了一陣子的方向盤以後，教練就帶我進車子裡了。哇嗚，居然這麼快，難道待會就要開車了嗎？還真的沒錯。</p>
+<p>一上車，教練先向我介紹⽅向燈、⾬刷、PRD檔、臨時停⾞按鈕、⼿煞⾞、調整後照鏡的控制這些，介紹完以後，就帶我練「直線進退」了。我那個時候才知道，原來切到 R 檔或 D 檔以後，你不踩剎車，車子可是會動的呢！以為像遊戲一樣，就一直踩油門往前衝就是了xD 教練要我慢慢前進、後退，練習腳含著剎車的感覺，因為之後會常用到。</p>
+<p>下課前，居然就要練「路邊停車」了！好快啊，不是才第一堂課而已？練習的過程就不多說了，我想說的是，<strong>下課以後，真的最好把剛剛記的口訣、體會到的東西記下來，一來可以幫自己再複習一遍，二來下次練車前看的時候，很快就能回憶起來！</strong>當天上完課，我記了以下的筆記：</p>
+<blockquote>
+<p><strong>（路邊停⾞）</strong></p>
+<ul>
+<li>步驟：後退 → 右⼀圈半 → 回來 → 左⼀圈半 → (停⾞) → 換D檔 → 維持左⼀圈半 → 回來 → 右⼀圈 → 回來 → 換R檔 → 無限循環</li>
+<li>訣竅：三⾓形</li>
+</ul>
+</blockquote>
+<p>第一堂課還真扎實啊xD</p>
+<h2 id="新關卡登錄！"><a href="#新關卡登錄！" class="headerlink" title="新關卡登錄！"></a>新關卡登錄！</h2><p>第二次上課在 2/12，練的是「倒車入庫」和「曲線進退」。</p>
+<p>當時真的覺得好快，練好多看起來不容易的關卡，我才第二次上課而已，而且之前都沒開過車啊 (我想大家都是xD)！</p>
+<p>一樣下課的時候記了點筆記：</p>
+<blockquote>
+<p><strong>（倒⾞⼊庫）</strong></p>
+<ul>
+<li>步驟：後退直到外⾯竿⼦在右後座扶⼿的前⾯⼀點點 → 右打到底,可以從右後照鏡看到⾞⼦逐漸在⽩線內進去 → ⽅向盤導正,後退到⼈在樹前⾯⼀點點 → 前進到⼀個東東在⽩線前⾯⼀點點 → 右打底,正了之後再導回來</li>
+</ul>
+<p><strong>（曲線進退）</strong></p>
+<ul>
+<li>前進步驟：前進到左前燈在⽩線前⾯⼀點點,但我覺得可以觀察左後照鏡,當出現路線的時候再下⼀動 → 左打1⼜1/4圈,同時看著左後照鏡左彎,注意⾨把與⽩線的距離,太近太遠就調整⽅向盤的幅度 → 當左還是右前燈碰到⽩線就導正,前進直到右前燈超過⽩線⼀點點,但其實可以觀察右後照鏡 → 右邊跟左邊的操作⽅式⼤同⼩異,就左右互換⽽已 → 到站</li>
+<li>後退步驟：切換R檔,注意距離,同時做⽅向盤幅度上的調整→ 當左後照鏡看到半圓時,導正 → 後退到⾨把進到半圓內 → ⽅向盤往左轉1⼜1/4圈,⼀樣要調整幅度 → 導正回到起點</li>
+</ul>
+</blockquote>
+<p>裡面很多東西你可能會看不懂，<strong>這就是筆記，自己能夠看懂才是重點！</strong></p>
+<h2 id="第一次跑場考"><a href="#第一次跑場考" class="headerlink" title="第一次跑場考"></a>第一次跑場考</h2><p>第三次上課是在隔天 2/13，令我驚訝的是，上週日才第一次上課，那週日就要跑整個場考的關卡了！太酷了吧！</p>
+<p>那天教練跟我約特別早，八點就要到駕訓班練車。真的還蠻早的，起床時頗掙扎，那麼早，原來是因為今天要直接跑關卡，怕晚了⼈就多了！</p>
+<p>因為還很菜，要進車練的時候忘記放下⼿煞⾞，被教練訓了一頓xD</p>
+<p>其實還蠻好玩的，很像在玩遊戲，啊如果不小心壓到黑管的話，就會很大聲地逼逼叫讓你丟臉懲罰你xD</p>
+<p>關卡依序如下，順便附上我的小筆記：</p>
+<ol>
+<li>⾏前檢查及起駛前動作：⾏駛前先打左⽅向燈代表要出來 → 打右⽅向燈再打D檔,前進,⾨把到紫紅草時右⽅向盤打到底,然後轉正,稍微讓⾞⼦中間偏右⼀點</li>
+<li>倒⾞⼊庫：先打右⽅向燈再打R檔 → 後退到右後座上⾯⼿把到提⽰牌附近(不要太後⾯) → 右⽅向盤打到底 → 正了以後轉正退後到⼈對到⿈線 → 打右⽅向燈再打D檔 →往前到右邊凸起(?)對到紫紅草 → 出來動作不解釋xD</li>
+<li>路邊停⾞：⼤同⼩異,記得打燈,⼀開始右⽅向盤到左後照鏡安全島出現四個⿊⾊再導正,其他⼀樣</li>
+<li>S型曲線進退：先打右⽅向燈,前進直到右⾨把(?)到安全島時,右⽅向盤打到底 → 感覺到顛頗⼀次時,⽅向盤導正 → 其他跟前⾯練習⼀樣,只是半圓要⾃⼰去想像,倒退前記得先打右⽅向燈 → 快結束時,也就是差不多⾞體轉正時,⽅向盤導正 → 打右⽅向燈,然後右⽅向盤打到底出去</li>
+<li>（中間就是注意號誌和打燈,右⾨把(?)到⽩線時再開始轉⽅向盤到底,然後慢慢導正）</li>
+<li>上坡起步：⾞速儀表的100對到左⼆的黑管,要上坡前踩⼀點點煞⾞右邊的油⾨,到頂時記得快換踩剎⾞（後來補上：左標記要對到藍、拉⼿煞⾞、油⾨踩不超過1）</li>
+<li>穩定換檔：右邊的東東(?)對到紫紅草,前⾯的左黑管要在左前燈的右邊⼀些些 → 前進,適時調整⽅向盤</li>
+</ol>
+<p>筆記真的能幫助之後的每一次練習啊！</p>
+<h2 id="第一次道駕"><a href="#第一次道駕" class="headerlink" title="第一次道駕"></a>第一次道駕</h2><p>2/18，練完一段時間的場內以後，教練帶我練道駕。</p>
+<p>我只想說，那一天練完只覺得，我可能永遠都拿不到汽車駕照了，因為我開得實在是超級無敵爛，不斷被教練訓斥，顏面掃地的那種，我自己也覺得非常危險，像是不要突然在路中間踩剎⾞，而我卻做了，這樣真的很容易發生追撞啊！</p>
+<p>那個時候真的超級沒信心，覺得，唉，看來汽車駕照真的跟我無緣了吧？</p>
+<p>但說真的，現在回想起來，第一次上路，緊張害怕是非常正常的，跟場內的感覺差非常多，你還得多踩油門之外，馬路上也有其他大大小小的車子啊！</p>
+<p>現在的我只想跟當時的自己說：不要害怕，每次的練習，你會越來越來熟悉，也會越來越覺得沒什麼的！（2/27 的我寫下了這個：「道駕真的是⽐前幾次好很多啊！」，真的要相信自己能做到啊！）</p>
+<h2 id="例行練車，例行樂趣"><a href="#例行練車，例行樂趣" class="headerlink" title="例行練車，例行樂趣"></a>例行練車，例行樂趣</h2><p>接著後幾次就是各種到駕訓班練車。</p>
+<p>過程真的會覺得無聊，因為都重複做一樣的事⋯⋯</p>
+<p>不確定行不行，但後來我不管了，打開手機的 Spotify，聽著歌，跟著唱，教練車裡頭彷彿我個人的小型演唱會，我甚至還因此掌握了怎麼唱我原本唱不上去的歌呢xD</p>
+<p>就這樣，爾後的練車，我就是這樣悠遊自在，練車和享樂融為一體，已經分不清我是在練車還是在享受那種感覺了，挺不錯的！</p>
+<p>提個外話，冷氣還不錯舒服～</p>
+<h2 id="小挫折"><a href="#小挫折" class="headerlink" title="小挫折"></a>小挫折</h2><p>明明已經接近「躊躇滿志」的狀態了，沒想到 3/6 的道駕，讓我有種跌倒的感覺。</p>
+<p>快考試了，還是有不少開不好的地方，甚至又被教練唸，不是很好受。</p>
+<p>於是乎，我做了以下筆記：</p>
+<ul>
+<li>油⾨不要⼀直踩 早點準備煞停</li>
+<li>路邊停⾞前打右⽅向燈後記得說右⽅無來⾞</li>
+<li>路邊停⾞出來左⽅向燈後記得135度</li>
+<li>迴轉前速度要慢 ⽅向盤要打到底</li>
+<li>那個牌⼦那邊 記得放慢 紅綠燈等⾞的時候不要出去太多</li>
+</ul>
+<p>沒事，有幫自己記下道駕的注意要點，之後再多多提醒自己就行了～</p>
+<h2 id="考前一天"><a href="#考前一天" class="headerlink" title="考前一天"></a>考前一天</h2><p>就跟教練約了一個小時的練習場考，練完跟朋友打球，打完球就快速複習一下筆試模擬試卷自己圈起來的地方，好像就這樣，也不必特別準備什麼。</p>
+<p>但就要記得早點睡，因為隔天 06:50 就要到駕訓班集合搭車考筆試。</p>
+<p>啊對了還有，再看個道駕影片讓腦袋順過一遍路考的路線，也再複習一下開⾞前檢查動作，確保自己順序有記對。</p>
+<p>也別忘了先準備好隔天需要的身分證、乘車證、錢錢、一顆平常的心。</p>
+<h2 id="考照當天"><a href="#考照當天" class="headerlink" title="考照當天"></a>考照當天</h2><p>3/11，五點半起來，吃完早餐，出發去駕訓班。</p>
+<p>早上有點冷，那溫度加劇了我的緊張感，帶著這份心情，前往筆試考場，直到通過筆試了以後，加上外頭陽光燦爛也溫暖了起來，頓時覺得豁然開朗，好像沒那麼緊張，心中能感受到一股莫名的平靜。</p>
+<p>最讓人不耐煩的，就是等路考的過程，應該有兩小時吧，待在椅子上坐著，也不想滑手機，原本有聽音樂後來也不想聽了。（啊對了，我平常練車聽的歌就那幾首，我發現考前聽那幾首，可以幫助我快速平復緊張的情緒欸！還蠻讚的！）</p>
+<p>終於輪到我，上場囉！（ABCDEFGHIJKLMNOPQRSTUVWXYZ）咦我過了？</p>
+<p>真的，聽到我過了的當下，真的有種「咦我過了？」的感受，因為我是真的帶著很平常的心情去開車的，就像平常邊聽歌邊練車一樣，而道考的時候，彷彿是開著車帶著考官去遊山玩水一樣，是多麼地輕鬆愜意啊！就這樣，通過了考驗。</p>
+<p>人生其他方面也該是相同道理吧🤔</p>
+<br>
+感謝吳教練的諄諄教誨啊😎]]></content>
   </entry>
   <entry>
     <title>【職涯路上】100~97，開始行動！</title>
@@ -491,6 +571,68 @@
 <h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
 <p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】76~74</title>
+    <url>/2022/03/freshman-career-76-74/</url>
+    <content><![CDATA[<p>連假前來個小回顧。</p>
+<span id="more"></span>
+
+<h2 id="3-28-一"><a href="#3-28-一" class="headerlink" title="3/28 (一)"></a>3/28 (一)</h2><p>早上搭車的時候，邊收看「<a href="https://youtu.be/lHGYdq1X9dU">2022 WorkLife Opening 未來工作生活大解構</a>」邊做點筆記，收穫滿滿，對工作及生活有著大開眼界般的見解！</p>
+<h3 id="學-Photoshop-做筆記"><a href="#學-Photoshop-做筆記" class="headerlink" title="學 Photoshop 做筆記"></a>學 Photoshop 做筆記</h3><p>下午旁聽影像合成課，學到了 Photoshop 去背、修臉的技巧，我也是邊上課邊做筆記，這幫助我之後再看的時候能快速回憶起來。</p>
+<p>來放其中一段筆記當作例子：</p>
+<p><strong>主角很多細節的去背</strong></p>
+<p>（before）</p>
+<p><img src="1.jpg"></p>
+<ol>
+<li>右下角在圖層旁邊的「色版」→ 選一個顏色的色版複製一個 → 反白也就是選取那個色版（其他的不能動到，不然完成都開起來後顏色會變）</li>
+<li>影像 → 調整 → 亮度/對比 → 「對比」調到最高，這樣等等會更好抓髮絲的紋路</li>
+<li>這樣等等會更好塗色不會超出範圍：背景單純的圖可先用「魔術棒」點選背景 → 選取 → 反轉</li>
+<li>塗黑主角：前景色調成黑色 → 筆刷工具 → 把要的人物非黑的部分塗黑（可調大筆刷更快狠準）有沒塗到的部分再放大去一一塗</li>
+</ol>
+<p>（中間產物）</p>
+<p><img src="2.png"></p>
+<ol start="5">
+<li>呈現剪影效果：影像 → 調整 → 色階 → 黑白都往中間拉 → 按確定</li>
+<li>選取人物：魔術棒工具點背景(不要勾連續) → 選取 → 反轉</li>
+<li>色版 → 打開 RGB → 圖層 → 增加遮色片 → 剛剛複製出來的色版可以丟掉了</li>
+</ol>
+<p>（after）</p>
+<p><img src="3.png"></p>
+<p>圖看起來有些白邊，怎麼修？我有記筆記，但礙於篇幅(?)，可能就不先放上來了😅</p>
+<h3 id="後來勒"><a href="#後來勒" class="headerlink" title="後來勒"></a>後來勒</h3><p>上完課就去圖書館寫「圖形識別 Homework 2」，效率奇佳！（做事前沒想那麼多，開始做就對了，想太多反而會成為阻礙）</p>
+<p>吃晚餐的空檔，拜讀了何則文老師的「<a href="https://www.linkedin.com/posts/wherder_nhlniwniwjcijfcjcahaynjliljlhskqfiljjpvllyjwgnha-activity-6909755387239960576-PpNa?utm_source=linkedin_share&utm_medium=android_app">從對目標受眾的理解來建設EVP</a>」，剛好跟早上搭車看的影片有關聯，覺得還蠻有趣的xD</p>
+<p>晚上決定跟著「<a href="https://youtu.be/3xrko3GpYoU">🔴 Let’s build Spotify 2.0 with NEXT.JS 12.0! (Middleware, Spotify API, Tailwind, NextAuth, Recoil)</a>」這個影片來學怎麼 clone Spotify，影片有4小時，最近會慢慢跟完。<br>雖然常聽到說跟著影片模仿學比較沒有效果(?)，但我想說透過看影片模仿的方式，來擴增我的資料庫或者說是技能包。（「<a href="https://github.com/kanido386/tutorial-spotify-clone">tutorial-spotify-clone</a>」我會放在 GitHub 上，目前我 GitHub 實在太空😅）</p>
+<hr>
+<h2 id="3-29-二"><a href="#3-29-二" class="headerlink" title="3/29 (二)"></a>3/29 (二)</h2><p>早上讀「跟著柴鼠學FQ」，結束前用「自由書寫」的方式來記錄體悟，以免讀完整本書以後，很多東西都忘得一乾二淨了。（總是要留點什麼才好，不然有點可惜）</p>
+<p>因為昨天的教學影片用的是 Next.js，讓我間接找到了 Next.js 官方的 <a href="https://nextjs.org/learn/foundations/about-nextjs">Learn Next.js</a>，意外發現讀起來好讀又有趣之外，也包含很多跳脫 Next.js 的網頁開發相關知識，覺得挖到寶，之後會繼續用零碎時間把它啃完！<br>心裡多少會有個聲音：「只是讀，沒跟著操作有什麼用？」啊就讀了以後，真的有學到新東西啊，實作的話，可以等跟著影片 clone Spoitfy 的時候來熟悉，而且感覺在實作之前先懂它的邏輯，會更知道自己在做什麼。（哎呀，人生沒有標準答案啊！相信自己的直覺吧！）</p>
+<p>接著就是上電腦動畫與特效＆和聲學。（流水帳xD）</p>
+<p>吃完晚餐寫和聲學作業，然後打球跟別人三打三的時候全身冒煙，都懷疑自己是不是巨人了😂</p>
+<hr>
+<h2 id="3-30-三"><a href="#3-30-三" class="headerlink" title="3/30 (三)"></a>3/30 (三)</h2><p>早上上圖形識別。</p>
+<h3 id="作品集可以怎樣優化"><a href="#作品集可以怎樣優化" class="headerlink" title="作品集可以怎樣優化"></a>作品集可以怎樣優化</h3><p>午餐配「<a href="https://www.youtube.com/watch?v=SvtSza13sk8">Portfolio Projects that Get you Hired</a>」這個影片，頻道主秀出 stand-out-to-him 的作品集頁面。我那個時候忘記做點筆記，但還有點印象：</p>
+<blockquote>
+<ul>
+<li>招募者可沒空 register 去試你的 APP，何不做個 demo 的 GIF 來展現呢？</li>
+<li>可以讓人看出來你使用了哪些核心功能或技術，像是 authentication、database CRUD、串接第三方 API</li>
+<li>可以用條列的方式來簡述你做了什麼，招募者可沒那麼多時間讀故事啊</li>
+</ul>
+</blockquote>
+<p>好像還有一些不錯的建議，真的有點可惜沒記下來😅</p>
+<h3 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h3><p>零碎時間，不管是排隊買午餐還是搭車，都在讀 <a href="https://nextjs.org/learn/foundations/about-nextjs">Learn Next.js</a>，沒辦法，它太讚了xD</p>
+<p>下午搭車前去測 Inbody，想了解自己的身體狀況！（學校資源真的要好好運用啊）</p>
+<p>晚上遠端幫朋友解決 Windows 上面 Python 環境設定的問題以及一點小教學，才知道有「<a href="https://www.teamviewer.com/tw/">TeamViewer</a>」這麼方便的遠端工具！（也才又找回小時候喜歡教同學的感覺）</p>
+<br>
+職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
 ]]></content>
   </entry>
   <entry>
@@ -680,95 +822,6 @@
 <br>
 雖然多花了不少時間，但路是不會白走的！<br>
 相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
-  </entry>
-  <entry>
-    <title>駕訓班裡的點點滴滴</title>
-    <url>/2022/03/driving-school/</url>
-    <content><![CDATA[<p>簡單記錄一下～</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>原本打算趁寒假比較閒的時候上駕訓班，但因為比較晚才去注意相關資訊，就只能報年後開始上課的期別。（當時心想：早知道就早一點去了解，這樣開學後就不用再去駕訓班練車了，但沒有早知道這回事啊xD 就警惕自己，這就是拖延的後果，之後盡量不要再犯了）</p>
-<p>扯遠了，所以我 1/26 到附近的診所體檢，<a href="https://www.mvdis.gov.tw/m3-emv-hca/agency/query">這邊</a>可以查詢最近的體檢代辦所。然後接著就去駕訓班報名。</p>
-<p>原本我打算報的是「手排」，但教練知道了以後，立馬試著說服我報「自排」，他說現在幾乎都是自排車了，不必去學手排。</p>
-<p>報名駕訓班前是有做一點功課，有查到說教練很可能會說服你學自排，因為比較好教、好學，而且男女學員的待遇還可能不一樣xD 那個時候想說，哪有可能那麼容易被說服，我想學手排，是因為我想更了解開車的原理啊，管它好學不好學！</p>
-<p>沒想到才聽了教練幾句話的我，很快就被說服了xD 後來想說，家裡的人沒在開車，對於車子，我實在超級無敵不熟，腦袋裡面沒什麼開車上路的 data，學比較難的手排也只是在刁難自己而已，真的需要，之後再說好像也是可🤔</p>
-<p>真的要長話短說了⋯⋯</p>
-<h2 id="我的第一堂駕駛課"><a href="#我的第一堂駕駛課" class="headerlink" title="我的第一堂駕駛課"></a>我的第一堂駕駛課</h2><p>第一次上課是在 2/6，也就是年後的禮拜日。</p>
-<p>一剛開始，教練帶我到模擬機台練習轉⽅向盤，我那時候才知道，原來方向盤左右的極限是各⼀圈半啊，我還以為像電玩一樣，只能轉那麼一點點。教練教我怎麼轉以後，就要我自己練習 15 分鐘，然後他就去其他地方了。當時的我心想，哇嗚，網路上說的果然是真的，可能我是男生的關係吧？但後來經過一次又一次的上課，我才明白，很多東西教練真的只需要提點一下，其他靠學員自己練真的就行了。重點是：教練並不像網路上說的那種模樣啊！而且之後仔細想想，難道轉方向盤這種沒什麼技術的東西也要教練全程都在一旁陪我轉嗎xD</p>
-<p>無腦轉了一陣子的方向盤以後，教練就帶我進車子裡了。哇嗚，居然這麼快，難道待會就要開車了嗎？還真的沒錯。</p>
-<p>一上車，教練先向我介紹⽅向燈、⾬刷、PRD檔、臨時停⾞按鈕、⼿煞⾞、調整後照鏡的控制這些，介紹完以後，就帶我練「直線進退」了。我那個時候才知道，原來切到 R 檔或 D 檔以後，你不踩剎車，車子可是會動的呢！以為像遊戲一樣，就一直踩油門往前衝就是了xD 教練要我慢慢前進、後退，練習腳含著剎車的感覺，因為之後會常用到。</p>
-<p>下課前，居然就要練「路邊停車」了！好快啊，不是才第一堂課而已？練習的過程就不多說了，我想說的是，<strong>下課以後，真的最好把剛剛記的口訣、體會到的東西記下來，一來可以幫自己再複習一遍，二來下次練車前看的時候，很快就能回憶起來！</strong>當天上完課，我記了以下的筆記：</p>
-<blockquote>
-<p><strong>（路邊停⾞）</strong></p>
-<ul>
-<li>步驟：後退 → 右⼀圈半 → 回來 → 左⼀圈半 → (停⾞) → 換D檔 → 維持左⼀圈半 → 回來 → 右⼀圈 → 回來 → 換R檔 → 無限循環</li>
-<li>訣竅：三⾓形</li>
-</ul>
-</blockquote>
-<p>第一堂課還真扎實啊xD</p>
-<h2 id="新關卡登錄！"><a href="#新關卡登錄！" class="headerlink" title="新關卡登錄！"></a>新關卡登錄！</h2><p>第二次上課在 2/12，練的是「倒車入庫」和「曲線進退」。</p>
-<p>當時真的覺得好快，練好多看起來不容易的關卡，我才第二次上課而已，而且之前都沒開過車啊 (我想大家都是xD)！</p>
-<p>一樣下課的時候記了點筆記：</p>
-<blockquote>
-<p><strong>（倒⾞⼊庫）</strong></p>
-<ul>
-<li>步驟：後退直到外⾯竿⼦在右後座扶⼿的前⾯⼀點點 → 右打到底,可以從右後照鏡看到⾞⼦逐漸在⽩線內進去 → ⽅向盤導正,後退到⼈在樹前⾯⼀點點 → 前進到⼀個東東在⽩線前⾯⼀點點 → 右打底,正了之後再導回來</li>
-</ul>
-<p><strong>（曲線進退）</strong></p>
-<ul>
-<li>前進步驟：前進到左前燈在⽩線前⾯⼀點點,但我覺得可以觀察左後照鏡,當出現路線的時候再下⼀動 → 左打1⼜1/4圈,同時看著左後照鏡左彎,注意⾨把與⽩線的距離,太近太遠就調整⽅向盤的幅度 → 當左還是右前燈碰到⽩線就導正,前進直到右前燈超過⽩線⼀點點,但其實可以觀察右後照鏡 → 右邊跟左邊的操作⽅式⼤同⼩異,就左右互換⽽已 → 到站</li>
-<li>後退步驟：切換R檔,注意距離,同時做⽅向盤幅度上的調整→ 當左後照鏡看到半圓時,導正 → 後退到⾨把進到半圓內 → ⽅向盤往左轉1⼜1/4圈,⼀樣要調整幅度 → 導正回到起點</li>
-</ul>
-</blockquote>
-<p>裡面很多東西你可能會看不懂，<strong>這就是筆記，自己能夠看懂才是重點！</strong></p>
-<h2 id="第一次跑場考"><a href="#第一次跑場考" class="headerlink" title="第一次跑場考"></a>第一次跑場考</h2><p>第三次上課是在隔天 2/13，令我驚訝的是，上週日才第一次上課，那週日就要跑整個場考的關卡了！太酷了吧！</p>
-<p>那天教練跟我約特別早，八點就要到駕訓班練車。真的還蠻早的，起床時頗掙扎，那麼早，原來是因為今天要直接跑關卡，怕晚了⼈就多了！</p>
-<p>因為還很菜，要進車練的時候忘記放下⼿煞⾞，被教練訓了一頓xD</p>
-<p>其實還蠻好玩的，很像在玩遊戲，啊如果不小心壓到黑管的話，就會很大聲地逼逼叫讓你丟臉懲罰你xD</p>
-<p>關卡依序如下，順便附上我的小筆記：</p>
-<ol>
-<li>⾏前檢查及起駛前動作：⾏駛前先打左⽅向燈代表要出來 → 打右⽅向燈再打D檔,前進,⾨把到紫紅草時右⽅向盤打到底,然後轉正,稍微讓⾞⼦中間偏右⼀點</li>
-<li>倒⾞⼊庫：先打右⽅向燈再打R檔 → 後退到右後座上⾯⼿把到提⽰牌附近(不要太後⾯) → 右⽅向盤打到底 → 正了以後轉正退後到⼈對到⿈線 → 打右⽅向燈再打D檔 →往前到右邊凸起(?)對到紫紅草 → 出來動作不解釋xD</li>
-<li>路邊停⾞：⼤同⼩異,記得打燈,⼀開始右⽅向盤到左後照鏡安全島出現四個⿊⾊再導正,其他⼀樣</li>
-<li>S型曲線進退：先打右⽅向燈,前進直到右⾨把(?)到安全島時,右⽅向盤打到底 → 感覺到顛頗⼀次時,⽅向盤導正 → 其他跟前⾯練習⼀樣,只是半圓要⾃⼰去想像,倒退前記得先打右⽅向燈 → 快結束時,也就是差不多⾞體轉正時,⽅向盤導正 → 打右⽅向燈,然後右⽅向盤打到底出去</li>
-<li>（中間就是注意號誌和打燈,右⾨把(?)到⽩線時再開始轉⽅向盤到底,然後慢慢導正）</li>
-<li>上坡起步：⾞速儀表的100對到左⼆的黑管,要上坡前踩⼀點點煞⾞右邊的油⾨,到頂時記得快換踩剎⾞（後來補上：左標記要對到藍、拉⼿煞⾞、油⾨踩不超過1）</li>
-<li>穩定換檔：右邊的東東(?)對到紫紅草,前⾯的左黑管要在左前燈的右邊⼀些些 → 前進,適時調整⽅向盤</li>
-</ol>
-<p>筆記真的能幫助之後的每一次練習啊！</p>
-<h2 id="第一次道駕"><a href="#第一次道駕" class="headerlink" title="第一次道駕"></a>第一次道駕</h2><p>2/18，練完一段時間的場內以後，教練帶我練道駕。</p>
-<p>我只想說，那一天練完只覺得，我可能永遠都拿不到汽車駕照了，因為我開得實在是超級無敵爛，不斷被教練訓斥，顏面掃地的那種，我自己也覺得非常危險，像是不要突然在路中間踩剎⾞，而我卻做了，這樣真的很容易發生追撞啊！</p>
-<p>那個時候真的超級沒信心，覺得，唉，看來汽車駕照真的跟我無緣了吧？</p>
-<p>但說真的，現在回想起來，第一次上路，緊張害怕是非常正常的，跟場內的感覺差非常多，你還得多踩油門之外，馬路上也有其他大大小小的車子啊！</p>
-<p>現在的我只想跟當時的自己說：不要害怕，每次的練習，你會越來越來熟悉，也會越來越覺得沒什麼的！（2/27 的我寫下了這個：「道駕真的是⽐前幾次好很多啊！」，真的要相信自己能做到啊！）</p>
-<h2 id="例行練車，例行樂趣"><a href="#例行練車，例行樂趣" class="headerlink" title="例行練車，例行樂趣"></a>例行練車，例行樂趣</h2><p>接著後幾次就是各種到駕訓班練車。</p>
-<p>過程真的會覺得無聊，因為都重複做一樣的事⋯⋯</p>
-<p>不確定行不行，但後來我不管了，打開手機的 Spotify，聽著歌，跟著唱，教練車裡頭彷彿我個人的小型演唱會，我甚至還因此掌握了怎麼唱我原本唱不上去的歌呢xD</p>
-<p>就這樣，爾後的練車，我就是這樣悠遊自在，練車和享樂融為一體，已經分不清我是在練車還是在享受那種感覺了，挺不錯的！</p>
-<p>提個外話，冷氣還不錯舒服～</p>
-<h2 id="小挫折"><a href="#小挫折" class="headerlink" title="小挫折"></a>小挫折</h2><p>明明已經接近「躊躇滿志」的狀態了，沒想到 3/6 的道駕，讓我有種跌倒的感覺。</p>
-<p>快考試了，還是有不少開不好的地方，甚至又被教練唸，不是很好受。</p>
-<p>於是乎，我做了以下筆記：</p>
-<ul>
-<li>油⾨不要⼀直踩 早點準備煞停</li>
-<li>路邊停⾞前打右⽅向燈後記得說右⽅無來⾞</li>
-<li>路邊停⾞出來左⽅向燈後記得135度</li>
-<li>迴轉前速度要慢 ⽅向盤要打到底</li>
-<li>那個牌⼦那邊 記得放慢 紅綠燈等⾞的時候不要出去太多</li>
-</ul>
-<p>沒事，有幫自己記下道駕的注意要點，之後再多多提醒自己就行了～</p>
-<h2 id="考前一天"><a href="#考前一天" class="headerlink" title="考前一天"></a>考前一天</h2><p>就跟教練約了一個小時的練習場考，練完跟朋友打球，打完球就快速複習一下筆試模擬試卷自己圈起來的地方，好像就這樣，也不必特別準備什麼。</p>
-<p>但就要記得早點睡，因為隔天 06:50 就要到駕訓班集合搭車考筆試。</p>
-<p>啊對了還有，再看個道駕影片讓腦袋順過一遍路考的路線，也再複習一下開⾞前檢查動作，確保自己順序有記對。</p>
-<p>也別忘了先準備好隔天需要的身分證、乘車證、錢錢、一顆平常的心。</p>
-<h2 id="考照當天"><a href="#考照當天" class="headerlink" title="考照當天"></a>考照當天</h2><p>3/11，五點半起來，吃完早餐，出發去駕訓班。</p>
-<p>早上有點冷，那溫度加劇了我的緊張感，帶著這份心情，前往筆試考場，直到通過筆試了以後，加上外頭陽光燦爛也溫暖了起來，頓時覺得豁然開朗，好像沒那麼緊張，心中能感受到一股莫名的平靜。</p>
-<p>最讓人不耐煩的，就是等路考的過程，應該有兩小時吧，待在椅子上坐著，也不想滑手機，原本有聽音樂後來也不想聽了。（啊對了，我平常練車聽的歌就那幾首，我發現考前聽那幾首，可以幫助我快速平復緊張的情緒欸！還蠻讚的！）</p>
-<p>終於輪到我，上場囉！（ABCDEFGHIJKLMNOPQRSTUVWXYZ）咦我過了？</p>
-<p>真的，聽到我過了的當下，真的有種「咦我過了？」的感受，因為我是真的帶著很平常的心情去開車的，就像平常邊聽歌邊練車一樣，而道考的時候，彷彿是開著車帶著考官去遊山玩水一樣，是多麼地輕鬆愜意啊！就這樣，通過了考驗。</p>
-<p>人生其他方面也該是相同道理吧🤔</p>
-<br>
-感謝吳教練的諄諄教誨啊😎]]></content>
   </entry>
   <entry>
     <title>【職涯路上】92，交大就業博覽會</title>
@@ -1149,113 +1202,101 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript ES6 Cheatsheet</title>
-    <url>/2020/04/javascript-es6-cheatsheet/</url>
-    <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>之前學 ES6 時整理的筆記😀</p>
+    <title>助你行動</title>
+    <url>/2022/01/help-you-take-action/</url>
+    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
 <span id="more"></span>
 
-<p>參考自：<a href="https://peter-chang.medium.com/es6-10-features-javascript-developer-must-know-98b9782bef44">[ES6] Javascript 開發者必須知道的 10 個新功能</a></p>
-<h2 id="Default-Parameters"><a href="#Default-Parameters" class="headerlink" title="Default Parameters"></a>Default Parameters</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters">MDN</a>:<br><strong>Default function parameters</strong> allow named parameters to be initialized with default values if no value or <code>undefined</code> is passed.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">height = <span class="number">173</span>, weight = <span class="number">66</span>, college = <span class="string">&#x27;NCTU&#x27;</span></span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Template-Literals"><a href="#Template-Literals" class="headerlink" title="Template Literals"></a>Template Literals</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a>:<br>Template literals are string literals allowing embedded expressions. You can use multi-line strings and <a href="https://dmitripavlutin.com/string-interpolation-in-javascript/">string interpolation</a> features with them.</p>
-<h3 id="Multi-line-Strings"><a href="#Multi-line-Strings" class="headerlink" title="Multi-line Strings"></a>Multi-line Strings</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;first line\n&#x27;</span></span><br><span class="line">+ <span class="string">&#x27;second line&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`first line</span></span><br><span class="line"><span class="string">second line`</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="String-Interpolation"><a href="#String-Interpolation" class="headerlink" title="String Interpolation"></a>String Interpolation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;My name is &#x27;</span> + first + <span class="string">&#x27; &#x27;</span> + last + <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`My name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>.`</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Destructuring-Assignment"><a href="#Destructuring-Assignment" class="headerlink" title="Destructuring Assignment"></a>Destructuring Assignment</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>:<br>The <strong>destructuring assignment</strong> syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; &#125;, gender: &#x27;male&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; ...me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; , gender: &#x27;male&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Array-destructuring"><a href="#Array-destructuring" class="headerlink" title="Array destructuring"></a>Array destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> [red, yellow, green] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(red); <span class="comment">// one</span></span><br><span class="line"><span class="built_in">console</span>.log(yellow); <span class="comment">// two</span></span><br><span class="line"><span class="built_in">console</span>.log(green); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Object-destructuring"><a href="#Object-destructuring" class="headerlink" title="Object destructuring"></a>Object destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; name, college &#125; = me;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// Tim</span></span><br><span class="line"><span class="built_in">console</span>.log(college); <span class="comment">// NCTU</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h2><p><a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記] JavaScript ES6 中的物件的擴展（object literal extension）</a></p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMachine</span>(<span class="params">name, year, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// name: name,</span></span><br><span class="line">    name,</span><br><span class="line">    year,</span><br><span class="line">    <span class="comment">// 也可以覆蓋掉傳進來的值</span></span><br><span class="line">    <span class="attr">price</span>: <span class="number">810000</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ⽅法 methods 也能放進來</span></span><br><span class="line">    <span class="attr">description</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 簡寫</span></span><br><span class="line">    <span class="function"><span class="title">description</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 允許將表達式 expression 作為屬性名稱，以達到動態賦值的效果（包在[]裡⾯）</span></span><br><span class="line">    [year+<span class="string">&#x27;machine&#x27;</span>]: price,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> machine = makeMachine(<span class="string">&#x27;Switch&#x27;</span>, <span class="number">2020</span>, <span class="number">9780</span>);</span><br><span class="line"></span><br><span class="line">machine.description();</span><br><span class="line"><span class="comment">// 2020 machine Switch is 9780 dollars</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(machine.price);</span><br><span class="line"><span class="comment">// 810000</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Arrow-Functions"><a href="#Arrow-Functions" class="headerlink" title="Arrow Functions"></a>Arrow Functions</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN</a>:<br>An <strong>arrow function expression</strong> is a compact alternative to a traditional <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">function expression</a>, but is limited and can’t be used in all situations.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多個參數</span></span><br><span class="line">(param1, param2, ..., paramN) =&gt; &#123; statements &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> &#123; <span class="keyword">return</span> expression; &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⼀個參數</span></span><br><span class="line"><span class="function">(<span class="params">singleParam</span>) =&gt;</span> &#123; statements &#125;;</span><br><span class="line"><span class="function"><span class="params">singleParam</span> =&gt;</span> &#123; statements &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 沒有參數</span></span><br><span class="line"><span class="function">() =&gt;</span> &#123; statements &#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p><a href="https://andyyou.github.io/2017/06/27/js-promise/">Promise 學習筆記 | DEVLOG of andyyou</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>:<br>The <strong><code>Promise</code></strong> object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
-<h3 id="建⽴-Promise"><a href="#建⽴-Promise" class="headerlink" title="建⽴ Promise"></a>建⽴ Promise</h3><p>把 <code>Promise</code> 想成是⼀個 object！</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">hasEnoughMoney = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pleaseBuyMeSwitch = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasEnoughMoney) &#123;</span><br><span class="line">    <span class="keyword">const</span> gift = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Switch&#x27;</span>,</span><br><span class="line">      <span class="attr">price</span>: <span class="number">9780</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    resolve(gift); <span class="comment">// 回傳 gift 這個物件</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;I lost my 20000 dollars at the gym!!!&#x27;</span>);</span><br><span class="line">    reject(reason); <span class="comment">// 回傳 reason 這個 Error 物件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="使⽤-Promise"><a href="#使⽤-Promise" class="headerlink" title="使⽤ Promise"></a>使⽤ Promise</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">askJoeman();</span><br></pre></td></tr></table></figure>
-
-<h3 id="簡化寫法"><a href="#簡化寫法" class="headerlink" title="簡化寫法"></a>簡化寫法</h3><p>若某個 function 沒呼叫 <code>reject</code></p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">    resolve(message);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>可簡寫成</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ES7-async-await-⾮同步寫法"><a href="#ES7-async-await-⾮同步寫法" class="headerlink" title="ES7 async/await ⾮同步寫法"></a>ES7 async/await ⾮同步寫法</h3><p>原本的寫法</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>新寫法</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">askJoeman</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> something = <span class="keyword">await</span> pleaseBuyMeSwitch;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> showoff(something.name);</span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">  &#125; <span class="keyword">catch</span>(error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// await ⼀定要包在 async function 裡⾯才能⽤</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> askJoeman();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-
-<p>cleaner and more readable!</p>
-<h2 id="Let-amp-Const-Block-Scoped"><a href="#Let-amp-Const-Block-Scoped" class="headerlink" title="Let &amp; Const, Block-Scoped"></a>Let &amp; Const, Block-Scoped</h2><p><code>let</code> 僅在當前的 block 內有效，重複定義時會 throw error。<br><code>const</code> 同樣只在當前的 block 內有效，定義時必須 initialize，且不能更改。</p>
-<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">MDN</a>:<br>Classes are a template for creating objects. They encapsulate data with code to work on that data.</p>
-<h3 id="Class-Declaration-類別宣告"><a href="#Class-Declaration-類別宣告" class="headerlink" title="Class Declaration 類別宣告"></a>Class Declaration 類別宣告</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Class-Expression-類別敘述"><a href="#Class-Expression-類別敘述" class="headerlink" title="Class Expression 類別敘述"></a>Class Expression 類別敘述</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// unnamed</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// named</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> PG = <span class="keyword">new</span> People(<span class="string">&#x27;Curry&#x27;</span>, <span class="number">32</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Prototype-Methods-原型⽅法"><a href="#Prototype-Methods-原型⽅法" class="headerlink" title="Prototype Methods 原型⽅法"></a>Prototype Methods 原型⽅法</h3><p>可包 getter、setter、method 等等的進到 class 定義裡⾯，詳⾒ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#prototype_methods">MDN</a>。</p>
-<h3 id="Static-methods-靜態⽅法"><a href="#Static-methods-靜態⽅法" class="headerlink" title="Static methods 靜態⽅法"></a>Static methods 靜態⽅法</h3><p>不需要實體化就可以被呼叫，也無法被已實體化的類別物件呼叫。<br>經常被⽤來建⽴給應⽤程式使⽤的⼯具函數。</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">greeting</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`My name is <span class="subst">$&#123;name&#125;</span>. I&#x27;m <span class="subst">$&#123;age&#125;</span> years old now.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> SG = <span class="keyword">new</span> People(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">SG.greeting(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// Thrown:</span></span><br><span class="line"><span class="comment">// TypeError: SG.greeting is not a function</span></span><br><span class="line"></span><br><span class="line">People.greeting(<span class="string">&#x27;Green&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// My name is Green. I&#x27;m 30 years old now.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別"><a href="#⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別" class="headerlink" title="⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別"></a>⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(`I&#x27;m $&#123;name&#125;.`); name 前⾯沒加上 this 會報錯</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="keyword">extends</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, number, position</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name);</span><br><span class="line">    <span class="built_in">this</span>.number = number;</span><br><span class="line">    <span class="built_in">this</span>.position = position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.introduce();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I wear number <span class="subst">$&#123;<span class="built_in">this</span>.number&#125;</span>. I play <span class="subst">$&#123;<span class="built_in">this</span>.position&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> star = <span class="keyword">new</span> Star(<span class="string">&#x27;Antetokounmpo&#x27;</span>, <span class="number">34</span>, <span class="string">&#x27;PF&#x27;</span>);</span><br><span class="line">star.introduce();</span><br><span class="line"><span class="comment">// I&#x27;m Antetokounmpo.</span></span><br><span class="line"><span class="comment">// I wear number 34. I play PF!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之前幻想字母哥來勇士xD</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN</a>:<br>providing mechanisms for splitting JavaScript programs up into separate modules that can be imported when needed.</p>
-<h3 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">MDN</a>:<br>The <code>export</code> statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the <code>import</code> statement.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> password = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params">id</span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN</a>:<br>The <strong>static</strong> <code>import</code> statement is used to import read only live bindings which are exported by another module.</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; password, getStatus &#125; <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(password); <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Export-Default"><a href="#Export-Default" class="headerlink" title="Export Default"></a>Export Default</h3><p>可以讓要使⽤ module 的 client，在不知道 module export 了哪些名稱的情況下，能⾃訂名稱取⽤ module 裡⾯定義的東西。</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">greeting</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hello!&#x27;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ================================================== */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> any-name-you-want-to-take <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(any-name-you-want-to-take.name);</span><br><span class="line"><span class="comment">// Tim</span></span><br><span class="line"></span><br><span class="line">any-name-you-want-to-take.greeting();</span><br><span class="line"><span class="comment">// Hello!</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
+<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
+</blockquote>
+<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
+<blockquote>
+<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
+</blockquote>
+<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
+<blockquote>
+<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
+</blockquote>
+<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
+<blockquote>
+<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
+</blockquote>
+<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
+<blockquote>
+<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
+</blockquote>
+<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
+<hr>
+<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
+<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
+</blockquote>
+<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
+<blockquote>
+<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
+</blockquote>
+<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
+<blockquote>
+<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
+</blockquote>
+<p>時間有限，為自己的人生鮮艷上色！</p>
+<blockquote>
+<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
+</blockquote>
+<p>別完全被「應該怎樣」束縛住啦！</p>
+<hr>
+<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
+<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
+</blockquote>
+<p>讓自己在混亂中整理出一點頭緒。</p>
+<blockquote>
+<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
+</blockquote>
+<p>當你真心想做一件事，全世界都會幫你。</p>
+<blockquote>
+<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
+</blockquote>
+<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
+<blockquote>
+<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
+</blockquote>
+<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
+<hr>
+<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
+<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
+<hr>
+<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
+<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
+</blockquote>
+<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
+<blockquote>
+<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
+</blockquote>
+<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
+<blockquote>
+<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
+</blockquote>
+<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
+<hr>
+<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
+<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
+</blockquote>
+<p>專注當下。</p>
+<blockquote>
+<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
+</blockquote>
+<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
+<hr>
+<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
+<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
+</blockquote>
+<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
+<blockquote>
+<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
+</blockquote>
+<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
 <br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-        <tag>Cheatsheet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>不完美行動</title>
-    <url>/2021/09/just-do-it/</url>
-    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
-<span id="more"></span>
-<hr>
-<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
-<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
-<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
-<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
-<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
-<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
-<hr>
-<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
-<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
-<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
-<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
-<p>但，不去行動，怎麼會有結果呢？</p>
-<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
-<hr>
-<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
-<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
-<hr>
-<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
-]]></content>
+希望這篇文章能助你一臂之力💪]]></content>
   </entry>
   <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
@@ -1546,6 +1587,222 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript ES6 Cheatsheet</title>
+    <url>/2020/04/javascript-es6-cheatsheet/</url>
+    <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>之前學 ES6 時整理的筆記😀</p>
+<span id="more"></span>
+
+<p>參考自：<a href="https://peter-chang.medium.com/es6-10-features-javascript-developer-must-know-98b9782bef44">[ES6] Javascript 開發者必須知道的 10 個新功能</a></p>
+<h2 id="Default-Parameters"><a href="#Default-Parameters" class="headerlink" title="Default Parameters"></a>Default Parameters</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters">MDN</a>:<br><strong>Default function parameters</strong> allow named parameters to be initialized with default values if no value or <code>undefined</code> is passed.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="function"><span class="keyword">function</span>(<span class="params">height = <span class="number">173</span>, weight = <span class="number">66</span>, college = <span class="string">&#x27;NCTU&#x27;</span></span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Template-Literals"><a href="#Template-Literals" class="headerlink" title="Template Literals"></a>Template Literals</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a>:<br>Template literals are string literals allowing embedded expressions. You can use multi-line strings and <a href="https://dmitripavlutin.com/string-interpolation-in-javascript/">string interpolation</a> features with them.</p>
+<h3 id="Multi-line-Strings"><a href="#Multi-line-Strings" class="headerlink" title="Multi-line Strings"></a>Multi-line Strings</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;first line\n&#x27;</span></span><br><span class="line">+ <span class="string">&#x27;second line&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`first line</span></span><br><span class="line"><span class="string">second line`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-Interpolation"><a href="#String-Interpolation" class="headerlink" title="String Interpolation"></a>String Interpolation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">&#x27;My name is &#x27;</span> + first + <span class="string">&#x27; &#x27;</span> + last + <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sentence = <span class="string">`My name is <span class="subst">$&#123;first&#125;</span> <span class="subst">$&#123;last&#125;</span>.`</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Destructuring-Assignment"><a href="#Destructuring-Assignment" class="headerlink" title="Destructuring Assignment"></a>Destructuring Assignment</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>:<br>The <strong>destructuring assignment</strong> syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; &#125;, gender: &#x27;male&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> moreAboutMe = &#123; ...me, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;;</span><br><span class="line"><span class="comment">// &#123; name: &#x27;Tim&#x27;, college:&#x27;NCTU&#x27; , gender: &#x27;male&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-destructuring"><a href="#Array-destructuring" class="headerlink" title="Array destructuring"></a>Array destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> [red, yellow, green] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(red); <span class="comment">// one</span></span><br><span class="line"><span class="built_in">console</span>.log(yellow); <span class="comment">// two</span></span><br><span class="line"><span class="built_in">console</span>.log(green); <span class="comment">// three</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-destructuring"><a href="#Object-destructuring" class="headerlink" title="Object destructuring"></a>Object destructuring</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> me = &#123; <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>, <span class="attr">college</span>: <span class="string">&#x27;NCTU&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; name, college &#125; = me;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// Tim</span></span><br><span class="line"><span class="built_in">console</span>.log(college); <span class="comment">// NCTU</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h2><p><a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記] JavaScript ES6 中的物件的擴展（object literal extension）</a></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMachine</span>(<span class="params">name, year, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// name: name,</span></span><br><span class="line">    name,</span><br><span class="line">    year,</span><br><span class="line">    <span class="comment">// 也可以覆蓋掉傳進來的值</span></span><br><span class="line">    <span class="attr">price</span>: <span class="number">810000</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ⽅法 methods 也能放進來</span></span><br><span class="line">    <span class="attr">description</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 簡寫</span></span><br><span class="line">    <span class="function"><span class="title">description</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;year&#125;</span> machine <span class="subst">$&#123;name&#125;</span> is <span class="subst">$&#123;price&#125;</span> dollars`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 允許將表達式 expression 作為屬性名稱，以達到動態賦值的效果（包在[]裡⾯）</span></span><br><span class="line">    [year+<span class="string">&#x27;machine&#x27;</span>]: price,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> machine = makeMachine(<span class="string">&#x27;Switch&#x27;</span>, <span class="number">2020</span>, <span class="number">9780</span>);</span><br><span class="line"></span><br><span class="line">machine.description();</span><br><span class="line"><span class="comment">// 2020 machine Switch is 9780 dollars</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(machine.price);</span><br><span class="line"><span class="comment">// 810000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Arrow-Functions"><a href="#Arrow-Functions" class="headerlink" title="Arrow Functions"></a>Arrow Functions</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN</a>:<br>An <strong>arrow function expression</strong> is a compact alternative to a traditional <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">function expression</a>, but is limited and can’t be used in all situations.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多個參數</span></span><br><span class="line">(param1, param2, ..., paramN) =&gt; &#123; statements &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> &#123; <span class="keyword">return</span> expression; &#125;;</span><br><span class="line"><span class="function">(<span class="params">param1, param2, ..., paramN</span>) =&gt;</span> expression;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⼀個參數</span></span><br><span class="line"><span class="function">(<span class="params">singleParam</span>) =&gt;</span> &#123; statements &#125;;</span><br><span class="line"><span class="function"><span class="params">singleParam</span> =&gt;</span> &#123; statements &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 沒有參數</span></span><br><span class="line"><span class="function">() =&gt;</span> &#123; statements &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p><a href="https://andyyou.github.io/2017/06/27/js-promise/">Promise 學習筆記 | DEVLOG of andyyou</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>:<br>The <strong><code>Promise</code></strong> object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
+<h3 id="建⽴-Promise"><a href="#建⽴-Promise" class="headerlink" title="建⽴ Promise"></a>建⽴ Promise</h3><p>把 <code>Promise</code> 想成是⼀個 object！</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">hasEnoughMoney = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pleaseBuyMeSwitch = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasEnoughMoney) &#123;</span><br><span class="line">    <span class="keyword">const</span> gift = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Switch&#x27;</span>,</span><br><span class="line">      <span class="attr">price</span>: <span class="number">9780</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    resolve(gift); <span class="comment">// 回傳 gift 這個物件</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> reason = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;I lost my 20000 dollars at the gym!!!&#x27;</span>);</span><br><span class="line">    reject(reason); <span class="comment">// 回傳 reason 這個 Error 物件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使⽤-Promise"><a href="#使⽤-Promise" class="headerlink" title="使⽤ Promise"></a>使⽤ Promise</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">askJoeman();</span><br></pre></td></tr></table></figure>
+
+<h3 id="簡化寫法"><a href="#簡化寫法" class="headerlink" title="簡化寫法"></a>簡化寫法</h3><p>若某個 function 沒呼叫 <code>reject</code></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">    resolve(message);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可簡寫成</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> showoff = <span class="function"><span class="keyword">function</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">`Hahaha! I got a new <span class="subst">$&#123;something&#125;</span>!`</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ES7-async-await-⾮同步寫法"><a href="#ES7-async-await-⾮同步寫法" class="headerlink" title="ES7 async/await ⾮同步寫法"></a>ES7 async/await ⾮同步寫法</h3><p>原本的寫法</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> askJoeman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  pleaseBuyMeSwitch</span><br><span class="line">  .then(<span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I got:&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(fulfilled);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>新寫法</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">askJoeman</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> something = <span class="keyword">await</span> pleaseBuyMeSwitch;</span><br><span class="line">    <span class="keyword">let</span> message = <span class="keyword">await</span> showoff(something.name);</span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">  &#125; <span class="keyword">catch</span>(error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error.message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// await ⼀定要包在 async function 裡⾯才能⽤</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> askJoeman();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<p>cleaner and more readable!</p>
+<h2 id="Let-amp-Const-Block-Scoped"><a href="#Let-amp-Const-Block-Scoped" class="headerlink" title="Let &amp; Const, Block-Scoped"></a>Let &amp; Const, Block-Scoped</h2><p><code>let</code> 僅在當前的 block 內有效，重複定義時會 throw error。<br><code>const</code> 同樣只在當前的 block 內有效，定義時必須 initialize，且不能更改。</p>
+<h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">MDN</a>:<br>Classes are a template for creating objects. They encapsulate data with code to work on that data.</p>
+<h3 id="Class-Declaration-類別宣告"><a href="#Class-Declaration-類別宣告" class="headerlink" title="Class Declaration 類別宣告"></a>Class Declaration 類別宣告</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Class-Expression-類別敘述"><a href="#Class-Expression-類別敘述" class="headerlink" title="Class Expression 類別敘述"></a>Class Expression 類別敘述</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// unnamed</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// named</span></span><br><span class="line"><span class="keyword">let</span> People = <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> PG = <span class="keyword">new</span> People(<span class="string">&#x27;Curry&#x27;</span>, <span class="number">32</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-Methods-原型⽅法"><a href="#Prototype-Methods-原型⽅法" class="headerlink" title="Prototype Methods 原型⽅法"></a>Prototype Methods 原型⽅法</h3><p>可包 getter、setter、method 等等的進到 class 定義裡⾯，詳⾒ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#prototype_methods">MDN</a>。</p>
+<h3 id="Static-methods-靜態⽅法"><a href="#Static-methods-靜態⽅法" class="headerlink" title="Static methods 靜態⽅法"></a>Static methods 靜態⽅法</h3><p>不需要實體化就可以被呼叫，也無法被已實體化的類別物件呼叫。<br>經常被⽤來建⽴給應⽤程式使⽤的⼯具函數。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">greeting</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`My name is <span class="subst">$&#123;name&#125;</span>. I&#x27;m <span class="subst">$&#123;age&#125;</span> years old now.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> SG = <span class="keyword">new</span> People(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">SG.greeting(<span class="string">&#x27;Thompson&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// Thrown:</span></span><br><span class="line"><span class="comment">// TypeError: SG.greeting is not a function</span></span><br><span class="line"></span><br><span class="line">People.greeting(<span class="string">&#x27;Green&#x27;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">// My name is Green. I&#x27;m 30 years old now.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別"><a href="#⽤-extends-建⽴⼦類別-＆-⽤-super-呼叫⽗類別" class="headerlink" title="⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別"></a>⽤ extends 建⽴⼦類別 ＆ ⽤ super 呼叫⽗類別</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(`I&#x27;m $&#123;name&#125;.`); name 前⾯沒加上 this 會報錯</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I&#x27;m <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="keyword">extends</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name, number, position</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name);</span><br><span class="line">    <span class="built_in">this</span>.number = number;</span><br><span class="line">    <span class="built_in">this</span>.position = position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">introduce</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.introduce();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`I wear number <span class="subst">$&#123;<span class="built_in">this</span>.number&#125;</span>. I play <span class="subst">$&#123;<span class="built_in">this</span>.position&#125;</span>!`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> star = <span class="keyword">new</span> Star(<span class="string">&#x27;Antetokounmpo&#x27;</span>, <span class="number">34</span>, <span class="string">&#x27;PF&#x27;</span>);</span><br><span class="line">star.introduce();</span><br><span class="line"><span class="comment">// I&#x27;m Antetokounmpo.</span></span><br><span class="line"><span class="comment">// I wear number 34. I play PF!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 之前幻想字母哥來勇士xD</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN</a>:<br>providing mechanisms for splitting JavaScript programs up into separate modules that can be imported when needed.</p>
+<h3 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">MDN</a>:<br>The <code>export</code> statement is used when creating JavaScript modules to export live bindings to functions, objects, or primitive values from the module so they can be used by other programs with the <code>import</code> statement.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> password = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params">id</span>) </span>&#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN</a>:<br>The <strong>static</strong> <code>import</code> statement is used to import read only live bindings which are exported by another module.</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; password, getStatus &#125; <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(password); <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Export-Default"><a href="#Export-Default" class="headerlink" title="Export Default"></a>Export Default</h3><p>可以讓要使⽤ module 的 client，在不知道 module export 了哪些名稱的情況下，能⾃訂名稱取⽤ module 裡⾯定義的東西。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tim&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">greeting</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hello!&#x27;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ================================================== */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> any-name-you-want-to-take <span class="keyword">from</span> <span class="string">&#x27;module-name&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(any-name-you-want-to-take.name);</span><br><span class="line"><span class="comment">// Tim</span></span><br><span class="line"></span><br><span class="line">any-name-you-want-to-take.greeting();</span><br><span class="line"><span class="comment">// Hello!</span></span><br></pre></td></tr></table></figure>
+
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+        <tag>Cheatsheet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>不完美行動</title>
+    <url>/2021/09/just-do-it/</url>
+    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
+<span id="more"></span>
+<hr>
+<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
+<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
+<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
+<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
+<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
+<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
+<hr>
+<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
+<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
+<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
+<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
+<p>但，不去行動，怎麼會有結果呢？</p>
+<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
+<hr>
+<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
+<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
+<hr>
+<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【心得】LINE Developers Meetup &amp;#35;16</title>
+    <url>/2022/03/line-developers-meetup-16/</url>
+    <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
+<!-- <img src="1.png" style="width:50vw;" /> -->
+
+<p>昨晚參加了 LINE Developers 的實體 Meetup，這也是我參與開發社群活動的初體驗，有不少收穫，在此做分享！</p>
+<span id="more"></span>
+
+<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>這次的 Meetup 辦在台大體育館二樓的「後台Backstage Café」。</p>
+<p>18:30 開放入場，而我也差不多那個時間到，沒想到當我上階梯，一看，哇，怎麼已經那麼多人在排隊了啊！距離活動開始不是還有半小時嗎？</p>
+<h3 id="抓住機會"><a href="#抓住機會" class="headerlink" title="抓住機會"></a>抓住機會</h3><p>Anyway，進去了以後，吧台前面的桌上擺滿了吐司三明治和飲料，拿了一份，正準備要進裡面找位子時，聽到 LINE 的 HR 說還有限量十位的「快速面試」名額還沒額滿，於是這讓我沒多思考一秒，快快把東西放好在隨便一個位子上，拿著手機走到報名面試處的附近，深怕錯過了這個難得的機會！</p>
+<p>其實好幾天前就已經知道有這個特別活動，原本也打算投履歷來體驗一下快速面試 (哦對了那個面試是在面一個叫做 LINE TECH FRESH 的實習)，也上網查了一下，有找到說好像要投英文履歷錄取的機會比較高，但我目前只有中文履歷，最近嘗試做英文履歷也不太順利 (比想像中難做好幾倍啊)，再加上覺得身為應屆畢業生而且暫時不打算繼續念研究所的我應該會比其他還是在校生的應徵者機會低很多，所以就決定放棄不嘗試了。</p>
+<p>時間拉回到昨晚那個 moment，HR 說還有名額，而我的手機也握在手了，我當時似乎沒多思考什麼，什麼根本完全沒準備面試啊、履歷還是用中文而且沒修改啊、我之後不是在校生啊，都拋在腦後了，趕快找那個實習申請的頁面，也快點複製我 CakeResume 履歷的網址，倉促填一填勾一勾申請完以後就趕快找 HR 報名快速面試。</p>
+<p>很怕已經沒有名額了，都已經填好資料，錯失嘗試機會我覺得會比面試出糗還讓我後悔好一段時間⋯⋯</p>
+<h3 id="第七位"><a href="#第七位" class="headerlink" title="第七位"></a>第七位</h3><p>幸好後來有報成功，HR 還一個一個問報名快速面試的人說這份是不是你的履歷，跟我們做確認，我還趁機瞄到前一位的履歷，哇，是英文的欸，是沒仔細去看，但感覺內容好豐富啊！而當 HR 把她的筆電轉過來秀出我的履歷時，那股羞恥感還不小欸😂</p>
+<p>「你是第七位，8.30 先來這邊準備，大概 8.40 開始面試」，我不知道我是誰、我在哪，帶著一股奇妙的感受，回到位子上準備迎接前面的 talk。</p>
+<hr>
+<h2 id="TECH-FRESH-實習生分享心得"><a href="#TECH-FRESH-實習生分享心得" class="headerlink" title="TECH FRESH 實習生分享心得"></a>TECH FRESH 實習生分享心得</h2><p>一開始是由 LINE TAIWAN 的技術長為我們說明 LINE 的願景之類的，有點忘了，那個時候正享用著活動為我們準備的餐點，還蠻好吃的，但很可惜沒一邊專心邊聽講一邊做筆記😅</p>
+<p>接著分別是 LINE TODAY、LINE SHOPPING、LINE SPOT 的三位實習生輪番上陣，和我們分享了產品服務的介紹、架構以及他們透過實習學到了什麼。</p>
+<p>雖說不要做無謂的比較，但當知道身邊周遭年紀跟你差不多的同儕比你優秀很多的時候，真的會後悔為什麼當初應該怎樣怎樣或是不要怎樣而我卻怎樣，但畢竟時光一去不復返，人只能向前看，我們應該要做的，是秉持著「成長性思維」讓自己繼續前進，最該比較的是過去的自己，而不是一直拿別人去批評自己！當然，向他人看齊是很好的，能藉此激勵自我讓自己成長，但不要過度，否則陷入情緒漩渦而停滯不前就很可惜了。</p>
+<h3 id="分享學到什麼的好架構"><a href="#分享學到什麼的好架構" class="headerlink" title="分享學到什麼的好架構"></a>分享學到什麼的好架構</h3><p>好像有點扯遠了，這個 part 我只有簡短紀錄第二位實習生分享的東西：</p>
+<blockquote>
+<p>這是什麼：產品的簡介<br>我學到了什麼：程式語言、框架、CI/CD 工具之類的，好像也有軟實力的部分<br>完成/達到了什麼：最後多少人使用、成效如何、對於個人有怎麼樣的啟發(?)</p>
+</blockquote>
+<p>她用這個架構來闡述她在一個 project 當中具體學到了什麼，我覺得這個架構方式還蠻棒的，之後或許能嘗試看看用這個來架構我的分享🤔，如果有機會做分享的話xD</p>
+<p>三位都還有很多不錯的分享，但因為沒做筆記，也忘了差不多，所以這個部分就到這邊吧！<br>（所以真的要做記錄啊，不管是打字或是拍照，這樣方便自己回憶起來，才不會白聽啊OTZ）</p>
+<hr>
+<h2 id="和-Automation-Engineer-聊聊"><a href="#和-Automation-Engineer-聊聊" class="headerlink" title="和 Automation Engineer 聊聊"></a>和 Automation Engineer 聊聊</h2><p>其實這個 Meetup 不必得一直坐在位子上聽分享，你也可以到處走走然後到處跟別人聊，跟小時候玩神奇寶貝電玩走草叢的概念很像xD</p>
+<p>原本我是想找 Evan 聊關於部落格的事情，因為我<a href="http://www.evanlin.com/">就是因為他</a>才開啟<a href="https://kanido386.github.io" target="_blank">我的部落格之路</a>啊！</p>
+<p>但看到大家都在問跟 LINE 工作有關的問題，突然問部落格好像有點突兀，所以我就問了 Server-side Engineer 這個職位，然後我也忘了為什麼，不知不覺輾轉提到了 Service QA Engineer，於是 Evan 就帶我引介給一位 Automation Engineer。</p>
+<h3 id="Side-Project-建議"><a href="#Side-Project-建議" class="headerlink" title="Side Project 建議"></a>Side Project 建議</h3><p>我有提到說我希望能透過 side project 來幫助我面試正職的工作。</p>
+<p>（他說）</p>
+<p>做 side project 在深不在廣，要展現出來給面試你的人看的，是你在短時間之內能自學到什麼程度，以及中間的思考流程。最重要的就是展現出自學能力及你對於這方面的熱忱，畢竟剛畢業真正會很多東西、很厲害的人佔少數，你的 potential 如何才是他們最 care 的！</p>
+<p>想學什麼？怎麼學？現在網路上學習資源真的非常多，YouTube 各種教學影片，隨便 google 幾乎能找得到各種教學文，所以他又再次提到，最重要的真的就是學習能力，一個能讓你快速上手新知識和技術的學習能力，至於學習的內容本身，我這樣聽下來，反倒是其次，因為新進公司時通常對他們來說你就像是一張白紙，差別在於品質的好壞，也就是 potential 啦，你能快速學習新事物，比你現在會什麼，還要來得重要！（當然通常會越多東西，也會有一定的快速學習能力）</p>
+<p>（我反思）</p>
+<p>或許之後有做 side project 真的可以寫 blog post 或是錄影片做分享，一方面能 show 給面試官看我的學習能力、熱忱、思考方式，最重要的是讓自己更清楚知道自己在做什麼，被面試官問到的時候才比較不會被問倒QQ（快速面試的體悟，見下面的分享）</p>
+<h3 id="關於未來職涯選擇"><a href="#關於未來職涯選擇" class="headerlink" title="關於未來職涯選擇"></a>關於未來職涯選擇</h3><p>我說我職涯初期想先走後端，因為我之前在梅竹黑客松開發部就是在寫後端。</p>
+<p>（他說）</p>
+<p>不要只因為現在會什麼就決定未來走哪方面，而是自己熱忱的地方在哪，然後再去靠自學補足！</p>
+<p>（我反思）</p>
+<p>也是，畢竟人生的路還很長，而且網路上資源豐富，想學什麼或是想報名什麼都很方便，不必完全因為之前會什麼而就那樣走下去。當然熱忱不是想找就找得到的，而是在不斷的嘗試當中，逐漸被激發出來的，沒嘗試，永遠不會知道自己對這一塊是不是有熱忱！</p>
+<p>所以我職涯初期真的會走後端？或許吧，但如果近期在什麼因緣際會之下接觸到什麼對它產生極大的興趣和熱忱，而決定先往那方面嘗試，那也挺不錯的不是嗎？</p>
+<hr>
+<h2 id="快速面試"><a href="#快速面試" class="headerlink" title="快速面試"></a>快速面試</h2><p>面試前超級緊張的，腦海裡只有，完蛋，完全沒準備，等等自我介紹該說什麼啊？我是不是不應該貿然報名這個面試的，不應該挖坑給自己跳？我可以強烈感受到我在活著，好久沒這樣了。</p>
+<p>一進去，有三位面試官，那感覺是沒想像中恐怖啦。中間的面試官請我簡單的自我介紹，於是我就語無倫次地說我是誰、我讀哪、我職涯初期打算先做後端，然後直接表明我是大四生，應該沒資格報名吧？但他們說剛剛甚至還有高中生來面試呢！所以這不該是理由。而我也再表明我主要是來了解 LINE 相關的工作跟來面試看看，感受一下的，應徵實習不是我的目的。不知道是不是因為這樣，還是其實面試就是這樣，或是因為快速面試只有 15 分鐘，他們就沒讓我繼續自我介紹，而是直接問我履歷上的內容。</p>
+<p>中間的過程我就不照時間順序來敘述了，等等也會穿插提到，接下來就來分享我面試完後，透過「自由書寫」的方式寫下來的種種心得和體悟。（當然寫在這邊的內容是有經過整理和潤飾的）</p>
+<h3 id="面試官想知道你什麼？"><a href="#面試官想知道你什麼？" class="headerlink" title="面試官想知道你什麼？"></a>面試官想知道你什麼？</h3><p>面試官會希望透過你的自我介紹，知道你的特質、表達能力，以及問你問題時，你能不能夠很快聽懂，並且回答得得體合宜。</p>
+<p>這次的快速面試，讓我有著最深的體悟，就是「回答得讓人聽得懂」這一點啊！（這是我最自卑也最想改善的一環…）</p>
+<p>面試官真的不那麼 care 面試者現階段會不會很多東西，而是他多有 potential，畢竟進公司以後，很多東西都要從頭學習。</p>
+<p>最該展現出來的，就是你是一個資質很好的紙張，你能夠快速學習新事物、溝通表達上ok(QQ)、特質是否符合該職位、甚至可能是企業文化的適配性，當然你會什麼、曾經做過什麼，能用面試官聽得懂的方式表達出來是最好！</p>
+<h3 id="對履歷要有著絕對的了解"><a href="#對履歷要有著絕對的了解" class="headerlink" title="對履歷要有著絕對的了解"></a>對履歷要有著絕對的了解</h3><p>今天三位面試官真的都從履歷上面我有列出來的專案來問我問題！</p>
+<p>這邊以我為例，去年(2021)暑假的黑客松競賽、交大藝趣節拼貼專案 Android APP、梅竹黑客松開發部。</p>
+<p>被問到：</p>
+<ol>
+<li>開發部開發出來的活動平台一共幾個人使用</li>
+<li>因為拼貼專案有提到，請比較 Kotlin、Java 的差別，以及自己覺得寫起來有什麼差別，為什麼要同時用兩種程式語言開發呢？</li>
+<li>開發部那邊有列出 Nuxt.js，你能不能簡述它是什麼呢？</li>
+<li>去年的黑客松競賽你負責什麼呢？請簡單介紹一下那個聊天機器人。為什麼是用 Flask 呢？上面有列出「串接第三方 API」請問是什麼呢？</li>
+</ol>
+<p>然而我⋯⋯ 完全不知道自己在回答什麼⋯⋯</p>
+<p>關於履歷，不太會補充說明或是那個 part 不是你做的部分，真的就不要列在履歷上面了，不然就是要準備足夠，因為面試官真的都是從履歷上有寫的 project 來問問題！</p>
+<h3 id="怎麼練習？"><a href="#怎麼練習？" class="headerlink" title="怎麼練習？"></a>怎麼練習？</h3><p>至於準備方式，我覺得要多練習說說那些東西，最好找不同人練習，對於那些 project 或是你履歷上有提到的，讓他們問他們想問的，真的什麼問題都可以問，重要的就是訓練那個臨場反應，以及確認自己到底懂多少、能否闡述得讓人聽得懂。</p>
+<p>對於我個人來說，之後或許可以開 YouTube 直播之類的來練習這一塊，多練習口語表達！</p>
+<p>面試的時候連自己都不知道在講什麼了，更何況是面試官😂</p>
+<p>真的真的真的要足夠了解自己列出來的所有東西，一開始先掌握這一個最基本的點，熱忱、學習能力的展現可以之後再慢慢加進來。</p>
+<h3 id="可以嘗試抱持的心態"><a href="#可以嘗試抱持的心態" class="headerlink" title="可以嘗試抱持的心態"></a>可以嘗試抱持的心態</h3><p>面試的時候其實氣氛挺輕鬆的，不用想得那麼恐怖，面試官人很 nice 的～</p>
+<p>大不了就這次面試表現很爛、沒被錄取而已。</p>
+<p>去跟面試官聊聊真的會有收穫，可以當成是去成長的，幫自己迭代改進！</p>
+<h3 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h3><p>真的就是大量嘗試！</p>
+<p>幸好今天有報這個快速面試讓自己被慘電，雖然有點丟臉 (但其實那感覺也還行)，但收穫真的滿滿，才知道自己可以往哪方面去改進！</p>
+<p>丟臉只是一時的，然而，那收穫或許可以為自己的人生帶來長遠的效益啊！</p>
+<p>有一句話很適合放在這邊：「當一切努力看似無用，我會去看石匠敲打石頭。可能敲了一百下，石頭上連一條裂縫都沒有，但就在第一百零一下，石頭斷裂為兩半。然後我了解到，把石頭劈成兩半的不是最後那一下，而是先前的每一次敲擊。」</p>
+<p>加油，路是不會白走的！</p>
+<hr>
+<h2 id="向-Evan-請教部落格"><a href="#向-Evan-請教部落格" class="headerlink" title="向 Evan 請教部落格"></a>向 Evan 請教部落格</h2><p>之前大三修「正規語言概論」，因為準備考試的需要，讓我無意間找到了 Evan 的<a href="https://www.evanlin.com/moocs-coursera-automata-note1/">相關系列文</a>，也間接讓我知道 Evan，但那個時候還不知道他在 LINE 工作。</p>
+<p>2020 梅竹黑客松，因為出題企業有 LINE，沒想到 Evan 居然是評審之一，才知道原來他是 LINE 的開發技術推廣工程師，讓我想抓住機會討教一番，於是乎，活動最後一天找上 Evan 聊聊，向他請教部落格，也就因為這樣，從那個時候到現在，我部落格多誕生了 28 篇文章，其中有些文章感覺有幫助到他人 (從不重複點閱數猜測的啦xD)，能夠更靠近「認識自我 • 感受世界 • 創造價值」的理念，著實讓我很有成就感！</p>
+<p>啊，廢話不多說，趕快進到重點好了。</p>
+<h3 id="覺得內容沒什麼而不敢寫，怎麼辦？"><a href="#覺得內容沒什麼而不敢寫，怎麼辦？" class="headerlink" title="覺得內容沒什麼而不敢寫，怎麼辦？"></a>覺得內容沒什麼而不敢寫，怎麼辦？</h3><p>寫就對了。</p>
+<p>透過寫部落格，對於你不熟悉的東西，你就會去查嘛，然後寫一寫又卡住，那就再去查嘛，久而久之，覺得自己好像不知不覺也學到了什麼，這樣對自己很有幫助不是嗎？最重要的是你透過寫部落格，有怎麼樣的成長，至於別人覺得怎樣，那倒是其次。</p>
+<p><strong>如果真的希望自己的文章能幫助到他人呢？</strong></p>
+<p>其實不用擔心說自己寫的東西太簡單、跟大神的分享差十萬八千里會不會顯得沒價值什麼的。當你懂的比別人多那麼一點，對方不懂，而你剛好懂，不就是一個可以分享的契機嗎？只要能讓對方收穫到一點什麼，就是一種價值！</p>
+<p>像我之前有寫 LINE Bot 的相關文章，除了能幫助想嘗試做 LINE Bot 的朋友，甚至還能造福到之後也要做相關 project 的自己，因為可以直接拿之前的筆記參考來做啊，超方便的xD</p>
+<p><strong>怕寫出來的東西內容有錯？</strong></p>
+<p>可以試著丟社群分享，如果有錯了，別人說不定會告訴你哪些地方可以修正，多棒的一件事啊！</p>
+<p>就是不要怕丟臉，很多時候真的是從「看起來愚蠢」開始慢慢成長的！</p>
+<h3 id="如何定期輸出？"><a href="#如何定期輸出？" class="headerlink" title="如何定期輸出？"></a>如何定期輸出？</h3><p>可以試著規定自己，每個禮拜要有固定產出，最重要的就是定期讓自己輸出成長。</p>
+<p>不知道寫什麼嗎？</p>
+<p>這週有聽到什麼分享覺得還不錯的，或是也可以藉機閱讀來寫東西，抑或是學點新技術然後來分享、再查資料、再分享，不斷迭代下去。真的不要去過度擔心內容很差怎麼樣，那是自己的部落格啊！</p>
+<p>可以造福到未來的自己，而且透過這個過程成長，那才是最重要的！</p>
+<p>文章看起來廢廢的又怎樣？多輸出、整理思緒、遇到卡住就查資料順便學習。目前不是大神，但一定有人可以向你學習，不斷反覆這個過程，久了，就如同 Evan 說的，說不定也能成為別人眼中的大神，當然那不是目的，而是一個可能伴隨而來的附屬品，再說一次，最重要的是能夠讓自己成長！</p>
+<h3 id="口語表達怎麼練呢？"><a href="#口語表達怎麼練呢？" class="headerlink" title="口語表達怎麼練呢？"></a>口語表達怎麼練呢？</h3><p>寫部落格能訓練文字表達能力，那口語表達怎麼辦呢？</p>
+<p>可以試著發 YouTube 影片，因為為了錄製影片，你會去想辦法控制表達的時間掌握、口條、聲音、語氣等等的，這些都是很好的練習。</p>
+<p>甚至，還可以去參加社群的分享，報名當上台分享的那個人。</p>
+<p>不用擔心說自己講的東西是不是太簡單或者是沒什麼價值什麼的，Evan 說，啊就是會有人沒聽過啊，分享了以後可以造福給不知道的人聽，也是一種很棒的分享啊！</p>
+<p>最重要的是，也能藉由那個機會訓練自己的口語表達能力，不是很讚嗎？</p>
+<h3 id="對讀研究所的看法"><a href="#對讀研究所的看法" class="headerlink" title="對讀研究所的看法"></a>對讀研究所的看法</h3><p>我目前打算先去工作，想聽聽看 Evan 對於讀研究所的看法。</p>
+<p>（他說）</p>
+<p>研究所是訓練那整個深入研究東西的過程，研究什麼東西倒是其次，最重要的就是那整個做學問的心法！</p>
+<p>（我反思）</p>
+<p>因為目前真的沒有很想念研究所，怕先念了也只是拿來逃避找工作，這樣子我覺得有點可惜。</p>
+<p>或許未來工作一段時間之後再回去讀吧？感覺帶著更正確的心態去讀研究所會更有收獲！</p>
+<hr>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一次參加社群活動，覺得滿載而歸，會讓我想繼續參加類似的活動！</p>
+<p>加油，多方嘗試、比過去的自己更進步、不要怕出糗、多接收外界刺激讓自己體會不一樣的事物，你我都可以越來越來靠近心目中的理想自我的！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>專注當下</title>
     <url>/2021/12/live-in-the-moment/</url>
     <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
@@ -1569,6 +1826,65 @@
 這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
       <tags>
         <tag>Logic Pro</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
+    <url>/2021/01/microprocessor-project/</url>
+    <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
+<span id="more"></span>
+
+<p>這次僅做簡單的紀錄。</p>
+<hr>
+<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
+<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
+<hr>
+<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
+  <!-- <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" /> -->
+  <img src="2.jpg" style="width:30vw;" />
+  <figcaption>來玩機台囉！</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" /> -->
+  <img src="3.jpg" style="width:30vw;" />
+  <figcaption>挖掉杯子底部，讓球通過</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" /> -->
+  <img src="4.jpg" style="width:30vw;" />
+  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" /> -->
+  <img src="5.jpg" style="width:30vw;" />
+  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
+</figure>
+
+<hr>
+<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
+<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
+]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+        <tag>微處理機</tag>
+        <tag>STM32</tag>
+        <tag>開發板</tag>
+        <tag>投籃機</tag>
       </tags>
   </entry>
   <entry>
@@ -1725,223 +2041,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【心得】LINE Developers Meetup &amp;#35;16</title>
-    <url>/2022/03/line-developers-meetup-16/</url>
-    <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
-<!-- <img src="1.png" style="width:50vw;" /> -->
-
-<p>昨晚參加了 LINE Developers 的實體 Meetup，這也是我參與開發社群活動的初體驗，有不少收穫，在此做分享！</p>
-<span id="more"></span>
-
-<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>這次的 Meetup 辦在台大體育館二樓的「後台Backstage Café」。</p>
-<p>18:30 開放入場，而我也差不多那個時間到，沒想到當我上階梯，一看，哇，怎麼已經那麼多人在排隊了啊！距離活動開始不是還有半小時嗎？</p>
-<h3 id="抓住機會"><a href="#抓住機會" class="headerlink" title="抓住機會"></a>抓住機會</h3><p>Anyway，進去了以後，吧台前面的桌上擺滿了吐司三明治和飲料，拿了一份，正準備要進裡面找位子時，聽到 LINE 的 HR 說還有限量十位的「快速面試」名額還沒額滿，於是這讓我沒多思考一秒，快快把東西放好在隨便一個位子上，拿著手機走到報名面試處的附近，深怕錯過了這個難得的機會！</p>
-<p>其實好幾天前就已經知道有這個特別活動，原本也打算投履歷來體驗一下快速面試 (哦對了那個面試是在面一個叫做 LINE TECH FRESH 的實習)，也上網查了一下，有找到說好像要投英文履歷錄取的機會比較高，但我目前只有中文履歷，最近嘗試做英文履歷也不太順利 (比想像中難做好幾倍啊)，再加上覺得身為應屆畢業生而且暫時不打算繼續念研究所的我應該會比其他還是在校生的應徵者機會低很多，所以就決定放棄不嘗試了。</p>
-<p>時間拉回到昨晚那個 moment，HR 說還有名額，而我的手機也握在手了，我當時似乎沒多思考什麼，什麼根本完全沒準備面試啊、履歷還是用中文而且沒修改啊、我之後不是在校生啊，都拋在腦後了，趕快找那個實習申請的頁面，也快點複製我 CakeResume 履歷的網址，倉促填一填勾一勾申請完以後就趕快找 HR 報名快速面試。</p>
-<p>很怕已經沒有名額了，都已經填好資料，錯失嘗試機會我覺得會比面試出糗還讓我後悔好一段時間⋯⋯</p>
-<h3 id="第七位"><a href="#第七位" class="headerlink" title="第七位"></a>第七位</h3><p>幸好後來有報成功，HR 還一個一個問報名快速面試的人說這份是不是你的履歷，跟我們做確認，我還趁機瞄到前一位的履歷，哇，是英文的欸，是沒仔細去看，但感覺內容好豐富啊！而當 HR 把她的筆電轉過來秀出我的履歷時，那股羞恥感還不小欸😂</p>
-<p>「你是第七位，8.30 先來這邊準備，大概 8.40 開始面試」，我不知道我是誰、我在哪，帶著一股奇妙的感受，回到位子上準備迎接前面的 talk。</p>
-<hr>
-<h2 id="TECH-FRESH-實習生分享心得"><a href="#TECH-FRESH-實習生分享心得" class="headerlink" title="TECH FRESH 實習生分享心得"></a>TECH FRESH 實習生分享心得</h2><p>一開始是由 LINE TAIWAN 的技術長為我們說明 LINE 的願景之類的，有點忘了，那個時候正享用著活動為我們準備的餐點，還蠻好吃的，但很可惜沒一邊專心邊聽講一邊做筆記😅</p>
-<p>接著分別是 LINE TODAY、LINE SHOPPING、LINE SPOT 的三位實習生輪番上陣，和我們分享了產品服務的介紹、架構以及他們透過實習學到了什麼。</p>
-<p>雖說不要做無謂的比較，但當知道身邊周遭年紀跟你差不多的同儕比你優秀很多的時候，真的會後悔為什麼當初應該怎樣怎樣或是不要怎樣而我卻怎樣，但畢竟時光一去不復返，人只能向前看，我們應該要做的，是秉持著「成長性思維」讓自己繼續前進，最該比較的是過去的自己，而不是一直拿別人去批評自己！當然，向他人看齊是很好的，能藉此激勵自我讓自己成長，但不要過度，否則陷入情緒漩渦而停滯不前就很可惜了。</p>
-<h3 id="分享學到什麼的好架構"><a href="#分享學到什麼的好架構" class="headerlink" title="分享學到什麼的好架構"></a>分享學到什麼的好架構</h3><p>好像有點扯遠了，這個 part 我只有簡短紀錄第二位實習生分享的東西：</p>
-<blockquote>
-<p>這是什麼：產品的簡介<br>我學到了什麼：程式語言、框架、CI/CD 工具之類的，好像也有軟實力的部分<br>完成/達到了什麼：最後多少人使用、成效如何、對於個人有怎麼樣的啟發(?)</p>
-</blockquote>
-<p>她用這個架構來闡述她在一個 project 當中具體學到了什麼，我覺得這個架構方式還蠻棒的，之後或許能嘗試看看用這個來架構我的分享🤔，如果有機會做分享的話xD</p>
-<p>三位都還有很多不錯的分享，但因為沒做筆記，也忘了差不多，所以這個部分就到這邊吧！<br>（所以真的要做記錄啊，不管是打字或是拍照，這樣方便自己回憶起來，才不會白聽啊OTZ）</p>
-<hr>
-<h2 id="和-Automation-Engineer-聊聊"><a href="#和-Automation-Engineer-聊聊" class="headerlink" title="和 Automation Engineer 聊聊"></a>和 Automation Engineer 聊聊</h2><p>其實這個 Meetup 不必得一直坐在位子上聽分享，你也可以到處走走然後到處跟別人聊，跟小時候玩神奇寶貝電玩走草叢的概念很像xD</p>
-<p>原本我是想找 Evan 聊關於部落格的事情，因為我<a href="http://www.evanlin.com/">就是因為他</a>才開啟<a href="https://kanido386.github.io" target="_blank">我的部落格之路</a>啊！</p>
-<p>但看到大家都在問跟 LINE 工作有關的問題，突然問部落格好像有點突兀，所以我就問了 Server-side Engineer 這個職位，然後我也忘了為什麼，不知不覺輾轉提到了 Service QA Engineer，於是 Evan 就帶我引介給一位 Automation Engineer。</p>
-<h3 id="Side-Project-建議"><a href="#Side-Project-建議" class="headerlink" title="Side Project 建議"></a>Side Project 建議</h3><p>我有提到說我希望能透過 side project 來幫助我面試正職的工作。</p>
-<p>（他說）</p>
-<p>做 side project 在深不在廣，要展現出來給面試你的人看的，是你在短時間之內能自學到什麼程度，以及中間的思考流程。最重要的就是展現出自學能力及你對於這方面的熱忱，畢竟剛畢業真正會很多東西、很厲害的人佔少數，你的 potential 如何才是他們最 care 的！</p>
-<p>想學什麼？怎麼學？現在網路上學習資源真的非常多，YouTube 各種教學影片，隨便 google 幾乎能找得到各種教學文，所以他又再次提到，最重要的真的就是學習能力，一個能讓你快速上手新知識和技術的學習能力，至於學習的內容本身，我這樣聽下來，反倒是其次，因為新進公司時通常對他們來說你就像是一張白紙，差別在於品質的好壞，也就是 potential 啦，你能快速學習新事物，比你現在會什麼，還要來得重要！（當然通常會越多東西，也會有一定的快速學習能力）</p>
-<p>（我反思）</p>
-<p>或許之後有做 side project 真的可以寫 blog post 或是錄影片做分享，一方面能 show 給面試官看我的學習能力、熱忱、思考方式，最重要的是讓自己更清楚知道自己在做什麼，被面試官問到的時候才比較不會被問倒QQ（快速面試的體悟，見下面的分享）</p>
-<h3 id="關於未來職涯選擇"><a href="#關於未來職涯選擇" class="headerlink" title="關於未來職涯選擇"></a>關於未來職涯選擇</h3><p>我說我職涯初期想先走後端，因為我之前在梅竹黑客松開發部就是在寫後端。</p>
-<p>（他說）</p>
-<p>不要只因為現在會什麼就決定未來走哪方面，而是自己熱忱的地方在哪，然後再去靠自學補足！</p>
-<p>（我反思）</p>
-<p>也是，畢竟人生的路還很長，而且網路上資源豐富，想學什麼或是想報名什麼都很方便，不必完全因為之前會什麼而就那樣走下去。當然熱忱不是想找就找得到的，而是在不斷的嘗試當中，逐漸被激發出來的，沒嘗試，永遠不會知道自己對這一塊是不是有熱忱！</p>
-<p>所以我職涯初期真的會走後端？或許吧，但如果近期在什麼因緣際會之下接觸到什麼對它產生極大的興趣和熱忱，而決定先往那方面嘗試，那也挺不錯的不是嗎？</p>
-<hr>
-<h2 id="快速面試"><a href="#快速面試" class="headerlink" title="快速面試"></a>快速面試</h2><p>面試前超級緊張的，腦海裡只有，完蛋，完全沒準備，等等自我介紹該說什麼啊？我是不是不應該貿然報名這個面試的，不應該挖坑給自己跳？我可以強烈感受到我在活著，好久沒這樣了。</p>
-<p>一進去，有三位面試官，那感覺是沒想像中恐怖啦。中間的面試官請我簡單的自我介紹，於是我就語無倫次地說我是誰、我讀哪、我職涯初期打算先做後端，然後直接表明我是大四生，應該沒資格報名吧？但他們說剛剛甚至還有高中生來面試呢！所以這不該是理由。而我也再表明我主要是來了解 LINE 相關的工作跟來面試看看，感受一下的，應徵實習不是我的目的。不知道是不是因為這樣，還是其實面試就是這樣，或是因為快速面試只有 15 分鐘，他們就沒讓我繼續自我介紹，而是直接問我履歷上的內容。</p>
-<p>中間的過程我就不照時間順序來敘述了，等等也會穿插提到，接下來就來分享我面試完後，透過「自由書寫」的方式寫下來的種種心得和體悟。（當然寫在這邊的內容是有經過整理和潤飾的）</p>
-<h3 id="面試官想知道你什麼？"><a href="#面試官想知道你什麼？" class="headerlink" title="面試官想知道你什麼？"></a>面試官想知道你什麼？</h3><p>面試官會希望透過你的自我介紹，知道你的特質、表達能力，以及問你問題時，你能不能夠很快聽懂，並且回答得得體合宜。</p>
-<p>這次的快速面試，讓我有著最深的體悟，就是「回答得讓人聽得懂」這一點啊！（這是我最自卑也最想改善的一環…）</p>
-<p>面試官真的不那麼 care 面試者現階段會不會很多東西，而是他多有 potential，畢竟進公司以後，很多東西都要從頭學習。</p>
-<p>最該展現出來的，就是你是一個資質很好的紙張，你能夠快速學習新事物、溝通表達上ok(QQ)、特質是否符合該職位、甚至可能是企業文化的適配性，當然你會什麼、曾經做過什麼，能用面試官聽得懂的方式表達出來是最好！</p>
-<h3 id="對履歷要有著絕對的了解"><a href="#對履歷要有著絕對的了解" class="headerlink" title="對履歷要有著絕對的了解"></a>對履歷要有著絕對的了解</h3><p>今天三位面試官真的都從履歷上面我有列出來的專案來問我問題！</p>
-<p>這邊以我為例，去年(2021)暑假的黑客松競賽、交大藝趣節拼貼專案 Android APP、梅竹黑客松開發部。</p>
-<p>被問到：</p>
-<ol>
-<li>開發部開發出來的活動平台一共幾個人使用</li>
-<li>因為拼貼專案有提到，請比較 Kotlin、Java 的差別，以及自己覺得寫起來有什麼差別，為什麼要同時用兩種程式語言開發呢？</li>
-<li>開發部那邊有列出 Nuxt.js，你能不能簡述它是什麼呢？</li>
-<li>去年的黑客松競賽你負責什麼呢？請簡單介紹一下那個聊天機器人。為什麼是用 Flask 呢？上面有列出「串接第三方 API」請問是什麼呢？</li>
-</ol>
-<p>然而我⋯⋯ 完全不知道自己在回答什麼⋯⋯</p>
-<p>關於履歷，不太會補充說明或是那個 part 不是你做的部分，真的就不要列在履歷上面了，不然就是要準備足夠，因為面試官真的都是從履歷上有寫的 project 來問問題！</p>
-<h3 id="怎麼練習？"><a href="#怎麼練習？" class="headerlink" title="怎麼練習？"></a>怎麼練習？</h3><p>至於準備方式，我覺得要多練習說說那些東西，最好找不同人練習，對於那些 project 或是你履歷上有提到的，讓他們問他們想問的，真的什麼問題都可以問，重要的就是訓練那個臨場反應，以及確認自己到底懂多少、能否闡述得讓人聽得懂。</p>
-<p>對於我個人來說，之後或許可以開 YouTube 直播之類的來練習這一塊，多練習口語表達！</p>
-<p>面試的時候連自己都不知道在講什麼了，更何況是面試官😂</p>
-<p>真的真的真的要足夠了解自己列出來的所有東西，一開始先掌握這一個最基本的點，熱忱、學習能力的展現可以之後再慢慢加進來。</p>
-<h3 id="可以嘗試抱持的心態"><a href="#可以嘗試抱持的心態" class="headerlink" title="可以嘗試抱持的心態"></a>可以嘗試抱持的心態</h3><p>面試的時候其實氣氛挺輕鬆的，不用想得那麼恐怖，面試官人很 nice 的～</p>
-<p>大不了就這次面試表現很爛、沒被錄取而已。</p>
-<p>去跟面試官聊聊真的會有收穫，可以當成是去成長的，幫自己迭代改進！</p>
-<h3 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h3><p>真的就是大量嘗試！</p>
-<p>幸好今天有報這個快速面試讓自己被慘電，雖然有點丟臉 (但其實那感覺也還行)，但收穫真的滿滿，才知道自己可以往哪方面去改進！</p>
-<p>丟臉只是一時的，然而，那收穫或許可以為自己的人生帶來長遠的效益啊！</p>
-<p>有一句話很適合放在這邊：「當一切努力看似無用，我會去看石匠敲打石頭。可能敲了一百下，石頭上連一條裂縫都沒有，但就在第一百零一下，石頭斷裂為兩半。然後我了解到，把石頭劈成兩半的不是最後那一下，而是先前的每一次敲擊。」</p>
-<p>加油，路是不會白走的！</p>
-<hr>
-<h2 id="向-Evan-請教部落格"><a href="#向-Evan-請教部落格" class="headerlink" title="向 Evan 請教部落格"></a>向 Evan 請教部落格</h2><p>之前大三修「正規語言概論」，因為準備考試的需要，讓我無意間找到了 Evan 的<a href="https://www.evanlin.com/moocs-coursera-automata-note1/">相關系列文</a>，也間接讓我知道 Evan，但那個時候還不知道他在 LINE 工作。</p>
-<p>2020 梅竹黑客松，因為出題企業有 LINE，沒想到 Evan 居然是評審之一，才知道原來他是 LINE 的開發技術推廣工程師，讓我想抓住機會討教一番，於是乎，活動最後一天找上 Evan 聊聊，向他請教部落格，也就因為這樣，從那個時候到現在，我部落格多誕生了 28 篇文章，其中有些文章感覺有幫助到他人 (從不重複點閱數猜測的啦xD)，能夠更靠近「認識自我 • 感受世界 • 創造價值」的理念，著實讓我很有成就感！</p>
-<p>啊，廢話不多說，趕快進到重點好了。</p>
-<h3 id="覺得內容沒什麼而不敢寫，怎麼辦？"><a href="#覺得內容沒什麼而不敢寫，怎麼辦？" class="headerlink" title="覺得內容沒什麼而不敢寫，怎麼辦？"></a>覺得內容沒什麼而不敢寫，怎麼辦？</h3><p>寫就對了。</p>
-<p>透過寫部落格，對於你不熟悉的東西，你就會去查嘛，然後寫一寫又卡住，那就再去查嘛，久而久之，覺得自己好像不知不覺也學到了什麼，這樣對自己很有幫助不是嗎？最重要的是你透過寫部落格，有怎麼樣的成長，至於別人覺得怎樣，那倒是其次。</p>
-<p><strong>如果真的希望自己的文章能幫助到他人呢？</strong></p>
-<p>其實不用擔心說自己寫的東西太簡單、跟大神的分享差十萬八千里會不會顯得沒價值什麼的。當你懂的比別人多那麼一點，對方不懂，而你剛好懂，不就是一個可以分享的契機嗎？只要能讓對方收穫到一點什麼，就是一種價值！</p>
-<p>像我之前有寫 LINE Bot 的相關文章，除了能幫助想嘗試做 LINE Bot 的朋友，甚至還能造福到之後也要做相關 project 的自己，因為可以直接拿之前的筆記參考來做啊，超方便的xD</p>
-<p><strong>怕寫出來的東西內容有錯？</strong></p>
-<p>可以試著丟社群分享，如果有錯了，別人說不定會告訴你哪些地方可以修正，多棒的一件事啊！</p>
-<p>就是不要怕丟臉，很多時候真的是從「看起來愚蠢」開始慢慢成長的！</p>
-<h3 id="如何定期輸出？"><a href="#如何定期輸出？" class="headerlink" title="如何定期輸出？"></a>如何定期輸出？</h3><p>可以試著規定自己，每個禮拜要有固定產出，最重要的就是定期讓自己輸出成長。</p>
-<p>不知道寫什麼嗎？</p>
-<p>這週有聽到什麼分享覺得還不錯的，或是也可以藉機閱讀來寫東西，抑或是學點新技術然後來分享、再查資料、再分享，不斷迭代下去。真的不要去過度擔心內容很差怎麼樣，那是自己的部落格啊！</p>
-<p>可以造福到未來的自己，而且透過這個過程成長，那才是最重要的！</p>
-<p>文章看起來廢廢的又怎樣？多輸出、整理思緒、遇到卡住就查資料順便學習。目前不是大神，但一定有人可以向你學習，不斷反覆這個過程，久了，就如同 Evan 說的，說不定也能成為別人眼中的大神，當然那不是目的，而是一個可能伴隨而來的附屬品，再說一次，最重要的是能夠讓自己成長！</p>
-<h3 id="口語表達怎麼練呢？"><a href="#口語表達怎麼練呢？" class="headerlink" title="口語表達怎麼練呢？"></a>口語表達怎麼練呢？</h3><p>寫部落格能訓練文字表達能力，那口語表達怎麼辦呢？</p>
-<p>可以試著發 YouTube 影片，因為為了錄製影片，你會去想辦法控制表達的時間掌握、口條、聲音、語氣等等的，這些都是很好的練習。</p>
-<p>甚至，還可以去參加社群的分享，報名當上台分享的那個人。</p>
-<p>不用擔心說自己講的東西是不是太簡單或者是沒什麼價值什麼的，Evan 說，啊就是會有人沒聽過啊，分享了以後可以造福給不知道的人聽，也是一種很棒的分享啊！</p>
-<p>最重要的是，也能藉由那個機會訓練自己的口語表達能力，不是很讚嗎？</p>
-<h3 id="對讀研究所的看法"><a href="#對讀研究所的看法" class="headerlink" title="對讀研究所的看法"></a>對讀研究所的看法</h3><p>我目前打算先去工作，想聽聽看 Evan 對於讀研究所的看法。</p>
-<p>（他說）</p>
-<p>研究所是訓練那整個深入研究東西的過程，研究什麼東西倒是其次，最重要的就是那整個做學問的心法！</p>
-<p>（我反思）</p>
-<p>因為目前真的沒有很想念研究所，怕先念了也只是拿來逃避找工作，這樣子我覺得有點可惜。</p>
-<p>或許未來工作一段時間之後再回去讀吧？感覺帶著更正確的心態去讀研究所會更有收獲！</p>
-<hr>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一次參加社群活動，覺得滿載而歸，會讓我想繼續參加類似的活動！</p>
-<p>加油，多方嘗試、比過去的自己更進步、不要怕出糗、多接收外界刺激讓自己體會不一樣的事物，你我都可以越來越來靠近心目中的理想自我的！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
-    <url>/2021/01/microprocessor-project/</url>
-    <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
-<span id="more"></span>
-
-<p>這次僅做簡單的紀錄。</p>
-<hr>
-<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
-<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
-<hr>
-<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
-  <!-- <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" /> -->
-  <img src="2.jpg" style="width:30vw;" />
-  <figcaption>來玩機台囉！</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" /> -->
-  <img src="3.jpg" style="width:30vw;" />
-  <figcaption>挖掉杯子底部，讓球通過</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" /> -->
-  <img src="4.jpg" style="width:30vw;" />
-  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" /> -->
-  <img src="5.jpg" style="width:30vw;" />
-  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
-</figure>
-
-<hr>
-<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
-<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
-]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>課程</tag>
-        <tag>專題</tag>
-        <tag>微處理機</tag>
-        <tag>STM32</tag>
-        <tag>開發板</tag>
-        <tag>投籃機</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 Python 操作 Android 手機</title>
-    <url>/2021/07/python-android-phone/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
-<span id="more"></span>
-
-<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
-<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
-<p><img src="1.png"></p>
-<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
-<hr>
-<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
-<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
-<hr>
-<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
-<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
-<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
-<hr>
-<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
-<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
-
-<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
-<hr>
-<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
-<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
-<p><img src="2.gif"></p>
-<p>拍賣的畫面更有感！</p>
-<p><img src="3.gif"></p>
-<p>酷斃了 😎</p>
-<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>Android</tag>
-        <tag>小工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
     <url>/2021/11/next-10000-hours/</url>
     <content><![CDATA[<p>給正在思索未來的你～</p>
@@ -1998,6 +2097,57 @@
 希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
       <tags>
         <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Python 操作 Android 手機</title>
+    <url>/2021/07/python-android-phone/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
+<span id="more"></span>
+
+<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
+<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
+<p><img src="1.png"></p>
+<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
+<hr>
+<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
+<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
+<hr>
+<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
+<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
+<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
+<hr>
+<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
+<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
+<hr>
+<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
+<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
+<p><img src="2.gif"></p>
+<p>拍賣的畫面更有感！</p>
+<p><img src="3.gif"></p>
+<p>酷斃了 😎</p>
+<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Android</tag>
+        <tag>小工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2063,6 +2213,73 @@
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Blockchain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Python 將 PDF 文檔轉成 PNG 圖檔</title>
+    <url>/2021/06/python-pdf-to-png/</url>
+    <content><![CDATA[<p><a href="/2021/06/python-pdf-to-png"><img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2691&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>想把 PDF 轉成圖檔，卻又擔心交給線上工具處理會不會有什麼安全上的疑慮？交給 Python 吧！</p>
+<span id="more"></span>
+
+<p>本篇大量包含解決問題的思考過程，想省略，裝完套件以後就直接跳到最後面吧！</p>
+<h3 id="上網找解決辦法"><a href="#上網找解決辦法" class="headerlink" title="上網找解決辦法"></a>上網找解決辦法</h3><p>試著 google「pdf to png python」，找到了 <a href="https://pypi.org/project/pdf2image/">pdf2image</a>。</p>
+<blockquote>
+<p>A python (3.6+) module that wraps pdftoppm and pdftocairo to convert PDF to a PIL Image object</p>
+</blockquote>
+<p>看起來，這就是我們要的！</p>
+<h3 id="安裝相關套件"><a href="#安裝相關套件" class="headerlink" title="安裝相關套件"></a>安裝相關套件</h3><p>本教學以 Mac 為例，其他作業系統的安裝方式請參見 <a href="https://pypi.org/project/pdf2image/">PyPI 上面的說明</a>。</p>
+<p>因為 pdf2image 是基於 Poppler 開發出來的，所以在安裝 pdf2image 前，先來裝 Poppler 吧！</p>
+<ol>
+<li>打開 Terminal 或 iTerm 之類的終端機</li>
+<li>輸入 <code>brew</code> 看有沒有裝 Homebrew，如果還沒裝就上網找資料裝一裝吧！<br>不過 <a href="http://macappstore.org/poppler/">Poppler 的安裝頁面</a>有提供我們裝 Homebrew 的指令，就看要不要直接用，或是另找其他安裝方式也行。</li>
+<li>用 Homebrew 裝 Poppler：在終端機上輸入 <code>brew install poppler</code> 就行囉！<br>（如果出現 <code>Updating Homebrew...</code> 可以用 <code>Ctrl+C</code> 跳過更新的程序，不然可能會卡很久）</li>
+<li>用 pip 裝 pdf2image：<code>pip install pdf2image</code></li>
+</ol>
+<p>這樣相關套件就裝完囉，準備來使用吧！</p>
+<h3 id="簡單玩一下套件"><a href="#簡單玩一下套件" class="headerlink" title="簡單玩一下套件"></a>簡單玩一下套件</h3><p>畢竟之前沒弄過，不確定這符不符合我們的需求。<br>所以在嘗試解決問題之前，先小玩一下～<br><a href="https://pypi.org/project/pdf2image/">pdf2image 頁面</a>有程式碼，就照上面的 code 試試：</p>
+<ol>
+<li><p>import pdf2image 相關套件</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>第一段程式碼看起來比較簡單，就試那個吧：（檔案的 path 記得要改，可以用相對路徑）</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">images = convert_from_path(<span class="string">&#x27;/home/belval/example.pdf&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>images</code> 不知道該怎麼用，就 print 出來看一下囉，<code>print(images)</code>，輸出了這些：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B32D90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B50&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2BD0&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2FD0&gt;]</span><br></pre></td></tr></table></figure>
+
+<p> （list 裡面 PIL 的個數取決於 PDF 檔的頁數）</p>
+</li>
+<li><p>PIL 是什麼東西啊？應該跟 image 有關吧？於是我 google「PIL Image」，找到了<a href="https://ithelp.ithome.com.tw/articles/10226578">這篇</a>。<br>看那篇文裡面的 code 有 <code>from PIL import Image</code>，該不會又要裝套件了吧⋯⋯<br>不管，先試著直接 import PIL，發現可以欸，代表說本機端已經有 PIL 套件了！<br><a href="https://github.com/Belval/pdf2image/blob/master/.travis.yml">後來發現</a>，原來在裝 pdf2image 時，它就幫我們裝好了 pillow (PIL)。</p>
+</li>
+<li><p>有點不務正業，來照<a href="https://ithelp.ithome.com.tw/articles/10226578">剛剛那篇文</a>試試 PIL 吧，說不定能有什麼新發現。</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&quot;test.jpeg&quot;</span>)</span><br><span class="line">im.save(<span class="string">&quot;test.png&quot;</span>,<span class="string">&quot;png&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 還真的生成「test.png」了呢！那 <code>im</code> 又是什麼呢？好奇 print 一下，輸出了這個：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1500x1000 at 0x10D9FAE50&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 咦？這跟剛剛 <code>images</code> print 出來的東西很像欸，該不會⋯⋯</p>
+</li>
+<li><p>柳暗花明又一村：（承接剛剛的 <code>images</code>）</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):</span><br><span class="line">  image.save(<span class="string">f&#x27;<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>)   <span class="comment"># 如果想從 1 開始數的話</span></span><br></pre></td></tr></table></figure>
+
+<p> 還真的可以欸😂</p>
+</li>
+</ol>
+<h3 id="用套件解決問題"><a href="#用套件解決問題" class="headerlink" title="用套件解決問題"></a>用套件解決問題</h3><p>過程中有不懂或忘記的就 google 吧：</p>
+<ul>
+<li>忘記怎麼判斷字串中有無某 substring → google「python test substring」→ 找到「<a href="https://www.afternerd.com/blog/python-string-contains/">Check if a String Contains Another String</a>」</li>
+<li>忘記怎麼用 Python 創建資料夾 → google「python os mkdir」→ 找到「<a href="https://www.runoob.com/python/os-mkdir.html">Python os.mkdir()</a>」</li>
+</ul>
+<p>最後生出來的 code：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br><span class="line"><span class="comment"># from PIL import image                         # 後來發現不需要 import 這個</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">&quot;.&quot;</span>):                    <span class="comment"># 取得當前目錄下的所有檔名</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">&#x27;.pdf&#x27;</span> <span class="keyword">in</span> name:                            <span class="comment"># 只對 PDF 做處理</span></span><br><span class="line">    the_dir = <span class="string">f&#x27;<span class="subst">&#123;name[:-<span class="number">4</span>]&#125;</span>&#x27;</span>                    <span class="comment"># 用 PDF 的檔名當作新資料夾的名稱</span></span><br><span class="line">    os.mkdir(the_dir)                           <span class="comment"># 新建該檔名的資料夾</span></span><br><span class="line">    images = convert_from_path(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span>&#x27;</span>)       <span class="comment"># 將 PDF 轉成多個 PIL 相關物件</span></span><br><span class="line">    <span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):          <span class="comment"># 針對每個物件去做處理</span></span><br><span class="line">      image.save(<span class="string">f&#x27;<span class="subst">&#123;the_dir&#125;</span>/<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>) <span class="comment"># 在新資料夾底下存成 PNG 檔</span></span><br></pre></td></tr></table></figure>
+
+<p>如此一來，就不必丟到網路上給別人處理了呢！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>小工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2143,73 +2360,6 @@
 希望書中的這些句子和我的一些小補充，能對你有所幫助 😀]]></content>
       <tags>
         <tag>閱讀</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 Python 將 PDF 文檔轉成 PNG 圖檔</title>
-    <url>/2021/06/python-pdf-to-png/</url>
-    <content><![CDATA[<p><a href="/2021/06/python-pdf-to-png"><img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2691&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>想把 PDF 轉成圖檔，卻又擔心交給線上工具處理會不會有什麼安全上的疑慮？交給 Python 吧！</p>
-<span id="more"></span>
-
-<p>本篇大量包含解決問題的思考過程，想省略，裝完套件以後就直接跳到最後面吧！</p>
-<h3 id="上網找解決辦法"><a href="#上網找解決辦法" class="headerlink" title="上網找解決辦法"></a>上網找解決辦法</h3><p>試著 google「pdf to png python」，找到了 <a href="https://pypi.org/project/pdf2image/">pdf2image</a>。</p>
-<blockquote>
-<p>A python (3.6+) module that wraps pdftoppm and pdftocairo to convert PDF to a PIL Image object</p>
-</blockquote>
-<p>看起來，這就是我們要的！</p>
-<h3 id="安裝相關套件"><a href="#安裝相關套件" class="headerlink" title="安裝相關套件"></a>安裝相關套件</h3><p>本教學以 Mac 為例，其他作業系統的安裝方式請參見 <a href="https://pypi.org/project/pdf2image/">PyPI 上面的說明</a>。</p>
-<p>因為 pdf2image 是基於 Poppler 開發出來的，所以在安裝 pdf2image 前，先來裝 Poppler 吧！</p>
-<ol>
-<li>打開 Terminal 或 iTerm 之類的終端機</li>
-<li>輸入 <code>brew</code> 看有沒有裝 Homebrew，如果還沒裝就上網找資料裝一裝吧！<br>不過 <a href="http://macappstore.org/poppler/">Poppler 的安裝頁面</a>有提供我們裝 Homebrew 的指令，就看要不要直接用，或是另找其他安裝方式也行。</li>
-<li>用 Homebrew 裝 Poppler：在終端機上輸入 <code>brew install poppler</code> 就行囉！<br>（如果出現 <code>Updating Homebrew...</code> 可以用 <code>Ctrl+C</code> 跳過更新的程序，不然可能會卡很久）</li>
-<li>用 pip 裝 pdf2image：<code>pip install pdf2image</code></li>
-</ol>
-<p>這樣相關套件就裝完囉，準備來使用吧！</p>
-<h3 id="簡單玩一下套件"><a href="#簡單玩一下套件" class="headerlink" title="簡單玩一下套件"></a>簡單玩一下套件</h3><p>畢竟之前沒弄過，不確定這符不符合我們的需求。<br>所以在嘗試解決問題之前，先小玩一下～<br><a href="https://pypi.org/project/pdf2image/">pdf2image 頁面</a>有程式碼，就照上面的 code 試試：</p>
-<ol>
-<li><p>import pdf2image 相關套件</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-<li><p>第一段程式碼看起來比較簡單，就試那個吧：（檔案的 path 記得要改，可以用相對路徑）</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">images = convert_from_path(<span class="string">&#x27;/home/belval/example.pdf&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p><code>images</code> 不知道該怎麼用，就 print 出來看一下囉，<code>print(images)</code>，輸出了這些：</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B32D90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B50&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115B99B90&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2BD0&gt;,</span><br><span class="line"> &lt;PIL.PpmImagePlugin.PpmImageFile image mode=RGB size=1654x2339 at 0x115BA2FD0&gt;]</span><br></pre></td></tr></table></figure>
-
-<p> （list 裡面 PIL 的個數取決於 PDF 檔的頁數）</p>
-</li>
-<li><p>PIL 是什麼東西啊？應該跟 image 有關吧？於是我 google「PIL Image」，找到了<a href="https://ithelp.ithome.com.tw/articles/10226578">這篇</a>。<br>看那篇文裡面的 code 有 <code>from PIL import Image</code>，該不會又要裝套件了吧⋯⋯<br>不管，先試著直接 import PIL，發現可以欸，代表說本機端已經有 PIL 套件了！<br><a href="https://github.com/Belval/pdf2image/blob/master/.travis.yml">後來發現</a>，原來在裝 pdf2image 時，它就幫我們裝好了 pillow (PIL)。</p>
-</li>
-<li><p>有點不務正業，來照<a href="https://ithelp.ithome.com.tw/articles/10226578">剛剛那篇文</a>試試 PIL 吧，說不定能有什麼新發現。</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&quot;test.jpeg&quot;</span>)</span><br><span class="line">im.save(<span class="string">&quot;test.png&quot;</span>,<span class="string">&quot;png&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p> 還真的生成「test.png」了呢！那 <code>im</code> 又是什麼呢？好奇 print 一下，輸出了這個：</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1500x1000 at 0x10D9FAE50&gt;</span><br></pre></td></tr></table></figure>
-
-<p> 咦？這跟剛剛 <code>images</code> print 出來的東西很像欸，該不會⋯⋯</p>
-</li>
-<li><p>柳暗花明又一村：（承接剛剛的 <code>images</code>）</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):</span><br><span class="line">  image.save(<span class="string">f&#x27;<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>)   <span class="comment"># 如果想從 1 開始數的話</span></span><br></pre></td></tr></table></figure>
-
-<p> 還真的可以欸😂</p>
-</li>
-</ol>
-<h3 id="用套件解決問題"><a href="#用套件解決問題" class="headerlink" title="用套件解決問題"></a>用套件解決問題</h3><p>過程中有不懂或忘記的就 google 吧：</p>
-<ul>
-<li>忘記怎麼判斷字串中有無某 substring → google「python test substring」→ 找到「<a href="https://www.afternerd.com/blog/python-string-contains/">Check if a String Contains Another String</a>」</li>
-<li>忘記怎麼用 Python 創建資料夾 → google「python os mkdir」→ 找到「<a href="https://www.runoob.com/python/os-mkdir.html">Python os.mkdir()</a>」</li>
-</ul>
-<p>最後生出來的 code：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pdf2image <span class="keyword">import</span> convert_from_path, convert_from_bytes</span><br><span class="line"><span class="keyword">from</span> pdf2image.exceptions <span class="keyword">import</span> (</span><br><span class="line">    PDFInfoNotInstalledError,</span><br><span class="line">    PDFPageCountError,</span><br><span class="line">    PDFSyntaxError</span><br><span class="line">)</span><br><span class="line"><span class="comment"># from PIL import image                         # 後來發現不需要 import 這個</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">&quot;.&quot;</span>):                    <span class="comment"># 取得當前目錄下的所有檔名</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">&#x27;.pdf&#x27;</span> <span class="keyword">in</span> name:                            <span class="comment"># 只對 PDF 做處理</span></span><br><span class="line">    the_dir = <span class="string">f&#x27;<span class="subst">&#123;name[:-<span class="number">4</span>]&#125;</span>&#x27;</span>                    <span class="comment"># 用 PDF 的檔名當作新資料夾的名稱</span></span><br><span class="line">    os.mkdir(the_dir)                           <span class="comment"># 新建該檔名的資料夾</span></span><br><span class="line">    images = convert_from_path(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span>&#x27;</span>)       <span class="comment"># 將 PDF 轉成多個 PIL 相關物件</span></span><br><span class="line">    <span class="keyword">for</span> i, image <span class="keyword">in</span> <span class="built_in">enumerate</span>(images):          <span class="comment"># 針對每個物件去做處理</span></span><br><span class="line">      image.save(<span class="string">f&#x27;<span class="subst">&#123;the_dir&#125;</span>/<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>.png&#x27;</span>, <span class="string">&#x27;png&#x27;</span>) <span class="comment"># 在新資料夾底下存成 PNG 檔</span></span><br></pre></td></tr></table></figure>
-
-<p>如此一來，就不必丟到網路上給別人處理了呢！</p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>小工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2848,102 +2998,5 @@ go go!!!]]></content>
         <tag>樂理</tag>
         <tag>音色</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>助你行動</title>
-    <url>/2022/01/help-you-take-action/</url>
-    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
-<span id="more"></span>
-
-<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
-<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
-</blockquote>
-<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
-<blockquote>
-<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
-</blockquote>
-<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
-<blockquote>
-<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
-</blockquote>
-<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
-<blockquote>
-<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
-</blockquote>
-<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
-<blockquote>
-<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
-</blockquote>
-<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
-<hr>
-<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
-<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
-</blockquote>
-<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
-<blockquote>
-<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
-</blockquote>
-<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
-<blockquote>
-<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
-</blockquote>
-<p>時間有限，為自己的人生鮮艷上色！</p>
-<blockquote>
-<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
-</blockquote>
-<p>別完全被「應該怎樣」束縛住啦！</p>
-<hr>
-<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
-<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
-</blockquote>
-<p>讓自己在混亂中整理出一點頭緒。</p>
-<blockquote>
-<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
-</blockquote>
-<p>當你真心想做一件事，全世界都會幫你。</p>
-<blockquote>
-<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
-</blockquote>
-<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
-<blockquote>
-<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
-</blockquote>
-<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
-<hr>
-<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
-<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
-<hr>
-<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
-<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
-</blockquote>
-<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
-<blockquote>
-<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
-</blockquote>
-<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
-<blockquote>
-<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
-</blockquote>
-<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
-<hr>
-<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
-<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
-</blockquote>
-<p>專注當下。</p>
-<blockquote>
-<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
-</blockquote>
-<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
-<hr>
-<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
-<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
-</blockquote>
-<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
-<blockquote>
-<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
-</blockquote>
-<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
-<br>
-希望這篇文章能助你一臂之力💪]]></content>
   </entry>
 </search>
