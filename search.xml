@@ -463,6 +463,149 @@
 感謝吳教練的諄諄教誨啊😎]]></content>
   </entry>
   <entry>
+    <title>【圖文教學】免費在 AWS 上建一個 Node.js Web Server</title>
+    <url>/2022/04/free-aws-nodejs-web-server/</url>
+    <content><![CDATA[<p>文章裡面附了不少圖xD</p>
+<span id="more"></span>
+
+<h2 id="建立-AWS-帳戶"><a href="#建立-AWS-帳戶" class="headerlink" title="建立 AWS 帳戶"></a>建立 AWS 帳戶</h2><p>如果沒有 AWS 帳戶，到<a href="https://portal.aws.amazon.com/billing/signup">這邊</a>註冊個吧！</p>
+<p><img src="1.png"></p>
+<h2 id="建立-EC2-執行個體-Instance"><a href="#建立-EC2-執行個體-Instance" class="headerlink" title="建立 EC2 執行個體 (Instance)"></a>建立 EC2 執行個體 (Instance)</h2><ol>
+<li>搜尋「EC2」，點按 EC2 項目底下的「Instances」</li>
+</ol>
+<p><img src="2.png"></p>
+<ol start="2">
+<li>點按右上角「啟動新執行個體」</li>
+</ol>
+<p><img src="3.png"></p>
+<ol start="3">
+<li>Machine image 選免費的 Amazon Linux 2 AMI</li>
+</ol>
+<p>Kernel 選最新版的，<a href="https://aws.amazon.com/tw/about-aws/whats-new/2021/11/amazon-linux-2-ami-kernel-5-10/">這篇</a>有說為什麼：</p>
+<blockquote>
+<p>We recommend you use Amazon Linux 2 with kernel 5.10 when launching new instances to benefit from new features and performance improvements.</p>
+</blockquote>
+<p><img src="4.png"></p>
+<ol start="4">
+<li>選免費的「t2.micro」以後，按「審核和啟動」<br>（如果想進一步做設置，可以按「下一步: 配置實例詳細信息」）</li>
+</ol>
+<p><img src="5.png"></p>
+<ol start="5">
+<li>啟動吧！</li>
+</ol>
+<p><img src="6.png"></p>
+<ol start="6">
+<li>創建新密鑰對 → 輸入密鑰對名稱 → 下載密鑰對<br>（下載下來的密鑰對不要弄丟囉，之後會用到！）</li>
+</ol>
+<p><img src="7.png"></p>
+<ol start="7">
+<li>啟動新實例</li>
+</ol>
+<p><img src="8.png"></p>
+<ol start="8">
+<li>有了！</li>
+</ol>
+<p><img src="9.png"></p>
+<h2 id="分配-Elastic-IP-給-Instance"><a href="#分配-Elastic-IP-給-Instance" class="headerlink" title="分配 Elastic IP 給 Instance"></a>分配 Elastic IP 給 Instance</h2><p>我是照著「<a href="https://enterprise.arcgis.com/en/server/10.3/cloud/amazon/allocate-elastic-ip-and-associate-with-your-instance.htm">Allocate an Amazon Elastic IP and associate it with your instance</a>」這篇做的。</p>
+<ol>
+<li>左側欄找到「彈性 IP」</li>
+</ol>
+<p><img src="10.png"></p>
+<ol start="2">
+<li>右上角「配置彈性 IP 地址」</li>
+</ol>
+<p><img src="11.png"></p>
+<ol start="3">
+<li>點「配置」</li>
+</ol>
+<p><img src="12.png"></p>
+<ol start="4">
+<li>勾選那個彈性 IP 地址 → 動作 → 與彈性 IP 地址建立關聯</li>
+</ol>
+<p><img src="13.png"></p>
+<ol start="5">
+<li>選你要建立關聯的執行個體 (Instance) 吧！</li>
+</ol>
+<p><img src="14.png"></p>
+<ol start="6">
+<li>建立關聯</li>
+</ol>
+<p><img src="15.png"></p>
+<h2 id="架設-Node-js-Web-Server"><a href="#架設-Node-js-Web-Server" class="headerlink" title="架設 Node.js Web Server"></a>架設 Node.js Web Server</h2><h3 id="用-SSH-連進你的-Instance"><a href="#用-SSH-連進你的-Instance" class="headerlink" title="用 SSH 連進你的 Instance"></a>用 SSH 連進你的 Instance</h3><ol>
+<li>參照「<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html">General prerequisites for connecting to your instance</a>」這篇來取得 Instance 的 user name 以及 public DNS name</li>
+</ol>
+<blockquote>
+<p>For Amazon Linux 2 or the Amazon Linux AMI, the user name is <code>ec2-user</code>.</p>
+</blockquote>
+<p><img src="16.png"></p>
+<ol start="2">
+<li>同樣參照「<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html">General prerequisites for connecting to your instance</a>」這篇，更改 private key (剛剛下載的密鑰對) 的權限</li>
+</ol>
+<blockquote>
+<p>If you do not set these permissions, then you cannot connect to your instance using this key pair.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod 400 try-aws-ec2.pem</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>照「<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">Connect to your Linux instance using SSH</a>」這篇的做法，用 SSH 連進去！</li>
+</ol>
+<p>（我把 <code>try-aws-ec2.pem</code> 放在終端機當前目錄下）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用「公有 IPv4 DNS」</span></span><br><span class="line">ssh -i try-aws-ec2.pem ec2-user@ec2-54-254-94-30.ap-southeast-1.compute.amazonaws.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用「公有 IPv4 地址」</span></span><br><span class="line">ssh -i try-aws-ec2.pem ec2-user@54.254.94.30</span><br></pre></td></tr></table></figure>
+
+<p><img src="17.png"></p>
+<ol start="4">
+<li>輸入「yes」按 enter</li>
+</ol>
+<p><img src="18.png"></p>
+<p>連進去了，開心 🎉</p>
+<blockquote>
+<p>第 3. 步的文章，裡面有提到「Transfer files to Linux instances using an SCP client」，如果有需要轉移檔案的，可以參考一下！</p>
+</blockquote>
+<h3 id="設置-Node-js"><a href="#設置-Node-js" class="headerlink" title="設置 Node.js"></a>設置 Node.js</h3><ol>
+<li>照著「<a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html">Tutorial: Setting Up Node.js on an Amazon EC2 Instance</a>」這篇做即可安裝 Node.js，我就不重複了xD</li>
+</ol>
+<p><img src="19.png"></p>
+<ol start="2">
+<li>簡單做一個 Node.js web server，測試用的，我是參考「<a href="https://appdividend.com/2022/03/04/how-to-build-node-js-web-server/">How To Build Node.js Web Server From Scratch</a>」這一篇</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir my-web-server</span><br><span class="line"><span class="built_in">cd</span> my-web-server</span><br><span class="line">touch server.js</span><br><span class="line">vim server.js</span><br></pre></td></tr></table></figure>
+
+<p>下面的 code 貼到裡面。（只是為了測試能不能跑，所以不是很介意沒自己寫這個部分）<br>也可以用 Express 來寫，這部分真的就是創意的發揮～</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123; <span class="string">&quot;Content-type&quot;</span>: <span class="string">&quot;text/plain&quot;</span> &#125;);</span><br><span class="line">    res.end(<span class="string">&quot;Hello world\n&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Server is running at 3000&#x27;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>跑跑看 <code>node server.js</code>，看外部能不能連上</li>
+</ol>
+<p><img src="20.png"></p>
+<p><img src="21.png"></p>
+<p>不行欸，為什麼啊？原來還差一個步驟！</p>
+<h3 id="編輯傳入規則"><a href="#編輯傳入規則" class="headerlink" title="編輯傳入規則"></a>編輯傳入規則</h3><p>記得到「安全群組」編輯傳入規則新增 TCP <code>&lt;server的port&gt;</code>，才可透過 <code>&lt;Instance的IP位址&gt;:&lt;server的port&gt;</code> 連線，像是 <code>54.254.94.30:3000</code></p>
+<ol>
+<li>左側欄找到「安全群組」</li>
+</ol>
+<p><img src="22.png"></p>
+<ol start="2">
+<li>勾選你欲修改的安全群組 → 動作 → 編輯傳入規則</li>
+</ol>
+<p><img src="23.png"></p>
+<ol start="3">
+<li>新增規則</li>
+</ol>
+<p><img src="24.png"></p>
+<ol start="4">
+<li>選「自訂 TCP」→ 連接埠範圍填 server 的 port → 來源選「0.0.0.0/0」代表接受任何來源的傳入 → 儲存規則</li>
+</ol>
+<p><img src="25.png"></p>
+<ol start="5">
+<li>再來連連看，成功啦 🎉</li>
+</ol>
+<p><img src="26.png"></p>
+<h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><h3 id="讓-Server-背景執行"><a href="#讓-Server-背景執行" class="headerlink" title="讓 Server 背景執行"></a>讓 Server 背景執行</h3><p>我是參考「<a href="https://blog.toright.com/posts/4242/nodejs-server-to-linux-service-daemon-%E8%A3%BD%E4%BD%9C%E6%95%99%E5%AD%B8.html">NodeJS Server to Linux Service Daemon 製作教學</a>」這一篇，用的是「<a href="https://www.npmjs.com/package/forever">forever - npm</a>」這個 CLI tool，或許有更好的做法！</p>
+<h3 id="裝-MySQL-Server"><a href="#裝-MySQL-Server" class="headerlink" title="裝 MySQL Server"></a>裝 MySQL Server</h3><p>我是直接照「<a href="https://awswithatiq.com/install-mysql-server-in-amazon-linux-2/">How to Install MySQL server in Amazon Linux 2</a>」這一篇的教學跑，裡面寫得很清楚，我就不重複了 😅</p>
+<br>
+希望這篇教學文能幫助到您，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
     <title>【職涯路上】100~97，開始行動！</title>
     <url>/2022/03/freshman-career-100-97/</url>
     <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
@@ -523,57 +666,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【職涯路上】84~77</title>
-    <url>/2022/03/freshman-career-84-77/</url>
-    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
-<span id="more"></span>
-
-<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
-<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
-<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
-<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
-<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
-<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
-<p>所以說，路真的不會白走啊！</p>
-<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
-<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
-<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
-<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
-<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
-<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
-<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
-<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
-<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
-<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
-<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
-<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
-<p>就連自己也不知道自己在講什麼。</p>
-<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
-<p>甚至面試官問我最後一題：</p>
-<blockquote>
-<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
-</blockquote>
-<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
-<p>後來想想，我應該要這麼回答：</p>
-<blockquote>
-<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
-</blockquote>
-<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
-<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
-<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
-<p>我那天寫給自己：</p>
-<blockquote>
-<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
-</blockquote>
-<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
-<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
-<p>整體來說挺值得的！</p>
-<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
-<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
-<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】76~74</title>
     <url>/2022/03/freshman-career-76-74/</url>
     <content><![CDATA[<p>連假前來個小回顧。</p>
@@ -625,6 +717,57 @@
 <p>晚上遠端幫朋友解決 Windows 上面 Python 環境設定的問題以及一點小教學，才知道有「<a href="https://www.teamviewer.com/tw/">TeamViewer</a>」這麼方便的遠端工具！（也才又找回小時候喜歡教同學的感覺）</p>
 <br>
 職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】84~77</title>
+    <url>/2022/03/freshman-career-84-77/</url>
+    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
+<span id="more"></span>
+
+<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
+<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
+<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
+<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
+<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
+<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
+<p>所以說，路真的不會白走啊！</p>
+<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
+<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
+<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
+<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
+<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
+<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
+<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
+<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
+<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
+<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
+<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
+<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
+<p>就連自己也不知道自己在講什麼。</p>
+<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
+<p>甚至面試官問我最後一題：</p>
+<blockquote>
+<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
+</blockquote>
+<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
+<p>後來想想，我應該要這麼回答：</p>
+<blockquote>
+<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
+</blockquote>
+<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
+<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
+<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
+<p>我那天寫給自己：</p>
+<blockquote>
+<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
+</blockquote>
+<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
+<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
+<p>整體來說挺值得的！</p>
+<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
+<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
   </entry>
   <entry>
     <title>【職涯路上】85，不想徒具形式</title>
@@ -2445,47 +2588,6 @@
 <br>]]></content>
   </entry>
   <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>停下來思考</title>
     <url>/2021/12/soft-skills/</url>
     <content><![CDATA[<p>生活瑣事一大堆，導致我們常常忽略了人生中更重要、更值得關注的事情！<br>（但我發現，感覺自己很忙，實際上只是心理狀態上的忙、盲、茫⋯⋯）</p>
@@ -2771,36 +2873,44 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
-    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
-    <url>/2021/12/synth-one-with-logic-pro/</url>
-    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
 <span id="more"></span>
 
-<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
-<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
-<li>用 USB 線，將 iPad 連接到 MacBook</li>
-<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
-<li>打開 Synth One，然後先放著</li>
-<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
-<li>「Use External Instrument plug-in」記得勾起來</li>
-<li>MIDI Destination 選 iPad</li>
-</ul>
- <img src="2.png" alt="2.png"></li>
-<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
-</ol>
-<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
-<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
-<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
-<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
-<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
-<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
-<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
-<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
-</ol>
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
 <br>
-這樣就大功告成啦😎]]></content>
+go go!!!]]></content>
       <tags>
-        <tag>Logic Pro</tag>
+        <tag>side project</tag>
       </tags>
   </entry>
   <entry>
@@ -2997,6 +3107,39 @@ go go!!!]]></content>
         <tag>專題</tag>
         <tag>樂理</tag>
         <tag>音色</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
+    <url>/2021/12/synth-one-with-logic-pro/</url>
+    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
+<span id="more"></span>
+
+<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
+<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
+<li>用 USB 線，將 iPad 連接到 MacBook</li>
+<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
+<li>打開 Synth One，然後先放著</li>
+<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
+<li>「Use External Instrument plug-in」記得勾起來</li>
+<li>MIDI Destination 選 iPad</li>
+</ul>
+ <img src="2.png" alt="2.png"></li>
+<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
+</ol>
+<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
+<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
+<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
+<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
+<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
+<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
+<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
+<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
+</ol>
+<br>
+這樣就大功告成啦😎]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
       </tags>
   </entry>
 </search>
