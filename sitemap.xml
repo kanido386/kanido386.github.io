@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kanido386.github.io/2022/04/freshman-career-73-64/</loc>
+    
+    <lastmod>2022-04-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/</loc>
     
     <lastmod>2022-04-09</lastmod>
@@ -501,6 +508,20 @@
   </url>
   
   <url>
+    <loc>https://kanido386.github.io/tags/Android/</loc>
+    <lastmod>2022-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2022-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kanido386.github.io/tags/Moleculer/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>daily</changefreq>
@@ -516,20 +537,6 @@
   
   <url>
     <loc>https://kanido386.github.io/tags/%E9%96%B1%E8%AE%80/</loc>
-    <lastmod>2022-04-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/Android/</loc>
-    <lastmod>2022-04-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2022-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
