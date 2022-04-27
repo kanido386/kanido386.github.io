@@ -21,15 +21,19 @@
     var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="卡尼多隨筆">
-<meta property="og:url" content="https://kanido386.github.io/archives/2022/01/index.html">
+  <meta name="description" content="簡單記錄一下我整個設定的過程！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 SSL For Free 免費申請 SSL 憑證">
+<meta property="og:url" content="https://kanido386.github.io/2022/04/ssl-for-free/index.html">
 <meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="簡單記錄一下我整個設定的過程！">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-04-27T15:53:49.000Z">
+<meta property="article:modified_time" content="2022-04-27T16:03:08.883Z">
 <meta property="article:author" content="卡尼多">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://kanido386.github.io/archives/2022/01/">
+<link rel="canonical" href="https://kanido386.github.io/2022/04/ssl-for-free/">
 
 
 <script id="page-configurations">
@@ -37,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-tw'
   };
 </script>
 
-  <title>Archive | 卡尼多隨筆</title>
+  <title>用 SSL For Free 免費申請 SSL 憑證 | 卡尼多隨筆</title>
   
 
 
@@ -174,77 +178,142 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/04/ssl-for-free/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用 SSL For Free 免費申請 SSL 憑證
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-04-27 23:53:49" itemprop="dateCreated datePublished" datetime="2022-04-27T23:53:49+08:00">2022-04-27</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">OK! 38 posts in total. Keep on posting.</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/04/ssl-for-free/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/ssl-for-free/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
+        <p>簡單記錄一下我整個設定的過程！</p>
+<span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<ol>
+<li>進到 <a target="_blank" rel="noopener" href="https://www.sslforfree.com/">SSL For Free</a> → 點 Create Free SSL Certificate → 註冊 or 登入</li>
+<li>點左側 Dashboard → 下面有個 Create SSL Certificate，點右邊的 New Certificate</li>
+<li>在 Enter Domains 的地方填你 EC2 的 Elastic IP Address → Next Step</li>
+<li>因為是免費方案，Validity 選 90-Day Certificate → Next Step</li>
+<li>雖然不知道那是什麼，但感覺開啟 Auto-Generate CSR 即可 → Next Step</li>
+<li>此時會看到 Free 被 Selected → Next Step</li>
+<li>Verification Method for <code>[Elastic IP Address]</code> 選 HTTP File Upload → 有些步驟要跟著指示做</li>
+<li>Download Auth File → 連進你的 EC2 → 在專案 <code>/public</code> 底下建立 <code>/.well-known/pki-validation/</code> 資料夾，指令：<code>cd</code> 到 <code>/public</code> 以後，輸入 <code>mkdir -p .well-known/pki-validation</code></li>
+<li><code>cd .well-known/pki-validation/</code> 進到裡面之後，準備把剛剛 Download Auth File 載下來的東西傳到裡面</li>
+<li>在本地端開新的終端機介面 → 輸入 <code>scp -i [/path/to/EC2/XXX].pem [剛載下來的].txt ec2-user@[Elastic IP Address]:~</code> 即可將那個檔案傳進 EC2 裡面</li>
+<li>回到 EC2，<code>cd ~</code>，用 <code>ls</code> 一看，還真的有欸 → 移動到剛剛新建的資料夾裡面吧<br><code>mv [剛傳進來的].txt Campus-Program01/students/[path/to]/public/.well-known/pki-validation/</code></li>
+<li>在 Express 主程式，可能叫做 app.js 的當中記得加上<br><code>app.use(express.static(path.join(__dirname, &#39;public&#39;)));</code>，<br>前面或許還需要 <code>var path = require(&#39;path&#39;);</code>，這樣才能讓對方讀到那個 txt 檔</li>
+<li>回到 SSL Certificate 申請頁面，點 Make sure your file is available under the following link 旁邊的連結，新視窗有文字檔裡面的東西代表到目前為止一切順利 → Next Step</li>
+<li>Verify Domain → 會顯示 Congratulations, your domains have been verified. This means that our system is issuing your certificate at the moment. This page will refresh automatically every few seconds. → Your certificate has been issued and is ready for installation. To continue, please follow the steps below.</li>
+<li>選你的 Server Type，通常不是 Apache 就是 NGINX，我是 NGINX → Download Certificate (.zip) → Next Step</li>
+<li>Follow the steps below to install your certificate → 照著指示做吧！接下來我以 NGINX 為例，Apache 的設定或許也是照著指示做就能順利完成</li>
+<li>Unzip 剛剛載下來的 zip → 裡面的東西都傳到 EC2<br><code>scp -i [/path/to/EC2/XXX].pem ca_bundle.crt certificate.crt private.key ec2-user@[Elastic IP Address]:~</code></li>
+<li>回到 EC2 → 進到你剛剛傳東西進去的目錄底下 → <code>cat certificate.crt ca_bundle.crt &gt;&gt; certificate.crt</code> → 跳出 <code>cat: certificate.crt: input file is output file</code> 不用理它</li>
+<li><code>sudo mv certificate.crt private.key /etc/ssl/</code></li>
+<li>輸入 <code>history | grep nginx</code> 看你當初是去哪設定 nginx 的，用 vim 打開來編輯吧！（我的是  <code>sudo vim /etc/nginx/nginx.conf</code>）</li>
+<li>下面的東西加進去！（加在哪要稍微注意一下，我 port 是 3000 所以 <code>proxy_pass http://localhost:3000;</code>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    listen               443 ssl http2;</span><br><span class="line">    listen               [::]:443 ssl http2;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ssl                  on;</span><br><span class="line">    ssl_certificate      /etc/ssl/certificate.crt; </span><br><span class="line">    ssl_certificate_key  /etc/ssl/private.key;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    server_name  _;</span><br><span class="line">    access_log   /var/log/nginx/nginx.vhost.access.log;</span><br><span class="line">    error_log    /var/log/nginx/nginx.vhost.error.log;</span><br><span class="line"></span><br><span class="line">    # Load configuration files for the default server block.</span><br><span class="line">    include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-28T14:50:18+08:00"
-              content="2022-01-28">
-          01-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/help-you-take-action/" itemprop="url">
-            <span itemprop="name">助你行動</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-09T17:20:44+08:00"
-              content="2022-01-09">
-          01-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/spotify-side-project-plan/" itemprop="url">
-            <span itemprop="name">做 Spotify 相關的 side project</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<ol start="22">
+<li><code>sudo service nginx restart</code> 重啟 web server</li>
+<li>回到最一開始 ZeroSSL 頁面 → Check Certificate → 完成！</li>
+<li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
+</ol>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/freshman-career-73-64/" rel="prev" title="【職涯路上】73~64">
+      <i class="fa fa-chevron-left"></i> 【職涯路上】73~64
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -498,6 +567,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2022/04/ssl-for-free/";
+    this.page.identifier = "2022/04/ssl-for-free/";
+    this.page.title = "用 SSL For Free 免費申請 SSL 憑證";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>
