@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="上台 Presentation 前做的筆記，在這邊記錄一下～">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【技術筆記】NoSQL、Data Replica、Sharding">
+<meta property="og:url" content="https://kanido386.github.io/2022/05/nosql-introduction/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="上台 Presentation 前做的筆記，在這邊記錄一下～">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/1.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/2.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/3.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/4.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/5.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/6.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/7.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/8.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/1.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/2.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/3.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/4.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/5.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/6.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/7.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/8.gif">
+<meta property="og:image" content="https://kanido386.github.io/2022/05/nosql-introduction/9.png">
+<meta property="article:published_time" content="2022-05-25T04:34:36.000Z">
+<meta property="article:modified_time" content="2022-05-25T04:33:53.515Z">
+<meta property="article:author" content="卡尼多">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kanido386.github.io/2022/05/nosql-introduction/1.png">
+
+<link rel="canonical" href="https://kanido386.github.io/2022/05/nosql-introduction/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>【技術筆記】NoSQL、Data Replica、Sharding | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/05/nosql-introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【技術筆記】NoSQL、Data Replica、Sharding
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 12:34:36" itemprop="dateCreated datePublished" datetime="2022-05-25T12:34:36+08:00">2022-05-25</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/nosql-introduction/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/nosql-introduction/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>上台 Presentation 前做的筆記，在這邊記錄一下～</p>
+<span id="more"></span>
+
+<h1 id="開場"><a href="#開場" class="headerlink" title="開場"></a>開場</h1><p>嗨大家好，我們這組要介紹的呢，是 NoSQL Database 以及 Database Management，主要會是用 MongoDB 這個 NoSQL database 來做介紹。</p>
+<p>待會我會先簡介 NoSQL，接著分享 Data Replica 和 Sharding 的概念，最後會實際 demo 給大家看 NoSQL 的資料與結構，以及，怎麼用 MongoDB 做到 Data Replica。</p>
+<hr>
+<h1 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h1><h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p>什麼是 NoSQL 呢？</p>
+<p>它是一種不需要 schema 的資料庫，也就是不用像 MySQL 一樣，還要預先設計好 table 的欄位和關聯。</p>
+<p>它是以 Key-Value 的方式來儲存資料的，可以把它簡單想像成它就是把資料存成 JSON，裡面存的東西可以是非常自由的。</p>
+<p>然後它除了能垂直擴增，也具有水平擴增這個強項。</p>
+<p>那麼什麼是垂直擴增？什麼是水平擴增呢？</p>
+<h2 id="Scale-vertically-vs-Scale-horizontally"><a href="#Scale-vertically-vs-Scale-horizontally" class="headerlink" title="Scale vertically   vs   Scale horizontally"></a>Scale vertically   vs   Scale horizontally</h2><p><img src="1.png"></p>
+<p>垂直擴增可以把它想成，它就是一間工廠在升級設備和招募新的員工，技術上來說就是提升一台機器的 RAM 和 CPU，但終究會有個上限。</p>
+<p>而水平擴增就像是開分店，也就是開很多台機器來共同支撐起整個任務，同樣也能達到升級的效果，除此之外還有一些好處，後面會在 Data Replica 的地方介紹到。</p>
+<h2 id="對照表"><a href="#對照表" class="headerlink" title="對照表"></a>對照表</h2><p><img src="2.png"></p>
+<p>這是 MySQL 和 MongoDB 的簡單對照。</p>
+<p>MySQL 裡面的 table，類似 MongoDB 的 collection；而 MySQL 裡面的 record，也就是一筆資料，類似 MongoDB 的 document。</p>
+<hr>
+<h1 id="Data-Replica"><a href="#Data-Replica" class="headerlink" title="Data Replica"></a>Data Replica</h1><h2 id="Replica-Sets"><a href="#Replica-Sets" class="headerlink" title="Replica Sets"></a>Replica Sets</h2><p><img src="3.png"></p>
+<p>首先先介紹什麼是 Replica Sets。</p>
+<p>它是由一群 mongod 程序組合而成的，可以把 mongod 程序想成是一台機器，所以 Replica Sets 就是會有一群機器這樣，每個 mongod 程序會 maintain 相同的 data，保持同步。</p>
+<p>那你可能會好奇說，用 Replica Sets 有什麼好處呢？像 MySQL 開一台不就好了？</p>
+<p>因為 Replica Sets 能提供 redundancy，也就是一台壞掉了，還有其他台可以提供資料，這樣能降低遺失資料的風險。</p>
+<p>除此之外，還有 high availability 這個特性，它能排除 single points of failure 的問題，也就是一台壞掉了，整個資料庫的運作就崩潰了，它不會，它能確保整個資料庫的持續運作，一台壞掉了，會有其他台來 cover。</p>
+<p>最後還可以達到 load balancing 的效果，也就是像上圖一樣，write 的話是由 primary node 來負責，而 read 則是由 B 和 C 這兩個 secondary node，可能依照某種方法來分配處理，這麼做就能緩解各 database server 的負擔。</p>
+<h2 id="架構與角色"><a href="#架構與角色" class="headerlink" title="架構與角色"></a>架構與角色</h2><p><img src="4.png"></p>
+<p>整體大概是怎麼運作的呢？</p>
+<p>任何 write 會由 primary node 來處理，並將所有操作記錄在 oplog 的檔案裡面，所以 secondary node 只要重現 oplog 裡面的操作，就能達到複製的效果。</p>
+<p>而上面的右圖是在描述，當 primary node 掛掉的時候，會由所有 secondary node 透過某種方式來選拔，繼而取代原本的，然後升級成 primary node。</p>
+<p>以圖來說明的話，就是 A 掛掉了，由 B 來接管 primary node 的位置，這樣整體就能夠照常運作，不受 A 掛掉而有太大影響。</p>
+<h2 id="oplog-文件"><a href="#oplog-文件" class="headerlink" title="oplog 文件"></a>oplog 文件</h2><p>這邊快速簡介什麼是 oplog 文件。</p>
+<p>它是 MongoDB 實現 replica set 的關鍵資料結構。</p>
+<p>簡單來說，就是 primary node 的操作會記錄在 oplog，secondary node 就能透過 oplog 來更新，確保整個 replica set 的成員有一致的資料。</p>
+<h2 id="讀取操作"><a href="#讀取操作" class="headerlink" title="讀取操作"></a>讀取操作</h2><p>關於 MongoDB 的讀取，是透過 read preference 來設定的，一共會有五種 mode：</p>
+<ol>
+<li><code>primary</code>：這是預設的，也就是如果要從 replica sets 讀取資料，都是透過 primary node 來進行操作</li>
+<li><code>primaryPreferred</code>：也就是大部分情況下都是透過 primary node，若 primary node 發生狀況才從 secondary node 讀取</li>
+<li><code>secondary</code>：全部都是從 secondary node 讀取</li>
+<li><code>secondaryPreferred</code>：其實跟剛剛 primaryPreferred 差不多，只是主要是從 secondary node 來讀取</li>
+<li><code>nearest</code>：這個就沒有分 primary node、secondary node，而是根據一個特定的 latency threshold (由 localThresholdMS、maxStalenessSeconds 等參數計算出來)，隨機從 replica sets member 當中挑一個來讀取</li>
+</ol>
+<hr>
+<h1 id="Sharding"><a href="#Sharding" class="headerlink" title="Sharding"></a>Sharding</h1><p>透過 sharding，可以將資料分散在不同的機器上，提高資料的存取效率，是一種水平擴增的方式。</p>
+<p>然後 shard 這個英文單字其實還蠻少見的，所以看到 sharding 可能會不知道它在幹嘛，其實可以把它看成它就是一種 partition，只是是透過開多台機器，也就是水平擴增的方式來分 part。</p>
+<h2 id="架構與角色-1"><a href="#架構與角色-1" class="headerlink" title="架構與角色"></a>架構與角色</h2><p><img src="5.png"></p>
+<p>整個流程大概是這樣：</p>
+<p>一個 shard 就是一個 replica sets，也就是各自的 shard 會有所謂的 primary node 和 secondary node。</p>
+<p>mongos，是一個提供 client 端存取 shard 的介面。</p>
+<p>而 config server 儲存一些 metadata 和設定檔，像是告訴 mongos 當前的資料該存到哪一個 shard，或是要從哪一個 shard 去要資料，這個運作機制待會會提到。</p>
+<h2 id="Chunk"><a href="#Chunk" class="headerlink" title="Chunk"></a>Chunk</h2><p><img src="6.png"></p>
+<p>chunk 其實就是一堆 document，為了將資料分散儲存，就必須找一個方法來管理，所以 NoSQL 的做法就是將 document 的某一個欄位定義為 shard key，以上圖為例的話，就是 age 年齡。</p>
+<p>至於怎麼去分配呢？可以透過 range-based sharding 或是 hash-based sharding 的方法去做分配！</p>
+<h2 id="Range-Based-Sharding"><a href="#Range-Based-Sharding" class="headerlink" title="Range-Based Sharding"></a>Range-Based Sharding</h2><p>Range-based sharding 就是將 document shard key 欄位的值，透過 range 的範圍進行分配。</p>
+<p>像上圖就是 range-based sharding，看 age 也就是 document shard key 來決定該分配到哪個 chunk。</p>
+<h2 id="Hash-Based-Sharding"><a href="#Hash-Based-Sharding" class="headerlink" title="Hash-Based Sharding"></a>Hash-Based Sharding</h2><p>Hash-based sharding，顧名思義，就是透過一個 hash function，將我們所指定的 shard key 欄位進行雜湊。</p>
+<p>以年齡的例子來舉例的話，如果是「16 歲」就會被 hash 到「青少年」，而「65 歲」就會被 hash 到「老年」。</p>
+<p>透過這樣的方式將資料分散到各個 chunk 當中。</p>
+<h2 id="Balancing"><a href="#Balancing" class="headerlink" title="Balancing"></a>Balancing</h2><p><img src="7.png"></p>
+<p>這邊有個 Balancing 的機制，如果 shard 之間的 chunk total size 差異過大，就會做 migration，也就是 shard 移轉某個 chunk 的責任給另外一個 shard，確保數據分配的平衡，也就是所謂的 load balancing。</p>
+<h1 id="小比較"><a href="#小比較" class="headerlink" title="小比較"></a>小比較</h1><p><img src="8.png"></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gChzfhVGqp8">Setup MongoDB for Production deployment - Replica Sets cluster</a></p>
+<p>好，這是我們理論分享的部分，接著要來 demo 給大家看怎麼用 MongoDB 做 Data Replica～</p>
+<hr>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><p>資料庫總要有個地⽅放資料，所以我們先建資料夾來當作它存放資料的地⽅。</p>
+<p>因為要 demo 有⼀個 primary node 和兩個 secondary node 的 replica sets，所以我建三個：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/mongos/db4</span><br><span class="line">mkdir -p ~/mongos/db5</span><br><span class="line">mkdir -p ~/mongos/db6</span><br></pre></td></tr></table></figure>
+
+<p><img src="1.gif" alt="1.gif"></p>
+<p>接下來⽤ mongod 來啟動 MongoDB process，參數分別是你要開在哪個 port、選⽤哪個資料夾來存放資料，以及 replica sets 的名稱，可以隨便命名，那我⼀次開：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongod --port 2747 --dbpath ~/mongos/db4 --replSet anotherReplicaSet</span><br><span class="line">mongod --port 2757 --dbpath ~/mongos/db5 --replSet anotherReplicaSet</span><br><span class="line">mongod --port 2767 --dbpath ~/mongos/db6 --replSet anotherReplicaSet</span><br></pre></td></tr></table></figure>
+
+<p><img src="2.gif" alt="2.gif"></p>
+<h2 id="（小插曲：tmux）"><a href="#（小插曲：tmux）" class="headerlink" title="（小插曲：tmux）"></a>（小插曲：tmux）</h2><p>這樣就不用開很多 Tab 了！</p>
+<p>操作小筆記：</p>
+<ul>
+<li>進行水平分割：<code>&lt;Ctrl+b&gt; + &quot;</code></li>
+<li>進行垂直分割：<code>&lt;Ctrl+b&gt; + %</code></li>
+<li>移動到其他 pane：<code>&lt;Ctrl+b&gt; + &lt;方向鍵&gt;</code>（或是參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work">這個</a>就可以用滑鼠來操作～）</li>
+<li>關閉目前的 pane：<code>&lt;Ctrl+b&gt; + x</code></li>
+</ul>
+<h2 id="設定-replica-sets"><a href="#設定-replica-sets" class="headerlink" title="設定 replica sets"></a>設定 replica sets</h2><p>接著⽤ mongo 連進去你想要讓它當 primary node 的 process，然後做⼀些設定。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo mongodb://localhost:2747</span><br></pre></td></tr></table></figure>
+
+<p>先初始化，然後把另外兩個也加進來，它們就會是 secondary node。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rs.initiate()</span><br><span class="line">rs.add(<span class="string">&quot;localhost:2757&quot;</span>)</span><br><span class="line">rs.add(<span class="string">&quot;localhost:2767&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>透過這個指令，可以看到 replica sets 中有哪些 member：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rs.status()</span><br></pre></td></tr></table></figure>
+
+<p><img src="3.gif" alt="3.gif"></p>
+<h2 id="模擬-Primary-發生問題"><a href="#模擬-Primary-發生問題" class="headerlink" title="模擬 Primary 發生問題"></a>模擬 Primary 發生問題</h2><p>我現在來模擬⼀下，如果 primary node 因為⼀些問題掛掉了，看看會發⽣什麼事情：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo mongodb://localhost:2757</span><br></pre></td></tr></table></figure>
+
+<p>你看！它現在已經變成了 primary，這個時候我們再透過 <code>rs.status()</code> 這個指令來看⼀下整體狀況：</p>
+<p><img src="4.gif" alt="4.gif"></p>
+<p>把 Primary 的關掉，可以注意一下其他 Node 的 <code>stateStr</code> 變化：<br>1: not reachable/healthy<br>2: PRIMARY<br>3: SECONDARY</p>
+<p>重新啟動 Primary 以後：<br>1: SECONDARY<br>2: PRIMARY<br>3: SECONDARY</p>
+<p>這就是剛剛所提到的，當⼀台壞掉了，會有其他台來 cover，這樣就能夠確保整個資料庫的持續運作！</p>
+<h2 id="讓-Secondary-讀得到-Primary"><a href="#讓-Secondary-讀得到-Primary" class="headerlink" title="讓 Secondary 讀得到 Primary"></a>讓 Secondary 讀得到 Primary</h2><p>好，我現在來 demo 怎麼讓 secondary 讀到 primary 的資料。</p>
+<p>我先在 primary 裡⾯加點東⻄：</p>
+<p><img src="5.gif" alt="5.gif"></p>
+<p>試著用第三台去看：</p>
+<p><img src="6.gif" alt="6.gif"></p>
+<p>重啟第一台試試：</p>
+<p><img src="7.gif" alt="7.gif"></p>
+<p>來看⼀下整體狀況：</p>
+<p><img src="8.gif" alt="8.gif"></p>
+<h2 id="MongoDB-裡面的資料"><a href="#MongoDB-裡面的資料" class="headerlink" title="MongoDB 裡面的資料"></a>MongoDB 裡面的資料</h2><p>最後給⼤家看⼀下 MongoDB 的資料和結構：</p>
+<p><img src="9.png"></p>
+<p>推薦大家這個方便操作＆查看 MongoDB 的圖形化介面：<a target="_blank" rel="noopener" href="https://www.mongodb.com/products/compass">MongoDB Compass</a><br>（Easily explore and manipulate your database with Compass, the GUI for MongoDB.）</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/ssl-for-free/" rel="prev" title="用 SSL For Free 免費申請 SSL 憑證">
+      <i class="fa fa-chevron-left"></i> 用 SSL For Free 免費申請 SSL 憑證
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%A0%B4"><span class="nav-number">1.</span> <span class="nav-text">開場</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL"><span class="nav-number">2.</span> <span class="nav-text">NoSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9"><span class="nav-number">2.1.</span> <span class="nav-text">介紹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scale-vertically-vs-Scale-horizontally"><span class="nav-number">2.2.</span> <span class="nav-text">Scale vertically   vs   Scale horizontally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8D%E7%85%A7%E8%A1%A8"><span class="nav-number">2.3.</span> <span class="nav-text">對照表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Replica"><span class="nav-number">3.</span> <span class="nav-text">Data Replica</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Replica-Sets"><span class="nav-number">3.1.</span> <span class="nav-text">Replica Sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%A7%8B%E8%88%87%E8%A7%92%E8%89%B2"><span class="nav-number">3.2.</span> <span class="nav-text">架構與角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oplog-%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">oplog 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%80%E5%8F%96%E6%93%8D%E4%BD%9C"><span class="nav-number">3.4.</span> <span class="nav-text">讀取操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sharding"><span class="nav-number">4.</span> <span class="nav-text">Sharding</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%A7%8B%E8%88%87%E8%A7%92%E8%89%B2-1"><span class="nav-number">4.1.</span> <span class="nav-text">架構與角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chunk"><span class="nav-number">4.2.</span> <span class="nav-text">Chunk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Range-Based-Sharding"><span class="nav-number">4.3.</span> <span class="nav-text">Range-Based Sharding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-Based-Sharding"><span class="nav-number">4.4.</span> <span class="nav-text">Hash-Based Sharding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Balancing"><span class="nav-number">4.5.</span> <span class="nav-text">Balancing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E6%AF%94%E8%BC%83"><span class="nav-number">5.</span> <span class="nav-text">小比較</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Demo"><span class="nav-number">6.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">6.1.</span> <span class="nav-text">前置作業</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E5%B0%8F%E6%8F%92%E6%9B%B2%EF%BC%9Atmux%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">（小插曲：tmux）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-replica-sets"><span class="nav-number">6.3.</span> <span class="nav-text">設定 replica sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%93%AC-Primary-%E7%99%BC%E7%94%9F%E5%95%8F%E9%A1%8C"><span class="nav-number">6.4.</span> <span class="nav-text">模擬 Primary 發生問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%93-Secondary-%E8%AE%80%E5%BE%97%E5%88%B0-Primary"><span class="nav-number">6.5.</span> <span class="nav-text">讓 Secondary 讀得到 Primary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-%E8%A3%A1%E9%9D%A2%E7%9A%84%E8%B3%87%E6%96%99"><span class="nav-number">6.6.</span> <span class="nav-text">MongoDB 裡面的資料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="寫信給我 → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>寫信給我</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/kanido386/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;kanido386&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw" title="卡尼多 → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCVJOQCQI-lK7bTcKVG7ArYw" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>卡尼多</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2022/05/nosql-introduction/";
+    this.page.identifier = "2022/05/nosql-introduction/";
+    this.page.title = "【技術筆記】NoSQL、Data Replica、Sharding";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
