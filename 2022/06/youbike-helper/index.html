@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="6C9RhtaGuuhO-_eSOnZrI47X8r9RKG3kNpkTbHc5FHI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="這個 Project 主要是用來熟悉 RabbitMQ、MongoDB、Docker 及 Kubernetes。接下來我會用筆記的方式分享整個過程的點點滴滴（和一些我踩過的坑 😅）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App">
+<meta property="og:url" content="https://kanido386.github.io/2022/06/youbike-helper/index.html">
+<meta property="og:site_name" content="卡尼多隨筆">
+<meta property="og:description" content="這個 Project 主要是用來熟悉 RabbitMQ、MongoDB、Docker 及 Kubernetes。接下來我會用筆記的方式分享整個過程的點點滴滴（和一些我踩過的坑 😅）">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://kanido386.github.io/2022/06/youbike-helper/1.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/06/youbike-helper/2.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/06/youbike-helper/3.png">
+<meta property="og:image" content="https://kanido386.github.io/2022/06/youbike-helper/4.png">
+<meta property="article:published_time" content="2022-06-05T11:17:15.000Z">
+<meta property="article:modified_time" content="2022-06-05T11:37:13.853Z">
+<meta property="article:author" content="卡尼多">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kanido386.github.io/2022/06/youbike-helper/1.png">
+
+<link rel="canonical" href="https://kanido386.github.io/2022/06/youbike-helper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App | 卡尼多隨筆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">卡尼多隨筆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">認識自我 • 感受世界 • 創造價值</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/06/youbike-helper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="卡尼多">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卡尼多隨筆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-05 19:17:15" itemprop="dateCreated datePublished" datetime="2022-06-05T19:17:15+08:00">2022-06-05</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/06/youbike-helper/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/youbike-helper/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>這個 Project 主要是用來熟悉 RabbitMQ、MongoDB、Docker 及 Kubernetes。<br>接下來我會用筆記的方式分享整個過程的點點滴滴（和一些我踩過的坑 😅）</p>
+<span id="more"></span>
+
+<h1 id="綜觀全貌"><a href="#綜觀全貌" class="headerlink" title="綜觀全貌"></a>綜觀全貌</h1><p><img src="1.png"></p>
+<p>Crawler 每分鐘固定抓 YouBike 的資料，切分成一個一個站點資訊以後，丟進 message queue (RabbitMQ) 裡。</p>
+<p>Worker 得知 queue 裡有新東西時，就將它們拿出來一一處理，並存進一個 NoSQL database (MongoDB) 裡。</p>
+<p>Client 端能透過呼叫 Express Server 的 API，抓取「離使用者最近的三個站點還剩下多少台 YouBike」的資訊。</p>
+<p>整個流程在本地端測試完以後，先練習用 Docker 去建置整個環境。</p>
+<p>OK 以後，再練習用 Kubernetes，或者更精確來說是 k3s + k3d，來建整個環境。</p>
+<h1 id="功能實作"><a href="#功能實作" class="headerlink" title="功能實作"></a>功能實作</h1><p>此 Project 需要用到的資料集：YouBike臺北市公共自行車即時資訊<br><a target="_blank" rel="noopener" href="https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.json">JSON</a>、<a target="_blank" rel="noopener" href="https://data.gov.tw/dataset/128706">主要欄位說明</a>（要點開 <code>資料資源下載網址</code> → <code>檢視資料</code> 才看得到）</p>
+<h2 id="建-Project"><a href="#建-Project" class="headerlink" title="建 Project"></a>建 Project</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir youbike-helper</span><br><span class="line"><span class="built_in">cd</span> youbike-helper</span><br><span class="line">npm init                <span class="comment"># 我把 entry point 改成 app.js</span></span><br><span class="line">git init</span><br><span class="line">npm install express</span><br><span class="line">touch .gitignore        <span class="comment"># 加上 node_modules/</span></span><br><span class="line">touch app.js</span><br><span class="line"><span class="comment"># 貼 https://expressjs.com/en/starter/hello-world.html 範例 code</span></span><br><span class="line">nodemon app.js</span><br></pre></td></tr></table></figure>
+
+<h2 id="定期做事情"><a href="#定期做事情" class="headerlink" title="定期做事情"></a>定期做事情</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/b0c6ed6126618ef59e4798807cb6941c01ee7aea">can print message every minute with node-cron</a></p>
+</blockquote>
+<ul>
+<li>我是參考「<a target="_blank" rel="noopener" href="https://www.mickpatterson.com.au/blog/how-to-setup-scheduled-functions-with-nodejs-express-and-node-cron/">How to Setup Scheduled Functions with NodeJs, Express and Node-Cron | Mick Patterson</a>」做這個部分的。</li>
+<li><code>npm install --save node-cron</code></li>
+<li>cron schedule expression 可參考「<a target="_blank" rel="noopener" href="https://crontab.guru/">crontab guru</a>」</li>
+</ul>
+<h2 id="撈資料"><a href="#撈資料" class="headerlink" title="撈資料"></a>撈資料</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/b421a5fee9f4bbf9089e379622b954c0d8754d1f">can fetch online api json data with node-fetch</a></p>
+</blockquote>
+<ul>
+<li><code>npm install node-fetch@2</code>（選用 v2 的<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/69904225">原因</a>）</li>
+<li>使用方法可見 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/node-fetch">node-fetch</a> 的 Common Usage → JSON</li>
+</ul>
+<h2 id="Message-Queue"><a href="#Message-Queue" class="headerlink" title="Message Queue"></a>Message Queue</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/e7b835cb737c1547bcafd781d1708432d224297e">can publish &amp; consume object with amqplib</a></p>
+</blockquote>
+<ul>
+<li>安裝 RabbitMQ：<code>brew install rabbitmq</code></li>
+<li>啟動：<code>rabbitmq-server</code></li>
+<li><code>npm install amqplib</code></li>
+</ul>
+<h2 id="整合-MongoDB"><a href="#整合-MongoDB" class="headerlink" title="整合 MongoDB"></a>整合 MongoDB</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/80bfb3e54d20f4591a4c628be695ec7cb5bf0764">can insert data we want into MongoDB with mongoose</a></p>
+</blockquote>
+<ul>
+<li>參考自我之前寫的「<a href="https://kanido386.github.io/2022/05/nosql-introduction/#Demo" target="_blank">【技術筆記】NoSQL、Data Replica、Sharding</a>」</li>
+<li><code>npm install mongoose</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/mongos/db7</span><br><span class="line">mongod --port 2777 --dbpath ~/mongos/db7</span><br><span class="line"><span class="comment"># mongodb://localhost:2777</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>npm install dotenv --save</code> → <code>require(&#39;dotenv&#39;).config()</code></li>
+<li>type 為 Date 的部分參考自<a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/manual/reference/method/Date/">這個</a></li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><ul>
+<li><code>model.js</code>：用來定 schema</li>
+<li>修改 <code>worker.js</code> 讓它能新增 document</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Info &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./model&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newInfo = &#123;</span><br><span class="line">  <span class="attr">station</span>: info[<span class="string">&#x27;sna&#x27;</span>],</span><br><span class="line">  <span class="attr">version</span>: <span class="string">&#x27;v1&#x27;</span>,</span><br><span class="line">  <span class="attr">available</span>: info[<span class="string">&#x27;sbi&#x27;</span>],</span><br><span class="line">  <span class="attr">location</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;Point&#x27;</span>,</span><br><span class="line">    <span class="attr">coordinates</span>: [ <span class="built_in">Number</span>(info[<span class="string">&#x27;lat&#x27;</span>]).toFixed(<span class="number">4</span>), <span class="built_in">Number</span>(info[<span class="string">&#x27;lng&#x27;</span>]).toFixed(<span class="number">4</span>) ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Transform &#x27;20220523235035&#x27; to &#x27;2022-05-23T23:50:35&#x27;</span></span><br><span class="line">  <span class="attr">datatime</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">`<span class="subst">$&#123;info[<span class="string">&#x27;mday&#x27;</span>].slice(<span class="number">0</span>,<span class="number">4</span>)&#125;</span>-<span class="subst">$&#123;info[<span class="string">&#x27;mday&#x27;</span>].slice(<span class="number">4</span>,<span class="number">6</span>)&#125;</span>-<span class="subst">$&#123;info[<span class="string">&#x27;mday&#x27;</span>].slice(<span class="number">6</span>,<span class="number">8</span>)&#125;</span>T<span class="subst">$&#123;info[<span class="string">&#x27;mday&#x27;</span>].slice(<span class="number">8</span>,<span class="number">10</span>)&#125;</span>:<span class="subst">$&#123;info[<span class="string">&#x27;mday&#x27;</span>].slice(<span class="number">10</span>,<span class="number">12</span>)&#125;</span>:<span class="subst">$&#123;info[<span class="string">&#x27;mday&#x27;</span>].slice(<span class="number">12</span>,<span class="number">14</span>)&#125;</span>`</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> theInfo = <span class="keyword">await</span> Info.create(newInfo);</span><br><span class="line"><span class="built_in">console</span>.log(theInfo);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;==============================&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="秀出最接近的幾個站點"><a href="#秀出最接近的幾個站點" class="headerlink" title="秀出最接近的幾個站點"></a>秀出最接近的幾個站點</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/d472b9457f047a5995435d100e90d5d6c6640b00">can print nearest stations regarding a point with aggregate and $geoNear</a></p>
+</blockquote>
+<ul>
+<li>🎉 主要是參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24297556/mongoose-aggregation-with-geonear">這篇</a>「Or using aggregate instead」做到的 🎉</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Info.aggregate(</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&#x27;$geoNear&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;near&#x27;</span>: &#123;</span><br><span class="line">          <span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;Point&#x27;</span>,</span><br><span class="line">          <span class="comment">// <span class="doctag">TODO:</span> change to the data that users gave us</span></span><br><span class="line">          <span class="string">&#x27;coordinates&#x27;</span>: [ <span class="number">121.5312</span>, <span class="number">25.0299</span> ]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&#x27;spherical&#x27;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&#x27;distanceField&#x27;</span>: <span class="string">&#x27;distance&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; <span class="string">&#x27;$skip&#x27;</span>: <span class="number">0</span> &#125;,</span><br><span class="line">    &#123; <span class="string">&#x27;$limit&#x27;</span>: <span class="number">3</span> &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="function">(<span class="params">err, nearestInfos</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="comment">// console.log(nearestInfos);</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> info <span class="keyword">of</span> nearestInfos) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(info[<span class="string">&#x27;station&#x27;</span>]);</span><br><span class="line">      <span class="built_in">console</span>.log(info[<span class="string">&#x27;available&#x27;</span>]);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;==============================&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新版 <code>model.js</code>，為了能做 <code>$geoNear</code>（參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16388836/does-applying-a-2dsphere-index-on-a-mongoose-schema-force-the-location-field-to">這篇</a>修改的）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; Schema &#125; = mongoose;</span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;dotenv&#x27;</span>).config();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> URI = process.env.MONGODB_URI;</span><br><span class="line">mongoose.connect(<span class="string">`<span class="subst">$&#123;URI&#125;</span>/demo`</span>);</span><br><span class="line"><span class="keyword">const</span> db = mongoose.connection;</span><br><span class="line">db.on(<span class="string">&#x27;error&#x27;</span>, <span class="built_in">console</span>.error.bind(<span class="built_in">console</span>, <span class="string">&#x27;MongoDB connection error:&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> infoSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="attr">station</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">version</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">available</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 這邊這邊這邊這邊這邊</span></span><br><span class="line">  <span class="attr">location</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">      <span class="attr">enum</span>: [<span class="string">&#x27;Point&#x27;</span>],</span><br><span class="line">      <span class="attr">default</span>: <span class="string">&#x27;Point&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">coordinates</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: [<span class="built_in">Number</span>],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 這邊這邊這邊這邊這邊</span></span><br><span class="line">  <span class="attr">datatime</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Date</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 這邊這邊這邊這邊這邊</span></span><br><span class="line">infoSchema.index(&#123; <span class="attr">location</span>: <span class="string">&#x27;2dsphere&#x27;</span> &#125;);</span><br><span class="line"><span class="comment">// 這邊這邊這邊這邊這邊</span></span><br><span class="line"><span class="keyword">const</span> Info = mongoose.model(<span class="string">&#x27;Info&#x27;</span>, infoSchema);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  Info</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>worker.js</code> 經緯度次序也要對調，不然會噴錯！（<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/25150590/mongoerror-cant-extract-geo-keys-from-object-with-type-point">這篇</a>有提到）</li>
+</ul>
+<p><img src="2.png"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">coordinates: [</span><br><span class="line">  <span class="built_in">Number</span>(<span class="built_in">Number</span>(info[<span class="string">&#x27;lng&#x27;</span>]).toFixed(<span class="number">4</span>)),</span><br><span class="line">  <span class="built_in">Number</span>(<span class="built_in">Number</span>(info[<span class="string">&#x27;lat&#x27;</span>]).toFixed(<span class="number">4</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="實際秀出來給使用者看"><a href="#實際秀出來給使用者看" class="headerlink" title="實際秀出來給使用者看"></a>實際秀出來給使用者看</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/842287d910a923ec336f35de5ea8eaddaf1937ce">can show to users with ejs and geolocation</a></p>
+</blockquote>
+<ul>
+<li><code>npm install ejs</code></li>
+<li>定位使用者：<a target="_blank" rel="noopener" href="https://www.w3schools.com/html/html5_geolocation.asp">Locate the User’s Position</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application">How To Use EJS to Template Your Node Application</a></li>
+</ul>
+<h2 id="改成-upsert-而不是一直-insert"><a href="#改成-upsert-而不是一直-insert" class="headerlink" title="改成 upsert 而不是一直 insert"></a>改成 upsert 而不是一直 insert</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/72daa2c1eb585f42bee7c74171219fe8d316a07e">change to upsert to prevent infinite growth</a></p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7267102/how-do-i-update-upsert-a-document-in-mongoose">How do I update/upsert a document in Mongoose?</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const theInfo = await Info.create(newInfo);</span></span><br><span class="line"><span class="keyword">const</span> theInfo = <span class="keyword">await</span> Info.findOneAndUpdate(&#123;</span><br><span class="line">  <span class="attr">station</span>: info[<span class="string">&#x27;sna&#x27;</span>],</span><br><span class="line">  <span class="attr">version</span>: <span class="string">&#x27;v1&#x27;</span>,</span><br><span class="line">&#125;, newInfo, &#123; <span class="attr">upsert</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="環境變數"><a href="#環境變數" class="headerlink" title="環境變數"></a>環境變數</h2><p>對了，我的 <code>.env</code> 長這樣：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MONGODB_URI=&#x27;mongodb://localhost:2777&#x27;</span><br><span class="line">AMQP_URI=&#x27;amqp://localhost&#x27;</span><br><span class="line">SEARCH_API_URL=&#x27;http://localhost:3000/search&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p>在本地端測試：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-server                            <span class="comment"># 啟動 RabbitMQ</span></span><br><span class="line">mongod --port 2777 --dbpath ~/mongos/db7   <span class="comment"># 啟動 MongoDB</span></span><br><span class="line">nodemon app.js                             <span class="comment"># 啟動 Express Server</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="3.png"></p>
+<p>Nice!</p>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="啟動多個-Docker-container"><a href="#啟動多個-Docker-container" class="headerlink" title="啟動多個 Docker container"></a>啟動多個 Docker container</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/e8aef4409a12c815870fbe95a85e07189ca3bb87">can do the same job on docker containers with docker-compose up</a></p>
+</blockquote>
+<ul>
+<li>參考自「<a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">Kubernetes Web App Deployment with k3d</a>」</li>
+</ul>
+<ol>
+<li>先將 docker daemon 跑起來</li>
+<li>寫 backend 的 Dockerfile：<code>touch Dockerfile</code></li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:lts-alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> mkdir -p /usr/src/app</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install -g nodemon</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">3000</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">&quot;npm&quot;</span>, <span class="string">&quot;start&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>docker-compose.yml</code>：用來組合多個 container 成為一個完整的服務</li>
+</ol>
+<p>也參考了「<a target="_blank" rel="noopener" href="https://x-team.com/blog/set-up-rabbitmq-with-docker-compose/">How to Set Up RabbitMQ With Docker Compose</a>」及「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31746182/docker-compose-wait-for-container-x-before-starting-y">Docker Compose wait for container X before starting Y</a>」</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.9&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">rabbitmq:3-management-alpine</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">&#x27;rabbitmq&#x27;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5672</span><span class="string">:5672</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">15672</span><span class="string">:15672</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> <span class="string">rabbitmq-diagnostics</span> <span class="string">-q</span> <span class="string">ping</span></span><br><span class="line">      <span class="attr">interval:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">5s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">3s</span></span><br><span class="line">  <span class="attr">mongo:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mongo</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;27017:27017&quot;</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> <span class="string">echo</span> <span class="string">&#x27;db.runCommand(&quot;ping&quot;).ok&#x27;</span> <span class="string">|</span> <span class="string">mongo</span> <span class="string">localhost:27017/test</span> <span class="string">--quiet</span></span><br><span class="line">      <span class="attr">interval:</span> <span class="string">2s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">3s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">3s</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MONGODB_URI=mongodb://mongo:27017</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">AMQP_URI=amqp://guest:guest@rabbitmq:5672</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mongo</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">rabbitmq</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="attr">mongo:</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">service_healthy</span></span><br><span class="line">      <span class="attr">rabbitmq:</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">service_healthy</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>跑起來：<code>docker-compose up</code>（後端有改 code 的話，先 <code>docker-compose down</code> 再 <code>docker-compose up --build</code>，不然 code 不會更新到，這個地方花了我超多時間在 debug 😂）</li>
+</ol>
+<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanido386/youbike-helper/commit/30a268fef17ef902c7bdac93ad1de42bfd9ea3c9">deploy to K3s with k3d</a></p>
+</blockquote>
+<p>幾乎都參考自「<a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">Kubernetes Web App Deployment with k3d</a>」，那篇實在是太優質啦！</p>
+<h2 id="建立-Cluster"><a href="#建立-Cluster" class="headerlink" title="建立 Cluster"></a>建立 Cluster</h2><ul>
+<li>將 <code>/mnt/data</code> 加進 Docker → Preferences… → Resources → File Sharing</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /mnt/data</span><br><span class="line">k3d cluster create youbike-helper --servers 1 --agents 2 --port <span class="string">&quot;30000-30005:30000-30005@server:0&quot;</span> --volume /mnt/data:/mnt/data</span><br><span class="line"></span><br><span class="line">kubectl config get-contexts    <span class="comment"># check the newly created cluster</span></span><br><span class="line">kubectl cluster-info           <span class="comment"># 啟用(?)的樣子</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="建後端的-Docker-Image"><a href="#建後端的-Docker-Image" class="headerlink" title="建後端的 Docker Image"></a>建後端的 Docker Image</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：Build the Docker images corresponding to the application components and pushing them to Docker Hub, so they become available to our deployment process.</li>
+<li>透過 <code>docker build</code> 指令可依序讀取 Dockerfile 中的指令以自動建立 image。</li>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub</a> 註冊一下吧～</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker build -t youbike-helper-backend .</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker tag youbike-helper-backend &lt;you_docker_hub_username&gt;/youbike-helper-backend</span></span><br><span class="line">docker tag youbike-helper-backend kanido386/youbike-helper-backend</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker push &lt;your_docker_hub_username&gt;/youbike-helper-backend</span></span><br><span class="line">docker push kanido386/youbike-helper-backend</span><br></pre></td></tr></table></figure>
+
+<h2 id="建置-Database"><a href="#建置-Database" class="headerlink" title="建置 Database"></a>建置 Database</h2><h3 id="Persistent-Volume"><a href="#Persistent-Volume" class="headerlink" title="Persistent Volume"></a>Persistent Volume</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：A pod is ephemeral (短暫存在的), so its data is lost if the pod is destroyed. In this example, we are going to use a <strong>persistent volume</strong> (pv) to hold the application data so it persists beyond the lifetime of the pod.</li>
+</ul>
+<p><code>pv.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolume</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-pv</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">storageClassName:</span> <span class="string">manual</span></span><br><span class="line">  <span class="attr">capacity:</span></span><br><span class="line">    <span class="attr">storage:</span> <span class="string">5Gi</span></span><br><span class="line">  <span class="attr">accessModes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ReadWriteOnce</span></span><br><span class="line">  <span class="attr">hostPath:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">&quot;/mnt/data&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f pv.yaml   <span class="comment"># create</span></span><br><span class="line">kubectl get pv             <span class="comment"># check</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Persistent-Volume-Claim"><a href="#Persistent-Volume-Claim" class="headerlink" title="Persistent Volume Claim"></a>Persistent Volume Claim</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<strong>persistent volume claim</strong> (pvc) are used by pods to request physical storage.</li>
+</ul>
+<p><code>db-pv-claim.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-pv-claim</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">storageClassName:</span> <span class="string">manual</span></span><br><span class="line">  <span class="attr">accessModes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">ReadWriteOnce</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="attr">requests:</span></span><br><span class="line">      <span class="attr">storage:</span> <span class="string">3Gi</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f db-pv-claim.yaml   <span class="comment"># create</span></span><br><span class="line">kubectl get pvc</span><br></pre></td></tr></table></figure>
+
+<h3 id="想移除-PV-和-PVC-怎麼辦？"><a href="#想移除-PV-和-PVC-怎麼辦？" class="headerlink" title="想移除 PV 和 PVC 怎麼辦？"></a>想移除 PV 和 PVC 怎麼辦？</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55672498/kubernetes-clustsr-stuck-on-removing-pv-pvc">Kubernetes Clustsr stuck on removing PV/PVC</a></li>
+</ul>
+<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<ul>
+<li>A deployment defines the desired state for a component in our application.</li>
+<li>In this case, we are declaring the desired state of our database and Kubernetes takes care of sticking to this definition.</li>
+</ul>
+</li>
+</ul>
+<p><code>db-deployment.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">RollingUpdate</span></span><br><span class="line">  <span class="comment"># refers to the pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-db</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">mongo</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">27017</span></span><br><span class="line">        <span class="attr">volumeMounts:</span></span><br><span class="line">				<span class="comment"># 若 mountPath 跟 PersistentVolume 的 path 不一樣</span></span><br><span class="line">				<span class="comment"># pod 會卡在 CrashLoopBackOff 的狀態...</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/mnt/data</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">youbike-helper-db-volume</span></span><br><span class="line">      <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-db-volume</span></span><br><span class="line">        <span class="attr">persistentVolumeClaim:</span></span><br><span class="line">          <span class="attr">claimName:</span> <span class="string">youbike-helper-db-pv-claim</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：What is a rolling update strategy?<ul>
+<li>The rolling update strategy is <strong>a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime</strong>.</li>
+<li>In this strategy, the Deployment selects a Pod with the old programming, deactivates it, and creates an updated Pod to replace it.</li>
+</ul>
+</li>
+</ul>
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f db-deployment.yaml</span><br><span class="line">kubectl get deployments</span><br><span class="line">kubectl get pods -o wide   <span class="comment"># check the state of the pod</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<ul>
+<li>We need a service to make the database available to the backend.</li>
+<li>This makes the database pod accessible only from within the cluster and the connection will target the port 27017 in the pod.</li>
+</ul>
+</li>
+</ul>
+<p><code>db-service.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">    <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">27017</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">27017</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f db-service.yaml</span><br><span class="line">kubectl get services</span><br></pre></td></tr></table></figure>
+
+<h3 id="各種-port-傻傻分不清楚？"><a href="#各種-port-傻傻分不清楚？" class="headerlink" title="各種 port 傻傻分不清楚？"></a>各種 port 傻傻分不清楚？</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://iter01.com/523068.html">k8s 辨析 port、NodePort、targetPort、containerPort 區別</a></li>
+</ul>
+<p><img src="4.png"></p>
+<p>（截圖自「<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=T4Z7visMM4E">Kubernetes Services explained | ClusterIP vs NodePort vs LoadBalancer vs Headless Service</a>」）</p>
+<h2 id="弄-RabbitMQ"><a href="#弄-RabbitMQ" class="headerlink" title="弄 RabbitMQ"></a>弄 RabbitMQ</h2><h3 id="Deployment-和-Service-可寫在一起"><a href="#Deployment-和-Service-可寫在一起" class="headerlink" title="Deployment 和 Service 可寫在一起"></a>Deployment 和 Service 可寫在一起</h3><p><code>rabbitmq.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Service</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-rabbitmq-service</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">5672</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30001</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq-management</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">15672</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">15672</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30002</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment">## Deployment</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-rabbitmq-deployment</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">rabbitmq:3.9.18-management-alpine</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">5672</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">15672</span></span><br><span class="line">          <span class="attr">resources:</span></span><br><span class="line">            <span class="attr">limits:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">            <span class="attr">requests:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">          <span class="attr">livenessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">          <span class="attr">readinessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f rabbitmq.yaml   <span class="comment"># create</span></span><br><span class="line">kubectl get deployment           <span class="comment"># check deployment</span></span><br><span class="line">kubectl get service              <span class="comment"># check service</span></span><br><span class="line"><span class="comment"># kubectl get &lt;單數複數好像都可以&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="處理-Backend"><a href="#處理-Backend" class="headerlink" title="處理 Backend"></a>處理 Backend</h2><h3 id="環境變數-1"><a href="#環境變數-1" class="headerlink" title="環境變數"></a>環境變數</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：3 ways to provide some environment variables when creating the deployment for the backend<ul>
+<li>defining a variable value directly in the deployment definition</li>
+<li>get a variable’s value from a separate configuration object called <strong>ConfigMap</strong></li>
+<li>get a variable’s value from a separate configuration object called <strong>Secret</strong></li>
+</ul>
+</li>
+</ul>
+<p><code>backend-config.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">backend-config</span></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">MONGODB_URI:</span> <span class="string">youbike-helper-db-service</span></span><br><span class="line">  <span class="attr">AMQP_URI:</span> <span class="string">my-rabbitmq-service</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<ul>
+<li>Please note, we provide the name of the service created before.</li>
+<li>That’s because Kubernetes handles the name resolution so the requests will reach the database pod without problems.</li>
+</ul>
+</li>
+</ul>
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f backend-config.yaml</span><br><span class="line">kubectl get configmap</span><br><span class="line">kubectl describe configmap backend-config</span><br></pre></td></tr></table></figure>
+
+<p>（因為 project 不需要，所以就沒設定 secret 了，設定方式詳見參考文「Next, let’s create a Secret.」）</p>
+<h3 id="Deployment-1"><a href="#Deployment-1" class="headerlink" title="Deployment"></a>Deployment</h3><p><code>backend-deployment.yaml</code></p>
+<ul>
+<li>env 部分參考了<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54350939/kubernetes-config-map-templated-variables">這個</a></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-backend-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">backend</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="comment"># refers to the pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-backend</span></span><br><span class="line">          <span class="comment"># image: &lt;your_docker_hub_username&gt;/youbike-helper-backend:latest</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">kanido386/youbike-helper-backend:latest</span></span><br><span class="line">          <span class="attr">env:</span></span><br><span class="line">            <span class="comment"># - name: NODE_ENV</span></span><br><span class="line">            <span class="comment">#   value: &quot;production&quot;</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">MONGODB</span></span><br><span class="line">              <span class="attr">valueFrom:</span></span><br><span class="line">                <span class="attr">configMapKeyRef:</span></span><br><span class="line">                  <span class="attr">name:</span> <span class="string">backend-config</span></span><br><span class="line">                  <span class="attr">key:</span> <span class="string">MONGODB_URI</span></span><br><span class="line">            <span class="comment"># 後來才知道要這樣寫，所以變數名稱有點亂</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">MONGODB_URI</span></span><br><span class="line">              <span class="attr">value:</span> <span class="string">mongodb://$(MONGODB)</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">AMQP</span></span><br><span class="line">              <span class="attr">valueFrom:</span></span><br><span class="line">                <span class="attr">configMapKeyRef:</span></span><br><span class="line">                  <span class="attr">name:</span> <span class="string">backend-config</span></span><br><span class="line">                  <span class="attr">key:</span> <span class="string">AMQP_URI</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">AMQP_URI</span></span><br><span class="line">              <span class="attr">value:</span> <span class="string">amqp://$(AMQP)</span></span><br><span class="line">            <span class="comment"># - name: SECRET</span></span><br><span class="line">            <span class="comment">#   valueFrom:</span></span><br><span class="line">            <span class="comment">#     secretKeyRef:</span></span><br><span class="line">            <span class="comment">#       name: backend-secrets</span></span><br><span class="line">            <span class="comment">#       key: backend_secret</span></span><br><span class="line">          <span class="attr">resources:</span></span><br><span class="line">            <span class="attr">requests:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">&quot;500m&quot;</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">&quot;512Mi&quot;</span></span><br><span class="line">            <span class="attr">limits:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">&quot;1000m&quot;</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">&quot;1024Mi&quot;</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">3000</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f backend-deployment.yaml</span><br><span class="line">kubectl get deployments</span><br><span class="line"><span class="comment"># kubectl get pods 發現 STATUS 為 ImagePullBackOff 不用擔心！</span></span><br><span class="line"><span class="comment"># 過一段時間就會變為 Running（我這邊是這樣）</span></span><br><span class="line"></span><br><span class="line">kubectl <span class="built_in">exec</span> -it [pod] /bin/ash   <span class="comment"># 我沒有打錯，是 ash 沒錯😂</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Service-1"><a href="#Service-1" class="headerlink" title="Service"></a>Service</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<ul>
+<li>If we need to connect to the backend pods directly, how could we find out and keep track of the IP addresses to connect to?</li>
+<li>Thanks to this abstraction, we don’t need to worry about any of this.</li>
+<li>The service “knows” where to find all the pods that matches its selector and any request that reaches the service will reach one of those pods.</li>
+<li>Even if a pod dies or even a node crashes, Kubernetes will make sure to keep the desired number of pods and the service will allow us to reach the required pods.</li>
+</ul>
+</li>
+</ul>
+<p><code>backend-service.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-backend-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">    <span class="attr">tier:</span> <span class="string">backend</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-backend</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">3000</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">3000</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30000</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f backend-service.yaml</span><br><span class="line">kubectl get services</span><br></pre></td></tr></table></figure>
+
+<h2 id="試試-Ingress"><a href="#試試-Ingress" class="headerlink" title="試試 Ingress"></a>試試 Ingress</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：We can access the application from outside and make sure the requests will reach the correct destination.</li>
+</ul>
+<p><code>ingress.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">networking.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-ingress</span></span><br><span class="line">  <span class="attr">annotations:</span></span><br><span class="line">    <span class="attr">ingress.kubernetes.io/ssl-redirect:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">rules:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">http:</span></span><br><span class="line">      <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">/</span></span><br><span class="line">        <span class="attr">pathType:</span> <span class="string">Prefix</span></span><br><span class="line">        <span class="attr">backend:</span></span><br><span class="line">          <span class="attr">service:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">youbike-helper-backend-service</span></span><br><span class="line">            <span class="attr">port:</span></span><br><span class="line">              <span class="attr">number:</span> <span class="number">3000</span></span><br><span class="line">      <span class="comment"># - path: /</span></span><br><span class="line">      <span class="comment">#   pathType: Prefix</span></span><br><span class="line">      <span class="comment">#   backend:   # 這仍舊要寫 backend</span></span><br><span class="line">      <span class="comment">#     service:</span></span><br><span class="line">      <span class="comment">#       name: youbike-helper-frontend-service</span></span><br><span class="line">      <span class="comment">#       port:</span></span><br><span class="line">      <span class="comment">#         number: 80</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：The ingress controller will start acting as a HTTP reverse proxy.</li>
+</ul>
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f ingress.yaml</span><br><span class="line">kubectl get ingress</span><br></pre></td></tr></table></figure>
+
+<p>（但後來我沒靠 Ingress 連，而是靠 NodePort 😂）<br>（我靠 NodePort 連的這個做法其實挺不安全的！）</p>
+<h2 id="進行測試"><a href="#進行測試" class="headerlink" title="進行測試"></a>進行測試</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：You can play with the application and then check the logs:（也可以用這個 debug！）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the name of a pod and:</span></span><br><span class="line">kubectl logs [pod]</span><br></pre></td></tr></table></figure>
+
+<p>用 <code>http://localhost:30000</code> 成功連進頁面 🎉<br>但當我按「查找附近的 YouBike 站點！」居然沒反應⋯⋯<br>啊！原來是我 call 後端 API 的網址忘記改啦⋯⋯<br>（應該要把 <code>http://localhost:3000/search</code> 改成 <code>http://localhost:30000/search</code>，當然或許有更好的改法 🤔）</p>
+<h3 id="解掉問題"><a href="#解掉問題" class="headerlink" title="解掉問題"></a>解掉問題</h3><p>要改 code 的話，會有以下程序要做：</p>
+<ol>
+<li>那部分改為環境變數</li>
+</ol>
+<p><code>.env</code></p>
+<p>for 本地端測試用 (假裝自己沒架 k3d)，得加上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SEARCH_API_URL=&#x27;http://localhost:3000/search&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><code>app.js</code></p>
+<p>html 裡面好像不能吃到環境變數，得靠後端傳入</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.render(<span class="string">&#x27;index&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">SEARCH_API_URL</span>: process.env.SEARCH_API_URL</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>index.ejs</code></p>
+<p>參考自「<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/59136857">Accessing EJS variable in Javascript logic</a>」，在 <code>&lt;script&gt;</code> 裡面加上：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> axios.post(<span class="string">&#x27;&lt;%- SEARCH_API_URL %&gt;&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">longitude</span>: position.coords.longitude,</span><br><span class="line">  <span class="attr">latitude</span>: position.coords.latitude</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>更新 docker image 並 push 上去</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker build -t youbike-helper-backend .</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker tag youbike-helper-backend &lt;you_docker_hub_username&gt;/youbike-helper-backend</span></span><br><span class="line">docker tag youbike-helper-backend kanido386/youbike-helper-backend</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker push &lt;your_docker_hub_username&gt;/youbike-helper-backend</span></span><br><span class="line">docker push kanido386/youbike-helper-backend</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改 <code>backend-config.yaml</code> 及 <code>backend-deployment.yaml</code></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># backend-config.yaml 加上：</span></span><br><span class="line"><span class="attr">SEARCH_API_URL:</span> <span class="string">&#x27;http://localhost:30000/search&#x27;</span>   <span class="comment"># 總覺得有更好的寫法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># backend-deployment.yaml 加上：</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">SEARCH_API_URL</span></span><br><span class="line">  <span class="attr">valueFrom:</span></span><br><span class="line">    <span class="attr">configMapKeyRef:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">backend-config</span></span><br><span class="line">      <span class="attr">key:</span> <span class="string">SEARCH_API_URL</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重新 apply 上面那兩個</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete -f backend-config.yaml &amp;&amp; kubectl apply -f backend-config.yaml</span><br><span class="line">kubectl delete -f backend-deployment.yaml &amp;&amp; kubectl apply -f backend-deployment.yaml</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>再跑跑看 <code>http://localhost:30000/</code> 然後點「查找附近的 YouBike 站點！」，成功啦 😎</li>
+</ol>
+<h3 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h3><p>參考文有放「<strong><strong>Kubernetes Dashboard</strong></strong>」的操作教學，這邊就不贅述了～</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/2022-dragon-boat-festival/" rel="prev" title="2022 端午節立蛋">
+      <i class="fa fa-chevron-left"></i> 2022 端午節立蛋
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B6%9C%E8%A7%80%E5%85%A8%E8%B2%8C"><span class="nav-number">1.</span> <span class="nav-text">綜觀全貌</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%AF%A6%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">功能實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA-Project"><span class="nav-number">2.1.</span> <span class="nav-text">建 Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E6%9C%9F%E5%81%9A%E4%BA%8B%E6%83%85"><span class="nav-number">2.2.</span> <span class="nav-text">定期做事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%92%88%E8%B3%87%E6%96%99"><span class="nav-number">2.3.</span> <span class="nav-text">撈資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message-Queue"><span class="nav-number">2.4.</span> <span class="nav-text">Message Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88-MongoDB"><span class="nav-number">2.5.</span> <span class="nav-text">整合 MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">2.5.1.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%80%E5%87%BA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E5%B9%BE%E5%80%8B%E7%AB%99%E9%BB%9E"><span class="nav-number">2.6.</span> <span class="nav-text">秀出最接近的幾個站點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E7%A7%80%E5%87%BA%E4%BE%86%E7%B5%A6%E4%BD%BF%E7%94%A8%E8%80%85%E7%9C%8B"><span class="nav-number">2.7.</span> <span class="nav-text">實際秀出來給使用者看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E6%88%90-upsert-%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E7%9B%B4-insert"><span class="nav-number">2.8.</span> <span class="nav-text">改成 upsert 而不是一直 insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="nav-number">2.9.</span> <span class="nav-text">環境變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E6%9E%9C"><span class="nav-number">2.10.</span> <span class="nav-text">成果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">3.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E5%8B%95%E5%A4%9A%E5%80%8B-Docker-container"><span class="nav-number">3.1.</span> <span class="nav-text">啟動多個 Docker container</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes"><span class="nav-number">4.</span> <span class="nav-text">Kubernetes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-Cluster"><span class="nav-number">4.1.</span> <span class="nav-text">建立 Cluster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E5%BE%8C%E7%AB%AF%E7%9A%84-Docker-Image"><span class="nav-number">4.2.</span> <span class="nav-text">建後端的 Docker Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%BD%AE-Database"><span class="nav-number">4.3.</span> <span class="nav-text">建置 Database</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Persistent-Volume"><span class="nav-number">4.3.1.</span> <span class="nav-text">Persistent Volume</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Persistent-Volume-Claim"><span class="nav-number">4.3.2.</span> <span class="nav-text">Persistent Volume Claim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%B3%E7%A7%BB%E9%99%A4-PV-%E5%92%8C-PVC-%E6%80%8E%E9%BA%BC%E8%BE%A6%EF%BC%9F"><span class="nav-number">4.3.3.</span> <span class="nav-text">想移除 PV 和 PVC 怎麼辦？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deployment"><span class="nav-number">4.3.4.</span> <span class="nav-text">Deployment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service"><span class="nav-number">4.3.5.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A8%AE-port-%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%E6%A5%9A%EF%BC%9F"><span class="nav-number">4.3.6.</span> <span class="nav-text">各種 port 傻傻分不清楚？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%84-RabbitMQ"><span class="nav-number">4.4.</span> <span class="nav-text">弄 RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deployment-%E5%92%8C-Service-%E5%8F%AF%E5%AF%AB%E5%9C%A8%E4%B8%80%E8%B5%B7"><span class="nav-number">4.4.1.</span> <span class="nav-text">Deployment 和 Service 可寫在一起</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%95%E7%90%86-Backend"><span class="nav-number">4.5.</span> <span class="nav-text">處理 Backend</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8-1"><span class="nav-number">4.5.1.</span> <span class="nav-text">環境變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deployment-1"><span class="nav-number">4.5.2.</span> <span class="nav-text">Deployment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-1"><span class="nav-number">4.5.3.</span> <span class="nav-text">Service</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A9%A6%E8%A9%A6-Ingress"><span class="nav-number">4.6.</span> <span class="nav-text">試試 Ingress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%B2%E8%A1%8C%E6%B8%AC%E8%A9%A6"><span class="nav-number">4.7.</span> <span class="nav-text">進行測試</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%8E%89%E5%95%8F%E9%A1%8C"><span class="nav-number">4.7.1.</span> <span class="nav-text">解掉問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kubernetes-Dashboard"><span class="nav-number">4.7.2.</span> <span class="nav-text">Kubernetes Dashboard</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="卡尼多"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">卡尼多</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kanido386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kanido386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kanido386@gmail.com" title="寫信給我 → mailto:kanido386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>寫信給我</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/kanido386/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;kanido386&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw" title="卡尼多 → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCVJOQCQI-lK7bTcKVG7ArYw" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>卡尼多</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">卡尼多</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyA6mJhG-PX-2Wdb1emI--Drnq5jKAVRWQs',
+      projectId: 'hexo-blog-386'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = CONFIG.hostname === location.hostname;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://kanido386.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kanido386.github.io/2022/06/youbike-helper/";
+    this.page.identifier = "2022/06/youbike-helper/";
+    this.page.title = "用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kanido386.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
