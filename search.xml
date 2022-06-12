@@ -114,138 +114,6 @@
       </tags>
   </entry>
   <entry>
-    <title>用 Pure Data 打造吉他效果器</title>
-    <url>/2021/01/asp-final-project/</url>
-    <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>大三上修「互動式音訊處理導論」時所做的期末專題。</p>
-<span id="more"></span>
-
-<h2 id="特別感謝"><a href="#特別感謝" class="headerlink" title="特別感謝"></a>特別感謝</h2><p>首先，非常幸運能夠和來自越南的朋友 Son Tran 同一組，沒有他，就不會有這段有趣的旅程！<br>（他自彈自唱真的超好聽的，而且竟然還會做電子音樂！）<br>（在這邊偷偷放他的 YouTube channel: <a href="https://www.youtube.com/channel/UCm6tcNSqAYVqZpA8pm4-T5A" target="_blank">MadSon TR</a> 🎧）</p>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>強烈建議搭配後面的說明聽會比較知道在做什麼 😏</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7F14-C7rrmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="課程內容簡介"><a href="#課程內容簡介" class="headerlink" title="課程內容簡介"></a>課程內容簡介</h2><p>這學期修了電機系張文輝教授開的<a href="https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=109&Sem=1&CrsNo=1078&lang=zh-tw" target="_blank">互動式音訊處理導論</a>，接觸到很多很酷的玩意兒：</p>
-<ol>
-<li>學一點聲音訊號處理的概念以後，用 MATLAB 做簡單的分析與處理</li>
-<li>認識<a href="https://zh.wikipedia.org/wiki/%E5%90%88%E6%88%90%E5%99%A8" target="_blank">合成器</a>的基本運作原理之後，用線上數位音樂工作站 <a href="http://www.audiosauna.com/" target="_blank">AudioSauna</a> 自製音色並用新音色做一首簡單的曲子</li>
-<li><strong><span style="color:black;">（本篇主角！）使用視覺化程式語言 <a href="http://puredata.info/" target="_blank">Pure Data</a> 做一些簡單的音訊處理</span></strong></li>
-<li>用音訊編輯軟體 Adobe Audition 消除歌曲中的人聲</li>
-<li>用助教訓練好的 HMM 模型，做音樂的音值識別、拍號判定、樂譜追蹤，並為一段只有主旋律的譜生成和弦伴奏</li>
-<li>用一套叫 HTK 的自由軟體做一個簡單的歌手辨識系統</li>
-<li>認識「動態時間伸縮」的原理以後，直接拿助教寫好的 C 程式來做一個簡單的歌曲查詢系統</li>
-</ol>
-<hr>
-<h2 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h2><p>期末的時候必須選個相關主題來發展成一個專題。<br>我們原本打算是要做 source separation，也就是一種能夠把完整樂曲分離出 bass、鋼琴、吉他、鼓等獨立音訊的技術。<br>但後來想說，既然之前實驗課有接觸過 Pure Data，再加上我們都有玩過吉他效果器，所以我們就想結合兩者，並兼合我們的創意，打造屬於我們的吉他效果器！（而且還不用花錢）</p>
-<h2 id="實作方法"><a href="#實作方法" class="headerlink" title="實作方法"></a>實作方法</h2><h3 id="找相關資料"><a href="#找相關資料" class="headerlink" title="找相關資料"></a>找相關資料</h3><p><em><span style="color:gray;">（研究別⼈是如何實作吉他效果器的）</span></em><br>我們在查資料的過程中找到了 <a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a> 這一篇文章，裡頭有很多吉他效果器的實作及實際用吉他去測試效果器的 demo！<br>只能說，網路世界無奇不有，這聽起來偏冷門的東西居然也找得到資源，酷斃了 😎</p>
-<h3 id="吸收及內化"><a href="#吸收及內化" class="headerlink" title="吸收及內化"></a>吸收及內化</h3><p><em><span style="color:gray;">（將那些⽅法盡可能內化成我們⾃⼰的能⼒）</span></em><br>像海綿一樣，一直吸收、一直吸收，去讀懂為什麼他要這樣寫而不是那樣寫。<br>如此一來，不僅讓我們更清楚該如何開始，也讓我們更加了解每個效果器的運作原理，一舉兩得！</p>
-<h3 id="著手打造"><a href="#著手打造" class="headerlink" title="著手打造"></a>著手打造</h3><p><em><span style="color:gray;">（利⽤我們對於吉他效果器的⾒解，打造屬於我們的吉他效果器）</span></em><br>其實大部分還是參考那篇文章的做法居多xD<br>雖然是這樣，但我們在過程中也更加熟悉了 Pure Data 的操作，若之後想嘗試同樣是視覺化程式語言但較為熱門的 Max/MSP，相信很快就能上手了吧！</p>
-<h3 id="嘗試優化"><a href="#嘗試優化" class="headerlink" title="嘗試優化"></a>嘗試優化</h3><p><em><span style="color:gray;">（考慮⽤ Pure Data Externals 的⽅式讓界⾯看起來更加簡潔）</span></em><br>不過後來我們找到了 <a href="http://write.flossmanuals.net/pure-data/subpatches/" target="_blank">Subpatch</a> 的做法，它其實就是 Pure Data 界的 Function，可以自己定義在一個區塊當中你的 input／output 是什麼、要做哪些操作。<br></p>
-<p>什麼意思？<br></p>
-<p>比方說你現在不得不設計一部機器，需要餵給它的是好幾個單元的上課投影片和好多年份的考古題，你期望從這部機器當中獲得的僅僅是一張寫著好看分數的考卷，但過程中你卻得犧牲人生無數的可能性⋯⋯<br></p>
-<p>為了解釋 Function 的概念，扯遠了。<br></p>
-<p>拉回來。<br></p>
-<p>利用 Subpatch，可以方便我們管理圖形化的程式，除了能讓畫面看起來比較乾淨之外，也可以讓整個程式邏輯以及架構更有條理！</p>
-<h3 id="測試成品"><a href="#測試成品" class="headerlink" title="測試成品"></a>測試成品</h3><p><em><span style="color:gray;">（實際拿吉他測試我們的效果器，若有可以再改進的地⽅，就再改進）</span></em><br>星期日 (2021.01.03) 晚上，我們去九舍地下二樓試我們的吉他效果器。<br>提個外話，那邊的裝潢真的超棒的，走的是酒吧風、殘響效果又棒，若有酒保為我們調製上等的雞尾酒那就更完美了！</p>
-<p>再拉回來。<br></p>
-<p>原本我們是不抱持著什麼期待啦，想說市面上賣的效果器都不便宜，啊我們只不過是用程式語言來模擬出效果器，聲音是能有多好？<br>沒想到！當我們打開「Wha-wha」的效果，Son Tran 刷了第一個和弦以後，我們都被嚇到了！那令人驚豔的聲響效果，真的會讓人誤以為此時此刻、這個地方有什麼專業樂團正在現場演出！</p>
-<p>我們從七點半一路弄到差不多快十一點，過程中調整了很多次程式，為的是讓聲音更符合我們的需求以及讓介面看起來比較不會那麼凌亂（雖然介面看起來還是很「科技風」就是了 😂）</p>
-<hr>
-<h2 id="結果分析"><a href="#結果分析" class="headerlink" title="結果分析"></a>結果分析</h2><p>廢話不多說，直接給大家看我們的程式圖吧！</p>
-<h3 id="整體架構"><a href="#整體架構" class="headerlink" title="整體架構"></a>整體架構</h3><figure>
-  <!-- <img src="https://i.imgur.com/5GYRnqu.png" style="width:43vw;" /> -->
-  <img src="2.png" style="width:43vw;" />
-  <figcaption>使用者介面</figcaption>
-</figure>
-
-<ul>
-<li><code>pd 某某某</code> 的小方塊就是前面所說的 Subpatch，除了 <code>pd file</code> 是用來開啟音檔並加以讀取的功能以外，其他的 <code>pd 某某某</code> 就都是吉他效果器了！</li>
-<li>吉他效果器左邊一排的正方形框框是開關（Pure Data 稱它為 Toggle），打開代表說我要讓這個效果器處理我們的聲音，關掉的話就表示我們要讓聲音直接通過，不處理，即 <code>output = input</code></li>
-<li><code>adc~</code> (類比轉數位) 是我們的聲音輸入，我們選擇用錄音介面；<code>dac~</code> (數位轉類比) 則是輸出，不管是筆電內建的輸出或者是音箱都行，我們選擇用音箱，這樣聽起來比較震撼 😈</li>
-<li><code>adc~</code> 和 <code>dac~</code> 後面的抖抖線意思是，通過這個有抖抖線的 Object 以後，它 output 出來的東西會是可以畫成波形圖的「訊號」，圖中黑線（Pure Data 稱它為 thin cable）代表控制資料的傳輸，藍線（Pure Data 稱它為 thick cable）代表訊號的傳輸</li>
-<li>圖中一條一條的 slider 就是用來調整效果器參數的控制器（最下面的 slider 用來調控音量），藉由拉動 slider，就可以聽到聲音有趣的變化！（不然一成不變實在無趣）</li>
-<li>後來我們決定把其他效果器的參數 slider 放進效果器 Subpatch 裡面，不然介面看起來會有點亂</li>
-<li>中間偏右看起來像是按鈕的東西（Pure Data 稱它為 Bang），其功能是把參數設定到我們預設好的預設值，為的是方便回到預設值（有說跟沒說一樣），按下 Bang 以後，<code>s reset</code> (send) 就會幫我們把 Bang 的訊號傳到 <code>r reset</code> (receive) 的 output 給有數字的 Message，繼而引發更動 slider 的數值，於是乎，效果器的參數就回到預設值啦！</li>
-</ul>
-<h3 id="Subpatch-小介紹"><a href="#Subpatch-小介紹" class="headerlink" title="Subpatch 小介紹"></a>Subpatch 小介紹</h3><figure>
-  <!-- <img src="https://i.imgur.com/rPCYoPY.png" style="width:33vw;" /> -->
-  <img src="3.png" style="width:33vw;" />
-  <figcaption>用 pd file 來簡單介紹</figcaption>
-</figure>
-
-<ul>
-<li>剛剛說過，Subpatch 是 Pure Data 界的 Function！</li>
-<li><code>inlet</code> 就是 input，<code>outlet</code> 就是 output</li>
-<li>紅色圈起來的部分就是在區別究竟 input／output 是控制資料還是訊號</li>
-<li>input／output 之間的東西就是一些操作，本例在做打開音檔並讀取的動作</li>
-<li>有了 Subpatch 的協助以後，開發的過程就更加愉悅了呢！</li>
-</ul>
-<h3 id="Distortion-破音效果器"><a href="#Distortion-破音效果器" class="headerlink" title="Distortion 破音效果器"></a>Distortion 破音效果器</h3><p>把訊號的振幅拉大再擷取一小部分，聽起來就會有種失真的破音效果，<a href="https://youtu.be/7F14-C7rrmg?t=77" target="_blank">像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/ziLZyCF.png" style="width:33vw;" /> -->
-  <img src="4.png" style="width:33vw;" />
-  <figcaption>Distortion 破音效果器</figcaption>
-</figure>
-
-<h3 id="Tremolo-顫音效果器"><a href="#Tremolo-顫音效果器" class="headerlink" title="Tremolo 顫音效果器"></a>Tremolo 顫音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變音量，讓音量呈現忽大忽小的效果，<a href="https://youtu.be/7F14-C7rrmg" target="_blank">聽起來像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/esTVil5.png" style="width:33vw;" /> -->
-  <img src="5.png" style="width:33vw;" />
-  <figcaption>Tremolo 顫音效果器</figcaption>
-</figure>
-
-<h3 id="Vibrato-抖音效果器"><a href="#Vibrato-抖音效果器" class="headerlink" title="Vibrato 抖音效果器"></a>Vibrato 抖音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變頻率，讓音高呈現忽高忽低的效果，<a href="https://youtu.be/7F14-C7rrmg?t=30" target="_blank">聽起來像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/O0g8FsR.png" style="width:38vw;" /> -->
-  <img src="6.png" style="width:38vw;" />
-  <figcaption>Vibrato 抖音效果器</figcaption>
-</figure>
-
-<h3 id="Wha-wha-娃娃效果器"><a href="#Wha-wha-娃娃效果器" class="headerlink" title="Wha-wha 娃娃效果器"></a>Wha-wha 娃娃效果器</h3><p>細節頗複雜就不解釋了，其原理跟頻率有關。那為什麼叫娃娃效果器呢？<a href="https://youtu.be/7F14-C7rrmg?t=123" target="_blank">聽聽看就知道了</a>xD</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/n7iksIE.png" style="width:38vw;" /> -->
-  <img src="7.png" style="width:38vw;" />
-  <figcaption>Wha-wha 娃娃效果器</figcaption>
-</figure>
-
-<h3 id="Delay-延遲效果器"><a href="#Delay-延遲效果器" class="headerlink" title="Delay 延遲效果器"></a>Delay 延遲效果器</h3><p>上面的 slider 控制聲音衰減的快慢（這就是為什麼要乘上一個介於 0 到 1 之間不包含 1 的值），下面的 slider 則是控制多久重複一次（不過每重複一次，聲音會越來越小聲），<a href="https://youtu.be/7F14-C7rrmg?t=169" target="_blank">讓我們來聽聽看它的效果吧</a>！</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/922G06G.png" style="width:38vw;" /> -->
-  <img src="8.png" style="width:38vw;" />
-  <figcaption>Delay 延遲效果器</figcaption>
-</figure>
-
-<h3 id="Reverb-殘響效果器"><a href="#Reverb-殘響效果器" class="headerlink" title="Reverb 殘響效果器"></a>Reverb 殘響效果器</h3><p>一種營造空間感的效果器。我們直接拿 Pure Data 內建的 <code>freeverb~</code> 來用，<a href="https://youtu.be/7F14-C7rrmg?t=210" target="_blank">聽起來像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/7Sjp3w0.png" style="width:38vw;" /> -->
-  <img src="9.png" style="width:38vw;" />
-  <figcaption>Reverb 殘響效果器</figcaption>
-</figure>
-
-<h3 id="Chorus-合聲效果器"><a href="#Chorus-合聲效果器" class="headerlink" title="Chorus 合聲效果器"></a>Chorus 合聲效果器</h3><p>製造一個和原來聲音有微小時間差和頻率差的聲音，然後再同時放。<br>就像是一群人在合唱的時候，即使是唱同個旋律，也會因為進來的時間點有微小的差異、各自的不同音準，而形成一種亂中有序的感覺。<a href="https://youtu.be/7F14-C7rrmg?t=357" target="_blank">聽聽看吧</a>！</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/rmj9qr6.png" style="width:38vw;" /> -->
-  <img src="10.png" style="width:38vw;" />
-  <figcaption>Chorus 合聲效果器</figcaption>
-</figure>
-
-<hr>
-<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><p><a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a></p>
-<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>前面其實已經講得差不多了，就用三個字來描述吧：「真有趣！」<br>能創造出一個可以用五官感受的東西真的超有成就感的，很享受那個過程 🏝</p>
-<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
-]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>音訊處理</tag>
-        <tag>吉他</tag>
-        <tag>效果器</tag>
-        <tag>Pure Data</tag>
-        <tag>課程</tag>
-        <tag>專題</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
     <url>/2021/07/baymax-with-us/</url>
     <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
@@ -383,6 +251,227 @@
 <p><img src="6.gif"></p>
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+  </entry>
+  <entry>
+    <title>用 Pure Data 打造吉他效果器</title>
+    <url>/2021/01/asp-final-project/</url>
+    <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>大三上修「互動式音訊處理導論」時所做的期末專題。</p>
+<span id="more"></span>
+
+<h2 id="特別感謝"><a href="#特別感謝" class="headerlink" title="特別感謝"></a>特別感謝</h2><p>首先，非常幸運能夠和來自越南的朋友 Son Tran 同一組，沒有他，就不會有這段有趣的旅程！<br>（他自彈自唱真的超好聽的，而且竟然還會做電子音樂！）<br>（在這邊偷偷放他的 YouTube channel: <a href="https://www.youtube.com/channel/UCm6tcNSqAYVqZpA8pm4-T5A" target="_blank">MadSon TR</a> 🎧）</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>強烈建議搭配後面的說明聽會比較知道在做什麼 😏</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7F14-C7rrmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="課程內容簡介"><a href="#課程內容簡介" class="headerlink" title="課程內容簡介"></a>課程內容簡介</h2><p>這學期修了電機系張文輝教授開的<a href="https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=109&Sem=1&CrsNo=1078&lang=zh-tw" target="_blank">互動式音訊處理導論</a>，接觸到很多很酷的玩意兒：</p>
+<ol>
+<li>學一點聲音訊號處理的概念以後，用 MATLAB 做簡單的分析與處理</li>
+<li>認識<a href="https://zh.wikipedia.org/wiki/%E5%90%88%E6%88%90%E5%99%A8" target="_blank">合成器</a>的基本運作原理之後，用線上數位音樂工作站 <a href="http://www.audiosauna.com/" target="_blank">AudioSauna</a> 自製音色並用新音色做一首簡單的曲子</li>
+<li><strong><span style="color:black;">（本篇主角！）使用視覺化程式語言 <a href="http://puredata.info/" target="_blank">Pure Data</a> 做一些簡單的音訊處理</span></strong></li>
+<li>用音訊編輯軟體 Adobe Audition 消除歌曲中的人聲</li>
+<li>用助教訓練好的 HMM 模型，做音樂的音值識別、拍號判定、樂譜追蹤，並為一段只有主旋律的譜生成和弦伴奏</li>
+<li>用一套叫 HTK 的自由軟體做一個簡單的歌手辨識系統</li>
+<li>認識「動態時間伸縮」的原理以後，直接拿助教寫好的 C 程式來做一個簡單的歌曲查詢系統</li>
+</ol>
+<hr>
+<h2 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h2><p>期末的時候必須選個相關主題來發展成一個專題。<br>我們原本打算是要做 source separation，也就是一種能夠把完整樂曲分離出 bass、鋼琴、吉他、鼓等獨立音訊的技術。<br>但後來想說，既然之前實驗課有接觸過 Pure Data，再加上我們都有玩過吉他效果器，所以我們就想結合兩者，並兼合我們的創意，打造屬於我們的吉他效果器！（而且還不用花錢）</p>
+<h2 id="實作方法"><a href="#實作方法" class="headerlink" title="實作方法"></a>實作方法</h2><h3 id="找相關資料"><a href="#找相關資料" class="headerlink" title="找相關資料"></a>找相關資料</h3><p><em><span style="color:gray;">（研究別⼈是如何實作吉他效果器的）</span></em><br>我們在查資料的過程中找到了 <a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a> 這一篇文章，裡頭有很多吉他效果器的實作及實際用吉他去測試效果器的 demo！<br>只能說，網路世界無奇不有，這聽起來偏冷門的東西居然也找得到資源，酷斃了 😎</p>
+<h3 id="吸收及內化"><a href="#吸收及內化" class="headerlink" title="吸收及內化"></a>吸收及內化</h3><p><em><span style="color:gray;">（將那些⽅法盡可能內化成我們⾃⼰的能⼒）</span></em><br>像海綿一樣，一直吸收、一直吸收，去讀懂為什麼他要這樣寫而不是那樣寫。<br>如此一來，不僅讓我們更清楚該如何開始，也讓我們更加了解每個效果器的運作原理，一舉兩得！</p>
+<h3 id="著手打造"><a href="#著手打造" class="headerlink" title="著手打造"></a>著手打造</h3><p><em><span style="color:gray;">（利⽤我們對於吉他效果器的⾒解，打造屬於我們的吉他效果器）</span></em><br>其實大部分還是參考那篇文章的做法居多xD<br>雖然是這樣，但我們在過程中也更加熟悉了 Pure Data 的操作，若之後想嘗試同樣是視覺化程式語言但較為熱門的 Max/MSP，相信很快就能上手了吧！</p>
+<h3 id="嘗試優化"><a href="#嘗試優化" class="headerlink" title="嘗試優化"></a>嘗試優化</h3><p><em><span style="color:gray;">（考慮⽤ Pure Data Externals 的⽅式讓界⾯看起來更加簡潔）</span></em><br>不過後來我們找到了 <a href="http://write.flossmanuals.net/pure-data/subpatches/" target="_blank">Subpatch</a> 的做法，它其實就是 Pure Data 界的 Function，可以自己定義在一個區塊當中你的 input／output 是什麼、要做哪些操作。<br></p>
+<p>什麼意思？<br></p>
+<p>比方說你現在不得不設計一部機器，需要餵給它的是好幾個單元的上課投影片和好多年份的考古題，你期望從這部機器當中獲得的僅僅是一張寫著好看分數的考卷，但過程中你卻得犧牲人生無數的可能性⋯⋯<br></p>
+<p>為了解釋 Function 的概念，扯遠了。<br></p>
+<p>拉回來。<br></p>
+<p>利用 Subpatch，可以方便我們管理圖形化的程式，除了能讓畫面看起來比較乾淨之外，也可以讓整個程式邏輯以及架構更有條理！</p>
+<h3 id="測試成品"><a href="#測試成品" class="headerlink" title="測試成品"></a>測試成品</h3><p><em><span style="color:gray;">（實際拿吉他測試我們的效果器，若有可以再改進的地⽅，就再改進）</span></em><br>星期日 (2021.01.03) 晚上，我們去九舍地下二樓試我們的吉他效果器。<br>提個外話，那邊的裝潢真的超棒的，走的是酒吧風、殘響效果又棒，若有酒保為我們調製上等的雞尾酒那就更完美了！</p>
+<p>再拉回來。<br></p>
+<p>原本我們是不抱持著什麼期待啦，想說市面上賣的效果器都不便宜，啊我們只不過是用程式語言來模擬出效果器，聲音是能有多好？<br>沒想到！當我們打開「Wha-wha」的效果，Son Tran 刷了第一個和弦以後，我們都被嚇到了！那令人驚豔的聲響效果，真的會讓人誤以為此時此刻、這個地方有什麼專業樂團正在現場演出！</p>
+<p>我們從七點半一路弄到差不多快十一點，過程中調整了很多次程式，為的是讓聲音更符合我們的需求以及讓介面看起來比較不會那麼凌亂（雖然介面看起來還是很「科技風」就是了 😂）</p>
+<hr>
+<h2 id="結果分析"><a href="#結果分析" class="headerlink" title="結果分析"></a>結果分析</h2><p>廢話不多說，直接給大家看我們的程式圖吧！</p>
+<h3 id="整體架構"><a href="#整體架構" class="headerlink" title="整體架構"></a>整體架構</h3><figure>
+  <!-- <img src="https://i.imgur.com/5GYRnqu.png" style="width:43vw;" /> -->
+  <img src="2.png" style="width:43vw;" />
+  <figcaption>使用者介面</figcaption>
+</figure>
+
+<ul>
+<li><code>pd 某某某</code> 的小方塊就是前面所說的 Subpatch，除了 <code>pd file</code> 是用來開啟音檔並加以讀取的功能以外，其他的 <code>pd 某某某</code> 就都是吉他效果器了！</li>
+<li>吉他效果器左邊一排的正方形框框是開關（Pure Data 稱它為 Toggle），打開代表說我要讓這個效果器處理我們的聲音，關掉的話就表示我們要讓聲音直接通過，不處理，即 <code>output = input</code></li>
+<li><code>adc~</code> (類比轉數位) 是我們的聲音輸入，我們選擇用錄音介面；<code>dac~</code> (數位轉類比) 則是輸出，不管是筆電內建的輸出或者是音箱都行，我們選擇用音箱，這樣聽起來比較震撼 😈</li>
+<li><code>adc~</code> 和 <code>dac~</code> 後面的抖抖線意思是，通過這個有抖抖線的 Object 以後，它 output 出來的東西會是可以畫成波形圖的「訊號」，圖中黑線（Pure Data 稱它為 thin cable）代表控制資料的傳輸，藍線（Pure Data 稱它為 thick cable）代表訊號的傳輸</li>
+<li>圖中一條一條的 slider 就是用來調整效果器參數的控制器（最下面的 slider 用來調控音量），藉由拉動 slider，就可以聽到聲音有趣的變化！（不然一成不變實在無趣）</li>
+<li>後來我們決定把其他效果器的參數 slider 放進效果器 Subpatch 裡面，不然介面看起來會有點亂</li>
+<li>中間偏右看起來像是按鈕的東西（Pure Data 稱它為 Bang），其功能是把參數設定到我們預設好的預設值，為的是方便回到預設值（有說跟沒說一樣），按下 Bang 以後，<code>s reset</code> (send) 就會幫我們把 Bang 的訊號傳到 <code>r reset</code> (receive) 的 output 給有數字的 Message，繼而引發更動 slider 的數值，於是乎，效果器的參數就回到預設值啦！</li>
+</ul>
+<h3 id="Subpatch-小介紹"><a href="#Subpatch-小介紹" class="headerlink" title="Subpatch 小介紹"></a>Subpatch 小介紹</h3><figure>
+  <!-- <img src="https://i.imgur.com/rPCYoPY.png" style="width:33vw;" /> -->
+  <img src="3.png" style="width:33vw;" />
+  <figcaption>用 pd file 來簡單介紹</figcaption>
+</figure>
+
+<ul>
+<li>剛剛說過，Subpatch 是 Pure Data 界的 Function！</li>
+<li><code>inlet</code> 就是 input，<code>outlet</code> 就是 output</li>
+<li>紅色圈起來的部分就是在區別究竟 input／output 是控制資料還是訊號</li>
+<li>input／output 之間的東西就是一些操作，本例在做打開音檔並讀取的動作</li>
+<li>有了 Subpatch 的協助以後，開發的過程就更加愉悅了呢！</li>
+</ul>
+<h3 id="Distortion-破音效果器"><a href="#Distortion-破音效果器" class="headerlink" title="Distortion 破音效果器"></a>Distortion 破音效果器</h3><p>把訊號的振幅拉大再擷取一小部分，聽起來就會有種失真的破音效果，<a href="https://youtu.be/7F14-C7rrmg?t=77" target="_blank">像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/ziLZyCF.png" style="width:33vw;" /> -->
+  <img src="4.png" style="width:33vw;" />
+  <figcaption>Distortion 破音效果器</figcaption>
+</figure>
+
+<h3 id="Tremolo-顫音效果器"><a href="#Tremolo-顫音效果器" class="headerlink" title="Tremolo 顫音效果器"></a>Tremolo 顫音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變音量，讓音量呈現忽大忽小的效果，<a href="https://youtu.be/7F14-C7rrmg" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/esTVil5.png" style="width:33vw;" /> -->
+  <img src="5.png" style="width:33vw;" />
+  <figcaption>Tremolo 顫音效果器</figcaption>
+</figure>
+
+<h3 id="Vibrato-抖音效果器"><a href="#Vibrato-抖音效果器" class="headerlink" title="Vibrato 抖音效果器"></a>Vibrato 抖音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變頻率，讓音高呈現忽高忽低的效果，<a href="https://youtu.be/7F14-C7rrmg?t=30" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/O0g8FsR.png" style="width:38vw;" /> -->
+  <img src="6.png" style="width:38vw;" />
+  <figcaption>Vibrato 抖音效果器</figcaption>
+</figure>
+
+<h3 id="Wha-wha-娃娃效果器"><a href="#Wha-wha-娃娃效果器" class="headerlink" title="Wha-wha 娃娃效果器"></a>Wha-wha 娃娃效果器</h3><p>細節頗複雜就不解釋了，其原理跟頻率有關。那為什麼叫娃娃效果器呢？<a href="https://youtu.be/7F14-C7rrmg?t=123" target="_blank">聽聽看就知道了</a>xD</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/n7iksIE.png" style="width:38vw;" /> -->
+  <img src="7.png" style="width:38vw;" />
+  <figcaption>Wha-wha 娃娃效果器</figcaption>
+</figure>
+
+<h3 id="Delay-延遲效果器"><a href="#Delay-延遲效果器" class="headerlink" title="Delay 延遲效果器"></a>Delay 延遲效果器</h3><p>上面的 slider 控制聲音衰減的快慢（這就是為什麼要乘上一個介於 0 到 1 之間不包含 1 的值），下面的 slider 則是控制多久重複一次（不過每重複一次，聲音會越來越小聲），<a href="https://youtu.be/7F14-C7rrmg?t=169" target="_blank">讓我們來聽聽看它的效果吧</a>！</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/922G06G.png" style="width:38vw;" /> -->
+  <img src="8.png" style="width:38vw;" />
+  <figcaption>Delay 延遲效果器</figcaption>
+</figure>
+
+<h3 id="Reverb-殘響效果器"><a href="#Reverb-殘響效果器" class="headerlink" title="Reverb 殘響效果器"></a>Reverb 殘響效果器</h3><p>一種營造空間感的效果器。我們直接拿 Pure Data 內建的 <code>freeverb~</code> 來用，<a href="https://youtu.be/7F14-C7rrmg?t=210" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/7Sjp3w0.png" style="width:38vw;" /> -->
+  <img src="9.png" style="width:38vw;" />
+  <figcaption>Reverb 殘響效果器</figcaption>
+</figure>
+
+<h3 id="Chorus-合聲效果器"><a href="#Chorus-合聲效果器" class="headerlink" title="Chorus 合聲效果器"></a>Chorus 合聲效果器</h3><p>製造一個和原來聲音有微小時間差和頻率差的聲音，然後再同時放。<br>就像是一群人在合唱的時候，即使是唱同個旋律，也會因為進來的時間點有微小的差異、各自的不同音準，而形成一種亂中有序的感覺。<a href="https://youtu.be/7F14-C7rrmg?t=357" target="_blank">聽聽看吧</a>！</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/rmj9qr6.png" style="width:38vw;" /> -->
+  <img src="10.png" style="width:38vw;" />
+  <figcaption>Chorus 合聲效果器</figcaption>
+</figure>
+
+<hr>
+<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><p><a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a></p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>前面其實已經講得差不多了，就用三個字來描述吧：「真有趣！」<br>能創造出一個可以用五官感受的東西真的超有成就感的，很享受那個過程 🏝</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
+]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>音訊處理</tag>
+        <tag>吉他</tag>
+        <tag>效果器</tag>
+        <tag>Pure Data</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>駕訓班裡的點點滴滴</title>
+    <url>/2022/03/driving-school/</url>
+    <content><![CDATA[<p>簡單記錄一下～</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>原本打算趁寒假比較閒的時候上駕訓班，但因為比較晚才去注意相關資訊，就只能報年後開始上課的期別。（當時心想：早知道就早一點去了解，這樣開學後就不用再去駕訓班練車了，但沒有早知道這回事啊xD 就警惕自己，這就是拖延的後果，之後盡量不要再犯了）</p>
+<p>扯遠了，所以我 1/26 到附近的診所體檢，<a href="https://www.mvdis.gov.tw/m3-emv-hca/agency/query">這邊</a>可以查詢最近的體檢代辦所。然後接著就去駕訓班報名。</p>
+<p>原本我打算報的是「手排」，但教練知道了以後，立馬試著說服我報「自排」，他說現在幾乎都是自排車了，不必去學手排。</p>
+<p>報名駕訓班前是有做一點功課，有查到說教練很可能會說服你學自排，因為比較好教、好學，而且男女學員的待遇還可能不一樣xD 那個時候想說，哪有可能那麼容易被說服，我想學手排，是因為我想更了解開車的原理啊，管它好學不好學！</p>
+<p>沒想到才聽了教練幾句話的我，很快就被說服了xD 後來想說，家裡的人沒在開車，對於車子，我實在超級無敵不熟，腦袋裡面沒什麼開車上路的 data，學比較難的手排也只是在刁難自己而已，真的需要，之後再說好像也是可🤔</p>
+<p>真的要長話短說了⋯⋯</p>
+<h2 id="我的第一堂駕駛課"><a href="#我的第一堂駕駛課" class="headerlink" title="我的第一堂駕駛課"></a>我的第一堂駕駛課</h2><p>第一次上課是在 2/6，也就是年後的禮拜日。</p>
+<p>一剛開始，教練帶我到模擬機台練習轉⽅向盤，我那時候才知道，原來方向盤左右的極限是各⼀圈半啊，我還以為像電玩一樣，只能轉那麼一點點。教練教我怎麼轉以後，就要我自己練習 15 分鐘，然後他就去其他地方了。當時的我心想，哇嗚，網路上說的果然是真的，可能我是男生的關係吧？但後來經過一次又一次的上課，我才明白，很多東西教練真的只需要提點一下，其他靠學員自己練真的就行了。重點是：教練並不像網路上說的那種模樣啊！而且之後仔細想想，難道轉方向盤這種沒什麼技術的東西也要教練全程都在一旁陪我轉嗎xD</p>
+<p>無腦轉了一陣子的方向盤以後，教練就帶我進車子裡了。哇嗚，居然這麼快，難道待會就要開車了嗎？還真的沒錯。</p>
+<p>一上車，教練先向我介紹⽅向燈、⾬刷、PRD檔、臨時停⾞按鈕、⼿煞⾞、調整後照鏡的控制這些，介紹完以後，就帶我練「直線進退」了。我那個時候才知道，原來切到 R 檔或 D 檔以後，你不踩剎車，車子可是會動的呢！以為像遊戲一樣，就一直踩油門往前衝就是了xD 教練要我慢慢前進、後退，練習腳含著剎車的感覺，因為之後會常用到。</p>
+<p>下課前，居然就要練「路邊停車」了！好快啊，不是才第一堂課而已？練習的過程就不多說了，我想說的是，<strong>下課以後，真的最好把剛剛記的口訣、體會到的東西記下來，一來可以幫自己再複習一遍，二來下次練車前看的時候，很快就能回憶起來！</strong>當天上完課，我記了以下的筆記：</p>
+<blockquote>
+<p><strong>（路邊停⾞）</strong></p>
+<ul>
+<li>步驟：後退 → 右⼀圈半 → 回來 → 左⼀圈半 → (停⾞) → 換D檔 → 維持左⼀圈半 → 回來 → 右⼀圈 → 回來 → 換R檔 → 無限循環</li>
+<li>訣竅：三⾓形</li>
+</ul>
+</blockquote>
+<p>第一堂課還真扎實啊xD</p>
+<h2 id="新關卡登錄！"><a href="#新關卡登錄！" class="headerlink" title="新關卡登錄！"></a>新關卡登錄！</h2><p>第二次上課在 2/12，練的是「倒車入庫」和「曲線進退」。</p>
+<p>當時真的覺得好快，練好多看起來不容易的關卡，我才第二次上課而已，而且之前都沒開過車啊 (我想大家都是xD)！</p>
+<p>一樣下課的時候記了點筆記：</p>
+<blockquote>
+<p><strong>（倒⾞⼊庫）</strong></p>
+<ul>
+<li>步驟：後退直到外⾯竿⼦在右後座扶⼿的前⾯⼀點點 → 右打到底,可以從右後照鏡看到⾞⼦逐漸在⽩線內進去 → ⽅向盤導正,後退到⼈在樹前⾯⼀點點 → 前進到⼀個東東在⽩線前⾯⼀點點 → 右打底,正了之後再導回來</li>
+</ul>
+<p><strong>（曲線進退）</strong></p>
+<ul>
+<li>前進步驟：前進到左前燈在⽩線前⾯⼀點點,但我覺得可以觀察左後照鏡,當出現路線的時候再下⼀動 → 左打1⼜1/4圈,同時看著左後照鏡左彎,注意⾨把與⽩線的距離,太近太遠就調整⽅向盤的幅度 → 當左還是右前燈碰到⽩線就導正,前進直到右前燈超過⽩線⼀點點,但其實可以觀察右後照鏡 → 右邊跟左邊的操作⽅式⼤同⼩異,就左右互換⽽已 → 到站</li>
+<li>後退步驟：切換R檔,注意距離,同時做⽅向盤幅度上的調整→ 當左後照鏡看到半圓時,導正 → 後退到⾨把進到半圓內 → ⽅向盤往左轉1⼜1/4圈,⼀樣要調整幅度 → 導正回到起點</li>
+</ul>
+</blockquote>
+<p>裡面很多東西你可能會看不懂，<strong>這就是筆記，自己能夠看懂才是重點！</strong></p>
+<h2 id="第一次跑場考"><a href="#第一次跑場考" class="headerlink" title="第一次跑場考"></a>第一次跑場考</h2><p>第三次上課是在隔天 2/13，令我驚訝的是，上週日才第一次上課，那週日就要跑整個場考的關卡了！太酷了吧！</p>
+<p>那天教練跟我約特別早，八點就要到駕訓班練車。真的還蠻早的，起床時頗掙扎，那麼早，原來是因為今天要直接跑關卡，怕晚了⼈就多了！</p>
+<p>因為還很菜，要進車練的時候忘記放下⼿煞⾞，被教練訓了一頓xD</p>
+<p>其實還蠻好玩的，很像在玩遊戲，啊如果不小心壓到黑管的話，就會很大聲地逼逼叫讓你丟臉懲罰你xD</p>
+<p>關卡依序如下，順便附上我的小筆記：</p>
+<ol>
+<li>⾏前檢查及起駛前動作：⾏駛前先打左⽅向燈代表要出來 → 打右⽅向燈再打D檔,前進,⾨把到紫紅草時右⽅向盤打到底,然後轉正,稍微讓⾞⼦中間偏右⼀點</li>
+<li>倒⾞⼊庫：先打右⽅向燈再打R檔 → 後退到右後座上⾯⼿把到提⽰牌附近(不要太後⾯) → 右⽅向盤打到底 → 正了以後轉正退後到⼈對到⿈線 → 打右⽅向燈再打D檔 →往前到右邊凸起(?)對到紫紅草 → 出來動作不解釋xD</li>
+<li>路邊停⾞：⼤同⼩異,記得打燈,⼀開始右⽅向盤到左後照鏡安全島出現四個⿊⾊再導正,其他⼀樣</li>
+<li>S型曲線進退：先打右⽅向燈,前進直到右⾨把(?)到安全島時,右⽅向盤打到底 → 感覺到顛頗⼀次時,⽅向盤導正 → 其他跟前⾯練習⼀樣,只是半圓要⾃⼰去想像,倒退前記得先打右⽅向燈 → 快結束時,也就是差不多⾞體轉正時,⽅向盤導正 → 打右⽅向燈,然後右⽅向盤打到底出去</li>
+<li>（中間就是注意號誌和打燈,右⾨把(?)到⽩線時再開始轉⽅向盤到底,然後慢慢導正）</li>
+<li>上坡起步：⾞速儀表的100對到左⼆的黑管,要上坡前踩⼀點點煞⾞右邊的油⾨,到頂時記得快換踩剎⾞（後來補上：左標記要對到藍、拉⼿煞⾞、油⾨踩不超過1）</li>
+<li>穩定換檔：右邊的東東(?)對到紫紅草,前⾯的左黑管要在左前燈的右邊⼀些些 → 前進,適時調整⽅向盤</li>
+</ol>
+<p>筆記真的能幫助之後的每一次練習啊！</p>
+<h2 id="第一次道駕"><a href="#第一次道駕" class="headerlink" title="第一次道駕"></a>第一次道駕</h2><p>2/18，練完一段時間的場內以後，教練帶我練道駕。</p>
+<p>我只想說，那一天練完只覺得，我可能永遠都拿不到汽車駕照了，因為我開得實在是超級無敵爛，不斷被教練訓斥，顏面掃地的那種，我自己也覺得非常危險，像是不要突然在路中間踩剎⾞，而我卻做了，這樣真的很容易發生追撞啊！</p>
+<p>那個時候真的超級沒信心，覺得，唉，看來汽車駕照真的跟我無緣了吧？</p>
+<p>但說真的，現在回想起來，第一次上路，緊張害怕是非常正常的，跟場內的感覺差非常多，你還得多踩油門之外，馬路上也有其他大大小小的車子啊！</p>
+<p>現在的我只想跟當時的自己說：不要害怕，每次的練習，你會越來越來熟悉，也會越來越覺得沒什麼的！（2/27 的我寫下了這個：「道駕真的是⽐前幾次好很多啊！」，真的要相信自己能做到啊！）</p>
+<h2 id="例行練車，例行樂趣"><a href="#例行練車，例行樂趣" class="headerlink" title="例行練車，例行樂趣"></a>例行練車，例行樂趣</h2><p>接著後幾次就是各種到駕訓班練車。</p>
+<p>過程真的會覺得無聊，因為都重複做一樣的事⋯⋯</p>
+<p>不確定行不行，但後來我不管了，打開手機的 Spotify，聽著歌，跟著唱，教練車裡頭彷彿我個人的小型演唱會，我甚至還因此掌握了怎麼唱我原本唱不上去的歌呢xD</p>
+<p>就這樣，爾後的練車，我就是這樣悠遊自在，練車和享樂融為一體，已經分不清我是在練車還是在享受那種感覺了，挺不錯的！</p>
+<p>提個外話，冷氣還不錯舒服～</p>
+<h2 id="小挫折"><a href="#小挫折" class="headerlink" title="小挫折"></a>小挫折</h2><p>明明已經接近「躊躇滿志」的狀態了，沒想到 3/6 的道駕，讓我有種跌倒的感覺。</p>
+<p>快考試了，還是有不少開不好的地方，甚至又被教練唸，不是很好受。</p>
+<p>於是乎，我做了以下筆記：</p>
+<ul>
+<li>油⾨不要⼀直踩 早點準備煞停</li>
+<li>路邊停⾞前打右⽅向燈後記得說右⽅無來⾞</li>
+<li>路邊停⾞出來左⽅向燈後記得135度</li>
+<li>迴轉前速度要慢 ⽅向盤要打到底</li>
+<li>那個牌⼦那邊 記得放慢 紅綠燈等⾞的時候不要出去太多</li>
+</ul>
+<p>沒事，有幫自己記下道駕的注意要點，之後再多多提醒自己就行了～</p>
+<h2 id="考前一天"><a href="#考前一天" class="headerlink" title="考前一天"></a>考前一天</h2><p>就跟教練約了一個小時的練習場考，練完跟朋友打球，打完球就快速複習一下筆試模擬試卷自己圈起來的地方，好像就這樣，也不必特別準備什麼。</p>
+<p>但就要記得早點睡，因為隔天 06:50 就要到駕訓班集合搭車考筆試。</p>
+<p>啊對了還有，再看個道駕影片讓腦袋順過一遍路考的路線，也再複習一下開⾞前檢查動作，確保自己順序有記對。</p>
+<p>也別忘了先準備好隔天需要的身分證、乘車證、錢錢、一顆平常的心。</p>
+<h2 id="考照當天"><a href="#考照當天" class="headerlink" title="考照當天"></a>考照當天</h2><p>3/11，五點半起來，吃完早餐，出發去駕訓班。</p>
+<p>早上有點冷，那溫度加劇了我的緊張感，帶著這份心情，前往筆試考場，直到通過筆試了以後，加上外頭陽光燦爛也溫暖了起來，頓時覺得豁然開朗，好像沒那麼緊張，心中能感受到一股莫名的平靜。</p>
+<p>最讓人不耐煩的，就是等路考的過程，應該有兩小時吧，待在椅子上坐著，也不想滑手機，原本有聽音樂後來也不想聽了。（啊對了，我平常練車聽的歌就那幾首，我發現考前聽那幾首，可以幫助我快速平復緊張的情緒欸！還蠻讚的！）</p>
+<p>終於輪到我，上場囉！（ABCDEFGHIJKLMNOPQRSTUVWXYZ）咦我過了？</p>
+<p>真的，聽到我過了的當下，真的有種「咦我過了？」的感受，因為我是真的帶著很平常的心情去開車的，就像平常邊聽歌邊練車一樣，而道考的時候，彷彿是開著車帶著考官去遊山玩水一樣，是多麼地輕鬆愜意啊！就這樣，通過了考驗。</p>
+<p>人生其他方面也該是相同道理吧🤔</p>
+<br>
+感謝吳教練的諄諄教誨啊😎]]></content>
   </entry>
   <entry>
     <title>【圖文教學】免費在 AWS 上建一個 Node.js Web Server</title>
@@ -528,131 +617,6 @@
 希望這篇教學文能幫助到您，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
-    <title>駕訓班裡的點點滴滴</title>
-    <url>/2022/03/driving-school/</url>
-    <content><![CDATA[<p>簡單記錄一下～</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>原本打算趁寒假比較閒的時候上駕訓班，但因為比較晚才去注意相關資訊，就只能報年後開始上課的期別。（當時心想：早知道就早一點去了解，這樣開學後就不用再去駕訓班練車了，但沒有早知道這回事啊xD 就警惕自己，這就是拖延的後果，之後盡量不要再犯了）</p>
-<p>扯遠了，所以我 1/26 到附近的診所體檢，<a href="https://www.mvdis.gov.tw/m3-emv-hca/agency/query">這邊</a>可以查詢最近的體檢代辦所。然後接著就去駕訓班報名。</p>
-<p>原本我打算報的是「手排」，但教練知道了以後，立馬試著說服我報「自排」，他說現在幾乎都是自排車了，不必去學手排。</p>
-<p>報名駕訓班前是有做一點功課，有查到說教練很可能會說服你學自排，因為比較好教、好學，而且男女學員的待遇還可能不一樣xD 那個時候想說，哪有可能那麼容易被說服，我想學手排，是因為我想更了解開車的原理啊，管它好學不好學！</p>
-<p>沒想到才聽了教練幾句話的我，很快就被說服了xD 後來想說，家裡的人沒在開車，對於車子，我實在超級無敵不熟，腦袋裡面沒什麼開車上路的 data，學比較難的手排也只是在刁難自己而已，真的需要，之後再說好像也是可🤔</p>
-<p>真的要長話短說了⋯⋯</p>
-<h2 id="我的第一堂駕駛課"><a href="#我的第一堂駕駛課" class="headerlink" title="我的第一堂駕駛課"></a>我的第一堂駕駛課</h2><p>第一次上課是在 2/6，也就是年後的禮拜日。</p>
-<p>一剛開始，教練帶我到模擬機台練習轉⽅向盤，我那時候才知道，原來方向盤左右的極限是各⼀圈半啊，我還以為像電玩一樣，只能轉那麼一點點。教練教我怎麼轉以後，就要我自己練習 15 分鐘，然後他就去其他地方了。當時的我心想，哇嗚，網路上說的果然是真的，可能我是男生的關係吧？但後來經過一次又一次的上課，我才明白，很多東西教練真的只需要提點一下，其他靠學員自己練真的就行了。重點是：教練並不像網路上說的那種模樣啊！而且之後仔細想想，難道轉方向盤這種沒什麼技術的東西也要教練全程都在一旁陪我轉嗎xD</p>
-<p>無腦轉了一陣子的方向盤以後，教練就帶我進車子裡了。哇嗚，居然這麼快，難道待會就要開車了嗎？還真的沒錯。</p>
-<p>一上車，教練先向我介紹⽅向燈、⾬刷、PRD檔、臨時停⾞按鈕、⼿煞⾞、調整後照鏡的控制這些，介紹完以後，就帶我練「直線進退」了。我那個時候才知道，原來切到 R 檔或 D 檔以後，你不踩剎車，車子可是會動的呢！以為像遊戲一樣，就一直踩油門往前衝就是了xD 教練要我慢慢前進、後退，練習腳含著剎車的感覺，因為之後會常用到。</p>
-<p>下課前，居然就要練「路邊停車」了！好快啊，不是才第一堂課而已？練習的過程就不多說了，我想說的是，<strong>下課以後，真的最好把剛剛記的口訣、體會到的東西記下來，一來可以幫自己再複習一遍，二來下次練車前看的時候，很快就能回憶起來！</strong>當天上完課，我記了以下的筆記：</p>
-<blockquote>
-<p><strong>（路邊停⾞）</strong></p>
-<ul>
-<li>步驟：後退 → 右⼀圈半 → 回來 → 左⼀圈半 → (停⾞) → 換D檔 → 維持左⼀圈半 → 回來 → 右⼀圈 → 回來 → 換R檔 → 無限循環</li>
-<li>訣竅：三⾓形</li>
-</ul>
-</blockquote>
-<p>第一堂課還真扎實啊xD</p>
-<h2 id="新關卡登錄！"><a href="#新關卡登錄！" class="headerlink" title="新關卡登錄！"></a>新關卡登錄！</h2><p>第二次上課在 2/12，練的是「倒車入庫」和「曲線進退」。</p>
-<p>當時真的覺得好快，練好多看起來不容易的關卡，我才第二次上課而已，而且之前都沒開過車啊 (我想大家都是xD)！</p>
-<p>一樣下課的時候記了點筆記：</p>
-<blockquote>
-<p><strong>（倒⾞⼊庫）</strong></p>
-<ul>
-<li>步驟：後退直到外⾯竿⼦在右後座扶⼿的前⾯⼀點點 → 右打到底,可以從右後照鏡看到⾞⼦逐漸在⽩線內進去 → ⽅向盤導正,後退到⼈在樹前⾯⼀點點 → 前進到⼀個東東在⽩線前⾯⼀點點 → 右打底,正了之後再導回來</li>
-</ul>
-<p><strong>（曲線進退）</strong></p>
-<ul>
-<li>前進步驟：前進到左前燈在⽩線前⾯⼀點點,但我覺得可以觀察左後照鏡,當出現路線的時候再下⼀動 → 左打1⼜1/4圈,同時看著左後照鏡左彎,注意⾨把與⽩線的距離,太近太遠就調整⽅向盤的幅度 → 當左還是右前燈碰到⽩線就導正,前進直到右前燈超過⽩線⼀點點,但其實可以觀察右後照鏡 → 右邊跟左邊的操作⽅式⼤同⼩異,就左右互換⽽已 → 到站</li>
-<li>後退步驟：切換R檔,注意距離,同時做⽅向盤幅度上的調整→ 當左後照鏡看到半圓時,導正 → 後退到⾨把進到半圓內 → ⽅向盤往左轉1⼜1/4圈,⼀樣要調整幅度 → 導正回到起點</li>
-</ul>
-</blockquote>
-<p>裡面很多東西你可能會看不懂，<strong>這就是筆記，自己能夠看懂才是重點！</strong></p>
-<h2 id="第一次跑場考"><a href="#第一次跑場考" class="headerlink" title="第一次跑場考"></a>第一次跑場考</h2><p>第三次上課是在隔天 2/13，令我驚訝的是，上週日才第一次上課，那週日就要跑整個場考的關卡了！太酷了吧！</p>
-<p>那天教練跟我約特別早，八點就要到駕訓班練車。真的還蠻早的，起床時頗掙扎，那麼早，原來是因為今天要直接跑關卡，怕晚了⼈就多了！</p>
-<p>因為還很菜，要進車練的時候忘記放下⼿煞⾞，被教練訓了一頓xD</p>
-<p>其實還蠻好玩的，很像在玩遊戲，啊如果不小心壓到黑管的話，就會很大聲地逼逼叫讓你丟臉懲罰你xD</p>
-<p>關卡依序如下，順便附上我的小筆記：</p>
-<ol>
-<li>⾏前檢查及起駛前動作：⾏駛前先打左⽅向燈代表要出來 → 打右⽅向燈再打D檔,前進,⾨把到紫紅草時右⽅向盤打到底,然後轉正,稍微讓⾞⼦中間偏右⼀點</li>
-<li>倒⾞⼊庫：先打右⽅向燈再打R檔 → 後退到右後座上⾯⼿把到提⽰牌附近(不要太後⾯) → 右⽅向盤打到底 → 正了以後轉正退後到⼈對到⿈線 → 打右⽅向燈再打D檔 →往前到右邊凸起(?)對到紫紅草 → 出來動作不解釋xD</li>
-<li>路邊停⾞：⼤同⼩異,記得打燈,⼀開始右⽅向盤到左後照鏡安全島出現四個⿊⾊再導正,其他⼀樣</li>
-<li>S型曲線進退：先打右⽅向燈,前進直到右⾨把(?)到安全島時,右⽅向盤打到底 → 感覺到顛頗⼀次時,⽅向盤導正 → 其他跟前⾯練習⼀樣,只是半圓要⾃⼰去想像,倒退前記得先打右⽅向燈 → 快結束時,也就是差不多⾞體轉正時,⽅向盤導正 → 打右⽅向燈,然後右⽅向盤打到底出去</li>
-<li>（中間就是注意號誌和打燈,右⾨把(?)到⽩線時再開始轉⽅向盤到底,然後慢慢導正）</li>
-<li>上坡起步：⾞速儀表的100對到左⼆的黑管,要上坡前踩⼀點點煞⾞右邊的油⾨,到頂時記得快換踩剎⾞（後來補上：左標記要對到藍、拉⼿煞⾞、油⾨踩不超過1）</li>
-<li>穩定換檔：右邊的東東(?)對到紫紅草,前⾯的左黑管要在左前燈的右邊⼀些些 → 前進,適時調整⽅向盤</li>
-</ol>
-<p>筆記真的能幫助之後的每一次練習啊！</p>
-<h2 id="第一次道駕"><a href="#第一次道駕" class="headerlink" title="第一次道駕"></a>第一次道駕</h2><p>2/18，練完一段時間的場內以後，教練帶我練道駕。</p>
-<p>我只想說，那一天練完只覺得，我可能永遠都拿不到汽車駕照了，因為我開得實在是超級無敵爛，不斷被教練訓斥，顏面掃地的那種，我自己也覺得非常危險，像是不要突然在路中間踩剎⾞，而我卻做了，這樣真的很容易發生追撞啊！</p>
-<p>那個時候真的超級沒信心，覺得，唉，看來汽車駕照真的跟我無緣了吧？</p>
-<p>但說真的，現在回想起來，第一次上路，緊張害怕是非常正常的，跟場內的感覺差非常多，你還得多踩油門之外，馬路上也有其他大大小小的車子啊！</p>
-<p>現在的我只想跟當時的自己說：不要害怕，每次的練習，你會越來越來熟悉，也會越來越覺得沒什麼的！（2/27 的我寫下了這個：「道駕真的是⽐前幾次好很多啊！」，真的要相信自己能做到啊！）</p>
-<h2 id="例行練車，例行樂趣"><a href="#例行練車，例行樂趣" class="headerlink" title="例行練車，例行樂趣"></a>例行練車，例行樂趣</h2><p>接著後幾次就是各種到駕訓班練車。</p>
-<p>過程真的會覺得無聊，因為都重複做一樣的事⋯⋯</p>
-<p>不確定行不行，但後來我不管了，打開手機的 Spotify，聽著歌，跟著唱，教練車裡頭彷彿我個人的小型演唱會，我甚至還因此掌握了怎麼唱我原本唱不上去的歌呢xD</p>
-<p>就這樣，爾後的練車，我就是這樣悠遊自在，練車和享樂融為一體，已經分不清我是在練車還是在享受那種感覺了，挺不錯的！</p>
-<p>提個外話，冷氣還不錯舒服～</p>
-<h2 id="小挫折"><a href="#小挫折" class="headerlink" title="小挫折"></a>小挫折</h2><p>明明已經接近「躊躇滿志」的狀態了，沒想到 3/6 的道駕，讓我有種跌倒的感覺。</p>
-<p>快考試了，還是有不少開不好的地方，甚至又被教練唸，不是很好受。</p>
-<p>於是乎，我做了以下筆記：</p>
-<ul>
-<li>油⾨不要⼀直踩 早點準備煞停</li>
-<li>路邊停⾞前打右⽅向燈後記得說右⽅無來⾞</li>
-<li>路邊停⾞出來左⽅向燈後記得135度</li>
-<li>迴轉前速度要慢 ⽅向盤要打到底</li>
-<li>那個牌⼦那邊 記得放慢 紅綠燈等⾞的時候不要出去太多</li>
-</ul>
-<p>沒事，有幫自己記下道駕的注意要點，之後再多多提醒自己就行了～</p>
-<h2 id="考前一天"><a href="#考前一天" class="headerlink" title="考前一天"></a>考前一天</h2><p>就跟教練約了一個小時的練習場考，練完跟朋友打球，打完球就快速複習一下筆試模擬試卷自己圈起來的地方，好像就這樣，也不必特別準備什麼。</p>
-<p>但就要記得早點睡，因為隔天 06:50 就要到駕訓班集合搭車考筆試。</p>
-<p>啊對了還有，再看個道駕影片讓腦袋順過一遍路考的路線，也再複習一下開⾞前檢查動作，確保自己順序有記對。</p>
-<p>也別忘了先準備好隔天需要的身分證、乘車證、錢錢、一顆平常的心。</p>
-<h2 id="考照當天"><a href="#考照當天" class="headerlink" title="考照當天"></a>考照當天</h2><p>3/11，五點半起來，吃完早餐，出發去駕訓班。</p>
-<p>早上有點冷，那溫度加劇了我的緊張感，帶著這份心情，前往筆試考場，直到通過筆試了以後，加上外頭陽光燦爛也溫暖了起來，頓時覺得豁然開朗，好像沒那麼緊張，心中能感受到一股莫名的平靜。</p>
-<p>最讓人不耐煩的，就是等路考的過程，應該有兩小時吧，待在椅子上坐著，也不想滑手機，原本有聽音樂後來也不想聽了。（啊對了，我平常練車聽的歌就那幾首，我發現考前聽那幾首，可以幫助我快速平復緊張的情緒欸！還蠻讚的！）</p>
-<p>終於輪到我，上場囉！（ABCDEFGHIJKLMNOPQRSTUVWXYZ）咦我過了？</p>
-<p>真的，聽到我過了的當下，真的有種「咦我過了？」的感受，因為我是真的帶著很平常的心情去開車的，就像平常邊聽歌邊練車一樣，而道考的時候，彷彿是開著車帶著考官去遊山玩水一樣，是多麼地輕鬆愜意啊！就這樣，通過了考驗。</p>
-<p>人生其他方面也該是相同道理吧🤔</p>
-<br>
-感謝吳教練的諄諄教誨啊😎]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】73~64</title>
-    <url>/2022/04/freshman-career-73-64/</url>
-    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
-<span id="more"></span>
-
-<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
-<ul>
-<li>(3/31) 完成和聲學作業六</li>
-<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
-<li>我後面一律簡稱 AWSCP</li>
-</ul>
-</li>
-<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
-<li>結果我還是沒開始碰 Laravel 😅</li>
-</ul>
-</li>
-<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
-<li>但最後也沒照那個計畫走</li>
-</ul>
-</li>
-<li>(4/2) 完成 AWSCP 前置任務<ul>
-<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
-</ul>
-</li>
-<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
-<li>(4/5~4/9) 準備奧丁丁面試<ul>
-<li>覺得自己好像都在原地踏步😢</li>
-</ul>
-</li>
-<li>(4/7) 完成圖形識別 Homework 2</li>
-</ul>
-<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
-<p>加加油吧！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】100~97，開始行動！</title>
     <url>/2022/03/freshman-career-100-97/</url>
     <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
@@ -711,6 +675,142 @@
         <tag>職涯</tag>
         <tag>side project</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【職涯路上】73~64</title>
+    <url>/2022/04/freshman-career-73-64/</url>
+    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
+<span id="more"></span>
+
+<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
+<ul>
+<li>(3/31) 完成和聲學作業六</li>
+<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
+<li>我後面一律簡稱 AWSCP</li>
+</ul>
+</li>
+<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
+<li>結果我還是沒開始碰 Laravel 😅</li>
+</ul>
+</li>
+<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
+<li>但最後也沒照那個計畫走</li>
+</ul>
+</li>
+<li>(4/2) 完成 AWSCP 前置任務<ul>
+<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
+</ul>
+</li>
+<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
+<li>(4/5~4/9) 準備奧丁丁面試<ul>
+<li>覺得自己好像都在原地踏步😢</li>
+</ul>
+</li>
+<li>(4/7) 完成圖形識別 Homework 2</li>
+</ul>
+<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
+<p>加加油吧！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】63~0，Commencement</title>
+    <url>/2022/06/freshman-career-63-0/</url>
+    <content><![CDATA[<p>時間過得真是快啊！轉眼間，來到了這系列文的最終章。</p>
+<span id="more"></span>
+
+<h2 id="前面廢話一下"><a href="#前面廢話一下" class="headerlink" title="前面廢話一下"></a>前面廢話一下</h2><p>超久沒有認真寫文章了，都快忘記寫文章的感覺，而且 63~0 這個時間跨度也太大，超過了這期間 (100天) 的一半，真的是齁 😂</p>
+<p>雖然也還不太確定這篇能寫什麼東西出來，但想說要來個「有始有終」，就算再沒內容，也要有個 ending。</p>
+<p>現在的感覺有點掙扎，腦袋不斷發送「快點給我停下來！」的指令給我正在打字的雙手，但心底的某個微弱的聲音卻要我忍著這股掙扎感，咬著牙也要把這篇給生出來。<br>還是會很在意語句通不通順、前後邏輯有沒有連貫之類的事情，今天這篇就暫時拋在腦後吧，不然只會綁手綁腳而已，我對這篇的要求就是有一定數量的文字即可，品質什麼的就暫時先當作沒那回事。</p>
+<p>總是要有個<strong>開始</strong>，才會漸入佳境！</p>
+<hr>
+<h2 id="這系列文意義在哪"><a href="#這系列文意義在哪" class="headerlink" title="這系列文意義在哪"></a>這系列文意義在哪</h2><p>這要從 100 天前的「緣起」來說起。</p>
+<p>3/4 禮拜五那天，突然想到說可以來倒數看看離畢業 (6/12 也就是今天) 還剩下幾天，一數發現剛好剩下 100 天！<br>之所以這麼做，是因為我原本很可能有個實習機會，但基於某些原因的考量，我選擇婉拒。<br>因此覺得自己得開始做點什麼，而不是只是原地踏步，希望自己回頭來看那件事的時候，會認為自己所做的決定是值得的！</p>
+<p>所以意義？就是讓自己能夠回顧這一切（但系列文的文章數量實在少得可憐，實在是 😂）</p>
+<hr>
+<h2 id="值得嗎"><a href="#值得嗎" class="headerlink" title="值得嗎"></a>值得嗎</h2><p>好啦，現在是 100 天後的我，正在回顧這一切，對於當初的決定，我覺得如何呢？</p>
+<p><strong>「完全值得！」</strong></p>
+<p>沒錯，完全值得！</p>
+<p>自從 4/1 收到 AppWorks School Software Engineering Campus Program 錄取通知，連假期間參考 School 給的資源學一些程式方面的東西，並在 4/11 去實體空間參加開學典禮，認識了 School 的大家並開啟了學習旅程以後，我發現到自己有越來越喜歡「這一塊」的微妙感覺！</p>
+<p>（完了，開始不知道自己在寫什麼東西了，太久沒輸出了⋯⋯）</p>
+<p>在 School 學習剛好也九週了，好快哦，剩下四週而已。<br>不然來簡述一下我這幾週都在 School 做些什麼好了（如果我還記得的話）</p>
+<hr>
+<h2 id="School"><a href="#School" class="headerlink" title="School"></a>School</h2><h3 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h3><ul>
+<li>搞定 EC2 環境，裝好 Node.js、MySQL、Nginx<ul>
+<li><strong><a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a></strong></li>
+</ul>
+</li>
+<li>建電商網站所需的 MySQL 資料庫並用 Express 撰寫商品相關的 API</li>
+<li>做一個能夠建立新商品的 Management Page（需要處理到有關照片上傳到 Server 的功能）</li>
+<li>將後端部署到 EC2</li>
+</ul>
+<h3 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h3><ul>
+<li>弄和使用者 (member system)、訂單相關的資料庫及 API</li>
+<li>申請 SSL 憑證，以啟用 HTTPS<ul>
+<li><strong><a href="https://kanido386.github.io/2022/04/ssl-for-free/" target="_blank">用 SSL For Free 免費申請 SSL 憑證</a></strong></li>
+</ul>
+</li>
+<li>串接 TapPay 金流服務</li>
+<li>Authentication</li>
+<li>體驗 Code Review</li>
+</ul>
+<h3 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a>Week 3</h3><ul>
+<li>學習 React</li>
+<li>設置 linter 及 prettier</li>
+<li>用 create-react-app 及 react-router、styled-components 做電商網站的首頁</li>
+<li>部署到 EC2：前端 build 出來以後，放進後端的 folder 裡，做點設定即可透過後端進到前端頁面</li>
+</ul>
+<h3 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h3><ul>
+<li>繼續做電商網站的商品、購物車、結帳頁面（串 TapPay）</li>
+<li>使用 localStorage 存購物車的商品資訊</li>
+<li>前端能 call 前兩週做的後端 API 來拿到它想要的資料</li>
+<li>分組黑客松開跑！</li>
+</ul>
+<h3 id="Week-5"><a href="#Week-5" class="headerlink" title="Week 5"></a>Week 5</h3><ul>
+<li>黑客松提案</li>
+<li>專注在黑客松開發上：在範例的電商網站 code 上加進新的功能</li>
+<li>嘗試結合 LINE Bot</li>
+</ul>
+<h3 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a>Week 6</h3><ul>
+<li>黑客松 Demo</li>
+<li>分組深入一些特定主題<ul>
+<li>Load balancing + Auto Scaling</li>
+<li>Message Queue</li>
+<li>GraphQL</li>
+<li>NoSQL Database + Database Management</li>
+<li>Monitoring</li>
+</ul>
+</li>
+<li>上台 share 成果給大家<ul>
+<li><strong><a href="https://kanido386.github.io/2022/05/nosql-introduction/" target="_blank">【技術筆記】NoSQL、Data Replica、Sharding</a></strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="Week-7"><a href="#Week-7" class="headerlink" title="Week 7"></a>Week 7</h3><ul>
+<li>優化前四週開發的電商網站</li>
+<li>Cybersecurity Workshop</li>
+<li>(Talks) Coding Interview</li>
+<li>QA Workshop</li>
+<li>企業期中考 (很特別的考試)</li>
+</ul>
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><ul>
+<li>Data Engineering Workshop</li>
+<li>DevOps Workshop</li>
+<li>串一些技術來做一個小 project（主要是研究 Kubernetes）<ul>
+<li><strong><a href="https://kanido386.github.io/2022/06/youbike-helper/" target="_blank">用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</a></strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="Week-8"><a href="#Week-8" class="headerlink" title="Week 8"></a>Week 8</h3><ul>
+<li>業界分享 - 如何成為世界級的軟體工程師</li>
+<li>Agile Workshop</li>
+<li>Docker Workshop：最後用 Docker 把電商網站 project 給包起來（含 Nginx、Express Server、MySQL Database）</li>
+<li>構思接下來三週的個人專案＆上台分享提案</li>
+<li>遠距發題的 Midterm：based on 原本的電商網站 project，做一個統整訂單資料並繪製成圖表來呈現的 dashboard，當有新訂單進來時，使用 socket.io 自動刷新 dashboard 頁面</li>
+</ul>
+<hr>
+<h2 id="繼續前進"><a href="#繼續前進" class="headerlink" title="繼續前進"></a>繼續前進</h2><p>探索自我的職涯之路，不會因為系列文完結而結束！</p>
+<p>文章也會繼續寫，不然久久沒寫，都不知道該怎麼寫了 😂</p>
+]]></content>
   </entry>
   <entry>
     <title>【職涯路上】76~74</title>
@@ -1886,13 +1986,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
     <url>/2022/03/line-developers-meetup-16/</url>
     <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
@@ -2017,6 +2110,13 @@
       <tags>
         <tag>Logic Pro</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
   </entry>
   <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
@@ -2290,57 +2390,6 @@
       </tags>
   </entry>
   <entry>
-    <title>用 Python 操作 Android 手機</title>
-    <url>/2021/07/python-android-phone/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
-<span id="more"></span>
-
-<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
-<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
-<p><img src="1.png"></p>
-<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
-<hr>
-<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
-<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
-<hr>
-<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
-<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
-<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
-<hr>
-<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
-<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
-
-<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
-<hr>
-<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
-<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
-<p><img src="2.gif"></p>
-<p>拍賣的畫面更有感！</p>
-<p><img src="3.gif"></p>
-<p>酷斃了 😎</p>
-<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>Android</tag>
-        <tag>小工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【技術筆記】NoSQL、Data Replica、Sharding</title>
     <url>/2022/05/nosql-introduction/</url>
     <content><![CDATA[<p>上台 Presentation 前做的筆記，在這邊記錄一下～</p>
@@ -2519,6 +2568,57 @@
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Blockchain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Python 操作 Android 手機</title>
+    <url>/2021/07/python-android-phone/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
+<span id="more"></span>
+
+<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
+<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
+<p><img src="1.png"></p>
+<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
+<hr>
+<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
+<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
+<hr>
+<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
+<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
+<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
+<hr>
+<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
+<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
+<hr>
+<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
+<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
+<p><img src="2.gif"></p>
+<p>拍賣的畫面更有感！</p>
+<p><img src="3.gif"></p>
+<p>酷斃了 😎</p>
+<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Android</tag>
+        <tag>小工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2749,47 +2849,6 @@
 大概是這樣，這學期就好好充實自己吧😎
 <br>
 <br>]]></content>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
   </entry>
   <entry>
     <title>停下來思考</title>
@@ -3074,6 +3133,47 @@ go go!!!]]></content>
 希望這篇文章能對你有幫助，我們下次見囉😀]]></content>
       <tags>
         <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
       </tags>
   </entry>
   <entry>
