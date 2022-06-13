@@ -246,6 +246,69 @@
       </tags>
   </entry>
   <entry>
+    <title>決定改部落格文章 Views 的計算方式</title>
+    <url>/2022/06/change-views-count/</url>
+    <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">之前自己寫的</a>，原本 Views 是用 localStorage 來看說這個訪客有沒有造訪過某篇文章：<br>如果沒有的話，Views 就加一，並用 localStorage 來記錄說他造訪過了；<br>如果有的話，也就是 localStorage 有記錄，Views 就不會變動。</p>
+<p>但這樣挺無趣的，每進去一次，就應該要加一才對，所以我決定來修改一下它的計算方式！</p>
+<h2 id="記錄一下"><a href="#記錄一下" class="headerlink" title="記錄一下"></a>記錄一下</h2><p>因為之前所有文章的 Views 即將歸零重新計算了，想說在這邊記錄一下，留個念：</p>
+<ol>
+<li>（2021-07-12） <strong><a href="https://kanido386.github.io/2021/07/hackathon-line-hint/">黑客松 LINE Bot 賽前補帖</a></strong> （161）</li>
+<li>（2021-07-16） <strong><a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a></strong> （114）</li>
+<li>（2021-07-10） <strong><a href="https://kanido386.github.io/2021/07/fsm-line-bot/">用 FSM 及 LINE Messaging API 做一個聊天機器人</a></strong> （113）</li>
+<li>（2021-01-13） <strong><a href="https://kanido386.github.io/2021/01/microprocessor-project/">用 STM32 開發板做一台類似投籃機的遊戲機台</a></strong> （58）</li>
+<li>（2021-01-06） <strong><a href="https://kanido386.github.io/2021/01/asp-final-project/">用 Pure Data 打造吉他效果器</a></strong> （56）</li>
+<li>（2020-09-05） <strong><a href="https://kanido386.github.io/2020/09/summer-project/">用一點樂理和音訊處理技術做簡單的音色轉換</a></strong> （47）</li>
+<li>（2021-06-10） <strong><a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/">用 Hexo 及 GitHub Pages 打造部落格</a></strong> （45）</li>
+<li>（2020-04-27） <strong><a href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">JavaScript ES6 Cheatsheet</a>（</strong>42<strong>）</strong></li>
+<li>（2021-07-06） <strong><a href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">用 Algorithmia 部署 ML Models</a></strong> （34）</li>
+<li>（2021-07-08） <strong><a href="https://kanido386.github.io/2021/07/python-line-blockchain/">當 Python 遇上了 LINE Blockchain</a></strong> （33）</li>
+<li>（2021-07-04） <strong><a href="https://kanido386.github.io/2021/07/python-android-phone/">用 Python 操作 Android 手機</a></strong> （25）</li>
+<li>（2021-06-13） <strong><a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a></strong> （24）</li>
+<li>（2022-01-09） <strong><a href="https://kanido386.github.io/2022/01/spotify-side-project-plan/">做 Spotify 相關的 side project</a></strong> （19）</li>
+<li>（2021-09-26） <strong><a href="https://kanido386.github.io/2021/09/just-do-it/">不完美行動</a></strong> （19）</li>
+<li>（2021-06-14） <strong><a href="https://kanido386.github.io/2021/06/dragon-boat-festival/">端午節立蛋</a></strong> （19）</li>
+<li>（2022-03-25） <strong><a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">【心得】LINE Developers Meetup #16</a></strong> （18）</li>
+<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/freshman-career-73-64/">【職涯路上】73~64</a></strong> （15）</li>
+<li>（2021-10-01） <strong><a href="https://kanido386.github.io/2021/10/senior-first/">即將展開的大四上</a></strong> （13）</li>
+<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/">【心得】2022 Yourator 數位職涯博覽會</a></strong> （11）</li>
+<li>（2022-03-12） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-92/">【職涯路上】92，交大就業博覽會</a></strong> （11）</li>
+<li>（2021-11-14） <strong><a href="https://kanido386.github.io/2021/11/next-10000-hours/">【閱讀筆記】下個10000小時，你打算怎樣過？</a></strong> （11）</li>
+<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a></strong> （10）</li>
+<li>（2022-03-30） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-76-74/">【職涯路上】76~74</a></strong> （10）</li>
+<li>（2022-05-25） <strong><a href="https://kanido386.github.io/2022/05/nosql-introduction/">【技術筆記】NoSQL、Data Replica、Sharding</a></strong> （9）</li>
+<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-84-77/">【職涯路上】84~77</a></strong> （8）</li>
+<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/driving-school/">駕訓班裡的點點滴滴</a></strong> （8）</li>
+<li>（2022-04-27） <strong><a href="https://kanido386.github.io/2022/04/ssl-for-free/">用 SSL For Free 免費申請 SSL 憑證</a></strong> （7）</li>
+<li>（2020-05-16） <strong><a href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">Moleculer CRUD Guide</a></strong> （7）</li>
+<li>（2022-06-03） <strong><a href="https://kanido386.github.io/2022/06/2022-dragon-boat-festival/">2022 端午節立蛋</a></strong> （6）</li>
+<li>（2021-12-19） <strong><a href="https://kanido386.github.io/2021/12/soft-skills/">停下來思考</a></strong> （6）</li>
+<li>（2022-03-14） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-91-90/">【職涯路上】91~90，越挫越勇！</a></strong> （5）</li>
+<li>（2022-03-07） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-100-97/">【職涯路上】100~97，開始行動！</a></strong> （5）</li>
+<li>（2022-01-28） <strong><a href="https://kanido386.github.io/2022/01/help-you-take-action/">助你行動</a></strong> （5）</li>
+<li>（2022-06-05） <strong><a href="https://kanido386.github.io/2022/06/youbike-helper/">用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</a></strong> （4）</li>
+<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-96-93/">【職涯路上】96~93，自我懷疑⋯⋯</a></strong> （4）</li>
+<li>（2021-12-11） <strong><a href="https://kanido386.github.io/2021/12/synth-one-with-logic-pro/">免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</a></strong> （4）</li>
+<li>（2022-03-18） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-89-86/">【職涯路上】89~86，再廢也不要停止反思</a></strong> （3）</li>
+<li>（2021-12-15） <strong><a href="https://kanido386.github.io/2021/12/rest-is-important/">【閱讀筆記】一流的人如何保持巔峰</a></strong> （3）</li>
+<li>（2021-12-12） <strong><a href="https://kanido386.github.io/2021/12/live-in-the-moment/">專注當下</a></strong> （3）</li>
+<li>（2022-06-12） <strong><a href="https://kanido386.github.io/2022/06/freshman-career-63-0/">【職涯路上】63~0，Commencement</a></strong> （2）</li>
+<li>（2022-03-19） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-85/">【職涯路上】85，不想徒具形式</a></strong> （2）</li>
+<li>（2021-10-07） <strong><a href="https://kanido386.github.io/2021/10/logic-pro-plug-in-compatibility/">如何解決 Logic Pro Plug-In Compatibility 的問題</a></strong> （2）</li>
+</ol>
+<h2 id="來改吧"><a href="#來改吧" class="headerlink" title="來改吧"></a>來改吧</h2><ol>
+<li>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">我之前寫的</a>，去 Firestore Database → 規則，來編輯規則： <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">service cloud.firestore &#123;</span><br><span class="line">  match /databases/&#123;database&#125;/documents &#123;</span><br><span class="line">    match /articles/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 新規則</span></span><br><span class="line">    match /views/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 編輯完以後，記得按「發布」</li>
+<li>到 theme 的 config 檔 <code>/themes/next/_config.yml</code>，修改關於 firestore 的設置： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># collection: articles</span></span><br><span class="line">  <span class="attr">collection:</span> <span class="string">views</span> <span class="comment"># Required, a string collection name to access firestore database</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&lt;網路</span> <span class="string">API</span> <span class="string">金鑰&gt;</span></span><br><span class="line">  <span class="attr">projectId:</span> <span class="string">&lt;專案</span> <span class="string">ID&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>去到 <code>/themes/next/layout/_third-party/statistics/firestore.swig</code> 修改計算方式： <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 其實就是註解掉第 51~56 行</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">localStorage</span>.getItem(title)) &#123;</span><br><span class="line">  increaseCount = <span class="literal">false</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// Mark as visited</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(title, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<br>
+這樣就改好囉，就是這麼簡單😎]]></content>
+  </entry>
+  <entry>
     <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
     <url>/2021/07/baymax-with-us/</url>
     <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
@@ -2178,6 +2241,65 @@
       </tags>
   </entry>
   <entry>
+    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
+    <url>/2021/11/next-10000-hours/</url>
+    <content><![CDATA[<p>給正在思索未來的你～</p>
+<span id="more"></span>
+
+<br>
+（本篇由書中引起我共鳴的句子集結而成）
+
+<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
+<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
+<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
+<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
+<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
+<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
+<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
+<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
+<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
+</ul>
+<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
+<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
+<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
+<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
+<li>選擇比努力重要！</li>
+<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
+<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
+<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
+</ul>
+<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
+<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
+<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
+</ul>
+<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
+<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
+<li>窮困不怕，怕的是窮的心態。</li>
+<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
+</ul>
+<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
+<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
+<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
+<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
+<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
+</ul>
+<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
+<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
+<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
+<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
+<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
+<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
+<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
+<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
+<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
+</ul>
+<br>
+希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
+      <tags>
+        <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Moleculer CRUD Guide</title>
     <url>/2020/05/moleculer-crud-guide/</url>
     <content><![CDATA[<p><a href="/2020/05/moleculer-crud-guide"><img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" /></a></p>
@@ -2328,65 +2450,6 @@
         <tag>JavaScript</tag>
         <tag>Moleculer</tag>
         <tag>CRUD</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
-    <url>/2021/11/next-10000-hours/</url>
-    <content><![CDATA[<p>給正在思索未來的你～</p>
-<span id="more"></span>
-
-<br>
-（本篇由書中引起我共鳴的句子集結而成）
-
-<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
-<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
-<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
-<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
-<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
-<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
-<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
-<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
-<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
-</ul>
-<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
-<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
-<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
-<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
-<li>選擇比努力重要！</li>
-<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
-<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
-<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
-</ul>
-<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
-<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
-<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
-</ul>
-<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
-<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
-<li>窮困不怕，怕的是窮的心態。</li>
-<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
-</ul>
-<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
-<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
-<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
-<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
-<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
-</ul>
-<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
-<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
-<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
-<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
-<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
-<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
-<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
-<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
-<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
-</ul>
-<br>
-希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
-      <tags>
-        <tag>閱讀</tag>
       </tags>
   </entry>
   <entry>
@@ -2851,47 +2914,6 @@
 <br>]]></content>
   </entry>
   <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>停下來思考</title>
     <url>/2021/12/soft-skills/</url>
     <content><![CDATA[<p>生活瑣事一大堆，導致我們常常忽略了人生中更重要、更值得關注的事情！<br>（但我發現，感覺自己很忙，實際上只是心理狀態上的忙、盲、茫⋯⋯）</p>
@@ -3174,6 +3196,47 @@ go go!!!]]></content>
 希望這篇文章能對你有幫助，我們下次見囉😀]]></content>
       <tags>
         <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
       </tags>
   </entry>
   <entry>
@@ -3609,7 +3672,38 @@ go go!!!]]></content>
 </li>
 </ul>
 <p><code>db-deployment.yaml</code></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">RollingUpdate</span></span><br><span class="line">  <span class="comment"># refers to the pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">          <span class="attr">livenessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">          <span class="attr">readinessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">RollingUpdate</span></span><br><span class="line">  <span class="comment"># refers to the pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-db</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">mongo</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">27017</span></span><br><span class="line">        <span class="attr">volumeMounts:</span></span><br><span class="line">				<span class="comment"># 若 mountPath 跟 PersistentVolume 的 path 不一樣</span></span><br><span class="line">				<span class="comment"># pod 會卡在 CrashLoopBackOff 的狀態...</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/mnt/data</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">youbike-helper-db-volume</span></span><br><span class="line">      <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-db-volume</span></span><br><span class="line">        <span class="attr">persistentVolumeClaim:</span></span><br><span class="line">          <span class="attr">claimName:</span> <span class="string">youbike-helper-db-pv-claim</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：What is a rolling update strategy?<ul>
+<li>The rolling update strategy is <strong>a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime</strong>.</li>
+<li>In this strategy, the Deployment selects a Pod with the old programming, deactivates it, and creates an updated Pod to replace it.</li>
+</ul>
+</li>
+</ul>
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kubectl apply -f db-deployment.yaml</span><br><span class="line">kubectl get deployments</span><br><span class="line">kubectl get pods -o wide   <span class="comment"># check the state of the pod</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><ul>
+<li><a href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<ul>
+<li>We need a service to make the database available to the backend.</li>
+<li>This makes the database pod accessible only from within the cluster and the connection will target the port 27017 in the pod.</li>
+</ul>
+</li>
+</ul>
+<p><code>db-service.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">    <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">27017</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">27017</span></span><br></pre></td></tr></table></figure>
+
+<p>去 command line 跑一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kubectl apply -f db-service.yaml</span><br><span class="line">kubectl get services</span><br></pre></td></tr></table></figure>
+
+<h3 id="各種-port-傻傻分不清楚？"><a href="#各種-port-傻傻分不清楚？" class="headerlink" title="各種 port 傻傻分不清楚？"></a>各種 port 傻傻分不清楚？</h3><ul>
+<li><a href="https://iter01.com/523068.html">k8s 辨析 port、NodePort、targetPort、containerPort 區別</a></li>
+</ul>
+<p><img src="4.png"></p>
+<p>（截圖自「<a href="https://www.youtube.com/watch?v=T4Z7visMM4E">Kubernetes Services explained | ClusterIP vs NodePort vs LoadBalancer vs Headless Service</a>」）</p>
+<h2 id="弄-RabbitMQ"><a href="#弄-RabbitMQ" class="headerlink" title="弄 RabbitMQ"></a>弄 RabbitMQ</h2><h3 id="Deployment-和-Service-可寫在一起"><a href="#Deployment-和-Service-可寫在一起" class="headerlink" title="Deployment 和 Service 可寫在一起"></a>Deployment 和 Service 可寫在一起</h3><p><code>rabbitmq.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Service</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-rabbitmq-service</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">5672</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30001</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq-management</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">15672</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">15672</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30002</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment">## Deployment</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-rabbitmq-deployment</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">rabbitmq:3.9.18-management-alpine</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">5672</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">15672</span></span><br><span class="line">          <span class="attr">resources:</span></span><br><span class="line">            <span class="attr">limits:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">            <span class="attr">requests:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">          <span class="attr">livenessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">          <span class="attr">readinessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br></pre></td></tr></table></figure>
 
 <p>去 command line 跑一下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kubectl apply -f rabbitmq.yaml   <span class="comment"># create</span></span><br><span class="line">kubectl get deployment           <span class="comment"># check deployment</span></span><br><span class="line">kubectl get service              <span class="comment"># check service</span></span><br><span class="line"><span class="comment"># kubectl get &lt;單數複數好像都可以&gt;</span></span><br></pre></td></tr></table></figure>
@@ -3716,104 +3810,5 @@ go go!!!]]></content>
 <h3 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h3><p>參考文有放「<strong><strong>Kubernetes Dashboard</strong></strong>」的操作教學，這邊就不贅述了～</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】91~90，越挫越勇！</title>
-    <url>/2022/03/freshman-career-91-90/</url>
-    <content><![CDATA[<p>這兩天花了 8 小時 55 分鐘又 48 秒的「專注時間」在弄電腦動畫與特效的作業，有點心得！</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>因為這個作業的關係，我預期我這兩天應該「沒辦法」弄 side project 或是其他跟職涯有關的事情，果真，在正式開始寫作業 code 之前，我就花了非常多時間在「讓我的 mac 能順利跑起來作業程式」這件事情上⋯⋯</p>
-<p>原本以為只需要煩惱怎麼寫 code 而已，還真沒想到說還得處理寫 code 之前的「讓程式跑起來」，加上又很難分點心思在職涯方面，覺得自己怎麼又沒新進度，那整個過程實在是非常挫折和煎熬。</p>
-<p>然而，現在回頭來看 (雖然也才最近而已xD)，我覺得這個挑戰還挺不錯的，讓我有了一點體悟，或許，這份體悟也能夠對我的職涯路上有所幫助呢！</p>
-<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>之前助教就有說過用 mac 寫作業會很麻煩，所以我就決定去系上的電腦教室寫作業。</p>
-<p>我們作業有討論區，開始寫之前，好奇點開來看，咦，有人發問「<strong>Mac版本不支援此專案類型</strong>」欸！</p>
-<p>根據裡面的討論，加上那位同學後來也沒繼續追問下去，應該是解決了，感覺 mac 好像只要照 <code>README.md</code> 裡面的指令打一打就可以用 <code>cmake</code> 來 build 了🤔</p>
-<p>於是乎，我跟著打指令，沒想到⋯⋯</p>
-<p><img src="1.png"></p>
-<p>噴出了錯誤，而且上面居然寫 <code>introduced in macOS 10.15</code>！</p>
-<p>完蛋，我 macOS 的版本是 10.14.6，但我不想更新啊😂</p>
-<p>因此，我就鼓起勇氣 (怕被笑這什麼笨問題的心理作祟)，在討論區發問「<strong>macOS 10.15 以下(不含) 的版本是否真的得更新作業系統才能做作業</strong>」，問助教難道只能更新而不能靠其他方法解決嗎？</p>
-<p>真希望助教能給出直接明確又能順利解決的解方啊！（錯誤的心理xD）</p>
-<h2 id="似乎有點希望"><a href="#似乎有點希望" class="headerlink" title="似乎有點希望"></a>似乎有點希望</h2><p>助教回覆說，因為 <code>filesystem</code> 是 C++17 的東西，可能是編譯器沒支援。</p>
-<p>建議我可以在 cmake 的指令後方加上<br><code>-DCMAKE_C_COMPILER=YOUR_GCC_PATH -DCMAKE_CXX_COMPILER=YOUR_G++_PATH</code><br>「<strong>或是去改一下找 file path 的 code 也可以</strong>」。</p>
-<p>人生真的是不斷在做選擇，有些 maybe 比較好，有些 maybe 比較差，而這次我選擇忽略後者嘗試前者。</p>
-<p>從現在的視角來看，二擇一的岔路，我選擇了崎嶇的那一條。（但或許更有收穫也說不定）</p>
-<p>後來我指令改成<br><code>cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ --build build --config Release --parallel 8</code><br>在輸入到終端機前，我內心想：「這一插曲終於能夠落幕了⋯⋯」</p>
-<p><img src="2.png"></p>
-<p>嗯嗯很好，看起來 C 和 CXX 編譯器的確都改了！<br>於是又再下下一個指令。</p>
-<p><img src="3.png"></p>
-<p>哭啊，還是一樣的錯誤⋯⋯ 明明編譯器已經改了啊？</p>
-<p>於是我決定再繼續追問下去！甚至還多問「去改一下找 file path 的 code」這個部分，想說多了解，或許也是一條不錯的路🤔</p>
-<h2 id="助教高明"><a href="#助教高明" class="headerlink" title="助教高明"></a>助教高明</h2><p>真不愧是助教，看到我的截圖 (上上一張)，立馬點出了問題！</p>
-<p>他說：「你還是用Xcode (AppleClang) 阿，看看最上面第一行和第二行的compiler ID。」</p>
-<p>我居然沒注意到，可見在程式開發上，有些 message 或 log 不要漏看會比較好。</p>
-<p>然後建議我：「MacOS 上的/usr/bin/gcc 預設是指到 Xcode 的 AppleClang。所以假設你是用 gcc 11 你要找找看 gcc-11 在哪裡而不是用 gcc。」</p>
-<p>（中間過程真的百般曲折就不贅述了）</p>
-<p>後來 <code>brew install gcc@11</code> 裝相關工具，然後找到了 <code>gcc-11</code>、<code>g++-11</code> 分別在哪，又找到了<a href="https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER.html">這篇</a>說可以加上參數，最後，我的指令變成這樣：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=<span class="string">&#x27;/usr/local/bin/gcc-11&#x27;</span> -DCMAKE_CXX_COMPILER=<span class="string">&quot;/usr/local/bin/g++-11;-std=c++17&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="4.png"></p>
-<p>看起來好像有設定到 C++17 (?)</p>
-<p>然後再下 <code>cmake --build build --config Release --parallel 8</code> 居然冒出了新的錯誤⋯⋯</p>
-<p><img src="5.png"></p>
-<p>我就在討論區跟助教說：「可能是沒設定好 include library 之類的關係，但我可能就先停在這邊了，謝謝助教的提示！」</p>
-<p>不行，我已經花非常多時間在這上頭了，如果今天作業沒 deadline、我沒其他事要做，那繼續研究還 OK，但情況不是這樣啊xD</p>
-<p><strong>有時候，選擇放棄，換走另外一條路，也是不錯的選擇！</strong></p>
-<h2 id="另闢蹊徑"><a href="#另闢蹊徑" class="headerlink" title="另闢蹊徑"></a>另闢蹊徑</h2><p>我決定嘗試「或是去改一下找 file path 的 code 也可以」的方法了！</p>
-<p>問了助教：「剛剛 trace 了一下 code，是不是只有 <code>findPath()</code> 這個 function 會用到 filesystem 的東西呢？如果直接把 assets 的路徑寫死是不是就能解決了呢？」</p>
-<p>助教回覆：「是的，不過最好加上個你自己的 define guard」</p>
-<p>雖然現在看來輕鬆，但當時依舊忐忑不安，連最重要作業的 code 都還沒開始動工，而我卻還在弄這些五四三？</p>
-<p>我當時害怕極了。</p>
-<p>（嘗試中）</p>
-<p>哇嗚，令我驚訝的是，我居然只花了 16 分 19 秒就搞定了，怎麼跟前面的方法差那麼多啊😂</p>
-<p><img src="6.png"></p>
-<p>Built 成功！</p>
-<p><img src="7.png"></p>
-<p>看到畫面上出現球球和布料，豪感動啊啊啊～</p>
-<h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><p>受到討論區和助教的 carry，怎能不回饋呢？</p>
-<p>雖然可能沒有人像我一樣用比較舊的 mac 寫作業，但我還是 share 了我做了哪些改動來讓程式能順利跑起來：</p>
-<blockquote>
-<p><code>main.cpp</code></p>
-<ul>
-<li>第 78 行的「 findPath(“sphere.vert”) 」改成「 “/path/to/sphere.vert” 」</li>
-<li>第 79、91、92 行也一樣</li>
-</ul>
-<p><code>utils.h</code></p>
-<ul>
-<li>註解掉第 2、57 行（分別是 <em>filesystem</em> 標頭檔、findPath 函式）</li>
-</ul>
-<p><code>utils.cpp</code></p>
-<ul>
-<li>註解掉第 8~22、67～70 行（findAssetPath、findPath）</li>
-</ul>
-<p><code>shader.h</code></p>
-<ul>
-<li>第 18 行的「 std::filesystem::path 」改成「 std::string 」</li>
-</ul>
-<p><code>shader.cpp</code></p>
-<ul>
-<li>第 6 行的「 std::filesystem::path 」改成「 std::string 」</li>
-<li>註解掉第 8~16 行</li>
-<li>第 43 行的「 std::filesystem::path 」改成「 std::string 」</li>
-</ul>
-<p>改完之後再下最一開始「乾淨」的指令：<br><code>cmake -S . -B build -D CMAKE_BUILD_TYPE=Release</code><br><code>cmake --build build --config Release --parallel 8</code><br>就可以了！</p>
-</blockquote>
-<p>非常謝謝助教的幫忙！</p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>解決在 mac 上面跑程式的問題以後，就開始寫作業 code！</p>
-<p>對了，和弄作業的第一天相比，第二天的焦慮感淡了不少，我想，應該是因為我有做到下面那張圖闡述的哲理吧？</p>
-<p><img src="8.png"></p>
-<p>我每次做困難任務的時候，都會幫自己計時，一方面是想讓自己有「進度在前進」的感覺，一方面可以在回顧當天的時候知道自己都做了些什麼，而不是「明明有做事情卻覺得自己都在瞎忙」。</p>
-<p>第一天，我完全是用「電腦動畫與特效 HW1」的名義來行動，什麼意思？看第二天就會懂了。</p>
-<p>第二天，我不是單純「電腦動畫與特效 HW1」，而是細分成：</p>
-<blockquote>
-<p>雜項、trace code、再嘗試用 mac 跑跑看、最後回報給助教決定不再追根究底了、<br>試著寫死路徑跑跑看、剛剛的過程整理成小筆記並回報到討論區、<br><code>void Cloth::initializeSpring()</code>、<code>void Cloth::computeSpringForce()</code></p>
-</blockquote>
-<p>宣告完當下要做哪個細項以後，再開始計時行動。</p>
-<p>我覺得這麼做讓我內心輕鬆了不少，我想，是因為這讓我更加明確當下的自己在做什麼吧？而不是整坨糊在一起的雜亂無章感！</p>
-<p>或許，之後遇到任何困難事，也可以嘗試這樣去 approach，不要因為它「充滿未知數」而感到懼怕～</p>
-<br>
-雖然多花了不少時間，但路是不會白走的！<br>
-相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
   </entry>
 </search>
