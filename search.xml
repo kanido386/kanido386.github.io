@@ -114,6 +114,138 @@
       </tags>
   </entry>
   <entry>
+    <title>用 Pure Data 打造吉他效果器</title>
+    <url>/2021/01/asp-final-project/</url>
+    <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>大三上修「互動式音訊處理導論」時所做的期末專題。</p>
+<span id="more"></span>
+
+<h2 id="特別感謝"><a href="#特別感謝" class="headerlink" title="特別感謝"></a>特別感謝</h2><p>首先，非常幸運能夠和來自越南的朋友 Son Tran 同一組，沒有他，就不會有這段有趣的旅程！<br>（他自彈自唱真的超好聽的，而且竟然還會做電子音樂！）<br>（在這邊偷偷放他的 YouTube channel: <a href="https://www.youtube.com/channel/UCm6tcNSqAYVqZpA8pm4-T5A" target="_blank">MadSon TR</a> 🎧）</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>強烈建議搭配後面的說明聽會比較知道在做什麼 😏</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7F14-C7rrmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="課程內容簡介"><a href="#課程內容簡介" class="headerlink" title="課程內容簡介"></a>課程內容簡介</h2><p>這學期修了電機系張文輝教授開的<a href="https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=109&Sem=1&CrsNo=1078&lang=zh-tw" target="_blank">互動式音訊處理導論</a>，接觸到很多很酷的玩意兒：</p>
+<ol>
+<li>學一點聲音訊號處理的概念以後，用 MATLAB 做簡單的分析與處理</li>
+<li>認識<a href="https://zh.wikipedia.org/wiki/%E5%90%88%E6%88%90%E5%99%A8" target="_blank">合成器</a>的基本運作原理之後，用線上數位音樂工作站 <a href="http://www.audiosauna.com/" target="_blank">AudioSauna</a> 自製音色並用新音色做一首簡單的曲子</li>
+<li><strong><span style="color:black;">（本篇主角！）使用視覺化程式語言 <a href="http://puredata.info/" target="_blank">Pure Data</a> 做一些簡單的音訊處理</span></strong></li>
+<li>用音訊編輯軟體 Adobe Audition 消除歌曲中的人聲</li>
+<li>用助教訓練好的 HMM 模型，做音樂的音值識別、拍號判定、樂譜追蹤，並為一段只有主旋律的譜生成和弦伴奏</li>
+<li>用一套叫 HTK 的自由軟體做一個簡單的歌手辨識系統</li>
+<li>認識「動態時間伸縮」的原理以後，直接拿助教寫好的 C 程式來做一個簡單的歌曲查詢系統</li>
+</ol>
+<hr>
+<h2 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h2><p>期末的時候必須選個相關主題來發展成一個專題。<br>我們原本打算是要做 source separation，也就是一種能夠把完整樂曲分離出 bass、鋼琴、吉他、鼓等獨立音訊的技術。<br>但後來想說，既然之前實驗課有接觸過 Pure Data，再加上我們都有玩過吉他效果器，所以我們就想結合兩者，並兼合我們的創意，打造屬於我們的吉他效果器！（而且還不用花錢）</p>
+<h2 id="實作方法"><a href="#實作方法" class="headerlink" title="實作方法"></a>實作方法</h2><h3 id="找相關資料"><a href="#找相關資料" class="headerlink" title="找相關資料"></a>找相關資料</h3><p><em><span style="color:gray;">（研究別⼈是如何實作吉他效果器的）</span></em><br>我們在查資料的過程中找到了 <a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a> 這一篇文章，裡頭有很多吉他效果器的實作及實際用吉他去測試效果器的 demo！<br>只能說，網路世界無奇不有，這聽起來偏冷門的東西居然也找得到資源，酷斃了 😎</p>
+<h3 id="吸收及內化"><a href="#吸收及內化" class="headerlink" title="吸收及內化"></a>吸收及內化</h3><p><em><span style="color:gray;">（將那些⽅法盡可能內化成我們⾃⼰的能⼒）</span></em><br>像海綿一樣，一直吸收、一直吸收，去讀懂為什麼他要這樣寫而不是那樣寫。<br>如此一來，不僅讓我們更清楚該如何開始，也讓我們更加了解每個效果器的運作原理，一舉兩得！</p>
+<h3 id="著手打造"><a href="#著手打造" class="headerlink" title="著手打造"></a>著手打造</h3><p><em><span style="color:gray;">（利⽤我們對於吉他效果器的⾒解，打造屬於我們的吉他效果器）</span></em><br>其實大部分還是參考那篇文章的做法居多xD<br>雖然是這樣，但我們在過程中也更加熟悉了 Pure Data 的操作，若之後想嘗試同樣是視覺化程式語言但較為熱門的 Max/MSP，相信很快就能上手了吧！</p>
+<h3 id="嘗試優化"><a href="#嘗試優化" class="headerlink" title="嘗試優化"></a>嘗試優化</h3><p><em><span style="color:gray;">（考慮⽤ Pure Data Externals 的⽅式讓界⾯看起來更加簡潔）</span></em><br>不過後來我們找到了 <a href="http://write.flossmanuals.net/pure-data/subpatches/" target="_blank">Subpatch</a> 的做法，它其實就是 Pure Data 界的 Function，可以自己定義在一個區塊當中你的 input／output 是什麼、要做哪些操作。<br></p>
+<p>什麼意思？<br></p>
+<p>比方說你現在不得不設計一部機器，需要餵給它的是好幾個單元的上課投影片和好多年份的考古題，你期望從這部機器當中獲得的僅僅是一張寫著好看分數的考卷，但過程中你卻得犧牲人生無數的可能性⋯⋯<br></p>
+<p>為了解釋 Function 的概念，扯遠了。<br></p>
+<p>拉回來。<br></p>
+<p>利用 Subpatch，可以方便我們管理圖形化的程式，除了能讓畫面看起來比較乾淨之外，也可以讓整個程式邏輯以及架構更有條理！</p>
+<h3 id="測試成品"><a href="#測試成品" class="headerlink" title="測試成品"></a>測試成品</h3><p><em><span style="color:gray;">（實際拿吉他測試我們的效果器，若有可以再改進的地⽅，就再改進）</span></em><br>星期日 (2021.01.03) 晚上，我們去九舍地下二樓試我們的吉他效果器。<br>提個外話，那邊的裝潢真的超棒的，走的是酒吧風、殘響效果又棒，若有酒保為我們調製上等的雞尾酒那就更完美了！</p>
+<p>再拉回來。<br></p>
+<p>原本我們是不抱持著什麼期待啦，想說市面上賣的效果器都不便宜，啊我們只不過是用程式語言來模擬出效果器，聲音是能有多好？<br>沒想到！當我們打開「Wha-wha」的效果，Son Tran 刷了第一個和弦以後，我們都被嚇到了！那令人驚豔的聲響效果，真的會讓人誤以為此時此刻、這個地方有什麼專業樂團正在現場演出！</p>
+<p>我們從七點半一路弄到差不多快十一點，過程中調整了很多次程式，為的是讓聲音更符合我們的需求以及讓介面看起來比較不會那麼凌亂（雖然介面看起來還是很「科技風」就是了 😂）</p>
+<hr>
+<h2 id="結果分析"><a href="#結果分析" class="headerlink" title="結果分析"></a>結果分析</h2><p>廢話不多說，直接給大家看我們的程式圖吧！</p>
+<h3 id="整體架構"><a href="#整體架構" class="headerlink" title="整體架構"></a>整體架構</h3><figure>
+  <!-- <img src="https://i.imgur.com/5GYRnqu.png" style="width:43vw;" /> -->
+  <img src="2.png" style="width:43vw;" />
+  <figcaption>使用者介面</figcaption>
+</figure>
+
+<ul>
+<li><code>pd 某某某</code> 的小方塊就是前面所說的 Subpatch，除了 <code>pd file</code> 是用來開啟音檔並加以讀取的功能以外，其他的 <code>pd 某某某</code> 就都是吉他效果器了！</li>
+<li>吉他效果器左邊一排的正方形框框是開關（Pure Data 稱它為 Toggle），打開代表說我要讓這個效果器處理我們的聲音，關掉的話就表示我們要讓聲音直接通過，不處理，即 <code>output = input</code></li>
+<li><code>adc~</code> (類比轉數位) 是我們的聲音輸入，我們選擇用錄音介面；<code>dac~</code> (數位轉類比) 則是輸出，不管是筆電內建的輸出或者是音箱都行，我們選擇用音箱，這樣聽起來比較震撼 😈</li>
+<li><code>adc~</code> 和 <code>dac~</code> 後面的抖抖線意思是，通過這個有抖抖線的 Object 以後，它 output 出來的東西會是可以畫成波形圖的「訊號」，圖中黑線（Pure Data 稱它為 thin cable）代表控制資料的傳輸，藍線（Pure Data 稱它為 thick cable）代表訊號的傳輸</li>
+<li>圖中一條一條的 slider 就是用來調整效果器參數的控制器（最下面的 slider 用來調控音量），藉由拉動 slider，就可以聽到聲音有趣的變化！（不然一成不變實在無趣）</li>
+<li>後來我們決定把其他效果器的參數 slider 放進效果器 Subpatch 裡面，不然介面看起來會有點亂</li>
+<li>中間偏右看起來像是按鈕的東西（Pure Data 稱它為 Bang），其功能是把參數設定到我們預設好的預設值，為的是方便回到預設值（有說跟沒說一樣），按下 Bang 以後，<code>s reset</code> (send) 就會幫我們把 Bang 的訊號傳到 <code>r reset</code> (receive) 的 output 給有數字的 Message，繼而引發更動 slider 的數值，於是乎，效果器的參數就回到預設值啦！</li>
+</ul>
+<h3 id="Subpatch-小介紹"><a href="#Subpatch-小介紹" class="headerlink" title="Subpatch 小介紹"></a>Subpatch 小介紹</h3><figure>
+  <!-- <img src="https://i.imgur.com/rPCYoPY.png" style="width:33vw;" /> -->
+  <img src="3.png" style="width:33vw;" />
+  <figcaption>用 pd file 來簡單介紹</figcaption>
+</figure>
+
+<ul>
+<li>剛剛說過，Subpatch 是 Pure Data 界的 Function！</li>
+<li><code>inlet</code> 就是 input，<code>outlet</code> 就是 output</li>
+<li>紅色圈起來的部分就是在區別究竟 input／output 是控制資料還是訊號</li>
+<li>input／output 之間的東西就是一些操作，本例在做打開音檔並讀取的動作</li>
+<li>有了 Subpatch 的協助以後，開發的過程就更加愉悅了呢！</li>
+</ul>
+<h3 id="Distortion-破音效果器"><a href="#Distortion-破音效果器" class="headerlink" title="Distortion 破音效果器"></a>Distortion 破音效果器</h3><p>把訊號的振幅拉大再擷取一小部分，聽起來就會有種失真的破音效果，<a href="https://youtu.be/7F14-C7rrmg?t=77" target="_blank">像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/ziLZyCF.png" style="width:33vw;" /> -->
+  <img src="4.png" style="width:33vw;" />
+  <figcaption>Distortion 破音效果器</figcaption>
+</figure>
+
+<h3 id="Tremolo-顫音效果器"><a href="#Tremolo-顫音效果器" class="headerlink" title="Tremolo 顫音效果器"></a>Tremolo 顫音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變音量，讓音量呈現忽大忽小的效果，<a href="https://youtu.be/7F14-C7rrmg" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/esTVil5.png" style="width:33vw;" /> -->
+  <img src="5.png" style="width:33vw;" />
+  <figcaption>Tremolo 顫音效果器</figcaption>
+</figure>
+
+<h3 id="Vibrato-抖音效果器"><a href="#Vibrato-抖音效果器" class="headerlink" title="Vibrato 抖音效果器"></a>Vibrato 抖音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變頻率，讓音高呈現忽高忽低的效果，<a href="https://youtu.be/7F14-C7rrmg?t=30" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/O0g8FsR.png" style="width:38vw;" /> -->
+  <img src="6.png" style="width:38vw;" />
+  <figcaption>Vibrato 抖音效果器</figcaption>
+</figure>
+
+<h3 id="Wha-wha-娃娃效果器"><a href="#Wha-wha-娃娃效果器" class="headerlink" title="Wha-wha 娃娃效果器"></a>Wha-wha 娃娃效果器</h3><p>細節頗複雜就不解釋了，其原理跟頻率有關。那為什麼叫娃娃效果器呢？<a href="https://youtu.be/7F14-C7rrmg?t=123" target="_blank">聽聽看就知道了</a>xD</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/n7iksIE.png" style="width:38vw;" /> -->
+  <img src="7.png" style="width:38vw;" />
+  <figcaption>Wha-wha 娃娃效果器</figcaption>
+</figure>
+
+<h3 id="Delay-延遲效果器"><a href="#Delay-延遲效果器" class="headerlink" title="Delay 延遲效果器"></a>Delay 延遲效果器</h3><p>上面的 slider 控制聲音衰減的快慢（這就是為什麼要乘上一個介於 0 到 1 之間不包含 1 的值），下面的 slider 則是控制多久重複一次（不過每重複一次，聲音會越來越小聲），<a href="https://youtu.be/7F14-C7rrmg?t=169" target="_blank">讓我們來聽聽看它的效果吧</a>！</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/922G06G.png" style="width:38vw;" /> -->
+  <img src="8.png" style="width:38vw;" />
+  <figcaption>Delay 延遲效果器</figcaption>
+</figure>
+
+<h3 id="Reverb-殘響效果器"><a href="#Reverb-殘響效果器" class="headerlink" title="Reverb 殘響效果器"></a>Reverb 殘響效果器</h3><p>一種營造空間感的效果器。我們直接拿 Pure Data 內建的 <code>freeverb~</code> 來用，<a href="https://youtu.be/7F14-C7rrmg?t=210" target="_blank">聽起來像這樣</a>。</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/7Sjp3w0.png" style="width:38vw;" /> -->
+  <img src="9.png" style="width:38vw;" />
+  <figcaption>Reverb 殘響效果器</figcaption>
+</figure>
+
+<h3 id="Chorus-合聲效果器"><a href="#Chorus-合聲效果器" class="headerlink" title="Chorus 合聲效果器"></a>Chorus 合聲效果器</h3><p>製造一個和原來聲音有微小時間差和頻率差的聲音，然後再同時放。<br>就像是一群人在合唱的時候，即使是唱同個旋律，也會因為進來的時間點有微小的差異、各自的不同音準，而形成一種亂中有序的感覺。<a href="https://youtu.be/7F14-C7rrmg?t=357" target="_blank">聽聽看吧</a>！</p>
+<figure>
+  <!-- <img src="https://i.imgur.com/rmj9qr6.png" style="width:38vw;" /> -->
+  <img src="10.png" style="width:38vw;" />
+  <figcaption>Chorus 合聲效果器</figcaption>
+</figure>
+
+<hr>
+<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><p><a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a></p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>前面其實已經講得差不多了，就用三個字來描述吧：「真有趣！」<br>能創造出一個可以用五官感受的東西真的超有成就感的，很享受那個過程 🏝</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
+]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>音訊處理</tag>
+        <tag>吉他</tag>
+        <tag>效果器</tag>
+        <tag>Pure Data</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
     <url>/2021/07/baymax-with-us/</url>
     <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
@@ -251,138 +383,6 @@
 <p><img src="6.gif"></p>
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-  </entry>
-  <entry>
-    <title>用 Pure Data 打造吉他效果器</title>
-    <url>/2021/01/asp-final-project/</url>
-    <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>大三上修「互動式音訊處理導論」時所做的期末專題。</p>
-<span id="more"></span>
-
-<h2 id="特別感謝"><a href="#特別感謝" class="headerlink" title="特別感謝"></a>特別感謝</h2><p>首先，非常幸運能夠和來自越南的朋友 Son Tran 同一組，沒有他，就不會有這段有趣的旅程！<br>（他自彈自唱真的超好聽的，而且竟然還會做電子音樂！）<br>（在這邊偷偷放他的 YouTube channel: <a href="https://www.youtube.com/channel/UCm6tcNSqAYVqZpA8pm4-T5A" target="_blank">MadSon TR</a> 🎧）</p>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>強烈建議搭配後面的說明聽會比較知道在做什麼 😏</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7F14-C7rrmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h2 id="課程內容簡介"><a href="#課程內容簡介" class="headerlink" title="課程內容簡介"></a>課程內容簡介</h2><p>這學期修了電機系張文輝教授開的<a href="https://timetable.nctu.edu.tw/?r=main/crsoutline&Acy=109&Sem=1&CrsNo=1078&lang=zh-tw" target="_blank">互動式音訊處理導論</a>，接觸到很多很酷的玩意兒：</p>
-<ol>
-<li>學一點聲音訊號處理的概念以後，用 MATLAB 做簡單的分析與處理</li>
-<li>認識<a href="https://zh.wikipedia.org/wiki/%E5%90%88%E6%88%90%E5%99%A8" target="_blank">合成器</a>的基本運作原理之後，用線上數位音樂工作站 <a href="http://www.audiosauna.com/" target="_blank">AudioSauna</a> 自製音色並用新音色做一首簡單的曲子</li>
-<li><strong><span style="color:black;">（本篇主角！）使用視覺化程式語言 <a href="http://puredata.info/" target="_blank">Pure Data</a> 做一些簡單的音訊處理</span></strong></li>
-<li>用音訊編輯軟體 Adobe Audition 消除歌曲中的人聲</li>
-<li>用助教訓練好的 HMM 模型，做音樂的音值識別、拍號判定、樂譜追蹤，並為一段只有主旋律的譜生成和弦伴奏</li>
-<li>用一套叫 HTK 的自由軟體做一個簡單的歌手辨識系統</li>
-<li>認識「動態時間伸縮」的原理以後，直接拿助教寫好的 C 程式來做一個簡單的歌曲查詢系統</li>
-</ol>
-<hr>
-<h2 id="動機"><a href="#動機" class="headerlink" title="動機"></a>動機</h2><p>期末的時候必須選個相關主題來發展成一個專題。<br>我們原本打算是要做 source separation，也就是一種能夠把完整樂曲分離出 bass、鋼琴、吉他、鼓等獨立音訊的技術。<br>但後來想說，既然之前實驗課有接觸過 Pure Data，再加上我們都有玩過吉他效果器，所以我們就想結合兩者，並兼合我們的創意，打造屬於我們的吉他效果器！（而且還不用花錢）</p>
-<h2 id="實作方法"><a href="#實作方法" class="headerlink" title="實作方法"></a>實作方法</h2><h3 id="找相關資料"><a href="#找相關資料" class="headerlink" title="找相關資料"></a>找相關資料</h3><p><em><span style="color:gray;">（研究別⼈是如何實作吉他效果器的）</span></em><br>我們在查資料的過程中找到了 <a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a> 這一篇文章，裡頭有很多吉他效果器的實作及實際用吉他去測試效果器的 demo！<br>只能說，網路世界無奇不有，這聽起來偏冷門的東西居然也找得到資源，酷斃了 😎</p>
-<h3 id="吸收及內化"><a href="#吸收及內化" class="headerlink" title="吸收及內化"></a>吸收及內化</h3><p><em><span style="color:gray;">（將那些⽅法盡可能內化成我們⾃⼰的能⼒）</span></em><br>像海綿一樣，一直吸收、一直吸收，去讀懂為什麼他要這樣寫而不是那樣寫。<br>如此一來，不僅讓我們更清楚該如何開始，也讓我們更加了解每個效果器的運作原理，一舉兩得！</p>
-<h3 id="著手打造"><a href="#著手打造" class="headerlink" title="著手打造"></a>著手打造</h3><p><em><span style="color:gray;">（利⽤我們對於吉他效果器的⾒解，打造屬於我們的吉他效果器）</span></em><br>其實大部分還是參考那篇文章的做法居多xD<br>雖然是這樣，但我們在過程中也更加熟悉了 Pure Data 的操作，若之後想嘗試同樣是視覺化程式語言但較為熱門的 Max/MSP，相信很快就能上手了吧！</p>
-<h3 id="嘗試優化"><a href="#嘗試優化" class="headerlink" title="嘗試優化"></a>嘗試優化</h3><p><em><span style="color:gray;">（考慮⽤ Pure Data Externals 的⽅式讓界⾯看起來更加簡潔）</span></em><br>不過後來我們找到了 <a href="http://write.flossmanuals.net/pure-data/subpatches/" target="_blank">Subpatch</a> 的做法，它其實就是 Pure Data 界的 Function，可以自己定義在一個區塊當中你的 input／output 是什麼、要做哪些操作。<br></p>
-<p>什麼意思？<br></p>
-<p>比方說你現在不得不設計一部機器，需要餵給它的是好幾個單元的上課投影片和好多年份的考古題，你期望從這部機器當中獲得的僅僅是一張寫著好看分數的考卷，但過程中你卻得犧牲人生無數的可能性⋯⋯<br></p>
-<p>為了解釋 Function 的概念，扯遠了。<br></p>
-<p>拉回來。<br></p>
-<p>利用 Subpatch，可以方便我們管理圖形化的程式，除了能讓畫面看起來比較乾淨之外，也可以讓整個程式邏輯以及架構更有條理！</p>
-<h3 id="測試成品"><a href="#測試成品" class="headerlink" title="測試成品"></a>測試成品</h3><p><em><span style="color:gray;">（實際拿吉他測試我們的效果器，若有可以再改進的地⽅，就再改進）</span></em><br>星期日 (2021.01.03) 晚上，我們去九舍地下二樓試我們的吉他效果器。<br>提個外話，那邊的裝潢真的超棒的，走的是酒吧風、殘響效果又棒，若有酒保為我們調製上等的雞尾酒那就更完美了！</p>
-<p>再拉回來。<br></p>
-<p>原本我們是不抱持著什麼期待啦，想說市面上賣的效果器都不便宜，啊我們只不過是用程式語言來模擬出效果器，聲音是能有多好？<br>沒想到！當我們打開「Wha-wha」的效果，Son Tran 刷了第一個和弦以後，我們都被嚇到了！那令人驚豔的聲響效果，真的會讓人誤以為此時此刻、這個地方有什麼專業樂團正在現場演出！</p>
-<p>我們從七點半一路弄到差不多快十一點，過程中調整了很多次程式，為的是讓聲音更符合我們的需求以及讓介面看起來比較不會那麼凌亂（雖然介面看起來還是很「科技風」就是了 😂）</p>
-<hr>
-<h2 id="結果分析"><a href="#結果分析" class="headerlink" title="結果分析"></a>結果分析</h2><p>廢話不多說，直接給大家看我們的程式圖吧！</p>
-<h3 id="整體架構"><a href="#整體架構" class="headerlink" title="整體架構"></a>整體架構</h3><figure>
-  <!-- <img src="https://i.imgur.com/5GYRnqu.png" style="width:43vw;" /> -->
-  <img src="2.png" style="width:43vw;" />
-  <figcaption>使用者介面</figcaption>
-</figure>
-
-<ul>
-<li><code>pd 某某某</code> 的小方塊就是前面所說的 Subpatch，除了 <code>pd file</code> 是用來開啟音檔並加以讀取的功能以外，其他的 <code>pd 某某某</code> 就都是吉他效果器了！</li>
-<li>吉他效果器左邊一排的正方形框框是開關（Pure Data 稱它為 Toggle），打開代表說我要讓這個效果器處理我們的聲音，關掉的話就表示我們要讓聲音直接通過，不處理，即 <code>output = input</code></li>
-<li><code>adc~</code> (類比轉數位) 是我們的聲音輸入，我們選擇用錄音介面；<code>dac~</code> (數位轉類比) 則是輸出，不管是筆電內建的輸出或者是音箱都行，我們選擇用音箱，這樣聽起來比較震撼 😈</li>
-<li><code>adc~</code> 和 <code>dac~</code> 後面的抖抖線意思是，通過這個有抖抖線的 Object 以後，它 output 出來的東西會是可以畫成波形圖的「訊號」，圖中黑線（Pure Data 稱它為 thin cable）代表控制資料的傳輸，藍線（Pure Data 稱它為 thick cable）代表訊號的傳輸</li>
-<li>圖中一條一條的 slider 就是用來調整效果器參數的控制器（最下面的 slider 用來調控音量），藉由拉動 slider，就可以聽到聲音有趣的變化！（不然一成不變實在無趣）</li>
-<li>後來我們決定把其他效果器的參數 slider 放進效果器 Subpatch 裡面，不然介面看起來會有點亂</li>
-<li>中間偏右看起來像是按鈕的東西（Pure Data 稱它為 Bang），其功能是把參數設定到我們預設好的預設值，為的是方便回到預設值（有說跟沒說一樣），按下 Bang 以後，<code>s reset</code> (send) 就會幫我們把 Bang 的訊號傳到 <code>r reset</code> (receive) 的 output 給有數字的 Message，繼而引發更動 slider 的數值，於是乎，效果器的參數就回到預設值啦！</li>
-</ul>
-<h3 id="Subpatch-小介紹"><a href="#Subpatch-小介紹" class="headerlink" title="Subpatch 小介紹"></a>Subpatch 小介紹</h3><figure>
-  <!-- <img src="https://i.imgur.com/rPCYoPY.png" style="width:33vw;" /> -->
-  <img src="3.png" style="width:33vw;" />
-  <figcaption>用 pd file 來簡單介紹</figcaption>
-</figure>
-
-<ul>
-<li>剛剛說過，Subpatch 是 Pure Data 界的 Function！</li>
-<li><code>inlet</code> 就是 input，<code>outlet</code> 就是 output</li>
-<li>紅色圈起來的部分就是在區別究竟 input／output 是控制資料還是訊號</li>
-<li>input／output 之間的東西就是一些操作，本例在做打開音檔並讀取的動作</li>
-<li>有了 Subpatch 的協助以後，開發的過程就更加愉悅了呢！</li>
-</ul>
-<h3 id="Distortion-破音效果器"><a href="#Distortion-破音效果器" class="headerlink" title="Distortion 破音效果器"></a>Distortion 破音效果器</h3><p>把訊號的振幅拉大再擷取一小部分，聽起來就會有種失真的破音效果，<a href="https://youtu.be/7F14-C7rrmg?t=77" target="_blank">像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/ziLZyCF.png" style="width:33vw;" /> -->
-  <img src="4.png" style="width:33vw;" />
-  <figcaption>Distortion 破音效果器</figcaption>
-</figure>
-
-<h3 id="Tremolo-顫音效果器"><a href="#Tremolo-顫音效果器" class="headerlink" title="Tremolo 顫音效果器"></a>Tremolo 顫音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變音量，讓音量呈現忽大忽小的效果，<a href="https://youtu.be/7F14-C7rrmg" target="_blank">聽起來像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/esTVil5.png" style="width:33vw;" /> -->
-  <img src="5.png" style="width:33vw;" />
-  <figcaption>Tremolo 顫音效果器</figcaption>
-</figure>
-
-<h3 id="Vibrato-抖音效果器"><a href="#Vibrato-抖音效果器" class="headerlink" title="Vibrato 抖音效果器"></a>Vibrato 抖音效果器</h3><p>用一個低頻振盪器 (LFO) 來調變頻率，讓音高呈現忽高忽低的效果，<a href="https://youtu.be/7F14-C7rrmg?t=30" target="_blank">聽起來像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/O0g8FsR.png" style="width:38vw;" /> -->
-  <img src="6.png" style="width:38vw;" />
-  <figcaption>Vibrato 抖音效果器</figcaption>
-</figure>
-
-<h3 id="Wha-wha-娃娃效果器"><a href="#Wha-wha-娃娃效果器" class="headerlink" title="Wha-wha 娃娃效果器"></a>Wha-wha 娃娃效果器</h3><p>細節頗複雜就不解釋了，其原理跟頻率有關。那為什麼叫娃娃效果器呢？<a href="https://youtu.be/7F14-C7rrmg?t=123" target="_blank">聽聽看就知道了</a>xD</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/n7iksIE.png" style="width:38vw;" /> -->
-  <img src="7.png" style="width:38vw;" />
-  <figcaption>Wha-wha 娃娃效果器</figcaption>
-</figure>
-
-<h3 id="Delay-延遲效果器"><a href="#Delay-延遲效果器" class="headerlink" title="Delay 延遲效果器"></a>Delay 延遲效果器</h3><p>上面的 slider 控制聲音衰減的快慢（這就是為什麼要乘上一個介於 0 到 1 之間不包含 1 的值），下面的 slider 則是控制多久重複一次（不過每重複一次，聲音會越來越小聲），<a href="https://youtu.be/7F14-C7rrmg?t=169" target="_blank">讓我們來聽聽看它的效果吧</a>！</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/922G06G.png" style="width:38vw;" /> -->
-  <img src="8.png" style="width:38vw;" />
-  <figcaption>Delay 延遲效果器</figcaption>
-</figure>
-
-<h3 id="Reverb-殘響效果器"><a href="#Reverb-殘響效果器" class="headerlink" title="Reverb 殘響效果器"></a>Reverb 殘響效果器</h3><p>一種營造空間感的效果器。我們直接拿 Pure Data 內建的 <code>freeverb~</code> 來用，<a href="https://youtu.be/7F14-C7rrmg?t=210" target="_blank">聽起來像這樣</a>。</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/7Sjp3w0.png" style="width:38vw;" /> -->
-  <img src="9.png" style="width:38vw;" />
-  <figcaption>Reverb 殘響效果器</figcaption>
-</figure>
-
-<h3 id="Chorus-合聲效果器"><a href="#Chorus-合聲效果器" class="headerlink" title="Chorus 合聲效果器"></a>Chorus 合聲效果器</h3><p>製造一個和原來聲音有微小時間差和頻率差的聲音，然後再同時放。<br>就像是一群人在合唱的時候，即使是唱同個旋律，也會因為進來的時間點有微小的差異、各自的不同音準，而形成一種亂中有序的感覺。<a href="https://youtu.be/7F14-C7rrmg?t=357" target="_blank">聽聽看吧</a>！</p>
-<figure>
-  <!-- <img src="https://i.imgur.com/rmj9qr6.png" style="width:38vw;" /> -->
-  <img src="10.png" style="width:38vw;" />
-  <figcaption>Chorus 合聲效果器</figcaption>
-</figure>
-
-<hr>
-<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><p><a href="https://guitarextended.wordpress.com/audio-effects-for-guitar-with-pure-data/" target="_blank">Audio effects for guitar with Pure Data</a></p>
-<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>前面其實已經講得差不多了，就用三個字來描述吧：「真有趣！」<br>能創造出一個可以用五官感受的東西真的超有成就感的，很享受那個過程 🏝</p>
-<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
-]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>音訊處理</tag>
-        <tag>吉他</tag>
-        <tag>效果器</tag>
-        <tag>Pure Data</tag>
-        <tag>課程</tag>
-        <tag>專題</tag>
-      </tags>
   </entry>
   <entry>
     <title>駕訓班裡的點點滴滴</title>
@@ -677,42 +677,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【職涯路上】73~64</title>
-    <url>/2022/04/freshman-career-73-64/</url>
-    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
-<span id="more"></span>
-
-<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
-<ul>
-<li>(3/31) 完成和聲學作業六</li>
-<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
-<li>我後面一律簡稱 AWSCP</li>
-</ul>
-</li>
-<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
-<li>結果我還是沒開始碰 Laravel 😅</li>
-</ul>
-</li>
-<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
-<li>但最後也沒照那個計畫走</li>
-</ul>
-</li>
-<li>(4/2) 完成 AWSCP 前置任務<ul>
-<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
-</ul>
-</li>
-<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
-<li>(4/5~4/9) 準備奧丁丁面試<ul>
-<li>覺得自己好像都在原地踏步😢</li>
-</ul>
-</li>
-<li>(4/7) 完成圖形識別 Homework 2</li>
-</ul>
-<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
-<p>加加油吧！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】63~0，Commencement</title>
     <url>/2022/06/freshman-career-63-0/</url>
     <content><![CDATA[<p>時間過得真是快啊！轉眼間，來到了這系列文的最終章。</p>
@@ -810,6 +774,42 @@
 <hr>
 <h2 id="繼續前進"><a href="#繼續前進" class="headerlink" title="繼續前進"></a>繼續前進</h2><p>探索自我的職涯之路，不會因為系列文完結而結束！</p>
 <p>文章也會繼續寫，不然久久沒寫，都不知道該怎麼寫了 😂</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】73~64</title>
+    <url>/2022/04/freshman-career-73-64/</url>
+    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
+<span id="more"></span>
+
+<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
+<ul>
+<li>(3/31) 完成和聲學作業六</li>
+<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
+<li>我後面一律簡稱 AWSCP</li>
+</ul>
+</li>
+<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
+<li>結果我還是沒開始碰 Laravel 😅</li>
+</ul>
+</li>
+<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
+<li>但最後也沒照那個計畫走</li>
+</ul>
+</li>
+<li>(4/2) 完成 AWSCP 前置任務<ul>
+<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
+</ul>
+</li>
+<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
+<li>(4/5~4/9) 準備奧丁丁面試<ul>
+<li>覺得自己好像都在原地踏步😢</li>
+</ul>
+</li>
+<li>(4/7) 完成圖形識別 Homework 2</li>
+</ul>
+<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
+<p>加加油吧！</p>
 ]]></content>
   </entry>
   <entry>
@@ -2093,6 +2093,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
     <url>/2021/10/logic-pro-plug-in-compatibility/</url>
     <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
@@ -2110,13 +2117,6 @@
       <tags>
         <tag>Logic Pro</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
   </entry>
   <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
@@ -2506,6 +2506,57 @@
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
+    <title>用 Python 操作 Android 手機</title>
+    <url>/2021/07/python-android-phone/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
+<span id="more"></span>
+
+<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
+<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
+<p><img src="1.png"></p>
+<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
+<hr>
+<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
+<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
+<hr>
+<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
+<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
+<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
+<hr>
+<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
+<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
+<hr>
+<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
+<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
+<p><img src="2.gif"></p>
+<p>拍賣的畫面更有感！</p>
+<p><img src="3.gif"></p>
+<p>酷斃了 😎</p>
+<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Android</tag>
+        <tag>小工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>當 Python 遇上了 LINE Blockchain</title>
     <url>/2021/07/python-line-blockchain/</url>
     <content><![CDATA[<p><a href="/2021/07/python-line-blockchain"><img src="https://images.unsplash.com/photo-1561451213-d5c9f0951fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" style="width:50vw;" /></a></p>
@@ -2568,57 +2619,6 @@
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Blockchain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 Python 操作 Android 手機</title>
-    <url>/2021/07/python-android-phone/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
-<span id="more"></span>
-
-<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
-<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
-<p><img src="1.png"></p>
-<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
-<hr>
-<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
-<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
-<hr>
-<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
-<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
-<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
-<hr>
-<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
-<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
-
-<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
-<hr>
-<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
-<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
-<p><img src="2.gif"></p>
-<p>拍賣的畫面更有感！</p>
-<p><img src="3.gif"></p>
-<p>酷斃了 😎</p>
-<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>Android</tag>
-        <tag>小工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2849,6 +2849,47 @@
 大概是這樣，這學期就好好充實自己吧😎
 <br>
 <br>]]></content>
+  </entry>
+  <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
   </entry>
   <entry>
     <title>停下來思考</title>
@@ -3133,47 +3174,6 @@
 希望這篇文章能對你有幫助，我們下次見囉😀]]></content>
       <tags>
         <tag>閱讀</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
       </tags>
   </entry>
   <entry>
@@ -3609,38 +3609,7 @@ go go!!!]]></content>
 </li>
 </ul>
 <p><code>db-deployment.yaml</code></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">RollingUpdate</span></span><br><span class="line">  <span class="comment"># refers to the pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-db</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">mongo</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">27017</span></span><br><span class="line">        <span class="attr">volumeMounts:</span></span><br><span class="line">				<span class="comment"># 若 mountPath 跟 PersistentVolume 的 path 不一樣</span></span><br><span class="line">				<span class="comment"># pod 會卡在 CrashLoopBackOff 的狀態...</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/mnt/data</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">youbike-helper-db-volume</span></span><br><span class="line">      <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">youbike-helper-db-volume</span></span><br><span class="line">        <span class="attr">persistentVolumeClaim:</span></span><br><span class="line">          <span class="attr">claimName:</span> <span class="string">youbike-helper-db-pv-claim</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：What is a rolling update strategy?<ul>
-<li>The rolling update strategy is <strong>a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime</strong>.</li>
-<li>In this strategy, the Deployment selects a Pod with the old programming, deactivates it, and creates an updated Pod to replace it.</li>
-</ul>
-</li>
-</ul>
-<p>去 command line 跑一下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kubectl apply -f db-deployment.yaml</span><br><span class="line">kubectl get deployments</span><br><span class="line">kubectl get pods -o wide   <span class="comment"># check the state of the pod</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><ul>
-<li><a href="https://qiita.com/dennistanaka/items/78585b6bda374be98aad">參考文</a>：<ul>
-<li>We need a service to make the database available to the backend.</li>
-<li>This makes the database pod accessible only from within the cluster and the connection will target the port 27017 in the pod.</li>
-</ul>
-</li>
-</ul>
-<p><code>db-service.yaml</code></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">    <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">27017</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">27017</span></span><br></pre></td></tr></table></figure>
-
-<p>去 command line 跑一下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kubectl apply -f db-service.yaml</span><br><span class="line">kubectl get services</span><br></pre></td></tr></table></figure>
-
-<h3 id="各種-port-傻傻分不清楚？"><a href="#各種-port-傻傻分不清楚？" class="headerlink" title="各種 port 傻傻分不清楚？"></a>各種 port 傻傻分不清楚？</h3><ul>
-<li><a href="https://iter01.com/523068.html">k8s 辨析 port、NodePort、targetPort、containerPort 區別</a></li>
-</ul>
-<p><img src="4.png"></p>
-<p>（截圖自「<a href="https://www.youtube.com/watch?v=T4Z7visMM4E">Kubernetes Services explained | ClusterIP vs NodePort vs LoadBalancer vs Headless Service</a>」）</p>
-<h2 id="弄-RabbitMQ"><a href="#弄-RabbitMQ" class="headerlink" title="弄 RabbitMQ"></a>弄 RabbitMQ</h2><h3 id="Deployment-和-Service-可寫在一起"><a href="#Deployment-和-Service-可寫在一起" class="headerlink" title="Deployment 和 Service 可寫在一起"></a>Deployment 和 Service 可寫在一起</h3><p><code>rabbitmq.yaml</code></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Service</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-rabbitmq-service</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">5672</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30001</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq-management</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">15672</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">15672</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">30002</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment">## Deployment</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-rabbitmq-deployment</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">rabbitmq</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rabbitmq</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">rabbitmq:3.9.18-management-alpine</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">5672</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">15672</span></span><br><span class="line">          <span class="attr">resources:</span></span><br><span class="line">            <span class="attr">limits:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">            <span class="attr">requests:</span></span><br><span class="line">              <span class="attr">cpu:</span> <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">          <span class="attr">livenessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">          <span class="attr">readinessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">youbike-helper-db-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">strategy:</span></span><br><span class="line">    <span class="attr">rollingUpdate:</span></span><br><span class="line">      <span class="attr">maxSurge:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">maxUnavailable:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">RollingUpdate</span></span><br><span class="line">  <span class="comment"># refers to the pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">youbike-helper</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="string">500m</span></span><br><span class="line">              <span class="attr">memory:</span> <span class="string">512Mi</span></span><br><span class="line">          <span class="attr">livenessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">          <span class="attr">readinessProbe:</span></span><br><span class="line">            <span class="attr">initialDelaySeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">            <span class="attr">timeoutSeconds:</span> <span class="number">5</span></span><br><span class="line">            <span class="attr">successThreshold:</span> <span class="number">1</span></span><br><span class="line">            <span class="attr">failureThreshold:</span> <span class="number">3</span></span><br><span class="line">            <span class="attr">tcpSocket:</span></span><br><span class="line">              <span class="attr">port:</span> <span class="number">5672</span></span><br></pre></td></tr></table></figure>
 
 <p>去 command line 跑一下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kubectl apply -f rabbitmq.yaml   <span class="comment"># create</span></span><br><span class="line">kubectl get deployment           <span class="comment"># check deployment</span></span><br><span class="line">kubectl get service              <span class="comment"># check service</span></span><br><span class="line"><span class="comment"># kubectl get &lt;單數複數好像都可以&gt;</span></span><br></pre></td></tr></table></figure>
@@ -3747,5 +3716,104 @@ go go!!!]]></content>
 <h3 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h3><p>參考文有放「<strong><strong>Kubernetes Dashboard</strong></strong>」的操作教學，這邊就不贅述了～</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】91~90，越挫越勇！</title>
+    <url>/2022/03/freshman-career-91-90/</url>
+    <content><![CDATA[<p>這兩天花了 8 小時 55 分鐘又 48 秒的「專注時間」在弄電腦動畫與特效的作業，有點心得！</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>因為這個作業的關係，我預期我這兩天應該「沒辦法」弄 side project 或是其他跟職涯有關的事情，果真，在正式開始寫作業 code 之前，我就花了非常多時間在「讓我的 mac 能順利跑起來作業程式」這件事情上⋯⋯</p>
+<p>原本以為只需要煩惱怎麼寫 code 而已，還真沒想到說還得處理寫 code 之前的「讓程式跑起來」，加上又很難分點心思在職涯方面，覺得自己怎麼又沒新進度，那整個過程實在是非常挫折和煎熬。</p>
+<p>然而，現在回頭來看 (雖然也才最近而已xD)，我覺得這個挑戰還挺不錯的，讓我有了一點體悟，或許，這份體悟也能夠對我的職涯路上有所幫助呢！</p>
+<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>之前助教就有說過用 mac 寫作業會很麻煩，所以我就決定去系上的電腦教室寫作業。</p>
+<p>我們作業有討論區，開始寫之前，好奇點開來看，咦，有人發問「<strong>Mac版本不支援此專案類型</strong>」欸！</p>
+<p>根據裡面的討論，加上那位同學後來也沒繼續追問下去，應該是解決了，感覺 mac 好像只要照 <code>README.md</code> 裡面的指令打一打就可以用 <code>cmake</code> 來 build 了🤔</p>
+<p>於是乎，我跟著打指令，沒想到⋯⋯</p>
+<p><img src="1.png"></p>
+<p>噴出了錯誤，而且上面居然寫 <code>introduced in macOS 10.15</code>！</p>
+<p>完蛋，我 macOS 的版本是 10.14.6，但我不想更新啊😂</p>
+<p>因此，我就鼓起勇氣 (怕被笑這什麼笨問題的心理作祟)，在討論區發問「<strong>macOS 10.15 以下(不含) 的版本是否真的得更新作業系統才能做作業</strong>」，問助教難道只能更新而不能靠其他方法解決嗎？</p>
+<p>真希望助教能給出直接明確又能順利解決的解方啊！（錯誤的心理xD）</p>
+<h2 id="似乎有點希望"><a href="#似乎有點希望" class="headerlink" title="似乎有點希望"></a>似乎有點希望</h2><p>助教回覆說，因為 <code>filesystem</code> 是 C++17 的東西，可能是編譯器沒支援。</p>
+<p>建議我可以在 cmake 的指令後方加上<br><code>-DCMAKE_C_COMPILER=YOUR_GCC_PATH -DCMAKE_CXX_COMPILER=YOUR_G++_PATH</code><br>「<strong>或是去改一下找 file path 的 code 也可以</strong>」。</p>
+<p>人生真的是不斷在做選擇，有些 maybe 比較好，有些 maybe 比較差，而這次我選擇忽略後者嘗試前者。</p>
+<p>從現在的視角來看，二擇一的岔路，我選擇了崎嶇的那一條。（但或許更有收穫也說不定）</p>
+<p>後來我指令改成<br><code>cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ --build build --config Release --parallel 8</code><br>在輸入到終端機前，我內心想：「這一插曲終於能夠落幕了⋯⋯」</p>
+<p><img src="2.png"></p>
+<p>嗯嗯很好，看起來 C 和 CXX 編譯器的確都改了！<br>於是又再下下一個指令。</p>
+<p><img src="3.png"></p>
+<p>哭啊，還是一樣的錯誤⋯⋯ 明明編譯器已經改了啊？</p>
+<p>於是我決定再繼續追問下去！甚至還多問「去改一下找 file path 的 code」這個部分，想說多了解，或許也是一條不錯的路🤔</p>
+<h2 id="助教高明"><a href="#助教高明" class="headerlink" title="助教高明"></a>助教高明</h2><p>真不愧是助教，看到我的截圖 (上上一張)，立馬點出了問題！</p>
+<p>他說：「你還是用Xcode (AppleClang) 阿，看看最上面第一行和第二行的compiler ID。」</p>
+<p>我居然沒注意到，可見在程式開發上，有些 message 或 log 不要漏看會比較好。</p>
+<p>然後建議我：「MacOS 上的/usr/bin/gcc 預設是指到 Xcode 的 AppleClang。所以假設你是用 gcc 11 你要找找看 gcc-11 在哪裡而不是用 gcc。」</p>
+<p>（中間過程真的百般曲折就不贅述了）</p>
+<p>後來 <code>brew install gcc@11</code> 裝相關工具，然後找到了 <code>gcc-11</code>、<code>g++-11</code> 分別在哪，又找到了<a href="https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER.html">這篇</a>說可以加上參數，最後，我的指令變成這樣：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=<span class="string">&#x27;/usr/local/bin/gcc-11&#x27;</span> -DCMAKE_CXX_COMPILER=<span class="string">&quot;/usr/local/bin/g++-11;-std=c++17&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="4.png"></p>
+<p>看起來好像有設定到 C++17 (?)</p>
+<p>然後再下 <code>cmake --build build --config Release --parallel 8</code> 居然冒出了新的錯誤⋯⋯</p>
+<p><img src="5.png"></p>
+<p>我就在討論區跟助教說：「可能是沒設定好 include library 之類的關係，但我可能就先停在這邊了，謝謝助教的提示！」</p>
+<p>不行，我已經花非常多時間在這上頭了，如果今天作業沒 deadline、我沒其他事要做，那繼續研究還 OK，但情況不是這樣啊xD</p>
+<p><strong>有時候，選擇放棄，換走另外一條路，也是不錯的選擇！</strong></p>
+<h2 id="另闢蹊徑"><a href="#另闢蹊徑" class="headerlink" title="另闢蹊徑"></a>另闢蹊徑</h2><p>我決定嘗試「或是去改一下找 file path 的 code 也可以」的方法了！</p>
+<p>問了助教：「剛剛 trace 了一下 code，是不是只有 <code>findPath()</code> 這個 function 會用到 filesystem 的東西呢？如果直接把 assets 的路徑寫死是不是就能解決了呢？」</p>
+<p>助教回覆：「是的，不過最好加上個你自己的 define guard」</p>
+<p>雖然現在看來輕鬆，但當時依舊忐忑不安，連最重要作業的 code 都還沒開始動工，而我卻還在弄這些五四三？</p>
+<p>我當時害怕極了。</p>
+<p>（嘗試中）</p>
+<p>哇嗚，令我驚訝的是，我居然只花了 16 分 19 秒就搞定了，怎麼跟前面的方法差那麼多啊😂</p>
+<p><img src="6.png"></p>
+<p>Built 成功！</p>
+<p><img src="7.png"></p>
+<p>看到畫面上出現球球和布料，豪感動啊啊啊～</p>
+<h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><p>受到討論區和助教的 carry，怎能不回饋呢？</p>
+<p>雖然可能沒有人像我一樣用比較舊的 mac 寫作業，但我還是 share 了我做了哪些改動來讓程式能順利跑起來：</p>
+<blockquote>
+<p><code>main.cpp</code></p>
+<ul>
+<li>第 78 行的「 findPath(“sphere.vert”) 」改成「 “/path/to/sphere.vert” 」</li>
+<li>第 79、91、92 行也一樣</li>
+</ul>
+<p><code>utils.h</code></p>
+<ul>
+<li>註解掉第 2、57 行（分別是 <em>filesystem</em> 標頭檔、findPath 函式）</li>
+</ul>
+<p><code>utils.cpp</code></p>
+<ul>
+<li>註解掉第 8~22、67～70 行（findAssetPath、findPath）</li>
+</ul>
+<p><code>shader.h</code></p>
+<ul>
+<li>第 18 行的「 std::filesystem::path 」改成「 std::string 」</li>
+</ul>
+<p><code>shader.cpp</code></p>
+<ul>
+<li>第 6 行的「 std::filesystem::path 」改成「 std::string 」</li>
+<li>註解掉第 8~16 行</li>
+<li>第 43 行的「 std::filesystem::path 」改成「 std::string 」</li>
+</ul>
+<p>改完之後再下最一開始「乾淨」的指令：<br><code>cmake -S . -B build -D CMAKE_BUILD_TYPE=Release</code><br><code>cmake --build build --config Release --parallel 8</code><br>就可以了！</p>
+</blockquote>
+<p>非常謝謝助教的幫忙！</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>解決在 mac 上面跑程式的問題以後，就開始寫作業 code！</p>
+<p>對了，和弄作業的第一天相比，第二天的焦慮感淡了不少，我想，應該是因為我有做到下面那張圖闡述的哲理吧？</p>
+<p><img src="8.png"></p>
+<p>我每次做困難任務的時候，都會幫自己計時，一方面是想讓自己有「進度在前進」的感覺，一方面可以在回顧當天的時候知道自己都做了些什麼，而不是「明明有做事情卻覺得自己都在瞎忙」。</p>
+<p>第一天，我完全是用「電腦動畫與特效 HW1」的名義來行動，什麼意思？看第二天就會懂了。</p>
+<p>第二天，我不是單純「電腦動畫與特效 HW1」，而是細分成：</p>
+<blockquote>
+<p>雜項、trace code、再嘗試用 mac 跑跑看、最後回報給助教決定不再追根究底了、<br>試著寫死路徑跑跑看、剛剛的過程整理成小筆記並回報到討論區、<br><code>void Cloth::initializeSpring()</code>、<code>void Cloth::computeSpringForce()</code></p>
+</blockquote>
+<p>宣告完當下要做哪個細項以後，再開始計時行動。</p>
+<p>我覺得這麼做讓我內心輕鬆了不少，我想，是因為這讓我更加明確當下的自己在做什麼吧？而不是整坨糊在一起的雜亂無章感！</p>
+<p>或許，之後遇到任何困難事，也可以嘗試這樣去 approach，不要因為它「充滿未知數」而感到懼怕～</p>
+<br>
+雖然多花了不少時間，但路是不會白走的！<br>
+相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
   </entry>
 </search>
