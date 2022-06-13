@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2022 端午節立蛋</title>
-    <url>/2022/06/2022-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節不立蛋嗎？</p>
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
-<p><img src="1.jpg"></p>
-<br>
-今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
-  </entry>
-  <entry>
     <title>【心得】2022 Yourator 數位職涯博覽會</title>
     <url>/2022/03/2022-yourator-career-fair/</url>
     <content><![CDATA[<p>簡單分享昨天參加職涯博覽會的收穫～</p>
@@ -54,64 +43,15 @@
 加油，在精進自我的路上，你，並不孤單！]]></content>
   </entry>
   <entry>
-    <title>用 Algorithmia 部署 ML Models</title>
-    <url>/2021/07/algorithmia-ml-models/</url>
-    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+    <title>2022 端午節立蛋</title>
+    <url>/2022/06/2022-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節不立蛋嗎？</p>
 <span id="more"></span>
 
-<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
-<hr>
-<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
-<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
-<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
-<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
-<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
-<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
-<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
-<hr>
-<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
-<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
-<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
-<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
-<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
-<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
-<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
-<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
-<p>像我原本以為是這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<p>後來才知道應該要這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
-<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
-
-<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
-<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
-<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
-<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
-
-<p>就是這麼簡單 😎</p>
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
+<p><img src="1.jpg"></p>
 <br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>Machine Learning</tag>
-        <tag>Deploy</tag>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>交大</tag>
-        <tag>教學</tag>
-      </tags>
+今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
@@ -236,77 +176,74 @@
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
 ]]></content>
       <tags>
-        <tag>交大</tag>
         <tag>音訊處理</tag>
         <tag>吉他</tag>
         <tag>效果器</tag>
         <tag>Pure Data</tag>
+        <tag>交大</tag>
         <tag>課程</tag>
         <tag>專題</tag>
       </tags>
   </entry>
   <entry>
-    <title>決定改部落格文章 Views 的計算方式</title>
-    <url>/2022/06/change-views-count/</url>
-    <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
+    <title>用 Algorithmia 部署 ML Models</title>
+    <url>/2021/07/algorithmia-ml-models/</url>
+    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
 <span id="more"></span>
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">之前自己寫的</a>，原本 Views 是用 localStorage 來看說這個訪客有沒有造訪過某篇文章：<br>如果沒有的話，Views 就加一，並用 localStorage 來記錄說他造訪過了；<br>如果有的話，也就是 localStorage 有記錄，Views 就不會變動。</p>
-<p>但這樣挺無趣的，每進去一次，就應該要加一才對，所以我決定來修改一下它的計算方式！</p>
-<h2 id="記錄一下"><a href="#記錄一下" class="headerlink" title="記錄一下"></a>記錄一下</h2><p>因為之前所有文章的 Views 即將歸零重新計算了，想說在這邊記錄一下，留個念：</p>
-<ol>
-<li>（2021-07-12） <strong><a href="https://kanido386.github.io/2021/07/hackathon-line-hint/">黑客松 LINE Bot 賽前補帖</a></strong> （161）</li>
-<li>（2021-07-16） <strong><a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a></strong> （114）</li>
-<li>（2021-07-10） <strong><a href="https://kanido386.github.io/2021/07/fsm-line-bot/">用 FSM 及 LINE Messaging API 做一個聊天機器人</a></strong> （113）</li>
-<li>（2021-01-13） <strong><a href="https://kanido386.github.io/2021/01/microprocessor-project/">用 STM32 開發板做一台類似投籃機的遊戲機台</a></strong> （58）</li>
-<li>（2021-01-06） <strong><a href="https://kanido386.github.io/2021/01/asp-final-project/">用 Pure Data 打造吉他效果器</a></strong> （56）</li>
-<li>（2020-09-05） <strong><a href="https://kanido386.github.io/2020/09/summer-project/">用一點樂理和音訊處理技術做簡單的音色轉換</a></strong> （47）</li>
-<li>（2021-06-10） <strong><a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/">用 Hexo 及 GitHub Pages 打造部落格</a></strong> （45）</li>
-<li>（2020-04-27） <strong><a href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">JavaScript ES6 Cheatsheet</a>（</strong>42<strong>）</strong></li>
-<li>（2021-07-06） <strong><a href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">用 Algorithmia 部署 ML Models</a></strong> （34）</li>
-<li>（2021-07-08） <strong><a href="https://kanido386.github.io/2021/07/python-line-blockchain/">當 Python 遇上了 LINE Blockchain</a></strong> （33）</li>
-<li>（2021-07-04） <strong><a href="https://kanido386.github.io/2021/07/python-android-phone/">用 Python 操作 Android 手機</a></strong> （25）</li>
-<li>（2021-06-13） <strong><a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a></strong> （24）</li>
-<li>（2022-01-09） <strong><a href="https://kanido386.github.io/2022/01/spotify-side-project-plan/">做 Spotify 相關的 side project</a></strong> （19）</li>
-<li>（2021-09-26） <strong><a href="https://kanido386.github.io/2021/09/just-do-it/">不完美行動</a></strong> （19）</li>
-<li>（2021-06-14） <strong><a href="https://kanido386.github.io/2021/06/dragon-boat-festival/">端午節立蛋</a></strong> （19）</li>
-<li>（2022-03-25） <strong><a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">【心得】LINE Developers Meetup #16</a></strong> （18）</li>
-<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/freshman-career-73-64/">【職涯路上】73~64</a></strong> （15）</li>
-<li>（2021-10-01） <strong><a href="https://kanido386.github.io/2021/10/senior-first/">即將展開的大四上</a></strong> （13）</li>
-<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/">【心得】2022 Yourator 數位職涯博覽會</a></strong> （11）</li>
-<li>（2022-03-12） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-92/">【職涯路上】92，交大就業博覽會</a></strong> （11）</li>
-<li>（2021-11-14） <strong><a href="https://kanido386.github.io/2021/11/next-10000-hours/">【閱讀筆記】下個10000小時，你打算怎樣過？</a></strong> （11）</li>
-<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a></strong> （10）</li>
-<li>（2022-03-30） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-76-74/">【職涯路上】76~74</a></strong> （10）</li>
-<li>（2022-05-25） <strong><a href="https://kanido386.github.io/2022/05/nosql-introduction/">【技術筆記】NoSQL、Data Replica、Sharding</a></strong> （9）</li>
-<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-84-77/">【職涯路上】84~77</a></strong> （8）</li>
-<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/driving-school/">駕訓班裡的點點滴滴</a></strong> （8）</li>
-<li>（2022-04-27） <strong><a href="https://kanido386.github.io/2022/04/ssl-for-free/">用 SSL For Free 免費申請 SSL 憑證</a></strong> （7）</li>
-<li>（2020-05-16） <strong><a href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">Moleculer CRUD Guide</a></strong> （7）</li>
-<li>（2022-06-03） <strong><a href="https://kanido386.github.io/2022/06/2022-dragon-boat-festival/">2022 端午節立蛋</a></strong> （6）</li>
-<li>（2021-12-19） <strong><a href="https://kanido386.github.io/2021/12/soft-skills/">停下來思考</a></strong> （6）</li>
-<li>（2022-03-14） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-91-90/">【職涯路上】91~90，越挫越勇！</a></strong> （5）</li>
-<li>（2022-03-07） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-100-97/">【職涯路上】100~97，開始行動！</a></strong> （5）</li>
-<li>（2022-01-28） <strong><a href="https://kanido386.github.io/2022/01/help-you-take-action/">助你行動</a></strong> （5）</li>
-<li>（2022-06-05） <strong><a href="https://kanido386.github.io/2022/06/youbike-helper/">用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</a></strong> （4）</li>
-<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-96-93/">【職涯路上】96~93，自我懷疑⋯⋯</a></strong> （4）</li>
-<li>（2021-12-11） <strong><a href="https://kanido386.github.io/2021/12/synth-one-with-logic-pro/">免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</a></strong> （4）</li>
-<li>（2022-03-18） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-89-86/">【職涯路上】89~86，再廢也不要停止反思</a></strong> （3）</li>
-<li>（2021-12-15） <strong><a href="https://kanido386.github.io/2021/12/rest-is-important/">【閱讀筆記】一流的人如何保持巔峰</a></strong> （3）</li>
-<li>（2021-12-12） <strong><a href="https://kanido386.github.io/2021/12/live-in-the-moment/">專注當下</a></strong> （3）</li>
-<li>（2022-06-12） <strong><a href="https://kanido386.github.io/2022/06/freshman-career-63-0/">【職涯路上】63~0，Commencement</a></strong> （2）</li>
-<li>（2022-03-19） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-85/">【職涯路上】85，不想徒具形式</a></strong> （2）</li>
-<li>（2021-10-07） <strong><a href="https://kanido386.github.io/2021/10/logic-pro-plug-in-compatibility/">如何解決 Logic Pro Plug-In Compatibility 的問題</a></strong> （2）</li>
-</ol>
-<h2 id="來改吧"><a href="#來改吧" class="headerlink" title="來改吧"></a>來改吧</h2><ol>
-<li>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">我之前寫的</a>，去 Firestore Database → 規則，來編輯規則： <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">service cloud.firestore &#123;</span><br><span class="line">  match /databases/&#123;database&#125;/documents &#123;</span><br><span class="line">    match /articles/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 新規則</span></span><br><span class="line">    match /views/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
- 編輯完以後，記得按「發布」</li>
-<li>到 theme 的 config 檔 <code>/themes/next/_config.yml</code>，修改關於 firestore 的設置： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># collection: articles</span></span><br><span class="line">  <span class="attr">collection:</span> <span class="string">views</span> <span class="comment"># Required, a string collection name to access firestore database</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&lt;網路</span> <span class="string">API</span> <span class="string">金鑰&gt;</span></span><br><span class="line">  <span class="attr">projectId:</span> <span class="string">&lt;專案</span> <span class="string">ID&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>去到 <code>/themes/next/layout/_third-party/statistics/firestore.swig</code> 修改計算方式： <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 其實就是註解掉第 51~56 行</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">localStorage</span>.getItem(title)) &#123;</span><br><span class="line">  increaseCount = <span class="literal">false</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// Mark as visited</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(title, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
+
+<p>就是這麼簡單 😎</p>
 <br>
-這樣就改好囉，就是這麼簡單😎]]></content>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>Machine Learning</tag>
+        <tag>Deploy</tag>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>教學</tag>
+      </tags>
   </entry>
   <entry>
     <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
@@ -428,6 +365,69 @@
         <tag>LINE</tag>
         <tag>Bot</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>決定改部落格文章 Views 的計算方式</title>
+    <url>/2022/06/change-views-count/</url>
+    <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">之前自己寫的</a>，原本 Views 是用 localStorage 來看說這個訪客有沒有造訪過某篇文章：<br>如果沒有的話，Views 就加一，並用 localStorage 來記錄說他造訪過了；<br>如果有的話，也就是 localStorage 有記錄，Views 就不會變動。</p>
+<p>但這樣挺無趣的，每進去一次，就應該要加一才對，所以我決定來修改一下它的計算方式！</p>
+<h2 id="記錄一下"><a href="#記錄一下" class="headerlink" title="記錄一下"></a>記錄一下</h2><p>因為之前所有文章的 Views 即將歸零重新計算了，想說在這邊記錄一下，留個念：</p>
+<ol>
+<li>（2021-07-12） <strong><a href="https://kanido386.github.io/2021/07/hackathon-line-hint/">黑客松 LINE Bot 賽前補帖</a></strong> （161）</li>
+<li>（2021-07-16） <strong><a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a></strong> （114）</li>
+<li>（2021-07-10） <strong><a href="https://kanido386.github.io/2021/07/fsm-line-bot/">用 FSM 及 LINE Messaging API 做一個聊天機器人</a></strong> （113）</li>
+<li>（2021-01-13） <strong><a href="https://kanido386.github.io/2021/01/microprocessor-project/">用 STM32 開發板做一台類似投籃機的遊戲機台</a></strong> （58）</li>
+<li>（2021-01-06） <strong><a href="https://kanido386.github.io/2021/01/asp-final-project/">用 Pure Data 打造吉他效果器</a></strong> （56）</li>
+<li>（2020-09-05） <strong><a href="https://kanido386.github.io/2020/09/summer-project/">用一點樂理和音訊處理技術做簡單的音色轉換</a></strong> （47）</li>
+<li>（2021-06-10） <strong><a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/">用 Hexo 及 GitHub Pages 打造部落格</a></strong> （45）</li>
+<li>（2020-04-27） <strong><a href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">JavaScript ES6 Cheatsheet</a>（</strong>42<strong>）</strong></li>
+<li>（2021-07-06） <strong><a href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">用 Algorithmia 部署 ML Models</a></strong> （34）</li>
+<li>（2021-07-08） <strong><a href="https://kanido386.github.io/2021/07/python-line-blockchain/">當 Python 遇上了 LINE Blockchain</a></strong> （33）</li>
+<li>（2021-07-04） <strong><a href="https://kanido386.github.io/2021/07/python-android-phone/">用 Python 操作 Android 手機</a></strong> （25）</li>
+<li>（2021-06-13） <strong><a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a></strong> （24）</li>
+<li>（2022-01-09） <strong><a href="https://kanido386.github.io/2022/01/spotify-side-project-plan/">做 Spotify 相關的 side project</a></strong> （19）</li>
+<li>（2021-09-26） <strong><a href="https://kanido386.github.io/2021/09/just-do-it/">不完美行動</a></strong> （19）</li>
+<li>（2021-06-14） <strong><a href="https://kanido386.github.io/2021/06/dragon-boat-festival/">端午節立蛋</a></strong> （19）</li>
+<li>（2022-03-25） <strong><a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">【心得】LINE Developers Meetup #16</a></strong> （18）</li>
+<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/freshman-career-73-64/">【職涯路上】73~64</a></strong> （15）</li>
+<li>（2021-10-01） <strong><a href="https://kanido386.github.io/2021/10/senior-first/">即將展開的大四上</a></strong> （13）</li>
+<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/">【心得】2022 Yourator 數位職涯博覽會</a></strong> （11）</li>
+<li>（2022-03-12） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-92/">【職涯路上】92，交大就業博覽會</a></strong> （11）</li>
+<li>（2021-11-14） <strong><a href="https://kanido386.github.io/2021/11/next-10000-hours/">【閱讀筆記】下個10000小時，你打算怎樣過？</a></strong> （11）</li>
+<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a></strong> （10）</li>
+<li>（2022-03-30） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-76-74/">【職涯路上】76~74</a></strong> （10）</li>
+<li>（2022-05-25） <strong><a href="https://kanido386.github.io/2022/05/nosql-introduction/">【技術筆記】NoSQL、Data Replica、Sharding</a></strong> （9）</li>
+<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-84-77/">【職涯路上】84~77</a></strong> （8）</li>
+<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/driving-school/">駕訓班裡的點點滴滴</a></strong> （8）</li>
+<li>（2022-04-27） <strong><a href="https://kanido386.github.io/2022/04/ssl-for-free/">用 SSL For Free 免費申請 SSL 憑證</a></strong> （7）</li>
+<li>（2020-05-16） <strong><a href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">Moleculer CRUD Guide</a></strong> （7）</li>
+<li>（2022-06-03） <strong><a href="https://kanido386.github.io/2022/06/2022-dragon-boat-festival/">2022 端午節立蛋</a></strong> （6）</li>
+<li>（2021-12-19） <strong><a href="https://kanido386.github.io/2021/12/soft-skills/">停下來思考</a></strong> （6）</li>
+<li>（2022-03-14） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-91-90/">【職涯路上】91~90，越挫越勇！</a></strong> （5）</li>
+<li>（2022-03-07） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-100-97/">【職涯路上】100~97，開始行動！</a></strong> （5）</li>
+<li>（2022-01-28） <strong><a href="https://kanido386.github.io/2022/01/help-you-take-action/">助你行動</a></strong> （5）</li>
+<li>（2022-06-05） <strong><a href="https://kanido386.github.io/2022/06/youbike-helper/">用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</a></strong> （4）</li>
+<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-96-93/">【職涯路上】96~93，自我懷疑⋯⋯</a></strong> （4）</li>
+<li>（2021-12-11） <strong><a href="https://kanido386.github.io/2021/12/synth-one-with-logic-pro/">免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</a></strong> （4）</li>
+<li>（2022-03-18） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-89-86/">【職涯路上】89~86，再廢也不要停止反思</a></strong> （3）</li>
+<li>（2021-12-15） <strong><a href="https://kanido386.github.io/2021/12/rest-is-important/">【閱讀筆記】一流的人如何保持巔峰</a></strong> （3）</li>
+<li>（2021-12-12） <strong><a href="https://kanido386.github.io/2021/12/live-in-the-moment/">專注當下</a></strong> （3）</li>
+<li>（2022-06-12） <strong><a href="https://kanido386.github.io/2022/06/freshman-career-63-0/">【職涯路上】63~0，Commencement</a></strong> （2）</li>
+<li>（2022-03-19） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-85/">【職涯路上】85，不想徒具形式</a></strong> （2）</li>
+<li>（2021-10-07） <strong><a href="https://kanido386.github.io/2021/10/logic-pro-plug-in-compatibility/">如何解決 Logic Pro Plug-In Compatibility 的問題</a></strong> （2）</li>
+</ol>
+<h2 id="來改吧"><a href="#來改吧" class="headerlink" title="來改吧"></a>來改吧</h2><ol>
+<li>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">我之前寫的</a>，去 Firestore Database → 規則，來編輯規則： <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">service cloud.firestore &#123;</span><br><span class="line">  match /databases/&#123;database&#125;/documents &#123;</span><br><span class="line">    match /articles/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 新規則</span></span><br><span class="line">    match /views/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 編輯完以後，記得按「發布」</li>
+<li>到 theme 的 config 檔 <code>/themes/next/_config.yml</code>，修改關於 firestore 的設置： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># collection: articles</span></span><br><span class="line">  <span class="attr">collection:</span> <span class="string">views</span> <span class="comment"># Required, a string collection name to access firestore database</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&lt;網路</span> <span class="string">API</span> <span class="string">金鑰&gt;</span></span><br><span class="line">  <span class="attr">projectId:</span> <span class="string">&lt;專案</span> <span class="string">ID&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>去到 <code>/themes/next/layout/_third-party/statistics/firestore.swig</code> 修改計算方式： <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 其實就是註解掉第 51~56 行</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">localStorage</span>.getItem(title)) &#123;</span><br><span class="line">  increaseCount = <span class="literal">false</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// Mark as visited</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(title, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<br>
+這樣就改好囉，就是這麼簡單😎]]></content>
   </entry>
   <entry>
     <title>端午節立蛋</title>
@@ -740,6 +740,93 @@
       </tags>
   </entry>
   <entry>
+    <title>【職涯路上】73~64</title>
+    <url>/2022/04/freshman-career-73-64/</url>
+    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
+<span id="more"></span>
+
+<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
+<ul>
+<li>(3/31) 完成和聲學作業六</li>
+<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
+<li>我後面一律簡稱 AWSCP</li>
+</ul>
+</li>
+<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
+<li>結果我還是沒開始碰 Laravel 😅</li>
+</ul>
+</li>
+<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
+<li>但最後也沒照那個計畫走</li>
+</ul>
+</li>
+<li>(4/2) 完成 AWSCP 前置任務<ul>
+<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
+</ul>
+</li>
+<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
+<li>(4/5~4/9) 準備奧丁丁面試<ul>
+<li>覺得自己好像都在原地踏步😢</li>
+</ul>
+</li>
+<li>(4/7) 完成圖形識別 Homework 2</li>
+</ul>
+<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
+<p>加加油吧！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】84~77</title>
+    <url>/2022/03/freshman-career-84-77/</url>
+    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
+<span id="more"></span>
+
+<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
+<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
+<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
+<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
+<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
+<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
+<p>所以說，路真的不會白走啊！</p>
+<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
+<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
+<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
+<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
+<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
+<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
+<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
+<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
+<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
+<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
+<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
+<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
+<p>就連自己也不知道自己在講什麼。</p>
+<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
+<p>甚至面試官問我最後一題：</p>
+<blockquote>
+<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
+</blockquote>
+<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
+<p>後來想想，我應該要這麼回答：</p>
+<blockquote>
+<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
+</blockquote>
+<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
+<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
+<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
+<p>我那天寫給自己：</p>
+<blockquote>
+<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
+</blockquote>
+<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
+<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
+<p>整體來說挺值得的！</p>
+<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
+<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>【職涯路上】63~0，Commencement</title>
     <url>/2022/06/freshman-career-63-0/</url>
     <content><![CDATA[<p>時間過得真是快啊！轉眼間，來到了這系列文的最終章。</p>
@@ -840,39 +927,12 @@
 ]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】73~64</title>
-    <url>/2022/04/freshman-career-73-64/</url>
-    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
-<span id="more"></span>
-
-<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
-<ul>
-<li>(3/31) 完成和聲學作業六</li>
-<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
-<li>我後面一律簡稱 AWSCP</li>
-</ul>
-</li>
-<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
-<li>結果我還是沒開始碰 Laravel 😅</li>
-</ul>
-</li>
-<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
-<li>但最後也沒照那個計畫走</li>
-</ul>
-</li>
-<li>(4/2) 完成 AWSCP 前置任務<ul>
-<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
-</ul>
-</li>
-<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
-<li>(4/5~4/9) 準備奧丁丁面試<ul>
-<li>覺得自己好像都在原地踏步😢</li>
-</ul>
-</li>
-<li>(4/7) 完成圖形識別 Homework 2</li>
-</ul>
-<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
-<p>加加油吧！</p>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
 ]]></content>
   </entry>
   <entry>
@@ -927,66 +987,6 @@
 <p>晚上遠端幫朋友解決 Windows 上面 Python 環境設定的問題以及一點小教學，才知道有「<a href="https://www.teamviewer.com/tw/">TeamViewer</a>」這麼方便的遠端工具！（也才又找回小時候喜歡教同學的感覺）</p>
 <br>
 職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】84~77</title>
-    <url>/2022/03/freshman-career-84-77/</url>
-    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
-<span id="more"></span>
-
-<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
-<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
-<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
-<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
-<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
-<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
-<p>所以說，路真的不會白走啊！</p>
-<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
-<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
-<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
-<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
-<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
-<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
-<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
-<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
-<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
-<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
-<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
-<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
-<p>就連自己也不知道自己在講什麼。</p>
-<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
-<p>甚至面試官問我最後一題：</p>
-<blockquote>
-<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
-</blockquote>
-<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
-<p>後來想想，我應該要這麼回答：</p>
-<blockquote>
-<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
-</blockquote>
-<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
-<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
-<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
-<p>我那天寫給自己：</p>
-<blockquote>
-<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
-</blockquote>
-<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
-<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
-<p>整體來說挺值得的！</p>
-<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
-<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
-<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
-]]></content>
   </entry>
   <entry>
     <title>【職涯路上】89~86，再廢也不要停止反思</title>
@@ -1390,9 +1390,9 @@
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
+        <tag>交大</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
-        <tag>交大</tag>
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
@@ -1545,9 +1545,9 @@
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
+        <tag>交大</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
-        <tag>交大</tag>
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
@@ -1650,6 +1650,32 @@
 <p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
 <br>
 希望這篇文章能助你一臂之力💪]]></content>
+  </entry>
+  <entry>
+    <title>不完美行動</title>
+    <url>/2021/09/just-do-it/</url>
+    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
+<span id="more"></span>
+<hr>
+<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
+<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
+<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
+<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
+<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
+<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
+<hr>
+<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
+<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
+<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
+<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
+<p>但，不去行動，怎麼會有結果呢？</p>
+<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
+<hr>
+<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
+<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
+<hr>
+<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+]]></content>
   </entry>
   <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
@@ -2023,32 +2049,6 @@
       </tags>
   </entry>
   <entry>
-    <title>不完美行動</title>
-    <url>/2021/09/just-do-it/</url>
-    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
-<span id="more"></span>
-<hr>
-<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
-<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
-<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
-<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
-<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
-<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
-<hr>
-<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
-<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
-<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
-<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
-<p>但，不去行動，怎麼會有結果呢？</p>
-<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
-<hr>
-<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
-<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
-<hr>
-<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
-]]></content>
-  </entry>
-  <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
     <url>/2022/03/line-developers-meetup-16/</url>
     <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
@@ -2156,32 +2156,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
-    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
-    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
-<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
-<span id="more"></span>
-
-<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
-<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
-<p><img src="2.png" alt="2.png"></p>
-<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
-<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
-<p><img src="3.png" alt="3.png"></p>
-<br>
-這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
     <url>/2021/01/microprocessor-project/</url>
     <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
@@ -2238,6 +2212,32 @@
         <tag>STM32</tag>
         <tag>開發板</tag>
         <tag>投籃機</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
+    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
+    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
+<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+<span id="more"></span>
+
+<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
+<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
+<p><img src="2.png" alt="2.png"></p>
+<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
+<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
+<p><img src="3.png" alt="3.png"></p>
+<br>
+這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
       </tags>
   </entry>
   <entry>
@@ -2298,6 +2298,122 @@
       <tags>
         <tag>閱讀</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【技術筆記】NoSQL、Data Replica、Sharding</title>
+    <url>/2022/05/nosql-introduction/</url>
+    <content><![CDATA[<p>上台 Presentation 前做的筆記，在這邊記錄一下～</p>
+<span id="more"></span>
+
+<h1 id="開場"><a href="#開場" class="headerlink" title="開場"></a>開場</h1><p>嗨大家好，我們這組要介紹的呢，是 NoSQL Database 以及 Database Management，主要會是用 MongoDB 這個 NoSQL database 來做介紹。</p>
+<p>待會我會先簡介 NoSQL，接著分享 Data Replica 和 Sharding 的概念，最後會實際 demo 給大家看 NoSQL 的資料與結構，以及，怎麼用 MongoDB 做到 Data Replica。</p>
+<hr>
+<h1 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h1><h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p>什麼是 NoSQL 呢？</p>
+<p>它是一種不需要 schema 的資料庫，也就是不用像 MySQL 一樣，還要預先設計好 table 的欄位和關聯。</p>
+<p>它是以 Key-Value 的方式來儲存資料的，可以把它簡單想像成它就是把資料存成 JSON，裡面存的東西可以是非常自由的。</p>
+<p>然後它除了能垂直擴增，也具有水平擴增這個強項。</p>
+<p>那麼什麼是垂直擴增？什麼是水平擴增呢？</p>
+<h2 id="Scale-vertically-vs-Scale-horizontally"><a href="#Scale-vertically-vs-Scale-horizontally" class="headerlink" title="Scale vertically   vs   Scale horizontally"></a>Scale vertically   vs   Scale horizontally</h2><p><img src="1.png"></p>
+<p>垂直擴增可以把它想成，它就是一間工廠在升級設備和招募新的員工，技術上來說就是提升一台機器的 RAM 和 CPU，但終究會有個上限。</p>
+<p>而水平擴增就像是開分店，也就是開很多台機器來共同支撐起整個任務，同樣也能達到升級的效果，除此之外還有一些好處，後面會在 Data Replica 的地方介紹到。</p>
+<h2 id="對照表"><a href="#對照表" class="headerlink" title="對照表"></a>對照表</h2><p><img src="2.png"></p>
+<p>這是 MySQL 和 MongoDB 的簡單對照。</p>
+<p>MySQL 裡面的 table，類似 MongoDB 的 collection；而 MySQL 裡面的 record，也就是一筆資料，類似 MongoDB 的 document。</p>
+<hr>
+<h1 id="Data-Replica"><a href="#Data-Replica" class="headerlink" title="Data Replica"></a>Data Replica</h1><h2 id="Replica-Sets"><a href="#Replica-Sets" class="headerlink" title="Replica Sets"></a>Replica Sets</h2><p><img src="3.png"></p>
+<p>首先先介紹什麼是 Replica Sets。</p>
+<p>它是由一群 mongod 程序組合而成的，可以把 mongod 程序想成是一台機器，所以 Replica Sets 就是會有一群機器這樣，每個 mongod 程序會 maintain 相同的 data，保持同步。</p>
+<p>那你可能會好奇說，用 Replica Sets 有什麼好處呢？像 MySQL 開一台不就好了？</p>
+<p>因為 Replica Sets 能提供 redundancy，也就是一台壞掉了，還有其他台可以提供資料，這樣能降低遺失資料的風險。</p>
+<p>除此之外，還有 high availability 這個特性，它能排除 single points of failure 的問題，也就是一台壞掉了，整個資料庫的運作就崩潰了，它不會，它能確保整個資料庫的持續運作，一台壞掉了，會有其他台來 cover。</p>
+<p>最後還可以達到 load balancing 的效果，也就是像上圖一樣，write 的話是由 primary node 來負責，而 read 則是由 B 和 C 這兩個 secondary node，可能依照某種方法來分配處理，這麼做就能緩解各 database server 的負擔。</p>
+<h2 id="架構與角色"><a href="#架構與角色" class="headerlink" title="架構與角色"></a>架構與角色</h2><p><img src="4.png"></p>
+<p>整體大概是怎麼運作的呢？</p>
+<p>任何 write 會由 primary node 來處理，並將所有操作記錄在 oplog 的檔案裡面，所以 secondary node 只要重現 oplog 裡面的操作，就能達到複製的效果。</p>
+<p>而上面的右圖是在描述，當 primary node 掛掉的時候，會由所有 secondary node 透過某種方式來選拔，繼而取代原本的，然後升級成 primary node。</p>
+<p>以圖來說明的話，就是 A 掛掉了，由 B 來接管 primary node 的位置，這樣整體就能夠照常運作，不受 A 掛掉而有太大影響。</p>
+<h2 id="oplog-文件"><a href="#oplog-文件" class="headerlink" title="oplog 文件"></a>oplog 文件</h2><p>這邊快速簡介什麼是 oplog 文件。</p>
+<p>它是 MongoDB 實現 replica set 的關鍵資料結構。</p>
+<p>簡單來說，就是 primary node 的操作會記錄在 oplog，secondary node 就能透過 oplog 來更新，確保整個 replica set 的成員有一致的資料。</p>
+<h2 id="讀取操作"><a href="#讀取操作" class="headerlink" title="讀取操作"></a>讀取操作</h2><p>關於 MongoDB 的讀取，是透過 read preference 來設定的，一共會有五種 mode：</p>
+<ol>
+<li><code>primary</code>：這是預設的，也就是如果要從 replica sets 讀取資料，都是透過 primary node 來進行操作</li>
+<li><code>primaryPreferred</code>：也就是大部分情況下都是透過 primary node，若 primary node 發生狀況才從 secondary node 讀取</li>
+<li><code>secondary</code>：全部都是從 secondary node 讀取</li>
+<li><code>secondaryPreferred</code>：其實跟剛剛 primaryPreferred 差不多，只是主要是從 secondary node 來讀取</li>
+<li><code>nearest</code>：這個就沒有分 primary node、secondary node，而是根據一個特定的 latency threshold (由 localThresholdMS、maxStalenessSeconds 等參數計算出來)，隨機從 replica sets member 當中挑一個來讀取</li>
+</ol>
+<hr>
+<h1 id="Sharding"><a href="#Sharding" class="headerlink" title="Sharding"></a>Sharding</h1><p>透過 sharding，可以將資料分散在不同的機器上，提高資料的存取效率，是一種水平擴增的方式。</p>
+<p>然後 shard 這個英文單字其實還蠻少見的，所以看到 sharding 可能會不知道它在幹嘛，其實可以把它看成它就是一種 partition，只是是透過開多台機器，也就是水平擴增的方式來分 part。</p>
+<h2 id="架構與角色-1"><a href="#架構與角色-1" class="headerlink" title="架構與角色"></a>架構與角色</h2><p><img src="5.png"></p>
+<p>整個流程大概是這樣：</p>
+<p>一個 shard 就是一個 replica sets，也就是各自的 shard 會有所謂的 primary node 和 secondary node。</p>
+<p>mongos，是一個提供 client 端存取 shard 的介面。</p>
+<p>而 config server 儲存一些 metadata 和設定檔，像是告訴 mongos 當前的資料該存到哪一個 shard，或是要從哪一個 shard 去要資料，這個運作機制待會會提到。</p>
+<h2 id="Chunk"><a href="#Chunk" class="headerlink" title="Chunk"></a>Chunk</h2><p><img src="6.png"></p>
+<p>chunk 其實就是一堆 document，為了將資料分散儲存，就必須找一個方法來管理，所以 NoSQL 的做法就是將 document 的某一個欄位定義為 shard key，以上圖為例的話，就是 age 年齡。</p>
+<p>至於怎麼去分配呢？可以透過 range-based sharding 或是 hash-based sharding 的方法去做分配！</p>
+<h2 id="Range-Based-Sharding"><a href="#Range-Based-Sharding" class="headerlink" title="Range-Based Sharding"></a>Range-Based Sharding</h2><p>Range-based sharding 就是將 document shard key 欄位的值，透過 range 的範圍進行分配。</p>
+<p>像上圖就是 range-based sharding，看 age 也就是 document shard key 來決定該分配到哪個 chunk。</p>
+<h2 id="Hash-Based-Sharding"><a href="#Hash-Based-Sharding" class="headerlink" title="Hash-Based Sharding"></a>Hash-Based Sharding</h2><p>Hash-based sharding，顧名思義，就是透過一個 hash function，將我們所指定的 shard key 欄位進行雜湊。</p>
+<p>以年齡的例子來舉例的話，如果是「16 歲」就會被 hash 到「青少年」，而「65 歲」就會被 hash 到「老年」。</p>
+<p>透過這樣的方式將資料分散到各個 chunk 當中。</p>
+<h2 id="Balancing"><a href="#Balancing" class="headerlink" title="Balancing"></a>Balancing</h2><p><img src="7.png"></p>
+<p>這邊有個 Balancing 的機制，如果 shard 之間的 chunk total size 差異過大，就會做 migration，也就是 shard 移轉某個 chunk 的責任給另外一個 shard，確保數據分配的平衡，也就是所謂的 load balancing。</p>
+<h1 id="小比較"><a href="#小比較" class="headerlink" title="小比較"></a>小比較</h1><p><img src="8.png"></p>
+<p><a href="https://www.youtube.com/watch?v=gChzfhVGqp8">Setup MongoDB for Production deployment - Replica Sets cluster</a></p>
+<p>好，這是我們理論分享的部分，接著要來 demo 給大家看怎麼用 MongoDB 做 Data Replica～</p>
+<hr>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><p>資料庫總要有個地⽅放資料，所以我們先建資料夾來當作它存放資料的地⽅。</p>
+<p>因為要 demo 有⼀個 primary node 和兩個 secondary node 的 replica sets，所以我建三個：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/mongos/db4</span><br><span class="line">mkdir -p ~/mongos/db5</span><br><span class="line">mkdir -p ~/mongos/db6</span><br></pre></td></tr></table></figure>
+
+<p><img src="1.gif" alt="1.gif"></p>
+<p>接下來⽤ mongod 來啟動 MongoDB process，參數分別是你要開在哪個 port、選⽤哪個資料夾來存放資料，以及 replica sets 的名稱，可以隨便命名，那我⼀次開：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongod --port 2747 --dbpath ~/mongos/db4 --replSet anotherReplicaSet</span><br><span class="line">mongod --port 2757 --dbpath ~/mongos/db5 --replSet anotherReplicaSet</span><br><span class="line">mongod --port 2767 --dbpath ~/mongos/db6 --replSet anotherReplicaSet</span><br></pre></td></tr></table></figure>
+
+<p><img src="2.gif" alt="2.gif"></p>
+<h2 id="（小插曲：tmux）"><a href="#（小插曲：tmux）" class="headerlink" title="（小插曲：tmux）"></a>（小插曲：tmux）</h2><p>這樣就不用開很多 Tab 了！</p>
+<p>操作小筆記：</p>
+<ul>
+<li>進行水平分割：<code>&lt;Ctrl+b&gt; + &quot;</code></li>
+<li>進行垂直分割：<code>&lt;Ctrl+b&gt; + %</code></li>
+<li>移動到其他 pane：<code>&lt;Ctrl+b&gt; + &lt;方向鍵&gt;</code>（或是參考<a href="https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work">這個</a>就可以用滑鼠來操作～）</li>
+<li>關閉目前的 pane：<code>&lt;Ctrl+b&gt; + x</code></li>
+</ul>
+<h2 id="設定-replica-sets"><a href="#設定-replica-sets" class="headerlink" title="設定 replica sets"></a>設定 replica sets</h2><p>接著⽤ mongo 連進去你想要讓它當 primary node 的 process，然後做⼀些設定。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo mongodb://localhost:2747</span><br></pre></td></tr></table></figure>
+
+<p>先初始化，然後把另外兩個也加進來，它們就會是 secondary node。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rs.initiate()</span><br><span class="line">rs.add(<span class="string">&quot;localhost:2757&quot;</span>)</span><br><span class="line">rs.add(<span class="string">&quot;localhost:2767&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>透過這個指令，可以看到 replica sets 中有哪些 member：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rs.status()</span><br></pre></td></tr></table></figure>
+
+<p><img src="3.gif" alt="3.gif"></p>
+<h2 id="模擬-Primary-發生問題"><a href="#模擬-Primary-發生問題" class="headerlink" title="模擬 Primary 發生問題"></a>模擬 Primary 發生問題</h2><p>我現在來模擬⼀下，如果 primary node 因為⼀些問題掛掉了，看看會發⽣什麼事情：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo mongodb://localhost:2757</span><br></pre></td></tr></table></figure>
+
+<p>你看！它現在已經變成了 primary，這個時候我們再透過 <code>rs.status()</code> 這個指令來看⼀下整體狀況：</p>
+<p><img src="4.gif" alt="4.gif"></p>
+<p>把 Primary 的關掉，可以注意一下其他 Node 的 <code>stateStr</code> 變化：<br>1: not reachable/healthy<br>2: PRIMARY<br>3: SECONDARY</p>
+<p>重新啟動 Primary 以後：<br>1: SECONDARY<br>2: PRIMARY<br>3: SECONDARY</p>
+<p>這就是剛剛所提到的，當⼀台壞掉了，會有其他台來 cover，這樣就能夠確保整個資料庫的持續運作！</p>
+<h2 id="讓-Secondary-讀得到-Primary"><a href="#讓-Secondary-讀得到-Primary" class="headerlink" title="讓 Secondary 讀得到 Primary"></a>讓 Secondary 讀得到 Primary</h2><p>好，我現在來 demo 怎麼讓 secondary 讀到 primary 的資料。</p>
+<p>我先在 primary 裡⾯加點東⻄：</p>
+<p><img src="5.gif" alt="5.gif"></p>
+<p>試著用第三台去看：</p>
+<p><img src="6.gif" alt="6.gif"></p>
+<p>重啟第一台試試：</p>
+<p><img src="7.gif" alt="7.gif"></p>
+<p>來看⼀下整體狀況：</p>
+<p><img src="8.gif" alt="8.gif"></p>
+<h2 id="MongoDB-裡面的資料"><a href="#MongoDB-裡面的資料" class="headerlink" title="MongoDB 裡面的資料"></a>MongoDB 裡面的資料</h2><p>最後給⼤家看⼀下 MongoDB 的資料和結構：</p>
+<p><img src="9.png"></p>
+<p>推薦大家這個方便操作＆查看 MongoDB 的圖形化介面：<a href="https://www.mongodb.com/products/compass">MongoDB Compass</a><br>（Easily explore and manipulate your database with Compass, the GUI for MongoDB.）</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
     <title>Moleculer CRUD Guide</title>
@@ -2453,122 +2569,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【技術筆記】NoSQL、Data Replica、Sharding</title>
-    <url>/2022/05/nosql-introduction/</url>
-    <content><![CDATA[<p>上台 Presentation 前做的筆記，在這邊記錄一下～</p>
-<span id="more"></span>
-
-<h1 id="開場"><a href="#開場" class="headerlink" title="開場"></a>開場</h1><p>嗨大家好，我們這組要介紹的呢，是 NoSQL Database 以及 Database Management，主要會是用 MongoDB 這個 NoSQL database 來做介紹。</p>
-<p>待會我會先簡介 NoSQL，接著分享 Data Replica 和 Sharding 的概念，最後會實際 demo 給大家看 NoSQL 的資料與結構，以及，怎麼用 MongoDB 做到 Data Replica。</p>
-<hr>
-<h1 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h1><h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p>什麼是 NoSQL 呢？</p>
-<p>它是一種不需要 schema 的資料庫，也就是不用像 MySQL 一樣，還要預先設計好 table 的欄位和關聯。</p>
-<p>它是以 Key-Value 的方式來儲存資料的，可以把它簡單想像成它就是把資料存成 JSON，裡面存的東西可以是非常自由的。</p>
-<p>然後它除了能垂直擴增，也具有水平擴增這個強項。</p>
-<p>那麼什麼是垂直擴增？什麼是水平擴增呢？</p>
-<h2 id="Scale-vertically-vs-Scale-horizontally"><a href="#Scale-vertically-vs-Scale-horizontally" class="headerlink" title="Scale vertically   vs   Scale horizontally"></a>Scale vertically   vs   Scale horizontally</h2><p><img src="1.png"></p>
-<p>垂直擴增可以把它想成，它就是一間工廠在升級設備和招募新的員工，技術上來說就是提升一台機器的 RAM 和 CPU，但終究會有個上限。</p>
-<p>而水平擴增就像是開分店，也就是開很多台機器來共同支撐起整個任務，同樣也能達到升級的效果，除此之外還有一些好處，後面會在 Data Replica 的地方介紹到。</p>
-<h2 id="對照表"><a href="#對照表" class="headerlink" title="對照表"></a>對照表</h2><p><img src="2.png"></p>
-<p>這是 MySQL 和 MongoDB 的簡單對照。</p>
-<p>MySQL 裡面的 table，類似 MongoDB 的 collection；而 MySQL 裡面的 record，也就是一筆資料，類似 MongoDB 的 document。</p>
-<hr>
-<h1 id="Data-Replica"><a href="#Data-Replica" class="headerlink" title="Data Replica"></a>Data Replica</h1><h2 id="Replica-Sets"><a href="#Replica-Sets" class="headerlink" title="Replica Sets"></a>Replica Sets</h2><p><img src="3.png"></p>
-<p>首先先介紹什麼是 Replica Sets。</p>
-<p>它是由一群 mongod 程序組合而成的，可以把 mongod 程序想成是一台機器，所以 Replica Sets 就是會有一群機器這樣，每個 mongod 程序會 maintain 相同的 data，保持同步。</p>
-<p>那你可能會好奇說，用 Replica Sets 有什麼好處呢？像 MySQL 開一台不就好了？</p>
-<p>因為 Replica Sets 能提供 redundancy，也就是一台壞掉了，還有其他台可以提供資料，這樣能降低遺失資料的風險。</p>
-<p>除此之外，還有 high availability 這個特性，它能排除 single points of failure 的問題，也就是一台壞掉了，整個資料庫的運作就崩潰了，它不會，它能確保整個資料庫的持續運作，一台壞掉了，會有其他台來 cover。</p>
-<p>最後還可以達到 load balancing 的效果，也就是像上圖一樣，write 的話是由 primary node 來負責，而 read 則是由 B 和 C 這兩個 secondary node，可能依照某種方法來分配處理，這麼做就能緩解各 database server 的負擔。</p>
-<h2 id="架構與角色"><a href="#架構與角色" class="headerlink" title="架構與角色"></a>架構與角色</h2><p><img src="4.png"></p>
-<p>整體大概是怎麼運作的呢？</p>
-<p>任何 write 會由 primary node 來處理，並將所有操作記錄在 oplog 的檔案裡面，所以 secondary node 只要重現 oplog 裡面的操作，就能達到複製的效果。</p>
-<p>而上面的右圖是在描述，當 primary node 掛掉的時候，會由所有 secondary node 透過某種方式來選拔，繼而取代原本的，然後升級成 primary node。</p>
-<p>以圖來說明的話，就是 A 掛掉了，由 B 來接管 primary node 的位置，這樣整體就能夠照常運作，不受 A 掛掉而有太大影響。</p>
-<h2 id="oplog-文件"><a href="#oplog-文件" class="headerlink" title="oplog 文件"></a>oplog 文件</h2><p>這邊快速簡介什麼是 oplog 文件。</p>
-<p>它是 MongoDB 實現 replica set 的關鍵資料結構。</p>
-<p>簡單來說，就是 primary node 的操作會記錄在 oplog，secondary node 就能透過 oplog 來更新，確保整個 replica set 的成員有一致的資料。</p>
-<h2 id="讀取操作"><a href="#讀取操作" class="headerlink" title="讀取操作"></a>讀取操作</h2><p>關於 MongoDB 的讀取，是透過 read preference 來設定的，一共會有五種 mode：</p>
-<ol>
-<li><code>primary</code>：這是預設的，也就是如果要從 replica sets 讀取資料，都是透過 primary node 來進行操作</li>
-<li><code>primaryPreferred</code>：也就是大部分情況下都是透過 primary node，若 primary node 發生狀況才從 secondary node 讀取</li>
-<li><code>secondary</code>：全部都是從 secondary node 讀取</li>
-<li><code>secondaryPreferred</code>：其實跟剛剛 primaryPreferred 差不多，只是主要是從 secondary node 來讀取</li>
-<li><code>nearest</code>：這個就沒有分 primary node、secondary node，而是根據一個特定的 latency threshold (由 localThresholdMS、maxStalenessSeconds 等參數計算出來)，隨機從 replica sets member 當中挑一個來讀取</li>
-</ol>
-<hr>
-<h1 id="Sharding"><a href="#Sharding" class="headerlink" title="Sharding"></a>Sharding</h1><p>透過 sharding，可以將資料分散在不同的機器上，提高資料的存取效率，是一種水平擴增的方式。</p>
-<p>然後 shard 這個英文單字其實還蠻少見的，所以看到 sharding 可能會不知道它在幹嘛，其實可以把它看成它就是一種 partition，只是是透過開多台機器，也就是水平擴增的方式來分 part。</p>
-<h2 id="架構與角色-1"><a href="#架構與角色-1" class="headerlink" title="架構與角色"></a>架構與角色</h2><p><img src="5.png"></p>
-<p>整個流程大概是這樣：</p>
-<p>一個 shard 就是一個 replica sets，也就是各自的 shard 會有所謂的 primary node 和 secondary node。</p>
-<p>mongos，是一個提供 client 端存取 shard 的介面。</p>
-<p>而 config server 儲存一些 metadata 和設定檔，像是告訴 mongos 當前的資料該存到哪一個 shard，或是要從哪一個 shard 去要資料，這個運作機制待會會提到。</p>
-<h2 id="Chunk"><a href="#Chunk" class="headerlink" title="Chunk"></a>Chunk</h2><p><img src="6.png"></p>
-<p>chunk 其實就是一堆 document，為了將資料分散儲存，就必須找一個方法來管理，所以 NoSQL 的做法就是將 document 的某一個欄位定義為 shard key，以上圖為例的話，就是 age 年齡。</p>
-<p>至於怎麼去分配呢？可以透過 range-based sharding 或是 hash-based sharding 的方法去做分配！</p>
-<h2 id="Range-Based-Sharding"><a href="#Range-Based-Sharding" class="headerlink" title="Range-Based Sharding"></a>Range-Based Sharding</h2><p>Range-based sharding 就是將 document shard key 欄位的值，透過 range 的範圍進行分配。</p>
-<p>像上圖就是 range-based sharding，看 age 也就是 document shard key 來決定該分配到哪個 chunk。</p>
-<h2 id="Hash-Based-Sharding"><a href="#Hash-Based-Sharding" class="headerlink" title="Hash-Based Sharding"></a>Hash-Based Sharding</h2><p>Hash-based sharding，顧名思義，就是透過一個 hash function，將我們所指定的 shard key 欄位進行雜湊。</p>
-<p>以年齡的例子來舉例的話，如果是「16 歲」就會被 hash 到「青少年」，而「65 歲」就會被 hash 到「老年」。</p>
-<p>透過這樣的方式將資料分散到各個 chunk 當中。</p>
-<h2 id="Balancing"><a href="#Balancing" class="headerlink" title="Balancing"></a>Balancing</h2><p><img src="7.png"></p>
-<p>這邊有個 Balancing 的機制，如果 shard 之間的 chunk total size 差異過大，就會做 migration，也就是 shard 移轉某個 chunk 的責任給另外一個 shard，確保數據分配的平衡，也就是所謂的 load balancing。</p>
-<h1 id="小比較"><a href="#小比較" class="headerlink" title="小比較"></a>小比較</h1><p><img src="8.png"></p>
-<p><a href="https://www.youtube.com/watch?v=gChzfhVGqp8">Setup MongoDB for Production deployment - Replica Sets cluster</a></p>
-<p>好，這是我們理論分享的部分，接著要來 demo 給大家看怎麼用 MongoDB 做 Data Replica～</p>
-<hr>
-<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><p>資料庫總要有個地⽅放資料，所以我們先建資料夾來當作它存放資料的地⽅。</p>
-<p>因為要 demo 有⼀個 primary node 和兩個 secondary node 的 replica sets，所以我建三個：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/mongos/db4</span><br><span class="line">mkdir -p ~/mongos/db5</span><br><span class="line">mkdir -p ~/mongos/db6</span><br></pre></td></tr></table></figure>
-
-<p><img src="1.gif" alt="1.gif"></p>
-<p>接下來⽤ mongod 來啟動 MongoDB process，參數分別是你要開在哪個 port、選⽤哪個資料夾來存放資料，以及 replica sets 的名稱，可以隨便命名，那我⼀次開：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongod --port 2747 --dbpath ~/mongos/db4 --replSet anotherReplicaSet</span><br><span class="line">mongod --port 2757 --dbpath ~/mongos/db5 --replSet anotherReplicaSet</span><br><span class="line">mongod --port 2767 --dbpath ~/mongos/db6 --replSet anotherReplicaSet</span><br></pre></td></tr></table></figure>
-
-<p><img src="2.gif" alt="2.gif"></p>
-<h2 id="（小插曲：tmux）"><a href="#（小插曲：tmux）" class="headerlink" title="（小插曲：tmux）"></a>（小插曲：tmux）</h2><p>這樣就不用開很多 Tab 了！</p>
-<p>操作小筆記：</p>
-<ul>
-<li>進行水平分割：<code>&lt;Ctrl+b&gt; + &quot;</code></li>
-<li>進行垂直分割：<code>&lt;Ctrl+b&gt; + %</code></li>
-<li>移動到其他 pane：<code>&lt;Ctrl+b&gt; + &lt;方向鍵&gt;</code>（或是參考<a href="https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work">這個</a>就可以用滑鼠來操作～）</li>
-<li>關閉目前的 pane：<code>&lt;Ctrl+b&gt; + x</code></li>
-</ul>
-<h2 id="設定-replica-sets"><a href="#設定-replica-sets" class="headerlink" title="設定 replica sets"></a>設定 replica sets</h2><p>接著⽤ mongo 連進去你想要讓它當 primary node 的 process，然後做⼀些設定。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo mongodb://localhost:2747</span><br></pre></td></tr></table></figure>
-
-<p>先初始化，然後把另外兩個也加進來，它們就會是 secondary node。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rs.initiate()</span><br><span class="line">rs.add(<span class="string">&quot;localhost:2757&quot;</span>)</span><br><span class="line">rs.add(<span class="string">&quot;localhost:2767&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>透過這個指令，可以看到 replica sets 中有哪些 member：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rs.status()</span><br></pre></td></tr></table></figure>
-
-<p><img src="3.gif" alt="3.gif"></p>
-<h2 id="模擬-Primary-發生問題"><a href="#模擬-Primary-發生問題" class="headerlink" title="模擬 Primary 發生問題"></a>模擬 Primary 發生問題</h2><p>我現在來模擬⼀下，如果 primary node 因為⼀些問題掛掉了，看看會發⽣什麼事情：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo mongodb://localhost:2757</span><br></pre></td></tr></table></figure>
-
-<p>你看！它現在已經變成了 primary，這個時候我們再透過 <code>rs.status()</code> 這個指令來看⼀下整體狀況：</p>
-<p><img src="4.gif" alt="4.gif"></p>
-<p>把 Primary 的關掉，可以注意一下其他 Node 的 <code>stateStr</code> 變化：<br>1: not reachable/healthy<br>2: PRIMARY<br>3: SECONDARY</p>
-<p>重新啟動 Primary 以後：<br>1: SECONDARY<br>2: PRIMARY<br>3: SECONDARY</p>
-<p>這就是剛剛所提到的，當⼀台壞掉了，會有其他台來 cover，這樣就能夠確保整個資料庫的持續運作！</p>
-<h2 id="讓-Secondary-讀得到-Primary"><a href="#讓-Secondary-讀得到-Primary" class="headerlink" title="讓 Secondary 讀得到 Primary"></a>讓 Secondary 讀得到 Primary</h2><p>好，我現在來 demo 怎麼讓 secondary 讀到 primary 的資料。</p>
-<p>我先在 primary 裡⾯加點東⻄：</p>
-<p><img src="5.gif" alt="5.gif"></p>
-<p>試著用第三台去看：</p>
-<p><img src="6.gif" alt="6.gif"></p>
-<p>重啟第一台試試：</p>
-<p><img src="7.gif" alt="7.gif"></p>
-<p>來看⼀下整體狀況：</p>
-<p><img src="8.gif" alt="8.gif"></p>
-<h2 id="MongoDB-裡面的資料"><a href="#MongoDB-裡面的資料" class="headerlink" title="MongoDB 裡面的資料"></a>MongoDB 裡面的資料</h2><p>最後給⼤家看⼀下 MongoDB 的資料和結構：</p>
-<p><img src="9.png"></p>
-<p>推薦大家這個方便操作＆查看 MongoDB 的圖形化介面：<a href="https://www.mongodb.com/products/compass">MongoDB Compass</a><br>（Easily explore and manipulate your database with Compass, the GUI for MongoDB.）</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-  </entry>
-  <entry>
     <title>用 Python 操作 Android 手機</title>
     <url>/2021/07/python-android-phone/</url>
     <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2617,71 +2617,6 @@
         <tag>Python</tag>
         <tag>Android</tag>
         <tag>小工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>當 Python 遇上了 LINE Blockchain</title>
-    <url>/2021/07/python-line-blockchain/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-line-blockchain"><img src="https://images.unsplash.com/photo-1561451213-d5c9f0951fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>可能是因為比較新的關係，在網路上頗難找到用 Python 弄 LINE Blockchain 的教學文。<br>本篇主要會以筆記的方式，簡單帶大家看要怎麼使用。</p>
-<span id="more"></span>
-
-<p>這篇的誕生，一樣也是因為升大四暑假的那一場線上黑客松。<br>（黑客松真的是個不錯的活動呢，累歸累，但學到了不少東西）</p>
-<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><h2 id="啟用服務"><a href="#啟用服務" class="headerlink" title="啟用服務"></a>啟用服務</h2><p>還沒啟用 LINE Blockchain 前，創 channel 的時候 Blockchain Service 的地方會暗掉不讓你按。</p>
-<p><img src="1.png"></p>
-<p>到 LINE Blockchain Developers 的 <a href="https://blockchain.line.biz/#/pricing">Pricing</a> 頁面選一個方案開始吧！</p>
-<p><img src="2.png"></p>
-<p>光是用商用帳號不夠哦，還得連動我們自己的 LINE 帳號。</p>
-<p><img src="3.png"></p>
-<p>連動完就 OK 了嗎？還沒哦！我們還要申請一個 Cashew Partner 帳戶才行，就 Apply 吧！</p>
-<p><img src="4.png"></p>
-<p>不是按完 Apply 就能啟用，還得再等他們 reviewing。<br>這個申請是需要時間等待的，我等了快五小時半！</p>
-<p><img src="5.png"></p>
-<p>申請通過以後，創建 channel 時就能選 Blockchain Service 囉！</p>
-<h2 id="LINE-Blockchain"><a href="#LINE-Blockchain" class="headerlink" title="LINE Blockchain"></a>LINE Blockchain</h2><p>YouTube 頻道 <a href="https://www.youtube.com/channel/UCuzvuO3E9XIoreE9u7B1ETw">LINE Developers</a> 有個教學影片 <a href="https://youtu.be/tx1Q6GbIpwM?t=367">An Introduction to LINE Blockchain Platform</a> 介紹得很好，它有 step-by-step 的操作步驟！<br>如果不是要用 JavaScript，影片差不多看到 12:37 就行了。</p>
-<p>那如果你想學怎麼用 JavaScript 弄 LINE Blockchain，或許可以參考影片裡面的 repo <a href="https://github.com/behumble/line-blockchain-coffee">line-blockchain-coffee</a>。</p>
-<p>又或者你想更有系統地學習 LINE Blockchain？<a href="https://docs-blockchain.line.biz/service-tutorial/?id=tutorial-map">官方教學文檔</a>是個不錯的地方！（只不過它是用 curl）</p>
-<h1 id="Python-code"><a href="#Python-code" class="headerlink" title="Python code"></a>Python code</h1><h2 id="Generating-signature"><a href="#Generating-signature" class="headerlink" title="Generating signature"></a>Generating signature</h2><p>因為 call LINE Blockchain 的 API 需要 signature，所以先來寫(抄) signature 的部分吧！<br><a href="https://docs-blockchain.line.biz/api-guide/Generating-Signature?id=python-sample">官方文檔</a>上有範例 code，我想，我們就直接拿來用吧！</p>
-<h3 id="request-flattener-py"><a href="#request-flattener-py" class="headerlink" title="request_flattener.py"></a><code>request_flattener.py</code></h3><p>這是 Signature Generator 會需要用到的 utility。</p>
-<p>我沒有特別去研究它每一行 code 分別代表什麼意思，想說這對黑客松來說根本不重要，重要的是能知道怎麼用，然後拿來開發出我們需要的 feature。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestBodyFlattener</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__flatten_key_value</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">str</span>)):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;key&#125;</span>=<span class="subst">&#123;value&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">list</span>)):</span><br><span class="line">            l_key_value = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> index, ele <span class="keyword">in</span> <span class="built_in">enumerate</span>(value):</span><br><span class="line">                <span class="keyword">for</span> lkey <span class="keyword">in</span> <span class="built_in">list</span>(ele.keys() | l_key_value.keys()):</span><br><span class="line">                    <span class="keyword">if</span> lkey <span class="keyword">in</span> ele.keys():</span><br><span class="line">                        lvalue = ele[lkey]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        lvalue = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (lkey <span class="keyword">in</span> l_key_value.keys()):</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;l_key_value[lkey]&#125;</span>,<span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;<span class="string">&#x27;,&#x27;</span> * index&#125;</span><span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(<span class="string">&quot;%s=%s&quot;</span> % (<span class="string">f&quot;<span class="subst">&#123;key&#125;</span>.<span class="subst">&#123;lkey&#125;</span>&quot;</span>, lvalue) <span class="keyword">for</span> (lkey, lvalue) <span class="keyword">in</span> <span class="built_in">sorted</span>(l_key_value.items()))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span>(<span class="params">self, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        sorted_body = <span class="built_in">sorted</span>(body.items())</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(self.__flatten_key_value(key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> sorted_body)</span><br></pre></td></tr></table></figure>
-
-<h3 id="signature-generator-py"><a href="#signature-generator-py" class="headerlink" title="signature_generator.py"></a><code>signature_generator.py</code></h3><p>這邊跟官方文檔上有些地方不一樣，像是第 18 行，我改了 generate 的參數順序。</p>
-<p>這麼做是因為，它 API reference 那邊 get_signature 的順序跟它在 Generating signature 定義的不一樣，想說未來可能會大量複製貼上它 API 的範例 code，為了未來使用上的方便，乾脆一開始定義的時候照 API reference 的順序不就好了？</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> .request_flattener <span class="keyword">import</span> RequestBodyFlattener</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignatureGenerator</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__createSignTarget</span>(<span class="params">self, method, path, timestamp, nonce, parameters: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        signTarget = <span class="string">f&#x27;<span class="subst">&#123;nonce&#125;</span><span class="subst">&#123;<span class="built_in">str</span>(timestamp)&#125;</span><span class="subst">&#123;method&#125;</span><span class="subst">&#123;path&#125;</span>&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(parameters) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget = signTarget + <span class="string">&quot;?&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> signTarget</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span>(<span class="params">self, method: <span class="built_in">str</span>, path: <span class="built_in">str</span>, nonce: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span>, service_api_secret: <span class="built_in">str</span>, query_params: <span class="built_in">dict</span> = &#123;&#125;, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        body_flattener = RequestBodyFlattener()</span><br><span class="line">        all_parameters = &#123;&#125;</span><br><span class="line">        all_parameters.update(query_params)</span><br><span class="line">        all_parameters.update(body)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.__logger.debug(&quot;query_params: &quot; + str(query_params))</span></span><br><span class="line"></span><br><span class="line">        signTarget = self.__createSignTarget(method.upper(), path, timestamp, nonce, all_parameters)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget += <span class="string">&#x27;&amp;&#x27;</span>.join(<span class="string">&#x27;%s=%s&#x27;</span> % (key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> query_params.items())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(body) &gt; <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">                signTarget += <span class="string">&quot;&amp;&quot;</span> + body_flattener.flatten(body)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                signTarget += body_flattener.flatten(body)</span><br><span class="line"></span><br><span class="line">        raw_hmac = hmac.new(<span class="built_in">bytes</span>(service_api_secret, <span class="string">&#x27;utf-8&#x27;</span>), <span class="built_in">bytes</span>(signTarget, <span class="string">&#x27;utf-8&#x27;</span>), hashlib.sha512)</span><br><span class="line">        result = base64.b64encode(raw_hmac.digest()).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-<h2 id="包成自己-project-需要的-function"><a href="#包成自己-project-需要的-function" class="headerlink" title="包成自己 project 需要的 function"></a>包成自己 project 需要的 function</h2><p>以下面兩個為例：</p>
-<ul>
-<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get">Users → Retrieve → Retrieve user information</a></li>
-<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post">Users → Transfer → Transfer a delegated service token (user wallet)</a></li>
-</ul>
-<p>Details 的地方展開以後，往下滑就能找到 Python 的範例 code！<br>不誇張，直接複製貼上然後再修改，最後在我的 project 上長這樣：</p>
-<p><code>users.py</code></p>
-<h3 id="底層"><a href="#底層" class="headerlink" title="底層"></a>底層</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># ./utils 是我放 signature_generator.py 的地方</span></span><br><span class="line"><span class="keyword">from</span> .utils.signature_generator <span class="keyword">import</span> SignatureGenerator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要先實體化才能用（這部分或許有更好的寫法）</span></span><br><span class="line">signatureGenerator = SignatureGenerator()</span><br><span class="line">get_signature = signatureGenerator.generate</span><br></pre></td></tr></table></figure>
-
-<h3 id="Retrieve-user-information"><a href="#Retrieve-user-information" class="headerlink" title="Retrieve user information"></a>Retrieve user information</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">retrieve</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Retrieve user information</span></span><br><span class="line">    <span class="comment"># Retrieve the information of the given user.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wallet_address</span>(<span class="params">user_id</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 3 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;GET&#x27;</span>, path, nonce, timestamp, service_api_secret)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.get(server_url + path, headers=headers)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 這自己改的，因為我的 project 只需要 wallet address</span></span><br><span class="line">        wallet_address = res.json()[<span class="string">&#x27;responseData&#x27;</span>][<span class="string">&#x27;walletAddress&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wallet_address</span><br></pre></td></tr></table></figure>
-
-<h3 id="Transfer-a-delegated-service-token"><a href="#Transfer-a-delegated-service-token" class="headerlink" title="Transfer a delegated service token"></a>Transfer a delegated service token</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">transfer</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Transfer a delegated service token (user wallet)</span></span><br><span class="line">    <span class="comment"># Request to transfer the delegated service token in the given user wallet to another wallet.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">service_token</span>(<span class="params">user_id, amount</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 6 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line">        contract_id = os.environ[<span class="string">&#x27;LBP_CONTRACT_ID_LBCC&#x27;</span>]</span><br><span class="line">        owner_address = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_ADDRESS&#x27;</span>]</span><br><span class="line">        owner_secret = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>/service-tokens/<span class="subst">&#123;contract_id&#125;</span>/transfer&#x27;</span></span><br><span class="line"></span><br><span class="line">        request_body = &#123;</span><br><span class="line">            <span class="string">&#x27;ownerAddress&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_address&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;ownerSecret&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_secret&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;amount&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;amount * <span class="number">1000000</span>&#125;</span>&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp),</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;POST&#x27;</span>, path, nonce, timestamp, service_api_secret, body=request_body)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.post(server_url + path, headers=headers, json=request_body)</span><br><span class="line">        <span class="keyword">return</span> res.json()</span><br></pre></td></tr></table></figure>
-
-<p>你會發現，很多範例 code 寫死的部分，我都用 <a href="https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals">f-strings</a> 代替，原因你應該知道xD</p>
-<h2 id="使用那些-function"><a href="#使用那些-function" class="headerlink" title="使用那些 function"></a>使用那些 function</h2><p>先給大家看我 project 跟 blockchain 有關的目錄結構：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src</span><br><span class="line">├── fsm.py</span><br><span class="line">└── service</span><br><span class="line">    └── blockchain</span><br><span class="line">        ├── service_tokens.py</span><br><span class="line">        ├── users.py</span><br><span class="line">        └── utils</span><br><span class="line">            ├── request_flattener.py</span><br><span class="line">            └── signature_generator.py</span><br></pre></td></tr></table></figure>
-
-<p>下面是 <code>fsm.py</code> 的某個部份：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> service.blockchain <span class="keyword">import</span> users, service_tokens</span><br><span class="line"></span><br><span class="line">user_id = <span class="string">&#x27;this_is_user_id&#x27;</span></span><br><span class="line">amount = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">users.transfer.service_token(user_id, amount)</span><br><span class="line">user_wallet_address = users.retrieve.wallet_address(user_id)</span><br><span class="line">service_tokens.mint(user_wallet_address, amount)   <span class="comment"># 這部分的 code 我沒 share</span></span><br></pre></td></tr></table></figure>
-
-<p>知道為什麼我要包成 class 了吧？這樣就能夠照文檔編排的邏輯 call function！</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>交大</tag>
-        <tag>教學</tag>
-        <tag>LINE</tag>
-        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -2749,6 +2684,71 @@
       <tags>
         <tag>Python</tag>
         <tag>小工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>當 Python 遇上了 LINE Blockchain</title>
+    <url>/2021/07/python-line-blockchain/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-line-blockchain"><img src="https://images.unsplash.com/photo-1561451213-d5c9f0951fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>可能是因為比較新的關係，在網路上頗難找到用 Python 弄 LINE Blockchain 的教學文。<br>本篇主要會以筆記的方式，簡單帶大家看要怎麼使用。</p>
+<span id="more"></span>
+
+<p>這篇的誕生，一樣也是因為升大四暑假的那一場線上黑客松。<br>（黑客松真的是個不錯的活動呢，累歸累，但學到了不少東西）</p>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><h2 id="啟用服務"><a href="#啟用服務" class="headerlink" title="啟用服務"></a>啟用服務</h2><p>還沒啟用 LINE Blockchain 前，創 channel 的時候 Blockchain Service 的地方會暗掉不讓你按。</p>
+<p><img src="1.png"></p>
+<p>到 LINE Blockchain Developers 的 <a href="https://blockchain.line.biz/#/pricing">Pricing</a> 頁面選一個方案開始吧！</p>
+<p><img src="2.png"></p>
+<p>光是用商用帳號不夠哦，還得連動我們自己的 LINE 帳號。</p>
+<p><img src="3.png"></p>
+<p>連動完就 OK 了嗎？還沒哦！我們還要申請一個 Cashew Partner 帳戶才行，就 Apply 吧！</p>
+<p><img src="4.png"></p>
+<p>不是按完 Apply 就能啟用，還得再等他們 reviewing。<br>這個申請是需要時間等待的，我等了快五小時半！</p>
+<p><img src="5.png"></p>
+<p>申請通過以後，創建 channel 時就能選 Blockchain Service 囉！</p>
+<h2 id="LINE-Blockchain"><a href="#LINE-Blockchain" class="headerlink" title="LINE Blockchain"></a>LINE Blockchain</h2><p>YouTube 頻道 <a href="https://www.youtube.com/channel/UCuzvuO3E9XIoreE9u7B1ETw">LINE Developers</a> 有個教學影片 <a href="https://youtu.be/tx1Q6GbIpwM?t=367">An Introduction to LINE Blockchain Platform</a> 介紹得很好，它有 step-by-step 的操作步驟！<br>如果不是要用 JavaScript，影片差不多看到 12:37 就行了。</p>
+<p>那如果你想學怎麼用 JavaScript 弄 LINE Blockchain，或許可以參考影片裡面的 repo <a href="https://github.com/behumble/line-blockchain-coffee">line-blockchain-coffee</a>。</p>
+<p>又或者你想更有系統地學習 LINE Blockchain？<a href="https://docs-blockchain.line.biz/service-tutorial/?id=tutorial-map">官方教學文檔</a>是個不錯的地方！（只不過它是用 curl）</p>
+<h1 id="Python-code"><a href="#Python-code" class="headerlink" title="Python code"></a>Python code</h1><h2 id="Generating-signature"><a href="#Generating-signature" class="headerlink" title="Generating signature"></a>Generating signature</h2><p>因為 call LINE Blockchain 的 API 需要 signature，所以先來寫(抄) signature 的部分吧！<br><a href="https://docs-blockchain.line.biz/api-guide/Generating-Signature?id=python-sample">官方文檔</a>上有範例 code，我想，我們就直接拿來用吧！</p>
+<h3 id="request-flattener-py"><a href="#request-flattener-py" class="headerlink" title="request_flattener.py"></a><code>request_flattener.py</code></h3><p>這是 Signature Generator 會需要用到的 utility。</p>
+<p>我沒有特別去研究它每一行 code 分別代表什麼意思，想說這對黑客松來說根本不重要，重要的是能知道怎麼用，然後拿來開發出我們需要的 feature。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestBodyFlattener</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__flatten_key_value</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">str</span>)):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;key&#125;</span>=<span class="subst">&#123;value&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">list</span>)):</span><br><span class="line">            l_key_value = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> index, ele <span class="keyword">in</span> <span class="built_in">enumerate</span>(value):</span><br><span class="line">                <span class="keyword">for</span> lkey <span class="keyword">in</span> <span class="built_in">list</span>(ele.keys() | l_key_value.keys()):</span><br><span class="line">                    <span class="keyword">if</span> lkey <span class="keyword">in</span> ele.keys():</span><br><span class="line">                        lvalue = ele[lkey]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        lvalue = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (lkey <span class="keyword">in</span> l_key_value.keys()):</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;l_key_value[lkey]&#125;</span>,<span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;<span class="string">&#x27;,&#x27;</span> * index&#125;</span><span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(<span class="string">&quot;%s=%s&quot;</span> % (<span class="string">f&quot;<span class="subst">&#123;key&#125;</span>.<span class="subst">&#123;lkey&#125;</span>&quot;</span>, lvalue) <span class="keyword">for</span> (lkey, lvalue) <span class="keyword">in</span> <span class="built_in">sorted</span>(l_key_value.items()))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span>(<span class="params">self, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        sorted_body = <span class="built_in">sorted</span>(body.items())</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(self.__flatten_key_value(key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> sorted_body)</span><br></pre></td></tr></table></figure>
+
+<h3 id="signature-generator-py"><a href="#signature-generator-py" class="headerlink" title="signature_generator.py"></a><code>signature_generator.py</code></h3><p>這邊跟官方文檔上有些地方不一樣，像是第 18 行，我改了 generate 的參數順序。</p>
+<p>這麼做是因為，它 API reference 那邊 get_signature 的順序跟它在 Generating signature 定義的不一樣，想說未來可能會大量複製貼上它 API 的範例 code，為了未來使用上的方便，乾脆一開始定義的時候照 API reference 的順序不就好了？</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> .request_flattener <span class="keyword">import</span> RequestBodyFlattener</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignatureGenerator</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__createSignTarget</span>(<span class="params">self, method, path, timestamp, nonce, parameters: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        signTarget = <span class="string">f&#x27;<span class="subst">&#123;nonce&#125;</span><span class="subst">&#123;<span class="built_in">str</span>(timestamp)&#125;</span><span class="subst">&#123;method&#125;</span><span class="subst">&#123;path&#125;</span>&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(parameters) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget = signTarget + <span class="string">&quot;?&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> signTarget</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span>(<span class="params">self, method: <span class="built_in">str</span>, path: <span class="built_in">str</span>, nonce: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span>, service_api_secret: <span class="built_in">str</span>, query_params: <span class="built_in">dict</span> = &#123;&#125;, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        body_flattener = RequestBodyFlattener()</span><br><span class="line">        all_parameters = &#123;&#125;</span><br><span class="line">        all_parameters.update(query_params)</span><br><span class="line">        all_parameters.update(body)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.__logger.debug(&quot;query_params: &quot; + str(query_params))</span></span><br><span class="line"></span><br><span class="line">        signTarget = self.__createSignTarget(method.upper(), path, timestamp, nonce, all_parameters)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget += <span class="string">&#x27;&amp;&#x27;</span>.join(<span class="string">&#x27;%s=%s&#x27;</span> % (key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> query_params.items())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(body) &gt; <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">                signTarget += <span class="string">&quot;&amp;&quot;</span> + body_flattener.flatten(body)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                signTarget += body_flattener.flatten(body)</span><br><span class="line"></span><br><span class="line">        raw_hmac = hmac.new(<span class="built_in">bytes</span>(service_api_secret, <span class="string">&#x27;utf-8&#x27;</span>), <span class="built_in">bytes</span>(signTarget, <span class="string">&#x27;utf-8&#x27;</span>), hashlib.sha512)</span><br><span class="line">        result = base64.b64encode(raw_hmac.digest()).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h2 id="包成自己-project-需要的-function"><a href="#包成自己-project-需要的-function" class="headerlink" title="包成自己 project 需要的 function"></a>包成自己 project 需要的 function</h2><p>以下面兩個為例：</p>
+<ul>
+<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get">Users → Retrieve → Retrieve user information</a></li>
+<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post">Users → Transfer → Transfer a delegated service token (user wallet)</a></li>
+</ul>
+<p>Details 的地方展開以後，往下滑就能找到 Python 的範例 code！<br>不誇張，直接複製貼上然後再修改，最後在我的 project 上長這樣：</p>
+<p><code>users.py</code></p>
+<h3 id="底層"><a href="#底層" class="headerlink" title="底層"></a>底層</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># ./utils 是我放 signature_generator.py 的地方</span></span><br><span class="line"><span class="keyword">from</span> .utils.signature_generator <span class="keyword">import</span> SignatureGenerator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要先實體化才能用（這部分或許有更好的寫法）</span></span><br><span class="line">signatureGenerator = SignatureGenerator()</span><br><span class="line">get_signature = signatureGenerator.generate</span><br></pre></td></tr></table></figure>
+
+<h3 id="Retrieve-user-information"><a href="#Retrieve-user-information" class="headerlink" title="Retrieve user information"></a>Retrieve user information</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">retrieve</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Retrieve user information</span></span><br><span class="line">    <span class="comment"># Retrieve the information of the given user.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wallet_address</span>(<span class="params">user_id</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 3 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;GET&#x27;</span>, path, nonce, timestamp, service_api_secret)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.get(server_url + path, headers=headers)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 這自己改的，因為我的 project 只需要 wallet address</span></span><br><span class="line">        wallet_address = res.json()[<span class="string">&#x27;responseData&#x27;</span>][<span class="string">&#x27;walletAddress&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wallet_address</span><br></pre></td></tr></table></figure>
+
+<h3 id="Transfer-a-delegated-service-token"><a href="#Transfer-a-delegated-service-token" class="headerlink" title="Transfer a delegated service token"></a>Transfer a delegated service token</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">transfer</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Transfer a delegated service token (user wallet)</span></span><br><span class="line">    <span class="comment"># Request to transfer the delegated service token in the given user wallet to another wallet.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">service_token</span>(<span class="params">user_id, amount</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 6 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line">        contract_id = os.environ[<span class="string">&#x27;LBP_CONTRACT_ID_LBCC&#x27;</span>]</span><br><span class="line">        owner_address = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_ADDRESS&#x27;</span>]</span><br><span class="line">        owner_secret = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>/service-tokens/<span class="subst">&#123;contract_id&#125;</span>/transfer&#x27;</span></span><br><span class="line"></span><br><span class="line">        request_body = &#123;</span><br><span class="line">            <span class="string">&#x27;ownerAddress&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_address&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;ownerSecret&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_secret&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;amount&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;amount * <span class="number">1000000</span>&#125;</span>&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp),</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;POST&#x27;</span>, path, nonce, timestamp, service_api_secret, body=request_body)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.post(server_url + path, headers=headers, json=request_body)</span><br><span class="line">        <span class="keyword">return</span> res.json()</span><br></pre></td></tr></table></figure>
+
+<p>你會發現，很多範例 code 寫死的部分，我都用 <a href="https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals">f-strings</a> 代替，原因你應該知道xD</p>
+<h2 id="使用那些-function"><a href="#使用那些-function" class="headerlink" title="使用那些 function"></a>使用那些 function</h2><p>先給大家看我 project 跟 blockchain 有關的目錄結構：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src</span><br><span class="line">├── fsm.py</span><br><span class="line">└── service</span><br><span class="line">    └── blockchain</span><br><span class="line">        ├── service_tokens.py</span><br><span class="line">        ├── users.py</span><br><span class="line">        └── utils</span><br><span class="line">            ├── request_flattener.py</span><br><span class="line">            └── signature_generator.py</span><br></pre></td></tr></table></figure>
+
+<p>下面是 <code>fsm.py</code> 的某個部份：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> service.blockchain <span class="keyword">import</span> users, service_tokens</span><br><span class="line"></span><br><span class="line">user_id = <span class="string">&#x27;this_is_user_id&#x27;</span></span><br><span class="line">amount = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">users.transfer.service_token(user_id, amount)</span><br><span class="line">user_wallet_address = users.retrieve.wallet_address(user_id)</span><br><span class="line">service_tokens.mint(user_wallet_address, amount)   <span class="comment"># 這部分的 code 我沒 share</span></span><br></pre></td></tr></table></figure>
+
+<p>知道為什麼我要包成 class 了吧？這樣就能夠照文檔編排的邏輯 call function！</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>教學</tag>
+        <tag>LINE</tag>
+        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -2912,6 +2912,47 @@
 大概是這樣，這學期就好好充實自己吧😎
 <br>
 <br>]]></content>
+  </entry>
+  <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
   </entry>
   <entry>
     <title>停下來思考</title>
@@ -3199,47 +3240,6 @@
       </tags>
   </entry>
   <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 SSL For Free 免費申請 SSL 憑證</title>
     <url>/2022/04/ssl-for-free/</url>
     <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
@@ -3276,6 +3276,39 @@ go go!!!]]></content>
 <li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
+    <url>/2021/12/synth-one-with-logic-pro/</url>
+    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
+<span id="more"></span>
+
+<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
+<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
+<li>用 USB 線，將 iPad 連接到 MacBook</li>
+<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
+<li>打開 Synth One，然後先放著</li>
+<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
+<li>「Use External Instrument plug-in」記得勾起來</li>
+<li>MIDI Destination 選 iPad</li>
+</ul>
+ <img src="2.png" alt="2.png"></li>
+<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
+</ol>
+<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
+<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
+<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
+<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
+<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
+<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
+<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
+<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
+</ol>
+<br>
+這樣就大功告成啦😎]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
   </entry>
   <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
@@ -3465,45 +3498,12 @@ go go!!!]]></content>
 <h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>再次感謝康明軒教授、恩衍、育浚，沒有你們，就沒有這一切！<br>另外，也非常感謝柏毅給予我簡報上的指點，讓我學到一些很重要也很實用的簡報技巧！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
 ]]></content>
       <tags>
-        <tag>Python</tag>
-        <tag>交大</tag>
         <tag>音訊處理</tag>
+        <tag>交大</tag>
         <tag>專題</tag>
+        <tag>Python</tag>
         <tag>樂理</tag>
         <tag>音色</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
-    <url>/2021/12/synth-one-with-logic-pro/</url>
-    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
-<span id="more"></span>
-
-<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
-<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
-<li>用 USB 線，將 iPad 連接到 MacBook</li>
-<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
-<li>打開 Synth One，然後先放著</li>
-<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
-<li>「Use External Instrument plug-in」記得勾起來</li>
-<li>MIDI Destination 選 iPad</li>
-</ul>
- <img src="2.png" alt="2.png"></li>
-<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
-</ol>
-<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
-<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
-<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
-<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
-<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
-<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
-<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
-<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
-</ol>
-<br>
-這樣就大功告成啦😎]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
       </tags>
   </entry>
   <entry>

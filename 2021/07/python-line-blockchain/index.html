@@ -38,9 +38,9 @@
 <meta property="article:published_time" content="2021-07-08T13:54:00.000Z">
 <meta property="article:modified_time" content="2021-07-16T09:20:45.397Z">
 <meta property="article:author" content="卡尼多">
+<meta property="article:tag" content="交大">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="黑客松">
-<meta property="article:tag" content="交大">
 <meta property="article:tag" content="教學">
 <meta property="article:tag" content="LINE">
 <meta property="article:tag" content="Blockchain">
@@ -318,9 +318,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
               <a href="/tags/Python/" rel="tag"># Python</a>
               <a href="/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/" rel="tag"># 黑客松</a>
-              <a href="/tags/%E4%BA%A4%E5%A4%A7/" rel="tag"># 交大</a>
               <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"># 教學</a>
               <a href="/tags/LINE/" rel="tag"># LINE</a>
               <a href="/tags/Blockchain/" rel="tag"># Blockchain</a>
@@ -525,20 +525,23 @@
   <script>
     (function() {
       var db = firebase.firestore();
+      var articles_once = db.collection('articles');
       var articles = db.collection('views');
 
       if (CONFIG.page.isPost) { // Is article page
         var title = document.querySelector('.post-title').innerText.trim();
+        var doc_once = articles_once.doc(title);
         var doc = articles.doc(title);
+        var increaseCount_once = CONFIG.hostname === location.hostname;
         var increaseCount = CONFIG.hostname === location.hostname;
-        /*
         if (localStorage.getItem(title)) {
-          increaseCount = false;
+          increaseCount_once = false;
+          // increaseCount = false;
         } else {
           // Mark as visited
           localStorage.setItem(title, true);
         }
-        */
+        getCount(doc_once, increaseCount_once);
         getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
       } else if (CONFIG.page.isHome) { // Is index page
         var promises = [...document.querySelectorAll('.post-title')].map(element => {

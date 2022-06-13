@@ -506,20 +506,23 @@
   <script>
     (function() {
       var db = firebase.firestore();
+      var articles_once = db.collection('articles');
       var articles = db.collection('views');
 
       if (CONFIG.page.isPost) { // Is article page
         var title = document.querySelector('.post-title').innerText.trim();
+        var doc_once = articles_once.doc(title);
         var doc = articles.doc(title);
+        var increaseCount_once = CONFIG.hostname === location.hostname;
         var increaseCount = CONFIG.hostname === location.hostname;
-        /*
         if (localStorage.getItem(title)) {
-          increaseCount = false;
+          increaseCount_once = false;
+          // increaseCount = false;
         } else {
           // Mark as visited
           localStorage.setItem(title, true);
         }
-        */
+        getCount(doc_once, increaseCount_once);
         getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
       } else if (CONFIG.page.isHome) { // Is index page
         var promises = [...document.querySelectorAll('.post-title')].map(element => {
