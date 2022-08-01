@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2022 端午節立蛋</title>
+    <url>/2022/06/2022-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節不立蛋嗎？</p>
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
+<p><img src="1.jpg"></p>
+<br>
+今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
+  </entry>
+  <entry>
     <title>【心得】2022 Yourator 數位職涯博覽會</title>
     <url>/2022/03/2022-yourator-career-fair/</url>
     <content><![CDATA[<p>簡單分享昨天參加職涯博覽會的收穫～</p>
@@ -43,15 +54,148 @@
 加油，在精進自我的路上，你，並不孤單！]]></content>
   </entry>
   <entry>
-    <title>2022 端午節立蛋</title>
-    <url>/2022/06/2022-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節不立蛋嗎？</p>
+    <title>用 Algorithmia 部署 ML Models</title>
+    <url>/2021/07/algorithmia-ml-models/</url>
+    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
 <span id="more"></span>
 
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
-<p><img src="1.jpg"></p>
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
+
+<p>就是這麼簡單 😎</p>
 <br>
-今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+        <tag>Deploy</tag>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>交大</tag>
+        <tag>教學</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回顧在 AppWorks School 的那段日子</title>
+    <url>/2022/08/appworks-school-campus-program-experience/</url>
+    <content><![CDATA[<p>充實又有趣的三個多月！</p>
+<span id="more"></span>
+
+<div class="note success">
+    也可以到 <a href="https://kanido386.medium.com/回顧在-appworks-school-的那段日子-batch-1-campus-program-d53b4567dd15" target="_blank">Medium</a> 觀看有穿插照片的版本，會更清楚哦～
+</div>
+
+<h3 id="我與-AppWorks-School-的相遇"><a href="#我與-AppWorks-School-的相遇" class="headerlink" title="我與 AppWorks School 的相遇"></a>我與 AppWorks School 的相遇</h3><p>嗨大家好～ 我是 AppWorks School Campus Program Batch #1 的 Tim 林彥廷，筆名「卡尼多」😀</p>
+<p>畢業於國立陽明交通大學資訊工程學系，職涯初期打算先做⼀名後端⼯程師。</p>
+<p>很榮幸能在這邊和大家分享我在 AppWorks School 的點點滴滴！</p>
+<p>想當初，還蠻幸運的，在我正頹廢、無聊滑臉書的時候，無意間滑到了 AppWorks School Campus Program 的招生宣傳文，當時心想：「咦？難道臉書演算法是在指示我去了解一下這個 Program 來解救一波自己的頹廢嗎？」</p>
+<p>不仔細一看還好，仔細一看天啊不得了！這個 Campus Program 是專門為資訊相關科系的大學和研究所學生設計的，跟我過去所認知的「AppWorks School 協助很多人成功轉職為軟體工程師」不太一樣，居然也有這麼一個 Program 是給資訊相關科系的！</p>
+<p>除此之外，上面還提到說這個 Program 可以協助我們利用課餘時間累積實作經驗、熟悉業界實務、認識新創生態，並在探索志向的過程當中累積技術即戰力。這正是當下狀態的我所渴求的！更誇張的是，這個 Program 居然全程免費！</p>
+<p>那時候想說說明會的時間我剛好有空，加上招生宣傳文上也有提到現場有提供餐點，於是乎，抱著聽聽看的心情，參加了說明會。沒想到聽完了以後，讓我對這個 Program 的內容深感興趣，因而開啟了我這段酷旅程😎（從來沒這樣想過，原來滑臉書也是一件很酷的事情）</p>
+<hr>
+<h3 id="申請過程"><a href="#申請過程" class="headerlink" title="申請過程"></a>申請過程</h3><p>第一步就是填寫申請表單。</p>
+<p>我當初在申請的時候有幾題是屬於比較開放式的那種，像是你有哪些程式語言使用上的經驗、你想多了解軟體開發領域當中的哪一塊及為什麼、分享課外活動的經驗以及從中學到了什麼，所以在寫表單的過程當中，你會更加清楚自己為何想要申請這個 Program，當你發現越填表單動機越明確，那就代表這個 Program 是非常適合你的。</p>
+<p>有一題甚至要我們錄個一分鐘的自我介紹影片，可能上傳到 YouTube，然後再貼影片連結到表單上面。這個部分在我們那時候是 optional 的，但究竟有沒有做會不會影響到錄取與否呢？我是不敢拿這麼寶貴的機會開玩笑啦，所以最後還是錄了😂</p>
+<p>很快地，填完申請表單的隔天，就收到了面談邀約，超開心的！這個面談的目的，是為了更深入了解申請者的學習歷程以及對課程的期待。點郵件裡面的連結，登記完可以出席的日期和時段以後，就離進去這個 Program 不遠囉，剩下就是去 School 面談這一關了，當天帶著輕鬆的心情面談即可！</p>
+<p>關於面談，有一點想提醒一下，雖然是輕鬆的面談，但別忘了事先準備好想問的問題啊！（那次我忘記準備，被問到的時候，居然還反問說其他面試者都怎麼問，當下就覺得完蛋了😂）</p>
+<p>所以該做的基本準備還是要做的！</p>
+<br>
+P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面的時間是我們那時候的，可能會跟新的 schedule 不太一樣哦～
+
+<hr>
+<h3 id="入學準備任務-11-days"><a href="#入學準備任務-11-days" class="headerlink" title="入學準備任務 (11 days)"></a>入學準備任務 (11 days)</h3><p>4/1 禮拜五傍晚快六點的時候，收到了一封標題前面是「AppWorks School」的郵件，當下既期待又怕受傷害，到底會是封錄取信還是感謝信呢？</p>
+<p>點開一看：「太好了，是入學邀請啊！」</p>
+<p>興奮之餘，還是謹慎地讀了一下內容，深怕這只是一場夢啊！</p>
+<p>上頭有些任務要在入學前完成，就照著做吧！其中有個任務可能會需要花些時間去研究 —— 完成 AWS 相關設置，建議可以在一邊設置的過程當中，一邊簡單用文字記錄下來，這樣之後如果想做一樣的事情，就可以看自己之前寫的東西快速重建了！（真的蠻建議這麼做，可以是 HackMD，可以是 Notion，甚至乾脆弄一個屬於自己的部落格，因為你可能在 School 期間會因為踩到某些「坑」，而讓你想砍掉重練你的 EC2 Instance，有了自己整理的設置過程，拿來參考很快就能重建，也就比較不會覺得那麼煩躁😂）</p>
+<p>除此之外，School 還很貼心地提供「學習指引」給我們大家，希望我們在入學前這段時間鞏固一些基礎，這樣比較能順利銜接開學後的課程，因為開學後會直接開始實作「based on 那些基礎」的專案！（很扎實，但也能很快讓你變厲害的那種）</p>
+<p>學習清單裡面有些是 Treehouse 的資源，咦，那不是要錢嗎？不用擔心！AppWorks School 非常貼心，開學後可以憑收據向 AppWorks School 請領一個月的月費，超賺的！</p>
+<p>所以說，教學影片還不看爆嗎？</p>
+<hr>
+<h3 id="個人指定專案實作-4-weeks"><a href="#個人指定專案實作-4-weeks" class="headerlink" title="個人指定專案實作 (4 weeks)"></a>個人指定專案實作 (4 weeks)</h3><p>這個階段可謂穩固基底的黃金階段！</p>
+<p>一開始會要我們搞定 EC2 環境，並在裡面裝好 Node.js、MySQL、NGINX。這個任務如果過去沒接觸過的話，得花上不少時間和精力去研究，而且常常會不知道自己在做什麼。這時就可以多問問身邊的同學和導師，永遠要記得，在 School，當你請求協助，總會有人伸出援手的，而且你並不孤單，大家都是站在同一陣線上的！</p>
+<p>當你搞定好環境，這時候又會面臨到另一項挑戰：你必須根據 STYLiSH (進去之後你會琅琅上口的電商網站 project) 的設計稿，建所需的 MySQL 資料庫並用 Express 撰寫相關的 API，最後部署到 EC2 上面。這可能跟過去在學校寫作業的方式不太一樣 —— 沒有一個非常明確的 spec 要你做什麼，而是你要自己根據設計稿去構思該怎麼設計資料庫的 schema 和怎麼開後端的 API。我覺得這是個人指定專案實作當中非常有價值的一個部分，如同 Jamie 之前在一場 AMA (Ask Me Anything) 講座分享到的：「業界並不像學校，什麼問題都 well-defined，我們要學會自己去定義問題！」這是一個很好的機會去訓練自己這一 part。</p>
+<p>此外，還會接觸到怎麼在 Express 上面做圖片上傳、申請 SSL 憑證以啟用 HTTPS、串接 TapPay 金流服務、Authentication 以及導師會帶大家體驗 code review 的流程。</p>
+<p>前兩週是後端，第三週開始就要用 React 來做前端。</p>
+<p>一開始有個 React Workshop，會透過實作簡單的 todo list app 來帶大家認識 React，像是怎麼使用 React 的 useState 和 useEffect。雖說是「簡單」的 todo list app，但如果是第一次接觸 React 而且過去習慣用 JavaScript 去操作 DOM Element，那會有一段小陣痛期😅（不過熟悉了以後就會發覺到 React 的魅力所在！）</p>
+<p>Workshop 完了以後勒？沒有錯，就要開始使用 React 然後照著設計稿去刻前端。這是一趟不輕鬆但會越做越有成就感的艱辛旅程。</p>
+<p>首先跟前端比較沒有關係，要為前端 project 設置 linter 及 prettier，讓自己能寫出具有一致風格且乾淨整潔的程式碼，這是個好機會來養成寫 code 的好習慣。接著就是用 create-react-app 及 react-router、styled-components 刻 STYLiSH 的頁面，如果過去比較沒碰過前端切版的話，很可能一個頁面就得花上一整天的時間，不過放心，越做會越上手的！最後就是部署到 EC2 上面啦，可能會踩到一些坑，就讓大家親自去體會囉～</p>
+<p>還有第四週呢！第四週除了繼續刻前端頁面，還會要大家把前後端串在一起，也就是前端能 call 前兩週做的後端 API 來拿到它想要的資料。這個任務困難的點在於，你之前開的 API 或許根本不符合你前端的需求，所以你得不斷在前端、後端之間來回修改，直到兩者可以順利串接在一起為止。提個外話，過程中除了可以磨練耐心之外，你也會深刻體會到開發團隊彼此溝通的重要性：你看，自己一個人包前後端都這麼辛苦了，更何況是前後端分離的團隊開發協作模式！</p>
+<p>總而言之，這個階段撐過來以後，真的會發現到自己的巨幅成長，不是開玩笑的！（再次提醒，過程雖然不輕鬆，但你總是能請求協助的）</p>
+<hr>
+<h3 id="團隊專案實作-1-week"><a href="#團隊專案實作-1-week" class="headerlink" title="團隊專案實作 (1 week)"></a>團隊專案實作 (1 week)</h3><p>在「個人指定專案實作」最後一個禮拜的星期五晚上，校長 Shirney 突然宣佈一個新活動 —— 第一屆 AppWorks School 校園計畫黑客松。當下真的有被嚇到，才剛結束充滿挑戰的專案實作，沒想到又有新的挑戰迎面而來，完全沒喘息的機會啊😂</p>
+<p>這個黑客松競賽禮拜五晚上宣佈，然後下個禮拜一要上台報告 proposal，再下個禮拜一就要上台 demo，對於剛完成「個人指定專案實作」的大家來說，聽到的時候真的會覺得哇天啊，好想先休個息啊😂</p>
+<p>這是一個團隊合作的專案，我們那時候的任務是：要在導師幫大家寫好的 STYLiSH 範例 code 上加上新功能，在那之前還要解決一些 bug，最後會根據功能完整度、整體介面呈現、綜合技術難度、綜合表現及協作來做評分。導師會預先幫大家分好組，所以禮拜五一宣佈完畢，大家就跟組員坐在一起開始討論，想加什麼功能都可以，天空才是你的極限！（我們這組最後結合了 LINE Bot，感覺如果你想結合 machine learning 的東西導師們也會很樂見的）</p>
+<p>這個機會還蠻寶貴的，而且如果你出去面試，通常都會被問你過去有沒有團隊開發的經驗，這時候你就可以分享你在 School 團隊專案過程當中的點點滴滴，所以這個部分要認真投入啊！</p>
+<p>最後 demo 的時候就能看到大家創意的發揮，還挺有趣的～</p>
+<hr>
+<h3 id="專題研討-1-week"><a href="#專題研討-1-week" class="headerlink" title="專題研討 (1 week)"></a>專題研討 (1 week)</h3><p>專題研討是什麼？簡單來說，導師會要我們大家分組去深入一些特定的主題，也就是「Dive into Topics」。</p>
+<p>我們那時候有六個主題：(1) 前端、(2) Load balancing + Auto Scaling、(3) Message Queue、(4) GraphQL、(5) NoSQL Database + Database Management、(6) Monitoring。每個主題的名額有限，先搶先贏！主要的進行方式就是禮拜一的時候選定主題，在接下來的幾天好好去研究，禮拜五的時候每個主題會抽一位學員上台 share，每個主題大概 25 分鐘這樣。那因為每組由誰上台當天才會知道，所以每個人都要事先準備好能上台 share 25 分鐘的內容，沒準備好被抽到就尷尬了，所以大家都不得不好好去準備😅</p>
+<p>我覺得這個 part 很讚的地方在於，每組各自鑽研一個主題，禮拜五的時候就能聽到大家經過消化吸收過後的介紹，能在那麼短的時間內 (不到一個禮拜) 就能接觸到不同的技術真的很賺！</p>
+<hr>
+<h3 id="求職暖身及企業期中考-1-week"><a href="#求職暖身及企業期中考-1-week" class="headerlink" title="求職暖身及企業期中考 (1 week)"></a>求職暖身及企業期中考 (1 week)</h3><p>這個階段開始，會有很多 Workshop 的活動可以參加！以 Batch #1 來說，這個階段的第一週有 Cybersecurity Workshop、Coding Interview 技巧的分享、QA Workshop。我覺得如果有時間的話都可以盡量參加，因為透過這些 Workshop，你可以接觸到很多不同面向的知識和心法，有些甚至可能過去不曾接觸過，而你都可以在每一次的 Workshop 當中 pick up 一些有趣的知識點和想法，真的還蠻不錯的。也蠻推薦可以在 Workshop 進行的過程當中，做點筆記記錄一下，這樣活動結束以後即使過了一段時間再回去看，很快就能回憶起當初講者分享了什麼，以及當時聽完以後那些屬於自己的寶貴收穫。</p>
+<p>至於企業期中考的部分，那次我們是在禮拜五晚上。可能是因為想減緩我們對期中考的壓力吧？School 有幫我們準備晚餐。實際考完那個期中考以後，發覺自己跟剛進 School 的自己相比，實力是真的提升不少！在測驗當中，你會深刻感謝自己前幾週付出的努力，會非常慶幸當初無論是在做個人指定專案或者是團隊專案的時候有認真投入。所以那晚眼前的一切，對我們來說真的不是什麼太困難的挑戰，spec 和藹可親多了，而且就算在過程當中卡住，導師也會不時給予溫馨的提示，讓大家能更順利地完成測驗。雖然這個企業期中考不會納入 AppWorks School 畢業與否的考量，但如果沒參與到、沒實際深刻感受到自己的成長及過去幾週的辛勤，我覺得會非常可惜、甚至是會後悔的呢🤔</p>
+<hr>
+<h3 id="Topic-Discussion-1-week，optional"><a href="#Topic-Discussion-1-week，optional" class="headerlink" title="Topic Discussion (1 week，optional)"></a>Topic Discussion (1 week，optional)</h3><p>這週因為是大部分的人學校的期末考週，所以可以自己選擇要不要參加。我想說反正那週剛好沒什麼事，就來參加個吧！導師很有創意地，拿我們兩週前「專題研討」研究的技術，加點新東西整合起來，變成一個小 project，簡單來說，就是要整合 Express、MongoDB 資料庫、RabbitMQ message queue 和 Kubernetes 來做一個「根據使用者所在位置來顯示附近 YouBike 剩餘數量」的小工具，功能並不是這個 project 所著重的，而是練習怎麼把這些技術串起來！雖然 loading 真的不輕，畢竟只有一個禮拜的時間，但是在實作的過程當中，你會更加熟悉「專題研討」時大家分享到的技術，因為光聽可能多少有聽進去一些，但唯有弄髒手去實作，才會學習得更加深刻！（尤其 Kubernetes，聽說在業界蠻常會用到的，趁這個機會接觸一波也是挺不錯的～）</p>
+<p>除了小 project 的實作以外，這週還有兩場分別講 Data Engineering 和 DevOps 的 Workshop，都是很不錯的 share！</p>
+<hr>
+<h3 id="求職暖身及遠距期中考-1-week"><a href="#求職暖身及遠距期中考-1-week" class="headerlink" title="求職暖身及遠距期中考 (1 week)"></a>求職暖身及遠距期中考 (1 week)</h3><p>這週也是有各種 Workshop 可以聽：業界分享「如何成為世界級的軟體工程師」 (強調 CS 基礎知識的重要性)、Agile Workshop、Docker Workshop (最後要用 Docker 將 STYLiSH project 給包起來，含 NGINX、Express Server、MySQL Database) or System Design Workshop (做一個能 load balancing 和 auto scaling 的縮網址服務) 二選一。</p>
+<p>至於遠距期中考的部分，會需要你空出一個白天的時間 (我們那時候是在禮拜六)，然後會在 Discord (團隊用的通訊平台) 上面公告題目。有分前後端：如果你 Dive into Topics 那週選的是前端，那你就是做前端的題目，若是選其他的 topic 則是做後端。跟「企業期中考」有什麼差別嗎？有的。一個是實體、一個是遠端；一個累的是身、一個累的是心；而且挑戰的面向比較不一樣，可以達到更全方位的檢驗效果呢！</p>
+<hr>
+<h3 id="個人自主專案-3-weeks"><a href="#個人自主專案-3-weeks" class="headerlink" title="個人自主專案 (3 weeks)"></a>個人自主專案 (3 weeks)</h3><p>在上週會請我們構思接下來三週的個人專案要做什麼，然後禮拜五晚上的時候上台分享提案給大家。</p>
+<p>強烈建議如果平常在生活當中有想到什麼有趣的點子或者是想解決的問題，都可以先找個東西記下來，那些會對你構思個人專案該做什麼非常有幫助啊！</p>
+<p>（偏廢話可跳過😂）像我原本打算做一個類似 Stack Overflow 的問答論壇，之所以打算做是因為實在不知道該做什麼，就有點半隨便地選了這個題目。後來突然想到自己的 Github repo 那邊有一個做到一半就沒繼續再弄的 project (之前打算用 Python 做一個 GUI 的猜歌輔助工具)，加上求職暖身週有講者在 Workshop 的最後用 Kahoot 跟我們做互動，而且剛好在 School 培訓的這段期間接觸到了 React 前端，所以最後就改做<a href="https://github.com/kanido386/guess-songs-king">一款結合「Kahoot」和 「猜歌」元素的互動遊戲平台</a>。扯遠那麼多，我想說的是，靈感總是能在你意想不到的地方發揮它的價值，所以說，平常腦袋有蹦出什麼你覺得不錯的點子，就都先蒐藏起來吧，未來說不定能助你一臂之力！</p>
+<p>這個個人專案非常重要，可以說是你在 School 大量學習及累積的一個總結，尤其當你要去外面面試的時候，你會更加深刻體會到這一點。如果你有寫在履歷上面的話，面試官很愛從個人專案去延伸問題問你，可能問你相關技術，可能問你為什麼想做及怎麼做，甚至問你有沒有遇到什麼困難並且是如何去解決的。當你有這麼一個個人專案的時候，你是可以引導面試走向的。所以這也是為什麼你應該認真投入於個人專案，當面試官發現你在介紹你自己個人專案時眼睛是發光的，他能感受到你的熱忱，我覺得這或許能讓對方留下不錯的印象，讓自己更有記憶點。</p>
+<p>期間也有安排企業參訪：Hahow、Dcard。聽說每屆可能會不一樣，可以期待一下😀</p>
+<hr>
+<h3 id="求職衝刺-gt-1-week"><a href="#求職衝刺-gt-1-week" class="headerlink" title="求職衝刺 (&gt;1 week)"></a>求職衝刺 (&gt;1 week)</h3><p>這週有履歷撰寫的 Workshop，也有傳授面試技巧的 Workshop，而且你會在短時間的幾天之內生出一份英文履歷 (過程還蠻不輕鬆的😅)，完成了初版以後，會有非常專業的老師幫你看並提供修改上的建議，超級讚！</p>
+<p>當週禮拜五晚上是場充滿感性的畢業典禮🎓（結束回到家以後會有種莫名其妙的空虛感）</p>
+<p>接下來兩週的活動是給有求職需求的學員參加的 ——</p>
+<p>(1) 錄音練習：導師每次會丟個面試常見問題，可能是技術也可能是非技術，你當下要錄自己的回答，傳到 Discord，導師隨機抽一位放出來，再看有什麼地方可以補充。而且導師還會幫大家整理一些心法和框架，遇到不知道該怎麼回答的問題時可以試著套用看看！</p>
+<p>(2) 讀書會：每個人會被分配到要 share 哪個資料結構或演算法，到你上台的時候，除了介紹一下那是什麼之外，也要帶大家做點相關的 LeetCode 題目。簡單來說，就是大家一起刷起來啦😂</p>
+<p>(3) 模擬面試：跟導師們約線上 or 實體的面試。有用 google doc 來邊講解題思路邊動手寫 code 的練習，有著重個人專案的問答及 system design 的白板題，也有針對你想練習的公司職缺來客製化的模擬面試，甚至會請厲害的 AppWorks School 校友來跟你模擬面試。在每次模擬面試完，面試官都會給予回饋，可以藉這個機會調整一下。我覺得這些練習對實際去外面面試還蠻有幫助的，比較不會有種「蛤？原來可以這樣考？」的驚訝感覺，因為有跟導師模擬過了（特別是用 google doc 解題這一點，外面還真的會這樣考呢！）</p>
+<hr>
+<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>在 AppWorks School 這邊認識了很多志同道合的朋友，和大家一起 coding、debug、討論的感覺真的挺不錯的，也很喜歡那種大家在過程中一起成長的氛圍！</p>
+<p>很開心能夠成為 AppWorks School 大家庭的一份子，更開心有這個機會在此和大家分享我在 AppWorks School 這段期間的點點滴滴，未來還請各位多多指教了🙏</p>
+<br>
+希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
   </entry>
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
@@ -176,73 +320,13 @@
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
 ]]></content>
       <tags>
+        <tag>交大</tag>
         <tag>音訊處理</tag>
         <tag>吉他</tag>
         <tag>效果器</tag>
         <tag>Pure Data</tag>
-        <tag>交大</tag>
         <tag>課程</tag>
         <tag>專題</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 Algorithmia 部署 ML Models</title>
-    <url>/2021/07/algorithmia-ml-models/</url>
-    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
-<span id="more"></span>
-
-<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
-<hr>
-<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
-<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
-<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
-<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
-<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
-<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
-<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
-<hr>
-<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
-<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
-<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
-<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
-<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
-<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
-<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
-<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
-<p>像我原本以為是這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<p>後來才知道應該要這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
-<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
-
-<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
-<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
-<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
-<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
-
-<p>就是這麼簡單 😎</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>Machine Learning</tag>
-        <tag>Deploy</tag>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>教學</tag>
       </tags>
   </entry>
   <entry>
@@ -740,93 +824,6 @@
       </tags>
   </entry>
   <entry>
-    <title>【職涯路上】73~64</title>
-    <url>/2022/04/freshman-career-73-64/</url>
-    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
-<span id="more"></span>
-
-<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
-<ul>
-<li>(3/31) 完成和聲學作業六</li>
-<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
-<li>我後面一律簡稱 AWSCP</li>
-</ul>
-</li>
-<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
-<li>結果我還是沒開始碰 Laravel 😅</li>
-</ul>
-</li>
-<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
-<li>但最後也沒照那個計畫走</li>
-</ul>
-</li>
-<li>(4/2) 完成 AWSCP 前置任務<ul>
-<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
-</ul>
-</li>
-<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
-<li>(4/5~4/9) 準備奧丁丁面試<ul>
-<li>覺得自己好像都在原地踏步😢</li>
-</ul>
-</li>
-<li>(4/7) 完成圖形識別 Homework 2</li>
-</ul>
-<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
-<p>加加油吧！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】84~77</title>
-    <url>/2022/03/freshman-career-84-77/</url>
-    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
-<span id="more"></span>
-
-<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
-<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
-<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
-<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
-<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
-<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
-<p>所以說，路真的不會白走啊！</p>
-<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
-<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
-<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
-<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
-<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
-<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
-<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
-<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
-<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
-<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
-<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
-<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
-<p>就連自己也不知道自己在講什麼。</p>
-<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
-<p>甚至面試官問我最後一題：</p>
-<blockquote>
-<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
-</blockquote>
-<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
-<p>後來想想，我應該要這麼回答：</p>
-<blockquote>
-<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
-</blockquote>
-<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
-<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
-<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
-<p>我那天寫給自己：</p>
-<blockquote>
-<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
-</blockquote>
-<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
-<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
-<p>整體來說挺值得的！</p>
-<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
-<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
-<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】63~0，Commencement</title>
     <url>/2022/06/freshman-career-63-0/</url>
     <content><![CDATA[<p>時間過得真是快啊！轉眼間，來到了這系列文的最終章。</p>
@@ -927,12 +924,39 @@
 ]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
+    <title>【職涯路上】73~64</title>
+    <url>/2022/04/freshman-career-73-64/</url>
+    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
+<span id="more"></span>
+
+<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
+<ul>
+<li>(3/31) 完成和聲學作業六</li>
+<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
+<li>我後面一律簡稱 AWSCP</li>
+</ul>
+</li>
+<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
+<li>結果我還是沒開始碰 Laravel 😅</li>
+</ul>
+</li>
+<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
+<li>但最後也沒照那個計畫走</li>
+</ul>
+</li>
+<li>(4/2) 完成 AWSCP 前置任務<ul>
+<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
+</ul>
+</li>
+<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
+<li>(4/5~4/9) 準備奧丁丁面試<ul>
+<li>覺得自己好像都在原地踏步😢</li>
+</ul>
+</li>
+<li>(4/7) 完成圖形識別 Homework 2</li>
+</ul>
+<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
+<p>加加油吧！</p>
 ]]></content>
   </entry>
   <entry>
@@ -987,6 +1011,66 @@
 <p>晚上遠端幫朋友解決 Windows 上面 Python 環境設定的問題以及一點小教學，才知道有「<a href="https://www.teamviewer.com/tw/">TeamViewer</a>」這麼方便的遠端工具！（也才又找回小時候喜歡教同學的感覺）</p>
 <br>
 職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】84~77</title>
+    <url>/2022/03/freshman-career-84-77/</url>
+    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
+<span id="more"></span>
+
+<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
+<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
+<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
+<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
+<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
+<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
+<p>所以說，路真的不會白走啊！</p>
+<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
+<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
+<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
+<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
+<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
+<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
+<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
+<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
+<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
+<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
+<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
+<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
+<p>就連自己也不知道自己在講什麼。</p>
+<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
+<p>甚至面試官問我最後一題：</p>
+<blockquote>
+<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
+</blockquote>
+<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
+<p>後來想想，我應該要這麼回答：</p>
+<blockquote>
+<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
+</blockquote>
+<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
+<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
+<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
+<p>我那天寫給自己：</p>
+<blockquote>
+<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
+</blockquote>
+<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
+<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
+<p>整體來說挺值得的！</p>
+<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
+<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
+]]></content>
   </entry>
   <entry>
     <title>【職涯路上】89~86，再廢也不要停止反思</title>
@@ -1390,9 +1474,9 @@
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
-        <tag>交大</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
+        <tag>交大</tag>
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
@@ -1545,9 +1629,9 @@
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
-        <tag>交大</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
+        <tag>交大</tag>
         <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
@@ -1650,32 +1734,6 @@
 <p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
 <br>
 希望這篇文章能助你一臂之力💪]]></content>
-  </entry>
-  <entry>
-    <title>不完美行動</title>
-    <url>/2021/09/just-do-it/</url>
-    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
-<span id="more"></span>
-<hr>
-<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
-<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
-<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
-<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
-<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
-<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
-<hr>
-<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
-<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
-<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
-<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
-<p>但，不去行動，怎麼會有結果呢？</p>
-<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
-<hr>
-<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
-<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
-<hr>
-<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
-]]></content>
   </entry>
   <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
@@ -2049,6 +2107,32 @@
       </tags>
   </entry>
   <entry>
+    <title>不完美行動</title>
+    <url>/2021/09/just-do-it/</url>
+    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
+<span id="more"></span>
+<hr>
+<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
+<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
+<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
+<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
+<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
+<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
+<hr>
+<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
+<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
+<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
+<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
+<p>但，不去行動，怎麼會有結果呢？</p>
+<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
+<hr>
+<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
+<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
+<hr>
+<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+]]></content>
+  </entry>
+  <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
     <url>/2022/03/line-developers-meetup-16/</url>
     <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
@@ -2156,6 +2240,32 @@
 ]]></content>
   </entry>
   <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
+    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
+    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
+<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+<span id="more"></span>
+
+<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
+<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
+<p><img src="2.png" alt="2.png"></p>
+<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
+<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
+<p><img src="3.png" alt="3.png"></p>
+<br>
+這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
     <url>/2021/01/microprocessor-project/</url>
     <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
@@ -2215,29 +2325,156 @@
       </tags>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
-    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
-    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
-<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+    <title>Moleculer CRUD Guide</title>
+    <url>/2020/05/moleculer-crud-guide/</url>
+    <content><![CDATA[<p><a href="/2020/05/moleculer-crud-guide"><img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>之前在「梅竹黑客松開發部」時整理的 guide。</p>
 <span id="more"></span>
 
-<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
-<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
-<p><img src="2.png" alt="2.png"></p>
-<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
-<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
-<p><img src="3.png" alt="3.png"></p>
+<p>因為把其他部分的 code 也貼上來好像不太好，沒有全部放，所以有些地方可能會不知道在表達什麼。<br>但應該還是能從本文中知悉一點大概念～</p>
+<blockquote>
+<p>以 Server / Build Informations Related Service 為例</p>
+</blockquote>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><p>在 git 上建立新分支並用程式碼編輯器打開 project</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 為了接下來的操作，先切換路徑到 mc-landing-server 的所在位置</span></span><br><span class="line"><span class="built_in">cd</span> path/to/mc-landing-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 這時你可能會發現目前所在的 branch 是 master 或是上次離開前待的 branch，</span></span><br><span class="line"><span class="comment">#    我們要切回 dev 這個分支</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 可能有新的 code 被 merged 到 dev，在開始之前，我們得先更新 dev</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 建立並切換到新分支，準備開始這次的任務！</span></span><br><span class="line">git checkout -b feature/build-informations-related-service-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 如果是用 VSCode 當作程式碼編輯器，下下面的指令就能用 VSCode 打開 project</span></span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+
+<h1 id="開始寫-model-囉"><a href="#開始寫-model-囉" class="headerlink" title="開始寫 model 囉"></a>開始寫 model 囉</h1><ol>
+<li><p>先打開 mc-landing API server spec 這個頁面，我們以這個頁面的 schema 定義來寫我們的 model</p>
+ <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informations: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  user_id: &lt;ObjectId&gt;,</span><br><span class="line">  tag_id: &lt;ObjectId&gt;,</span><br><span class="line">  title: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  content: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  created_at: &lt;<span class="built_in">Number</span>&gt;,</span><br><span class="line">  updated_at: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">Index</span>:</span><br><span class="line">&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;</span><br><span class="line">&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">tags</span>: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  name: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  color: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>開好之前定的 schema 以後，我們就準備依樣畫葫蘆囉～ （這就是為什麼我們要分兩階段進行：第一個階段在我們還不需要實際打 code 的時候，專心一意地去想我們的 schema 要怎麼規劃才能符合需求，然後把它寫下來；第二個階段就直接照第一階段寫的，實際去寫成 code。就好像蓋房子的時候：畫藍圖 → 開始動工！）</p>
+</li>
+<li><p>回到 VSCode，在 models 資料夾底下建一個 informations.js （如果是做 Server / Build Posts Related Service 就建 posts.js，以此類推）</p>
+</li>
+<li><p><del>複製 users.js 裡面的 code 到 informations.js 裡面，然後開始改</del></p>
+</li>
+</ol>
+<h2 id="正式開始寫-model-的-code"><a href="#正式開始寫-model-的-code" class="headerlink" title="正式開始寫 model 的 code"></a>正式開始寫 model 的 code</h2><ul>
+<li>從 mongoose 裡面取用 Schema，準備用 Schema 自定義我們的 schema！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; Schema &#125; = Mongoose;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把我們定義的 schema 命名為 informationsSchema（或 postsSchema）</li>
+<li>最下面的 <code>strict: &#39;throw&#39;</code> 是一種 optional 的設定，意思是： 若 insert 一個不符合我們 schema 的新 <a href="https://docs.mongodb.com/manual/core/document/">document</a> 時，會直接 drop 掉也會報出錯誤</li>
+<li>灰色被 comment 掉的部分是我們要改的部分！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="comment">// username: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;,</span></span><br><span class="line">  <span class="comment">// password: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>_id</code> 不用寫上去，mongoose 會幫我們建好～</li>
+<li><code>user_id</code>、<code>tag_id</code> 是指外部 schema (users、tags) 的 _id，所以用 <code>Mongoose.Types.ObjectId</code> 當作 type，這就是資料庫裡面常聽到的 relation， 有看過「<a href="https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1">6 Rules of Thumb for MongoDB Schema Design</a>」這篇文章大概就會懂</li>
+<li><code>required: true</code> 意思是：insert 新 document 時必須有這個欄位 （像 tag 可以之後再加上去，所以就不用 required 了）</li>
+<li>至於有什麼 type 呢？參考 <a href="https://mongoosejs.com/docs/schematypes.html">Mongoose</a> 吧！（我們是用 Mongoose 來建 model）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="attr">user_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tag_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>進行 index 吧！index 是為了方便之後搜尋排序等等的操作。</li>
+<li><code>&#39;text&#39;</code> <a href="https://docs.mongodb.com/manual/core/index-text/">Text indexes</a>? To support text search queries on string content.</li>
+<li><code>1</code>：由小排到大  <code>-1</code>：由大排到小</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informationsSchema.index(&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以 informations 這個 name 把我們定義好的 informationsSchema export 出去</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = Mongoose.model(<span class="string">&#x27;informations&#x27;</span>, informationsSchema);</span><br></pre></td></tr></table></figure>
+
+<h1 id="為待會-service-的參數驗證做準備"><a href="#為待會-service-的參數驗證做準備" class="headerlink" title="為待會 service 的參數驗證做準備"></a>為待會 service 的參數驗證做準備</h1><ol>
+<li>打開 libs/validates.js</li>
+<li>在 users service related 下面，加入新的參數驗證，一樣參考 <a href="https://www.notion.so/mc-landing-API-server-spec-344a5417ba5b40c09a633f1754215931">mc-landing API server spec</a> <br>（type 有哪些？參考 <a href="https://github.com/icebob/fastest-validator">fastest-validator</a>，因為 Moleculer 的參數驗證 based on it）<br>（為什麼不用加入 <code>_id</code>、<code>user_id</code>、<code>tag_id</code> 呢？因為第八行已經寫好 _id 類的了xD）</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// users service related</span></span><br><span class="line"><span class="attr">users</span>: &#123;</span><br><span class="line">  <span class="attr">username</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">password</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">6</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// informations service related</span></span><br><span class="line"><span class="attr">informations</span>: &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h1 id="重頭戲：API-本體（service）"><a href="#重頭戲：API-本體（service）" class="headerlink" title="重頭戲：API 本體（service）"></a>重頭戲：API 本體（service）</h1><ol>
+<li>在 services 資料夾底下新增 informations.service.js（posts.service.js）</li>
+<li>直接複製貼上 users.service.js 的 code 吧！（實在不少行xD 當然自己打過印象會更深刻）</li>
+<li>來改 code 吧！<br>（細節上次開會的時候講過了，如果忘記的話，可以上網查或是直接來問我們～）</li>
+</ol>
+<ul>
+<li>第 4 行改 model 的名字（左右都要改哦～）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> InformationsModel = <span class="built_in">require</span>(<span class="string">&#x27;../models/informations&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 9 行改 name</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">name: <span class="string">&#x27;informations&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 21 行改 model name</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">model: InformationsModel,</span><br></pre></td></tr></table></figure>
+
+<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><h3 id="addInformation"><a href="#addInformation" class="headerlink" title="addInformation"></a>addInformation</h3><ul>
+<li>從 addUser 改的，以下以此類推</li>
+<li>params 裡面的東西就是 schema 的那些</li>
+<li>為什麼沒 created_at、updated_at？它們由系統生成！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">addInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">user_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.create(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="getInformation"><a href="#getInformation" class="headerlink" title="getInformation"></a>getInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="getInformations"><a href="#getInformations" class="headerlink" title="getInformations"></a>getInformations</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformations: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">filter</span>: &#123;</span><br><span class="line">      ...ValidateType.filter</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limit</span>: &#123;</span><br><span class="line">      ...ValidateType.limit</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">skip</span>: &#123;</span><br><span class="line">      ...ValidateType.skip</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">sort</span>: &#123;</span><br><span class="line">      ...ValidateType.sort</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findAll(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="modifyInformation"><a href="#modifyInformation" class="headerlink" title="modifyInformation"></a>modifyInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">modifyInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">user_id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立者不會變</span></span><br><span class="line">    <span class="attr">created_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立時間不會變</span></span><br><span class="line">    <span class="attr">updated_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125; <span class="comment">// 由系統生成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.updateOne(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="removeInformation"><a href="#removeInformation" class="headerlink" title="removeInformation"></a>removeInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">removeInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.deleteOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h2><h3 id="create"><a href="#create" class="headerlink" title="create"></a>create</h3><ul>
+<li>中間那一塊就是所謂的「系統生成」啦～</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">create</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.created_at = timestamp;</span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.create(params); <span class="comment">// Return Promise</span></span><br><span class="line">    logger.info(<span class="string">&#x27;Create information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1000</span>, <span class="string">&#x27;Failed to create information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="findOne"><a href="#findOne" class="headerlink" title="findOne"></a>findOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.findOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find information in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="findAll"><a href="#findAll" class="headerlink" title="findAll"></a>findAll</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findAll</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; filter, limit, skip, sort &#125; = params;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> total = <span class="keyword">await</span> model.countDocuments(filter).lean();</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> model.find(filter, <span class="literal">null</span>, &#123; limit, skip, sort &#125;).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find informations successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123; total, data &#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find informations in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="updateOne"><a href="#updateOne" class="headerlink" title="updateOne"></a>updateOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">updateOne</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; _id &#125; = params;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.updateOne(&#123; _id &#125;, params).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Update information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1002</span>, <span class="string">&#x27;Failed to update information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="deleteOne"><a href="#deleteOne" class="headerlink" title="deleteOne"></a>deleteOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">deleteOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.deleteOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Delete information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1003</span>, <span class="string">&#x27;Failed to remove information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="把-API-加進-api-service-js"><a href="#把-API-加進-api-service-js" class="headerlink" title="把 API 加進 api.service.js"></a>把 API 加進 api.service.js</h1><ul>
+<li>直接看第 99 行 ～ 第 125 行那邊</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// No authentication, authorization needed</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/api&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/addUser&#x27;</span>: <span class="string">&#x27;v1.users.addUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// <span class="doctag">TODO:</span> Authentication, Authorization</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/admin&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/getUser&#x27;</span>: <span class="string">&#x27;v1.users.getUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/getUsers&#x27;</span>: <span class="string">&#x27;v1.users.getUsers&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/modifyUser&#x27;</span>: <span class="string">&#x27;v1.users.modifyUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/removeUser&#x27;</span>: <span class="string">&#x27;v1.users.removeUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/addInformation&#x27;</span>: <span class="string">&#x27;v1.informations.addInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/modifyInformation&#x27;</span>: <span class="string">&#x27;v1.informations.modifyInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/removeInformation&#x27;</span>: <span class="string">&#x27;v1.informations.removeInformation&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此一來， <code>npm run dev</code> 後就能夠使用 API 了！</p>
+<blockquote>
+<p>用 Postman 測試的時候，tags_id 隨便給一個值就好（只要是 string 都行）</p>
+</blockquote>
+<h1 id="一些-Q＆A"><a href="#一些-Q＆A" class="headerlink" title="一些 Q＆A"></a>一些 Q＆A</h1><h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>Ｑ：關於 services/student.service.js 裡⾯第 16 ⾏的 adapter 是什麼東西？我 google 不太到我想要的資訊。</strong></p>
+<p>我先 google「adapter 中⽂」，得到了「適配器」這個答案，那因為我不知道「適配器」到底是什麼東西，所有我就改⽤「圖⽚」來搜尋，（欣賞 adapter），欣賞了好幾張以後我猜測它應該就是類似「轉接頭」的東西吧？</p>
+<p>「轉接頭」跟「開發」到底有什麼關係啊？我⼼中萌⽣了這個疑問。</p>
+<p>後來我再回去看 students.service.js，裡⾯第 19 ⾏有個叫「MongooseAdapter」的 keyword，想說這詞結合了我們開發⽤的「mongoose」⼜有個「adapter」，也許 google 它會有我們想得到的資訊吧？</p>
+<p>搜尋「MongooseAdapter」得到了很雜的資訊，改搜尋「database adapter」，上⾯的⽂字敘述看了還是沒很清楚，就⼜改⽤「圖⽚」，找到了這張：</p>
+<p><img src="2.png"></p>
+<p>再結合剛剛猜測的「轉接頭」，我就認為說「adapter」就是⼀個讓使⽤者更好操作 DB 的「轉接頭」，我們只要專注在別⼈幫我們包好、⽐較好寫、不必擔⼼語⾔障礙的「這⼀端」就好，「另外⼀端」就讓 adapter 去跟 DB 做交涉。</p>
+<h2 id="JavaScript-解構"><a href="#JavaScript-解構" class="headerlink" title="JavaScript 解構"></a>JavaScript 解構</h2><p><strong>Ｑ：還有想簡單問⼀下 StudentModel 裡⾯的 param 為什麼 ValidateTypes 前⾯要加「…」？ （services/students.service.js 的 addStudent 的 params)</strong></p>
+<p>那個是 JS 的「解構」語法。</p>
+<p>我下的關鍵字是「js …」，google 會推薦我搜尋「js …args」，於是我找到了「<a href="https://stackoverflow.com/questions/42184674/what-is-the-meaning-of-args-three-dots-in-a-function-definition">What is the meaning of “…args” (three dots) in a function definition?</a>」，⼜間接找到了「Spread syntax」，看⼀看裡⾯的範例就⼤概知道那是⽤來做什麼的了。</p>
+<p>舉個例⼦，有個 object 定義為 <code>me = &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;</code></p>
+<p>當我要定義另外⼀個 object 但沒加上 <code>...</code> 時：</p>
+<p><code>moreAboutMe = &#123; me, gender: &#39;male&#39; &#125;</code> 它會是 <code>&#123; &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;, gender: &#39;male&#39; &#125;</code></p>
+<p>另外⼀種也就是有加上 <code>...</code> 的版本：</p>
+<p><code>moreAboutMe = &#123; ...me, gender: &#39;male&#39; &#125;</code> 它就會是 <code>&#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39;, gender: &#39;male&#39; &#125;</code></p>
+<p>從上⾯的例⼦可以看出它發揮「解構」的功⽤了！</p>
+<h2 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h2><p><strong>Ｑ：validator 那邊，你給的⽂檔只有 validateBeforeSave 跟 validateSync ⽽已，沒有看到類似validator 的寫法。可以說是在哪⼀段有嗎？我是有看到 mongoDB 有 validate 這個 commend 跟這個有關係嗎？</strong></p>
+<p>後來我在左側欄位「Guides」底下有個叫「Validation」的那邊有看到〜 <a href="https://mongoosejs.com/docs/validation.html#custom-validators">Custom Validators</a></p>
+<h2 id="type-forbidden"><a href="#type-forbidden" class="headerlink" title="type forbidden"></a>type forbidden</h2><p><strong>Ｑ：然後最後⾯有⼀個 key 是⽤來寄推薦信的驗證碼的，這裡 type <code>forbidden</code> 這個是你訂的嗎？ 因為我去 mongoDB 查沒有這個 type，這個意思是說使⽤者不能輸⼊的意思嗎？所以打這樣電腦會⾃動⽣ key？</strong></p>
+<p>可能是為了防⽌ client 在 addStudent 的時候也⾃⼰指定了 key 的值，所以⽤「forbidden」把它擋下來。</p>
+<p>我猜 key 可能是讓 account service 來⽣成，因為那邊有個「TODO{ create password to accounts service」</p>
+<p>等等……好像真的找不到 forbidden 的 type 誒XD</p>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p><strong>Ｑ：第 38 ⾏的 handler 是哪裡的？ mongoDB mongoose？ 不太理解 handler 的意思🤔🤔</strong></p>
+<p>我覺得它的作⽤應該就像 eggjs「controller 調⽤ service」那樣，所以應該是屬於「Moleculer」的，也許可以把「handler」想成像是 addStudent 的 function 本體，上⾯的 params 就僅僅是定義參數的規則。</p>
 <br>
-這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
-        <tag>Logic Pro</tag>
+        <tag>JavaScript</tag>
+        <tag>Moleculer</tag>
+        <tag>CRUD</tag>
       </tags>
   </entry>
   <entry>
@@ -2416,159 +2653,6 @@
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
-    <title>Moleculer CRUD Guide</title>
-    <url>/2020/05/moleculer-crud-guide/</url>
-    <content><![CDATA[<p><a href="/2020/05/moleculer-crud-guide"><img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>之前在「梅竹黑客松開發部」時整理的 guide。</p>
-<span id="more"></span>
-
-<p>因為把其他部分的 code 也貼上來好像不太好，沒有全部放，所以有些地方可能會不知道在表達什麼。<br>但應該還是能從本文中知悉一點大概念～</p>
-<blockquote>
-<p>以 Server / Build Informations Related Service 為例</p>
-</blockquote>
-<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><p>在 git 上建立新分支並用程式碼編輯器打開 project</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 為了接下來的操作，先切換路徑到 mc-landing-server 的所在位置</span></span><br><span class="line"><span class="built_in">cd</span> path/to/mc-landing-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 這時你可能會發現目前所在的 branch 是 master 或是上次離開前待的 branch，</span></span><br><span class="line"><span class="comment">#    我們要切回 dev 這個分支</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 可能有新的 code 被 merged 到 dev，在開始之前，我們得先更新 dev</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 建立並切換到新分支，準備開始這次的任務！</span></span><br><span class="line">git checkout -b feature/build-informations-related-service-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 如果是用 VSCode 當作程式碼編輯器，下下面的指令就能用 VSCode 打開 project</span></span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
-
-<h1 id="開始寫-model-囉"><a href="#開始寫-model-囉" class="headerlink" title="開始寫 model 囉"></a>開始寫 model 囉</h1><ol>
-<li><p>先打開 mc-landing API server spec 這個頁面，我們以這個頁面的 schema 定義來寫我們的 model</p>
- <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informations: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  user_id: &lt;ObjectId&gt;,</span><br><span class="line">  tag_id: &lt;ObjectId&gt;,</span><br><span class="line">  title: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  content: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  created_at: &lt;<span class="built_in">Number</span>&gt;,</span><br><span class="line">  updated_at: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">Index</span>:</span><br><span class="line">&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;</span><br><span class="line">&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">tags</span>: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  name: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  color: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>開好之前定的 schema 以後，我們就準備依樣畫葫蘆囉～ （這就是為什麼我們要分兩階段進行：第一個階段在我們還不需要實際打 code 的時候，專心一意地去想我們的 schema 要怎麼規劃才能符合需求，然後把它寫下來；第二個階段就直接照第一階段寫的，實際去寫成 code。就好像蓋房子的時候：畫藍圖 → 開始動工！）</p>
-</li>
-<li><p>回到 VSCode，在 models 資料夾底下建一個 informations.js （如果是做 Server / Build Posts Related Service 就建 posts.js，以此類推）</p>
-</li>
-<li><p><del>複製 users.js 裡面的 code 到 informations.js 裡面，然後開始改</del></p>
-</li>
-</ol>
-<h2 id="正式開始寫-model-的-code"><a href="#正式開始寫-model-的-code" class="headerlink" title="正式開始寫 model 的 code"></a>正式開始寫 model 的 code</h2><ul>
-<li>從 mongoose 裡面取用 Schema，準備用 Schema 自定義我們的 schema！</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; Schema &#125; = Mongoose;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>把我們定義的 schema 命名為 informationsSchema（或 postsSchema）</li>
-<li>最下面的 <code>strict: &#39;throw&#39;</code> 是一種 optional 的設定，意思是： 若 insert 一個不符合我們 schema 的新 <a href="https://docs.mongodb.com/manual/core/document/">document</a> 時，會直接 drop 掉也會報出錯誤</li>
-<li>灰色被 comment 掉的部分是我們要改的部分！</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="comment">// username: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;,</span></span><br><span class="line">  <span class="comment">// password: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>_id</code> 不用寫上去，mongoose 會幫我們建好～</li>
-<li><code>user_id</code>、<code>tag_id</code> 是指外部 schema (users、tags) 的 _id，所以用 <code>Mongoose.Types.ObjectId</code> 當作 type，這就是資料庫裡面常聽到的 relation， 有看過「<a href="https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1">6 Rules of Thumb for MongoDB Schema Design</a>」這篇文章大概就會懂</li>
-<li><code>required: true</code> 意思是：insert 新 document 時必須有這個欄位 （像 tag 可以之後再加上去，所以就不用 required 了）</li>
-<li>至於有什麼 type 呢？參考 <a href="https://mongoosejs.com/docs/schematypes.html">Mongoose</a> 吧！（我們是用 Mongoose 來建 model）</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="attr">user_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tag_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>進行 index 吧！index 是為了方便之後搜尋排序等等的操作。</li>
-<li><code>&#39;text&#39;</code> <a href="https://docs.mongodb.com/manual/core/index-text/">Text indexes</a>? To support text search queries on string content.</li>
-<li><code>1</code>：由小排到大  <code>-1</code>：由大排到小</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informationsSchema.index(&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>以 informations 這個 name 把我們定義好的 informationsSchema export 出去</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = Mongoose.model(<span class="string">&#x27;informations&#x27;</span>, informationsSchema);</span><br></pre></td></tr></table></figure>
-
-<h1 id="為待會-service-的參數驗證做準備"><a href="#為待會-service-的參數驗證做準備" class="headerlink" title="為待會 service 的參數驗證做準備"></a>為待會 service 的參數驗證做準備</h1><ol>
-<li>打開 libs/validates.js</li>
-<li>在 users service related 下面，加入新的參數驗證，一樣參考 <a href="https://www.notion.so/mc-landing-API-server-spec-344a5417ba5b40c09a633f1754215931">mc-landing API server spec</a> <br>（type 有哪些？參考 <a href="https://github.com/icebob/fastest-validator">fastest-validator</a>，因為 Moleculer 的參數驗證 based on it）<br>（為什麼不用加入 <code>_id</code>、<code>user_id</code>、<code>tag_id</code> 呢？因為第八行已經寫好 _id 類的了xD）</li>
-</ol>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// users service related</span></span><br><span class="line"><span class="attr">users</span>: &#123;</span><br><span class="line">  <span class="attr">username</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">password</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">6</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// informations service related</span></span><br><span class="line"><span class="attr">informations</span>: &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h1 id="重頭戲：API-本體（service）"><a href="#重頭戲：API-本體（service）" class="headerlink" title="重頭戲：API 本體（service）"></a>重頭戲：API 本體（service）</h1><ol>
-<li>在 services 資料夾底下新增 informations.service.js（posts.service.js）</li>
-<li>直接複製貼上 users.service.js 的 code 吧！（實在不少行xD 當然自己打過印象會更深刻）</li>
-<li>來改 code 吧！<br>（細節上次開會的時候講過了，如果忘記的話，可以上網查或是直接來問我們～）</li>
-</ol>
-<ul>
-<li>第 4 行改 model 的名字（左右都要改哦～）</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> InformationsModel = <span class="built_in">require</span>(<span class="string">&#x27;../models/informations&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第 9 行改 name</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">name: <span class="string">&#x27;informations&#x27;</span>,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第 21 行改 model name</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">model: InformationsModel,</span><br></pre></td></tr></table></figure>
-
-<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><h3 id="addInformation"><a href="#addInformation" class="headerlink" title="addInformation"></a>addInformation</h3><ul>
-<li>從 addUser 改的，以下以此類推</li>
-<li>params 裡面的東西就是 schema 的那些</li>
-<li>為什麼沒 created_at、updated_at？它們由系統生成！</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">addInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">user_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.create(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="getInformation"><a href="#getInformation" class="headerlink" title="getInformation"></a>getInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="getInformations"><a href="#getInformations" class="headerlink" title="getInformations"></a>getInformations</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformations: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">filter</span>: &#123;</span><br><span class="line">      ...ValidateType.filter</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limit</span>: &#123;</span><br><span class="line">      ...ValidateType.limit</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">skip</span>: &#123;</span><br><span class="line">      ...ValidateType.skip</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">sort</span>: &#123;</span><br><span class="line">      ...ValidateType.sort</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findAll(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="modifyInformation"><a href="#modifyInformation" class="headerlink" title="modifyInformation"></a>modifyInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">modifyInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">user_id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立者不會變</span></span><br><span class="line">    <span class="attr">created_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立時間不會變</span></span><br><span class="line">    <span class="attr">updated_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125; <span class="comment">// 由系統生成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.updateOne(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="removeInformation"><a href="#removeInformation" class="headerlink" title="removeInformation"></a>removeInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">removeInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.deleteOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h2><h3 id="create"><a href="#create" class="headerlink" title="create"></a>create</h3><ul>
-<li>中間那一塊就是所謂的「系統生成」啦～</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">create</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.created_at = timestamp;</span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.create(params); <span class="comment">// Return Promise</span></span><br><span class="line">    logger.info(<span class="string">&#x27;Create information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1000</span>, <span class="string">&#x27;Failed to create information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="findOne"><a href="#findOne" class="headerlink" title="findOne"></a>findOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.findOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find information in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="findAll"><a href="#findAll" class="headerlink" title="findAll"></a>findAll</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findAll</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; filter, limit, skip, sort &#125; = params;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> total = <span class="keyword">await</span> model.countDocuments(filter).lean();</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> model.find(filter, <span class="literal">null</span>, &#123; limit, skip, sort &#125;).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find informations successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123; total, data &#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find informations in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="updateOne"><a href="#updateOne" class="headerlink" title="updateOne"></a>updateOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">updateOne</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; _id &#125; = params;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.updateOne(&#123; _id &#125;, params).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Update information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1002</span>, <span class="string">&#x27;Failed to update information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="deleteOne"><a href="#deleteOne" class="headerlink" title="deleteOne"></a>deleteOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">deleteOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.deleteOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Delete information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1003</span>, <span class="string">&#x27;Failed to remove information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="把-API-加進-api-service-js"><a href="#把-API-加進-api-service-js" class="headerlink" title="把 API 加進 api.service.js"></a>把 API 加進 api.service.js</h1><ul>
-<li>直接看第 99 行 ～ 第 125 行那邊</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// No authentication, authorization needed</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/api&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/addUser&#x27;</span>: <span class="string">&#x27;v1.users.addUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// <span class="doctag">TODO:</span> Authentication, Authorization</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/admin&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/getUser&#x27;</span>: <span class="string">&#x27;v1.users.getUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/getUsers&#x27;</span>: <span class="string">&#x27;v1.users.getUsers&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/modifyUser&#x27;</span>: <span class="string">&#x27;v1.users.modifyUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/removeUser&#x27;</span>: <span class="string">&#x27;v1.users.removeUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/addInformation&#x27;</span>: <span class="string">&#x27;v1.informations.addInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/modifyInformation&#x27;</span>: <span class="string">&#x27;v1.informations.modifyInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/removeInformation&#x27;</span>: <span class="string">&#x27;v1.informations.removeInformation&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如此一來， <code>npm run dev</code> 後就能夠使用 API 了！</p>
-<blockquote>
-<p>用 Postman 測試的時候，tags_id 隨便給一個值就好（只要是 string 都行）</p>
-</blockquote>
-<h1 id="一些-Q＆A"><a href="#一些-Q＆A" class="headerlink" title="一些 Q＆A"></a>一些 Q＆A</h1><h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>Ｑ：關於 services/student.service.js 裡⾯第 16 ⾏的 adapter 是什麼東西？我 google 不太到我想要的資訊。</strong></p>
-<p>我先 google「adapter 中⽂」，得到了「適配器」這個答案，那因為我不知道「適配器」到底是什麼東西，所有我就改⽤「圖⽚」來搜尋，（欣賞 adapter），欣賞了好幾張以後我猜測它應該就是類似「轉接頭」的東西吧？</p>
-<p>「轉接頭」跟「開發」到底有什麼關係啊？我⼼中萌⽣了這個疑問。</p>
-<p>後來我再回去看 students.service.js，裡⾯第 19 ⾏有個叫「MongooseAdapter」的 keyword，想說這詞結合了我們開發⽤的「mongoose」⼜有個「adapter」，也許 google 它會有我們想得到的資訊吧？</p>
-<p>搜尋「MongooseAdapter」得到了很雜的資訊，改搜尋「database adapter」，上⾯的⽂字敘述看了還是沒很清楚，就⼜改⽤「圖⽚」，找到了這張：</p>
-<p><img src="2.png"></p>
-<p>再結合剛剛猜測的「轉接頭」，我就認為說「adapter」就是⼀個讓使⽤者更好操作 DB 的「轉接頭」，我們只要專注在別⼈幫我們包好、⽐較好寫、不必擔⼼語⾔障礙的「這⼀端」就好，「另外⼀端」就讓 adapter 去跟 DB 做交涉。</p>
-<h2 id="JavaScript-解構"><a href="#JavaScript-解構" class="headerlink" title="JavaScript 解構"></a>JavaScript 解構</h2><p><strong>Ｑ：還有想簡單問⼀下 StudentModel 裡⾯的 param 為什麼 ValidateTypes 前⾯要加「…」？ （services/students.service.js 的 addStudent 的 params)</strong></p>
-<p>那個是 JS 的「解構」語法。</p>
-<p>我下的關鍵字是「js …」，google 會推薦我搜尋「js …args」，於是我找到了「<a href="https://stackoverflow.com/questions/42184674/what-is-the-meaning-of-args-three-dots-in-a-function-definition">What is the meaning of “…args” (three dots) in a function definition?</a>」，⼜間接找到了「Spread syntax」，看⼀看裡⾯的範例就⼤概知道那是⽤來做什麼的了。</p>
-<p>舉個例⼦，有個 object 定義為 <code>me = &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;</code></p>
-<p>當我要定義另外⼀個 object 但沒加上 <code>...</code> 時：</p>
-<p><code>moreAboutMe = &#123; me, gender: &#39;male&#39; &#125;</code> 它會是 <code>&#123; &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;, gender: &#39;male&#39; &#125;</code></p>
-<p>另外⼀種也就是有加上 <code>...</code> 的版本：</p>
-<p><code>moreAboutMe = &#123; ...me, gender: &#39;male&#39; &#125;</code> 它就會是 <code>&#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39;, gender: &#39;male&#39; &#125;</code></p>
-<p>從上⾯的例⼦可以看出它發揮「解構」的功⽤了！</p>
-<h2 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h2><p><strong>Ｑ：validator 那邊，你給的⽂檔只有 validateBeforeSave 跟 validateSync ⽽已，沒有看到類似validator 的寫法。可以說是在哪⼀段有嗎？我是有看到 mongoDB 有 validate 這個 commend 跟這個有關係嗎？</strong></p>
-<p>後來我在左側欄位「Guides」底下有個叫「Validation」的那邊有看到〜 <a href="https://mongoosejs.com/docs/validation.html#custom-validators">Custom Validators</a></p>
-<h2 id="type-forbidden"><a href="#type-forbidden" class="headerlink" title="type forbidden"></a>type forbidden</h2><p><strong>Ｑ：然後最後⾯有⼀個 key 是⽤來寄推薦信的驗證碼的，這裡 type <code>forbidden</code> 這個是你訂的嗎？ 因為我去 mongoDB 查沒有這個 type，這個意思是說使⽤者不能輸⼊的意思嗎？所以打這樣電腦會⾃動⽣ key？</strong></p>
-<p>可能是為了防⽌ client 在 addStudent 的時候也⾃⼰指定了 key 的值，所以⽤「forbidden」把它擋下來。</p>
-<p>我猜 key 可能是讓 account service 來⽣成，因為那邊有個「TODO{ create password to accounts service」</p>
-<p>等等……好像真的找不到 forbidden 的 type 誒XD</p>
-<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p><strong>Ｑ：第 38 ⾏的 handler 是哪裡的？ mongoDB mongoose？ 不太理解 handler 的意思🤔🤔</strong></p>
-<p>我覺得它的作⽤應該就像 eggjs「controller 調⽤ service」那樣，所以應該是屬於「Moleculer」的，也許可以把「handler」想成像是 addStudent 的 function 本體，上⾯的 params 就僅僅是定義參數的規則。</p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Moleculer</tag>
-        <tag>CRUD</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 Python 操作 Android 手機</title>
     <url>/2021/07/python-android-phone/</url>
     <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2617,6 +2701,71 @@
         <tag>Python</tag>
         <tag>Android</tag>
         <tag>小工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>當 Python 遇上了 LINE Blockchain</title>
+    <url>/2021/07/python-line-blockchain/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-line-blockchain"><img src="https://images.unsplash.com/photo-1561451213-d5c9f0951fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>可能是因為比較新的關係，在網路上頗難找到用 Python 弄 LINE Blockchain 的教學文。<br>本篇主要會以筆記的方式，簡單帶大家看要怎麼使用。</p>
+<span id="more"></span>
+
+<p>這篇的誕生，一樣也是因為升大四暑假的那一場線上黑客松。<br>（黑客松真的是個不錯的活動呢，累歸累，但學到了不少東西）</p>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><h2 id="啟用服務"><a href="#啟用服務" class="headerlink" title="啟用服務"></a>啟用服務</h2><p>還沒啟用 LINE Blockchain 前，創 channel 的時候 Blockchain Service 的地方會暗掉不讓你按。</p>
+<p><img src="1.png"></p>
+<p>到 LINE Blockchain Developers 的 <a href="https://blockchain.line.biz/#/pricing">Pricing</a> 頁面選一個方案開始吧！</p>
+<p><img src="2.png"></p>
+<p>光是用商用帳號不夠哦，還得連動我們自己的 LINE 帳號。</p>
+<p><img src="3.png"></p>
+<p>連動完就 OK 了嗎？還沒哦！我們還要申請一個 Cashew Partner 帳戶才行，就 Apply 吧！</p>
+<p><img src="4.png"></p>
+<p>不是按完 Apply 就能啟用，還得再等他們 reviewing。<br>這個申請是需要時間等待的，我等了快五小時半！</p>
+<p><img src="5.png"></p>
+<p>申請通過以後，創建 channel 時就能選 Blockchain Service 囉！</p>
+<h2 id="LINE-Blockchain"><a href="#LINE-Blockchain" class="headerlink" title="LINE Blockchain"></a>LINE Blockchain</h2><p>YouTube 頻道 <a href="https://www.youtube.com/channel/UCuzvuO3E9XIoreE9u7B1ETw">LINE Developers</a> 有個教學影片 <a href="https://youtu.be/tx1Q6GbIpwM?t=367">An Introduction to LINE Blockchain Platform</a> 介紹得很好，它有 step-by-step 的操作步驟！<br>如果不是要用 JavaScript，影片差不多看到 12:37 就行了。</p>
+<p>那如果你想學怎麼用 JavaScript 弄 LINE Blockchain，或許可以參考影片裡面的 repo <a href="https://github.com/behumble/line-blockchain-coffee">line-blockchain-coffee</a>。</p>
+<p>又或者你想更有系統地學習 LINE Blockchain？<a href="https://docs-blockchain.line.biz/service-tutorial/?id=tutorial-map">官方教學文檔</a>是個不錯的地方！（只不過它是用 curl）</p>
+<h1 id="Python-code"><a href="#Python-code" class="headerlink" title="Python code"></a>Python code</h1><h2 id="Generating-signature"><a href="#Generating-signature" class="headerlink" title="Generating signature"></a>Generating signature</h2><p>因為 call LINE Blockchain 的 API 需要 signature，所以先來寫(抄) signature 的部分吧！<br><a href="https://docs-blockchain.line.biz/api-guide/Generating-Signature?id=python-sample">官方文檔</a>上有範例 code，我想，我們就直接拿來用吧！</p>
+<h3 id="request-flattener-py"><a href="#request-flattener-py" class="headerlink" title="request_flattener.py"></a><code>request_flattener.py</code></h3><p>這是 Signature Generator 會需要用到的 utility。</p>
+<p>我沒有特別去研究它每一行 code 分別代表什麼意思，想說這對黑客松來說根本不重要，重要的是能知道怎麼用，然後拿來開發出我們需要的 feature。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestBodyFlattener</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__flatten_key_value</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">str</span>)):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;key&#125;</span>=<span class="subst">&#123;value&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">list</span>)):</span><br><span class="line">            l_key_value = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> index, ele <span class="keyword">in</span> <span class="built_in">enumerate</span>(value):</span><br><span class="line">                <span class="keyword">for</span> lkey <span class="keyword">in</span> <span class="built_in">list</span>(ele.keys() | l_key_value.keys()):</span><br><span class="line">                    <span class="keyword">if</span> lkey <span class="keyword">in</span> ele.keys():</span><br><span class="line">                        lvalue = ele[lkey]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        lvalue = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (lkey <span class="keyword">in</span> l_key_value.keys()):</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;l_key_value[lkey]&#125;</span>,<span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;<span class="string">&#x27;,&#x27;</span> * index&#125;</span><span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(<span class="string">&quot;%s=%s&quot;</span> % (<span class="string">f&quot;<span class="subst">&#123;key&#125;</span>.<span class="subst">&#123;lkey&#125;</span>&quot;</span>, lvalue) <span class="keyword">for</span> (lkey, lvalue) <span class="keyword">in</span> <span class="built_in">sorted</span>(l_key_value.items()))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span>(<span class="params">self, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        sorted_body = <span class="built_in">sorted</span>(body.items())</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(self.__flatten_key_value(key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> sorted_body)</span><br></pre></td></tr></table></figure>
+
+<h3 id="signature-generator-py"><a href="#signature-generator-py" class="headerlink" title="signature_generator.py"></a><code>signature_generator.py</code></h3><p>這邊跟官方文檔上有些地方不一樣，像是第 18 行，我改了 generate 的參數順序。</p>
+<p>這麼做是因為，它 API reference 那邊 get_signature 的順序跟它在 Generating signature 定義的不一樣，想說未來可能會大量複製貼上它 API 的範例 code，為了未來使用上的方便，乾脆一開始定義的時候照 API reference 的順序不就好了？</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> .request_flattener <span class="keyword">import</span> RequestBodyFlattener</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignatureGenerator</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__createSignTarget</span>(<span class="params">self, method, path, timestamp, nonce, parameters: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        signTarget = <span class="string">f&#x27;<span class="subst">&#123;nonce&#125;</span><span class="subst">&#123;<span class="built_in">str</span>(timestamp)&#125;</span><span class="subst">&#123;method&#125;</span><span class="subst">&#123;path&#125;</span>&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(parameters) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget = signTarget + <span class="string">&quot;?&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> signTarget</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span>(<span class="params">self, method: <span class="built_in">str</span>, path: <span class="built_in">str</span>, nonce: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span>, service_api_secret: <span class="built_in">str</span>, query_params: <span class="built_in">dict</span> = &#123;&#125;, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        body_flattener = RequestBodyFlattener()</span><br><span class="line">        all_parameters = &#123;&#125;</span><br><span class="line">        all_parameters.update(query_params)</span><br><span class="line">        all_parameters.update(body)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.__logger.debug(&quot;query_params: &quot; + str(query_params))</span></span><br><span class="line"></span><br><span class="line">        signTarget = self.__createSignTarget(method.upper(), path, timestamp, nonce, all_parameters)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget += <span class="string">&#x27;&amp;&#x27;</span>.join(<span class="string">&#x27;%s=%s&#x27;</span> % (key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> query_params.items())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(body) &gt; <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">                signTarget += <span class="string">&quot;&amp;&quot;</span> + body_flattener.flatten(body)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                signTarget += body_flattener.flatten(body)</span><br><span class="line"></span><br><span class="line">        raw_hmac = hmac.new(<span class="built_in">bytes</span>(service_api_secret, <span class="string">&#x27;utf-8&#x27;</span>), <span class="built_in">bytes</span>(signTarget, <span class="string">&#x27;utf-8&#x27;</span>), hashlib.sha512)</span><br><span class="line">        result = base64.b64encode(raw_hmac.digest()).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h2 id="包成自己-project-需要的-function"><a href="#包成自己-project-需要的-function" class="headerlink" title="包成自己 project 需要的 function"></a>包成自己 project 需要的 function</h2><p>以下面兩個為例：</p>
+<ul>
+<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get">Users → Retrieve → Retrieve user information</a></li>
+<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post">Users → Transfer → Transfer a delegated service token (user wallet)</a></li>
+</ul>
+<p>Details 的地方展開以後，往下滑就能找到 Python 的範例 code！<br>不誇張，直接複製貼上然後再修改，最後在我的 project 上長這樣：</p>
+<p><code>users.py</code></p>
+<h3 id="底層"><a href="#底層" class="headerlink" title="底層"></a>底層</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># ./utils 是我放 signature_generator.py 的地方</span></span><br><span class="line"><span class="keyword">from</span> .utils.signature_generator <span class="keyword">import</span> SignatureGenerator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要先實體化才能用（這部分或許有更好的寫法）</span></span><br><span class="line">signatureGenerator = SignatureGenerator()</span><br><span class="line">get_signature = signatureGenerator.generate</span><br></pre></td></tr></table></figure>
+
+<h3 id="Retrieve-user-information"><a href="#Retrieve-user-information" class="headerlink" title="Retrieve user information"></a>Retrieve user information</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">retrieve</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Retrieve user information</span></span><br><span class="line">    <span class="comment"># Retrieve the information of the given user.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wallet_address</span>(<span class="params">user_id</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 3 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;GET&#x27;</span>, path, nonce, timestamp, service_api_secret)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.get(server_url + path, headers=headers)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 這自己改的，因為我的 project 只需要 wallet address</span></span><br><span class="line">        wallet_address = res.json()[<span class="string">&#x27;responseData&#x27;</span>][<span class="string">&#x27;walletAddress&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wallet_address</span><br></pre></td></tr></table></figure>
+
+<h3 id="Transfer-a-delegated-service-token"><a href="#Transfer-a-delegated-service-token" class="headerlink" title="Transfer a delegated service token"></a>Transfer a delegated service token</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">transfer</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Transfer a delegated service token (user wallet)</span></span><br><span class="line">    <span class="comment"># Request to transfer the delegated service token in the given user wallet to another wallet.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">service_token</span>(<span class="params">user_id, amount</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 6 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line">        contract_id = os.environ[<span class="string">&#x27;LBP_CONTRACT_ID_LBCC&#x27;</span>]</span><br><span class="line">        owner_address = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_ADDRESS&#x27;</span>]</span><br><span class="line">        owner_secret = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>/service-tokens/<span class="subst">&#123;contract_id&#125;</span>/transfer&#x27;</span></span><br><span class="line"></span><br><span class="line">        request_body = &#123;</span><br><span class="line">            <span class="string">&#x27;ownerAddress&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_address&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;ownerSecret&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_secret&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;amount&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;amount * <span class="number">1000000</span>&#125;</span>&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp),</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;POST&#x27;</span>, path, nonce, timestamp, service_api_secret, body=request_body)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.post(server_url + path, headers=headers, json=request_body)</span><br><span class="line">        <span class="keyword">return</span> res.json()</span><br></pre></td></tr></table></figure>
+
+<p>你會發現，很多範例 code 寫死的部分，我都用 <a href="https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals">f-strings</a> 代替，原因你應該知道xD</p>
+<h2 id="使用那些-function"><a href="#使用那些-function" class="headerlink" title="使用那些 function"></a>使用那些 function</h2><p>先給大家看我 project 跟 blockchain 有關的目錄結構：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src</span><br><span class="line">├── fsm.py</span><br><span class="line">└── service</span><br><span class="line">    └── blockchain</span><br><span class="line">        ├── service_tokens.py</span><br><span class="line">        ├── users.py</span><br><span class="line">        └── utils</span><br><span class="line">            ├── request_flattener.py</span><br><span class="line">            └── signature_generator.py</span><br></pre></td></tr></table></figure>
+
+<p>下面是 <code>fsm.py</code> 的某個部份：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> service.blockchain <span class="keyword">import</span> users, service_tokens</span><br><span class="line"></span><br><span class="line">user_id = <span class="string">&#x27;this_is_user_id&#x27;</span></span><br><span class="line">amount = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">users.transfer.service_token(user_id, amount)</span><br><span class="line">user_wallet_address = users.retrieve.wallet_address(user_id)</span><br><span class="line">service_tokens.mint(user_wallet_address, amount)   <span class="comment"># 這部分的 code 我沒 share</span></span><br></pre></td></tr></table></figure>
+
+<p>知道為什麼我要包成 class 了吧？這樣就能夠照文檔編排的邏輯 call function！</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>交大</tag>
+        <tag>教學</tag>
+        <tag>LINE</tag>
+        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -2684,71 +2833,6 @@
       <tags>
         <tag>Python</tag>
         <tag>小工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>當 Python 遇上了 LINE Blockchain</title>
-    <url>/2021/07/python-line-blockchain/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-line-blockchain"><img src="https://images.unsplash.com/photo-1561451213-d5c9f0951fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>可能是因為比較新的關係，在網路上頗難找到用 Python 弄 LINE Blockchain 的教學文。<br>本篇主要會以筆記的方式，簡單帶大家看要怎麼使用。</p>
-<span id="more"></span>
-
-<p>這篇的誕生，一樣也是因為升大四暑假的那一場線上黑客松。<br>（黑客松真的是個不錯的活動呢，累歸累，但學到了不少東西）</p>
-<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><h2 id="啟用服務"><a href="#啟用服務" class="headerlink" title="啟用服務"></a>啟用服務</h2><p>還沒啟用 LINE Blockchain 前，創 channel 的時候 Blockchain Service 的地方會暗掉不讓你按。</p>
-<p><img src="1.png"></p>
-<p>到 LINE Blockchain Developers 的 <a href="https://blockchain.line.biz/#/pricing">Pricing</a> 頁面選一個方案開始吧！</p>
-<p><img src="2.png"></p>
-<p>光是用商用帳號不夠哦，還得連動我們自己的 LINE 帳號。</p>
-<p><img src="3.png"></p>
-<p>連動完就 OK 了嗎？還沒哦！我們還要申請一個 Cashew Partner 帳戶才行，就 Apply 吧！</p>
-<p><img src="4.png"></p>
-<p>不是按完 Apply 就能啟用，還得再等他們 reviewing。<br>這個申請是需要時間等待的，我等了快五小時半！</p>
-<p><img src="5.png"></p>
-<p>申請通過以後，創建 channel 時就能選 Blockchain Service 囉！</p>
-<h2 id="LINE-Blockchain"><a href="#LINE-Blockchain" class="headerlink" title="LINE Blockchain"></a>LINE Blockchain</h2><p>YouTube 頻道 <a href="https://www.youtube.com/channel/UCuzvuO3E9XIoreE9u7B1ETw">LINE Developers</a> 有個教學影片 <a href="https://youtu.be/tx1Q6GbIpwM?t=367">An Introduction to LINE Blockchain Platform</a> 介紹得很好，它有 step-by-step 的操作步驟！<br>如果不是要用 JavaScript，影片差不多看到 12:37 就行了。</p>
-<p>那如果你想學怎麼用 JavaScript 弄 LINE Blockchain，或許可以參考影片裡面的 repo <a href="https://github.com/behumble/line-blockchain-coffee">line-blockchain-coffee</a>。</p>
-<p>又或者你想更有系統地學習 LINE Blockchain？<a href="https://docs-blockchain.line.biz/service-tutorial/?id=tutorial-map">官方教學文檔</a>是個不錯的地方！（只不過它是用 curl）</p>
-<h1 id="Python-code"><a href="#Python-code" class="headerlink" title="Python code"></a>Python code</h1><h2 id="Generating-signature"><a href="#Generating-signature" class="headerlink" title="Generating signature"></a>Generating signature</h2><p>因為 call LINE Blockchain 的 API 需要 signature，所以先來寫(抄) signature 的部分吧！<br><a href="https://docs-blockchain.line.biz/api-guide/Generating-Signature?id=python-sample">官方文檔</a>上有範例 code，我想，我們就直接拿來用吧！</p>
-<h3 id="request-flattener-py"><a href="#request-flattener-py" class="headerlink" title="request_flattener.py"></a><code>request_flattener.py</code></h3><p>這是 Signature Generator 會需要用到的 utility。</p>
-<p>我沒有特別去研究它每一行 code 分別代表什麼意思，想說這對黑客松來說根本不重要，重要的是能知道怎麼用，然後拿來開發出我們需要的 feature。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestBodyFlattener</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__flatten_key_value</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">str</span>)):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;key&#125;</span>=<span class="subst">&#123;value&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isinstance</span>(value, <span class="built_in">list</span>)):</span><br><span class="line">            l_key_value = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> index, ele <span class="keyword">in</span> <span class="built_in">enumerate</span>(value):</span><br><span class="line">                <span class="keyword">for</span> lkey <span class="keyword">in</span> <span class="built_in">list</span>(ele.keys() | l_key_value.keys()):</span><br><span class="line">                    <span class="keyword">if</span> lkey <span class="keyword">in</span> ele.keys():</span><br><span class="line">                        lvalue = ele[lkey]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        lvalue = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (lkey <span class="keyword">in</span> l_key_value.keys()):</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;l_key_value[lkey]&#125;</span>,<span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        l_key_value[lkey] = <span class="string">f&quot;<span class="subst">&#123;<span class="string">&#x27;,&#x27;</span> * index&#125;</span><span class="subst">&#123;lvalue&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(<span class="string">&quot;%s=%s&quot;</span> % (<span class="string">f&quot;<span class="subst">&#123;key&#125;</span>.<span class="subst">&#123;lkey&#125;</span>&quot;</span>, lvalue) <span class="keyword">for</span> (lkey, lvalue) <span class="keyword">in</span> <span class="built_in">sorted</span>(l_key_value.items()))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span>(<span class="params">self, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        sorted_body = <span class="built_in">sorted</span>(body.items())</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&amp;&quot;</span>.join(self.__flatten_key_value(key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> sorted_body)</span><br></pre></td></tr></table></figure>
-
-<h3 id="signature-generator-py"><a href="#signature-generator-py" class="headerlink" title="signature_generator.py"></a><code>signature_generator.py</code></h3><p>這邊跟官方文檔上有些地方不一樣，像是第 18 行，我改了 generate 的參數順序。</p>
-<p>這麼做是因為，它 API reference 那邊 get_signature 的順序跟它在 Generating signature 定義的不一樣，想說未來可能會大量複製貼上它 API 的範例 code，為了未來使用上的方便，乾脆一開始定義的時候照 API reference 的順序不就好了？</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> .request_flattener <span class="keyword">import</span> RequestBodyFlattener</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignatureGenerator</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__createSignTarget</span>(<span class="params">self, method, path, timestamp, nonce, parameters: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        signTarget = <span class="string">f&#x27;<span class="subst">&#123;nonce&#125;</span><span class="subst">&#123;<span class="built_in">str</span>(timestamp)&#125;</span><span class="subst">&#123;method&#125;</span><span class="subst">&#123;path&#125;</span>&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(parameters) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget = signTarget + <span class="string">&quot;?&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> signTarget</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span>(<span class="params">self, method: <span class="built_in">str</span>, path: <span class="built_in">str</span>, nonce: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span>, service_api_secret: <span class="built_in">str</span>, query_params: <span class="built_in">dict</span> = &#123;&#125;, body: <span class="built_in">dict</span> = &#123;&#125;</span>):</span></span><br><span class="line">        body_flattener = RequestBodyFlattener()</span><br><span class="line">        all_parameters = &#123;&#125;</span><br><span class="line">        all_parameters.update(query_params)</span><br><span class="line">        all_parameters.update(body)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.__logger.debug(&quot;query_params: &quot; + str(query_params))</span></span><br><span class="line"></span><br><span class="line">        signTarget = self.__createSignTarget(method.upper(), path, timestamp, nonce, all_parameters)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">            signTarget += <span class="string">&#x27;&amp;&#x27;</span>.join(<span class="string">&#x27;%s=%s&#x27;</span> % (key, value) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> query_params.items())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>(body) &gt; <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">len</span>(query_params) &gt; <span class="number">0</span>):</span><br><span class="line">                signTarget += <span class="string">&quot;&amp;&quot;</span> + body_flattener.flatten(body)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                signTarget += body_flattener.flatten(body)</span><br><span class="line"></span><br><span class="line">        raw_hmac = hmac.new(<span class="built_in">bytes</span>(service_api_secret, <span class="string">&#x27;utf-8&#x27;</span>), <span class="built_in">bytes</span>(signTarget, <span class="string">&#x27;utf-8&#x27;</span>), hashlib.sha512)</span><br><span class="line">        result = base64.b64encode(raw_hmac.digest()).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-<h2 id="包成自己-project-需要的-function"><a href="#包成自己-project-需要的-function" class="headerlink" title="包成自己 project 需要的 function"></a>包成自己 project 需要的 function</h2><p>以下面兩個為例：</p>
-<ul>
-<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get">Users → Retrieve → Retrieve user information</a></li>
-<li><a href="https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post">Users → Transfer → Transfer a delegated service token (user wallet)</a></li>
-</ul>
-<p>Details 的地方展開以後，往下滑就能找到 Python 的範例 code！<br>不誇張，直接複製貼上然後再修改，最後在我的 project 上長這樣：</p>
-<p><code>users.py</code></p>
-<h3 id="底層"><a href="#底層" class="headerlink" title="底層"></a>底層</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># ./utils 是我放 signature_generator.py 的地方</span></span><br><span class="line"><span class="keyword">from</span> .utils.signature_generator <span class="keyword">import</span> SignatureGenerator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要先實體化才能用（這部分或許有更好的寫法）</span></span><br><span class="line">signatureGenerator = SignatureGenerator()</span><br><span class="line">get_signature = signatureGenerator.generate</span><br></pre></td></tr></table></figure>
-
-<h3 id="Retrieve-user-information"><a href="#Retrieve-user-information" class="headerlink" title="Retrieve user information"></a>Retrieve user information</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">retrieve</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Retrieve user information</span></span><br><span class="line">    <span class="comment"># Retrieve the information of the given user.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-get</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wallet_address</span>(<span class="params">user_id</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 3 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;GET&#x27;</span>, path, nonce, timestamp, service_api_secret)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.get(server_url + path, headers=headers)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 這自己改的，因為我的 project 只需要 wallet address</span></span><br><span class="line">        wallet_address = res.json()[<span class="string">&#x27;responseData&#x27;</span>][<span class="string">&#x27;walletAddress&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wallet_address</span><br></pre></td></tr></table></figure>
-
-<h3 id="Transfer-a-delegated-service-token"><a href="#Transfer-a-delegated-service-token" class="headerlink" title="Transfer a delegated service token"></a>Transfer a delegated service token</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用 class 包，這樣在取用的時候會更有條理（待會就知道為什麼了）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">transfer</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # Transfer a delegated service token (user wallet)</span></span><br><span class="line">    <span class="comment"># Request to transfer the delegated service token in the given user wallet to another wallet.</span></span><br><span class="line">    <span class="comment"># https://docs-blockchain.line.biz/api-guide/category-users?id=v1-users-userid-service-tokens-contractid-transfer-post</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">service_token</span>(<span class="params">user_id, amount</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面 6 行都是環境變數</span></span><br><span class="line">        server_url = os.environ[<span class="string">&#x27;SERVER_URL&#x27;</span>]</span><br><span class="line">        service_api_key = os.environ[<span class="string">&#x27;SERVICE_API_KEY&#x27;</span>]</span><br><span class="line">        service_api_secret = os.environ[<span class="string">&#x27;SERVICE_API_SECRET&#x27;</span>]</span><br><span class="line">        contract_id = os.environ[<span class="string">&#x27;LBP_CONTRACT_ID_LBCC&#x27;</span>]</span><br><span class="line">        owner_address = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_ADDRESS&#x27;</span>]</span><br><span class="line">        owner_secret = os.environ[<span class="string">&#x27;LBP_OWNER_WALLET_SECRET&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        nonce = <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line">        timestamp = <span class="built_in">int</span>(<span class="built_in">round</span>(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">        path = <span class="string">f&#x27;/v1/users/<span class="subst">&#123;user_id&#125;</span>/service-tokens/<span class="subst">&#123;contract_id&#125;</span>/transfer&#x27;</span></span><br><span class="line"></span><br><span class="line">        request_body = &#123;</span><br><span class="line">            <span class="string">&#x27;ownerAddress&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_address&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;ownerSecret&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;owner_secret&#125;</span>&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;amount&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;amount * <span class="number">1000000</span>&#125;</span>&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">&#x27;service-api-key&#x27;</span>: service_api_key,</span><br><span class="line">            <span class="string">&#x27;nonce&#x27;</span>: nonce,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="built_in">str</span>(timestamp),</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        signature = get_signature(<span class="string">&#x27;POST&#x27;</span>, path, nonce, timestamp, service_api_secret, body=request_body)</span><br><span class="line">        headers[<span class="string">&#x27;signature&#x27;</span>] = signature</span><br><span class="line"></span><br><span class="line">        res = requests.post(server_url + path, headers=headers, json=request_body)</span><br><span class="line">        <span class="keyword">return</span> res.json()</span><br></pre></td></tr></table></figure>
-
-<p>你會發現，很多範例 code 寫死的部分，我都用 <a href="https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals">f-strings</a> 代替，原因你應該知道xD</p>
-<h2 id="使用那些-function"><a href="#使用那些-function" class="headerlink" title="使用那些 function"></a>使用那些 function</h2><p>先給大家看我 project 跟 blockchain 有關的目錄結構：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src</span><br><span class="line">├── fsm.py</span><br><span class="line">└── service</span><br><span class="line">    └── blockchain</span><br><span class="line">        ├── service_tokens.py</span><br><span class="line">        ├── users.py</span><br><span class="line">        └── utils</span><br><span class="line">            ├── request_flattener.py</span><br><span class="line">            └── signature_generator.py</span><br></pre></td></tr></table></figure>
-
-<p>下面是 <code>fsm.py</code> 的某個部份：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> service.blockchain <span class="keyword">import</span> users, service_tokens</span><br><span class="line"></span><br><span class="line">user_id = <span class="string">&#x27;this_is_user_id&#x27;</span></span><br><span class="line">amount = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">users.transfer.service_token(user_id, amount)</span><br><span class="line">user_wallet_address = users.retrieve.wallet_address(user_id)</span><br><span class="line">service_tokens.mint(user_wallet_address, amount)   <span class="comment"># 這部分的 code 我沒 share</span></span><br></pre></td></tr></table></figure>
-
-<p>知道為什麼我要包成 class 了吧？這樣就能夠照文檔編排的邏輯 call function！</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>教學</tag>
-        <tag>LINE</tag>
-        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -2912,47 +2996,6 @@
 大概是這樣，這學期就好好充實自己吧😎
 <br>
 <br>]]></content>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
   </entry>
   <entry>
     <title>停下來思考</title>
@@ -3240,6 +3283,47 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 SSL For Free 免費申請 SSL 憑證</title>
     <url>/2022/04/ssl-for-free/</url>
     <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
@@ -3276,39 +3360,6 @@ go go!!!]]></content>
 <li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
 </ol>
 ]]></content>
-  </entry>
-  <entry>
-    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
-    <url>/2021/12/synth-one-with-logic-pro/</url>
-    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
-<span id="more"></span>
-
-<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
-<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
-<li>用 USB 線，將 iPad 連接到 MacBook</li>
-<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
-<li>打開 Synth One，然後先放著</li>
-<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
-<li>「Use External Instrument plug-in」記得勾起來</li>
-<li>MIDI Destination 選 iPad</li>
-</ul>
- <img src="2.png" alt="2.png"></li>
-<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
-</ol>
-<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
-<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
-<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
-<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
-<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
-<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
-<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
-<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
-</ol>
-<br>
-這樣就大功告成啦😎]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
-      </tags>
   </entry>
   <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
@@ -3498,12 +3549,45 @@ go go!!!]]></content>
 <h1 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h1><p>再次感謝康明軒教授、恩衍、育浚，沒有你們，就沒有這一切！<br>另外，也非常感謝柏毅給予我簡報上的指點，讓我學到一些很重要也很實用的簡報技巧！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
 ]]></content>
       <tags>
-        <tag>音訊處理</tag>
-        <tag>交大</tag>
-        <tag>專題</tag>
         <tag>Python</tag>
+        <tag>交大</tag>
+        <tag>音訊處理</tag>
+        <tag>專題</tag>
         <tag>樂理</tag>
         <tag>音色</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
+    <url>/2021/12/synth-one-with-logic-pro/</url>
+    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
+<span id="more"></span>
+
+<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
+<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
+<li>用 USB 線，將 iPad 連接到 MacBook</li>
+<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
+<li>打開 Synth One，然後先放著</li>
+<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
+<li>「Use External Instrument plug-in」記得勾起來</li>
+<li>MIDI Destination 選 iPad</li>
+</ul>
+ <img src="2.png" alt="2.png"></li>
+<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
+</ol>
+<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
+<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
+<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
+<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
+<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
+<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
+<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
+<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
+</ol>
+<br>
+這樣就大功告成啦😎]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
       </tags>
   </entry>
   <entry>
