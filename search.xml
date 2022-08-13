@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2022 端午節立蛋</title>
-    <url>/2022/06/2022-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節不立蛋嗎？</p>
+    <title>【聽講筆記】Jamie’s AMA</title>
+    <url>/2022/08/2022-05-jamie-ama/</url>
+    <content><![CDATA[<p>五月中的時候，在 AppWorks School 聽了 Jamie’s AMA (Ask Me Anything)，邊聽邊記了一點筆記，想說整理在這邊，可能還夾雜一點個人的補充，分享給大家～（這篇應該會蠻隨筆性質的）</p>
 <span id="more"></span>
 
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
-<p><img src="1.jpg"></p>
+<h3 id="中午吃什麼？"><a href="#中午吃什麼？" class="headerlink" title="中午吃什麼？"></a>中午吃什麼？</h3><p>不知道中午要吃什麼？求方便的話，可以讓別人來決定，或是可以從外送平台上做挑選。<br>也可以根據一些特殊情況來做選擇：因為疫情的關係，變得比較少運動，這時可以挑比較健康的沙拉來吃，讓自己感覺起來比較健康！</p>
+<h3 id="No-Code-成趨勢，軟體工程師何去何從？"><a href="#No-Code-成趨勢，軟體工程師何去何從？" class="headerlink" title="No-Code 成趨勢，軟體工程師何去何從？"></a>No-Code 成趨勢，軟體工程師何去何從？</h3><p>未來不會真的達到所謂的「no-code」，只是不同層級 (比較 low-level) 的 abstraction 或自動化，讓軟體工程師能夠專注在更 high-level 的事情上，如此一來，可以提升單位生產力。</p>
+<p>像是對比較早期的開發而言，library 的出現就是一種 abstraction。</p>
+<p>若舉農夫為例，因為機械工具的發明，讓農夫只要專注在 high-level 的工作即可，其他 low-level 的事情大部分都可以交給機械工具去處理。</p>
+<p>所以，軟體工程師何去何從？即便是如此，業界對於軟體工程師的需求還是會不斷上升，因為什麼都講求數位化，需求只會越來越高，像目前金融業大概只有 2-3% 的數位轉型呢！</p>
+<h3 id="遠端工作"><a href="#遠端工作" class="headerlink" title="遠端工作"></a>遠端工作</h3><p>因為疫情的關係，遠端工作更為普遍，也就因此，我們更容易得到國外的工作機會。<br>所以說，累積實力和提升語言能力挺重要的，地域因素並不是個限制！</p>
+<h3 id="校園-vs-業界"><a href="#校園-vs-業界" class="headerlink" title="校園 vs 業界"></a>校園 vs 業界</h3><p>業界並不像學校，什麼問題都 well-defined，我們要學會自己去定義問題！<br>這一行不是只有純寫程式而已，所以如果程式能力沒到很頂，沒關係，天生我材必有用，這一行還有其他方面啊！<br>就像車子不是只有引擎而已，還有操作手感、座椅舒適度等等的元素需要去顧及。</p>
+<h3 id="如何成長更快？"><a href="#如何成長更快？" class="headerlink" title="如何成長更快？"></a>如何成長更快？</h3><p>從失敗、犯錯中學習。失敗為成功之母！</p>
+<h3 id="不是本科的怎麼辦？"><a href="#不是本科的怎麼辦？" class="headerlink" title="不是本科的怎麼辦？"></a>不是本科的怎麼辦？</h3><p>每個人都有他的強項，大家各自發揮所長以 improve 整體的表現。<br>但其實那也只是名義上的本科／非本科，那只會決定我們的課表長怎樣，至於實際我們想學什麼、想成為什麼樣的人，都得看我們自己怎麼去行動。</p>
+<h3 id="國外工作一定讚？"><a href="#國外工作一定讚？" class="headerlink" title="國外工作一定讚？"></a>國外工作一定讚？</h3><p>比較一下：在台灣工作，可能月薪 6-10 萬，而在美國矽谷工作，年薪會有個 30 萬美金；但是，在台灣，物價低很多，而在美國矽谷那邊，以那樣的薪水生活，可能會挺辛苦的。<br>所以說，看事情不要只看其中一面，卻忽略掉其他也同等重要的考量點！</p>
+<h3 id="關於區塊鏈"><a href="#關於區塊鏈" class="headerlink" title="關於區塊鏈"></a>關於區塊鏈</h3><p>區塊鏈「去中心化」的特性，大大改變「價值交換」的方式。<br>過去的 https protocol 是從 server copy 一份給 client，然後 display 出來；而區塊鏈不一樣，它是「這邊消滅，那邊 create」。<br>可能在未來 30 年、50 年，區塊鏈將會顛覆地政、證券交易所等行業！</p>
+<h3 id="自己人生，自己做主！"><a href="#自己人生，自己做主！" class="headerlink" title="自己人生，自己做主！"></a>自己人生，自己做主！</h3><p>有人曾對 Jamie 說過：「Jamie 你傻傻，創投在台灣那麼沙漠，你還要搞？」<br>然而現在看起來是挺不錯的。<br>所以，別因為別人撥冷水就不去嘗試了（但也要自己去判斷，而不是隨意行動）</p>
+<h3 id="學習是能遷移的"><a href="#學習是能遷移的" class="headerlink" title="學習是能遷移的"></a>學習是能遷移的</h3><p>「學ＸＸＸ技術或是領域會不會找不到工作？」永遠會有，像是 mainframe😂<br>當中最關鍵是「能力能帶著走」，所以，別太糾結這一點，專注在提升自我吧！</p>
+<h3 id="壓力調適"><a href="#壓力調適" class="headerlink" title="壓力調適"></a>壓力調適</h3><p>如何排解壓力？或者問說，為何會覺得有壓力？<br>那是因為，我們對於失敗或是最慘情況太過於模糊，就像是半夜上廁所太暗令人害怕。<br>所以說，試著想像「失敗」以後的最慘情況吧！<br>在過程中你或許會發現，其實還好，就僅僅只是「沒那麼成功」而已，想得夠清楚一點，你就會發現實際上沒那麼恐怖。<br>簡單來說，會壓力大的主要原因：對未來感到不明確。</p>
+<p>除此之外，多運動吧，可以先從簡單的散步和慢跑開始。<br>最重要的是，讓自己開心，常保愉快心情！</p>
+<h3 id="思維的價值所在"><a href="#思維的價值所在" class="headerlink" title="思維的價值所在"></a>思維的價值所在</h3><p>有人曾問 Jamie：「為何你不當工程師？」<br>然而，Jamie 說他其實是把自己視為 engineer 的。<br>只不過是把「engineering 的技術」套用在 social engineering，因此，「engineering 的技術」其實是可以帶著走、套用於其他領域的「思維」!!!<br>所以很多事情，對於從小學 engineering 的 Jamie 來說，都是一種 engineer！</p>
+<h3 id="面試心態"><a href="#面試心態" class="headerlink" title="面試心態"></a>面試心態</h3><p>關於面試，不要覺得自己是在面試，而是在進行一場「媒合會」。<br>找工作可能會花上幾個月，但確定工作實際上班是好幾年的！<br>因此，別急，多面幾間公司，挑個對自己來說最好的，像是覺得自己在過程當中會不會有成就感、公司整體帶給你的感覺。</p>
+<p>切記，這是一個雙方互相了解的過程，也當成是你在面試他們！<br>不要將就，而且，真的別急啊！</p>
+<h3 id="怎麼做時間管理？"><a href="#怎麼做時間管理？" class="headerlink" title="怎麼做時間管理？"></a>怎麼做時間管理？</h3><ol>
+<li>sleep hacking。Jamie 的睡眠時間為 11pm ~ 5am 六個小時，找個適合自己的睡眠時間吧！</li>
+<li>用 engineering 的思維去 approach。可以 implement 新的 feature 去 improve 人生作業系統，以 email 為例，可以弄個 Gmail filter (因為每一封郵件看似一點點，但累積起來可是很可觀的)。反正就是多 try，找出最 fit 自己的方式！</li>
+</ol>
+<h3 id="寫作價值連城"><a href="#寫作價值連城" class="headerlink" title="寫作價值連城"></a>寫作價值連城</h3><p>對 Jamie 而言，在大量寫網誌的過程當中更加了解自己。<br>因為如果你今天要發布，你會希望文章結構是嚴謹且有架構的，這時你會不斷跟自己 talk，也就會越來越清楚自己是誰。（這呼應我的：認識自我 • 感受世界 • 創造價值）</p>
+<p>而且，對於 Jamie 來說，寫作和運動是 engineer 最基本的工夫！</p>
+<h3 id="關於設定目標：成功與失敗"><a href="#關於設定目標：成功與失敗" class="headerlink" title="關於設定目標：成功與失敗"></a>關於設定目標：成功與失敗</h3><p>把最失敗的情況想清楚，像是：School 一年賠 100 萬而且沒有幫助到任何人。<br>把最基本的成功定義清楚，像是：School 每年幫助到一個人。</p>
+<p>所以說，成功、失敗不是絕對的 0 與 1，它是一段光譜！</p>
+<h3 id="思考的深與淺"><a href="#思考的深與淺" class="headerlink" title="思考的深與淺"></a>思考的深與淺</h3><p>不要「我不喜歡那個」就沒了，而是要知道「我喜歡什麼」。</p>
+<p>舉個例：想去國外工作 → 國外＝非國內 → 你要矽谷？北歐？東南亞？</p>
+<h3 id="最該投資的是自己"><a href="#最該投資的是自己" class="headerlink" title="最該投資的是自己"></a>最該投資的是自己</h3><p>多花點時間了解自己，如同 Steve Jobs 所說的，點終究會連起來的！</p>
 <br>
-今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
     <title>【心得】2022 Yourator 數位職涯博覽會</title>
@@ -54,64 +81,15 @@
 加油，在精進自我的路上，你，並不孤單！]]></content>
   </entry>
   <entry>
-    <title>用 Algorithmia 部署 ML Models</title>
-    <url>/2021/07/algorithmia-ml-models/</url>
-    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+    <title>2022 端午節立蛋</title>
+    <url>/2022/06/2022-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節不立蛋嗎？</p>
 <span id="more"></span>
 
-<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
-<hr>
-<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
-<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
-<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
-<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
-<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
-<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
-<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
-<hr>
-<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
-<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
-<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
-<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
-<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
-<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
-<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
-<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
-<p>像我原本以為是這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<p>後來才知道應該要這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
-<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
-
-<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
-<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
-<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
-<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
-
-<p>就是這麼簡單 😎</p>
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
+<p><img src="1.jpg"></p>
 <br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>Machine Learning</tag>
-        <tag>Deploy</tag>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>交大</tag>
-        <tag>教學</tag>
-      </tags>
+今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
     <title>回顧在 AppWorks School 的那段日子</title>
@@ -196,6 +174,66 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>很開心能夠成為 AppWorks School 大家庭的一份子，更開心有這個機會在此和大家分享我在 AppWorks School 這段期間的點點滴滴，未來還請各位多多指教了🙏</p>
 <br>
 希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
+  </entry>
+  <entry>
+    <title>用 Algorithmia 部署 ML Models</title>
+    <url>/2021/07/algorithmia-ml-models/</url>
+    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+<span id="more"></span>
+
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
+
+<p>就是這麼簡單 😎</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+        <tag>Deploy</tag>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>交大</tag>
+        <tag>教學</tag>
+      </tags>
   </entry>
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
@@ -532,6 +570,95 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
+    <title>駕訓班裡的點點滴滴</title>
+    <url>/2022/03/driving-school/</url>
+    <content><![CDATA[<p>簡單記錄一下～</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>原本打算趁寒假比較閒的時候上駕訓班，但因為比較晚才去注意相關資訊，就只能報年後開始上課的期別。（當時心想：早知道就早一點去了解，這樣開學後就不用再去駕訓班練車了，但沒有早知道這回事啊xD 就警惕自己，這就是拖延的後果，之後盡量不要再犯了）</p>
+<p>扯遠了，所以我 1/26 到附近的診所體檢，<a href="https://www.mvdis.gov.tw/m3-emv-hca/agency/query">這邊</a>可以查詢最近的體檢代辦所。然後接著就去駕訓班報名。</p>
+<p>原本我打算報的是「手排」，但教練知道了以後，立馬試著說服我報「自排」，他說現在幾乎都是自排車了，不必去學手排。</p>
+<p>報名駕訓班前是有做一點功課，有查到說教練很可能會說服你學自排，因為比較好教、好學，而且男女學員的待遇還可能不一樣xD 那個時候想說，哪有可能那麼容易被說服，我想學手排，是因為我想更了解開車的原理啊，管它好學不好學！</p>
+<p>沒想到才聽了教練幾句話的我，很快就被說服了xD 後來想說，家裡的人沒在開車，對於車子，我實在超級無敵不熟，腦袋裡面沒什麼開車上路的 data，學比較難的手排也只是在刁難自己而已，真的需要，之後再說好像也是可🤔</p>
+<p>真的要長話短說了⋯⋯</p>
+<h2 id="我的第一堂駕駛課"><a href="#我的第一堂駕駛課" class="headerlink" title="我的第一堂駕駛課"></a>我的第一堂駕駛課</h2><p>第一次上課是在 2/6，也就是年後的禮拜日。</p>
+<p>一剛開始，教練帶我到模擬機台練習轉⽅向盤，我那時候才知道，原來方向盤左右的極限是各⼀圈半啊，我還以為像電玩一樣，只能轉那麼一點點。教練教我怎麼轉以後，就要我自己練習 15 分鐘，然後他就去其他地方了。當時的我心想，哇嗚，網路上說的果然是真的，可能我是男生的關係吧？但後來經過一次又一次的上課，我才明白，很多東西教練真的只需要提點一下，其他靠學員自己練真的就行了。重點是：教練並不像網路上說的那種模樣啊！而且之後仔細想想，難道轉方向盤這種沒什麼技術的東西也要教練全程都在一旁陪我轉嗎xD</p>
+<p>無腦轉了一陣子的方向盤以後，教練就帶我進車子裡了。哇嗚，居然這麼快，難道待會就要開車了嗎？還真的沒錯。</p>
+<p>一上車，教練先向我介紹⽅向燈、⾬刷、PRD檔、臨時停⾞按鈕、⼿煞⾞、調整後照鏡的控制這些，介紹完以後，就帶我練「直線進退」了。我那個時候才知道，原來切到 R 檔或 D 檔以後，你不踩剎車，車子可是會動的呢！以為像遊戲一樣，就一直踩油門往前衝就是了xD 教練要我慢慢前進、後退，練習腳含著剎車的感覺，因為之後會常用到。</p>
+<p>下課前，居然就要練「路邊停車」了！好快啊，不是才第一堂課而已？練習的過程就不多說了，我想說的是，<strong>下課以後，真的最好把剛剛記的口訣、體會到的東西記下來，一來可以幫自己再複習一遍，二來下次練車前看的時候，很快就能回憶起來！</strong>當天上完課，我記了以下的筆記：</p>
+<blockquote>
+<p><strong>（路邊停⾞）</strong></p>
+<ul>
+<li>步驟：後退 → 右⼀圈半 → 回來 → 左⼀圈半 → (停⾞) → 換D檔 → 維持左⼀圈半 → 回來 → 右⼀圈 → 回來 → 換R檔 → 無限循環</li>
+<li>訣竅：三⾓形</li>
+</ul>
+</blockquote>
+<p>第一堂課還真扎實啊xD</p>
+<h2 id="新關卡登錄！"><a href="#新關卡登錄！" class="headerlink" title="新關卡登錄！"></a>新關卡登錄！</h2><p>第二次上課在 2/12，練的是「倒車入庫」和「曲線進退」。</p>
+<p>當時真的覺得好快，練好多看起來不容易的關卡，我才第二次上課而已，而且之前都沒開過車啊 (我想大家都是xD)！</p>
+<p>一樣下課的時候記了點筆記：</p>
+<blockquote>
+<p><strong>（倒⾞⼊庫）</strong></p>
+<ul>
+<li>步驟：後退直到外⾯竿⼦在右後座扶⼿的前⾯⼀點點 → 右打到底,可以從右後照鏡看到⾞⼦逐漸在⽩線內進去 → ⽅向盤導正,後退到⼈在樹前⾯⼀點點 → 前進到⼀個東東在⽩線前⾯⼀點點 → 右打底,正了之後再導回來</li>
+</ul>
+<p><strong>（曲線進退）</strong></p>
+<ul>
+<li>前進步驟：前進到左前燈在⽩線前⾯⼀點點,但我覺得可以觀察左後照鏡,當出現路線的時候再下⼀動 → 左打1⼜1/4圈,同時看著左後照鏡左彎,注意⾨把與⽩線的距離,太近太遠就調整⽅向盤的幅度 → 當左還是右前燈碰到⽩線就導正,前進直到右前燈超過⽩線⼀點點,但其實可以觀察右後照鏡 → 右邊跟左邊的操作⽅式⼤同⼩異,就左右互換⽽已 → 到站</li>
+<li>後退步驟：切換R檔,注意距離,同時做⽅向盤幅度上的調整→ 當左後照鏡看到半圓時,導正 → 後退到⾨把進到半圓內 → ⽅向盤往左轉1⼜1/4圈,⼀樣要調整幅度 → 導正回到起點</li>
+</ul>
+</blockquote>
+<p>裡面很多東西你可能會看不懂，<strong>這就是筆記，自己能夠看懂才是重點！</strong></p>
+<h2 id="第一次跑場考"><a href="#第一次跑場考" class="headerlink" title="第一次跑場考"></a>第一次跑場考</h2><p>第三次上課是在隔天 2/13，令我驚訝的是，上週日才第一次上課，那週日就要跑整個場考的關卡了！太酷了吧！</p>
+<p>那天教練跟我約特別早，八點就要到駕訓班練車。真的還蠻早的，起床時頗掙扎，那麼早，原來是因為今天要直接跑關卡，怕晚了⼈就多了！</p>
+<p>因為還很菜，要進車練的時候忘記放下⼿煞⾞，被教練訓了一頓xD</p>
+<p>其實還蠻好玩的，很像在玩遊戲，啊如果不小心壓到黑管的話，就會很大聲地逼逼叫讓你丟臉懲罰你xD</p>
+<p>關卡依序如下，順便附上我的小筆記：</p>
+<ol>
+<li>⾏前檢查及起駛前動作：⾏駛前先打左⽅向燈代表要出來 → 打右⽅向燈再打D檔,前進,⾨把到紫紅草時右⽅向盤打到底,然後轉正,稍微讓⾞⼦中間偏右⼀點</li>
+<li>倒⾞⼊庫：先打右⽅向燈再打R檔 → 後退到右後座上⾯⼿把到提⽰牌附近(不要太後⾯) → 右⽅向盤打到底 → 正了以後轉正退後到⼈對到⿈線 → 打右⽅向燈再打D檔 →往前到右邊凸起(?)對到紫紅草 → 出來動作不解釋xD</li>
+<li>路邊停⾞：⼤同⼩異,記得打燈,⼀開始右⽅向盤到左後照鏡安全島出現四個⿊⾊再導正,其他⼀樣</li>
+<li>S型曲線進退：先打右⽅向燈,前進直到右⾨把(?)到安全島時,右⽅向盤打到底 → 感覺到顛頗⼀次時,⽅向盤導正 → 其他跟前⾯練習⼀樣,只是半圓要⾃⼰去想像,倒退前記得先打右⽅向燈 → 快結束時,也就是差不多⾞體轉正時,⽅向盤導正 → 打右⽅向燈,然後右⽅向盤打到底出去</li>
+<li>（中間就是注意號誌和打燈,右⾨把(?)到⽩線時再開始轉⽅向盤到底,然後慢慢導正）</li>
+<li>上坡起步：⾞速儀表的100對到左⼆的黑管,要上坡前踩⼀點點煞⾞右邊的油⾨,到頂時記得快換踩剎⾞（後來補上：左標記要對到藍、拉⼿煞⾞、油⾨踩不超過1）</li>
+<li>穩定換檔：右邊的東東(?)對到紫紅草,前⾯的左黑管要在左前燈的右邊⼀些些 → 前進,適時調整⽅向盤</li>
+</ol>
+<p>筆記真的能幫助之後的每一次練習啊！</p>
+<h2 id="第一次道駕"><a href="#第一次道駕" class="headerlink" title="第一次道駕"></a>第一次道駕</h2><p>2/18，練完一段時間的場內以後，教練帶我練道駕。</p>
+<p>我只想說，那一天練完只覺得，我可能永遠都拿不到汽車駕照了，因為我開得實在是超級無敵爛，不斷被教練訓斥，顏面掃地的那種，我自己也覺得非常危險，像是不要突然在路中間踩剎⾞，而我卻做了，這樣真的很容易發生追撞啊！</p>
+<p>那個時候真的超級沒信心，覺得，唉，看來汽車駕照真的跟我無緣了吧？</p>
+<p>但說真的，現在回想起來，第一次上路，緊張害怕是非常正常的，跟場內的感覺差非常多，你還得多踩油門之外，馬路上也有其他大大小小的車子啊！</p>
+<p>現在的我只想跟當時的自己說：不要害怕，每次的練習，你會越來越來熟悉，也會越來越覺得沒什麼的！（2/27 的我寫下了這個：「道駕真的是⽐前幾次好很多啊！」，真的要相信自己能做到啊！）</p>
+<h2 id="例行練車，例行樂趣"><a href="#例行練車，例行樂趣" class="headerlink" title="例行練車，例行樂趣"></a>例行練車，例行樂趣</h2><p>接著後幾次就是各種到駕訓班練車。</p>
+<p>過程真的會覺得無聊，因為都重複做一樣的事⋯⋯</p>
+<p>不確定行不行，但後來我不管了，打開手機的 Spotify，聽著歌，跟著唱，教練車裡頭彷彿我個人的小型演唱會，我甚至還因此掌握了怎麼唱我原本唱不上去的歌呢xD</p>
+<p>就這樣，爾後的練車，我就是這樣悠遊自在，練車和享樂融為一體，已經分不清我是在練車還是在享受那種感覺了，挺不錯的！</p>
+<p>提個外話，冷氣還不錯舒服～</p>
+<h2 id="小挫折"><a href="#小挫折" class="headerlink" title="小挫折"></a>小挫折</h2><p>明明已經接近「躊躇滿志」的狀態了，沒想到 3/6 的道駕，讓我有種跌倒的感覺。</p>
+<p>快考試了，還是有不少開不好的地方，甚至又被教練唸，不是很好受。</p>
+<p>於是乎，我做了以下筆記：</p>
+<ul>
+<li>油⾨不要⼀直踩 早點準備煞停</li>
+<li>路邊停⾞前打右⽅向燈後記得說右⽅無來⾞</li>
+<li>路邊停⾞出來左⽅向燈後記得135度</li>
+<li>迴轉前速度要慢 ⽅向盤要打到底</li>
+<li>那個牌⼦那邊 記得放慢 紅綠燈等⾞的時候不要出去太多</li>
+</ul>
+<p>沒事，有幫自己記下道駕的注意要點，之後再多多提醒自己就行了～</p>
+<h2 id="考前一天"><a href="#考前一天" class="headerlink" title="考前一天"></a>考前一天</h2><p>就跟教練約了一個小時的練習場考，練完跟朋友打球，打完球就快速複習一下筆試模擬試卷自己圈起來的地方，好像就這樣，也不必特別準備什麼。</p>
+<p>但就要記得早點睡，因為隔天 06:50 就要到駕訓班集合搭車考筆試。</p>
+<p>啊對了還有，再看個道駕影片讓腦袋順過一遍路考的路線，也再複習一下開⾞前檢查動作，確保自己順序有記對。</p>
+<p>也別忘了先準備好隔天需要的身分證、乘車證、錢錢、一顆平常的心。</p>
+<h2 id="考照當天"><a href="#考照當天" class="headerlink" title="考照當天"></a>考照當天</h2><p>3/11，五點半起來，吃完早餐，出發去駕訓班。</p>
+<p>早上有點冷，那溫度加劇了我的緊張感，帶著這份心情，前往筆試考場，直到通過筆試了以後，加上外頭陽光燦爛也溫暖了起來，頓時覺得豁然開朗，好像沒那麼緊張，心中能感受到一股莫名的平靜。</p>
+<p>最讓人不耐煩的，就是等路考的過程，應該有兩小時吧，待在椅子上坐著，也不想滑手機，原本有聽音樂後來也不想聽了。（啊對了，我平常練車聽的歌就那幾首，我發現考前聽那幾首，可以幫助我快速平復緊張的情緒欸！還蠻讚的！）</p>
+<p>終於輪到我，上場囉！（ABCDEFGHIJKLMNOPQRSTUVWXYZ）咦我過了？</p>
+<p>真的，聽到我過了的當下，真的有種「咦我過了？」的感受，因為我是真的帶著很平常的心情去開車的，就像平常邊聽歌邊練車一樣，而道考的時候，彷彿是開著車帶著考官去遊山玩水一樣，是多麼地輕鬆愜意啊！就這樣，通過了考驗。</p>
+<p>人生其他方面也該是相同道理吧🤔</p>
+<br>
+感謝吳教練的諄諄教誨啊😎]]></content>
+  </entry>
+  <entry>
     <title>【圖文教學】免費在 AWS 上建一個 Node.js Web Server</title>
     <url>/2022/04/free-aws-nodejs-web-server/</url>
     <content><![CDATA[<p>文章裡面附了不少圖xD</p>
@@ -675,93 +802,64 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望這篇教學文能幫助到您，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
-    <title>駕訓班裡的點點滴滴</title>
-    <url>/2022/03/driving-school/</url>
-    <content><![CDATA[<p>簡單記錄一下～</p>
+    <title>【職涯路上】100~97，開始行動！</title>
+    <url>/2022/03/freshman-career-100-97/</url>
+    <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
 <span id="more"></span>
 
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>原本打算趁寒假比較閒的時候上駕訓班，但因為比較晚才去注意相關資訊，就只能報年後開始上課的期別。（當時心想：早知道就早一點去了解，這樣開學後就不用再去駕訓班練車了，但沒有早知道這回事啊xD 就警惕自己，這就是拖延的後果，之後盡量不要再犯了）</p>
-<p>扯遠了，所以我 1/26 到附近的診所體檢，<a href="https://www.mvdis.gov.tw/m3-emv-hca/agency/query">這邊</a>可以查詢最近的體檢代辦所。然後接著就去駕訓班報名。</p>
-<p>原本我打算報的是「手排」，但教練知道了以後，立馬試著說服我報「自排」，他說現在幾乎都是自排車了，不必去學手排。</p>
-<p>報名駕訓班前是有做一點功課，有查到說教練很可能會說服你學自排，因為比較好教、好學，而且男女學員的待遇還可能不一樣xD 那個時候想說，哪有可能那麼容易被說服，我想學手排，是因為我想更了解開車的原理啊，管它好學不好學！</p>
-<p>沒想到才聽了教練幾句話的我，很快就被說服了xD 後來想說，家裡的人沒在開車，對於車子，我實在超級無敵不熟，腦袋裡面沒什麼開車上路的 data，學比較難的手排也只是在刁難自己而已，真的需要，之後再說好像也是可🤔</p>
-<p>真的要長話短說了⋯⋯</p>
-<h2 id="我的第一堂駕駛課"><a href="#我的第一堂駕駛課" class="headerlink" title="我的第一堂駕駛課"></a>我的第一堂駕駛課</h2><p>第一次上課是在 2/6，也就是年後的禮拜日。</p>
-<p>一剛開始，教練帶我到模擬機台練習轉⽅向盤，我那時候才知道，原來方向盤左右的極限是各⼀圈半啊，我還以為像電玩一樣，只能轉那麼一點點。教練教我怎麼轉以後，就要我自己練習 15 分鐘，然後他就去其他地方了。當時的我心想，哇嗚，網路上說的果然是真的，可能我是男生的關係吧？但後來經過一次又一次的上課，我才明白，很多東西教練真的只需要提點一下，其他靠學員自己練真的就行了。重點是：教練並不像網路上說的那種模樣啊！而且之後仔細想想，難道轉方向盤這種沒什麼技術的東西也要教練全程都在一旁陪我轉嗎xD</p>
-<p>無腦轉了一陣子的方向盤以後，教練就帶我進車子裡了。哇嗚，居然這麼快，難道待會就要開車了嗎？還真的沒錯。</p>
-<p>一上車，教練先向我介紹⽅向燈、⾬刷、PRD檔、臨時停⾞按鈕、⼿煞⾞、調整後照鏡的控制這些，介紹完以後，就帶我練「直線進退」了。我那個時候才知道，原來切到 R 檔或 D 檔以後，你不踩剎車，車子可是會動的呢！以為像遊戲一樣，就一直踩油門往前衝就是了xD 教練要我慢慢前進、後退，練習腳含著剎車的感覺，因為之後會常用到。</p>
-<p>下課前，居然就要練「路邊停車」了！好快啊，不是才第一堂課而已？練習的過程就不多說了，我想說的是，<strong>下課以後，真的最好把剛剛記的口訣、體會到的東西記下來，一來可以幫自己再複習一遍，二來下次練車前看的時候，很快就能回憶起來！</strong>當天上完課，我記了以下的筆記：</p>
+<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>3/4 禮拜五那天，突然想到說可以來倒數看看離畢業 (6/12) 還剩下幾天，一數發現剛好剩下 100 天！<br>之所以這麼做，是因為我原本很可能有個實習機會，某些原因的關係，我選擇婉拒。<br>因此覺得自己得開始做點什麼，希望自己回頭來看這件事的時候，會認為是值得的！</p>
+<h2 id="儀式感"><a href="#儀式感" class="headerlink" title="儀式感"></a>儀式感</h2><p>對於職涯方面，實在不想一直拖延，於是乎，我那天下午向朋友做了一個宣誓：</p>
 <blockquote>
-<p><strong>（路邊停⾞）</strong></p>
-<ul>
-<li>步驟：後退 → 右⼀圈半 → 回來 → 左⼀圈半 → (停⾞) → 換D檔 → 維持左⼀圈半 → 回來 → 右⼀圈 → 回來 → 換R檔 → 無限循環</li>
-<li>訣竅：三⾓形</li>
-</ul>
+<p>今天我要盡我所能做一個簡單能用的 LINE 聊天機器人，主要功能是使用者能先挑感興趣的 KKBOX 排行榜(會先隨機秀出幾個)，接著會隨機跳出排行榜裡面的幾首歌，使用者點他想聽的，就能用 YouTube 或 Spotify 聽那首，適用情境可能就是當使用者不知道要聽什麼歌的時候，可以有個小幫手能夠幫忙推薦這樣。</p>
 </blockquote>
-<p>第一堂課還真扎實啊xD</p>
-<h2 id="新關卡登錄！"><a href="#新關卡登錄！" class="headerlink" title="新關卡登錄！"></a>新關卡登錄！</h2><p>第二次上課在 2/12，練的是「倒車入庫」和「曲線進退」。</p>
-<p>當時真的覺得好快，練好多看起來不容易的關卡，我才第二次上課而已，而且之前都沒開過車啊 (我想大家都是xD)！</p>
-<p>一樣下課的時候記了點筆記：</p>
+<p>因為如果不讓別人知道，很可能會偷懶不做，但如果真的這樣的話，不就顯得「放棄實習機會」很愚蠢了嗎？</p>
+<p>我還說：</p>
 <blockquote>
-<p><strong>（倒⾞⼊庫）</strong></p>
-<ul>
-<li>步驟：後退直到外⾯竿⼦在右後座扶⼿的前⾯⼀點點 → 右打到底,可以從右後照鏡看到⾞⼦逐漸在⽩線內進去 → ⽅向盤導正,後退到⼈在樹前⾯⼀點點 → 前進到⼀個東東在⽩線前⾯⼀點點 → 右打底,正了之後再導回來</li>
-</ul>
-<p><strong>（曲線進退）</strong></p>
-<ul>
-<li>前進步驟：前進到左前燈在⽩線前⾯⼀點點,但我覺得可以觀察左後照鏡,當出現路線的時候再下⼀動 → 左打1⼜1/4圈,同時看著左後照鏡左彎,注意⾨把與⽩線的距離,太近太遠就調整⽅向盤的幅度 → 當左還是右前燈碰到⽩線就導正,前進直到右前燈超過⽩線⼀點點,但其實可以觀察右後照鏡 → 右邊跟左邊的操作⽅式⼤同⼩異,就左右互換⽽已 → 到站</li>
-<li>後退步驟：切換R檔,注意距離,同時做⽅向盤幅度上的調整→ 當左後照鏡看到半圓時,導正 → 後退到⾨把進到半圓內 → ⽅向盤往左轉1⼜1/4圈,⼀樣要調整幅度 → 導正回到起點</li>
-</ul>
+<p>我想讓自己習慣每天都花點心思在開發這件事情上，累積一點東西，多積極參與對求職有幫助的活動！</p>
 </blockquote>
-<p>裡面很多東西你可能會看不懂，<strong>這就是筆記，自己能夠看懂才是重點！</strong></p>
-<h2 id="第一次跑場考"><a href="#第一次跑場考" class="headerlink" title="第一次跑場考"></a>第一次跑場考</h2><p>第三次上課是在隔天 2/13，令我驚訝的是，上週日才第一次上課，那週日就要跑整個場考的關卡了！太酷了吧！</p>
-<p>那天教練跟我約特別早，八點就要到駕訓班練車。真的還蠻早的，起床時頗掙扎，那麼早，原來是因為今天要直接跑關卡，怕晚了⼈就多了！</p>
-<p>因為還很菜，要進車練的時候忘記放下⼿煞⾞，被教練訓了一頓xD</p>
-<p>其實還蠻好玩的，很像在玩遊戲，啊如果不小心壓到黑管的話，就會很大聲地逼逼叫讓你丟臉懲罰你xD</p>
-<p>關卡依序如下，順便附上我的小筆記：</p>
-<ol>
-<li>⾏前檢查及起駛前動作：⾏駛前先打左⽅向燈代表要出來 → 打右⽅向燈再打D檔,前進,⾨把到紫紅草時右⽅向盤打到底,然後轉正,稍微讓⾞⼦中間偏右⼀點</li>
-<li>倒⾞⼊庫：先打右⽅向燈再打R檔 → 後退到右後座上⾯⼿把到提⽰牌附近(不要太後⾯) → 右⽅向盤打到底 → 正了以後轉正退後到⼈對到⿈線 → 打右⽅向燈再打D檔 →往前到右邊凸起(?)對到紫紅草 → 出來動作不解釋xD</li>
-<li>路邊停⾞：⼤同⼩異,記得打燈,⼀開始右⽅向盤到左後照鏡安全島出現四個⿊⾊再導正,其他⼀樣</li>
-<li>S型曲線進退：先打右⽅向燈,前進直到右⾨把(?)到安全島時,右⽅向盤打到底 → 感覺到顛頗⼀次時,⽅向盤導正 → 其他跟前⾯練習⼀樣,只是半圓要⾃⼰去想像,倒退前記得先打右⽅向燈 → 快結束時,也就是差不多⾞體轉正時,⽅向盤導正 → 打右⽅向燈,然後右⽅向盤打到底出去</li>
-<li>（中間就是注意號誌和打燈,右⾨把(?)到⽩線時再開始轉⽅向盤到底,然後慢慢導正）</li>
-<li>上坡起步：⾞速儀表的100對到左⼆的黑管,要上坡前踩⼀點點煞⾞右邊的油⾨,到頂時記得快換踩剎⾞（後來補上：左標記要對到藍、拉⼿煞⾞、油⾨踩不超過1）</li>
-<li>穩定換檔：右邊的東東(?)對到紫紅草,前⾯的左黑管要在左前燈的右邊⼀些些 → 前進,適時調整⽅向盤</li>
-</ol>
-<p>筆記真的能幫助之後的每一次練習啊！</p>
-<h2 id="第一次道駕"><a href="#第一次道駕" class="headerlink" title="第一次道駕"></a>第一次道駕</h2><p>2/18，練完一段時間的場內以後，教練帶我練道駕。</p>
-<p>我只想說，那一天練完只覺得，我可能永遠都拿不到汽車駕照了，因為我開得實在是超級無敵爛，不斷被教練訓斥，顏面掃地的那種，我自己也覺得非常危險，像是不要突然在路中間踩剎⾞，而我卻做了，這樣真的很容易發生追撞啊！</p>
-<p>那個時候真的超級沒信心，覺得，唉，看來汽車駕照真的跟我無緣了吧？</p>
-<p>但說真的，現在回想起來，第一次上路，緊張害怕是非常正常的，跟場內的感覺差非常多，你還得多踩油門之外，馬路上也有其他大大小小的車子啊！</p>
-<p>現在的我只想跟當時的自己說：不要害怕，每次的練習，你會越來越來熟悉，也會越來越覺得沒什麼的！（2/27 的我寫下了這個：「道駕真的是⽐前幾次好很多啊！」，真的要相信自己能做到啊！）</p>
-<h2 id="例行練車，例行樂趣"><a href="#例行練車，例行樂趣" class="headerlink" title="例行練車，例行樂趣"></a>例行練車，例行樂趣</h2><p>接著後幾次就是各種到駕訓班練車。</p>
-<p>過程真的會覺得無聊，因為都重複做一樣的事⋯⋯</p>
-<p>不確定行不行，但後來我不管了，打開手機的 Spotify，聽著歌，跟著唱，教練車裡頭彷彿我個人的小型演唱會，我甚至還因此掌握了怎麼唱我原本唱不上去的歌呢xD</p>
-<p>就這樣，爾後的練車，我就是這樣悠遊自在，練車和享樂融為一體，已經分不清我是在練車還是在享受那種感覺了，挺不錯的！</p>
-<p>提個外話，冷氣還不錯舒服～</p>
-<h2 id="小挫折"><a href="#小挫折" class="headerlink" title="小挫折"></a>小挫折</h2><p>明明已經接近「躊躇滿志」的狀態了，沒想到 3/6 的道駕，讓我有種跌倒的感覺。</p>
-<p>快考試了，還是有不少開不好的地方，甚至又被教練唸，不是很好受。</p>
-<p>於是乎，我做了以下筆記：</p>
+<p>就真的很希望自己能跳脫懶惰拖延的圈圈裡面！</p>
+<h2 id="小成果"><a href="#小成果" class="headerlink" title="小成果"></a>小成果</h2><p>最後當天有做出來那個聊天機器人嗎？有的，我把它叫做「推歌小幫手」。<br>然而，過程可真是不輕鬆，就跟現在寫這篇文一樣⋯⋯<br>（太久沒寫文章，現在回頭看之前寫的教學文，不禁讓我懷疑那些真的是我寫的嗎，怎麼感覺現在要重回之前的狀態還有一段路要走😂）</p>
+<!-- ![](result.gif) -->
+
+<img src="result.gif" alt="Demo" width="250" />
+
+<h2 id="困難與挑戰"><a href="#困難與挑戰" class="headerlink" title="困難與挑戰"></a>困難與挑戰</h2><p>為什麼做那個聊天機器人不太輕鬆？太久沒發揮創意然後實作出東西是其中一個原因，但主要是心理層面的掙扎與糾結。</p>
+<p>還是會有點擔心說會不會其實去實習是個比較好的選項。</p>
+<p>因為希望自己在投履歷和面試的時候，能有些像樣的 side project 提出來分享，但要做出像樣的 side project，就得花心思去思考怎樣的 project 才能吸引到人，無論是 project 的完整性與成熟度、與⽬標職缺及產業的相關性、企業端要求的技術能⼒，都得去顧慮到。</p>
+<p>那一整個過程光是用想的，就覺得，哇天啊，好像很不輕鬆啊！而選擇實習的話，就可以照著主管為我規劃的步調走，比較不用去煩惱這些。</p>
+<p>除此之外，因為生疏，會覺得自己頓頓的，甚至大部分的 code 和實作過程還是參考之前自己寫的「<a href="https://kanido386.github.io/2021/07/baymax-with-us/" target="_blank">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」才順利完成，就會覺得自己是不是在作弊都不動腦⋯⋯</p>
+<h2 id="豁然開朗"><a href="#豁然開朗" class="headerlink" title="豁然開朗"></a>豁然開朗</h2><p>直到我前天讀了「<a href="https://blog.niclin.tw/2019/09/03/start-your-side-project-beiyi-app-1/">2 個月擁有 6000 用戶 Side project 這樣做（一）</a>」這篇文章，才明白原來我這麼做是沒問題的，這是「平時養 code、寫技術⽂章」所帶來的好處：</p>
 <ul>
-<li>油⾨不要⼀直踩 早點準備煞停</li>
-<li>路邊停⾞前打右⽅向燈後記得說右⽅無來⾞</li>
-<li>路邊停⾞出來左⽅向燈後記得135度</li>
-<li>迴轉前速度要慢 ⽅向盤要打到底</li>
-<li>那個牌⼦那邊 記得放慢 紅綠燈等⾞的時候不要出去太多</li>
+<li>要做 LINE 聊天機器人？我之前已經做過兩次了，<strong>直接搬來⽤！</strong></li>
+<li>要串接 YouTube 和 KKBOX 的 API？我之前有把它們包成適合用於 LINE Bot 的 function 了，<strong>直接搬來⽤！</strong></li>
+<li>要做 LINE 或 Heroku 之類東西的設定？以前寫過教學⽂，<strong>直接看⾃⼰的筆記實作！</strong></li>
 </ul>
-<p>沒事，有幫自己記下道駕的注意要點，之後再多多提醒自己就行了～</p>
-<h2 id="考前一天"><a href="#考前一天" class="headerlink" title="考前一天"></a>考前一天</h2><p>就跟教練約了一個小時的練習場考，練完跟朋友打球，打完球就快速複習一下筆試模擬試卷自己圈起來的地方，好像就這樣，也不必特別準備什麼。</p>
-<p>但就要記得早點睡，因為隔天 06:50 就要到駕訓班集合搭車考筆試。</p>
-<p>啊對了還有，再看個道駕影片讓腦袋順過一遍路考的路線，也再複習一下開⾞前檢查動作，確保自己順序有記對。</p>
-<p>也別忘了先準備好隔天需要的身分證、乘車證、錢錢、一顆平常的心。</p>
-<h2 id="考照當天"><a href="#考照當天" class="headerlink" title="考照當天"></a>考照當天</h2><p>3/11，五點半起來，吃完早餐，出發去駕訓班。</p>
-<p>早上有點冷，那溫度加劇了我的緊張感，帶著這份心情，前往筆試考場，直到通過筆試了以後，加上外頭陽光燦爛也溫暖了起來，頓時覺得豁然開朗，好像沒那麼緊張，心中能感受到一股莫名的平靜。</p>
-<p>最讓人不耐煩的，就是等路考的過程，應該有兩小時吧，待在椅子上坐著，也不想滑手機，原本有聽音樂後來也不想聽了。（啊對了，我平常練車聽的歌就那幾首，我發現考前聽那幾首，可以幫助我快速平復緊張的情緒欸！還蠻讚的！）</p>
-<p>終於輪到我，上場囉！（ABCDEFGHIJKLMNOPQRSTUVWXYZ）咦我過了？</p>
-<p>真的，聽到我過了的當下，真的有種「咦我過了？」的感受，因為我是真的帶著很平常的心情去開車的，就像平常邊聽歌邊練車一樣，而道考的時候，彷彿是開著車帶著考官去遊山玩水一樣，是多麼地輕鬆愜意啊！就這樣，通過了考驗。</p>
-<p>人生其他方面也該是相同道理吧🤔</p>
+<p>頓時欣慰了不少。<br>但這樣我那個聊天機器人有多什麼功能嗎？有的，多嘗試串接了 Spotify 的 API，用的是「Spotipy」這個別人封裝好的 Python 套件。（Spotipy is a lightweight Python library for the Spotify Web API.）</p>
+<h2 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h2><p>雖然很沒什麼，但我覺得還是要給自己一點鼓勵，畢竟願意起身行動，比自己一直在那邊踟躕不前好多了（不行動雖然「看似完美」，但是是不會有任何成果產生的）</p>
+<p>認真考慮那個聊天機器人的功能可以加進之前做的「<a href="https://github.com/kanido386/baymax-with-us#readme">杯麵</a>」裡面！（杯麵功能豐富多啦，而且 README 已經有點樣子了，可以再作延伸）</p>
+<h2 id="尋求建議"><a href="#尋求建議" class="headerlink" title="尋求建議"></a>尋求建議</h2><p>到了隔天，也就是 3/5 禮拜六，我去參加了由 104 主辦的「新世代求職趨勢&amp;人資獨家徵才解密」活動，聽企業講座之外，也去做了履歷健診。</p>
+<p>邊聽講座邊記筆記，除此之外也趁機看了一些別人對於 side project 的建議，「<a href="https://tw.alphacamp.co/blog/side-project-guide">好的 Side Project 和作品集如何做？給新⼿⼯程師的懶⼈包</a>」這篇文真的很讚，整理了一些優質的建議文，然後我也做了點筆記，希望自己能常常回憶起來那些建議並加以行動！</p>
+<p>履歷健診的部分真的很不錯，因為人很多要排隊等待，本來想說就算了反正之後還是有機會 (但我快畢業啦)，幸好沒懶惰，跟對方聊聊以後，對於職涯方面和履歷修改上真的有不少收穫，還建議我可以經營 LinkedIn，我們後來「建立關係」，對方很好心地說之後如果有什麼疑惑可以再跟他聯絡，覺得挺有意思的！</p>
+<h2 id="砥礪心智"><a href="#砥礪心智" class="headerlink" title="砥礪心智"></a>砥礪心智</h2><p>而昨天早上到駕訓班練車，整個下午到傍晚燙了個鳥巢頭QQ，晚上因為鳥巢頭而沒什麼心情做正事xD，就這樣那天也沒什麼行動，睡前還有點過意不去呢😅</p>
+<h2 id="繼續寫下去"><a href="#繼續寫下去" class="headerlink" title="繼續寫下去"></a>繼續寫下去</h2><p>今天主要就是這篇文啦～（真的太久沒寫，都不知道自己到底在寫什麼，語句通順與否還是會很在意，慢慢來吧，今天這樣寫感覺好像有點回來了，還行，但花了兩小時多😢）</p>
+<h2 id="指點迷津"><a href="#指點迷津" class="headerlink" title="指點迷津"></a>指點迷津</h2><p>跳 tone 一下，剛好很適合這個階段多提醒自己！</p>
+<p>最近聽了「<a href="https://open.spotify.com/show/1xpiKWtcLQcYALGHBw4SbP">職涯履行家 Creating Our Future</a>」的一集 podcast「<a href="https://open.spotify.com/episode/64Y8HF2iPtZh5KvRIlKtyV?si=3LMAAPj9QamiOOfP8HWEQQ">剛踏入社會，你也好迷茫嗎？深度聊聊迷茫怎麼來＆如何解決它！</a>」，何則文分享了一些點，我覺得很不錯，把它記下來了：</p>
+<ul>
+<li>我們為何迷茫？從⼩被⽤「標準答案」來教育，但未來的時代其實是沒有標準答案的，你必須要找到⾃⼰的解答！</li>
+<li>過去的成功(模式)，不代表會帶來未來的成功</li>
+<li>最重要的是回到⾃⼰的初⼼，不要問說社會覺得怎麼樣好，⽽是我做什麼事情我會開⼼，做什麼會覺得我的⼈⽣是幸福、是快樂的，往內求⽽⾮往外求</li>
+<li>不要跟別⼈⽐，跟過去的⾃⼰⽐就好 (成⻑型思維)！⾄於別⼈怎麼樣，那是他家的事情，他可能只是個 NPC (⼈⽣或許只是個遊戲，是被更⾼層次的東⻄建構出來的，像是元宇宙的概念)</li>
+<li>真正的學習是怎麼樣？學到⼀個東⻄然後它變成⼀個 module 或 function (可重複拿來⽤，不同 input 進來可得到不同 output，⽽不是只是⼀個 constant)。學習不是記憶，⽽是想辦法建⽴⼀個機制，讓未來⾃⼰可以找到答案</li>
+<li>只有你可以對你的⼈⽣負起你的責任，不能像機器⼀樣很被動，別⼈推我們才去做，⽽是要開始找到⾃⼰⼈⽣的解答</li>
+<li>要有跨域思維，不要被⾃⼰的科系、背景、社會環境給綁住，⾛出⾃⼰的道路！</li>
+</ul>
+<p>總結：不要追求外在的成功⽽是內在的幸福、不要讓你的過去(像是學經歷)限制你的未來、要有危機意識，不斷學習，了解⾃⼰！</p>
 <br>
-感謝吳教練的諄諄教誨啊😎]]></content>
+加油！接下來這條路肯定不輕鬆，別怕，一起克服心理障礙、戰勝心魔吧！]]></content>
+      <tags>
+        <tag>職涯</tag>
+        <tag>side project</tag>
+      </tags>
   </entry>
   <entry>
     <title>【職涯路上】63~0，Commencement</title>
@@ -862,66 +960,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h2 id="繼續前進"><a href="#繼續前進" class="headerlink" title="繼續前進"></a>繼續前進</h2><p>探索自我的職涯之路，不會因為系列文完結而結束！</p>
 <p>文章也會繼續寫，不然久久沒寫，都不知道該怎麼寫了 😂</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】100~97，開始行動！</title>
-    <url>/2022/03/freshman-career-100-97/</url>
-    <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
-<span id="more"></span>
-
-<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>3/4 禮拜五那天，突然想到說可以來倒數看看離畢業 (6/12) 還剩下幾天，一數發現剛好剩下 100 天！<br>之所以這麼做，是因為我原本很可能有個實習機會，某些原因的關係，我選擇婉拒。<br>因此覺得自己得開始做點什麼，希望自己回頭來看這件事的時候，會認為是值得的！</p>
-<h2 id="儀式感"><a href="#儀式感" class="headerlink" title="儀式感"></a>儀式感</h2><p>對於職涯方面，實在不想一直拖延，於是乎，我那天下午向朋友做了一個宣誓：</p>
-<blockquote>
-<p>今天我要盡我所能做一個簡單能用的 LINE 聊天機器人，主要功能是使用者能先挑感興趣的 KKBOX 排行榜(會先隨機秀出幾個)，接著會隨機跳出排行榜裡面的幾首歌，使用者點他想聽的，就能用 YouTube 或 Spotify 聽那首，適用情境可能就是當使用者不知道要聽什麼歌的時候，可以有個小幫手能夠幫忙推薦這樣。</p>
-</blockquote>
-<p>因為如果不讓別人知道，很可能會偷懶不做，但如果真的這樣的話，不就顯得「放棄實習機會」很愚蠢了嗎？</p>
-<p>我還說：</p>
-<blockquote>
-<p>我想讓自己習慣每天都花點心思在開發這件事情上，累積一點東西，多積極參與對求職有幫助的活動！</p>
-</blockquote>
-<p>就真的很希望自己能跳脫懶惰拖延的圈圈裡面！</p>
-<h2 id="小成果"><a href="#小成果" class="headerlink" title="小成果"></a>小成果</h2><p>最後當天有做出來那個聊天機器人嗎？有的，我把它叫做「推歌小幫手」。<br>然而，過程可真是不輕鬆，就跟現在寫這篇文一樣⋯⋯<br>（太久沒寫文章，現在回頭看之前寫的教學文，不禁讓我懷疑那些真的是我寫的嗎，怎麼感覺現在要重回之前的狀態還有一段路要走😂）</p>
-<!-- ![](result.gif) -->
-
-<img src="result.gif" alt="Demo" width="250" />
-
-<h2 id="困難與挑戰"><a href="#困難與挑戰" class="headerlink" title="困難與挑戰"></a>困難與挑戰</h2><p>為什麼做那個聊天機器人不太輕鬆？太久沒發揮創意然後實作出東西是其中一個原因，但主要是心理層面的掙扎與糾結。</p>
-<p>還是會有點擔心說會不會其實去實習是個比較好的選項。</p>
-<p>因為希望自己在投履歷和面試的時候，能有些像樣的 side project 提出來分享，但要做出像樣的 side project，就得花心思去思考怎樣的 project 才能吸引到人，無論是 project 的完整性與成熟度、與⽬標職缺及產業的相關性、企業端要求的技術能⼒，都得去顧慮到。</p>
-<p>那一整個過程光是用想的，就覺得，哇天啊，好像很不輕鬆啊！而選擇實習的話，就可以照著主管為我規劃的步調走，比較不用去煩惱這些。</p>
-<p>除此之外，因為生疏，會覺得自己頓頓的，甚至大部分的 code 和實作過程還是參考之前自己寫的「<a href="https://kanido386.github.io/2021/07/baymax-with-us/" target="_blank">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」才順利完成，就會覺得自己是不是在作弊都不動腦⋯⋯</p>
-<h2 id="豁然開朗"><a href="#豁然開朗" class="headerlink" title="豁然開朗"></a>豁然開朗</h2><p>直到我前天讀了「<a href="https://blog.niclin.tw/2019/09/03/start-your-side-project-beiyi-app-1/">2 個月擁有 6000 用戶 Side project 這樣做（一）</a>」這篇文章，才明白原來我這麼做是沒問題的，這是「平時養 code、寫技術⽂章」所帶來的好處：</p>
-<ul>
-<li>要做 LINE 聊天機器人？我之前已經做過兩次了，<strong>直接搬來⽤！</strong></li>
-<li>要串接 YouTube 和 KKBOX 的 API？我之前有把它們包成適合用於 LINE Bot 的 function 了，<strong>直接搬來⽤！</strong></li>
-<li>要做 LINE 或 Heroku 之類東西的設定？以前寫過教學⽂，<strong>直接看⾃⼰的筆記實作！</strong></li>
-</ul>
-<p>頓時欣慰了不少。<br>但這樣我那個聊天機器人有多什麼功能嗎？有的，多嘗試串接了 Spotify 的 API，用的是「Spotipy」這個別人封裝好的 Python 套件。（Spotipy is a lightweight Python library for the Spotify Web API.）</p>
-<h2 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h2><p>雖然很沒什麼，但我覺得還是要給自己一點鼓勵，畢竟願意起身行動，比自己一直在那邊踟躕不前好多了（不行動雖然「看似完美」，但是是不會有任何成果產生的）</p>
-<p>認真考慮那個聊天機器人的功能可以加進之前做的「<a href="https://github.com/kanido386/baymax-with-us#readme">杯麵</a>」裡面！（杯麵功能豐富多啦，而且 README 已經有點樣子了，可以再作延伸）</p>
-<h2 id="尋求建議"><a href="#尋求建議" class="headerlink" title="尋求建議"></a>尋求建議</h2><p>到了隔天，也就是 3/5 禮拜六，我去參加了由 104 主辦的「新世代求職趨勢&amp;人資獨家徵才解密」活動，聽企業講座之外，也去做了履歷健診。</p>
-<p>邊聽講座邊記筆記，除此之外也趁機看了一些別人對於 side project 的建議，「<a href="https://tw.alphacamp.co/blog/side-project-guide">好的 Side Project 和作品集如何做？給新⼿⼯程師的懶⼈包</a>」這篇文真的很讚，整理了一些優質的建議文，然後我也做了點筆記，希望自己能常常回憶起來那些建議並加以行動！</p>
-<p>履歷健診的部分真的很不錯，因為人很多要排隊等待，本來想說就算了反正之後還是有機會 (但我快畢業啦)，幸好沒懶惰，跟對方聊聊以後，對於職涯方面和履歷修改上真的有不少收穫，還建議我可以經營 LinkedIn，我們後來「建立關係」，對方很好心地說之後如果有什麼疑惑可以再跟他聯絡，覺得挺有意思的！</p>
-<h2 id="砥礪心智"><a href="#砥礪心智" class="headerlink" title="砥礪心智"></a>砥礪心智</h2><p>而昨天早上到駕訓班練車，整個下午到傍晚燙了個鳥巢頭QQ，晚上因為鳥巢頭而沒什麼心情做正事xD，就這樣那天也沒什麼行動，睡前還有點過意不去呢😅</p>
-<h2 id="繼續寫下去"><a href="#繼續寫下去" class="headerlink" title="繼續寫下去"></a>繼續寫下去</h2><p>今天主要就是這篇文啦～（真的太久沒寫，都不知道自己到底在寫什麼，語句通順與否還是會很在意，慢慢來吧，今天這樣寫感覺好像有點回來了，還行，但花了兩小時多😢）</p>
-<h2 id="指點迷津"><a href="#指點迷津" class="headerlink" title="指點迷津"></a>指點迷津</h2><p>跳 tone 一下，剛好很適合這個階段多提醒自己！</p>
-<p>最近聽了「<a href="https://open.spotify.com/show/1xpiKWtcLQcYALGHBw4SbP">職涯履行家 Creating Our Future</a>」的一集 podcast「<a href="https://open.spotify.com/episode/64Y8HF2iPtZh5KvRIlKtyV?si=3LMAAPj9QamiOOfP8HWEQQ">剛踏入社會，你也好迷茫嗎？深度聊聊迷茫怎麼來＆如何解決它！</a>」，何則文分享了一些點，我覺得很不錯，把它記下來了：</p>
-<ul>
-<li>我們為何迷茫？從⼩被⽤「標準答案」來教育，但未來的時代其實是沒有標準答案的，你必須要找到⾃⼰的解答！</li>
-<li>過去的成功(模式)，不代表會帶來未來的成功</li>
-<li>最重要的是回到⾃⼰的初⼼，不要問說社會覺得怎麼樣好，⽽是我做什麼事情我會開⼼，做什麼會覺得我的⼈⽣是幸福、是快樂的，往內求⽽⾮往外求</li>
-<li>不要跟別⼈⽐，跟過去的⾃⼰⽐就好 (成⻑型思維)！⾄於別⼈怎麼樣，那是他家的事情，他可能只是個 NPC (⼈⽣或許只是個遊戲，是被更⾼層次的東⻄建構出來的，像是元宇宙的概念)</li>
-<li>真正的學習是怎麼樣？學到⼀個東⻄然後它變成⼀個 module 或 function (可重複拿來⽤，不同 input 進來可得到不同 output，⽽不是只是⼀個 constant)。學習不是記憶，⽽是想辦法建⽴⼀個機制，讓未來⾃⼰可以找到答案</li>
-<li>只有你可以對你的⼈⽣負起你的責任，不能像機器⼀樣很被動，別⼈推我們才去做，⽽是要開始找到⾃⼰⼈⽣的解答</li>
-<li>要有跨域思維，不要被⾃⼰的科系、背景、社會環境給綁住，⾛出⾃⼰的道路！</li>
-</ul>
-<p>總結：不要追求外在的成功⽽是內在的幸福、不要讓你的過去(像是學經歷)限制你的未來、要有危機意識，不斷學習，了解⾃⼰！</p>
-<br>
-加油！接下來這條路肯定不輕鬆，別怕，一起克服心理障礙、戰勝心魔吧！]]></content>
-      <tags>
-        <tag>職涯</tag>
-        <tag>side project</tag>
-      </tags>
   </entry>
   <entry>
     <title>【職涯路上】73~64</title>
@@ -1073,6 +1111,105 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>【職涯路上】91~90，越挫越勇！</title>
+    <url>/2022/03/freshman-career-91-90/</url>
+    <content><![CDATA[<p>這兩天花了 8 小時 55 分鐘又 48 秒的「專注時間」在弄電腦動畫與特效的作業，有點心得！</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>因為這個作業的關係，我預期我這兩天應該「沒辦法」弄 side project 或是其他跟職涯有關的事情，果真，在正式開始寫作業 code 之前，我就花了非常多時間在「讓我的 mac 能順利跑起來作業程式」這件事情上⋯⋯</p>
+<p>原本以為只需要煩惱怎麼寫 code 而已，還真沒想到說還得處理寫 code 之前的「讓程式跑起來」，加上又很難分點心思在職涯方面，覺得自己怎麼又沒新進度，那整個過程實在是非常挫折和煎熬。</p>
+<p>然而，現在回頭來看 (雖然也才最近而已xD)，我覺得這個挑戰還挺不錯的，讓我有了一點體悟，或許，這份體悟也能夠對我的職涯路上有所幫助呢！</p>
+<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>之前助教就有說過用 mac 寫作業會很麻煩，所以我就決定去系上的電腦教室寫作業。</p>
+<p>我們作業有討論區，開始寫之前，好奇點開來看，咦，有人發問「<strong>Mac版本不支援此專案類型</strong>」欸！</p>
+<p>根據裡面的討論，加上那位同學後來也沒繼續追問下去，應該是解決了，感覺 mac 好像只要照 <code>README.md</code> 裡面的指令打一打就可以用 <code>cmake</code> 來 build 了🤔</p>
+<p>於是乎，我跟著打指令，沒想到⋯⋯</p>
+<p><img src="1.png"></p>
+<p>噴出了錯誤，而且上面居然寫 <code>introduced in macOS 10.15</code>！</p>
+<p>完蛋，我 macOS 的版本是 10.14.6，但我不想更新啊😂</p>
+<p>因此，我就鼓起勇氣 (怕被笑這什麼笨問題的心理作祟)，在討論區發問「<strong>macOS 10.15 以下(不含) 的版本是否真的得更新作業系統才能做作業</strong>」，問助教難道只能更新而不能靠其他方法解決嗎？</p>
+<p>真希望助教能給出直接明確又能順利解決的解方啊！（錯誤的心理xD）</p>
+<h2 id="似乎有點希望"><a href="#似乎有點希望" class="headerlink" title="似乎有點希望"></a>似乎有點希望</h2><p>助教回覆說，因為 <code>filesystem</code> 是 C++17 的東西，可能是編譯器沒支援。</p>
+<p>建議我可以在 cmake 的指令後方加上<br><code>-DCMAKE_C_COMPILER=YOUR_GCC_PATH -DCMAKE_CXX_COMPILER=YOUR_G++_PATH</code><br>「<strong>或是去改一下找 file path 的 code 也可以</strong>」。</p>
+<p>人生真的是不斷在做選擇，有些 maybe 比較好，有些 maybe 比較差，而這次我選擇忽略後者嘗試前者。</p>
+<p>從現在的視角來看，二擇一的岔路，我選擇了崎嶇的那一條。（但或許更有收穫也說不定）</p>
+<p>後來我指令改成<br><code>cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ --build build --config Release --parallel 8</code><br>在輸入到終端機前，我內心想：「這一插曲終於能夠落幕了⋯⋯」</p>
+<p><img src="2.png"></p>
+<p>嗯嗯很好，看起來 C 和 CXX 編譯器的確都改了！<br>於是又再下下一個指令。</p>
+<p><img src="3.png"></p>
+<p>哭啊，還是一樣的錯誤⋯⋯ 明明編譯器已經改了啊？</p>
+<p>於是我決定再繼續追問下去！甚至還多問「去改一下找 file path 的 code」這個部分，想說多了解，或許也是一條不錯的路🤔</p>
+<h2 id="助教高明"><a href="#助教高明" class="headerlink" title="助教高明"></a>助教高明</h2><p>真不愧是助教，看到我的截圖 (上上一張)，立馬點出了問題！</p>
+<p>他說：「你還是用Xcode (AppleClang) 阿，看看最上面第一行和第二行的compiler ID。」</p>
+<p>我居然沒注意到，可見在程式開發上，有些 message 或 log 不要漏看會比較好。</p>
+<p>然後建議我：「MacOS 上的/usr/bin/gcc 預設是指到 Xcode 的 AppleClang。所以假設你是用 gcc 11 你要找找看 gcc-11 在哪裡而不是用 gcc。」</p>
+<p>（中間過程真的百般曲折就不贅述了）</p>
+<p>後來 <code>brew install gcc@11</code> 裝相關工具，然後找到了 <code>gcc-11</code>、<code>g++-11</code> 分別在哪，又找到了<a href="https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER.html">這篇</a>說可以加上參數，最後，我的指令變成這樣：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=<span class="string">&#x27;/usr/local/bin/gcc-11&#x27;</span> -DCMAKE_CXX_COMPILER=<span class="string">&quot;/usr/local/bin/g++-11;-std=c++17&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="4.png"></p>
+<p>看起來好像有設定到 C++17 (?)</p>
+<p>然後再下 <code>cmake --build build --config Release --parallel 8</code> 居然冒出了新的錯誤⋯⋯</p>
+<p><img src="5.png"></p>
+<p>我就在討論區跟助教說：「可能是沒設定好 include library 之類的關係，但我可能就先停在這邊了，謝謝助教的提示！」</p>
+<p>不行，我已經花非常多時間在這上頭了，如果今天作業沒 deadline、我沒其他事要做，那繼續研究還 OK，但情況不是這樣啊xD</p>
+<p><strong>有時候，選擇放棄，換走另外一條路，也是不錯的選擇！</strong></p>
+<h2 id="另闢蹊徑"><a href="#另闢蹊徑" class="headerlink" title="另闢蹊徑"></a>另闢蹊徑</h2><p>我決定嘗試「或是去改一下找 file path 的 code 也可以」的方法了！</p>
+<p>問了助教：「剛剛 trace 了一下 code，是不是只有 <code>findPath()</code> 這個 function 會用到 filesystem 的東西呢？如果直接把 assets 的路徑寫死是不是就能解決了呢？」</p>
+<p>助教回覆：「是的，不過最好加上個你自己的 define guard」</p>
+<p>雖然現在看來輕鬆，但當時依舊忐忑不安，連最重要作業的 code 都還沒開始動工，而我卻還在弄這些五四三？</p>
+<p>我當時害怕極了。</p>
+<p>（嘗試中）</p>
+<p>哇嗚，令我驚訝的是，我居然只花了 16 分 19 秒就搞定了，怎麼跟前面的方法差那麼多啊😂</p>
+<p><img src="6.png"></p>
+<p>Built 成功！</p>
+<p><img src="7.png"></p>
+<p>看到畫面上出現球球和布料，豪感動啊啊啊～</p>
+<h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><p>受到討論區和助教的 carry，怎能不回饋呢？</p>
+<p>雖然可能沒有人像我一樣用比較舊的 mac 寫作業，但我還是 share 了我做了哪些改動來讓程式能順利跑起來：</p>
+<blockquote>
+<p><code>main.cpp</code></p>
+<ul>
+<li>第 78 行的「 findPath(“sphere.vert”) 」改成「 “/path/to/sphere.vert” 」</li>
+<li>第 79、91、92 行也一樣</li>
+</ul>
+<p><code>utils.h</code></p>
+<ul>
+<li>註解掉第 2、57 行（分別是 <em>filesystem</em> 標頭檔、findPath 函式）</li>
+</ul>
+<p><code>utils.cpp</code></p>
+<ul>
+<li>註解掉第 8~22、67～70 行（findAssetPath、findPath）</li>
+</ul>
+<p><code>shader.h</code></p>
+<ul>
+<li>第 18 行的「 std::filesystem::path 」改成「 std::string 」</li>
+</ul>
+<p><code>shader.cpp</code></p>
+<ul>
+<li>第 6 行的「 std::filesystem::path 」改成「 std::string 」</li>
+<li>註解掉第 8~16 行</li>
+<li>第 43 行的「 std::filesystem::path 」改成「 std::string 」</li>
+</ul>
+<p>改完之後再下最一開始「乾淨」的指令：<br><code>cmake -S . -B build -D CMAKE_BUILD_TYPE=Release</code><br><code>cmake --build build --config Release --parallel 8</code><br>就可以了！</p>
+</blockquote>
+<p>非常謝謝助教的幫忙！</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>解決在 mac 上面跑程式的問題以後，就開始寫作業 code！</p>
+<p>對了，和弄作業的第一天相比，第二天的焦慮感淡了不少，我想，應該是因為我有做到下面那張圖闡述的哲理吧？</p>
+<p><img src="8.png"></p>
+<p>我每次做困難任務的時候，都會幫自己計時，一方面是想讓自己有「進度在前進」的感覺，一方面可以在回顧當天的時候知道自己都做了些什麼，而不是「明明有做事情卻覺得自己都在瞎忙」。</p>
+<p>第一天，我完全是用「電腦動畫與特效 HW1」的名義來行動，什麼意思？看第二天就會懂了。</p>
+<p>第二天，我不是單純「電腦動畫與特效 HW1」，而是細分成：</p>
+<blockquote>
+<p>雜項、trace code、再嘗試用 mac 跑跑看、最後回報給助教決定不再追根究底了、<br>試著寫死路徑跑跑看、剛剛的過程整理成小筆記並回報到討論區、<br><code>void Cloth::initializeSpring()</code>、<code>void Cloth::computeSpringForce()</code></p>
+</blockquote>
+<p>宣告完當下要做哪個細項以後，再開始計時行動。</p>
+<p>我覺得這麼做讓我內心輕鬆了不少，我想，是因為這讓我更加明確當下的自己在做什麼吧？而不是整坨糊在一起的雜亂無章感！</p>
+<p>或許，之後遇到任何困難事，也可以嘗試這樣去 approach，不要因為它「充滿未知數」而感到懼怕～</p>
+<br>
+雖然多花了不少時間，但路是不會白走的！<br>
+相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
+  </entry>
+  <entry>
     <title>【職涯路上】89~86，再廢也不要停止反思</title>
     <url>/2022/03/freshman-career-89-86/</url>
     <content><![CDATA[<p>跟上禮拜一樣，又是二三四五覺得自己好像都沒在做什麼⋯⋯<br>嗯 來簡單盤點一下好了🤔</p>
@@ -1162,6 +1299,35 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 話說，明天又是新的一天了呢😂]]></content>
   </entry>
   <entry>
+    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
+    <url>/2022/03/freshman-career-96-93/</url>
+    <content><![CDATA[<p>卡卡的感覺😅</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
+<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
+<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
+<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
+<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
+<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
+<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
+<p>所以早上沒得做 project。</p>
+<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
+<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
+<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
+<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
+<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
+<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
+<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
+<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
+<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
+<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
+<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
+<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
+<br>
+沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
+  </entry>
+  <entry>
     <title>【職涯路上】92，交大就業博覽會</title>
     <url>/2022/03/freshman-career-92/</url>
     <content><![CDATA[<p>趁現在印象還很清楚的時候來記錄一下。</p>
@@ -1206,35 +1372,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p><strong>就業博覽會的重點：大量問就對了！</strong>我有個想法，如果突然不知道要問什麼，或許可以問說，請問別人有問了您什麼很好的問題嗎？因為感覺很多人問的問題，問得超好，我自己也很想知道啊！</p>
 <br>
 今天這樣逛，真的值得😎]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
-    <url>/2022/03/freshman-career-96-93/</url>
-    <content><![CDATA[<p>卡卡的感覺😅</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
-<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
-<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
-<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
-<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
-<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
-<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
-<p>所以早上沒得做 project。</p>
-<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
-<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
-<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
-<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
-<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
-<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
-<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
-<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
-<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
-<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
-<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
-<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
-<br>
-沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
   </entry>
   <entry>
     <title>用 FSM 及 LINE Messaging API 做一個聊天機器人</title>
@@ -1925,6 +2062,32 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>不完美行動</title>
+    <url>/2021/09/just-do-it/</url>
+    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
+<span id="more"></span>
+<hr>
+<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
+<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
+<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
+<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
+<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
+<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
+<hr>
+<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
+<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
+<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
+<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
+<p>但，不去行動，怎麼會有結果呢？</p>
+<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
+<hr>
+<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
+<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
+<hr>
+<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+]]></content>
+  </entry>
+  <entry>
     <title>JavaScript ES6 Cheatsheet</title>
     <url>/2020/04/javascript-es6-cheatsheet/</url>
     <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2008,128 +2171,10 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>【職涯路上】91~90，越挫越勇！</title>
-    <url>/2022/03/freshman-career-91-90/</url>
-    <content><![CDATA[<p>這兩天花了 8 小時 55 分鐘又 48 秒的「專注時間」在弄電腦動畫與特效的作業，有點心得！</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>因為這個作業的關係，我預期我這兩天應該「沒辦法」弄 side project 或是其他跟職涯有關的事情，果真，在正式開始寫作業 code 之前，我就花了非常多時間在「讓我的 mac 能順利跑起來作業程式」這件事情上⋯⋯</p>
-<p>原本以為只需要煩惱怎麼寫 code 而已，還真沒想到說還得處理寫 code 之前的「讓程式跑起來」，加上又很難分點心思在職涯方面，覺得自己怎麼又沒新進度，那整個過程實在是非常挫折和煎熬。</p>
-<p>然而，現在回頭來看 (雖然也才最近而已xD)，我覺得這個挑戰還挺不錯的，讓我有了一點體悟，或許，這份體悟也能夠對我的職涯路上有所幫助呢！</p>
-<h2 id="一開始"><a href="#一開始" class="headerlink" title="一開始"></a>一開始</h2><p>之前助教就有說過用 mac 寫作業會很麻煩，所以我就決定去系上的電腦教室寫作業。</p>
-<p>我們作業有討論區，開始寫之前，好奇點開來看，咦，有人發問「<strong>Mac版本不支援此專案類型</strong>」欸！</p>
-<p>根據裡面的討論，加上那位同學後來也沒繼續追問下去，應該是解決了，感覺 mac 好像只要照 <code>README.md</code> 裡面的指令打一打就可以用 <code>cmake</code> 來 build 了🤔</p>
-<p>於是乎，我跟著打指令，沒想到⋯⋯</p>
-<p><img src="1.png"></p>
-<p>噴出了錯誤，而且上面居然寫 <code>introduced in macOS 10.15</code>！</p>
-<p>完蛋，我 macOS 的版本是 10.14.6，但我不想更新啊😂</p>
-<p>因此，我就鼓起勇氣 (怕被笑這什麼笨問題的心理作祟)，在討論區發問「<strong>macOS 10.15 以下(不含) 的版本是否真的得更新作業系統才能做作業</strong>」，問助教難道只能更新而不能靠其他方法解決嗎？</p>
-<p>真希望助教能給出直接明確又能順利解決的解方啊！（錯誤的心理xD）</p>
-<h2 id="似乎有點希望"><a href="#似乎有點希望" class="headerlink" title="似乎有點希望"></a>似乎有點希望</h2><p>助教回覆說，因為 <code>filesystem</code> 是 C++17 的東西，可能是編譯器沒支援。</p>
-<p>建議我可以在 cmake 的指令後方加上<br><code>-DCMAKE_C_COMPILER=YOUR_GCC_PATH -DCMAKE_CXX_COMPILER=YOUR_G++_PATH</code><br>「<strong>或是去改一下找 file path 的 code 也可以</strong>」。</p>
-<p>人生真的是不斷在做選擇，有些 maybe 比較好，有些 maybe 比較差，而這次我選擇忽略後者嘗試前者。</p>
-<p>從現在的視角來看，二擇一的岔路，我選擇了崎嶇的那一條。（但或許更有收穫也說不定）</p>
-<p>後來我指令改成<br><code>cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ --build build --config Release --parallel 8</code><br>在輸入到終端機前，我內心想：「這一插曲終於能夠落幕了⋯⋯」</p>
-<p><img src="2.png"></p>
-<p>嗯嗯很好，看起來 C 和 CXX 編譯器的確都改了！<br>於是又再下下一個指令。</p>
-<p><img src="3.png"></p>
-<p>哭啊，還是一樣的錯誤⋯⋯ 明明編譯器已經改了啊？</p>
-<p>於是我決定再繼續追問下去！甚至還多問「去改一下找 file path 的 code」這個部分，想說多了解，或許也是一條不錯的路🤔</p>
-<h2 id="助教高明"><a href="#助教高明" class="headerlink" title="助教高明"></a>助教高明</h2><p>真不愧是助教，看到我的截圖 (上上一張)，立馬點出了問題！</p>
-<p>他說：「你還是用Xcode (AppleClang) 阿，看看最上面第一行和第二行的compiler ID。」</p>
-<p>我居然沒注意到，可見在程式開發上，有些 message 或 log 不要漏看會比較好。</p>
-<p>然後建議我：「MacOS 上的/usr/bin/gcc 預設是指到 Xcode 的 AppleClang。所以假設你是用 gcc 11 你要找找看 gcc-11 在哪裡而不是用 gcc。」</p>
-<p>（中間過程真的百般曲折就不贅述了）</p>
-<p>後來 <code>brew install gcc@11</code> 裝相關工具，然後找到了 <code>gcc-11</code>、<code>g++-11</code> 分別在哪，又找到了<a href="https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER.html">這篇</a>說可以加上參數，最後，我的指令變成這樣：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=<span class="string">&#x27;/usr/local/bin/gcc-11&#x27;</span> -DCMAKE_CXX_COMPILER=<span class="string">&quot;/usr/local/bin/g++-11;-std=c++17&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="4.png"></p>
-<p>看起來好像有設定到 C++17 (?)</p>
-<p>然後再下 <code>cmake --build build --config Release --parallel 8</code> 居然冒出了新的錯誤⋯⋯</p>
-<p><img src="5.png"></p>
-<p>我就在討論區跟助教說：「可能是沒設定好 include library 之類的關係，但我可能就先停在這邊了，謝謝助教的提示！」</p>
-<p>不行，我已經花非常多時間在這上頭了，如果今天作業沒 deadline、我沒其他事要做，那繼續研究還 OK，但情況不是這樣啊xD</p>
-<p><strong>有時候，選擇放棄，換走另外一條路，也是不錯的選擇！</strong></p>
-<h2 id="另闢蹊徑"><a href="#另闢蹊徑" class="headerlink" title="另闢蹊徑"></a>另闢蹊徑</h2><p>我決定嘗試「或是去改一下找 file path 的 code 也可以」的方法了！</p>
-<p>問了助教：「剛剛 trace 了一下 code，是不是只有 <code>findPath()</code> 這個 function 會用到 filesystem 的東西呢？如果直接把 assets 的路徑寫死是不是就能解決了呢？」</p>
-<p>助教回覆：「是的，不過最好加上個你自己的 define guard」</p>
-<p>雖然現在看來輕鬆，但當時依舊忐忑不安，連最重要作業的 code 都還沒開始動工，而我卻還在弄這些五四三？</p>
-<p>我當時害怕極了。</p>
-<p>（嘗試中）</p>
-<p>哇嗚，令我驚訝的是，我居然只花了 16 分 19 秒就搞定了，怎麼跟前面的方法差那麼多啊😂</p>
-<p><img src="6.png"></p>
-<p>Built 成功！</p>
-<p><img src="7.png"></p>
-<p>看到畫面上出現球球和布料，豪感動啊啊啊～</p>
-<h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><p>受到討論區和助教的 carry，怎能不回饋呢？</p>
-<p>雖然可能沒有人像我一樣用比較舊的 mac 寫作業，但我還是 share 了我做了哪些改動來讓程式能順利跑起來：</p>
-<blockquote>
-<p><code>main.cpp</code></p>
-<ul>
-<li>第 78 行的「 findPath(“sphere.vert”) 」改成「 “/path/to/sphere.vert” 」</li>
-<li>第 79、91、92 行也一樣</li>
-</ul>
-<p><code>utils.h</code></p>
-<ul>
-<li>註解掉第 2、57 行（分別是 <em>filesystem</em> 標頭檔、findPath 函式）</li>
-</ul>
-<p><code>utils.cpp</code></p>
-<ul>
-<li>註解掉第 8~22、67～70 行（findAssetPath、findPath）</li>
-</ul>
-<p><code>shader.h</code></p>
-<ul>
-<li>第 18 行的「 std::filesystem::path 」改成「 std::string 」</li>
-</ul>
-<p><code>shader.cpp</code></p>
-<ul>
-<li>第 6 行的「 std::filesystem::path 」改成「 std::string 」</li>
-<li>註解掉第 8~16 行</li>
-<li>第 43 行的「 std::filesystem::path 」改成「 std::string 」</li>
-</ul>
-<p>改完之後再下最一開始「乾淨」的指令：<br><code>cmake -S . -B build -D CMAKE_BUILD_TYPE=Release</code><br><code>cmake --build build --config Release --parallel 8</code><br>就可以了！</p>
-</blockquote>
-<p>非常謝謝助教的幫忙！</p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>解決在 mac 上面跑程式的問題以後，就開始寫作業 code！</p>
-<p>對了，和弄作業的第一天相比，第二天的焦慮感淡了不少，我想，應該是因為我有做到下面那張圖闡述的哲理吧？</p>
-<p><img src="8.png"></p>
-<p>我每次做困難任務的時候，都會幫自己計時，一方面是想讓自己有「進度在前進」的感覺，一方面可以在回顧當天的時候知道自己都做了些什麼，而不是「明明有做事情卻覺得自己都在瞎忙」。</p>
-<p>第一天，我完全是用「電腦動畫與特效 HW1」的名義來行動，什麼意思？看第二天就會懂了。</p>
-<p>第二天，我不是單純「電腦動畫與特效 HW1」，而是細分成：</p>
-<blockquote>
-<p>雜項、trace code、再嘗試用 mac 跑跑看、最後回報給助教決定不再追根究底了、<br>試著寫死路徑跑跑看、剛剛的過程整理成小筆記並回報到討論區、<br><code>void Cloth::initializeSpring()</code>、<code>void Cloth::computeSpringForce()</code></p>
-</blockquote>
-<p>宣告完當下要做哪個細項以後，再開始計時行動。</p>
-<p>我覺得這麼做讓我內心輕鬆了不少，我想，是因為這讓我更加明確當下的自己在做什麼吧？而不是整坨糊在一起的雜亂無章感！</p>
-<p>或許，之後遇到任何困難事，也可以嘗試這樣去 approach，不要因為它「充滿未知數」而感到懼怕～</p>
-<br>
-雖然多花了不少時間，但路是不會白走的！<br>
-相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
-  </entry>
-  <entry>
-    <title>不完美行動</title>
-    <url>/2021/09/just-do-it/</url>
-    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
-<span id="more"></span>
-<hr>
-<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
-<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
-<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
-<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
-<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
-<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
-<hr>
-<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
-<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
-<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
-<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
-<p>但，不去行動，怎麼會有結果呢？</p>
-<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
-<hr>
-<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
-<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
-<hr>
-<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
 ]]></content>
   </entry>
   <entry>
@@ -2237,13 +2282,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <hr>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一次參加社群活動，覺得滿載而歸，會讓我想繼續參加類似的活動！</p>
 <p>加油，多方嘗試、比過去的自己更進步、不要怕出糗、多接收外界刺激讓自己體會不一樣的事物，你我都可以越來越來靠近心目中的理想自我的！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
 ]]></content>
   </entry>
   <entry>
@@ -2998,47 +3036,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>]]></content>
   </entry>
   <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>停下來思考</title>
     <url>/2021/12/soft-skills/</url>
     <content><![CDATA[<p>生活瑣事一大堆，導致我們常常忽略了人生中更重要、更值得關注的事情！<br>（但我發現，感覺自己很忙，實際上只是心理狀態上的忙、盲、茫⋯⋯）</p>
@@ -3324,6 +3321,47 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 SSL For Free 免費申請 SSL 憑證</title>
     <url>/2022/04/ssl-for-free/</url>
     <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
@@ -3360,39 +3398,6 @@ go go!!!]]></content>
 <li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
 </ol>
 ]]></content>
-  </entry>
-  <entry>
-    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
-    <url>/2021/12/synth-one-with-logic-pro/</url>
-    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
-<span id="more"></span>
-
-<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
-<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
-<li>用 USB 線，將 iPad 連接到 MacBook</li>
-<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
-<li>打開 Synth One，然後先放著</li>
-<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
-<li>「Use External Instrument plug-in」記得勾起來</li>
-<li>MIDI Destination 選 iPad</li>
-</ul>
- <img src="2.png" alt="2.png"></li>
-<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
-</ol>
-<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
-<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
-<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
-<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
-<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
-<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
-<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
-<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
-</ol>
-<br>
-這樣就大功告成啦😎]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
-      </tags>
   </entry>
   <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
@@ -3588,6 +3593,39 @@ go go!!!]]></content>
         <tag>專題</tag>
         <tag>樂理</tag>
         <tag>音色</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
+    <url>/2021/12/synth-one-with-logic-pro/</url>
+    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
+<span id="more"></span>
+
+<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
+<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
+<li>用 USB 線，將 iPad 連接到 MacBook</li>
+<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
+<li>打開 Synth One，然後先放著</li>
+<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
+<li>「Use External Instrument plug-in」記得勾起來</li>
+<li>MIDI Destination 選 iPad</li>
+</ul>
+ <img src="2.png" alt="2.png"></li>
+<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
+</ol>
+<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
+<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
+<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
+<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
+<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
+<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
+<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
+<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
+</ol>
+<br>
+這樣就大功告成啦😎]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
       </tags>
   </entry>
   <entry>
