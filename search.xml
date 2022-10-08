@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2022 端午節立蛋</title>
-    <url>/2022/06/2022-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節不立蛋嗎？</p>
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
-<p><img src="1.jpg"></p>
-<br>
-今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
-  </entry>
-  <entry>
     <title>【聽講筆記】Jamie’s AMA</title>
     <url>/2022/08/2022-05-jamie-ama/</url>
     <content><![CDATA[<p>五月中的時候，在 AppWorks School 聽了 Jamie’s AMA (Ask Me Anything)，邊聽邊記了一點筆記，想說整理在這邊，可能還夾雜一點個人的補充，分享給大家～（這篇應該會蠻隨筆性質的）</p>
@@ -48,6 +37,59 @@
 <h3 id="最該投資的是自己"><a href="#最該投資的是自己" class="headerlink" title="最該投資的是自己"></a>最該投資的是自己</h3><p>多花點時間了解自己，如同 Steve Jobs 所說的，點終究會連起來的！</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>2022 端午節立蛋</title>
+    <url>/2022/06/2022-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節不立蛋嗎？</p>
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
+<p><img src="1.jpg"></p>
+<br>
+今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
+  </entry>
+  <entry>
+    <title>【心得】2022 Yourator 數位職涯博覽會</title>
+    <url>/2022/03/2022-yourator-career-fair/</url>
+    <content><![CDATA[<p>簡單分享昨天參加職涯博覽會的收穫～</p>
+<span id="more"></span>
+
+<h2 id="做一對一職涯諮詢"><a href="#做一對一職涯諮詢" class="headerlink" title="做一對一職涯諮詢"></a>做一對一職涯諮詢</h2><p>雖然只有短短 15 分鐘，但還挺不錯的！</p>
+<h3 id="面試官看重什麼"><a href="#面試官看重什麼" class="headerlink" title="面試官看重什麼"></a>面試官看重什麼</h3><p>和面試官對談時，他們看的是你的邏輯、想法，也藉機了解你對程式語言、框架的熟悉程度。</p>
+<p>會某個技術，但覺得自己還不夠好嗎？以新鮮人求職來說，他們不是非得要即戰力，所以職務上面列出來的條件不需要真的到非常熟，進到公司以後內部可以再做培訓。他們最看重的，就是你多有 potential！</p>
+<p>所以如果要做 side project，做深入一點，重質不重量，可以敘述你做了什麼、為什麼做、遇到什麼挑戰、如何解決等等的，讓面試官清楚知道你的技術能力之外，也能更了解你的軟實力。</p>
+<h3 id="呈現自我的小建議"><a href="#呈現自我的小建議" class="headerlink" title="呈現自我的小建議"></a>呈現自我的小建議</h3><ul>
+<li>履歷上的經歷可以用 STAR 原則來撰寫：Situation (情境)、Task (任務)、Action (行動)、Result (結果)</li>
+<li>在面試前，可以先做一份簡報，面試時，可以拿出來輔助自我介紹，或許還可以列出之前做過的 project，讓自己在描述的時候能更加順利（上一次聽到這個建議是在交大就業博覽會）</li>
+</ul>
+<h3 id="擔心口語表達方面？"><a href="#擔心口語表達方面？" class="headerlink" title="擔心口語表達方面？"></a>擔心口語表達方面？</h3><p>面試前先準備好面試官可能會問到的問題，尤其是自己履歷上頭有提到的，一定要練到非常熟！</p>
+<p>可以對鏡子說，也可以找朋友練習，訓練臨場反應之外，也練習不讓緊張影響到太多表現。</p>
+<p>有趣的建議：每天起床對鏡子說十次我很好！（覺得蠢？換個角度想，你不用正面思考去說服自己，平常不是都洗腦自己說自己不夠好不是嗎？只是換個台詞、換個想法而已）</p>
+<hr>
+<h2 id="逛攤心得大集合"><a href="#逛攤心得大集合" class="headerlink" title="逛攤心得大集合"></a>逛攤心得大集合</h2><p>按照類別彙整在一起～</p>
+<h3 id="平時的精進"><a href="#平時的精進" class="headerlink" title="平時的精進"></a>平時的精進</h3><p>做相關 side project 真的很吃香，不用到很複雜，而是那個 project 的完整性！</p>
+<p>以 PHP 相關開發為例，我問了某間企業的技術 leader。怎麼學 PHP 呢？直接去 GitHub 上面找相關的 project 模仿、學習，對於有其他程式語言開發經驗的人來說，直接做一個 project，而不是很制式地從頭學語法一步一步慢慢來，畢竟開發這一塊就是重實作！<br>（他後來還推薦了我他之前寫的「<a href="https://medium.com/parenting-tw/web%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E6%87%89%E6%9C%89%E7%9A%84%E4%B8%83%E5%80%8B%E7%89%B9%E8%B3%AA-f4ea03270a04">Web程式設計師應有的七個特質</a>」這篇文章，感覺不錯，可以找時間來拜讀個，啊，但這樣你就知道他是哪個企業的了xD）</p>
+<p>做 project 的同時，可以試著完善 readme 之類的說明，或許也可以寫成文章，以便於在未來面試時，分享你做這個 project 是為了解決什麼樣的問題、你用什麼方法去實作、中間遇到困難是如何解決的。</p>
+<p>面試官真的很愛從你做過的 project 上去問你問題，還有履歷上有提到的東西，真的大概就是這樣！</p>
+<h3 id="關於投遞履歷"><a href="#關於投遞履歷" class="headerlink" title="關於投遞履歷"></a>關於投遞履歷</h3><p>（這是某間企業的 HR 分享給我的，一樣是比較適合給新鮮人的建議）</p>
+<p>職務敘述上面寫到的需要幾年工作經驗、要會某個程式語言、開發框架需要有幾年的經驗，真的參考就好，即便沒完全達到上面的條件要求，也去投履歷看看，HR 看到覺得不錯的，也是有可能會給內部負責的人看，因此也有可能會有面試機會！</p>
+<p>所以，投就對了！管它上面寫需要幾年，大不了沒收到任何回應，多投多試，就是多一份機會！</p>
+<p>還有，不要看到有些技術不太熟甚至不會就不敢投，如果每個技術都會，雖然拿到 offer 的機會可能會比較高，但我們更應該在乎的，是這個工作對自己的職涯發展有無幫助。</p>
+<p>而且別忘了，人是可以學習的，不要覺得現在不會就永遠不會，你只是暫時不會而已，進去再補足對職涯也是個不錯的成長方式！</p>
+<p>（當然企業不見得會錄取你就是了，那也沒關係，還有下一間啊）</p>
+<h3 id="面試前怎麼準備？"><a href="#面試前怎麼準備？" class="headerlink" title="面試前怎麼準備？"></a>面試前怎麼準備？</h3><p>一定要對企業有足夠的了解、知道他們有什麼產品、在做什麼，不然會顯得亂槍打鳥！</p>
+<p>而且別忘了，務必要準備好要問面試官的問題，不然會讓面試官覺得你沒準備充分（我禮拜五的那場 AppWorks School 面試還真忘記準備要提問的問題，覺得很嘔😢）</p>
+<h3 id="面試官看重什麼-1"><a href="#面試官看重什麼-1" class="headerlink" title="面試官看重什麼"></a>面試官看重什麼</h3><p>以新鮮人來說，面試官很注重的是你的 <strong>potential</strong>，展現出來的感覺面試官真的很看重！（詢問了很多間，真的很多攤位都有提到 potential 這個英文單字啊！）</p>
+<p>所以，真的可以嘗試做 side project，然後深入一點讓它具有一定的完整性，不要這個只做一點、那個也只做一點，很難更深入了解所選用程式語言、框架的知識技術之外，也很難有著對一個較為完整 project 的思考。</p>
+<p>此外，<strong>求職期間也要持續學習，不要只是參加就業博覽會、寫履歷這種形式上的努力而已，不然空窗期在那邊，面試官也會好奇難道這段期間都沒寫 code？</strong></p>
+<p>（AppWorks School 面試也被問到最近在寫什麼程式，答不太出來覺得有點糗⋯⋯）</p>
+<h3 id="覺得面試講得不好？"><a href="#覺得面試講得不好？" class="headerlink" title="覺得面試講得不好？"></a>覺得面試講得不好？</h3><p>博覽會快結束的時候，很榮幸能和<a href="https://www.facebook.com/W.Herder">則文老師</a>請教有關於口語表達方面的事情，因為我真的很欣賞他的表達方式，覺得很有內容和條理，最後還跟他合了照，回去之後還私訊詢問一些事情～<br>（我真的很想要突破這一點啊！）</p>
+<p>肌肉怎麼練？就是一直練。口語表達也是一樣，可以多做上台分享的那一個！</p>
+<p>可以在面試前，去預想面試官可能會問到什麼問題，列出來，然後大量練習，腦海中要先有個脈絡，<strong>要先有個劇本</strong>，正式講的時候就循著那個脈絡表達出來，總而言之，就是大量練習！</p>
+<p>如果擔心事先準備的話會不會很像在背稿，那就不要逐字稿，而是列出大綱、脈絡，說不定就能改善這個部分。</p>
+<br>
+加油，在精進自我的路上，你，並不孤單！]]></content>
   </entry>
   <entry>
     <title>用 Algorithmia 部署 ML Models</title>
@@ -110,46 +152,88 @@
       </tags>
   </entry>
   <entry>
-    <title>【心得】2022 Yourator 數位職涯博覽會</title>
-    <url>/2022/03/2022-yourator-career-fair/</url>
-    <content><![CDATA[<p>簡單分享昨天參加職涯博覽會的收穫～</p>
+    <title>回顧在 AppWorks School 的那段日子</title>
+    <url>/2022/08/appworks-school-campus-program-experience/</url>
+    <content><![CDATA[<p>充實又有趣的三個多月！</p>
 <span id="more"></span>
 
-<h2 id="做一對一職涯諮詢"><a href="#做一對一職涯諮詢" class="headerlink" title="做一對一職涯諮詢"></a>做一對一職涯諮詢</h2><p>雖然只有短短 15 分鐘，但還挺不錯的！</p>
-<h3 id="面試官看重什麼"><a href="#面試官看重什麼" class="headerlink" title="面試官看重什麼"></a>面試官看重什麼</h3><p>和面試官對談時，他們看的是你的邏輯、想法，也藉機了解你對程式語言、框架的熟悉程度。</p>
-<p>會某個技術，但覺得自己還不夠好嗎？以新鮮人求職來說，他們不是非得要即戰力，所以職務上面列出來的條件不需要真的到非常熟，進到公司以後內部可以再做培訓。他們最看重的，就是你多有 potential！</p>
-<p>所以如果要做 side project，做深入一點，重質不重量，可以敘述你做了什麼、為什麼做、遇到什麼挑戰、如何解決等等的，讓面試官清楚知道你的技術能力之外，也能更了解你的軟實力。</p>
-<h3 id="呈現自我的小建議"><a href="#呈現自我的小建議" class="headerlink" title="呈現自我的小建議"></a>呈現自我的小建議</h3><ul>
-<li>履歷上的經歷可以用 STAR 原則來撰寫：Situation (情境)、Task (任務)、Action (行動)、Result (結果)</li>
-<li>在面試前，可以先做一份簡報，面試時，可以拿出來輔助自我介紹，或許還可以列出之前做過的 project，讓自己在描述的時候能更加順利（上一次聽到這個建議是在交大就業博覽會）</li>
-</ul>
-<h3 id="擔心口語表達方面？"><a href="#擔心口語表達方面？" class="headerlink" title="擔心口語表達方面？"></a>擔心口語表達方面？</h3><p>面試前先準備好面試官可能會問到的問題，尤其是自己履歷上頭有提到的，一定要練到非常熟！</p>
-<p>可以對鏡子說，也可以找朋友練習，訓練臨場反應之外，也練習不讓緊張影響到太多表現。</p>
-<p>有趣的建議：每天起床對鏡子說十次我很好！（覺得蠢？換個角度想，你不用正面思考去說服自己，平常不是都洗腦自己說自己不夠好不是嗎？只是換個台詞、換個想法而已）</p>
+<div class="note success">
+    也可以到 <a href="https://kanido386.medium.com/回顧在-appworks-school-的那段日子-batch-1-campus-program-d53b4567dd15" target="_blank">Medium</a> 觀看有穿插照片的版本，會更清楚哦～
+</div>
+
+<h3 id="我與-AppWorks-School-的相遇"><a href="#我與-AppWorks-School-的相遇" class="headerlink" title="我與 AppWorks School 的相遇"></a>我與 AppWorks School 的相遇</h3><p>嗨大家好～ 我是 AppWorks School Campus Program Batch #1 的 Tim 林彥廷，筆名「卡尼多」😀</p>
+<p>畢業於國立陽明交通大學資訊工程學系，職涯初期打算先做⼀名後端⼯程師。</p>
+<p>很榮幸能在這邊和大家分享我在 AppWorks School 的點點滴滴！</p>
+<p>想當初，還蠻幸運的，在我正頹廢、無聊滑臉書的時候，無意間滑到了 AppWorks School Campus Program 的招生宣傳文，當時心想：「咦？難道臉書演算法是在指示我去了解一下這個 Program 來解救一波自己的頹廢嗎？」</p>
+<p>不仔細一看還好，仔細一看天啊不得了！這個 Campus Program 是專門為資訊相關科系的大學和研究所學生設計的，跟我過去所認知的「AppWorks School 協助很多人成功轉職為軟體工程師」不太一樣，居然也有這麼一個 Program 是給資訊相關科系的！</p>
+<p>除此之外，上面還提到說這個 Program 可以協助我們利用課餘時間累積實作經驗、熟悉業界實務、認識新創生態，並在探索志向的過程當中累積技術即戰力。這正是當下狀態的我所渴求的！更誇張的是，這個 Program 居然全程免費！</p>
+<p>那時候想說說明會的時間我剛好有空，加上招生宣傳文上也有提到現場有提供餐點，於是乎，抱著聽聽看的心情，參加了說明會。沒想到聽完了以後，讓我對這個 Program 的內容深感興趣，因而開啟了我這段酷旅程😎（從來沒這樣想過，原來滑臉書也是一件很酷的事情）</p>
 <hr>
-<h2 id="逛攤心得大集合"><a href="#逛攤心得大集合" class="headerlink" title="逛攤心得大集合"></a>逛攤心得大集合</h2><p>按照類別彙整在一起～</p>
-<h3 id="平時的精進"><a href="#平時的精進" class="headerlink" title="平時的精進"></a>平時的精進</h3><p>做相關 side project 真的很吃香，不用到很複雜，而是那個 project 的完整性！</p>
-<p>以 PHP 相關開發為例，我問了某間企業的技術 leader。怎麼學 PHP 呢？直接去 GitHub 上面找相關的 project 模仿、學習，對於有其他程式語言開發經驗的人來說，直接做一個 project，而不是很制式地從頭學語法一步一步慢慢來，畢竟開發這一塊就是重實作！<br>（他後來還推薦了我他之前寫的「<a href="https://medium.com/parenting-tw/web%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E6%87%89%E6%9C%89%E7%9A%84%E4%B8%83%E5%80%8B%E7%89%B9%E8%B3%AA-f4ea03270a04">Web程式設計師應有的七個特質</a>」這篇文章，感覺不錯，可以找時間來拜讀個，啊，但這樣你就知道他是哪個企業的了xD）</p>
-<p>做 project 的同時，可以試著完善 readme 之類的說明，或許也可以寫成文章，以便於在未來面試時，分享你做這個 project 是為了解決什麼樣的問題、你用什麼方法去實作、中間遇到困難是如何解決的。</p>
-<p>面試官真的很愛從你做過的 project 上去問你問題，還有履歷上有提到的東西，真的大概就是這樣！</p>
-<h3 id="關於投遞履歷"><a href="#關於投遞履歷" class="headerlink" title="關於投遞履歷"></a>關於投遞履歷</h3><p>（這是某間企業的 HR 分享給我的，一樣是比較適合給新鮮人的建議）</p>
-<p>職務敘述上面寫到的需要幾年工作經驗、要會某個程式語言、開發框架需要有幾年的經驗，真的參考就好，即便沒完全達到上面的條件要求，也去投履歷看看，HR 看到覺得不錯的，也是有可能會給內部負責的人看，因此也有可能會有面試機會！</p>
-<p>所以，投就對了！管它上面寫需要幾年，大不了沒收到任何回應，多投多試，就是多一份機會！</p>
-<p>還有，不要看到有些技術不太熟甚至不會就不敢投，如果每個技術都會，雖然拿到 offer 的機會可能會比較高，但我們更應該在乎的，是這個工作對自己的職涯發展有無幫助。</p>
-<p>而且別忘了，人是可以學習的，不要覺得現在不會就永遠不會，你只是暫時不會而已，進去再補足對職涯也是個不錯的成長方式！</p>
-<p>（當然企業不見得會錄取你就是了，那也沒關係，還有下一間啊）</p>
-<h3 id="面試前怎麼準備？"><a href="#面試前怎麼準備？" class="headerlink" title="面試前怎麼準備？"></a>面試前怎麼準備？</h3><p>一定要對企業有足夠的了解、知道他們有什麼產品、在做什麼，不然會顯得亂槍打鳥！</p>
-<p>而且別忘了，務必要準備好要問面試官的問題，不然會讓面試官覺得你沒準備充分（我禮拜五的那場 AppWorks School 面試還真忘記準備要提問的問題，覺得很嘔😢）</p>
-<h3 id="面試官看重什麼-1"><a href="#面試官看重什麼-1" class="headerlink" title="面試官看重什麼"></a>面試官看重什麼</h3><p>以新鮮人來說，面試官很注重的是你的 <strong>potential</strong>，展現出來的感覺面試官真的很看重！（詢問了很多間，真的很多攤位都有提到 potential 這個英文單字啊！）</p>
-<p>所以，真的可以嘗試做 side project，然後深入一點讓它具有一定的完整性，不要這個只做一點、那個也只做一點，很難更深入了解所選用程式語言、框架的知識技術之外，也很難有著對一個較為完整 project 的思考。</p>
-<p>此外，<strong>求職期間也要持續學習，不要只是參加就業博覽會、寫履歷這種形式上的努力而已，不然空窗期在那邊，面試官也會好奇難道這段期間都沒寫 code？</strong></p>
-<p>（AppWorks School 面試也被問到最近在寫什麼程式，答不太出來覺得有點糗⋯⋯）</p>
-<h3 id="覺得面試講得不好？"><a href="#覺得面試講得不好？" class="headerlink" title="覺得面試講得不好？"></a>覺得面試講得不好？</h3><p>博覽會快結束的時候，很榮幸能和<a href="https://www.facebook.com/W.Herder">則文老師</a>請教有關於口語表達方面的事情，因為我真的很欣賞他的表達方式，覺得很有內容和條理，最後還跟他合了照，回去之後還私訊詢問一些事情～<br>（我真的很想要突破這一點啊！）</p>
-<p>肌肉怎麼練？就是一直練。口語表達也是一樣，可以多做上台分享的那一個！</p>
-<p>可以在面試前，去預想面試官可能會問到什麼問題，列出來，然後大量練習，腦海中要先有個脈絡，<strong>要先有個劇本</strong>，正式講的時候就循著那個脈絡表達出來，總而言之，就是大量練習！</p>
-<p>如果擔心事先準備的話會不會很像在背稿，那就不要逐字稿，而是列出大綱、脈絡，說不定就能改善這個部分。</p>
+<h3 id="申請過程"><a href="#申請過程" class="headerlink" title="申請過程"></a>申請過程</h3><p>第一步就是填寫申請表單。</p>
+<p>我當初在申請的時候有幾題是屬於比較開放式的那種，像是你有哪些程式語言使用上的經驗、你想多了解軟體開發領域當中的哪一塊及為什麼、分享課外活動的經驗以及從中學到了什麼，所以在寫表單的過程當中，你會更加清楚自己為何想要申請這個 Program，當你發現越填表單動機越明確，那就代表這個 Program 是非常適合你的。</p>
+<p>有一題甚至要我們錄個一分鐘的自我介紹影片，可能上傳到 YouTube，然後再貼影片連結到表單上面。這個部分在我們那時候是 optional 的，但究竟有沒有做會不會影響到錄取與否呢？我是不敢拿這麼寶貴的機會開玩笑啦，所以最後還是錄了😂</p>
+<p>很快地，填完申請表單的隔天，就收到了面談邀約，超開心的！這個面談的目的，是為了更深入了解申請者的學習歷程以及對課程的期待。點郵件裡面的連結，登記完可以出席的日期和時段以後，就離進去這個 Program 不遠囉，剩下就是去 School 面談這一關了，當天帶著輕鬆的心情面談即可！</p>
+<p>關於面談，有一點想提醒一下，雖然是輕鬆的面談，但別忘了事先準備好想問的問題啊！（那次我忘記準備，被問到的時候，居然還反問說其他面試者都怎麼問，當下就覺得完蛋了😂）</p>
+<p>所以該做的基本準備還是要做的！</p>
 <br>
-加油，在精進自我的路上，你，並不孤單！]]></content>
+P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面的時間是我們那時候的，可能會跟新的 schedule 不太一樣哦～
+
+<hr>
+<h3 id="入學準備任務-11-days"><a href="#入學準備任務-11-days" class="headerlink" title="入學準備任務 (11 days)"></a>入學準備任務 (11 days)</h3><p>4/1 禮拜五傍晚快六點的時候，收到了一封標題前面是「AppWorks School」的郵件，當下既期待又怕受傷害，到底會是封錄取信還是感謝信呢？</p>
+<p>點開一看：「太好了，是入學邀請啊！」</p>
+<p>興奮之餘，還是謹慎地讀了一下內容，深怕這只是一場夢啊！</p>
+<p>上頭有些任務要在入學前完成，就照著做吧！其中有個任務可能會需要花些時間去研究 —— 完成 AWS 相關設置，建議可以在一邊設置的過程當中，一邊簡單用文字記錄下來，這樣之後如果想做一樣的事情，就可以看自己之前寫的東西快速重建了！（真的蠻建議這麼做，可以是 HackMD，可以是 Notion，甚至乾脆弄一個屬於自己的部落格，因為你可能在 School 期間會因為踩到某些「坑」，而讓你想砍掉重練你的 EC2 Instance，有了自己整理的設置過程，拿來參考很快就能重建，也就比較不會覺得那麼煩躁😂）</p>
+<p>除此之外，School 還很貼心地提供「學習指引」給我們大家，希望我們在入學前這段時間鞏固一些基礎，這樣比較能順利銜接開學後的課程，因為開學後會直接開始實作「based on 那些基礎」的專案！（很扎實，但也能很快讓你變厲害的那種）</p>
+<p>學習清單裡面有些是 Treehouse 的資源，咦，那不是要錢嗎？不用擔心！AppWorks School 非常貼心，開學後可以憑收據向 AppWorks School 請領一個月的月費，超賺的！</p>
+<p>所以說，教學影片還不看爆嗎？</p>
+<hr>
+<h3 id="個人指定專案實作-4-weeks"><a href="#個人指定專案實作-4-weeks" class="headerlink" title="個人指定專案實作 (4 weeks)"></a>個人指定專案實作 (4 weeks)</h3><p>這個階段可謂穩固基底的黃金階段！</p>
+<p>一開始會要我們搞定 EC2 環境，並在裡面裝好 Node.js、MySQL、NGINX。這個任務如果過去沒接觸過的話，得花上不少時間和精力去研究，而且常常會不知道自己在做什麼。這時就可以多問問身邊的同學和導師，永遠要記得，在 School，當你請求協助，總會有人伸出援手的，而且你並不孤單，大家都是站在同一陣線上的！</p>
+<p>當你搞定好環境，這時候又會面臨到另一項挑戰：你必須根據 STYLiSH (進去之後你會琅琅上口的電商網站 project) 的設計稿，建所需的 MySQL 資料庫並用 Express 撰寫相關的 API，最後部署到 EC2 上面。這可能跟過去在學校寫作業的方式不太一樣 —— 沒有一個非常明確的 spec 要你做什麼，而是你要自己根據設計稿去構思該怎麼設計資料庫的 schema 和怎麼開後端的 API。我覺得這是個人指定專案實作當中非常有價值的一個部分，如同 Jamie 之前在一場 AMA (Ask Me Anything) 講座分享到的：「業界並不像學校，什麼問題都 well-defined，我們要學會自己去定義問題！」這是一個很好的機會去訓練自己這一 part。</p>
+<p>此外，還會接觸到怎麼在 Express 上面做圖片上傳、申請 SSL 憑證以啟用 HTTPS、串接 TapPay 金流服務、Authentication 以及導師會帶大家體驗 code review 的流程。</p>
+<p>前兩週是後端，第三週開始就要用 React 來做前端。</p>
+<p>一開始有個 React Workshop，會透過實作簡單的 todo list app 來帶大家認識 React，像是怎麼使用 React 的 useState 和 useEffect。雖說是「簡單」的 todo list app，但如果是第一次接觸 React 而且過去習慣用 JavaScript 去操作 DOM Element，那會有一段小陣痛期😅（不過熟悉了以後就會發覺到 React 的魅力所在！）</p>
+<p>Workshop 完了以後勒？沒有錯，就要開始使用 React 然後照著設計稿去刻前端。這是一趟不輕鬆但會越做越有成就感的艱辛旅程。</p>
+<p>首先跟前端比較沒有關係，要為前端 project 設置 linter 及 prettier，讓自己能寫出具有一致風格且乾淨整潔的程式碼，這是個好機會來養成寫 code 的好習慣。接著就是用 create-react-app 及 react-router、styled-components 刻 STYLiSH 的頁面，如果過去比較沒碰過前端切版的話，很可能一個頁面就得花上一整天的時間，不過放心，越做會越上手的！最後就是部署到 EC2 上面啦，可能會踩到一些坑，就讓大家親自去體會囉～</p>
+<p>還有第四週呢！第四週除了繼續刻前端頁面，還會要大家把前後端串在一起，也就是前端能 call 前兩週做的後端 API 來拿到它想要的資料。這個任務困難的點在於，你之前開的 API 或許根本不符合你前端的需求，所以你得不斷在前端、後端之間來回修改，直到兩者可以順利串接在一起為止。提個外話，過程中除了可以磨練耐心之外，你也會深刻體會到開發團隊彼此溝通的重要性：你看，自己一個人包前後端都這麼辛苦了，更何況是前後端分離的團隊開發協作模式！</p>
+<p>總而言之，這個階段撐過來以後，真的會發現到自己的巨幅成長，不是開玩笑的！（再次提醒，過程雖然不輕鬆，但你總是能請求協助的）</p>
+<hr>
+<h3 id="團隊專案實作-1-week"><a href="#團隊專案實作-1-week" class="headerlink" title="團隊專案實作 (1 week)"></a>團隊專案實作 (1 week)</h3><p>在「個人指定專案實作」最後一個禮拜的星期五晚上，校長 Shirney 突然宣佈一個新活動 —— 第一屆 AppWorks School 校園計畫黑客松。當下真的有被嚇到，才剛結束充滿挑戰的專案實作，沒想到又有新的挑戰迎面而來，完全沒喘息的機會啊😂</p>
+<p>這個黑客松競賽禮拜五晚上宣佈，然後下個禮拜一要上台報告 proposal，再下個禮拜一就要上台 demo，對於剛完成「個人指定專案實作」的大家來說，聽到的時候真的會覺得哇天啊，好想先休個息啊😂</p>
+<p>這是一個團隊合作的專案，我們那時候的任務是：要在導師幫大家寫好的 STYLiSH 範例 code 上加上新功能，在那之前還要解決一些 bug，最後會根據功能完整度、整體介面呈現、綜合技術難度、綜合表現及協作來做評分。導師會預先幫大家分好組，所以禮拜五一宣佈完畢，大家就跟組員坐在一起開始討論，想加什麼功能都可以，天空才是你的極限！（我們這組最後結合了 LINE Bot，感覺如果你想結合 machine learning 的東西導師們也會很樂見的）</p>
+<p>這個機會還蠻寶貴的，而且如果你出去面試，通常都會被問你過去有沒有團隊開發的經驗，這時候你就可以分享你在 School 團隊專案過程當中的點點滴滴，所以這個部分要認真投入啊！</p>
+<p>最後 demo 的時候就能看到大家創意的發揮，還挺有趣的～</p>
+<hr>
+<h3 id="專題研討-1-week"><a href="#專題研討-1-week" class="headerlink" title="專題研討 (1 week)"></a>專題研討 (1 week)</h3><p>專題研討是什麼？簡單來說，導師會要我們大家分組去深入一些特定的主題，也就是「Dive into Topics」。</p>
+<p>我們那時候有六個主題：(1) 前端、(2) Load balancing + Auto Scaling、(3) Message Queue、(4) GraphQL、(5) NoSQL Database + Database Management、(6) Monitoring。每個主題的名額有限，先搶先贏！主要的進行方式就是禮拜一的時候選定主題，在接下來的幾天好好去研究，禮拜五的時候每個主題會抽一位學員上台 share，每個主題大概 25 分鐘這樣。那因為每組由誰上台當天才會知道，所以每個人都要事先準備好能上台 share 25 分鐘的內容，沒準備好被抽到就尷尬了，所以大家都不得不好好去準備😅</p>
+<p>我覺得這個 part 很讚的地方在於，每組各自鑽研一個主題，禮拜五的時候就能聽到大家經過消化吸收過後的介紹，能在那麼短的時間內 (不到一個禮拜) 就能接觸到不同的技術真的很賺！</p>
+<hr>
+<h3 id="求職暖身及企業期中考-1-week"><a href="#求職暖身及企業期中考-1-week" class="headerlink" title="求職暖身及企業期中考 (1 week)"></a>求職暖身及企業期中考 (1 week)</h3><p>這個階段開始，會有很多 Workshop 的活動可以參加！以 Batch #1 來說，這個階段的第一週有 Cybersecurity Workshop、Coding Interview 技巧的分享、QA Workshop。我覺得如果有時間的話都可以盡量參加，因為透過這些 Workshop，你可以接觸到很多不同面向的知識和心法，有些甚至可能過去不曾接觸過，而你都可以在每一次的 Workshop 當中 pick up 一些有趣的知識點和想法，真的還蠻不錯的。也蠻推薦可以在 Workshop 進行的過程當中，做點筆記記錄一下，這樣活動結束以後即使過了一段時間再回去看，很快就能回憶起當初講者分享了什麼，以及當時聽完以後那些屬於自己的寶貴收穫。</p>
+<p>至於企業期中考的部分，那次我們是在禮拜五晚上。可能是因為想減緩我們對期中考的壓力吧？School 有幫我們準備晚餐。實際考完那個期中考以後，發覺自己跟剛進 School 的自己相比，實力是真的提升不少！在測驗當中，你會深刻感謝自己前幾週付出的努力，會非常慶幸當初無論是在做個人指定專案或者是團隊專案的時候有認真投入。所以那晚眼前的一切，對我們來說真的不是什麼太困難的挑戰，spec 和藹可親多了，而且就算在過程當中卡住，導師也會不時給予溫馨的提示，讓大家能更順利地完成測驗。雖然這個企業期中考不會納入 AppWorks School 畢業與否的考量，但如果沒參與到、沒實際深刻感受到自己的成長及過去幾週的辛勤，我覺得會非常可惜、甚至是會後悔的呢🤔</p>
+<hr>
+<h3 id="Topic-Discussion-1-week，optional"><a href="#Topic-Discussion-1-week，optional" class="headerlink" title="Topic Discussion (1 week，optional)"></a>Topic Discussion (1 week，optional)</h3><p>這週因為是大部分的人學校的期末考週，所以可以自己選擇要不要參加。我想說反正那週剛好沒什麼事，就來參加個吧！導師很有創意地，拿我們兩週前「專題研討」研究的技術，加點新東西整合起來，變成一個小 project，簡單來說，就是要整合 Express、MongoDB 資料庫、RabbitMQ message queue 和 Kubernetes 來做一個「根據使用者所在位置來顯示附近 YouBike 剩餘數量」的小工具，功能並不是這個 project 所著重的，而是練習怎麼把這些技術串起來！雖然 loading 真的不輕，畢竟只有一個禮拜的時間，但是在實作的過程當中，你會更加熟悉「專題研討」時大家分享到的技術，因為光聽可能多少有聽進去一些，但唯有弄髒手去實作，才會學習得更加深刻！（尤其 Kubernetes，聽說在業界蠻常會用到的，趁這個機會接觸一波也是挺不錯的～）</p>
+<p>除了小 project 的實作以外，這週還有兩場分別講 Data Engineering 和 DevOps 的 Workshop，都是很不錯的 share！</p>
+<hr>
+<h3 id="求職暖身及遠距期中考-1-week"><a href="#求職暖身及遠距期中考-1-week" class="headerlink" title="求職暖身及遠距期中考 (1 week)"></a>求職暖身及遠距期中考 (1 week)</h3><p>這週也是有各種 Workshop 可以聽：業界分享「如何成為世界級的軟體工程師」 (強調 CS 基礎知識的重要性)、Agile Workshop、Docker Workshop (最後要用 Docker 將 STYLiSH project 給包起來，含 NGINX、Express Server、MySQL Database) or System Design Workshop (做一個能 load balancing 和 auto scaling 的縮網址服務) 二選一。</p>
+<p>至於遠距期中考的部分，會需要你空出一個白天的時間 (我們那時候是在禮拜六)，然後會在 Discord (團隊用的通訊平台) 上面公告題目。有分前後端：如果你 Dive into Topics 那週選的是前端，那你就是做前端的題目，若是選其他的 topic 則是做後端。跟「企業期中考」有什麼差別嗎？有的。一個是實體、一個是遠端；一個累的是身、一個累的是心；而且挑戰的面向比較不一樣，可以達到更全方位的檢驗效果呢！</p>
+<hr>
+<h3 id="個人自主專案-3-weeks"><a href="#個人自主專案-3-weeks" class="headerlink" title="個人自主專案 (3 weeks)"></a>個人自主專案 (3 weeks)</h3><p>在上週會請我們構思接下來三週的個人專案要做什麼，然後禮拜五晚上的時候上台分享提案給大家。</p>
+<p>強烈建議如果平常在生活當中有想到什麼有趣的點子或者是想解決的問題，都可以先找個東西記下來，那些會對你構思個人專案該做什麼非常有幫助啊！</p>
+<p>（偏廢話可跳過😂）像我原本打算做一個類似 Stack Overflow 的問答論壇，之所以打算做是因為實在不知道該做什麼，就有點半隨便地選了這個題目。後來突然想到自己的 Github repo 那邊有一個做到一半就沒繼續再弄的 project (之前打算用 Python 做一個 GUI 的猜歌輔助工具)，加上求職暖身週有講者在 Workshop 的最後用 Kahoot 跟我們做互動，而且剛好在 School 培訓的這段期間接觸到了 React 前端，所以最後就改做<a href="https://github.com/kanido386/guess-songs-king">一款結合「Kahoot」和 「猜歌」元素的互動遊戲平台</a>。扯遠那麼多，我想說的是，靈感總是能在你意想不到的地方發揮它的價值，所以說，平常腦袋有蹦出什麼你覺得不錯的點子，就都先蒐藏起來吧，未來說不定能助你一臂之力！</p>
+<p>這個個人專案非常重要，可以說是你在 School 大量學習及累積的一個總結，尤其當你要去外面面試的時候，你會更加深刻體會到這一點。如果你有寫在履歷上面的話，面試官很愛從個人專案去延伸問題問你，可能問你相關技術，可能問你為什麼想做及怎麼做，甚至問你有沒有遇到什麼困難並且是如何去解決的。當你有這麼一個個人專案的時候，你是可以引導面試走向的。所以這也是為什麼你應該認真投入於個人專案，當面試官發現你在介紹你自己個人專案時眼睛是發光的，他能感受到你的熱忱，我覺得這或許能讓對方留下不錯的印象，讓自己更有記憶點。</p>
+<p>期間也有安排企業參訪：Hahow、Dcard。聽說每屆可能會不一樣，可以期待一下😀</p>
+<hr>
+<h3 id="求職衝刺-gt-1-week"><a href="#求職衝刺-gt-1-week" class="headerlink" title="求職衝刺 (&gt;1 week)"></a>求職衝刺 (&gt;1 week)</h3><p>這週有履歷撰寫的 Workshop，也有傳授面試技巧的 Workshop，而且你會在短時間的幾天之內生出一份英文履歷 (過程還蠻不輕鬆的😅)，完成了初版以後，會有非常專業的老師幫你看並提供修改上的建議，超級讚！</p>
+<p>當週禮拜五晚上是場充滿感性的畢業典禮🎓（結束回到家以後會有種莫名其妙的空虛感）</p>
+<p>接下來兩週的活動是給有求職需求的學員參加的 ——</p>
+<p>(1) 錄音練習：導師每次會丟個面試常見問題，可能是技術也可能是非技術，你當下要錄自己的回答，傳到 Discord，導師隨機抽一位放出來，再看有什麼地方可以補充。而且導師還會幫大家整理一些心法和框架，遇到不知道該怎麼回答的問題時可以試著套用看看！</p>
+<p>(2) 讀書會：每個人會被分配到要 share 哪個資料結構或演算法，到你上台的時候，除了介紹一下那是什麼之外，也要帶大家做點相關的 LeetCode 題目。簡單來說，就是大家一起刷起來啦😂</p>
+<p>(3) 模擬面試：跟導師們約線上 or 實體的面試。有用 google doc 來邊講解題思路邊動手寫 code 的練習，有著重個人專案的問答及 system design 的白板題，也有針對你想練習的公司職缺來客製化的模擬面試，甚至會請厲害的 AppWorks School 校友來跟你模擬面試。在每次模擬面試完，面試官都會給予回饋，可以藉這個機會調整一下。我覺得這些練習對實際去外面面試還蠻有幫助的，比較不會有種「蛤？原來可以這樣考？」的驚訝感覺，因為有跟導師模擬過了（特別是用 google doc 解題這一點，外面還真的會這樣考呢！）</p>
+<hr>
+<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>在 AppWorks School 這邊認識了很多志同道合的朋友，和大家一起 coding、debug、討論的感覺真的挺不錯的，也很喜歡那種大家在過程中一起成長的氛圍！</p>
+<p>很開心能夠成為 AppWorks School 大家庭的一份子，更開心有這個機會在此和大家分享我在 AppWorks School 這段期間的點點滴滴，未來還請各位多多指教了🙏</p>
+<br>
+希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
   </entry>
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
@@ -284,90 +368,6 @@
       </tags>
   </entry>
   <entry>
-    <title>回顧在 AppWorks School 的那段日子</title>
-    <url>/2022/08/appworks-school-campus-program-experience/</url>
-    <content><![CDATA[<p>充實又有趣的三個多月！</p>
-<span id="more"></span>
-
-<div class="note success">
-    也可以到 <a href="https://kanido386.medium.com/回顧在-appworks-school-的那段日子-batch-1-campus-program-d53b4567dd15" target="_blank">Medium</a> 觀看有穿插照片的版本，會更清楚哦～
-</div>
-
-<h3 id="我與-AppWorks-School-的相遇"><a href="#我與-AppWorks-School-的相遇" class="headerlink" title="我與 AppWorks School 的相遇"></a>我與 AppWorks School 的相遇</h3><p>嗨大家好～ 我是 AppWorks School Campus Program Batch #1 的 Tim 林彥廷，筆名「卡尼多」😀</p>
-<p>畢業於國立陽明交通大學資訊工程學系，職涯初期打算先做⼀名後端⼯程師。</p>
-<p>很榮幸能在這邊和大家分享我在 AppWorks School 的點點滴滴！</p>
-<p>想當初，還蠻幸運的，在我正頹廢、無聊滑臉書的時候，無意間滑到了 AppWorks School Campus Program 的招生宣傳文，當時心想：「咦？難道臉書演算法是在指示我去了解一下這個 Program 來解救一波自己的頹廢嗎？」</p>
-<p>不仔細一看還好，仔細一看天啊不得了！這個 Campus Program 是專門為資訊相關科系的大學和研究所學生設計的，跟我過去所認知的「AppWorks School 協助很多人成功轉職為軟體工程師」不太一樣，居然也有這麼一個 Program 是給資訊相關科系的！</p>
-<p>除此之外，上面還提到說這個 Program 可以協助我們利用課餘時間累積實作經驗、熟悉業界實務、認識新創生態，並在探索志向的過程當中累積技術即戰力。這正是當下狀態的我所渴求的！更誇張的是，這個 Program 居然全程免費！</p>
-<p>那時候想說說明會的時間我剛好有空，加上招生宣傳文上也有提到現場有提供餐點，於是乎，抱著聽聽看的心情，參加了說明會。沒想到聽完了以後，讓我對這個 Program 的內容深感興趣，因而開啟了我這段酷旅程😎（從來沒這樣想過，原來滑臉書也是一件很酷的事情）</p>
-<hr>
-<h3 id="申請過程"><a href="#申請過程" class="headerlink" title="申請過程"></a>申請過程</h3><p>第一步就是填寫申請表單。</p>
-<p>我當初在申請的時候有幾題是屬於比較開放式的那種，像是你有哪些程式語言使用上的經驗、你想多了解軟體開發領域當中的哪一塊及為什麼、分享課外活動的經驗以及從中學到了什麼，所以在寫表單的過程當中，你會更加清楚自己為何想要申請這個 Program，當你發現越填表單動機越明確，那就代表這個 Program 是非常適合你的。</p>
-<p>有一題甚至要我們錄個一分鐘的自我介紹影片，可能上傳到 YouTube，然後再貼影片連結到表單上面。這個部分在我們那時候是 optional 的，但究竟有沒有做會不會影響到錄取與否呢？我是不敢拿這麼寶貴的機會開玩笑啦，所以最後還是錄了😂</p>
-<p>很快地，填完申請表單的隔天，就收到了面談邀約，超開心的！這個面談的目的，是為了更深入了解申請者的學習歷程以及對課程的期待。點郵件裡面的連結，登記完可以出席的日期和時段以後，就離進去這個 Program 不遠囉，剩下就是去 School 面談這一關了，當天帶著輕鬆的心情面談即可！</p>
-<p>關於面談，有一點想提醒一下，雖然是輕鬆的面談，但別忘了事先準備好想問的問題啊！（那次我忘記準備，被問到的時候，居然還反問說其他面試者都怎麼問，當下就覺得完蛋了😂）</p>
-<p>所以該做的基本準備還是要做的！</p>
-<br>
-P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面的時間是我們那時候的，可能會跟新的 schedule 不太一樣哦～
-
-<hr>
-<h3 id="入學準備任務-11-days"><a href="#入學準備任務-11-days" class="headerlink" title="入學準備任務 (11 days)"></a>入學準備任務 (11 days)</h3><p>4/1 禮拜五傍晚快六點的時候，收到了一封標題前面是「AppWorks School」的郵件，當下既期待又怕受傷害，到底會是封錄取信還是感謝信呢？</p>
-<p>點開一看：「太好了，是入學邀請啊！」</p>
-<p>興奮之餘，還是謹慎地讀了一下內容，深怕這只是一場夢啊！</p>
-<p>上頭有些任務要在入學前完成，就照著做吧！其中有個任務可能會需要花些時間去研究 —— 完成 AWS 相關設置，建議可以在一邊設置的過程當中，一邊簡單用文字記錄下來，這樣之後如果想做一樣的事情，就可以看自己之前寫的東西快速重建了！（真的蠻建議這麼做，可以是 HackMD，可以是 Notion，甚至乾脆弄一個屬於自己的部落格，因為你可能在 School 期間會因為踩到某些「坑」，而讓你想砍掉重練你的 EC2 Instance，有了自己整理的設置過程，拿來參考很快就能重建，也就比較不會覺得那麼煩躁😂）</p>
-<p>除此之外，School 還很貼心地提供「學習指引」給我們大家，希望我們在入學前這段時間鞏固一些基礎，這樣比較能順利銜接開學後的課程，因為開學後會直接開始實作「based on 那些基礎」的專案！（很扎實，但也能很快讓你變厲害的那種）</p>
-<p>學習清單裡面有些是 Treehouse 的資源，咦，那不是要錢嗎？不用擔心！AppWorks School 非常貼心，開學後可以憑收據向 AppWorks School 請領一個月的月費，超賺的！</p>
-<p>所以說，教學影片還不看爆嗎？</p>
-<hr>
-<h3 id="個人指定專案實作-4-weeks"><a href="#個人指定專案實作-4-weeks" class="headerlink" title="個人指定專案實作 (4 weeks)"></a>個人指定專案實作 (4 weeks)</h3><p>這個階段可謂穩固基底的黃金階段！</p>
-<p>一開始會要我們搞定 EC2 環境，並在裡面裝好 Node.js、MySQL、NGINX。這個任務如果過去沒接觸過的話，得花上不少時間和精力去研究，而且常常會不知道自己在做什麼。這時就可以多問問身邊的同學和導師，永遠要記得，在 School，當你請求協助，總會有人伸出援手的，而且你並不孤單，大家都是站在同一陣線上的！</p>
-<p>當你搞定好環境，這時候又會面臨到另一項挑戰：你必須根據 STYLiSH (進去之後你會琅琅上口的電商網站 project) 的設計稿，建所需的 MySQL 資料庫並用 Express 撰寫相關的 API，最後部署到 EC2 上面。這可能跟過去在學校寫作業的方式不太一樣 —— 沒有一個非常明確的 spec 要你做什麼，而是你要自己根據設計稿去構思該怎麼設計資料庫的 schema 和怎麼開後端的 API。我覺得這是個人指定專案實作當中非常有價值的一個部分，如同 Jamie 之前在一場 AMA (Ask Me Anything) 講座分享到的：「業界並不像學校，什麼問題都 well-defined，我們要學會自己去定義問題！」這是一個很好的機會去訓練自己這一 part。</p>
-<p>此外，還會接觸到怎麼在 Express 上面做圖片上傳、申請 SSL 憑證以啟用 HTTPS、串接 TapPay 金流服務、Authentication 以及導師會帶大家體驗 code review 的流程。</p>
-<p>前兩週是後端，第三週開始就要用 React 來做前端。</p>
-<p>一開始有個 React Workshop，會透過實作簡單的 todo list app 來帶大家認識 React，像是怎麼使用 React 的 useState 和 useEffect。雖說是「簡單」的 todo list app，但如果是第一次接觸 React 而且過去習慣用 JavaScript 去操作 DOM Element，那會有一段小陣痛期😅（不過熟悉了以後就會發覺到 React 的魅力所在！）</p>
-<p>Workshop 完了以後勒？沒有錯，就要開始使用 React 然後照著設計稿去刻前端。這是一趟不輕鬆但會越做越有成就感的艱辛旅程。</p>
-<p>首先跟前端比較沒有關係，要為前端 project 設置 linter 及 prettier，讓自己能寫出具有一致風格且乾淨整潔的程式碼，這是個好機會來養成寫 code 的好習慣。接著就是用 create-react-app 及 react-router、styled-components 刻 STYLiSH 的頁面，如果過去比較沒碰過前端切版的話，很可能一個頁面就得花上一整天的時間，不過放心，越做會越上手的！最後就是部署到 EC2 上面啦，可能會踩到一些坑，就讓大家親自去體會囉～</p>
-<p>還有第四週呢！第四週除了繼續刻前端頁面，還會要大家把前後端串在一起，也就是前端能 call 前兩週做的後端 API 來拿到它想要的資料。這個任務困難的點在於，你之前開的 API 或許根本不符合你前端的需求，所以你得不斷在前端、後端之間來回修改，直到兩者可以順利串接在一起為止。提個外話，過程中除了可以磨練耐心之外，你也會深刻體會到開發團隊彼此溝通的重要性：你看，自己一個人包前後端都這麼辛苦了，更何況是前後端分離的團隊開發協作模式！</p>
-<p>總而言之，這個階段撐過來以後，真的會發現到自己的巨幅成長，不是開玩笑的！（再次提醒，過程雖然不輕鬆，但你總是能請求協助的）</p>
-<hr>
-<h3 id="團隊專案實作-1-week"><a href="#團隊專案實作-1-week" class="headerlink" title="團隊專案實作 (1 week)"></a>團隊專案實作 (1 week)</h3><p>在「個人指定專案實作」最後一個禮拜的星期五晚上，校長 Shirney 突然宣佈一個新活動 —— 第一屆 AppWorks School 校園計畫黑客松。當下真的有被嚇到，才剛結束充滿挑戰的專案實作，沒想到又有新的挑戰迎面而來，完全沒喘息的機會啊😂</p>
-<p>這個黑客松競賽禮拜五晚上宣佈，然後下個禮拜一要上台報告 proposal，再下個禮拜一就要上台 demo，對於剛完成「個人指定專案實作」的大家來說，聽到的時候真的會覺得哇天啊，好想先休個息啊😂</p>
-<p>這是一個團隊合作的專案，我們那時候的任務是：要在導師幫大家寫好的 STYLiSH 範例 code 上加上新功能，在那之前還要解決一些 bug，最後會根據功能完整度、整體介面呈現、綜合技術難度、綜合表現及協作來做評分。導師會預先幫大家分好組，所以禮拜五一宣佈完畢，大家就跟組員坐在一起開始討論，想加什麼功能都可以，天空才是你的極限！（我們這組最後結合了 LINE Bot，感覺如果你想結合 machine learning 的東西導師們也會很樂見的）</p>
-<p>這個機會還蠻寶貴的，而且如果你出去面試，通常都會被問你過去有沒有團隊開發的經驗，這時候你就可以分享你在 School 團隊專案過程當中的點點滴滴，所以這個部分要認真投入啊！</p>
-<p>最後 demo 的時候就能看到大家創意的發揮，還挺有趣的～</p>
-<hr>
-<h3 id="專題研討-1-week"><a href="#專題研討-1-week" class="headerlink" title="專題研討 (1 week)"></a>專題研討 (1 week)</h3><p>專題研討是什麼？簡單來說，導師會要我們大家分組去深入一些特定的主題，也就是「Dive into Topics」。</p>
-<p>我們那時候有六個主題：(1) 前端、(2) Load balancing + Auto Scaling、(3) Message Queue、(4) GraphQL、(5) NoSQL Database + Database Management、(6) Monitoring。每個主題的名額有限，先搶先贏！主要的進行方式就是禮拜一的時候選定主題，在接下來的幾天好好去研究，禮拜五的時候每個主題會抽一位學員上台 share，每個主題大概 25 分鐘這樣。那因為每組由誰上台當天才會知道，所以每個人都要事先準備好能上台 share 25 分鐘的內容，沒準備好被抽到就尷尬了，所以大家都不得不好好去準備😅</p>
-<p>我覺得這個 part 很讚的地方在於，每組各自鑽研一個主題，禮拜五的時候就能聽到大家經過消化吸收過後的介紹，能在那麼短的時間內 (不到一個禮拜) 就能接觸到不同的技術真的很賺！</p>
-<hr>
-<h3 id="求職暖身及企業期中考-1-week"><a href="#求職暖身及企業期中考-1-week" class="headerlink" title="求職暖身及企業期中考 (1 week)"></a>求職暖身及企業期中考 (1 week)</h3><p>這個階段開始，會有很多 Workshop 的活動可以參加！以 Batch #1 來說，這個階段的第一週有 Cybersecurity Workshop、Coding Interview 技巧的分享、QA Workshop。我覺得如果有時間的話都可以盡量參加，因為透過這些 Workshop，你可以接觸到很多不同面向的知識和心法，有些甚至可能過去不曾接觸過，而你都可以在每一次的 Workshop 當中 pick up 一些有趣的知識點和想法，真的還蠻不錯的。也蠻推薦可以在 Workshop 進行的過程當中，做點筆記記錄一下，這樣活動結束以後即使過了一段時間再回去看，很快就能回憶起當初講者分享了什麼，以及當時聽完以後那些屬於自己的寶貴收穫。</p>
-<p>至於企業期中考的部分，那次我們是在禮拜五晚上。可能是因為想減緩我們對期中考的壓力吧？School 有幫我們準備晚餐。實際考完那個期中考以後，發覺自己跟剛進 School 的自己相比，實力是真的提升不少！在測驗當中，你會深刻感謝自己前幾週付出的努力，會非常慶幸當初無論是在做個人指定專案或者是團隊專案的時候有認真投入。所以那晚眼前的一切，對我們來說真的不是什麼太困難的挑戰，spec 和藹可親多了，而且就算在過程當中卡住，導師也會不時給予溫馨的提示，讓大家能更順利地完成測驗。雖然這個企業期中考不會納入 AppWorks School 畢業與否的考量，但如果沒參與到、沒實際深刻感受到自己的成長及過去幾週的辛勤，我覺得會非常可惜、甚至是會後悔的呢🤔</p>
-<hr>
-<h3 id="Topic-Discussion-1-week，optional"><a href="#Topic-Discussion-1-week，optional" class="headerlink" title="Topic Discussion (1 week，optional)"></a>Topic Discussion (1 week，optional)</h3><p>這週因為是大部分的人學校的期末考週，所以可以自己選擇要不要參加。我想說反正那週剛好沒什麼事，就來參加個吧！導師很有創意地，拿我們兩週前「專題研討」研究的技術，加點新東西整合起來，變成一個小 project，簡單來說，就是要整合 Express、MongoDB 資料庫、RabbitMQ message queue 和 Kubernetes 來做一個「根據使用者所在位置來顯示附近 YouBike 剩餘數量」的小工具，功能並不是這個 project 所著重的，而是練習怎麼把這些技術串起來！雖然 loading 真的不輕，畢竟只有一個禮拜的時間，但是在實作的過程當中，你會更加熟悉「專題研討」時大家分享到的技術，因為光聽可能多少有聽進去一些，但唯有弄髒手去實作，才會學習得更加深刻！（尤其 Kubernetes，聽說在業界蠻常會用到的，趁這個機會接觸一波也是挺不錯的～）</p>
-<p>除了小 project 的實作以外，這週還有兩場分別講 Data Engineering 和 DevOps 的 Workshop，都是很不錯的 share！</p>
-<hr>
-<h3 id="求職暖身及遠距期中考-1-week"><a href="#求職暖身及遠距期中考-1-week" class="headerlink" title="求職暖身及遠距期中考 (1 week)"></a>求職暖身及遠距期中考 (1 week)</h3><p>這週也是有各種 Workshop 可以聽：業界分享「如何成為世界級的軟體工程師」 (強調 CS 基礎知識的重要性)、Agile Workshop、Docker Workshop (最後要用 Docker 將 STYLiSH project 給包起來，含 NGINX、Express Server、MySQL Database) or System Design Workshop (做一個能 load balancing 和 auto scaling 的縮網址服務) 二選一。</p>
-<p>至於遠距期中考的部分，會需要你空出一個白天的時間 (我們那時候是在禮拜六)，然後會在 Discord (團隊用的通訊平台) 上面公告題目。有分前後端：如果你 Dive into Topics 那週選的是前端，那你就是做前端的題目，若是選其他的 topic 則是做後端。跟「企業期中考」有什麼差別嗎？有的。一個是實體、一個是遠端；一個累的是身、一個累的是心；而且挑戰的面向比較不一樣，可以達到更全方位的檢驗效果呢！</p>
-<hr>
-<h3 id="個人自主專案-3-weeks"><a href="#個人自主專案-3-weeks" class="headerlink" title="個人自主專案 (3 weeks)"></a>個人自主專案 (3 weeks)</h3><p>在上週會請我們構思接下來三週的個人專案要做什麼，然後禮拜五晚上的時候上台分享提案給大家。</p>
-<p>強烈建議如果平常在生活當中有想到什麼有趣的點子或者是想解決的問題，都可以先找個東西記下來，那些會對你構思個人專案該做什麼非常有幫助啊！</p>
-<p>（偏廢話可跳過😂）像我原本打算做一個類似 Stack Overflow 的問答論壇，之所以打算做是因為實在不知道該做什麼，就有點半隨便地選了這個題目。後來突然想到自己的 Github repo 那邊有一個做到一半就沒繼續再弄的 project (之前打算用 Python 做一個 GUI 的猜歌輔助工具)，加上求職暖身週有講者在 Workshop 的最後用 Kahoot 跟我們做互動，而且剛好在 School 培訓的這段期間接觸到了 React 前端，所以最後就改做<a href="https://github.com/kanido386/guess-songs-king">一款結合「Kahoot」和 「猜歌」元素的互動遊戲平台</a>。扯遠那麼多，我想說的是，靈感總是能在你意想不到的地方發揮它的價值，所以說，平常腦袋有蹦出什麼你覺得不錯的點子，就都先蒐藏起來吧，未來說不定能助你一臂之力！</p>
-<p>這個個人專案非常重要，可以說是你在 School 大量學習及累積的一個總結，尤其當你要去外面面試的時候，你會更加深刻體會到這一點。如果你有寫在履歷上面的話，面試官很愛從個人專案去延伸問題問你，可能問你相關技術，可能問你為什麼想做及怎麼做，甚至問你有沒有遇到什麼困難並且是如何去解決的。當你有這麼一個個人專案的時候，你是可以引導面試走向的。所以這也是為什麼你應該認真投入於個人專案，當面試官發現你在介紹你自己個人專案時眼睛是發光的，他能感受到你的熱忱，我覺得這或許能讓對方留下不錯的印象，讓自己更有記憶點。</p>
-<p>期間也有安排企業參訪：Hahow、Dcard。聽說每屆可能會不一樣，可以期待一下😀</p>
-<hr>
-<h3 id="求職衝刺-gt-1-week"><a href="#求職衝刺-gt-1-week" class="headerlink" title="求職衝刺 (&gt;1 week)"></a>求職衝刺 (&gt;1 week)</h3><p>這週有履歷撰寫的 Workshop，也有傳授面試技巧的 Workshop，而且你會在短時間的幾天之內生出一份英文履歷 (過程還蠻不輕鬆的😅)，完成了初版以後，會有非常專業的老師幫你看並提供修改上的建議，超級讚！</p>
-<p>當週禮拜五晚上是場充滿感性的畢業典禮🎓（結束回到家以後會有種莫名其妙的空虛感）</p>
-<p>接下來兩週的活動是給有求職需求的學員參加的 ——</p>
-<p>(1) 錄音練習：導師每次會丟個面試常見問題，可能是技術也可能是非技術，你當下要錄自己的回答，傳到 Discord，導師隨機抽一位放出來，再看有什麼地方可以補充。而且導師還會幫大家整理一些心法和框架，遇到不知道該怎麼回答的問題時可以試著套用看看！</p>
-<p>(2) 讀書會：每個人會被分配到要 share 哪個資料結構或演算法，到你上台的時候，除了介紹一下那是什麼之外，也要帶大家做點相關的 LeetCode 題目。簡單來說，就是大家一起刷起來啦😂</p>
-<p>(3) 模擬面試：跟導師們約線上 or 實體的面試。有用 google doc 來邊講解題思路邊動手寫 code 的練習，有著重個人專案的問答及 system design 的白板題，也有針對你想練習的公司職缺來客製化的模擬面試，甚至會請厲害的 AppWorks School 校友來跟你模擬面試。在每次模擬面試完，面試官都會給予回饋，可以藉這個機會調整一下。我覺得這些練習對實際去外面面試還蠻有幫助的，比較不會有種「蛤？原來可以這樣考？」的驚訝感覺，因為有跟導師模擬過了（特別是用 google doc 解題這一點，外面還真的會這樣考呢！）</p>
-<hr>
-<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>在 AppWorks School 這邊認識了很多志同道合的朋友，和大家一起 coding、debug、討論的感覺真的挺不錯的，也很喜歡那種大家在過程中一起成長的氛圍！</p>
-<p>很開心能夠成為 AppWorks School 大家庭的一份子，更開心有這個機會在此和大家分享我在 AppWorks School 這段期間的點點滴滴，未來還請各位多多指教了🙏</p>
-<br>
-希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
-  </entry>
-  <entry>
     <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
     <url>/2021/07/baymax-with-us/</url>
     <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
@@ -489,24 +489,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>端午節立蛋</title>
-    <url>/2021/06/dragon-boat-festival/</url>
-    <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:55～12:45 共 50 分鐘，立了 12 顆蛋。</p>
-<h3 id="蛋"><a href="#蛋" class="headerlink" title="蛋"></a>蛋</h3><p><img src="1.jpg"></p>
-<h3 id="面對陽光陰影就在背後蛋"><a href="#面對陽光陰影就在背後蛋" class="headerlink" title="面對陽光陰影就在背後蛋"></a>面對陽光陰影就在背後蛋</h3><p><img src="2.jpg"></p>
-<h3 id="流星雨蛋"><a href="#流星雨蛋" class="headerlink" title="流星雨蛋"></a>流星雨蛋</h3><p><img src="3.jpg"></p>
-<h3 id="即將進洞的高爾夫球蛋"><a href="#即將進洞的高爾夫球蛋" class="headerlink" title="即將進洞的高爾夫球蛋"></a>即將進洞的高爾夫球蛋</h3><p><img src="4.jpg"></p>
-<h3 id="翅膀蛋"><a href="#翅膀蛋" class="headerlink" title="翅膀蛋"></a>翅膀蛋</h3><p><img src="5.jpg"></p>
-<p><img src="6.gif"></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-  </entry>
-  <entry>
     <title>決定改部落格文章 Views 的計算方式</title>
     <url>/2022/06/change-views-count/</url>
     <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
@@ -568,6 +550,24 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </ol>
 <br>
 這樣就改好囉，就是這麼簡單😎]]></content>
+  </entry>
+  <entry>
+    <title>端午節立蛋</title>
+    <url>/2021/06/dragon-boat-festival/</url>
+    <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:55～12:45 共 50 分鐘，立了 12 顆蛋。</p>
+<h3 id="蛋"><a href="#蛋" class="headerlink" title="蛋"></a>蛋</h3><p><img src="1.jpg"></p>
+<h3 id="面對陽光陰影就在背後蛋"><a href="#面對陽光陰影就在背後蛋" class="headerlink" title="面對陽光陰影就在背後蛋"></a>面對陽光陰影就在背後蛋</h3><p><img src="2.jpg"></p>
+<h3 id="流星雨蛋"><a href="#流星雨蛋" class="headerlink" title="流星雨蛋"></a>流星雨蛋</h3><p><img src="3.jpg"></p>
+<h3 id="即將進洞的高爾夫球蛋"><a href="#即將進洞的高爾夫球蛋" class="headerlink" title="即將進洞的高爾夫球蛋"></a>即將進洞的高爾夫球蛋</h3><p><img src="4.jpg"></p>
+<h3 id="翅膀蛋"><a href="#翅膀蛋" class="headerlink" title="翅膀蛋"></a>翅膀蛋</h3><p><img src="5.jpg"></p>
+<p><img src="6.gif"></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
     <title>駕訓班裡的點點滴滴</title>
@@ -1051,15 +1051,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】84~77</title>
     <url>/2022/03/freshman-career-84-77/</url>
     <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
@@ -1108,6 +1099,15 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
 <p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
 ]]></content>
   </entry>
   <entry>
@@ -1761,6 +1761,103 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 未完待續，stay tuned!]]></content>
   </entry>
   <entry>
+    <title>助你行動</title>
+    <url>/2022/01/help-you-take-action/</url>
+    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
+<span id="more"></span>
+
+<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
+<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
+</blockquote>
+<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
+<blockquote>
+<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
+</blockquote>
+<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
+<blockquote>
+<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
+</blockquote>
+<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
+<blockquote>
+<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
+</blockquote>
+<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
+<blockquote>
+<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
+</blockquote>
+<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
+<hr>
+<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
+<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
+</blockquote>
+<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
+<blockquote>
+<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
+</blockquote>
+<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
+<blockquote>
+<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
+</blockquote>
+<p>時間有限，為自己的人生鮮艷上色！</p>
+<blockquote>
+<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
+</blockquote>
+<p>別完全被「應該怎樣」束縛住啦！</p>
+<hr>
+<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
+<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
+</blockquote>
+<p>讓自己在混亂中整理出一點頭緒。</p>
+<blockquote>
+<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
+</blockquote>
+<p>當你真心想做一件事，全世界都會幫你。</p>
+<blockquote>
+<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
+</blockquote>
+<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
+<blockquote>
+<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
+</blockquote>
+<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
+<hr>
+<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
+<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
+<hr>
+<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
+<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
+</blockquote>
+<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
+<blockquote>
+<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
+</blockquote>
+<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
+<blockquote>
+<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
+</blockquote>
+<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
+<hr>
+<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
+<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
+</blockquote>
+<p>專注當下。</p>
+<blockquote>
+<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
+</blockquote>
+<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
+<hr>
+<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
+<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
+</blockquote>
+<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
+<blockquote>
+<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
+</blockquote>
+<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
+<br>
+希望這篇文章能助你一臂之力💪]]></content>
+  </entry>
+  <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
     <url>/2021/06/hexo-github-pages-blog/</url>
     <content><![CDATA[<p><a href="/2021/06/hexo-github-pages-blog"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2142,103 +2239,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>助你行動</title>
-    <url>/2022/01/help-you-take-action/</url>
-    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
-<span id="more"></span>
-
-<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
-<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
-</blockquote>
-<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
-<blockquote>
-<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
-</blockquote>
-<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
-<blockquote>
-<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
-</blockquote>
-<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
-<blockquote>
-<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
-</blockquote>
-<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
-<blockquote>
-<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
-</blockquote>
-<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
-<hr>
-<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
-<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
-</blockquote>
-<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
-<blockquote>
-<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
-</blockquote>
-<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
-<blockquote>
-<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
-</blockquote>
-<p>時間有限，為自己的人生鮮艷上色！</p>
-<blockquote>
-<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
-</blockquote>
-<p>別完全被「應該怎樣」束縛住啦！</p>
-<hr>
-<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
-<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
-</blockquote>
-<p>讓自己在混亂中整理出一點頭緒。</p>
-<blockquote>
-<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
-</blockquote>
-<p>當你真心想做一件事，全世界都會幫你。</p>
-<blockquote>
-<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
-</blockquote>
-<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
-<blockquote>
-<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
-</blockquote>
-<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
-<hr>
-<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
-<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
-<hr>
-<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
-<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
-</blockquote>
-<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
-<blockquote>
-<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
-</blockquote>
-<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
-<blockquote>
-<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
-</blockquote>
-<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
-<hr>
-<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
-<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
-</blockquote>
-<p>專注當下。</p>
-<blockquote>
-<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
-</blockquote>
-<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
-<hr>
-<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
-<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
-</blockquote>
-<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
-<blockquote>
-<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
-</blockquote>
-<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
-<br>
-希望這篇文章能助你一臂之力💪]]></content>
-  </entry>
-  <entry>
     <title>不完美行動</title>
     <url>/2021/09/just-do-it/</url>
     <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
@@ -2265,10 +2265,9 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+    <title>卡尼多隨筆？</title>
+    <url>/2022/10/keep-moving-forward/</url>
+    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
 ]]></content>
   </entry>
   <entry>
@@ -2379,6 +2378,32 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
+    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
+    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
+<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+<span id="more"></span>
+
+<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
+<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
+<p><img src="2.png" alt="2.png"></p>
+<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
+<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
+<p><img src="3.png" alt="3.png"></p>
+<br>
+這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
     <url>/2021/01/microprocessor-project/</url>
     <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
@@ -2435,84 +2460,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
         <tag>STM32</tag>
         <tag>開發板</tag>
         <tag>投籃機</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
-    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
-    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
-<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
-<span id="more"></span>
-
-<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
-<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
-<p><img src="2.png" alt="2.png"></p>
-<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
-<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
-<p><img src="3.png" alt="3.png"></p>
-<br>
-這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
-    <url>/2021/11/next-10000-hours/</url>
-    <content><![CDATA[<p>給正在思索未來的你～</p>
-<span id="more"></span>
-
-<br>
-（本篇由書中引起我共鳴的句子集結而成）
-
-<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
-<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
-<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
-<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
-<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
-<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
-<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
-<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
-<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
-</ul>
-<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
-<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
-<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
-<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
-<li>選擇比努力重要！</li>
-<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
-<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
-<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
-</ul>
-<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
-<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
-<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
-</ul>
-<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
-<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
-<li>窮困不怕，怕的是窮的心態。</li>
-<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
-</ul>
-<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
-<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
-<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
-<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
-<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
-</ul>
-<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
-<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
-<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
-<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
-<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
-<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
-<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
-<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
-<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
-</ul>
-<br>
-希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
-      <tags>
-        <tag>閱讀</tag>
       </tags>
   </entry>
   <entry>
@@ -2669,6 +2616,65 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
+    <url>/2021/11/next-10000-hours/</url>
+    <content><![CDATA[<p>給正在思索未來的你～</p>
+<span id="more"></span>
+
+<br>
+（本篇由書中引起我共鳴的句子集結而成）
+
+<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
+<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
+<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
+<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
+<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
+<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
+<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
+<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
+<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
+</ul>
+<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
+<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
+<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
+<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
+<li>選擇比努力重要！</li>
+<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
+<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
+<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
+</ul>
+<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
+<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
+<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
+</ul>
+<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
+<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
+<li>窮困不怕，怕的是窮的心態。</li>
+<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
+</ul>
+<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
+<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
+<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
+<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
+<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
+</ul>
+<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
+<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
+<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
+<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
+<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
+<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
+<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
+<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
+<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
+</ul>
+<br>
+希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
+      <tags>
+        <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【技術筆記】NoSQL、Data Replica、Sharding</title>
     <url>/2022/05/nosql-introduction/</url>
     <content><![CDATA[<p>上台 Presentation 前做的筆記，在這邊記錄一下～</p>
@@ -2783,6 +2789,12 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>推薦大家這個方便操作＆查看 MongoDB 的圖形化介面：<a href="https://www.mongodb.com/products/compass">MongoDB Compass</a><br>（Easily explore and manipulate your database with Compass, the GUI for MongoDB.）</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>📌 置頂貼文</title>
+    <url>/2022/10/pinned-post/</url>
+    <content><![CDATA[<p><a href="https://hackmd.io/N5NK8tWvTTKNMydklbWtyg">What I’m Working On</a></p>
+]]></content>
   </entry>
   <entry>
     <title>用 Python 操作 Android 手機</title>
@@ -3130,47 +3142,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>]]></content>
   </entry>
   <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>停下來思考</title>
     <url>/2021/12/soft-skills/</url>
     <content><![CDATA[<p>生活瑣事一大堆，導致我們常常忽略了人生中更重要、更值得關注的事情！<br>（但我發現，感覺自己很忙，實際上只是心理狀態上的忙、盲、茫⋯⋯）</p>
@@ -3456,6 +3427,47 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 SSL For Free 免費申請 SSL 憑證</title>
     <url>/2022/04/ssl-for-free/</url>
     <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
@@ -3492,39 +3504,6 @@ go go!!!]]></content>
 <li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
 </ol>
 ]]></content>
-  </entry>
-  <entry>
-    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
-    <url>/2021/12/synth-one-with-logic-pro/</url>
-    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
-<span id="more"></span>
-
-<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
-<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
-<li>用 USB 線，將 iPad 連接到 MacBook</li>
-<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
-<li>打開 Synth One，然後先放著</li>
-<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
-<li>「Use External Instrument plug-in」記得勾起來</li>
-<li>MIDI Destination 選 iPad</li>
-</ul>
- <img src="2.png" alt="2.png"></li>
-<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
-</ol>
-<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
-<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
-<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
-<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
-<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
-<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
-<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
-<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
-</ol>
-<br>
-這樣就大功告成啦😎]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
-      </tags>
   </entry>
   <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
@@ -3595,7 +3574,25 @@ go go!!!]]></content>
 <h3 id="音檔參數"><a href="#音檔參數" class="headerlink" title="音檔參數"></a>音檔參數</h3><p>在介紹取樣、量化之前，先給大家認識一下<span style="color:blue;">聲音檔案的重要參數</span>。</p>
 <ul>
 <li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
-<li><strong><span style="color:black;">持續時間 (duratio>
+<li><strong><span style="color:black;">持續時間 (duration)</span></strong>：音檔總共有多少秒</li>
+<li><strong><span style="color:black;">取樣頻率 (sampling rate)</span></strong>：一秒鐘要取多少個取樣點（聲音檔案通常會採用 48000 或 44100 赫茲，跟取樣定理有關）</li>
+<li><strong><span style="color:black;">位元深度 (bit depth)</span></strong>：一個取樣點要用多少個位元紀錄（位元深度越大的話，會越精準，但相對而言，資料量也就越大！）</li>
+<li><strong><span style="color:black;">聲道數 (channel)</span></strong>：其實就是我們常聽到的單聲道、雙聲道等等的<br></li>
+</ul>
+<h3 id="取樣＆量化"><a href="#取樣＆量化" class="headerlink" title="取樣＆量化"></a><span style="color:blue;">取樣＆量化</span><br></h3><div style="padding:11px;">
+  <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/22d22a83403f9d39.png" style="width:43vw;" />
+  <img src="https://ftp.bmp.ovh/imgs/2020/09/2c03857179f3c285.png" style="width:43vw;" />
+   -->
+  <img src="2.png" style="width:43vw;" />
+  <img src="3.png" style="width:43vw;" />
+</div>
+
+<ul>
+<li><strong><span style="color:black;">取樣 (sampling)</span></strong>：透過<span style="color:red;">取樣頻率</span>，也就是一秒鐘要取多少個取樣點，將<span style="color:red;">時間軸</span>上的資料離散化，得到一串取樣點（如上圖）</li>
+<li><strong><span style="color:black;">量化 (quantization)</span></strong>：依照<span style="color:red;">位元深度</span>，也就是一個取樣點要用多少個位元紀錄，分別對每個取樣點做四捨五入，將<span style="color:red;">振幅軸</span>上的資料離散化，最後就會得到一串數列（如下圖）<br></li>
+</ul>
+<h3 id="聲音訊號如何被處理"><a href="#聲音訊號如何被處理" class="headerlink" title="聲音訊號如何被處理"></a>聲音訊號如何被處理</h3><p>訊號轉成數位了，那<span style="color:blue;">電腦如何處理聲音訊號呢？</span><br>打個比方好了：<br>在開始進行一個大任務之前，我們通常會先拆解成多個小行動，然後再各個擊破！<br>處理聲音也是同樣道理，<br>我們只要把一段音訊切成一個一個小<span style="color:red;">音框</span>，乘上<span style="color:red;">窗函數</span>重疊以後，就可以開始做後續的處理。</p>
+<h3 id="切取音框"><a href="#切取音框" class="headerlink" title="切取音框"></a><span style="color:blue;">切取音框</span><br></h3><div style="padding:22px;">
   <!-- <img src="https://ftp.bmp.ovh/imgs/2020/09/f6576ad5edcadf43.png" style="width:43vw;" /> -->
   <img src="4.png" style="width:43vw;" />
 </div>
