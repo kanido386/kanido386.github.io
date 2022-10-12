@@ -21,23 +21,19 @@
     var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。 後來在 YouTube 找到了「人機互動概論：探索人與科技交會的新思維」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。">
+  <meta name="description" content="👨‍💻 情境題： 身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 https:&#x2F;&#x2F;my.shorturl.com&#x2F;3lls9f 這樣的短網址，請你拿到它們分別導向的原網址，並用 3lls9f 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【學習筆記】人機互動概論 - 1">
-<meta property="og:url" content="https://kanido386.github.io/2022/08/hci-note-1/index.html">
+<meta property="og:title" content="抓取某網站特定 URL 並做些處理">
+<meta property="og:url" content="https://kanido386.github.io/2022/10/wget-and-grep-urls/index.html">
 <meta property="og:site_name" content="卡尼多隨筆">
-<meta property="og:description" content="面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。 後來在 YouTube 找到了「人機互動概論：探索人與科技交會的新思維」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。">
+<meta property="og:description" content="👨‍💻 情境題： 身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 https:&#x2F;&#x2F;my.shorturl.com&#x2F;3lls9f 這樣的短網址，請你拿到它們分別導向的原網址，並用 3lls9f 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://kanido386.github.io/2022/08/hci-note-1/1.png">
-<meta property="og:image" content="https://kanido386.github.io/2022/08/hci-note-1/2.png">
-<meta property="og:image" content="https://kanido386.github.io/2022/08/hci-note-1/3.png">
-<meta property="article:published_time" content="2022-08-28T11:11:43.000Z">
-<meta property="article:modified_time" content="2022-08-28T11:21:04.649Z">
+<meta property="article:published_time" content="2022-10-12T08:54:26.000Z">
+<meta property="article:modified_time" content="2022-10-12T09:06:55.397Z">
 <meta property="article:author" content="卡尼多">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kanido386.github.io/2022/08/hci-note-1/1.png">
 
-<link rel="canonical" href="https://kanido386.github.io/2022/08/hci-note-1/">
+<link rel="canonical" href="https://kanido386.github.io/2022/10/wget-and-grep-urls/">
 
 
 <script id="page-configurations">
@@ -50,7 +46,7 @@
   };
 </script>
 
-  <title>【學習筆記】人機互動概論 - 1 | 卡尼多隨筆</title>
+  <title>抓取某網站特定 URL 並做些處理 | 卡尼多隨筆</title>
   
 
 
@@ -189,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/08/hci-note-1/">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/10/wget-and-grep-urls/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -202,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【學習筆記】人機互動概論 - 1
+          抓取某網站特定 URL 並做些處理
         </h1>
 
         <div class="post-meta">
@@ -212,7 +208,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-08-28 19:11:43" itemprop="dateCreated datePublished" datetime="2022-08-28T19:11:43+08:00">2022-08-28</time>
+              <time title="Created: 2022-10-12 16:54:26" itemprop="dateCreated datePublished" datetime="2022-10-12T16:54:26+08:00">2022-10-12</time>
             </span>
 
           
@@ -231,8 +227,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/08/hci-note-1/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/08/hci-note-1/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/10/wget-and-grep-urls/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/10/wget-and-grep-urls/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -247,86 +243,69 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
-<p>後來在 YouTube 找到了「<a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
+        <p>👨‍💻 情境題：</p>
+<p>身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 <code>https://my.shorturl.com/3lls9f</code> 這樣的短網址，請你拿到它們分別導向的原網址，並用 <code>3lls9f</code> 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的事情 (導向原網址)。</p>
+<p>這麼做的原因是，團隊即將 sunset <code>https://my.shorturl.com/</code>，也就是在沒有 insert 新 record 的情況下 <code>https://my.shorturl.com/3lls9f</code> 將會無效，因為另外一種短網址服務它會找不到 <code>3lls9f</code> 這個 id 而發生錯誤！</p>
+<p>如果是你，你會怎麼做？簡單分享一下我的作法。</p>
 <span id="more"></span>
 
-<br>
-廢話不多說，讓我們直接進到筆記的部分吧！
+<h3 id="以團隊部落格的例子來說"><a href="#以團隊部落格的例子來說" class="headerlink" title="以團隊部落格的例子來說"></a>以團隊部落格的例子來說</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/28933031/using-wget-to-download-website-ignoring-image-and-videos/28933140#28933140">Stack Overflow 是我們的好朋友</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -r -l 0 -nd -R png,jpg,jpeg,gif,mpg,mkv https://blog.myteam.com/</span><br></pre></td></tr></table></figure>
 
-<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
-<li>科技始終來自於人性</li>
-<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
-</ul>
-<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
-<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
-<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
-<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
+<ul>
+<li>先透過 <code>wget</code> 來抓取所有 <code>https://blog.myteam.com/</code> domain 底下的 html 檔（因為短網址連結會藏在裡面）</li>
+<li><code>-r -l 0</code>：使用 recursive retrieving 的方式來抓，因為 <code>https://blog.myteam.com/</code> 底下還會有 <code>https://blog.myteam.com/subpage/</code> 等等 depth 更深的 subpage<ul>
+<li>那因為 <code>-r</code> (<code>--recursive</code>) 預設的 depth 為 5，我不確定團隊部落格會不會有超過深度 5 的 subpage，所以我還加上了 <code>-l 0</code> 來做 infinite recursion (這邊的 <code>0</code> 相當於 <code>inf</code>)</li>
+<li>詳細可透過 <code>man wget</code> 來查找</li>
 </ul>
 </li>
-<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
-<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
-<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
-<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
+<li><code>-nd</code> (<code>--no-directories</code>)：Do not create a hierarchy of directories when retrieving recursively.<ul>
+<li>我希望抓下來的檔案能在同一個資料夾層級下，因為我發現不這樣做有些檔案會被忽略掉</li>
+<li>像是如果目前已經存在一個叫做 <code>en</code> 的資料夾，要再抓 <code>/en/index.html</code> 的時候，會因為已經有東西叫做 <code>en</code> 而被略過（我那時候是這樣）</li>
 </ul>
 </li>
-<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
-<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
-<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
-<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
-</ul>
-</li>
-<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
-<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
-</ul>
-</li>
-<li>「跨領域」的人機互動<ul>
-<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
-<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
-<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
-<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
-</ul>
-</li>
-<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
-<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
+<li><code>-R png,jpg,jpeg,gif,mpg,mkv</code>：抓的時候忽略掉 <code>png,jpg,jpeg,gif,mpg,mkv</code> 這些<ul>
+<li><code>-R</code> 即為 <code>--reject</code></li>
+<li>沒加上這個，我放著等了超過一小時還在跑⋯⋯</li>
+<li>原因是因為它不斷在抓跟 WordPress 有關的靜態檔，那些超多的⋯⋯</li>
+<li>反正我只需要 html 檔，忽略掉那些根本無關緊要，反而還省了我很多等待時間！</li>
 </ul>
 </li>
 </ul>
-<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
-<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
-<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
-<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
-<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
+<h3 id="那-GitHub-repo-呢？"><a href="#那-GitHub-repo-呢？" class="headerlink" title="那 GitHub repo 呢？"></a>那 GitHub repo 呢？</h3><p>我是直接用 GitHub 左上角 <code>Search or jump to…</code> 來搜，然後看哪些 repo 被搜出來，我再 clone 下來那些 repo。</p>
+<h3 id="拿到檔案然後勒？"><a href="#拿到檔案然後勒？" class="headerlink" title="拿到檔案然後勒？"></a>拿到檔案然後勒？</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49313160/removing-duplicates-in-grep-output/49313231#49313231">Stack Overflow 真的是我們的好朋友⋯⋯</a></p>
+<p>抓出所有短網址，然後彙整成一份清單：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -ohr <span class="string">&quot;my.shorturl.com/[a-zA-Z0-9._-~]*&quot;</span> * | sort -u &gt; ../output.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>grep</code> 是一款抓取特定 pattern 文字的好工具！</li>
+<li><code>-o</code>：Prints only the matching part of the lines.<ul>
+<li>因為我只需要短網址本身，前後不相關的文字我不需要</li>
 </ul>
 </li>
-<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
-<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
-</ul>
-<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
-<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
-<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
-<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
-<li>有沒有類似經驗<ul>
-<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
-<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
+<li><code>-h</code>：Never print filename headers (i.e. filenames) with output lines.<ul>
+<li>檔名在我這個 case 當中根本不重要，擺著反而會干擾到後面的步驟</li>
 </ul>
 </li>
-<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
-<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
-<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
-<li>什麼門是好設計？<ul>
-<li>外型設計要相當直覺</li>
-<li>逃生門  <img src="2.png"></li>
-<li>車子的門  <img src="3.png"></li>
+<li><code>-r</code>：Recursively search subdirectories listed.<ul>
+<li>上例的部落格是不需要，但 GitHub repo 可就有很多 subdirectories，沒加上這個 option 不行！</li>
 </ul>
 </li>
+<li><code>&quot;my.shorturl.com/[a-zA-Z0-9._-~]*&quot;</code> 是那個短網址的 pattern<ul>
+<li>沒加上 <code>https://</code> 是因為我發現有幾個是 <code>http://</code></li>
 </ul>
 </li>
-<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
-<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
+<li>用 <code>*</code> (acts as a wildcard) 代表我想找這個目錄底下的所有東東</li>
+<li><code>|</code>：透過這個將 <code>grep</code> 的 standard output stream 導到 <code>sort</code> 為它的 input</li>
+<li><code>sort -u</code>：為了拔掉重複的 URL（因為有很多重複的）</li>
+<li><code>&gt; ../output.txt</code>：將結果輸出成文字檔（for 下一步）</li>
 </ul>
+<h3 id="取得原網址"><a href="#取得原網址" class="headerlink" title="取得原網址"></a>取得原網址</h3><p>使用「<a target="_blank" rel="noopener" href="https://unshorten.xyz/">unshorten.xyz - unshorten multiple URLs</a>」這款線上工具來做。</p>
+<p>很單純地，就是 copy and paste <code>output.txt</code> 的內容到上面，再將 resolve 出來的原網址們 copy and paste 到本地端。</p>
+<p>本來是想說要不要用 Python 寫個 script 來做，但居然已經有人做這個服務，就不用再多此一舉了😂</p>
+<h3 id="存進資料庫"><a href="#存進資料庫" class="headerlink" title="存進資料庫"></a>存進資料庫</h3><p>找團隊有用到跟短網址 table 寫入有關的 function 的 repo 和相對應的 route，copy and paste 成一個新的 path，<code>npm run dev</code> 跑起來以後，借助 Postman 來 call 那隻 API，原因是短網址和原網址清單的文字檔在本地端，利用這樣的方式，就能透過 <code>fs</code> module 來讀，拿到相對應的短網址和原網址以後，藉此 insert 新 record 進 DB。</p>
 <br>
-未完待續，stay tuned!
+原本以為這個 task 會有大量的「重複性人工操作」，沒想到居然能找到比較優雅的做法，也是挺有意思的～
     </div>
 
     
@@ -341,12 +320,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/08/2022-05-jamie-ama/" rel="prev" title="【聽講筆記】Jamie’s AMA">
-      <i class="fa fa-chevron-left"></i> 【聽講筆記】Jamie’s AMA
+    <a href="/2022/10/hci-note-2/" rel="prev" title="【學習筆記】人機互動概論 - 2">
+      <i class="fa fa-chevron-left"></i> 【學習筆記】人機互動概論 - 2
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/09/zsh-z/" rel="next" title="用 zsh-z 快速切換到曾經造訪過的目錄">
-      用 zsh-z 快速切換到曾經造訪過的目錄 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/10/pinned-post/" rel="next" title="📌 置頂貼文">
+      📌 置頂貼文 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -413,7 +392,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E4%BA%BA%E6%A9%9F%E4%BA%92%E5%8B%95%E9%80%99%E4%BB%B6%E4%BA%8B"><span class="nav-number">1.</span> <span class="nav-text">關於人機互動這件事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E6%A9%9F%E4%BA%92%E5%8B%95%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F%E8%83%BD%E5%90%83%E5%97%8E%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">人機互動到底是什麼？能吃嗎？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E6%A9%9F%E4%BA%92%E5%8B%95%E7%9A%84%E7%99%BC%E5%B1%95%E6%AD%B7%E5%8F%B2"><span class="nav-number">3.</span> <span class="nav-text">人機互動的發展歷史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%A5%BD%E8%A8%AD%E8%A8%88"><span class="nav-number">4.</span> <span class="nav-text">日常生活中的好設計</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%9C%98%E9%9A%8A%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E4%BE%8B%E5%AD%90%E4%BE%86%E8%AA%AA"><span class="nav-number">1.</span> <span class="nav-text">以團隊部落格的例子來說</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%A3-GitHub-repo-%E5%91%A2%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">那 GitHub repo 呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BF%E5%88%B0%E6%AA%94%E6%A1%88%E7%84%B6%E5%BE%8C%E5%8B%92%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">拿到檔案然後勒？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E5%8E%9F%E7%B6%B2%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">取得原網址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E9%80%B2%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">5.</span> <span class="nav-text">存進資料庫</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -629,9 +608,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://kanido386.github.io/2022/08/hci-note-1/";
-    this.page.identifier = "2022/08/hci-note-1/";
-    this.page.title = "【學習筆記】人機互動概論 - 1";
+    this.page.url = "https://kanido386.github.io/2022/10/wget-and-grep-urls/";
+    this.page.identifier = "2022/10/wget-and-grep-urls/";
+    this.page.title = "抓取某網站特定 URL 並做些處理";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {

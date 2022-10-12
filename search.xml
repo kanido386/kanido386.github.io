@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2022 端午節立蛋</title>
-    <url>/2022/06/2022-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節不立蛋嗎？</p>
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
-<p><img src="1.jpg"></p>
-<br>
-今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
-  </entry>
-  <entry>
     <title>【聽講筆記】Jamie’s AMA</title>
     <url>/2022/08/2022-05-jamie-ama/</url>
     <content><![CDATA[<p>五月中的時候，在 AppWorks School 聽了 Jamie’s AMA (Ask Me Anything)，邊聽邊記了一點筆記，想說整理在這邊，可能還夾雜一點個人的補充，分享給大家～（這篇應該會蠻隨筆性質的）</p>
@@ -48,6 +37,17 @@
 <h3 id="最該投資的是自己"><a href="#最該投資的是自己" class="headerlink" title="最該投資的是自己"></a>最該投資的是自己</h3><p>多花點時間了解自己，如同 Steve Jobs 所說的，點終究會連起來的！</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>2022 端午節立蛋</title>
+    <url>/2022/06/2022-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節不立蛋嗎？</p>
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:37～12:46 共 69 分鐘，立了 15 顆蛋。</p>
+<p><img src="1.jpg"></p>
+<br>
+今天的廢文就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
     <title>【心得】2022 Yourator 數位職涯博覽會</title>
@@ -236,127 +236,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
   </entry>
   <entry>
-    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
-    <url>/2021/07/baymax-with-us/</url>
-    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpg" style="width:50vw;" /> -->
-
-<p>做一個 LINE Bot 版的杯麵～</p>
-<span id="more"></span>
-
-<div class="note success">
-    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
-</div>
-
-<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
-<hr>
-<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
-</ul>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
-<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
-<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
-<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
-<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
-<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
-<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
-</ol>
-<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
-<hr>
-<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
-</ul>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>隨機聽</code></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
-<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
-<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
-<li>後面就是「指定聽歌」的步驟了</li>
-</ol>
-<hr>
-<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
-<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
-</ul>
-<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
-<hr>
-<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
-<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
-</ul>
-<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
-<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
-<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
-<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
-<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
-</ol>
-<hr>
-<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
-<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
-</ul>
-<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
-<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
-</ol>
-<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
-<hr>
-<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
-<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
-</ul>
-<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
-<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
-<hr>
-<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
-<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
-</ul>
-<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
-<li>將新功能的名稱和描述填入 email 的 content 當中</li>
-<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
-<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
-</ol>
-<hr>
-<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
-<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
-</ul>
-<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>LINE</tag>
-        <tag>Bot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 Pure Data 打造吉他效果器</title>
     <url>/2021/01/asp-final-project/</url>
     <content><![CDATA[<p><a href="/2021/01/asp-final-project"><img src="https://images.unsplash.com/photo-1560849898-d058f7d93b23?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2687&q=80" style="width:50vw;" /></a></p>
@@ -489,6 +368,127 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
+    <url>/2021/07/baymax-with-us/</url>
+    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpg" style="width:50vw;" /> -->
+
+<p>做一個 LINE Bot 版的杯麵～</p>
+<span id="more"></span>
+
+<div class="note success">
+    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
+</div>
+
+<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
+<hr>
+<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
+<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
+<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
+<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
+<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
+<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
+<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
+</ol>
+<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
+<hr>
+<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
+</ul>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>隨機聽</code></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
+<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
+<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
+<li>後面就是「指定聽歌」的步驟了</li>
+</ol>
+<hr>
+<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
+</ul>
+<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
+<hr>
+<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
+</ul>
+<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
+<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
+<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
+<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
+<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
+</ol>
+<hr>
+<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
+<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
+</ul>
+<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
+<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
+</ol>
+<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
+<hr>
+<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
+<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
+</ul>
+<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
+<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
+<hr>
+<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
+<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
+</ul>
+<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
+<li>將新功能的名稱和描述填入 email 的 content 當中</li>
+<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
+<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
+</ol>
+<hr>
+<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
+<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
+</ul>
+<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>決定改部落格文章 Views 的計算方式</title>
     <url>/2022/06/change-views-count/</url>
     <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
@@ -550,6 +550,24 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </ol>
 <br>
 這樣就改好囉，就是這麼簡單😎]]></content>
+  </entry>
+  <entry>
+    <title>端午節立蛋</title>
+    <url>/2021/06/dragon-boat-festival/</url>
+    <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:55～12:45 共 50 分鐘，立了 12 顆蛋。</p>
+<h3 id="蛋"><a href="#蛋" class="headerlink" title="蛋"></a>蛋</h3><p><img src="1.jpg"></p>
+<h3 id="面對陽光陰影就在背後蛋"><a href="#面對陽光陰影就在背後蛋" class="headerlink" title="面對陽光陰影就在背後蛋"></a>面對陽光陰影就在背後蛋</h3><p><img src="2.jpg"></p>
+<h3 id="流星雨蛋"><a href="#流星雨蛋" class="headerlink" title="流星雨蛋"></a>流星雨蛋</h3><p><img src="3.jpg"></p>
+<h3 id="即將進洞的高爾夫球蛋"><a href="#即將進洞的高爾夫球蛋" class="headerlink" title="即將進洞的高爾夫球蛋"></a>即將進洞的高爾夫球蛋</h3><p><img src="4.jpg"></p>
+<h3 id="翅膀蛋"><a href="#翅膀蛋" class="headerlink" title="翅膀蛋"></a>翅膀蛋</h3><p><img src="5.jpg"></p>
+<p><img src="6.gif"></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
     <title>駕訓班裡的點點滴滴</title>
@@ -639,24 +657,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>人生其他方面也該是相同道理吧🤔</p>
 <br>
 感謝吳教練的諄諄教誨啊😎]]></content>
-  </entry>
-  <entry>
-    <title>端午節立蛋</title>
-    <url>/2021/06/dragon-boat-festival/</url>
-    <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:55～12:45 共 50 分鐘，立了 12 顆蛋。</p>
-<h3 id="蛋"><a href="#蛋" class="headerlink" title="蛋"></a>蛋</h3><p><img src="1.jpg"></p>
-<h3 id="面對陽光陰影就在背後蛋"><a href="#面對陽光陰影就在背後蛋" class="headerlink" title="面對陽光陰影就在背後蛋"></a>面對陽光陰影就在背後蛋</h3><p><img src="2.jpg"></p>
-<h3 id="流星雨蛋"><a href="#流星雨蛋" class="headerlink" title="流星雨蛋"></a>流星雨蛋</h3><p><img src="3.jpg"></p>
-<h3 id="即將進洞的高爾夫球蛋"><a href="#即將進洞的高爾夫球蛋" class="headerlink" title="即將進洞的高爾夫球蛋"></a>即將進洞的高爾夫球蛋</h3><p><img src="4.jpg"></p>
-<h3 id="翅膀蛋"><a href="#翅膀蛋" class="headerlink" title="翅膀蛋"></a>翅膀蛋</h3><p><img src="5.jpg"></p>
-<p><img src="6.gif"></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
   </entry>
   <entry>
     <title>【圖文教學】免費在 AWS 上建一個 Node.js Web Server</title>
@@ -802,6 +802,66 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望這篇教學文能幫助到您，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
+    <title>【職涯路上】100~97，開始行動！</title>
+    <url>/2022/03/freshman-career-100-97/</url>
+    <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
+<span id="more"></span>
+
+<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>3/4 禮拜五那天，突然想到說可以來倒數看看離畢業 (6/12) 還剩下幾天，一數發現剛好剩下 100 天！<br>之所以這麼做，是因為我原本很可能有個實習機會，某些原因的關係，我選擇婉拒。<br>因此覺得自己得開始做點什麼，希望自己回頭來看這件事的時候，會認為是值得的！</p>
+<h2 id="儀式感"><a href="#儀式感" class="headerlink" title="儀式感"></a>儀式感</h2><p>對於職涯方面，實在不想一直拖延，於是乎，我那天下午向朋友做了一個宣誓：</p>
+<blockquote>
+<p>今天我要盡我所能做一個簡單能用的 LINE 聊天機器人，主要功能是使用者能先挑感興趣的 KKBOX 排行榜(會先隨機秀出幾個)，接著會隨機跳出排行榜裡面的幾首歌，使用者點他想聽的，就能用 YouTube 或 Spotify 聽那首，適用情境可能就是當使用者不知道要聽什麼歌的時候，可以有個小幫手能夠幫忙推薦這樣。</p>
+</blockquote>
+<p>因為如果不讓別人知道，很可能會偷懶不做，但如果真的這樣的話，不就顯得「放棄實習機會」很愚蠢了嗎？</p>
+<p>我還說：</p>
+<blockquote>
+<p>我想讓自己習慣每天都花點心思在開發這件事情上，累積一點東西，多積極參與對求職有幫助的活動！</p>
+</blockquote>
+<p>就真的很希望自己能跳脫懶惰拖延的圈圈裡面！</p>
+<h2 id="小成果"><a href="#小成果" class="headerlink" title="小成果"></a>小成果</h2><p>最後當天有做出來那個聊天機器人嗎？有的，我把它叫做「推歌小幫手」。<br>然而，過程可真是不輕鬆，就跟現在寫這篇文一樣⋯⋯<br>（太久沒寫文章，現在回頭看之前寫的教學文，不禁讓我懷疑那些真的是我寫的嗎，怎麼感覺現在要重回之前的狀態還有一段路要走😂）</p>
+<!-- ![](result.gif) -->
+
+<img src="result.gif" alt="Demo" width="250" />
+
+<h2 id="困難與挑戰"><a href="#困難與挑戰" class="headerlink" title="困難與挑戰"></a>困難與挑戰</h2><p>為什麼做那個聊天機器人不太輕鬆？太久沒發揮創意然後實作出東西是其中一個原因，但主要是心理層面的掙扎與糾結。</p>
+<p>還是會有點擔心說會不會其實去實習是個比較好的選項。</p>
+<p>因為希望自己在投履歷和面試的時候，能有些像樣的 side project 提出來分享，但要做出像樣的 side project，就得花心思去思考怎樣的 project 才能吸引到人，無論是 project 的完整性與成熟度、與⽬標職缺及產業的相關性、企業端要求的技術能⼒，都得去顧慮到。</p>
+<p>那一整個過程光是用想的，就覺得，哇天啊，好像很不輕鬆啊！而選擇實習的話，就可以照著主管為我規劃的步調走，比較不用去煩惱這些。</p>
+<p>除此之外，因為生疏，會覺得自己頓頓的，甚至大部分的 code 和實作過程還是參考之前自己寫的「<a href="https://kanido386.github.io/2021/07/baymax-with-us/" target="_blank">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」才順利完成，就會覺得自己是不是在作弊都不動腦⋯⋯</p>
+<h2 id="豁然開朗"><a href="#豁然開朗" class="headerlink" title="豁然開朗"></a>豁然開朗</h2><p>直到我前天讀了「<a href="https://blog.niclin.tw/2019/09/03/start-your-side-project-beiyi-app-1/">2 個月擁有 6000 用戶 Side project 這樣做（一）</a>」這篇文章，才明白原來我這麼做是沒問題的，這是「平時養 code、寫技術⽂章」所帶來的好處：</p>
+<ul>
+<li>要做 LINE 聊天機器人？我之前已經做過兩次了，<strong>直接搬來⽤！</strong></li>
+<li>要串接 YouTube 和 KKBOX 的 API？我之前有把它們包成適合用於 LINE Bot 的 function 了，<strong>直接搬來⽤！</strong></li>
+<li>要做 LINE 或 Heroku 之類東西的設定？以前寫過教學⽂，<strong>直接看⾃⼰的筆記實作！</strong></li>
+</ul>
+<p>頓時欣慰了不少。<br>但這樣我那個聊天機器人有多什麼功能嗎？有的，多嘗試串接了 Spotify 的 API，用的是「Spotipy」這個別人封裝好的 Python 套件。（Spotipy is a lightweight Python library for the Spotify Web API.）</p>
+<h2 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h2><p>雖然很沒什麼，但我覺得還是要給自己一點鼓勵，畢竟願意起身行動，比自己一直在那邊踟躕不前好多了（不行動雖然「看似完美」，但是是不會有任何成果產生的）</p>
+<p>認真考慮那個聊天機器人的功能可以加進之前做的「<a href="https://github.com/kanido386/baymax-with-us#readme">杯麵</a>」裡面！（杯麵功能豐富多啦，而且 README 已經有點樣子了，可以再作延伸）</p>
+<h2 id="尋求建議"><a href="#尋求建議" class="headerlink" title="尋求建議"></a>尋求建議</h2><p>到了隔天，也就是 3/5 禮拜六，我去參加了由 104 主辦的「新世代求職趨勢&amp;人資獨家徵才解密」活動，聽企業講座之外，也去做了履歷健診。</p>
+<p>邊聽講座邊記筆記，除此之外也趁機看了一些別人對於 side project 的建議，「<a href="https://tw.alphacamp.co/blog/side-project-guide">好的 Side Project 和作品集如何做？給新⼿⼯程師的懶⼈包</a>」這篇文真的很讚，整理了一些優質的建議文，然後我也做了點筆記，希望自己能常常回憶起來那些建議並加以行動！</p>
+<p>履歷健診的部分真的很不錯，因為人很多要排隊等待，本來想說就算了反正之後還是有機會 (但我快畢業啦)，幸好沒懶惰，跟對方聊聊以後，對於職涯方面和履歷修改上真的有不少收穫，還建議我可以經營 LinkedIn，我們後來「建立關係」，對方很好心地說之後如果有什麼疑惑可以再跟他聯絡，覺得挺有意思的！</p>
+<h2 id="砥礪心智"><a href="#砥礪心智" class="headerlink" title="砥礪心智"></a>砥礪心智</h2><p>而昨天早上到駕訓班練車，整個下午到傍晚燙了個鳥巢頭QQ，晚上因為鳥巢頭而沒什麼心情做正事xD，就這樣那天也沒什麼行動，睡前還有點過意不去呢😅</p>
+<h2 id="繼續寫下去"><a href="#繼續寫下去" class="headerlink" title="繼續寫下去"></a>繼續寫下去</h2><p>今天主要就是這篇文啦～（真的太久沒寫，都不知道自己到底在寫什麼，語句通順與否還是會很在意，慢慢來吧，今天這樣寫感覺好像有點回來了，還行，但花了兩小時多😢）</p>
+<h2 id="指點迷津"><a href="#指點迷津" class="headerlink" title="指點迷津"></a>指點迷津</h2><p>跳 tone 一下，剛好很適合這個階段多提醒自己！</p>
+<p>最近聽了「<a href="https://open.spotify.com/show/1xpiKWtcLQcYALGHBw4SbP">職涯履行家 Creating Our Future</a>」的一集 podcast「<a href="https://open.spotify.com/episode/64Y8HF2iPtZh5KvRIlKtyV?si=3LMAAPj9QamiOOfP8HWEQQ">剛踏入社會，你也好迷茫嗎？深度聊聊迷茫怎麼來＆如何解決它！</a>」，何則文分享了一些點，我覺得很不錯，把它記下來了：</p>
+<ul>
+<li>我們為何迷茫？從⼩被⽤「標準答案」來教育，但未來的時代其實是沒有標準答案的，你必須要找到⾃⼰的解答！</li>
+<li>過去的成功(模式)，不代表會帶來未來的成功</li>
+<li>最重要的是回到⾃⼰的初⼼，不要問說社會覺得怎麼樣好，⽽是我做什麼事情我會開⼼，做什麼會覺得我的⼈⽣是幸福、是快樂的，往內求⽽⾮往外求</li>
+<li>不要跟別⼈⽐，跟過去的⾃⼰⽐就好 (成⻑型思維)！⾄於別⼈怎麼樣，那是他家的事情，他可能只是個 NPC (⼈⽣或許只是個遊戲，是被更⾼層次的東⻄建構出來的，像是元宇宙的概念)</li>
+<li>真正的學習是怎麼樣？學到⼀個東⻄然後它變成⼀個 module 或 function (可重複拿來⽤，不同 input 進來可得到不同 output，⽽不是只是⼀個 constant)。學習不是記憶，⽽是想辦法建⽴⼀個機制，讓未來⾃⼰可以找到答案</li>
+<li>只有你可以對你的⼈⽣負起你的責任，不能像機器⼀樣很被動，別⼈推我們才去做，⽽是要開始找到⾃⼰⼈⽣的解答</li>
+<li>要有跨域思維，不要被⾃⼰的科系、背景、社會環境給綁住，⾛出⾃⼰的道路！</li>
+</ul>
+<p>總結：不要追求外在的成功⽽是內在的幸福、不要讓你的過去(像是學經歷)限制你的未來、要有危機意識，不斷學習，了解⾃⼰！</p>
+<br>
+加油！接下來這條路肯定不輕鬆，別怕，一起克服心理障礙、戰勝心魔吧！]]></content>
+      <tags>
+        <tag>職涯</tag>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【職涯路上】63~0，Commencement</title>
     <url>/2022/06/freshman-career-63-0/</url>
     <content><![CDATA[<p>時間過得真是快啊！轉眼間，來到了這系列文的最終章。</p>
@@ -902,64 +962,40 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】100~97，開始行動！</title>
-    <url>/2022/03/freshman-career-100-97/</url>
-    <content><![CDATA[<p>行動才是一切，暫時忘卻完美主義吧！</p>
+    <title>【職涯路上】73~64</title>
+    <url>/2022/04/freshman-career-73-64/</url>
+    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
 <span id="more"></span>
 
-<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>3/4 禮拜五那天，突然想到說可以來倒數看看離畢業 (6/12) 還剩下幾天，一數發現剛好剩下 100 天！<br>之所以這麼做，是因為我原本很可能有個實習機會，某些原因的關係，我選擇婉拒。<br>因此覺得自己得開始做點什麼，希望自己回頭來看這件事的時候，會認為是值得的！</p>
-<h2 id="儀式感"><a href="#儀式感" class="headerlink" title="儀式感"></a>儀式感</h2><p>對於職涯方面，實在不想一直拖延，於是乎，我那天下午向朋友做了一個宣誓：</p>
-<blockquote>
-<p>今天我要盡我所能做一個簡單能用的 LINE 聊天機器人，主要功能是使用者能先挑感興趣的 KKBOX 排行榜(會先隨機秀出幾個)，接著會隨機跳出排行榜裡面的幾首歌，使用者點他想聽的，就能用 YouTube 或 Spotify 聽那首，適用情境可能就是當使用者不知道要聽什麼歌的時候，可以有個小幫手能夠幫忙推薦這樣。</p>
-</blockquote>
-<p>因為如果不讓別人知道，很可能會偷懶不做，但如果真的這樣的話，不就顯得「放棄實習機會」很愚蠢了嗎？</p>
-<p>我還說：</p>
-<blockquote>
-<p>我想讓自己習慣每天都花點心思在開發這件事情上，累積一點東西，多積極參與對求職有幫助的活動！</p>
-</blockquote>
-<p>就真的很希望自己能跳脫懶惰拖延的圈圈裡面！</p>
-<h2 id="小成果"><a href="#小成果" class="headerlink" title="小成果"></a>小成果</h2><p>最後當天有做出來那個聊天機器人嗎？有的，我把它叫做「推歌小幫手」。<br>然而，過程可真是不輕鬆，就跟現在寫這篇文一樣⋯⋯<br>（太久沒寫文章，現在回頭看之前寫的教學文，不禁讓我懷疑那些真的是我寫的嗎，怎麼感覺現在要重回之前的狀態還有一段路要走😂）</p>
-<!-- ![](result.gif) -->
-
-<img src="result.gif" alt="Demo" width="250" />
-
-<h2 id="困難與挑戰"><a href="#困難與挑戰" class="headerlink" title="困難與挑戰"></a>困難與挑戰</h2><p>為什麼做那個聊天機器人不太輕鬆？太久沒發揮創意然後實作出東西是其中一個原因，但主要是心理層面的掙扎與糾結。</p>
-<p>還是會有點擔心說會不會其實去實習是個比較好的選項。</p>
-<p>因為希望自己在投履歷和面試的時候，能有些像樣的 side project 提出來分享，但要做出像樣的 side project，就得花心思去思考怎樣的 project 才能吸引到人，無論是 project 的完整性與成熟度、與⽬標職缺及產業的相關性、企業端要求的技術能⼒，都得去顧慮到。</p>
-<p>那一整個過程光是用想的，就覺得，哇天啊，好像很不輕鬆啊！而選擇實習的話，就可以照著主管為我規劃的步調走，比較不用去煩惱這些。</p>
-<p>除此之外，因為生疏，會覺得自己頓頓的，甚至大部分的 code 和實作過程還是參考之前自己寫的「<a href="https://kanido386.github.io/2021/07/baymax-with-us/" target="_blank">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」才順利完成，就會覺得自己是不是在作弊都不動腦⋯⋯</p>
-<h2 id="豁然開朗"><a href="#豁然開朗" class="headerlink" title="豁然開朗"></a>豁然開朗</h2><p>直到我前天讀了「<a href="https://blog.niclin.tw/2019/09/03/start-your-side-project-beiyi-app-1/">2 個月擁有 6000 用戶 Side project 這樣做（一）</a>」這篇文章，才明白原來我這麼做是沒問題的，這是「平時養 code、寫技術⽂章」所帶來的好處：</p>
+<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
 <ul>
-<li>要做 LINE 聊天機器人？我之前已經做過兩次了，<strong>直接搬來⽤！</strong></li>
-<li>要串接 YouTube 和 KKBOX 的 API？我之前有把它們包成適合用於 LINE Bot 的 function 了，<strong>直接搬來⽤！</strong></li>
-<li>要做 LINE 或 Heroku 之類東西的設定？以前寫過教學⽂，<strong>直接看⾃⼰的筆記實作！</strong></li>
+<li>(3/31) 完成和聲學作業六</li>
+<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
+<li>我後面一律簡稱 AWSCP</li>
 </ul>
-<p>頓時欣慰了不少。<br>但這樣我那個聊天機器人有多什麼功能嗎？有的，多嘗試串接了 Spotify 的 API，用的是「Spotipy」這個別人封裝好的 Python 套件。（Spotipy is a lightweight Python library for the Spotify Web API.）</p>
-<h2 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h2><p>雖然很沒什麼，但我覺得還是要給自己一點鼓勵，畢竟願意起身行動，比自己一直在那邊踟躕不前好多了（不行動雖然「看似完美」，但是是不會有任何成果產生的）</p>
-<p>認真考慮那個聊天機器人的功能可以加進之前做的「<a href="https://github.com/kanido386/baymax-with-us#readme">杯麵</a>」裡面！（杯麵功能豐富多啦，而且 README 已經有點樣子了，可以再作延伸）</p>
-<h2 id="尋求建議"><a href="#尋求建議" class="headerlink" title="尋求建議"></a>尋求建議</h2><p>到了隔天，也就是 3/5 禮拜六，我去參加了由 104 主辦的「新世代求職趨勢&amp;人資獨家徵才解密」活動，聽企業講座之外，也去做了履歷健診。</p>
-<p>邊聽講座邊記筆記，除此之外也趁機看了一些別人對於 side project 的建議，「<a href="https://tw.alphacamp.co/blog/side-project-guide">好的 Side Project 和作品集如何做？給新⼿⼯程師的懶⼈包</a>」這篇文真的很讚，整理了一些優質的建議文，然後我也做了點筆記，希望自己能常常回憶起來那些建議並加以行動！</p>
-<p>履歷健診的部分真的很不錯，因為人很多要排隊等待，本來想說就算了反正之後還是有機會 (但我快畢業啦)，幸好沒懶惰，跟對方聊聊以後，對於職涯方面和履歷修改上真的有不少收穫，還建議我可以經營 LinkedIn，我們後來「建立關係」，對方很好心地說之後如果有什麼疑惑可以再跟他聯絡，覺得挺有意思的！</p>
-<h2 id="砥礪心智"><a href="#砥礪心智" class="headerlink" title="砥礪心智"></a>砥礪心智</h2><p>而昨天早上到駕訓班練車，整個下午到傍晚燙了個鳥巢頭QQ，晚上因為鳥巢頭而沒什麼心情做正事xD，就這樣那天也沒什麼行動，睡前還有點過意不去呢😅</p>
-<h2 id="繼續寫下去"><a href="#繼續寫下去" class="headerlink" title="繼續寫下去"></a>繼續寫下去</h2><p>今天主要就是這篇文啦～（真的太久沒寫，都不知道自己到底在寫什麼，語句通順與否還是會很在意，慢慢來吧，今天這樣寫感覺好像有點回來了，還行，但花了兩小時多😢）</p>
-<h2 id="指點迷津"><a href="#指點迷津" class="headerlink" title="指點迷津"></a>指點迷津</h2><p>跳 tone 一下，剛好很適合這個階段多提醒自己！</p>
-<p>最近聽了「<a href="https://open.spotify.com/show/1xpiKWtcLQcYALGHBw4SbP">職涯履行家 Creating Our Future</a>」的一集 podcast「<a href="https://open.spotify.com/episode/64Y8HF2iPtZh5KvRIlKtyV?si=3LMAAPj9QamiOOfP8HWEQQ">剛踏入社會，你也好迷茫嗎？深度聊聊迷茫怎麼來＆如何解決它！</a>」，何則文分享了一些點，我覺得很不錯，把它記下來了：</p>
-<ul>
-<li>我們為何迷茫？從⼩被⽤「標準答案」來教育，但未來的時代其實是沒有標準答案的，你必須要找到⾃⼰的解答！</li>
-<li>過去的成功(模式)，不代表會帶來未來的成功</li>
-<li>最重要的是回到⾃⼰的初⼼，不要問說社會覺得怎麼樣好，⽽是我做什麼事情我會開⼼，做什麼會覺得我的⼈⽣是幸福、是快樂的，往內求⽽⾮往外求</li>
-<li>不要跟別⼈⽐，跟過去的⾃⼰⽐就好 (成⻑型思維)！⾄於別⼈怎麼樣，那是他家的事情，他可能只是個 NPC (⼈⽣或許只是個遊戲，是被更⾼層次的東⻄建構出來的，像是元宇宙的概念)</li>
-<li>真正的學習是怎麼樣？學到⼀個東⻄然後它變成⼀個 module 或 function (可重複拿來⽤，不同 input 進來可得到不同 output，⽽不是只是⼀個 constant)。學習不是記憶，⽽是想辦法建⽴⼀個機制，讓未來⾃⼰可以找到答案</li>
-<li>只有你可以對你的⼈⽣負起你的責任，不能像機器⼀樣很被動，別⼈推我們才去做，⽽是要開始找到⾃⼰⼈⽣的解答</li>
-<li>要有跨域思維，不要被⾃⼰的科系、背景、社會環境給綁住，⾛出⾃⼰的道路！</li>
+</li>
+<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
+<li>結果我還是沒開始碰 Laravel 😅</li>
 </ul>
-<p>總結：不要追求外在的成功⽽是內在的幸福、不要讓你的過去(像是學經歷)限制你的未來、要有危機意識，不斷學習，了解⾃⼰！</p>
-<br>
-加油！接下來這條路肯定不輕鬆，別怕，一起克服心理障礙、戰勝心魔吧！]]></content>
-      <tags>
-        <tag>職涯</tag>
-        <tag>side project</tag>
-      </tags>
+</li>
+<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
+<li>但最後也沒照那個計畫走</li>
+</ul>
+</li>
+<li>(4/2) 完成 AWSCP 前置任務<ul>
+<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
+</ul>
+</li>
+<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
+<li>(4/5~4/9) 準備奧丁丁面試<ul>
+<li>覺得自己好像都在原地踏步😢</li>
+</ul>
+</li>
+<li>(4/7) 完成圖形識別 Homework 2</li>
+</ul>
+<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
+<p>加加油吧！</p>
+]]></content>
   </entry>
   <entry>
     <title>【職涯路上】76~74</title>
@@ -1015,51 +1051,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】73~64</title>
-    <url>/2022/04/freshman-career-73-64/</url>
-    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
-<span id="more"></span>
-
-<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
-<ul>
-<li>(3/31) 完成和聲學作業六</li>
-<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
-<li>我後面一律簡稱 AWSCP</li>
-</ul>
-</li>
-<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
-<li>結果我還是沒開始碰 Laravel 😅</li>
-</ul>
-</li>
-<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
-<li>但最後也沒照那個計畫走</li>
-</ul>
-</li>
-<li>(4/2) 完成 AWSCP 前置任務<ul>
-<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
-</ul>
-</li>
-<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
-<li>(4/5~4/9) 準備奧丁丁面試<ul>
-<li>覺得自己好像都在原地踏步😢</li>
-</ul>
-</li>
-<li>(4/7) 完成圖形識別 Homework 2</li>
-</ul>
-<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
-<p>加加油吧！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】84~77</title>
     <url>/2022/03/freshman-career-84-77/</url>
     <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
@@ -1108,6 +1099,15 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
 <p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
 ]]></content>
   </entry>
   <entry>
@@ -1524,90 +1524,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>【學習筆記】人機互動概論 - 1</title>
-    <url>/2022/08/hci-note-1/</url>
-    <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
-<p>後來在 YouTube 找到了「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
-<span id="more"></span>
-
-<br>
-廢話不多說，讓我們直接進到筆記的部分吧！
-
-<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
-<li>科技始終來自於人性</li>
-<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
-</ul>
-<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
-<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
-<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
-<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
-</ul>
-</li>
-<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
-<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
-<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
-<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
-</ul>
-</li>
-<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
-<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
-<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
-<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
-</ul>
-</li>
-<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
-<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
-</ul>
-</li>
-<li>「跨領域」的人機互動<ul>
-<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
-<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
-<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
-<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
-</ul>
-</li>
-<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
-<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
-</ul>
-</li>
-</ul>
-<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
-<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
-<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
-<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
-<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
-</ul>
-</li>
-<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
-<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
-</ul>
-<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
-<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
-<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
-<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
-<li>有沒有類似經驗<ul>
-<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
-<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
-</ul>
-</li>
-<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
-<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
-<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
-<li>什麼門是好設計？<ul>
-<li>外型設計要相當直覺</li>
-<li>逃生門  <img src="2.png"></li>
-<li>車子的門  <img src="3.png"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
-<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
-</ul>
-<br>
-未完待續，stay tuned!]]></content>
-  </entry>
-  <entry>
     <title>黑客松 LINE Bot 賽前補帖</title>
     <url>/2021/07/hackathon-line-hint/</url>
     <content><![CDATA[<p><a href="/2021/07/hackathon-line-hint"><img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
@@ -1759,6 +1675,307 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
         <tag>Bot</tag>
         <tag>Firebase</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【學習筆記】人機互動概論 - 1</title>
+    <url>/2022/08/hci-note-1/</url>
+    <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
+<p>後來在 YouTube 找到了「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
+<span id="more"></span>
+
+<br>
+廢話不多說，讓我們直接進到筆記的部分吧！
+
+<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
+<li>科技始終來自於人性</li>
+<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
+</ul>
+<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
+<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
+<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
+<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
+</ul>
+</li>
+<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
+<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
+<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
+<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
+</ul>
+</li>
+<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
+<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
+<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
+<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
+</ul>
+</li>
+<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
+<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
+</ul>
+</li>
+<li>「跨領域」的人機互動<ul>
+<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
+<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
+<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
+<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
+</ul>
+</li>
+<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
+<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
+</ul>
+</li>
+</ul>
+<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
+<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
+<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
+<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
+<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
+</ul>
+</li>
+<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
+<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
+</ul>
+<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
+<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
+<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
+<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
+<li>有沒有類似經驗<ul>
+<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
+<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
+</ul>
+</li>
+<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
+<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
+<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
+<li>什麼門是好設計？<ul>
+<li>外型設計要相當直覺</li>
+<li>逃生門  <img src="2.png"></li>
+<li>車子的門  <img src="3.png"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
+<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
+</ul>
+<br>
+未完待續，stay tuned!]]></content>
+  </entry>
+  <entry>
+    <title>【學習筆記】人機互動概論 - 2</title>
+    <url>/2022/10/hci-note-2/</url>
+    <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第二彈～</p>
+<span id="more"></span>
+
+<h2 id="影響物品設計好壞的-5-大要素"><a href="#影響物品設計好壞的-5-大要素" class="headerlink" title="影響物品設計好壞的 5 大要素"></a>影響物品設計好壞的 5 大要素</h2><h3 id="Discoverability-可見性"><a href="#Discoverability-可見性" class="headerlink" title="Discoverability (可見性)"></a><a href="https://www.youtube.com/watch?v=vagbsPQSdc4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=5">Discoverability (可見性)</a></h3><ul>
+<li>當我們在<strong>看到</strong>互動物體時，是否可以了解到：<ul>
+<li>我們可以執行哪些行為？</li>
+<li>如何在這個物體上執行這些行為來達到我們預期的效果？</li>
+</ul>
+</li>
+<li>以「門」為例  <img src="1.png"></li>
+<li>除了上述的例子，很多設計物，它其實也都利用了「可見性」這個要素，讓這些設計物在我們日常生活中變得更方便去使用！<ul>
+<li>馬克杯的把手也是「可見性」的展示，告訴我們要靠手去抓握拿起來</li>
+<li>飯店房卡＆房間門長長細細的洞 → 讓使用者發現到需要做的動作，是可以把房卡往這個洞裡面放，來開房間門</li>
+</ul>
+</li>
+<li>以上這些例子都是我們在日常生活中，都會遇到的各種不同物品，它們利用「可見性」這個要素，來自然地與使用者溝通它應該怎麼被使用</li>
+</ul>
+<h3 id="Affordance"><a href="#Affordance" class="headerlink" title="Affordance"></a><a href="https://www.youtube.com/watch?v=A_Qkrjb4xUY&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=6">Affordance</a></h3><ul>
+<li>網路上能找到的翻譯：承擔特質／直觀功能／示能性／預設用途（但很難精準地用中文去翻）</li>
+<li>定義：物體的<strong>實質特性</strong> (形狀, 材質, 大小, 高低, 機械結構等等) 或<strong>物體所處的環境條件</strong> (像是被擺放在很高的地方, 一個有斜坡的地方) 讓使用者可以自然且直覺地了解怎麼使用物體，並且達到他預期想要的效果</li>
+<li>平面：具有支撐的性質（具有支撐的 Affordance）<ul>
+<li>因此當看到一張椅子的時候，可以從椅子它的座椅那邊有平面，知道說這個座椅的平面有承載、支撐的 Affordance，因此會知道我要坐在平面的座椅上，而不是把椅子翻過來坐在椅子的腳上，也不是坐在旁邊尖尖的扶手上</li>
+<li>椅子利用「座椅平面」這個 Affordance 去讓使用者知道如何去跟椅子做互動</li>
+</ul>
+</li>
+<li>手機座：如圖片所示，此為手機架所具備 Affordance 的性質，因此這個手機架不需要特別再寫個標籤，寫說「請把手機放在這個凹槽」，它只要呈現它原本的樣子，就足夠傳達這樣的意思給使用者了  <img src="2.png"></li>
+<li>電腦桌面：本身就是依據 Affordance 這樣的設計要素被製造的！<ul>
+<li>大家一定都有用過 (實體的) 桌面，我們會在桌面上擺上一份份的文件、垃圾桶可以丟點小東西，因此在虛擬的電腦裡，他們就把「桌面」這個具體實際物件搬到虛擬電腦中，這樣使用者可以了解到，我可以隨時回到這個桌面上，而在桌面上，可以把我虛擬的一些文件放在桌面上，當我不需要某文件的時候，就用滑鼠去點文件 (就像是用手去拿起文件)，並且將它拖曳到「垃圾桶」的 icon，就可以丟掉了！</li>
+<li>就像真實世界的桌面，我們可以把文件、文件夾跟垃圾桶放到桌面上，把這個概念應用在電腦世界的虛擬資料上</li>
+<li>利用我們日常生活、我們之前的經驗中具有的一些性質，把這個 Affordance 放在一個虛擬的電腦環境裡面</li>
+</ul>
+</li>
+<li>Affordance 指的其實不只是物體本身的性質 or 這個環境它自己本身的條件，而是物體的性質以及環境所在的條件所傳達出來的意象，怎麼被使用者感知到之後，使用者知道有哪些可能的動作，可以去應用在這個物體以及環境上（該物體與使用者之間的關係）</li>
+<li>Affordance：物體與環境承載的特質如何被使用者感知與理解</li>
+<li>Is there a difference between affordance and discovery?<ul>
+<li>Affordance is related to the object itself. Eg: A button looks clickable. Discoverability is related to the product/solution. Eg: An image-manipulation toolbar shows all features it is possible to use when you want to work with an image.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Signifiers-能指、所指"><a href="#Signifiers-能指、所指" class="headerlink" title="Signifiers (能指、所指)"></a><a href="https://www.youtube.com/watch?v=5NZp2VleG-Q&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=7">Signifiers (能指、所指)</a></h3><ul>
+<li>用英文比較可以準確地傳達這個要素的定義</li>
+<li>定義：向使用者<strong>「傳遞訊號」</strong>在物體的哪個部分要執行這些操作</li>
+<li>使用者在第一次接觸一項新物品的時候，第一時間會先從物品的表面、形狀、材質、大小、高低、機械結構等等，去探索可能可以怎麼樣去操控這個物品</li>
+<li>一個設計良好的物品，是能夠用各種方式向使用者傳達，可以怎麼使用、怎麼樣去對我做哪些動作的「訊號」，也就是「signifiers」</li>
+<li>舉例：鍵盤。<ul>
+<li>每個按鍵都有英文和注音符號的標示，這些標示就是在告訴使用者，如果你想要打出特定的字母或是特定的中文字時，你應該要按哪些特定的按鍵，才能達到你的目的。</li>
+<li>形狀不一樣的按鍵，也直接向使用者傳達說，假設你要按字母的話，是按這種形狀的按鍵，你要按 Enter 鍵的話，你要去找某種特定形狀的按鍵，所以物品的 signifier 也可以用物品的形狀來表達</li>
+<li>鍵盤按鍵的佈局配置 (主鍵盤區、數字鍵區、特殊功能鍵區) 也是一種 signifier</li>
+<li>鍵盤是利用<strong>「視覺」</strong>的 signifiers 向使用者傳遞要在哪個部分執行操作</li>
+</ul>
+</li>
+<li>不僅限於「視覺」，signifiers 有許多不同的表達方式，像是聽覺、觸覺、味覺、體感回饋等等</li>
+<li>舉例：聽覺的 signifiers<ul>
+<li>救護車「喔咿喔咿」的聲音</li>
+<li>救護車是利用「聽覺」的 signifiers，較為急促、高頻地傳達緊急狀況</li>
+</ul>
+</li>
+</ul>
+<h3 id="Feedback-回饋性"><a href="#Feedback-回饋性" class="headerlink" title="Feedback (回饋性)"></a><a href="https://www.youtube.com/watch?v=eA_r19WYzCk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=8">Feedback (回饋性)</a></h3><ul>
+<li>定義：讓使用者可以知道，裝置跟系統有依照使用者的需求在運作</li>
+<li>裝置可以透過使用者的<strong>「各種感官」</strong>給予回饋，像是亮燈提示、發出小小的提示音</li>
+<li>公車下車鈴可以有「聲音提示」，或者是有「閃爍燈號」來回饋給乘客，如此一來，可以讓使用者更好地知道，剛剛做了「按按鈕」的行為，是不是有成功引起這個裝置應該要有的結果</li>
+<li>要注意的地方：這些回饋必須在動作結束之後立刻發生，並且必須要正確的傳達行為所造成的結果</li>
+<li>發生錯誤的回饋性可能因素：沒有立即給予反饋 (按了下車鈴很久才有回饋音效)、給予誤導的反饋 (給的是不恰當的提示音像是答錯的音效)</li>
+</ul>
+<h3 id="Mapping-映射、對應性"><a href="#Mapping-映射、對應性" class="headerlink" title="Mapping (映射、對應性)"></a><a href="https://www.youtube.com/watch?v=zH-o3UjrXo4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=9">Mapping (映射、對應性)</a></h3><ul>
+<li>描述的是一種對應關係</li>
+<li>解釋：Mapping 主要是借用數學裡面名詞而來，主要講述的是「不同集合的元素之間互相映射」的關係</li>
+<li>把「對應性」放在人機互動的框架下＋白話的方式，「對應性」指的是：我們如何把 (1) 裝置的運作、(2) 使用者對裝置做的操作、(3) 裝置產生的效果，聯繫在一起。<ul>
+<li>如果這三者之間的聯繫，可以很自然、很直覺被使用者察覺到、學習起來並且記憶起來的話，我們就會說，這個裝置的設計有很好的對應性</li>
+</ul>
+</li>
+<li>「對應性」有很多種種類<ul>
+<li>「行為」上的相似性所產生的對應性：像是自動筆與筆芯。因為我往下按 (操作裝置的方向) 跟筆芯跑出來的行為 (產生效果的行為)，這個方向是一致的，反映了行為上的對應性，所以對我們來說，這種往下按就會跑出筆芯的設計就會非常好理解和被記得</li>
+<li>「意義」上的相似性所產生的對應性：像是開關燈。手勢往上有增強加大的意義、手勢往下有減弱縮小的意義 → 通常把開關往下按就是把電燈關起來，開關往上按就是電燈打開<ul>
+<li>虛擬的電腦世界也可以看到這樣子對應性的設計：像是 volume slide bar，往上就是音量調大，往下則是音量調小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缺少對應性會造成問題的例子：教室一堆的電燈開關。「開關面板的設計」與「電燈的位置」並沒有使用對應性，對使用者來說，很難從開關設計去理解、去學習，到底我要關前排燈要按哪個開關<ul>
+<li>如果要改善，我們可以想想看，如何讓開關的位置與對應電燈的位置有所關聯，像是前排電燈的開關在上排，後排電燈在下排</li>
+<li>像是這樣做一點點簡單的設計調整，其實都可以大大去改善這個缺乏對應性所造成的問題</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他影響好設計要素的原因"><a href="#其他影響好設計要素的原因" class="headerlink" title="其他影響好設計要素的原因"></a><a href="https://www.youtube.com/watch?v=4kG18j201SU&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=10">其他影響好設計要素的原因</a></h2><ul>
+<li>很多好設計都會同時具備一個以上的要素，而一些不好的設計也都同時缺少多個要素</li>
+<li>通常一個讓我們覺得用起來很順手的設計，背後隱藏了很多設計師，還有開發人員的心血與巧思，這些巧思與心血，讓這些設計可以同時具備了多個好的要素，因此使用者在使用的時候，才會覺得這個東西怎麼那麼好用 → 類似「一日之所需，百工斯為備」</li>
+<li>不好的設計，加上其他設計好要素，可以獲得好的改善<ul>
+<li>Signifiers：向使用者「傳遞訊號」，在物體的哪個部分要執行這些操作</li>
+</ul>
+  <img src="3.png"></li>
+<li>好設計的要素改善，會帶給我們什麼影響？消費者的喜好、安全性 (像是駕駛飛機時) 等等。</li>
+<li>不同文化的使用者，對於物品如何呈現這些要素的需求都會不一樣  <img src="4.png"></li>
+<li>因此，要做出好設計的裝置或系統，除了要考慮上述的好設計要素之外，我們也要把一些因素同時納入考量，才可以達到我們所要達到的效果</li>
+</ul>
+<h2 id="新世代與電腦的互動裝置"><a href="#新世代與電腦的互動裝置" class="headerlink" title="新世代與電腦的互動裝置"></a><a href="https://www.youtube.com/watch?v=VoYZJOkg4VM&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=11">新世代與電腦的互動裝置</a></h2><ul>
+<li>思考一下，還有沒有更酷或是更科幻的與電腦互動方式呢？<ul>
+<li>滑鼠、鍵盤 → 觸控螢幕 → ???</li>
+<li>鋼鐵人電影裡面的操作方式：Holographic User Interfaces、Gesture-based User Interfaces、in-air gesture</li>
+<li>鐘點站裡面的倒數計時：on-skin interfaces、touch interaction</li>
+</ul>
+</li>
+<li>Air+Touch: Interweaving Touch &amp; In-Air Gestures<ul>
+<li>在一個智慧型手機的上方加上一個深度的攝影機，透過深度的攝影機，它可以知道現在這個手指跟螢幕之間還有上下的距離，把這些距離的資訊再利用電腦做分析，就可以去偵測手指的位置、可能是什麼樣的手勢</li>
+</ul>
+</li>
+<li>Air+Touch 用了哪些好設計的要素？<ul>
+<li>Mapping 對應性：螢幕上空的位置較遠，觸控螢幕的圓圈較大</li>
+<li>另一個 Mapping 對應性：點擊之後，使用者可以在空中轉圈圈，就像 (音量) 旋鈕一樣，去微調在螢幕上地圖的大小</li>
+</ul>
+</li>
+</ul>
+<br>
+未完待續，stay tuned!]]></content>
+  </entry>
+  <entry>
+    <title>助你行動</title>
+    <url>/2022/01/help-you-take-action/</url>
+    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
+<span id="more"></span>
+
+<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
+<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
+</blockquote>
+<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
+<blockquote>
+<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
+</blockquote>
+<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
+<blockquote>
+<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
+</blockquote>
+<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
+<blockquote>
+<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
+</blockquote>
+<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
+<blockquote>
+<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
+</blockquote>
+<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
+<hr>
+<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
+<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
+</blockquote>
+<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
+<blockquote>
+<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
+</blockquote>
+<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
+<blockquote>
+<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
+</blockquote>
+<p>時間有限，為自己的人生鮮艷上色！</p>
+<blockquote>
+<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
+</blockquote>
+<p>別完全被「應該怎樣」束縛住啦！</p>
+<hr>
+<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
+<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
+</blockquote>
+<p>讓自己在混亂中整理出一點頭緒。</p>
+<blockquote>
+<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
+</blockquote>
+<p>當你真心想做一件事，全世界都會幫你。</p>
+<blockquote>
+<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
+</blockquote>
+<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
+<blockquote>
+<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
+</blockquote>
+<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
+<hr>
+<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
+<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
+<hr>
+<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
+<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
+</blockquote>
+<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
+<blockquote>
+<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
+</blockquote>
+<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
+<blockquote>
+<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
+</blockquote>
+<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
+<hr>
+<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
+<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
+</blockquote>
+<p>專注當下。</p>
+<blockquote>
+<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
+</blockquote>
+<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
+<hr>
+<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
+<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
+</blockquote>
+<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
+<blockquote>
+<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
+</blockquote>
+<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
+<br>
+希望這篇文章能助你一臂之力💪]]></content>
   </entry>
   <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
@@ -2049,223 +2266,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>【學習筆記】人機互動概論 - 2</title>
-    <url>/2022/10/hci-note-2/</url>
-    <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第二彈～</p>
-<span id="more"></span>
-
-<h2 id="影響物品設計好壞的-5-大要素"><a href="#影響物品設計好壞的-5-大要素" class="headerlink" title="影響物品設計好壞的 5 大要素"></a>影響物品設計好壞的 5 大要素</h2><h3 id="Discoverability-可見性"><a href="#Discoverability-可見性" class="headerlink" title="Discoverability (可見性)"></a><a href="https://www.youtube.com/watch?v=vagbsPQSdc4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=5">Discoverability (可見性)</a></h3><ul>
-<li>當我們在<strong>看到</strong>互動物體時，是否可以了解到：<ul>
-<li>我們可以執行哪些行為？</li>
-<li>如何在這個物體上執行這些行為來達到我們預期的效果？</li>
-</ul>
-</li>
-<li>以「門」為例  <img src="1.png"></li>
-<li>除了上述的例子，很多設計物，它其實也都利用了「可見性」這個要素，讓這些設計物在我們日常生活中變得更方便去使用！<ul>
-<li>馬克杯的把手也是「可見性」的展示，告訴我們要靠手去抓握拿起來</li>
-<li>飯店房卡＆房間門長長細細的洞 → 讓使用者發現到需要做的動作，是可以把房卡往這個洞裡面放，來開房間門</li>
-</ul>
-</li>
-<li>以上這些例子都是我們在日常生活中，都會遇到的各種不同物品，它們利用「可見性」這個要素，來自然地與使用者溝通它應該怎麼被使用</li>
-</ul>
-<h3 id="Affordance"><a href="#Affordance" class="headerlink" title="Affordance"></a><a href="https://www.youtube.com/watch?v=A_Qkrjb4xUY&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=6">Affordance</a></h3><ul>
-<li>網路上能找到的翻譯：承擔特質／直觀功能／示能性／預設用途（但很難精準地用中文去翻）</li>
-<li>定義：物體的<strong>實質特性</strong> (形狀, 材質, 大小, 高低, 機械結構等等) 或<strong>物體所處的環境條件</strong> (像是被擺放在很高的地方, 一個有斜坡的地方) 讓使用者可以自然且直覺地了解怎麼使用物體，並且達到他預期想要的效果</li>
-<li>平面：具有支撐的性質（具有支撐的 Affordance）<ul>
-<li>因此當看到一張椅子的時候，可以從椅子它的座椅那邊有平面，知道說這個座椅的平面有承載、支撐的 Affordance，因此會知道我要坐在平面的座椅上，而不是把椅子翻過來坐在椅子的腳上，也不是坐在旁邊尖尖的扶手上</li>
-<li>椅子利用「座椅平面」這個 Affordance 去讓使用者知道如何去跟椅子做互動</li>
-</ul>
-</li>
-<li>手機座：如圖片所示，此為手機架所具備 Affordance 的性質，因此這個手機架不需要特別再寫個標籤，寫說「請把手機放在這個凹槽」，它只要呈現它原本的樣子，就足夠傳達這樣的意思給使用者了  <img src="2.png"></li>
-<li>電腦桌面：本身就是依據 Affordance 這樣的設計要素被製造的！<ul>
-<li>大家一定都有用過 (實體的) 桌面，我們會在桌面上擺上一份份的文件、垃圾桶可以丟點小東西，因此在虛擬的電腦裡，他們就把「桌面」這個具體實際物件搬到虛擬電腦中，這樣使用者可以了解到，我可以隨時回到這個桌面上，而在桌面上，可以把我虛擬的一些文件放在桌面上，當我不需要某文件的時候，就用滑鼠去點文件 (就像是用手去拿起文件)，並且將它拖曳到「垃圾桶」的 icon，就可以丟掉了！</li>
-<li>就像真實世界的桌面，我們可以把文件、文件夾跟垃圾桶放到桌面上，把這個概念應用在電腦世界的虛擬資料上</li>
-<li>利用我們日常生活、我們之前的經驗中具有的一些性質，把這個 Affordance 放在一個虛擬的電腦環境裡面</li>
-</ul>
-</li>
-<li>Affordance 指的其實不只是物體本身的性質 or 這個環境它自己本身的條件，而是物體的性質以及環境所在的條件所傳達出來的意象，怎麼被使用者感知到之後，使用者知道有哪些可能的動作，可以去應用在這個物體以及環境上（該物體與使用者之間的關係）</li>
-<li>Affordance：物體與環境承載的特質如何被使用者感知與理解</li>
-<li>Is there a difference between affordance and discovery?<ul>
-<li>Affordance is related to the object itself. Eg: A button looks clickable. Discoverability is related to the product/solution. Eg: An image-manipulation toolbar shows all features it is possible to use when you want to work with an image.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Signifiers-能指、所指"><a href="#Signifiers-能指、所指" class="headerlink" title="Signifiers (能指、所指)"></a><a href="https://www.youtube.com/watch?v=5NZp2VleG-Q&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=7">Signifiers (能指、所指)</a></h3><ul>
-<li>用英文比較可以準確地傳達這個要素的定義</li>
-<li>定義：向使用者<strong>「傳遞訊號」</strong>在物體的哪個部分要執行這些操作</li>
-<li>使用者在第一次接觸一項新物品的時候，第一時間會先從物品的表面、形狀、材質、大小、高低、機械結構等等，去探索可能可以怎麼樣去操控這個物品</li>
-<li>一個設計良好的物品，是能夠用各種方式向使用者傳達，可以怎麼使用、怎麼樣去對我做哪些動作的「訊號」，也就是「signifiers」</li>
-<li>舉例：鍵盤。<ul>
-<li>每個按鍵都有英文和注音符號的標示，這些標示就是在告訴使用者，如果你想要打出特定的字母或是特定的中文字時，你應該要按哪些特定的按鍵，才能達到你的目的。</li>
-<li>形狀不一樣的按鍵，也直接向使用者傳達說，假設你要按字母的話，是按這種形狀的按鍵，你要按 Enter 鍵的話，你要去找某種特定形狀的按鍵，所以物品的 signifier 也可以用物品的形狀來表達</li>
-<li>鍵盤按鍵的佈局配置 (主鍵盤區、數字鍵區、特殊功能鍵區) 也是一種 signifier</li>
-<li>鍵盤是利用<strong>「視覺」</strong>的 signifiers 向使用者傳遞要在哪個部分執行操作</li>
-</ul>
-</li>
-<li>不僅限於「視覺」，signifiers 有許多不同的表達方式，像是聽覺、觸覺、味覺、體感回饋等等</li>
-<li>舉例：聽覺的 signifiers<ul>
-<li>救護車「喔咿喔咿」的聲音</li>
-<li>救護車是利用「聽覺」的 signifiers，較為急促、高頻地傳達緊急狀況</li>
-</ul>
-</li>
-</ul>
-<h3 id="Feedback-回饋性"><a href="#Feedback-回饋性" class="headerlink" title="Feedback (回饋性)"></a><a href="https://www.youtube.com/watch?v=eA_r19WYzCk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=8">Feedback (回饋性)</a></h3><ul>
-<li>定義：讓使用者可以知道，裝置跟系統有依照使用者的需求在運作</li>
-<li>裝置可以透過使用者的<strong>「各種感官」</strong>給予回饋，像是亮燈提示、發出小小的提示音</li>
-<li>公車下車鈴可以有「聲音提示」，或者是有「閃爍燈號」來回饋給乘客，如此一來，可以讓使用者更好地知道，剛剛做了「按按鈕」的行為，是不是有成功引起這個裝置應該要有的結果</li>
-<li>要注意的地方：這些回饋必須在動作結束之後立刻發生，並且必須要正確的傳達行為所造成的結果</li>
-<li>發生錯誤的回饋性可能因素：沒有立即給予反饋 (按了下車鈴很久才有回饋音效)、給予誤導的反饋 (給的是不恰當的提示音像是答錯的音效)</li>
-</ul>
-<h3 id="Mapping-映射、對應性"><a href="#Mapping-映射、對應性" class="headerlink" title="Mapping (映射、對應性)"></a><a href="https://www.youtube.com/watch?v=zH-o3UjrXo4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=9">Mapping (映射、對應性)</a></h3><ul>
-<li>描述的是一種對應關係</li>
-<li>解釋：Mapping 主要是借用數學裡面名詞而來，主要講述的是「不同集合的元素之間互相映射」的關係</li>
-<li>把「對應性」放在人機互動的框架下＋白話的方式，「對應性」指的是：我們如何把 (1) 裝置的運作、(2) 使用者對裝置做的操作、(3) 裝置產生的效果，聯繫在一起。<ul>
-<li>如果這三者之間的聯繫，可以很自然、很直覺被使用者察覺到、學習起來並且記憶起來的話，我們就會說，這個裝置的設計有很好的對應性</li>
-</ul>
-</li>
-<li>「對應性」有很多種種類<ul>
-<li>「行為」上的相似性所產生的對應性：像是自動筆與筆芯。因為我往下按 (操作裝置的方向) 跟筆芯跑出來的行為 (產生效果的行為)，這個方向是一致的，反映了行為上的對應性，所以對我們來說，這種往下按就會跑出筆芯的設計就會非常好理解和被記得</li>
-<li>「意義」上的相似性所產生的對應性：像是開關燈。手勢往上有增強加大的意義、手勢往下有減弱縮小的意義 → 通常把開關往下按就是把電燈關起來，開關往上按就是電燈打開<ul>
-<li>虛擬的電腦世界也可以看到這樣子對應性的設計：像是 volume slide bar，往上就是音量調大，往下則是音量調小</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>缺少對應性會造成問題的例子：教室一堆的電燈開關。「開關面板的設計」與「電燈的位置」並沒有使用對應性，對使用者來說，很難從開關設計去理解、去學習，到底我要關前排燈要按哪個開關<ul>
-<li>如果要改善，我們可以想想看，如何讓開關的位置與對應電燈的位置有所關聯，像是前排電燈的開關在上排，後排電燈在下排</li>
-<li>像是這樣做一點點簡單的設計調整，其實都可以大大去改善這個缺乏對應性所造成的問題</li>
-</ul>
-</li>
-</ul>
-<h2 id="其他影響好設計要素的原因"><a href="#其他影響好設計要素的原因" class="headerlink" title="其他影響好設計要素的原因"></a><a href="https://www.youtube.com/watch?v=4kG18j201SU&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=10">其他影響好設計要素的原因</a></h2><ul>
-<li>很多好設計都會同時具備一個以上的要素，而一些不好的設計也都同時缺少多個要素</li>
-<li>通常一個讓我們覺得用起來很順手的設計，背後隱藏了很多設計師，還有開發人員的心血與巧思，這些巧思與心血，讓這些設計可以同時具備了多個好的要素，因此使用者在使用的時候，才會覺得這個東西怎麼那麼好用 → 類似「一日之所需，百工斯為備」</li>
-<li>不好的設計，加上其他設計好要素，可以獲得好的改善<ul>
-<li>Signifiers：向使用者「傳遞訊號」，在物體的哪個部分要執行這些操作</li>
-</ul>
-  <img src="3.png"></li>
-<li>好設計的要素改善，會帶給我們什麼影響？消費者的喜好、安全性 (像是駕駛飛機時) 等等。</li>
-<li>不同文化的使用者，對於物品如何呈現這些要素的需求都會不一樣  <img src="4.png"></li>
-<li>因此，要做出好設計的裝置或系統，除了要考慮上述的好設計要素之外，我們也要把一些因素同時納入考量，才可以達到我們所要達到的效果</li>
-</ul>
-<h2 id="新世代與電腦的互動裝置"><a href="#新世代與電腦的互動裝置" class="headerlink" title="新世代與電腦的互動裝置"></a><a href="https://www.youtube.com/watch?v=VoYZJOkg4VM&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=11">新世代與電腦的互動裝置</a></h2><ul>
-<li>思考一下，還有沒有更酷或是更科幻的與電腦互動方式呢？<ul>
-<li>滑鼠、鍵盤 → 觸控螢幕 → ???</li>
-<li>鋼鐵人電影裡面的操作方式：Holographic User Interfaces、Gesture-based User Interfaces、in-air gesture</li>
-<li>鐘點站裡面的倒數計時：on-skin interfaces、touch interaction</li>
-</ul>
-</li>
-<li>Air+Touch: Interweaving Touch &amp; In-Air Gestures<ul>
-<li>在一個智慧型手機的上方加上一個深度的攝影機，透過深度的攝影機，它可以知道現在這個手指跟螢幕之間還有上下的距離，把這些距離的資訊再利用電腦做分析，就可以去偵測手指的位置、可能是什麼樣的手勢</li>
-</ul>
-</li>
-<li>Air+Touch 用了哪些好設計的要素？<ul>
-<li>Mapping 對應性：螢幕上空的位置較遠，觸控螢幕的圓圈較大</li>
-<li>另一個 Mapping 對應性：點擊之後，使用者可以在空中轉圈圈，就像 (音量) 旋鈕一樣，去微調在螢幕上地圖的大小</li>
-</ul>
-</li>
-</ul>
-<br>
-未完待續，stay tuned!]]></content>
-  </entry>
-  <entry>
-    <title>助你行動</title>
-    <url>/2022/01/help-you-take-action/</url>
-    <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
-<span id="more"></span>
-
-<h2 id="前導"><a href="#前導" class="headerlink" title="前導"></a>前導</h2><blockquote>
-<p><span style="color:blue;">短期怕做了什麼而後悔，<br>長期怕沒做什麼而後悔。<br></span></p>
-</blockquote>
-<p>真的！<br>如果那個決定無傷大雅，那為何不去嘗試看看？等之後再來後悔，真的會很漚！</p>
-<blockquote>
-<p><span style="color:blue;">瞎忙是一種懶惰，<br>是思維上的懶惰，<br>是行動上的盲目。<br><br>瞎忙大多是一種掩飾，<br>掩飾自己在逃避少數討厭的當務之急。<br></span></p>
-</blockquote>
-<p>有時候可以停下腳步，思考一下現在的自己到底是不是在「戰術上的拖延」。</p>
-<blockquote>
-<p><span style="color:blue;">滿腦子錯誤的想法，<br>然後根據錯誤的想法做出糟糕的決定，<br>而不是經過深思之後提出不同的意見，<br>乃是人生最大的悲劇之一。<br></span></p>
-</blockquote>
-<p>所以定期更新個「個人系統」吧！可以透過閱讀、反思、與人互動等方法來做到。</p>
-<blockquote>
-<p><span style="color:blue;">注意你的思想，它們會變為言語。<br>注意你的言語，它們會變為行動。<br>注意你的行動，它們會變為習慣。<br>注意你的習慣，它們會變為性格。<br>注意你的性格，它會變為你的命運。<br></span></p>
-</blockquote>
-<p>這跟「習慣 → 思考模式、行為舉止 → 類似蝴蝶效應進而引發後續的種種」的道理很像。</p>
-<blockquote>
-<p><span style="color:blue;">飲食與健康課，牛玉珍老師：<br>「覺察才會帶來改變。」<br>「痠痛才貼布，治標不治本！」<br></span></p>
-</blockquote>
-<p>覺察以後，才會真正開始思考該如何去處理，繼而讓自己能夠有所改變。</p>
-<hr>
-<h2 id="做自己"><a href="#做自己" class="headerlink" title="做自己"></a>做自己</h2><blockquote>
-<p><span style="color:#009A17;">多數人傾向的選擇，<br>不代表就是最好或是最正確的選擇。<br></span></p>
-</blockquote>
-<p>可能比較「安全」是沒錯啦，但某些選擇或許⋯⋯有意想不到的驚喜也說不定🤔</p>
-<blockquote>
-<p><span style="color:#009A17;">你之所以焦慮，<br>是因為你急於過「標配」的人生<br></span></p>
-</blockquote>
-<p>從小我們被教育應該要怎樣怎樣，但人生沒有標準答案啊！</p>
-<blockquote>
-<p><span style="color:#009A17;">我們總以為青春是永駐的，<br>多麼理所當然的想法。<br><br>可今天我們畢業了，<br>如同這四年短暫的高中時光，<br>生命的價值，<br>也恰恰在於它並非永垂不朽，<br>生命因其有限而可貴。<br><br>現在的我深有體會，<br>我之所以在這兒今天說這些，<br>是想提醒大家 time is luck。<br><br>你不要浪費生命為別人而活，<br>要活出你自己的意義，<br>為你珍惜的事物奮鬥，<br>心無旁騖，<br>即便不能如願，<br>至少我們也曾經精彩的活過。<br><br>出自【蜘蛛人驚奇再起2：電光之戰】關的畢業演講<br></span></p>
-</blockquote>
-<p>時間有限，為自己的人生鮮艷上色！</p>
-<blockquote>
-<p><span style="color:#009A17;">生活本來就是自由選擇。<br></span></p>
-</blockquote>
-<p>別完全被「應該怎樣」束縛住啦！</p>
-<hr>
-<h2 id="有目標"><a href="#有目標" class="headerlink" title="有目標"></a>有目標</h2><blockquote>
-<p><span style="color:blue;">一個人能夠踐行一個好的生活或是學習習慣，<br>一定是內心深處有一個十分堅定的目標的人。<br><br>很多成功的人，<br>也許只是比我們目標更清晰，<br>計劃更科學，<br>毅力更堅強，<br>而這些我們都可以通過刻意練習習得，<br>關鍵在於你是否能下定決心。<br></span></p>
-</blockquote>
-<p>讓自己在混亂中整理出一點頭緒。</p>
-<blockquote>
-<p><span style="color:blue;">You know basketball for me<br>was the most important thing<br>So everything I saw<br>whether is TV shows<br>whether it was books I read<br>People I talked to<br>Everything was done<br>to try to learn how to become a better basketball player<br>Everything<br>Everything<br>and so when you have that point of view<br>then literally the world becomes your library<br>to help you to become better at your craft<br><br>出自 <a href="https://youtu.be/98N9kQjCTEc?t=168">KOBE BRYANT Inspiration Interview</a><br></span></p>
-</blockquote>
-<p>當你真心想做一件事，全世界都會幫你。</p>
-<blockquote>
-<p><span style="color:blue;">If you don’t know what you’re aiming for,<br>how will you measure your progress?<br></span></p>
-</blockquote>
-<p>有個方向會比較知道自己在做什麼，不然很可能會覺得自己都在瞎忙。</p>
-<blockquote>
-<p><span style="color:blue;">He who has a “why” to live can bear almost any “how”<br></span></p>
-</blockquote>
-<p>有個底層「why」驅動，上層的 how、what 將呼之欲出。</p>
-<hr>
-<h2 id="計畫"><a href="#計畫" class="headerlink" title="計畫"></a>計畫</h2><p><img src="1.png"></p>
-<p>這圖片足以說明一切xD<br>「處理」前一團混亂令人畏懼，「處理」後較清楚明瞭讓人比較好一一去解決。</p>
-<hr>
-<h2 id="開始行動"><a href="#開始行動" class="headerlink" title="開始行動"></a>開始行動</h2><blockquote>
-<p><span style="color:#009A17;">你不需要很厲害才能開始，<br>但你需要開始才會很厲害！<br></span></p>
-</blockquote>
-<p>剛開始看起來蠢就蠢吧，會漸入佳境的！</p>
-<blockquote>
-<p><span style="color:#009A17;">想做的事情，<br>需要的不是等到有時間，<br>而是立即可推進的一小步行動！<br><br>實現想做的事情，<br>不是因為我有大把時間，<br>而是累積一點一點微小時間的結果。<br><br>有時間做想做的事情，<br>不是動力的問題，<br>不是時間的問題，<br>而是工作流程的問題。<br></span></p>
-</blockquote>
-<p>可以找個時間思考一下該怎麼優化自己的「系統」，讓自己即使沒有很多完整的時間，對於想做的事情，也能運用自己系統的「演算法」去逐步推進進度！</p>
-<blockquote>
-<p><span style="color:#009A17;">行動才是開始，<br>想法不是！<br></span></p>
-</blockquote>
-<p>這還蠻恐怖的！<br>常常腦中有某個想法就會以為「已經達成了」而鬆懈，然後就遲遲不行動，因為大腦已經覺得自己做到了啊，何必急著展開行動呢？<br>這真的很可怕啊！</p>
-<hr>
-<h2 id="過程可能不輕鬆但也要享受其中"><a href="#過程可能不輕鬆但也要享受其中" class="headerlink" title="過程可能不輕鬆但也要享受其中"></a>過程可能不輕鬆但也要享受其中</h2><blockquote>
-<p><span style="color:blue;">People who are focused on the present moment are calm and perform best.<br>Because when fully engaged in their task,<br>there is no room for worry about the outcome.<br><br>People who perform at their peak such as being in the zone<br>don’t describe stress about the future outcome<br>but are deeply engaged in the present process.<br><br>Paradoxically, they achieve the outcome far better.<br></span></p>
-</blockquote>
-<p>專注當下。</p>
-<blockquote>
-<p><span style="color:blue;">Happiness comes from noticing and enjoying the little things in life.<br></span></p>
-</blockquote>
-<p>一定要成為誰、達到什麼成就才幸福快樂？<br>不不不，多注意周遭那些平時習以為常的美好小事物吧！<br>藝術大師羅丹說：「美，到處都有，對於我們的眼睛，不是缺少美，而是缺少發現。」<br>生活中的美俯拾即是，幸福散布在每個角落。</p>
-<hr>
-<h2 id="激勵人心"><a href="#激勵人心" class="headerlink" title="激勵人心"></a>激勵人心</h2><blockquote>
-<p><span style="color:#009A17;">本集金句：<br>１ 好的習慣會引起連鎖效應，慢慢把生活變得越來越好。<br>２ 突破瓶頸的瞬間往往都是來自於之前的許多行動所累積的，直到可以釋放出重大的改變。<br>３ 在生活上每一天、每一刻，我們都是有選擇的，每一次正確的選擇，都會讓我們更靠近我們想要成為的那一種人。<br><br>兩個要點：<br>１ 每天進步一點點，1％就夠。<br>２ 改變自己的身份認同。<br><br>出自「<a href="https://www.youtube.com/watch?v=vQsTC15YXm4">這部影片</a>」底下的留言<br></span></p>
-</blockquote>
-<p>好的微小習慣 → 經過時間一點一滴累積的複利效應 → 巨大的影響</p>
-<blockquote>
-<p><span style="color:#009A17;">說是「<a href="https://www.youtube.com/watch?v=Kdjj4uTONfc">非激勵影片</a>」但很激勵人心：<br>Why not you?<br>為什麼不能是你？<br></span></p>
-</blockquote>
-<p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
-<br>
-希望這篇文章能助你一臂之力💪]]></content>
-  </entry>
-  <entry>
     <title>JavaScript ES6 Cheatsheet</title>
     <url>/2020/04/javascript-es6-cheatsheet/</url>
     <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2391,13 +2391,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
     <url>/2022/03/line-developers-meetup-16/</url>
     <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
@@ -2505,6 +2498,32 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
+    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
+    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
+<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+<span id="more"></span>
+
+<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
+<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
+<p><img src="2.png" alt="2.png"></p>
+<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
+<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
+<p><img src="3.png" alt="3.png"></p>
+<br>
+這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
     <url>/2021/01/microprocessor-project/</url>
     <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
@@ -2564,22 +2583,156 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
-    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
-    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
-<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+    <title>Moleculer CRUD Guide</title>
+    <url>/2020/05/moleculer-crud-guide/</url>
+    <content><![CDATA[<p><a href="/2020/05/moleculer-crud-guide"><img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>之前在「梅竹黑客松開發部」時整理的 guide。</p>
 <span id="more"></span>
 
-<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
-<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
-<p><img src="2.png" alt="2.png"></p>
-<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
-<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
-<p><img src="3.png" alt="3.png"></p>
+<p>因為把其他部分的 code 也貼上來好像不太好，沒有全部放，所以有些地方可能會不知道在表達什麼。<br>但應該還是能從本文中知悉一點大概念～</p>
+<blockquote>
+<p>以 Server / Build Informations Related Service 為例</p>
+</blockquote>
+<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><p>在 git 上建立新分支並用程式碼編輯器打開 project</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 為了接下來的操作，先切換路徑到 mc-landing-server 的所在位置</span></span><br><span class="line"><span class="built_in">cd</span> path/to/mc-landing-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 這時你可能會發現目前所在的 branch 是 master 或是上次離開前待的 branch，</span></span><br><span class="line"><span class="comment">#    我們要切回 dev 這個分支</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 可能有新的 code 被 merged 到 dev，在開始之前，我們得先更新 dev</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 建立並切換到新分支，準備開始這次的任務！</span></span><br><span class="line">git checkout -b feature/build-informations-related-service-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 如果是用 VSCode 當作程式碼編輯器，下下面的指令就能用 VSCode 打開 project</span></span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+
+<h1 id="開始寫-model-囉"><a href="#開始寫-model-囉" class="headerlink" title="開始寫 model 囉"></a>開始寫 model 囉</h1><ol>
+<li><p>先打開 mc-landing API server spec 這個頁面，我們以這個頁面的 schema 定義來寫我們的 model</p>
+ <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informations: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  user_id: &lt;ObjectId&gt;,</span><br><span class="line">  tag_id: &lt;ObjectId&gt;,</span><br><span class="line">  title: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  content: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  created_at: &lt;<span class="built_in">Number</span>&gt;,</span><br><span class="line">  updated_at: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">Index</span>:</span><br><span class="line">&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;</span><br><span class="line">&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">tags</span>: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  name: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  color: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>開好之前定的 schema 以後，我們就準備依樣畫葫蘆囉～ （這就是為什麼我們要分兩階段進行：第一個階段在我們還不需要實際打 code 的時候，專心一意地去想我們的 schema 要怎麼規劃才能符合需求，然後把它寫下來；第二個階段就直接照第一階段寫的，實際去寫成 code。就好像蓋房子的時候：畫藍圖 → 開始動工！）</p>
+</li>
+<li><p>回到 VSCode，在 models 資料夾底下建一個 informations.js （如果是做 Server / Build Posts Related Service 就建 posts.js，以此類推）</p>
+</li>
+<li><p><del>複製 users.js 裡面的 code 到 informations.js 裡面，然後開始改</del></p>
+</li>
+</ol>
+<h2 id="正式開始寫-model-的-code"><a href="#正式開始寫-model-的-code" class="headerlink" title="正式開始寫 model 的 code"></a>正式開始寫 model 的 code</h2><ul>
+<li>從 mongoose 裡面取用 Schema，準備用 Schema 自定義我們的 schema！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; Schema &#125; = Mongoose;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把我們定義的 schema 命名為 informationsSchema（或 postsSchema）</li>
+<li>最下面的 <code>strict: &#39;throw&#39;</code> 是一種 optional 的設定，意思是： 若 insert 一個不符合我們 schema 的新 <a href="https://docs.mongodb.com/manual/core/document/">document</a> 時，會直接 drop 掉也會報出錯誤</li>
+<li>灰色被 comment 掉的部分是我們要改的部分！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="comment">// username: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;,</span></span><br><span class="line">  <span class="comment">// password: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>_id</code> 不用寫上去，mongoose 會幫我們建好～</li>
+<li><code>user_id</code>、<code>tag_id</code> 是指外部 schema (users、tags) 的 _id，所以用 <code>Mongoose.Types.ObjectId</code> 當作 type，這就是資料庫裡面常聽到的 relation， 有看過「<a href="https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1">6 Rules of Thumb for MongoDB Schema Design</a>」這篇文章大概就會懂</li>
+<li><code>required: true</code> 意思是：insert 新 document 時必須有這個欄位 （像 tag 可以之後再加上去，所以就不用 required 了）</li>
+<li>至於有什麼 type 呢？參考 <a href="https://mongoosejs.com/docs/schematypes.html">Mongoose</a> 吧！（我們是用 Mongoose 來建 model）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="attr">user_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tag_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>進行 index 吧！index 是為了方便之後搜尋排序等等的操作。</li>
+<li><code>&#39;text&#39;</code> <a href="https://docs.mongodb.com/manual/core/index-text/">Text indexes</a>? To support text search queries on string content.</li>
+<li><code>1</code>：由小排到大  <code>-1</code>：由大排到小</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informationsSchema.index(&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以 informations 這個 name 把我們定義好的 informationsSchema export 出去</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = Mongoose.model(<span class="string">&#x27;informations&#x27;</span>, informationsSchema);</span><br></pre></td></tr></table></figure>
+
+<h1 id="為待會-service-的參數驗證做準備"><a href="#為待會-service-的參數驗證做準備" class="headerlink" title="為待會 service 的參數驗證做準備"></a>為待會 service 的參數驗證做準備</h1><ol>
+<li>打開 libs/validates.js</li>
+<li>在 users service related 下面，加入新的參數驗證，一樣參考 <a href="https://www.notion.so/mc-landing-API-server-spec-344a5417ba5b40c09a633f1754215931">mc-landing API server spec</a> <br>（type 有哪些？參考 <a href="https://github.com/icebob/fastest-validator">fastest-validator</a>，因為 Moleculer 的參數驗證 based on it）<br>（為什麼不用加入 <code>_id</code>、<code>user_id</code>、<code>tag_id</code> 呢？因為第八行已經寫好 _id 類的了xD）</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// users service related</span></span><br><span class="line"><span class="attr">users</span>: &#123;</span><br><span class="line">  <span class="attr">username</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">password</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">6</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// informations service related</span></span><br><span class="line"><span class="attr">informations</span>: &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h1 id="重頭戲：API-本體（service）"><a href="#重頭戲：API-本體（service）" class="headerlink" title="重頭戲：API 本體（service）"></a>重頭戲：API 本體（service）</h1><ol>
+<li>在 services 資料夾底下新增 informations.service.js（posts.service.js）</li>
+<li>直接複製貼上 users.service.js 的 code 吧！（實在不少行xD 當然自己打過印象會更深刻）</li>
+<li>來改 code 吧！<br>（細節上次開會的時候講過了，如果忘記的話，可以上網查或是直接來問我們～）</li>
+</ol>
+<ul>
+<li>第 4 行改 model 的名字（左右都要改哦～）</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> InformationsModel = <span class="built_in">require</span>(<span class="string">&#x27;../models/informations&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 9 行改 name</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">name: <span class="string">&#x27;informations&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 21 行改 model name</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">model: InformationsModel,</span><br></pre></td></tr></table></figure>
+
+<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><h3 id="addInformation"><a href="#addInformation" class="headerlink" title="addInformation"></a>addInformation</h3><ul>
+<li>從 addUser 改的，以下以此類推</li>
+<li>params 裡面的東西就是 schema 的那些</li>
+<li>為什麼沒 created_at、updated_at？它們由系統生成！</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">addInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">user_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.create(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="getInformation"><a href="#getInformation" class="headerlink" title="getInformation"></a>getInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="getInformations"><a href="#getInformations" class="headerlink" title="getInformations"></a>getInformations</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformations: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">filter</span>: &#123;</span><br><span class="line">      ...ValidateType.filter</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limit</span>: &#123;</span><br><span class="line">      ...ValidateType.limit</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">skip</span>: &#123;</span><br><span class="line">      ...ValidateType.skip</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">sort</span>: &#123;</span><br><span class="line">      ...ValidateType.sort</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findAll(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="modifyInformation"><a href="#modifyInformation" class="headerlink" title="modifyInformation"></a>modifyInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">modifyInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">user_id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立者不會變</span></span><br><span class="line">    <span class="attr">created_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立時間不會變</span></span><br><span class="line">    <span class="attr">updated_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125; <span class="comment">// 由系統生成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.updateOne(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="removeInformation"><a href="#removeInformation" class="headerlink" title="removeInformation"></a>removeInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">removeInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.deleteOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h2><h3 id="create"><a href="#create" class="headerlink" title="create"></a>create</h3><ul>
+<li>中間那一塊就是所謂的「系統生成」啦～</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">create</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.created_at = timestamp;</span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.create(params); <span class="comment">// Return Promise</span></span><br><span class="line">    logger.info(<span class="string">&#x27;Create information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1000</span>, <span class="string">&#x27;Failed to create information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="findOne"><a href="#findOne" class="headerlink" title="findOne"></a>findOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.findOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find information in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="findAll"><a href="#findAll" class="headerlink" title="findAll"></a>findAll</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findAll</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; filter, limit, skip, sort &#125; = params;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> total = <span class="keyword">await</span> model.countDocuments(filter).lean();</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> model.find(filter, <span class="literal">null</span>, &#123; limit, skip, sort &#125;).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find informations successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123; total, data &#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find informations in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="updateOne"><a href="#updateOne" class="headerlink" title="updateOne"></a>updateOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">updateOne</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; _id &#125; = params;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.updateOne(&#123; _id &#125;, params).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Update information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1002</span>, <span class="string">&#x27;Failed to update information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="deleteOne"><a href="#deleteOne" class="headerlink" title="deleteOne"></a>deleteOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">deleteOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.deleteOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Delete information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1003</span>, <span class="string">&#x27;Failed to remove information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="把-API-加進-api-service-js"><a href="#把-API-加進-api-service-js" class="headerlink" title="把 API 加進 api.service.js"></a>把 API 加進 api.service.js</h1><ul>
+<li>直接看第 99 行 ～ 第 125 行那邊</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// No authentication, authorization needed</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/api&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/addUser&#x27;</span>: <span class="string">&#x27;v1.users.addUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// <span class="doctag">TODO:</span> Authentication, Authorization</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/admin&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/getUser&#x27;</span>: <span class="string">&#x27;v1.users.getUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/getUsers&#x27;</span>: <span class="string">&#x27;v1.users.getUsers&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/modifyUser&#x27;</span>: <span class="string">&#x27;v1.users.modifyUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/removeUser&#x27;</span>: <span class="string">&#x27;v1.users.removeUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/addInformation&#x27;</span>: <span class="string">&#x27;v1.informations.addInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/modifyInformation&#x27;</span>: <span class="string">&#x27;v1.informations.modifyInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/removeInformation&#x27;</span>: <span class="string">&#x27;v1.informations.removeInformation&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此一來， <code>npm run dev</code> 後就能夠使用 API 了！</p>
+<blockquote>
+<p>用 Postman 測試的時候，tags_id 隨便給一個值就好（只要是 string 都行）</p>
+</blockquote>
+<h1 id="一些-Q＆A"><a href="#一些-Q＆A" class="headerlink" title="一些 Q＆A"></a>一些 Q＆A</h1><h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>Ｑ：關於 services/student.service.js 裡⾯第 16 ⾏的 adapter 是什麼東西？我 google 不太到我想要的資訊。</strong></p>
+<p>我先 google「adapter 中⽂」，得到了「適配器」這個答案，那因為我不知道「適配器」到底是什麼東西，所有我就改⽤「圖⽚」來搜尋，（欣賞 adapter），欣賞了好幾張以後我猜測它應該就是類似「轉接頭」的東西吧？</p>
+<p>「轉接頭」跟「開發」到底有什麼關係啊？我⼼中萌⽣了這個疑問。</p>
+<p>後來我再回去看 students.service.js，裡⾯第 19 ⾏有個叫「MongooseAdapter」的 keyword，想說這詞結合了我們開發⽤的「mongoose」⼜有個「adapter」，也許 google 它會有我們想得到的資訊吧？</p>
+<p>搜尋「MongooseAdapter」得到了很雜的資訊，改搜尋「database adapter」，上⾯的⽂字敘述看了還是沒很清楚，就⼜改⽤「圖⽚」，找到了這張：</p>
+<p><img src="2.png"></p>
+<p>再結合剛剛猜測的「轉接頭」，我就認為說「adapter」就是⼀個讓使⽤者更好操作 DB 的「轉接頭」，我們只要專注在別⼈幫我們包好、⽐較好寫、不必擔⼼語⾔障礙的「這⼀端」就好，「另外⼀端」就讓 adapter 去跟 DB 做交涉。</p>
+<h2 id="JavaScript-解構"><a href="#JavaScript-解構" class="headerlink" title="JavaScript 解構"></a>JavaScript 解構</h2><p><strong>Ｑ：還有想簡單問⼀下 StudentModel 裡⾯的 param 為什麼 ValidateTypes 前⾯要加「…」？ （services/students.service.js 的 addStudent 的 params)</strong></p>
+<p>那個是 JS 的「解構」語法。</p>
+<p>我下的關鍵字是「js …」，google 會推薦我搜尋「js …args」，於是我找到了「<a href="https://stackoverflow.com/questions/42184674/what-is-the-meaning-of-args-three-dots-in-a-function-definition">What is the meaning of “…args” (three dots) in a function definition?</a>」，⼜間接找到了「Spread syntax」，看⼀看裡⾯的範例就⼤概知道那是⽤來做什麼的了。</p>
+<p>舉個例⼦，有個 object 定義為 <code>me = &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;</code></p>
+<p>當我要定義另外⼀個 object 但沒加上 <code>...</code> 時：</p>
+<p><code>moreAboutMe = &#123; me, gender: &#39;male&#39; &#125;</code> 它會是 <code>&#123; &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;, gender: &#39;male&#39; &#125;</code></p>
+<p>另外⼀種也就是有加上 <code>...</code> 的版本：</p>
+<p><code>moreAboutMe = &#123; ...me, gender: &#39;male&#39; &#125;</code> 它就會是 <code>&#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39;, gender: &#39;male&#39; &#125;</code></p>
+<p>從上⾯的例⼦可以看出它發揮「解構」的功⽤了！</p>
+<h2 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h2><p><strong>Ｑ：validator 那邊，你給的⽂檔只有 validateBeforeSave 跟 validateSync ⽽已，沒有看到類似validator 的寫法。可以說是在哪⼀段有嗎？我是有看到 mongoDB 有 validate 這個 commend 跟這個有關係嗎？</strong></p>
+<p>後來我在左側欄位「Guides」底下有個叫「Validation」的那邊有看到〜 <a href="https://mongoosejs.com/docs/validation.html#custom-validators">Custom Validators</a></p>
+<h2 id="type-forbidden"><a href="#type-forbidden" class="headerlink" title="type forbidden"></a>type forbidden</h2><p><strong>Ｑ：然後最後⾯有⼀個 key 是⽤來寄推薦信的驗證碼的，這裡 type <code>forbidden</code> 這個是你訂的嗎？ 因為我去 mongoDB 查沒有這個 type，這個意思是說使⽤者不能輸⼊的意思嗎？所以打這樣電腦會⾃動⽣ key？</strong></p>
+<p>可能是為了防⽌ client 在 addStudent 的時候也⾃⼰指定了 key 的值，所以⽤「forbidden」把它擋下來。</p>
+<p>我猜 key 可能是讓 account service 來⽣成，因為那邊有個「TODO{ create password to accounts service」</p>
+<p>等等……好像真的找不到 forbidden 的 type 誒XD</p>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p><strong>Ｑ：第 38 ⾏的 handler 是哪裡的？ mongoDB mongoose？ 不太理解 handler 的意思🤔🤔</strong></p>
+<p>我覺得它的作⽤應該就像 eggjs「controller 調⽤ service」那樣，所以應該是屬於「Moleculer」的，也許可以把「handler」想成像是 addStudent 的 function 本體，上⾯的 params 就僅僅是定義參數的規則。</p>
 <br>
-這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
-        <tag>Logic Pro</tag>
+        <tag>JavaScript</tag>
+        <tag>Moleculer</tag>
+        <tag>CRUD</tag>
       </tags>
   </entry>
   <entry>
@@ -2756,159 +2909,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>推薦大家這個方便操作＆查看 MongoDB 的圖形化介面：<a href="https://www.mongodb.com/products/compass">MongoDB Compass</a><br>（Easily explore and manipulate your database with Compass, the GUI for MongoDB.）</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-  </entry>
-  <entry>
-    <title>Moleculer CRUD Guide</title>
-    <url>/2020/05/moleculer-crud-guide/</url>
-    <content><![CDATA[<p><a href="/2020/05/moleculer-crud-guide"><img src="https://images.unsplash.com/photo-1466278313810-9aca9abea861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>之前在「梅竹黑客松開發部」時整理的 guide。</p>
-<span id="more"></span>
-
-<p>因為把其他部分的 code 也貼上來好像不太好，沒有全部放，所以有些地方可能會不知道在表達什麼。<br>但應該還是能從本文中知悉一點大概念～</p>
-<blockquote>
-<p>以 Server / Build Informations Related Service 為例</p>
-</blockquote>
-<h1 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h1><p>在 git 上建立新分支並用程式碼編輯器打開 project</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 為了接下來的操作，先切換路徑到 mc-landing-server 的所在位置</span></span><br><span class="line"><span class="built_in">cd</span> path/to/mc-landing-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 這時你可能會發現目前所在的 branch 是 master 或是上次離開前待的 branch，</span></span><br><span class="line"><span class="comment">#    我們要切回 dev 這個分支</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 可能有新的 code 被 merged 到 dev，在開始之前，我們得先更新 dev</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 建立並切換到新分支，準備開始這次的任務！</span></span><br><span class="line">git checkout -b feature/build-informations-related-service-1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 如果是用 VSCode 當作程式碼編輯器，下下面的指令就能用 VSCode 打開 project</span></span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
-
-<h1 id="開始寫-model-囉"><a href="#開始寫-model-囉" class="headerlink" title="開始寫 model 囉"></a>開始寫 model 囉</h1><ol>
-<li><p>先打開 mc-landing API server spec 這個頁面，我們以這個頁面的 schema 定義來寫我們的 model</p>
- <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informations: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  user_id: &lt;ObjectId&gt;,</span><br><span class="line">  tag_id: &lt;ObjectId&gt;,</span><br><span class="line">  title: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  content: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  created_at: &lt;<span class="built_in">Number</span>&gt;,</span><br><span class="line">  updated_at: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">Index</span>:</span><br><span class="line">&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;</span><br><span class="line">&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;</span><br><span class="line">&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">tags</span>: &#123;</span><br><span class="line">  <span class="attr">_id</span>: &lt;ObjectId&gt;,</span><br><span class="line">  name: &lt;<span class="built_in">String</span>&gt;,</span><br><span class="line">  color: &lt;<span class="built_in">Number</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>開好之前定的 schema 以後，我們就準備依樣畫葫蘆囉～ （這就是為什麼我們要分兩階段進行：第一個階段在我們還不需要實際打 code 的時候，專心一意地去想我們的 schema 要怎麼規劃才能符合需求，然後把它寫下來；第二個階段就直接照第一階段寫的，實際去寫成 code。就好像蓋房子的時候：畫藍圖 → 開始動工！）</p>
-</li>
-<li><p>回到 VSCode，在 models 資料夾底下建一個 informations.js （如果是做 Server / Build Posts Related Service 就建 posts.js，以此類推）</p>
-</li>
-<li><p><del>複製 users.js 裡面的 code 到 informations.js 裡面，然後開始改</del></p>
-</li>
-</ol>
-<h2 id="正式開始寫-model-的-code"><a href="#正式開始寫-model-的-code" class="headerlink" title="正式開始寫 model 的 code"></a>正式開始寫 model 的 code</h2><ul>
-<li>從 mongoose 裡面取用 Schema，準備用 Schema 自定義我們的 schema！</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; Schema &#125; = Mongoose;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>把我們定義的 schema 命名為 informationsSchema（或 postsSchema）</li>
-<li>最下面的 <code>strict: &#39;throw&#39;</code> 是一種 optional 的設定，意思是： 若 insert 一個不符合我們 schema 的新 <a href="https://docs.mongodb.com/manual/core/document/">document</a> 時，會直接 drop 掉也會報出錯誤</li>
-<li>灰色被 comment 掉的部分是我們要改的部分！</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="comment">// username: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;,</span></span><br><span class="line">  <span class="comment">// password: &#123;</span></span><br><span class="line">  <span class="comment">//   type: String,</span></span><br><span class="line">  <span class="comment">//   required: true</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>_id</code> 不用寫上去，mongoose 會幫我們建好～</li>
-<li><code>user_id</code>、<code>tag_id</code> 是指外部 schema (users、tags) 的 _id，所以用 <code>Mongoose.Types.ObjectId</code> 當作 type，這就是資料庫裡面常聽到的 relation， 有看過「<a href="https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1">6 Rules of Thumb for MongoDB Schema Design</a>」這篇文章大概就會懂</li>
-<li><code>required: true</code> 意思是：insert 新 document 時必須有這個欄位 （像 tag 可以之後再加上去，所以就不用 required 了）</li>
-<li>至於有什麼 type 呢？參考 <a href="https://mongoosejs.com/docs/schematypes.html">Mongoose</a> 吧！（我們是用 Mongoose 來建 model）</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> informationsSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  <span class="attr">user_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tag_id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: Mongoose.Types.ObjectId</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">strict</span>: <span class="string">&#x27;throw&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>進行 index 吧！index 是為了方便之後搜尋排序等等的操作。</li>
-<li><code>&#39;text&#39;</code> <a href="https://docs.mongodb.com/manual/core/index-text/">Text indexes</a>? To support text search queries on string content.</li>
-<li><code>1</code>：由小排到大  <code>-1</code>：由大排到小</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">informationsSchema.index(&#123; <span class="attr">title</span>: <span class="string">&#x27;text&#x27;</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">created_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">updated_at</span>: -<span class="number">1</span> &#125;);</span><br><span class="line">informationsSchema.index(&#123; <span class="attr">tag_id</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>以 informations 這個 name 把我們定義好的 informationsSchema export 出去</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = Mongoose.model(<span class="string">&#x27;informations&#x27;</span>, informationsSchema);</span><br></pre></td></tr></table></figure>
-
-<h1 id="為待會-service-的參數驗證做準備"><a href="#為待會-service-的參數驗證做準備" class="headerlink" title="為待會 service 的參數驗證做準備"></a>為待會 service 的參數驗證做準備</h1><ol>
-<li>打開 libs/validates.js</li>
-<li>在 users service related 下面，加入新的參數驗證，一樣參考 <a href="https://www.notion.so/mc-landing-API-server-spec-344a5417ba5b40c09a633f1754215931">mc-landing API server spec</a> <br>（type 有哪些？參考 <a href="https://github.com/icebob/fastest-validator">fastest-validator</a>，因為 Moleculer 的參數驗證 based on it）<br>（為什麼不用加入 <code>_id</code>、<code>user_id</code>、<code>tag_id</code> 呢？因為第八行已經寫好 _id 類的了xD）</li>
-</ol>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// users service related</span></span><br><span class="line"><span class="attr">users</span>: &#123;</span><br><span class="line">  <span class="attr">username</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">password</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">6</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// informations service related</span></span><br><span class="line"><span class="attr">informations</span>: &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">updated_at</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h1 id="重頭戲：API-本體（service）"><a href="#重頭戲：API-本體（service）" class="headerlink" title="重頭戲：API 本體（service）"></a>重頭戲：API 本體（service）</h1><ol>
-<li>在 services 資料夾底下新增 informations.service.js（posts.service.js）</li>
-<li>直接複製貼上 users.service.js 的 code 吧！（實在不少行xD 當然自己打過印象會更深刻）</li>
-<li>來改 code 吧！<br>（細節上次開會的時候講過了，如果忘記的話，可以上網查或是直接來問我們～）</li>
-</ol>
-<ul>
-<li>第 4 行改 model 的名字（左右都要改哦～）</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> InformationsModel = <span class="built_in">require</span>(<span class="string">&#x27;../models/informations&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第 9 行改 name</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">name: <span class="string">&#x27;informations&#x27;</span>,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第 21 行改 model name</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">model: InformationsModel,</span><br></pre></td></tr></table></figure>
-
-<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><h3 id="addInformation"><a href="#addInformation" class="headerlink" title="addInformation"></a>addInformation</h3><ul>
-<li>從 addUser 改的，以下以此類推</li>
-<li>params 裡面的東西就是 schema 的那些</li>
-<li>為什麼沒 created_at、updated_at？它們由系統生成！</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">addInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">user_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.create(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="getInformation"><a href="#getInformation" class="headerlink" title="getInformation"></a>getInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="getInformations"><a href="#getInformations" class="headerlink" title="getInformations"></a>getInformations</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">getInformations: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">filter</span>: &#123;</span><br><span class="line">      ...ValidateType.filter</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limit</span>: &#123;</span><br><span class="line">      ...ValidateType.limit</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">skip</span>: &#123;</span><br><span class="line">      ...ValidateType.skip</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">sort</span>: &#123;</span><br><span class="line">      ...ValidateType.sort</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.findAll(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="modifyInformation"><a href="#modifyInformation" class="headerlink" title="modifyInformation"></a>modifyInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">modifyInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tag_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.title</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">content</span>: &#123;</span><br><span class="line">      ...ValidateType.informations.content</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">user_id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立者不會變</span></span><br><span class="line">    <span class="attr">created_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125;, <span class="comment">// 創立時間不會變</span></span><br><span class="line">    <span class="attr">updated_at</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;forbidden&#x27;</span> &#125; <span class="comment">// 由系統生成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.updateOne(ctx.params);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="removeInformation"><a href="#removeInformation" class="headerlink" title="removeInformation"></a>removeInformation</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">removeInformation: &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">_id</span>: &#123;</span><br><span class="line">      ...ValidateType._id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">handler</span>(<span class="params">ctx</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; _id &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.deleteOne(&#123; _id &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h2><h3 id="create"><a href="#create" class="headerlink" title="create"></a>create</h3><ul>
-<li>中間那一塊就是所謂的「系統生成」啦～</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">create</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.created_at = timestamp;</span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.create(params); <span class="comment">// Return Promise</span></span><br><span class="line">    logger.info(<span class="string">&#x27;Create information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1000</span>, <span class="string">&#x27;Failed to create information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="findOne"><a href="#findOne" class="headerlink" title="findOne"></a>findOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.findOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find information in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="findAll"><a href="#findAll" class="headerlink" title="findAll"></a>findAll</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">findAll</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; filter, limit, skip, sort &#125; = params;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> total = <span class="keyword">await</span> model.countDocuments(filter).lean();</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> model.find(filter, <span class="literal">null</span>, &#123; limit, skip, sort &#125;).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Find informations successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123; total, data &#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1001</span>, <span class="string">&#x27;Failed to find informations in database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="updateOne"><a href="#updateOne" class="headerlink" title="updateOne"></a>updateOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">updateOne</span>(<span class="params">params</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; _id &#125; = params;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="comment">/* eslint-disable no-param-reassign */</span></span><br><span class="line">  params.updated_at = timestamp;</span><br><span class="line">  <span class="comment">/* eslint-enable no-param-reassign */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.updateOne(&#123; _id &#125;, params).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Update information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1002</span>, <span class="string">&#x27;Failed to update information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="deleteOne"><a href="#deleteOne" class="headerlink" title="deleteOne"></a>deleteOne</h3><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="title">deleteOne</span>(<span class="params">filter</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; adapter, logger &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; model &#125; = adapter;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> model.deleteOne(filter).lean();</span><br><span class="line">    logger.info(<span class="string">&#x27;Delete information successfully&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> result.n &gt; <span class="number">0</span> ? &#123; <span class="attr">success</span>: <span class="literal">true</span> &#125; : &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    logger.error(error);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ErrorRes(<span class="number">1003</span>, <span class="string">&#x27;Failed to remove information to database&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="把-API-加進-api-service-js"><a href="#把-API-加進-api-service-js" class="headerlink" title="把 API 加進 api.service.js"></a>把 API 加進 api.service.js</h1><ul>
-<li>直接看第 99 行 ～ 第 125 行那邊</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// No authentication, authorization needed</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/api&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/addUser&#x27;</span>: <span class="string">&#x27;v1.users.addUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// <span class="doctag">TODO:</span> Authentication, Authorization</span></span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/admin&#x27;</span>,</span><br><span class="line">  <span class="attr">aliases</span>: &#123;</span><br><span class="line">    <span class="comment">// users</span></span><br><span class="line">    <span class="string">&#x27;POST /users/getUser&#x27;</span>: <span class="string">&#x27;v1.users.getUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/getUsers&#x27;</span>: <span class="string">&#x27;v1.users.getUsers&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/modifyUser&#x27;</span>: <span class="string">&#x27;v1.users.modifyUser&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /users/removeUser&#x27;</span>: <span class="string">&#x27;v1.users.removeUser&#x27;</span>,</span><br><span class="line">    <span class="comment">// informations</span></span><br><span class="line">    <span class="string">&#x27;POST /informations/addInformation&#x27;</span>: <span class="string">&#x27;v1.informations.addInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformation&#x27;</span>: <span class="string">&#x27;v1.informations.getInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/getInformations&#x27;</span>: <span class="string">&#x27;v1.informations.getInformations&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/modifyInformation&#x27;</span>: <span class="string">&#x27;v1.informations.modifyInformation&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;POST /informations/removeInformation&#x27;</span>: <span class="string">&#x27;v1.informations.removeInformation&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mappingPolicy</span>: <span class="string">&#x27;restrict&#x27;</span>,</span><br><span class="line">  <span class="attr">bodyParsers</span>: &#123;</span><br><span class="line">    <span class="attr">json</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如此一來， <code>npm run dev</code> 後就能夠使用 API 了！</p>
-<blockquote>
-<p>用 Postman 測試的時候，tags_id 隨便給一個值就好（只要是 string 都行）</p>
-</blockquote>
-<h1 id="一些-Q＆A"><a href="#一些-Q＆A" class="headerlink" title="一些 Q＆A"></a>一些 Q＆A</h1><h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>Ｑ：關於 services/student.service.js 裡⾯第 16 ⾏的 adapter 是什麼東西？我 google 不太到我想要的資訊。</strong></p>
-<p>我先 google「adapter 中⽂」，得到了「適配器」這個答案，那因為我不知道「適配器」到底是什麼東西，所有我就改⽤「圖⽚」來搜尋，（欣賞 adapter），欣賞了好幾張以後我猜測它應該就是類似「轉接頭」的東西吧？</p>
-<p>「轉接頭」跟「開發」到底有什麼關係啊？我⼼中萌⽣了這個疑問。</p>
-<p>後來我再回去看 students.service.js，裡⾯第 19 ⾏有個叫「MongooseAdapter」的 keyword，想說這詞結合了我們開發⽤的「mongoose」⼜有個「adapter」，也許 google 它會有我們想得到的資訊吧？</p>
-<p>搜尋「MongooseAdapter」得到了很雜的資訊，改搜尋「database adapter」，上⾯的⽂字敘述看了還是沒很清楚，就⼜改⽤「圖⽚」，找到了這張：</p>
-<p><img src="2.png"></p>
-<p>再結合剛剛猜測的「轉接頭」，我就認為說「adapter」就是⼀個讓使⽤者更好操作 DB 的「轉接頭」，我們只要專注在別⼈幫我們包好、⽐較好寫、不必擔⼼語⾔障礙的「這⼀端」就好，「另外⼀端」就讓 adapter 去跟 DB 做交涉。</p>
-<h2 id="JavaScript-解構"><a href="#JavaScript-解構" class="headerlink" title="JavaScript 解構"></a>JavaScript 解構</h2><p><strong>Ｑ：還有想簡單問⼀下 StudentModel 裡⾯的 param 為什麼 ValidateTypes 前⾯要加「…」？ （services/students.service.js 的 addStudent 的 params)</strong></p>
-<p>那個是 JS 的「解構」語法。</p>
-<p>我下的關鍵字是「js …」，google 會推薦我搜尋「js …args」，於是我找到了「<a href="https://stackoverflow.com/questions/42184674/what-is-the-meaning-of-args-three-dots-in-a-function-definition">What is the meaning of “…args” (three dots) in a function definition?</a>」，⼜間接找到了「Spread syntax」，看⼀看裡⾯的範例就⼤概知道那是⽤來做什麼的了。</p>
-<p>舉個例⼦，有個 object 定義為 <code>me = &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;</code></p>
-<p>當我要定義另外⼀個 object 但沒加上 <code>...</code> 時：</p>
-<p><code>moreAboutMe = &#123; me, gender: &#39;male&#39; &#125;</code> 它會是 <code>&#123; &#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39; &#125;, gender: &#39;male&#39; &#125;</code></p>
-<p>另外⼀種也就是有加上 <code>...</code> 的版本：</p>
-<p><code>moreAboutMe = &#123; ...me, gender: &#39;male&#39; &#125;</code> 它就會是 <code>&#123; name: &#39;Tim&#39;, college: &#39;NCTU&#39;, gender: &#39;male&#39; &#125;</code></p>
-<p>從上⾯的例⼦可以看出它發揮「解構」的功⽤了！</p>
-<h2 id="Validator"><a href="#Validator" class="headerlink" title="Validator"></a>Validator</h2><p><strong>Ｑ：validator 那邊，你給的⽂檔只有 validateBeforeSave 跟 validateSync ⽽已，沒有看到類似validator 的寫法。可以說是在哪⼀段有嗎？我是有看到 mongoDB 有 validate 這個 commend 跟這個有關係嗎？</strong></p>
-<p>後來我在左側欄位「Guides」底下有個叫「Validation」的那邊有看到〜 <a href="https://mongoosejs.com/docs/validation.html#custom-validators">Custom Validators</a></p>
-<h2 id="type-forbidden"><a href="#type-forbidden" class="headerlink" title="type forbidden"></a>type forbidden</h2><p><strong>Ｑ：然後最後⾯有⼀個 key 是⽤來寄推薦信的驗證碼的，這裡 type <code>forbidden</code> 這個是你訂的嗎？ 因為我去 mongoDB 查沒有這個 type，這個意思是說使⽤者不能輸⼊的意思嗎？所以打這樣電腦會⾃動⽣ key？</strong></p>
-<p>可能是為了防⽌ client 在 addStudent 的時候也⾃⼰指定了 key 的值，所以⽤「forbidden」把它擋下來。</p>
-<p>我猜 key 可能是讓 account service 來⽣成，因為那邊有個「TODO{ create password to accounts service」</p>
-<p>等等……好像真的找不到 forbidden 的 type 誒XD</p>
-<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p><strong>Ｑ：第 38 ⾏的 handler 是哪裡的？ mongoDB mongoose？ 不太理解 handler 的意思🤔🤔</strong></p>
-<p>我覺得它的作⽤應該就像 eggjs「controller 調⽤ service」那樣，所以應該是屬於「Moleculer」的，也許可以把「handler」想成像是 addStudent 的 function 本體，上⾯的 params 就僅僅是定義參數的規則。</p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Moleculer</tag>
-        <tag>CRUD</tag>
-      </tags>
   </entry>
   <entry>
     <title>📌 置頂貼文</title>
@@ -3547,6 +3547,47 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用 SSL For Free 免費申請 SSL 憑證</title>
     <url>/2022/04/ssl-for-free/</url>
     <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
@@ -3812,6 +3853,73 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       <tags>
         <tag>Logic Pro</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>抓取某網站特定 URL 並做些處理</title>
+    <url>/2022/10/wget-and-grep-urls/</url>
+    <content><![CDATA[<p>👨‍💻 情境題：</p>
+<p>身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 <code>https://my.shorturl.com/3lls9f</code> 這樣的短網址，請你拿到它們分別導向的原網址，並用 <code>3lls9f</code> 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的事情 (導向原網址)。</p>
+<p>這麼做的原因是，團隊即將 sunset <code>https://my.shorturl.com/</code>，也就是在沒有 insert 新 record 的情況下 <code>https://my.shorturl.com/3lls9f</code> 將會無效，因為另外一種短網址服務它會找不到 <code>3lls9f</code> 這個 id 而發生錯誤！</p>
+<p>如果是你，你會怎麼做？簡單分享一下我的作法。</p>
+<span id="more"></span>
+
+<h3 id="以團隊部落格的例子來說"><a href="#以團隊部落格的例子來說" class="headerlink" title="以團隊部落格的例子來說"></a>以團隊部落格的例子來說</h3><p><a href="https://stackoverflow.com/questions/28933031/using-wget-to-download-website-ignoring-image-and-videos/28933140#28933140">Stack Overflow 是我們的好朋友</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -r -l 0 -nd -R png,jpg,jpeg,gif,mpg,mkv https://blog.myteam.com/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>先透過 <code>wget</code> 來抓取所有 <code>https://blog.myteam.com/</code> domain 底下的 html 檔（因為短網址連結會藏在裡面）</li>
+<li><code>-r -l 0</code>：使用 recursive retrieving 的方式來抓，因為 <code>https://blog.myteam.com/</code> 底下還會有 <code>https://blog.myteam.com/subpage/</code> 等等 depth 更深的 subpage<ul>
+<li>那因為 <code>-r</code> (<code>--recursive</code>) 預設的 depth 為 5，我不確定團隊部落格會不會有超過深度 5 的 subpage，所以我還加上了 <code>-l 0</code> 來做 infinite recursion (這邊的 <code>0</code> 相當於 <code>inf</code>)</li>
+<li>詳細可透過 <code>man wget</code> 來查找</li>
+</ul>
+</li>
+<li><code>-nd</code> (<code>--no-directories</code>)：Do not create a hierarchy of directories when retrieving recursively.<ul>
+<li>我希望抓下來的檔案能在同一個資料夾層級下，因為我發現不這樣做有些檔案會被忽略掉</li>
+<li>像是如果目前已經存在一個叫做 <code>en</code> 的資料夾，要再抓 <code>/en/index.html</code> 的時候，會因為已經有東西叫做 <code>en</code> 而被略過（我那時候是這樣）</li>
+</ul>
+</li>
+<li><code>-R png,jpg,jpeg,gif,mpg,mkv</code>：抓的時候忽略掉 <code>png,jpg,jpeg,gif,mpg,mkv</code> 這些<ul>
+<li><code>-R</code> 即為 <code>--reject</code></li>
+<li>沒加上這個，我放著等了超過一小時還在跑⋯⋯</li>
+<li>原因是因為它不斷在抓跟 WordPress 有關的靜態檔，那些超多的⋯⋯</li>
+<li>反正我只需要 html 檔，忽略掉那些根本無關緊要，反而還省了我很多等待時間！</li>
+</ul>
+</li>
+</ul>
+<h3 id="那-GitHub-repo-呢？"><a href="#那-GitHub-repo-呢？" class="headerlink" title="那 GitHub repo 呢？"></a>那 GitHub repo 呢？</h3><p>我是直接用 GitHub 左上角 <code>Search or jump to…</code> 來搜，然後看哪些 repo 被搜出來，我再 clone 下來那些 repo。</p>
+<h3 id="拿到檔案然後勒？"><a href="#拿到檔案然後勒？" class="headerlink" title="拿到檔案然後勒？"></a>拿到檔案然後勒？</h3><p><a href="https://stackoverflow.com/questions/49313160/removing-duplicates-in-grep-output/49313231#49313231">Stack Overflow 真的是我們的好朋友⋯⋯</a></p>
+<p>抓出所有短網址，然後彙整成一份清單：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -ohr <span class="string">&quot;my.shorturl.com/[a-zA-Z0-9._-~]*&quot;</span> * | sort -u &gt; ../output.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>grep</code> 是一款抓取特定 pattern 文字的好工具！</li>
+<li><code>-o</code>：Prints only the matching part of the lines.<ul>
+<li>因為我只需要短網址本身，前後不相關的文字我不需要</li>
+</ul>
+</li>
+<li><code>-h</code>：Never print filename headers (i.e. filenames) with output lines.<ul>
+<li>檔名在我這個 case 當中根本不重要，擺著反而會干擾到後面的步驟</li>
+</ul>
+</li>
+<li><code>-r</code>：Recursively search subdirectories listed.<ul>
+<li>上例的部落格是不需要，但 GitHub repo 可就有很多 subdirectories，沒加上這個 option 不行！</li>
+</ul>
+</li>
+<li><code>&quot;my.shorturl.com/[a-zA-Z0-9._-~]*&quot;</code> 是那個短網址的 pattern<ul>
+<li>沒加上 <code>https://</code> 是因為我發現有幾個是 <code>http://</code></li>
+</ul>
+</li>
+<li>用 <code>*</code> (acts as a wildcard) 代表我想找這個目錄底下的所有東東</li>
+<li><code>|</code>：透過這個將 <code>grep</code> 的 standard output stream 導到 <code>sort</code> 為它的 input</li>
+<li><code>sort -u</code>：為了拔掉重複的 URL（因為有很多重複的）</li>
+<li><code>&gt; ../output.txt</code>：將結果輸出成文字檔（for 下一步）</li>
+</ul>
+<h3 id="取得原網址"><a href="#取得原網址" class="headerlink" title="取得原網址"></a>取得原網址</h3><p>使用「<a href="https://unshorten.xyz/">unshorten.xyz - unshorten multiple URLs</a>」這款線上工具來做。</p>
+<p>很單純地，就是 copy and paste <code>output.txt</code> 的內容到上面，再將 resolve 出來的原網址們 copy and paste 到本地端。</p>
+<p>本來是想說要不要用 Python 寫個 script 來做，但居然已經有人做這個服務，就不用再多此一舉了😂</p>
+<h3 id="存進資料庫"><a href="#存進資料庫" class="headerlink" title="存進資料庫"></a>存進資料庫</h3><p>找團隊有用到跟短網址 table 寫入有關的 function 的 repo 和相對應的 route，copy and paste 成一個新的 path，<code>npm run dev</code> 跑起來以後，借助 Postman 來 call 那隻 API，原因是短網址和原網址清單的文字檔在本地端，利用這樣的方式，就能透過 <code>fs</code> module 來讀，拿到相對應的短網址和原網址以後，藉此 insert 新 record 進 DB。</p>
+<br>
+原本以為這個 task 會有大量的「重複性人工操作」，沒想到居然能找到比較優雅的做法，也是挺有意思的～]]></content>
   </entry>
   <entry>
     <title>用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</title>
@@ -4147,46 +4255,5 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
 <br>
 是不是真的很方便呢？]]></content>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
   </entry>
 </search>
