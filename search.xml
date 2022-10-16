@@ -2911,12 +2911,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
-    <title>📌 置頂貼文</title>
-    <url>/2022/10/pinned-post/</url>
-    <content><![CDATA[<p>🎯 <a href="https://kanido386.notion.site/What-I-m-Working-On-e20a93cefaa749ca9ad958191ce8bb5a">What I’m Working On</a><br>🎧 <a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>用 PlantUML 畫 Sequence Diagram</title>
     <url>/2022/10/plantuml-sequence-diagram/</url>
     <content><![CDATA[<p>簡單好用！</p>
@@ -3580,44 +3574,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
 <h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
 <hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規� system is issuing your certificate at the moment. This page will refresh automatically every few seconds. → Your certificate has been issued and is ready for installation. To continue, please follow the steps below.</li>
-<li>選你的 Server Type，通常不是 Apache 就是 NGINX，我是 NGINX → Download Certificate (.zip) → Next Step</li>
-<li>Follow the steps below to install your certificate → 照著指示做吧！接下來我以 NGINX 為例，Apache 的設定或許也是照著指示做就能順利完成</li>
-<li>Unzip 剛剛載下來的 zip → 裡面的東西都傳到 EC2<br><code>scp -i [/path/to/EC2/XXX].pem ca_bundle.crt certificate.crt private.key ec2-user@[Elastic IP Address]:~</code></li>
-<li>回到 EC2 → 進到你剛剛傳東西進去的目錄底下 → <code>cat certificate.crt ca_bundle.crt &gt;&gt; certificate.crt</code> → 跳出 <code>cat: certificate.crt: input file is output file</code> 不用理它</li>
-<li><code>sudo mv certificate.crt private.key /etc/ssl/</code></li>
-<li>輸入 <code>history | grep nginx</code> 看你當初是去哪設定 nginx 的，用 vim 打開來編輯吧！（我的是  <code>sudo vim /etc/nginx/nginx.conf</code>）</li>
-<li>下面的東西加進去！（加在哪要稍微注意一下，我 port 是 3000 所以 <code>proxy_pass http://localhost:3000;</code>）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    listen               443 ssl http2;</span><br><span class="line">    listen               [::]:443 ssl http2;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ssl                  on;</span><br><span class="line">    ssl_certificate      /etc/ssl/certificate.crt; </span><br><span class="line">    ssl_certificate_key  /etc/ssl/private.key;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    server_name  _;</span><br><span class="line">    access_log   /var/log/nginx/nginx.vhost.access.log;</span><br><span class="line">    error_log    /var/log/nginx/nginx.vhost.error.log;</span><br><span class="line"></span><br><span class="line">    # Load configuration files for the default server block.</span><br><span class="line">    include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="22">
-<li><code>sudo service nginx restart</code> 重啟 web server</li>
-<li>回到最一開始 ZeroSSL 頁面 → Check Certificate → 完成！</li>
-<li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
 <h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
 <p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
 <p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
@@ -3640,37 +3596,42 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
-    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
-    <url>/2021/12/synth-one-with-logic-pro/</url>
-    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
+    <title>用 SSL For Free 免費申請 SSL 憑證</title>
+    <url>/2022/04/ssl-for-free/</url>
+    <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
 <span id="more"></span>
 
-<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
-<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
-<li>用 USB 線，將 iPad 連接到 MacBook</li>
-<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
-<li>打開 Synth One，然後先放著</li>
-<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
-<li>「Use External Instrument plug-in」記得勾起來</li>
-<li>MIDI Destination 選 iPad</li>
-</ul>
- <img src="2.png" alt="2.png"></li>
-<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
+<ol>
+<li>進到 <a href="https://www.sslforfree.com/">SSL For Free</a> → 點 Create Free SSL Certificate → 註冊 or 登入</li>
+<li>點左側 Dashboard → 下面有個 Create SSL Certificate，點右邊的 New Certificate</li>
+<li>在 Enter Domains 的地方填你 EC2 的 Elastic IP Address → Next Step</li>
+<li>因為是免費方案，Validity 選 90-Day Certificate → Next Step</li>
+<li>雖然不知道那是什麼，但感覺開啟 Auto-Generate CSR 即可 → Next Step</li>
+<li>此時會看到 Free 被 Selected → Next Step</li>
+<li>Verification Method for <code>[Elastic IP Address]</code> 選 HTTP File Upload → 有些步驟要跟著指示做</li>
+<li>Download Auth File → 連進你的 EC2 → 在專案 <code>/public</code> 底下建立 <code>/.well-known/pki-validation/</code> 資料夾，指令：<code>cd</code> 到 <code>/public</code> 以後，輸入 <code>mkdir -p .well-known/pki-validation</code></li>
+<li><code>cd .well-known/pki-validation/</code> 進到裡面之後，準備把剛剛 Download Auth File 載下來的東西傳到裡面</li>
+<li>在本地端開新的終端機介面 → 輸入 <code>scp -i [/path/to/EC2/XXX].pem [剛載下來的].txt ec2-user@[Elastic IP Address]:~</code> 即可將那個檔案傳進 EC2 裡面</li>
+<li>回到 EC2，<code>cd ~</code>，用 <code>ls</code> 一看，還真的有欸 → 移動到剛剛新建的資料夾裡面吧<br><code>mv [剛傳進來的].txt Campus-Program01/students/[path/to]/public/.well-known/pki-validation/</code></li>
+<li>在 Express 主程式，可能叫做 app.js 的當中記得加上<br><code>app.use(express.static(path.join(__dirname, &#39;public&#39;)));</code>，<br>前面或許還需要 <code>var path = require(&#39;path&#39;);</code>，這樣才能讓對方讀到那個 txt 檔</li>
+<li>回到 SSL Certificate 申請頁面，點 Make sure your file is available under the following link 旁邊的連結，新視窗有文字檔裡面的東西代表到目前為止一切順利 → Next Step</li>
+<li>Verify Domain → 會顯示 Congratulations, your domains have been verified. This means that our system is issuing your certificate at the moment. This page will refresh automatically every few seconds. → Your certificate has been issued and is ready for installation. To continue, please follow the steps below.</li>
+<li>選你的 Server Type，通常不是 Apache 就是 NGINX，我是 NGINX → Download Certificate (.zip) → Next Step</li>
+<li>Follow the steps below to install your certificate → 照著指示做吧！接下來我以 NGINX 為例，Apache 的設定或許也是照著指示做就能順利完成</li>
+<li>Unzip 剛剛載下來的 zip → 裡面的東西都傳到 EC2<br><code>scp -i [/path/to/EC2/XXX].pem ca_bundle.crt certificate.crt private.key ec2-user@[Elastic IP Address]:~</code></li>
+<li>回到 EC2 → 進到你剛剛傳東西進去的目錄底下 → <code>cat certificate.crt ca_bundle.crt &gt;&gt; certificate.crt</code> → 跳出 <code>cat: certificate.crt: input file is output file</code> 不用理它</li>
+<li><code>sudo mv certificate.crt private.key /etc/ssl/</code></li>
+<li>輸入 <code>history | grep nginx</code> 看你當初是去哪設定 nginx 的，用 vim 打開來編輯吧！（我的是  <code>sudo vim /etc/nginx/nginx.conf</code>）</li>
+<li>下面的東西加進去！（加在哪要稍微注意一下，我 port 是 3000 所以 <code>proxy_pass http://localhost:3000;</code>）</li>
 </ol>
-<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
-<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
-<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
-<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
-<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
-<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
-<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
-<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    listen               443 ssl http2;</span><br><span class="line">    listen               [::]:443 ssl http2;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ssl                  on;</span><br><span class="line">    ssl_certificate      /etc/ssl/certificate.crt; </span><br><span class="line">    ssl_certificate_key  /etc/ssl/private.key;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    server_name  _;</span><br><span class="line">    access_log   /var/log/nginx/nginx.vhost.access.log;</span><br><span class="line">    error_log    /var/log/nginx/nginx.vhost.error.log;</span><br><span class="line"></span><br><span class="line">    # Load configuration files for the default server block.</span><br><span class="line">    include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="22">
+<li><code>sudo service nginx restart</code> 重啟 web server</li>
+<li>回到最一開始 ZeroSSL 頁面 → Check Certificate → 完成！</li>
+<li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
 </ol>
-<br>
-這樣就大功告成啦😎]]></content>
-      <tags>
-        <tag>Logic Pro</tag>
-      </tags>
+]]></content>
   </entry>
   <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
@@ -3869,34 +3830,37 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
-    <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
-    <url>/2022/09/zsh-z/</url>
-    <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
+    <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
+    <url>/2021/12/synth-one-with-logic-pro/</url>
+    <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
 <span id="more"></span>
 
-<h2 id="為何想推-zsh-z？"><a href="#為何想推-zsh-z？" class="headerlink" title="為何想推 zsh-z？"></a>為何想推 zsh-z？</h2><p>試想個情境：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
-
-<p>今天你的 working directory 位於 <code>./B/123/abc/hello/</code>，如果想切換目錄到裡面有 <code>wow.txt</code> 的目錄底下，你會怎麼做呢？</p>
-<p>可能是 <code>cd ../../../../A/123/abc/wow/</code> ？這樣不是挺麻煩的嗎？</p>
-<p>身為一個<del>懶惰</del>不斷尋找優化可能性的軟體工程師，怎能允許自己浪費寶貴的時間在這種事情上呢？</p>
-<p>於是乎，在某種因緣際會之下，我認識了「zsh-z」這個酷工具，它可以解決問題！</p>
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>首先，照著<a href="https://github.com/agkozak/zsh-z">這個</a>裝吧！</p>
-<p>以 oh-my-zsh 的使用者為例：</p>
-<ol>
-<li>打開 terminal，輸入： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/agkozak/zsh-z <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-z</span><br></pre></td></tr></table></figure>
-</li>
-<li>編輯家目錄底下的 <code>.zshrc</code>：找到 <code>plugins=()</code>，將 <code>zsh-z</code> 加進 <code>()</code> 裡面，像 <code>plugins=( git zsh-z )</code> 這樣</li>
-<li>重開新的 terminal，或是 <code>source ~/.zshrc</code> 以後就可以用囉！</li>
+<h3 id="兩者連起來！"><a href="#兩者連起來！" class="headerlink" title="兩者連起來！"></a>兩者連起來！</h3><ol>
+<li>在 iPad 上下載《AudioKit Synth One Synthesizer》</li>
+<li>用 USB 線，將 iPad 連接到 MacBook</li>
+<li>打開 MacBook 的「音訊 MIDI 設定」，左側會看到自己的 iPad，點按「啟用」 <img src="1.png" alt="1.png"></li>
+<li>打開 Synth One，然後先放著</li>
+<li>打開 Logic Pro，開啟新專案時，新增一個「External MIDI」track<ul>
+<li>「Use External Instrument plug-in」記得勾起來</li>
+<li>MIDI Destination 選 iPad</li>
+</ul>
+ <img src="2.png" alt="2.png"></li>
+<li>這時，彈奏 Synth One 上的 keyboard 就能在 Logic Pro 上聽到聲音了呢！</li>
 </ol>
-<h2 id="怎麼用？"><a href="#怎麼用？" class="headerlink" title="怎麼用？"></a>怎麼用？</h2><p>超級方便，你只要輸入 <code>z [一點線索]</code>，就可以跳到你之前造訪過的目錄！</p>
-<p>以最一開始的情境為例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
-
-<p>你今天在 <code>./B/123/abc/hello/</code>，想快速切換到曾經造訪過的 <code>./A/123/abc/wow/</code>，你只要 <code>z wow</code>，神奇的事情就會發生在你眼前 🥳（你真的就會 wow）</p>
-<p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
+<h3 id="怎麼錄起來？"><a href="#怎麼錄起來？" class="headerlink" title="怎麼錄起來？"></a>怎麼錄起來？</h3><ol>
+<li>在 Logic Pro 上新增一個 Audio Track（也可以直接 option+command+A 來新增） <img src="3.png" alt="3.png"></li>
+<li>滑鼠游標點按 Inst 1 那一軌，點按後會呈現如圖的偏白灰底，「R」也會跟著紅起來。<br>但 Audio 1 那一軌的「R」不會，我們需要手動點按它來開啟它，待會會需要！ <img src="4.png" alt="4.png"></li>
+<li>（非必要）如果有 MIDI 鍵盤可以接起來，等等可以用它來彈奏</li>
+<li>按 Record，此時可以開始你的彈奏了。 <img src="5.png" alt="5.png"> 在彈奏的過程中，你會發現不只是 MIDI，連 audio 也同時被錄進去啦！ <img src="6.png" alt="6.png"></li>
+<li>停止 Record 後，就會這樣： <img src="7.png" alt="7.png"></li>
+<li>既然都有 audio 了，為何還需要 MIDI 啊？因為這樣才可以修改呀！<br> （對你想要修改的那一軌按 command+4 可以打開如圖的 Piano Roll） <img src="8.png" alt="8.png"></li>
+<li>除了邊彈奏邊錄 audio 之外，也可以用「播放現有 MIDI 軌」的方式來錄呢！<br> 怎麼做？滑鼠游標換成點按 Audio 1 那一軌，讓它呈現如圖的偏白灰底，然後再開始 Record，神奇的事就會發生囉～ <img src="9.png" alt="9.png"></li>
+</ol>
 <br>
-是不是真的很方便呢？]]></content>
+這樣就大功告成啦😎]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
   </entry>
   <entry>
     <title>抓取某網站特定 URL 並做些處理</title>
@@ -4269,5 +4233,35 @@ go go!!!]]></content>
 <h3 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h3><p>參考文有放「<strong><strong>Kubernetes Dashboard</strong></strong>」的操作教學，這邊就不贅述了～</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
+    <url>/2022/09/zsh-z/</url>
+    <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
+<span id="more"></span>
+
+<h2 id="為何想推-zsh-z？"><a href="#為何想推-zsh-z？" class="headerlink" title="為何想推 zsh-z？"></a>為何想推 zsh-z？</h2><p>試想個情境：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
+
+<p>今天你的 working directory 位於 <code>./B/123/abc/hello/</code>，如果想切換目錄到裡面有 <code>wow.txt</code> 的目錄底下，你會怎麼做呢？</p>
+<p>可能是 <code>cd ../../../../A/123/abc/wow/</code> ？這樣不是挺麻煩的嗎？</p>
+<p>身為一個<del>懶惰</del>不斷尋找優化可能性的軟體工程師，怎能允許自己浪費寶貴的時間在這種事情上呢？</p>
+<p>於是乎，在某種因緣際會之下，我認識了「zsh-z」這個酷工具，它可以解決問題！</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>首先，照著<a href="https://github.com/agkozak/zsh-z">這個</a>裝吧！</p>
+<p>以 oh-my-zsh 的使用者為例：</p>
+<ol>
+<li>打開 terminal，輸入： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/agkozak/zsh-z <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-z</span><br></pre></td></tr></table></figure>
+</li>
+<li>編輯家目錄底下的 <code>.zshrc</code>：找到 <code>plugins=()</code>，將 <code>zsh-z</code> 加進 <code>()</code> 裡面，像 <code>plugins=( git zsh-z )</code> 這樣</li>
+<li>重開新的 terminal，或是 <code>source ~/.zshrc</code> 以後就可以用囉！</li>
+</ol>
+<h2 id="怎麼用？"><a href="#怎麼用？" class="headerlink" title="怎麼用？"></a>怎麼用？</h2><p>超級方便，你只要輸入 <code>z [一點線索]</code>，就可以跳到你之前造訪過的目錄！</p>
+<p>以最一開始的情境為例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
+
+<p>你今天在 <code>./B/123/abc/hello/</code>，想快速切換到曾經造訪過的 <code>./A/123/abc/wow/</code>，你只要 <code>z wow</code>，神奇的事情就會發生在你眼前 🥳（你真的就會 wow）</p>
+<p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
+<br>
+是不是真的很方便呢？]]></content>
   </entry>
 </search>
