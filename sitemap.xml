@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kanido386.github.io/2022/11/hci-note-3/</loc>
+    
+    <lastmod>2022-11-19</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kanido386.github.io/2022/10/linux-command-note/</loc>
     
     <lastmod>2022-10-17</lastmod>
@@ -382,288 +389,288 @@
 
   <url>
     <loc>https://kanido386.github.io/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 
   <url>
-    <loc>https://kanido386.github.io/tags/%E9%9F%B3%E8%A8%8A%E8%99%95%E7%90%86/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E5%90%89%E4%BB%96/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E6%95%88%E6%9E%9C%E5%99%A8/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/Pure-Data/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E4%BA%A4%E5%A4%A7/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E8%AA%B2%E7%A8%8B/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E5%B0%88%E9%A1%8C/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kanido386.github.io/tags/Machine-Learning/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Deploy/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/API/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Python/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E4%BA%A4%E5%A4%A7/</loc>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E6%95%99%E5%AD%B8/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E9%9F%B3%E8%A8%8A%E8%99%95%E7%90%86/</loc>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E5%90%89%E4%BB%96/</loc>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E6%95%88%E6%9E%9C%E5%99%A8/</loc>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/Pure-Data/</loc>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E8%AA%B2%E7%A8%8B/</loc>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E5%B0%88%E9%A1%8C/</loc>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/LINE/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Bot/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E8%81%B7%E6%B6%AF/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/side-project/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Heroku/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/ngrok/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Flask/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Firebase/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Hexo/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/GitHub-Pages/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/JavaScript/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/ES6/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Cheatsheet/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Logic-Pro/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E5%BE%AE%E8%99%95%E7%90%86%E6%A9%9F/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/STM32/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E9%96%8B%E7%99%BC%E6%9D%BF/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E6%8A%95%E7%B1%83%E6%A9%9F/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Moleculer/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/CRUD/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E9%96%B1%E8%AE%80/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/Blockchain/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/Android/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/Blockchain/</loc>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E6%A8%82%E7%90%86/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kanido386.github.io/tags/%E9%9F%B3%E8%89%B2/</loc>
-    <lastmod>2022-10-17</lastmod>
+    <lastmod>2022-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
