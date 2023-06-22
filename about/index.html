@@ -223,13 +223,6 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-  </div>
-  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -408,19 +401,25 @@
           localStorage.setItem(title, true);
         }
         getCount(doc_once, increaseCount_once);
-        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+        if (false) {
+          getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+        } else {
+          getCount(doc, increaseCount)
+        }
       } else if (CONFIG.page.isHome) { // Is index page
-        var promises = [...document.querySelectorAll('.post-title')].map(element => {
-          var title = element.innerText.trim();
-          var doc = articles.doc(title);
-          return getCount(doc);
-        });
-        Promise.all(promises).then(counts => {
-          var metas = document.querySelectorAll('.firestore-visitors-count');
-          counts.forEach((val, idx) => {
-            appendCountTo(metas[idx])(val);
+        if (false) {
+          var promises = [...document.querySelectorAll('.post-title')].map(element => {
+            var title = element.innerText.trim();
+            var doc = articles.doc(title);
+            return getCount(doc);
           });
-        });
+          Promise.all(promises).then(counts => {
+            var metas = document.querySelectorAll('.firestore-visitors-count');
+            counts.forEach((val, idx) => {
+              appendCountTo(metas[idx])(val);
+            });
+          });
+        }
       }
     })();
   </script>
@@ -473,37 +472,6 @@
   
 
   
-
-<script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://kanido386.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://kanido386.github.io/about/index.html";
-    this.page.identifier = "about/index.html";
-    this.page.title = "關於我";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://kanido386.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>
