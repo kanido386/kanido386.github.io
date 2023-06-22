@@ -21,19 +21,23 @@
     var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="👨‍💻 情境題： 身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 https:&#x2F;&#x2F;my.shorturl.com&#x2F;3lls9f 這樣的短網址，請你拿到它們分別導向的原網址，並用 3lls9f 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的">
+  <meta name="description" content="端午節就是要立蛋！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="抓取某網站特定 URL 並做些處理">
-<meta property="og:url" content="https://kanido386.github.io/2022/10/wget-and-grep-urls/index.html">
+<meta property="og:title" content="2023 端午節立蛋">
+<meta property="og:url" content="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/index.html">
 <meta property="og:site_name" content="卡尼多隨筆">
-<meta property="og:description" content="👨‍💻 情境題： 身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 https:&#x2F;&#x2F;my.shorturl.com&#x2F;3lls9f 這樣的短網址，請你拿到它們分別導向的原網址，並用 3lls9f 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的">
+<meta property="og:description" content="端午節就是要立蛋！">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-10-12T08:54:26.000Z">
-<meta property="article:modified_time" content="2022-10-12T09:06:55.000Z">
+<meta property="og:image" content="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/1.png">
+<meta property="og:image" content="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/2.png">
+<meta property="og:image" content="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/3.png">
+<meta property="article:published_time" content="2023-06-22T08:38:33.000Z">
+<meta property="article:modified_time" content="2023-06-22T09:29:38.372Z">
 <meta property="article:author" content="卡尼多">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/1.png">
 
-<link rel="canonical" href="https://kanido386.github.io/2022/10/wget-and-grep-urls/">
+<link rel="canonical" href="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/">
 
 
 <script id="page-configurations">
@@ -46,7 +50,7 @@
   };
 </script>
 
-  <title>抓取某網站特定 URL 並做些處理 | 卡尼多隨筆</title>
+  <title>2023 端午節立蛋 | 卡尼多隨筆</title>
   
 
 
@@ -185,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2022/10/wget-and-grep-urls/">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2023/06/2023-dragon-boat-festival/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -198,7 +202,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          抓取某網站特定 URL 並做些處理
+          2023 端午節立蛋
         </h1>
 
         <div class="post-meta">
@@ -208,7 +212,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-10-12 16:54:26" itemprop="dateCreated datePublished" datetime="2022-10-12T16:54:26+08:00">2022-10-12</time>
+              <time title="Created: 2023-06-22 16:38:33" itemprop="dateCreated datePublished" datetime="2023-06-22T16:38:33+08:00">2023-06-22</time>
             </span>
 
           
@@ -227,8 +231,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/10/wget-and-grep-urls/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/10/wget-and-grep-urls/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2023/06/2023-dragon-boat-festival/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/06/2023-dragon-boat-festival/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -243,69 +247,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>👨‍💻 情境題：</p>
-<p>身為一名後端工程師，今天團隊指派給你一個任務 —— 找出團隊網站、部落格、GitHub repo 所有有用到像是 <code>https://my.shorturl.com/3lls9f</code> 這樣的短網址，請你拿到它們分別導向的原網址，並用 <code>3lls9f</code> 當作 id，在團隊跟短網址有關的資料庫 table 當中 insert 新的 record 進去，讓團隊能用另外一種短網址服務來做到一樣的事情 (導向原網址)。</p>
-<p>這麼做的原因是，團隊即將 sunset <code>https://my.shorturl.com/</code>，也就是在沒有 insert 新 record 的情況下 <code>https://my.shorturl.com/3lls9f</code> 將會無效，因為另外一種短網址服務它會找不到 <code>3lls9f</code> 這個 id 而發生錯誤！</p>
-<p>如果是你，你會怎麼做？簡單分享一下我的作法。</p>
+        <p>端午節就是要立蛋！</p>
 <span id="more"></span>
 
-<h3 id="以團隊部落格的例子來說"><a href="#以團隊部落格的例子來說" class="headerlink" title="以團隊部落格的例子來說"></a>以團隊部落格的例子來說</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/28933031/using-wget-to-download-website-ignoring-image-and-videos/28933140#28933140">Stack Overflow 是我們的好朋友</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -r -l 0 -nd -R png,jpg,jpeg,gif,mpg,mkv https://blog.myteam.com/</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>先透過 <code>wget</code> 來抓取所有 <code>https://blog.myteam.com/</code> domain 底下的 html 檔（因為短網址連結會藏在裡面）</li>
-<li><code>-r -l 0</code>：使用 recursive retrieving 的方式來抓，因為 <code>https://blog.myteam.com/</code> 底下還會有 <code>https://blog.myteam.com/subpage/</code> 等等 depth 更深的 subpage<ul>
-<li>那因為 <code>-r</code> (<code>--recursive</code>) 預設的 depth 為 5，我不確定團隊部落格會不會有超過深度 5 的 subpage，所以我還加上了 <code>-l 0</code> 來做 infinite recursion (這邊的 <code>0</code> 相當於 <code>inf</code>)</li>
-<li>詳細可透過 <code>man wget</code> 來查找</li>
-</ul>
-</li>
-<li><code>-nd</code> (<code>--no-directories</code>)：Do not create a hierarchy of directories when retrieving recursively.<ul>
-<li>我希望抓下來的檔案能在同一個資料夾層級下，因為我發現不這樣做有些檔案會被忽略掉</li>
-<li>像是如果目前已經存在一個叫做 <code>en</code> 的資料夾，要再抓 <code>/en/index.html</code> 的時候，會因為已經有東西叫做 <code>en</code> 而被略過（我那時候是這樣）</li>
-</ul>
-</li>
-<li><code>-R png,jpg,jpeg,gif,mpg,mkv</code>：抓的時候忽略掉 <code>png,jpg,jpeg,gif,mpg,mkv</code> 這些<ul>
-<li><code>-R</code> 即為 <code>--reject</code></li>
-<li>沒加上這個，我放著等了超過一小時還在跑⋯⋯</li>
-<li>原因是因為它不斷在抓跟 WordPress 有關的靜態檔，那些超多的⋯⋯</li>
-<li>反正我只需要 html 檔，忽略掉那些根本無關緊要，反而還省了我很多等待時間！</li>
-</ul>
-</li>
-</ul>
-<h3 id="那-GitHub-repo-呢？"><a href="#那-GitHub-repo-呢？" class="headerlink" title="那 GitHub repo 呢？"></a>那 GitHub repo 呢？</h3><p>我是直接用 GitHub 左上角 <code>Search or jump to…</code> 來搜，然後看哪些 repo 被搜出來，我再 clone 下來那些 repo。</p>
-<h3 id="拿到檔案然後勒？"><a href="#拿到檔案然後勒？" class="headerlink" title="拿到檔案然後勒？"></a>拿到檔案然後勒？</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49313160/removing-duplicates-in-grep-output/49313231#49313231">Stack Overflow 真的是我們的好朋友⋯⋯</a></p>
-<p>抓出所有短網址，然後彙整成一份清單：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -ohr <span class="string">&quot;my.shorturl.com/[a-zA-Z0-9._-~]*&quot;</span> * | sort -u &gt; ../output.txt</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>grep</code> 是一款抓取特定 pattern 文字的好工具！</li>
-<li><code>-o</code>：Prints only the matching part of the lines.<ul>
-<li>因為我只需要短網址本身，前後不相關的文字我不需要</li>
-</ul>
-</li>
-<li><code>-h</code>：Never print filename headers (i.e. filenames) with output lines.<ul>
-<li>檔名在我這個 case 當中根本不重要，擺著反而會干擾到後面的步驟</li>
-</ul>
-</li>
-<li><code>-r</code>：Recursively search subdirectories listed.<ul>
-<li>上例的部落格是不需要，但 GitHub repo 可就有很多 subdirectories，沒加上這個 option 不行！</li>
-</ul>
-</li>
-<li><code>&quot;my.shorturl.com/[a-zA-Z0-9._-~]*&quot;</code> 是那個短網址的 pattern<ul>
-<li>沒加上 <code>https://</code> 是因為我發現有幾個是 <code>http://</code></li>
-</ul>
-</li>
-<li>用 <code>*</code> (acts as a wildcard) 代表我想找這個目錄底下的所有東東</li>
-<li><code>|</code>：透過這個將 <code>grep</code> 的 standard output stream 導到 <code>sort</code> 為它的 input</li>
-<li><code>sort -u</code>：為了拔掉重複的 URL（因為有很多重複的）</li>
-<li><code>&gt; ../output.txt</code>：將結果輸出成文字檔（for 下一步）</li>
-</ul>
-<h3 id="取得原網址"><a href="#取得原網址" class="headerlink" title="取得原網址"></a>取得原網址</h3><p>使用「<a target="_blank" rel="noopener" href="https://unshorten.xyz/">unshorten.xyz - unshorten multiple URLs</a>」這款線上工具來做。</p>
-<p>很單純地，就是 copy and paste <code>output.txt</code> 的內容到上面，再將 resolve 出來的原網址們 copy and paste 到本地端。</p>
-<p>本來是想說要不要用 Python 寫個 script 來做，但居然已經有人做這個服務，就不用再多此一舉了😂</p>
-<h3 id="存進資料庫"><a href="#存進資料庫" class="headerlink" title="存進資料庫"></a>存進資料庫</h3><p>找團隊有用到跟短網址 table 寫入有關的 function 的 repo 和相對應的 route，copy and paste 成一個新的 path，<code>npm run dev</code> 跑起來以後，借助 Postman 來 call 那隻 API，原因是短網址和原網址清單的文字檔在本地端，利用這樣的方式，就能透過 <code>fs</code> module 來讀，拿到相對應的短網址和原網址以後，藉此 insert 新 record 進 DB。</p>
-<br>
-原本以為這個 task 會有大量的「重複性人工操作」，沒想到居然能找到比較優雅的做法，也是挺有意思的～
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:35～13:03 共 88 分鐘，立了 15 + 3 顆蛋。</p>
+<p><img src="1.png"></p>
+<p>最後一顆被我立起來的蛋，也就是照片裡面用黃線圈起來的那顆，花了我超過半小時吧？</p>
+<p><img src="2.png"></p>
+<p>原因在於它表面積比較大的那一側，上頭有不規則而且左右不平均的顆粒狀突起，讓它特別難被立起來。</p>
+<p>既然這樣，換一顆立不就好了嗎？為什麼還要花那麼多的時間執著在這一顆蛋上面呢？<br>考試的時候卡住了，為什麼不先跳下一題，還想繼續在這一題上面掙扎呢？</p>
+<p>那是因為，我跟我爸都覺得：「哎呀上頭有那些顆粒狀突起，這顆蛋怎麼可能立得起來呢？」</p>
+<p>但當下立馬又想到，欸不對欸，我們常常視為的「不可能」，它真的就是不可能嗎？為何不趁現在立蛋的機會來打破它呢？</p>
+<p>本來想說看今年戰績能不能勝過去年的，但比起從小到大已經習慣膩了且感到厭煩的「成績與比較」，我更想要嘗試去「打破它」。</p>
+<p>我就不信，他人一派輕鬆、不用負起任何責任的否定言語，我們就只能順著那樣的劇本走。</p>
+<p>於是乎，我就帶著這樣的心境，將想要推翻那一切的蠢蠢欲動，全然投射於我現在正在立蛋的這件事情上面。心無旁騖。</p>
+<p><img src="3.png"></p>
+<p>嘗試了超過半小時仍未如願，難道只能屈服於過去習以為常的框架當中了嗎？<br>覺得無能為力，但，好像也就只能無能為力了⋯⋯</p>
+<p>誰知道，哪來的靈機一動，突然想到說可以嘗試看看自己「從來都沒有嘗試過」的，改用表面積比較小、也就是比較尖的那一面來立。</p>
+<p>完完全全沒有預料到，才嘗試了應該不到一分鐘吧？那顆蛋居然就這樣被我立起來了！</p>
+<br />
+有些時候，或許可以嘗試換個角度，也或許，就可能只是還沒放對地方而已。
     </div>
 
     
@@ -320,13 +281,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/10/hci-note-2/" rel="prev" title="【學習筆記】人機互動概論 - 2">
-      <i class="fa fa-chevron-left"></i> 【學習筆記】人機互動概論 - 2
+    <a href="/2023/06/abstract-thinking/" rel="prev" title="關於「抽象化」的一點隨想">
+      <i class="fa fa-chevron-left"></i> 關於「抽象化」的一點隨想
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/10/plantuml-sequence-diagram/" rel="next" title="用 PlantUML 畫 Sequence Diagram">
-      用 PlantUML 畫 Sequence Diagram <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -392,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%9C%98%E9%9A%8A%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E4%BE%8B%E5%AD%90%E4%BE%86%E8%AA%AA"><span class="nav-number">1.</span> <span class="nav-text">以團隊部落格的例子來說</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%A3-GitHub-repo-%E5%91%A2%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">那 GitHub repo 呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BF%E5%88%B0%E6%AA%94%E6%A1%88%E7%84%B6%E5%BE%8C%E5%8B%92%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">拿到檔案然後勒？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E5%8E%9F%E7%B6%B2%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">取得原網址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E9%80%B2%E8%B3%87%E6%96%99%E5%BA%AB"><span class="nav-number">5.</span> <span class="nav-text">存進資料庫</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8A%E5%B9%B4%E6%88%B0%E7%B8%BE"><span class="nav-number">1.</span> <span class="nav-text">今年戰績</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -602,9 +560,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://kanido386.github.io/2022/10/wget-and-grep-urls/";
-    this.page.identifier = "2022/10/wget-and-grep-urls/";
-    this.page.title = "抓取某網站特定 URL 並做些處理";
+    this.page.url = "https://kanido386.github.io/2023/06/2023-dragon-boat-festival/";
+    this.page.identifier = "2023/06/2023-dragon-boat-festival/";
+    this.page.title = "2023 端午節立蛋";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
