@@ -140,66 +140,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>用 Algorithmia 部署 ML Models</title>
-    <url>/2021/07/algorithmia-ml-models/</url>
-    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
-<span id="more"></span>
-
-<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
-<hr>
-<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
-<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
-<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
-<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
-<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
-<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
-<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
-<hr>
-<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
-<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
-<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
-<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
-<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
-<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
-<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
-<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
-<p>像我原本以為是這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<p>後來才知道應該要這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
-<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
-
-<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
-<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
-<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
-<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
-
-<p>就是這麼簡單 😎</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>Machine Learning</tag>
-        <tag>Deploy</tag>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>交大</tag>
-        <tag>教學</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>回顧在 AppWorks School 的那段日子</title>
     <url>/2022/08/appworks-school-campus-program-experience/</url>
     <content><![CDATA[<p>充實又有趣的三個多月！</p>
@@ -406,11 +346,11 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
 ]]></content>
       <tags>
-        <tag>交大</tag>
         <tag>音訊處理</tag>
         <tag>吉他</tag>
         <tag>效果器</tag>
         <tag>Pure Data</tag>
+        <tag>交大</tag>
         <tag>課程</tag>
         <tag>專題</tag>
       </tags>
@@ -530,10 +470,10 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
-        <tag>API</tag>
-        <tag>Python</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
+        <tag>Python</tag>
+        <tag>API</tag>
       </tags>
   </entry>
   <entry>
@@ -617,6 +557,82 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 這樣就改好囉，就是這麼簡單😎]]></content>
   </entry>
   <entry>
+    <title>別被時間綁住了！</title>
+    <url>/2022/12/dont-stuck-in-time/</url>
+    <content><![CDATA[<p>讀文章寫心得：<a href="https://www.managertoday.com.tw/books/view/66080">領導大師的人生課：年輕不下定決心，年老認為自己無用，都是畫地自限</a></p>
+<p>年輕的時候覺得時間還很多，遲遲不做決定而維持原狀，反正時間還很多；逐漸年長之後覺得做很多事情都為時已晚了，所以即使心中有想嘗試的新行動，也乾脆不去做了，反正也比不過年輕人早早就開始。</p>
+<p>這個想法，怎麼感覺跟我上上禮拜日的想法很雷同！早上的時候覺得還有很多時間，所以可以很慵懶不採取行動，到了較晚的時候就會覺得太晚開始行動、早知道早一點開始，那乾脆就這樣結束一天⋯⋯</p>
+<p>來嘗試看看能不能透過這篇文章反思點什麼🤔</p>
+<p>（挑戰看看在下班搭車的時候寫完這一篇，雖然依照過往經驗，這個時間點通常都很累啦😂）</p>
+<span id="more"></span>
+
+<p>感覺是被「時間」這個框架給束縛住了嗎？以年齡來說，45 歲看似「遲了」，但如果是跟未來 65 歲的自己才開始行動比較呢？一日的時間也是一樣，下午四點的時候感覺今天快過完了，但如果是跟晚上十點比較呢？</p>
+<p>如果因為「覺得」遲了而不展開行動，那真的很可惜，因為第二好展開行動的時間點就是現在！試想一下，今天你突然萌生出嘗試新東西的想法，但因為各種藉口，後來就決定乾脆算了。幾年後又突然想嘗試那個東西，然而此時再來回頭看，往往會覺得很嘔，因為內心會不斷冒出聲音：早知道當初就先開始了⋯⋯</p>
+<p>沒有所謂通往成功之路的標準答案，路，是自己走出來的！當然每個人對於「何謂成功」的定義不盡相同，這也一樣沒有唯一解！</p>
+<p>結論就是：時間早晚不是重點，關鍵在於你怎麼去看待它。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>用 Algorithmia 部署 ML Models</title>
+    <url>/2021/07/algorithmia-ml-models/</url>
+    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+<span id="more"></span>
+
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
+
+<p>就是這麼簡單 😎</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>交大</tag>
+        <tag>Python</tag>
+        <tag>API</tag>
+        <tag>Machine Learning</tag>
+        <tag>Deploy</tag>
+        <tag>黑客松</tag>
+        <tag>教學</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>端午節立蛋</title>
     <url>/2021/06/dragon-boat-festival/</url>
     <content><![CDATA[<p><a href="/2021/06/dragon-boat-festival"><img src="https://images.unsplash.com/photo-1586975471851-06fbf8453bda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -633,22 +649,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p><img src="6.gif"></p>
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-  </entry>
-  <entry>
-    <title>別被時間綁住了！</title>
-    <url>/2022/12/dont-stuck-in-time/</url>
-    <content><![CDATA[<p>讀文章寫心得：<a href="https://www.managertoday.com.tw/books/view/66080">領導大師的人生課：年輕不下定決心，年老認為自己無用，都是畫地自限</a></p>
-<p>年輕的時候覺得時間還很多，遲遲不做決定而維持原狀，反正時間還很多；逐漸年長之後覺得做很多事情都為時已晚了，所以即使心中有想嘗試的新行動，也乾脆不去做了，反正也比不過年輕人早早就開始。</p>
-<p>這個想法，怎麼感覺跟我上上禮拜日的想法很雷同！早上的時候覺得還有很多時間，所以可以很慵懶不採取行動，到了較晚的時候就會覺得太晚開始行動、早知道早一點開始，那乾脆就這樣結束一天⋯⋯</p>
-<p>來嘗試看看能不能透過這篇文章反思點什麼🤔</p>
-<p>（挑戰看看在下班搭車的時候寫完這一篇，雖然依照過往經驗，這個時間點通常都很累啦😂）</p>
-<span id="more"></span>
-
-<p>感覺是被「時間」這個框架給束縛住了嗎？以年齡來說，45 歲看似「遲了」，但如果是跟未來 65 歲的自己才開始行動比較呢？一日的時間也是一樣，下午四點的時候感覺今天快過完了，但如果是跟晚上十點比較呢？</p>
-<p>如果因為「覺得」遲了而不展開行動，那真的很可惜，因為第二好展開行動的時間點就是現在！試想一下，今天你突然萌生出嘗試新東西的想法，但因為各種藉口，後來就決定乾脆算了。幾年後又突然想嘗試那個東西，然而此時再來回頭看，往往會覺得很嘔，因為內心會不斷冒出聲音：早知道當初就先開始了⋯⋯</p>
-<p>沒有所謂通往成功之路的標準答案，路，是自己走出來的！當然每個人對於「何謂成功」的定義不盡相同，這也一樣沒有唯一解！</p>
-<p>結論就是：時間早晚不是重點，關鍵在於你怎麼去看待它。</p>
-]]></content>
   </entry>
   <entry>
     <title>駕訓班裡的點點滴滴</title>
@@ -1593,12 +1593,12 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
         <tag>交大</tag>
-        <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>教學</tag>
         <tag>Heroku</tag>
         <tag>ngrok</tag>
         <tag>Flask</tag>
@@ -1748,14 +1748,98 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
         <tag>交大</tag>
-        <tag>教學</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>教學</tag>
         <tag>Firebase</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【學習筆記】人機互動概論 - 1</title>
+    <url>/2022/08/hci-note-1/</url>
+    <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
+<p>後來在 YouTube 找到了「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
+<span id="more"></span>
+
+<br>
+廢話不多說，讓我們直接進到筆記的部分吧！
+
+<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
+<li>科技始終來自於人性</li>
+<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
+</ul>
+<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
+<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
+<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
+<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
+</ul>
+</li>
+<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
+<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
+<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
+<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
+</ul>
+</li>
+<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
+<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
+<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
+<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
+</ul>
+</li>
+<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
+<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
+</ul>
+</li>
+<li>「跨領域」的人機互動<ul>
+<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
+<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
+<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
+<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
+</ul>
+</li>
+<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
+<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
+</ul>
+</li>
+</ul>
+<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
+<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
+<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
+<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
+<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
+</ul>
+</li>
+<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
+<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
+</ul>
+<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
+<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
+<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
+<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
+<li>有沒有類似經驗<ul>
+<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
+<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
+</ul>
+</li>
+<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
+<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
+<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
+<li>什麼門是好設計？<ul>
+<li>外型設計要相當直覺</li>
+<li>逃生門  <img src="2.png"></li>
+<li>車子的門  <img src="3.png"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
+<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
+</ul>
+<br>
+未完待續，stay tuned!]]></content>
   </entry>
   <entry>
     <title>【學習筆記】人機互動概論 - 2</title>
@@ -1912,90 +1996,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>【學習筆記】人機互動概論 - 1</title>
-    <url>/2022/08/hci-note-1/</url>
-    <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
-<p>後來在 YouTube 找到了「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
-<span id="more"></span>
-
-<br>
-廢話不多說，讓我們直接進到筆記的部分吧！
-
-<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
-<li>科技始終來自於人性</li>
-<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
-</ul>
-<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
-<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
-<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
-<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
-</ul>
-</li>
-<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
-<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
-<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
-<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
-</ul>
-</li>
-<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
-<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
-<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
-<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
-</ul>
-</li>
-<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
-<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
-</ul>
-</li>
-<li>「跨領域」的人機互動<ul>
-<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
-<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
-<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
-<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
-</ul>
-</li>
-<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
-<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
-</ul>
-</li>
-</ul>
-<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
-<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
-<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
-<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
-<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
-</ul>
-</li>
-<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
-<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
-</ul>
-<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
-<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
-<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
-<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
-<li>有沒有類似經驗<ul>
-<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
-<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
-</ul>
-</li>
-<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
-<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
-<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
-<li>什麼門是好設計？<ul>
-<li>外型設計要相當直覺</li>
-<li>逃生門  <img src="2.png"></li>
-<li>車子的門  <img src="3.png"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
-<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
-</ul>
-<br>
-未完待續，stay tuned!]]></content>
   </entry>
   <entry>
     <title>助你行動</title>
@@ -2499,38 +2499,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>不完美行動</title>
-    <url>/2021/09/just-do-it/</url>
-    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
-<span id="more"></span>
-<hr>
-<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
-<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
-<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
-<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
-<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
-<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
-<hr>
-<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
-<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
-<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
-<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
-<p>但，不去行動，怎麼會有結果呢？</p>
-<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
-<hr>
-<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
-<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
-<hr>
-<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>卡尼多隨筆？</title>
-    <url>/2022/10/keep-moving-forward/</url>
-    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
     <url>/2022/03/line-developers-meetup-16/</url>
     <content><![CDATA[<p><a href="/2022/03/line-developers-meetup-16"><img src="https://i.imgur.com/lQVnBtc.jpg" style="width:50vw;" /></a></p>
@@ -2635,6 +2603,38 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <hr>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一次參加社群活動，覺得滿載而歸，會讓我想繼續參加類似的活動！</p>
 <p>加油，多方嘗試、比過去的自己更進步、不要怕出糗、多接收外界刺激讓自己體會不一樣的事物，你我都可以越來越來靠近心目中的理想自我的！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>不完美行動</title>
+    <url>/2021/09/just-do-it/</url>
+    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
+<span id="more"></span>
+<hr>
+<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
+<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
+<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
+<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
+<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
+<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
+<hr>
+<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
+<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
+<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
+<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
+<p>但，不去行動，怎麼會有結果呢？</p>
+<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
+<hr>
+<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
+<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
+<hr>
+<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>卡尼多隨筆？</title>
+    <url>/2022/10/keep-moving-forward/</url>
+    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
 ]]></content>
   </entry>
   <entry>
@@ -3286,11 +3286,11 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
+        <tag>交大</tag>
+        <tag>LINE</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
-        <tag>交大</tag>
         <tag>教學</tag>
-        <tag>LINE</tag>
         <tag>Blockchain</tag>
       </tags>
   </entry>
@@ -3459,6 +3459,19 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>關於自律</title>
+    <url>/2023/06/self-discipline/</url>
+    <content><![CDATA[<p>優質 Podcast 單集分享：<a href="https://open.spotify.com/episode/30Hicw2IC4GmqYjysRKaom?si=tDVShXP-SHOsEUSCph4lcg">[高效人生商學院] 如何成為一個自律的人？自律真的可以幫助我們更成功嗎？</a></p>
+<span id="more"></span>
+
+<br />
+
+<p>自律 ≠ 屬於外在且常常會被誤以為是自律的「他律」，讓一個標準硬生生套到自己身上，過一個苦行僧般的生活，有時或許只是為了滿足虛榮心。</p>
+<p>自律 = 在不斷試錯、迭代、復盤、優化的過程當中，找到適合自己的方式、手段，去做對自己來說有價值的事情，並嘗試持續往前推進。</p>
+<p>⇒ 相信直覺，沒有所謂的標準答案，就算是某領域權威的建議，也不見得全然都適合自己，我們是能夠做選擇和調整的！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>即將展開的大四上</title>
     <url>/2021/10/senior-first/</url>
     <content><![CDATA[<p>其實早就開始了，只不過直到最近才真正感受到大四上的「即將不輕鬆」啊！<br>這篇主要是想讓自己腦中有點地圖，大概知道這學期的整體感覺可能會是什麼。</p>
@@ -3539,14 +3552,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 大概是這樣，這學期就好好充實自己吧😎
 <br>
 <br>]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】1. 這是一本你從未見過的軟體開發書</title>
-    <url>/2023/05/soft-skills-1/</url>
-    <content><![CDATA[<p>時間過得真是快，轉眼間，已經做了八個多月的軟體工程師了！但老實說，我覺得自己沒成長多少，原因在於工作了以後，我好像也沒好好去善用下班之後的時間，常常會覺得時間怎麼咻一下就過去了，自己也沒幹嘛😂</p>
-<p>於是乎，在不久前，買了這本《Soft Skills 軟實力：軟體開發人員的生存手冊》，期許自己在閱讀並寫作的過程當中，逐漸成為一名全方位的軟體開發人員。想成為一名全方位的軟體開發人員，需要的不只是寫程式而已，還有職涯、自我行銷、學習、生產力、理財、健身、心靈等等的領域需要我們去灌溉培養。</p>
-<p>因此，讓我們一起跟著這本書，多多去關注個人成長，發展人生中的不同面向，朝著「全方位」的目標邁進吧！</p>
-]]></content>
   </entry>
   <entry>
     <title>新筆電の最初設定</title>
@@ -3693,6 +3698,14 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 今天的分享就到這邊囉，我們下篇文見～]]></content>
   </entry>
   <entry>
+    <title>【軟實力】1. 這是一本你從未見過的軟體開發書</title>
+    <url>/2023/05/soft-skills-1/</url>
+    <content><![CDATA[<p>時間過得真是快，轉眼間，已經做了八個多月的軟體工程師了！但老實說，我覺得自己沒成長多少，原因在於工作了以後，我好像也沒好好去善用下班之後的時間，常常會覺得時間怎麼咻一下就過去了，自己也沒幹嘛😂</p>
+<p>於是乎，在不久前，買了這本《Soft Skills 軟實力：軟體開發人員的生存手冊》，期許自己在閱讀並寫作的過程當中，逐漸成為一名全方位的軟體開發人員。想成為一名全方位的軟體開發人員，需要的不只是寫程式而已，還有職涯、自我行銷、學習、生產力、理財、健身、心靈等等的領域需要我們去灌溉培養。</p>
+<p>因此，讓我們一起跟著這本書，多多去關注個人成長，發展人生中的不同面向，朝著「全方位」的目標邁進吧！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>【軟實力】2. 將職涯發展視為企業經營</title>
     <url>/2023/05/soft-skills-2/</url>
     <content><![CDATA[<p>「關於工作，最大的錯誤，就是沒有把自己的職涯視為企業來經營！」</p>
@@ -3729,23 +3742,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <li>在職涯初期好好投資在自己身上感覺非常重要，買書、學習、增廣見聞，都好。當然學習怎麼做金錢上的投資也是挺重要的，複利效應的威力可是不容小覷！（投資自己同樣能借助複利效應來放大無限可能）</li>
 <li>除了平日白天的「提供服務」，也額外去建立新習慣做點不一樣的事情，累積軟實力及硬實力之外，也讓個人品牌能多一點能見度。</li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】53. 債務危機</title>
-    <url>/2023/05/soft-skills-53/</url>
-    <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
-<span id="more"></span>
-
-<p>債務都不好嗎？書中提到：「如果你利用債務賺取的利息，勝過你付給債務的利息，那就是好的債務。」這道理很容易懂，但感覺我們常常會因為它是「債務」而覺得它就是不好的。試著在腦海裡記住這個看似在講廢話的建言吧！</p>
-<p>還有：「背負債務之前，底線是要確認債務實際上是投資，債務所產生的報酬，要高於你為債務所付的利息，只有在真正緊急的情況下，才不得不揹上無法獲利的債務。」已經有車了想買新車？選擇貸款買？不如暫時繼續開舊車，然後可能開一個新帳戶「新車基金」，先存夠錢再買新車！原因是，你為新車存的錢，會隨時間為你累積利息（先貸款這點就變成了機會成本），而不是繳利息給別人，除此之外，買新車也不是「真正緊急的情況」，所以也沒必要急著貸款買。</p>
-<p>再特別記一點好了，雖然感覺不太適合套用到房貸：「最不理智的事就是在有負債的時候還存錢，是為了緊急的資金需求或為未來存錢？以信用卡為例，除非銀行給你的存款利息超過信用卡的循環利息，不然最好還是把這筆存款拿去還清債務。」合理，不過房貸可不是一筆小數目。或許可以從其他角度去切入？比方房子總價 1500 萬，購屋前直接先加上房貸的利息把它看成是 2000 萬？之類的。我目前還不是很懂，之後會找機會好好來了解一番！不過剛剛好奇查了一下，看起來目前「房貸的最高利率只會到 4% 左右」，印象中蠻多(?)人的投資報酬率可以勝過 4%？（感覺牛頭不對馬嘴，但這點先當成是一顆種子，播種在我心中名為投資理財的土壤裡好了）</p>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
-<p>列出你所有的債務，把他們分成兩種：好的債務和不好的債務。<br><strong>「按照利率高低排列壞債務的優先順序」</strong>，計算看看要花多久時間才能還清這些債務。</p>
-</blockquote>
-<p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
-<p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
 ]]></content>
   </entry>
   <entry>
@@ -4032,6 +4028,23 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       <tags>
         <tag>閱讀</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【軟實力】53. 債務危機</title>
+    <url>/2023/05/soft-skills-53/</url>
+    <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
+<span id="more"></span>
+
+<p>債務都不好嗎？書中提到：「如果你利用債務賺取的利息，勝過你付給債務的利息，那就是好的債務。」這道理很容易懂，但感覺我們常常會因為它是「債務」而覺得它就是不好的。試著在腦海裡記住這個看似在講廢話的建言吧！</p>
+<p>還有：「背負債務之前，底線是要確認債務實際上是投資，債務所產生的報酬，要高於你為債務所付的利息，只有在真正緊急的情況下，才不得不揹上無法獲利的債務。」已經有車了想買新車？選擇貸款買？不如暫時繼續開舊車，然後可能開一個新帳戶「新車基金」，先存夠錢再買新車！原因是，你為新車存的錢，會隨時間為你累積利息（先貸款這點就變成了機會成本），而不是繳利息給別人，除此之外，買新車也不是「真正緊急的情況」，所以也沒必要急著貸款買。</p>
+<p>再特別記一點好了，雖然感覺不太適合套用到房貸：「最不理智的事就是在有負債的時候還存錢，是為了緊急的資金需求或為未來存錢？以信用卡為例，除非銀行給你的存款利息超過信用卡的循環利息，不然最好還是把這筆存款拿去還清債務。」合理，不過房貸可不是一筆小數目。或許可以從其他角度去切入？比方房子總價 1500 萬，購屋前直接先加上房貸的利息把它看成是 2000 萬？之類的。我目前還不是很懂，之後會找機會好好來了解一番！不過剛剛好奇查了一下，看起來目前「房貸的最高利率只會到 4% 左右」，印象中蠻多(?)人的投資報酬率可以勝過 4%？（感覺牛頭不對馬嘴，但這點先當成是一顆種子，播種在我心中名為投資理財的土壤裡好了）</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
+<p>列出你所有的債務，把他們分成兩種：好的債務和不好的債務。<br><strong>「按照利率高低排列壞債務的優先順序」</strong>，計算看看要花多久時間才能還清這些債務。</p>
+</blockquote>
+<p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
+<p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
+]]></content>
   </entry>
   <entry>
     <title>做 Spotify 相關的 side project</title>
@@ -4446,6 +4459,36 @@ go go!!!]]></content>
 ]]></content>
   </entry>
   <entry>
+    <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
+    <url>/2022/09/zsh-z/</url>
+    <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
+<span id="more"></span>
+
+<h2 id="為何想推-zsh-z？"><a href="#為何想推-zsh-z？" class="headerlink" title="為何想推 zsh-z？"></a>為何想推 zsh-z？</h2><p>試想個情境：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
+
+<p>今天你的 working directory 位於 <code>./B/123/abc/hello/</code>，如果想切換目錄到裡面有 <code>wow.txt</code> 的目錄底下，你會怎麼做呢？</p>
+<p>可能是 <code>cd ../../../../A/123/abc/wow/</code> ？這樣不是挺麻煩的嗎？</p>
+<p>身為一個<del>懶惰</del>不斷尋找優化可能性的軟體工程師，怎能允許自己浪費寶貴的時間在這種事情上呢？</p>
+<p>於是乎，在某種因緣際會之下，我認識了「zsh-z」這個酷工具，它可以解決問題！</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>首先，照著<a href="https://github.com/agkozak/zsh-z">這個</a>裝吧！</p>
+<p>以 oh-my-zsh 的使用者為例：</p>
+<ol>
+<li>打開 terminal，輸入： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/agkozak/zsh-z <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-z</span><br></pre></td></tr></table></figure>
+</li>
+<li>編輯家目錄底下的 <code>.zshrc</code>：找到 <code>plugins=()</code>，將 <code>zsh-z</code> 加進 <code>()</code> 裡面，像 <code>plugins=( git zsh-z )</code> 這樣</li>
+<li>重開新的 terminal，或是 <code>source ~/.zshrc</code> 以後就可以用囉！</li>
+</ol>
+<h2 id="怎麼用？"><a href="#怎麼用？" class="headerlink" title="怎麼用？"></a>怎麼用？</h2><p>超級方便，你只要輸入 <code>z [一點線索]</code>，就可以跳到你之前造訪過的目錄！</p>
+<p>以最一開始的情境為例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
+
+<p>你今天在 <code>./B/123/abc/hello/</code>，想快速切換到曾經造訪過的 <code>./A/123/abc/wow/</code>，你只要 <code>z wow</code>，神奇的事情就會發生在你眼前 🥳（你真的就會 wow）</p>
+<p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
+<br>
+是不是真的很方便呢？]]></content>
+  </entry>
+  <entry>
     <title>用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</title>
     <url>/2022/06/youbike-helper/</url>
     <content><![CDATA[<p>這個 Project 主要是用來熟悉 RabbitMQ、MongoDB、Docker 及 Kubernetes。<br>接下來我會用筆記的方式分享整個過程的點點滴滴（和一些我踩過的坑 😅）</p>
@@ -4749,35 +4792,5 @@ go go!!!]]></content>
 <h3 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h3><p>參考文有放「<strong><strong>Kubernetes Dashboard</strong></strong>」的操作教學，這邊就不贅述了～</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-  </entry>
-  <entry>
-    <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
-    <url>/2022/09/zsh-z/</url>
-    <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
-<span id="more"></span>
-
-<h2 id="為何想推-zsh-z？"><a href="#為何想推-zsh-z？" class="headerlink" title="為何想推 zsh-z？"></a>為何想推 zsh-z？</h2><p>試想個情境：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
-
-<p>今天你的 working directory 位於 <code>./B/123/abc/hello/</code>，如果想切換目錄到裡面有 <code>wow.txt</code> 的目錄底下，你會怎麼做呢？</p>
-<p>可能是 <code>cd ../../../../A/123/abc/wow/</code> ？這樣不是挺麻煩的嗎？</p>
-<p>身為一個<del>懶惰</del>不斷尋找優化可能性的軟體工程師，怎能允許自己浪費寶貴的時間在這種事情上呢？</p>
-<p>於是乎，在某種因緣際會之下，我認識了「zsh-z」這個酷工具，它可以解決問題！</p>
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>首先，照著<a href="https://github.com/agkozak/zsh-z">這個</a>裝吧！</p>
-<p>以 oh-my-zsh 的使用者為例：</p>
-<ol>
-<li>打開 terminal，輸入： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/agkozak/zsh-z <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-z</span><br></pre></td></tr></table></figure>
-</li>
-<li>編輯家目錄底下的 <code>.zshrc</code>：找到 <code>plugins=()</code>，將 <code>zsh-z</code> 加進 <code>()</code> 裡面，像 <code>plugins=( git zsh-z )</code> 這樣</li>
-<li>重開新的 terminal，或是 <code>source ~/.zshrc</code> 以後就可以用囉！</li>
-</ol>
-<h2 id="怎麼用？"><a href="#怎麼用？" class="headerlink" title="怎麼用？"></a>怎麼用？</h2><p>超級方便，你只要輸入 <code>z [一點線索]</code>，就可以跳到你之前造訪過的目錄！</p>
-<p>以最一開始的情境為例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
-
-<p>你今天在 <code>./B/123/abc/hello/</code>，想快速切換到曾經造訪過的 <code>./A/123/abc/wow/</code>，你只要 <code>z wow</code>，神奇的事情就會發生在你眼前 🥳（你真的就會 wow）</p>
-<p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
-<br>
-是不是真的很方便呢？]]></content>
   </entry>
 </search>
