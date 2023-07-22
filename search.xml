@@ -140,6 +140,66 @@
 ]]></content>
   </entry>
   <entry>
+    <title>用 Algorithmia 部署 ML Models</title>
+    <url>/2021/07/algorithmia-ml-models/</url>
+    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+<span id="more"></span>
+
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
+
+<p>就是這麼簡單 😎</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+      <tags>
+        <tag>Machine Learning</tag>
+        <tag>Deploy</tag>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>黑客松</tag>
+        <tag>交大</tag>
+        <tag>教學</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回顧在 AppWorks School 的那段日子</title>
     <url>/2022/08/appworks-school-campus-program-experience/</url>
     <content><![CDATA[<p>充實又有趣的三個多月！</p>
@@ -346,14 +406,94 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝教授開設這一門很有意思的課，感謝三位助教每堂實驗課的帶領，<br>並再次感謝能與 Son Tran 合作了這整個學期，沒有你們，就沒有這一切！<br><br><br>希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃</p>
 ]]></content>
       <tags>
+        <tag>交大</tag>
         <tag>音訊處理</tag>
         <tag>吉他</tag>
         <tag>效果器</tag>
         <tag>Pure Data</tag>
-        <tag>交大</tag>
         <tag>課程</tag>
         <tag>專題</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>職涯＆人生方面的省思</title>
+    <url>/2022/12/career-life-thought/</url>
+    <content><![CDATA[<p>讀文章寫心得：<a href="https://readingoutpost.com/squiggly-career/">《職場天賦》讀後心得：實用的職涯指南和三個重點</a></p>
+<p>隨機選到這篇文章挺不錯的，剛好才工作三個多月，很需要多多關注職涯方面的思考。也許能透過這篇文章，反思出一些關於職涯發展方面的想法吧？</p>
+<p>（試試看在公司午休吃飽飯以後，花個大概半小時的時間寫一篇，感受一下這段時間閱讀和思考的感覺 → 花了大概 50 分鐘，但挺不錯的）</p>
+<span id="more"></span>
+
+<p>我們往往都會認為，職涯路上總是有一個固定的標準答案，好像一定要遵循著那條路，才能達到所謂的「成功」。然而，就如同文章裡面提到的：「那些在別人眼中看起來很優質的好工作，並不一定是最吸引你的工作。」在還沒出社會之前，我們可能會覺得，只要做著別人常說的「好工作」就一定一路順遂，而且可以做得很開心因為是「好工作」，但很可能當我們開始做了「好工作」以後，才發覺那不是自己真正想要的。</p>
+<p>究竟「好工作」到底是什麼？雖然我自己也還在摸索當中，但我認為，「好工作」或者是說「對自己來說的好工作」，應該是很客製化的。因為每個人感興趣的、符合個性的、擅長的、所認同的價值觀都不盡相同，如果想用一個描述去完美定義「好工作」，那實在是太不切實際了！</p>
+<p>或許，我們可以嘗試改用「不斷優化」的角度去思考這件事情：如果發現，現在做的工作自己沒到很喜歡，會不會主要是因為自己才剛接觸，需要點時間和耐心去學習、熟悉和適應呢？如果真的做了一段時間，體會到這工作可能真的不適合我吧？那再另尋其他出路也不遲。偶爾，也可以在下班時間之餘，嘗試接觸看看其他領域，體驗一下，或許能出乎意料之外發覺到自己原來對某方面挺感興趣的，發展成副業甚至想辦法變成正職不是挺賺的嗎？這「不斷優化」的過程中最重要的事情，就是多多跟自己對話。畢竟，最了解自己的人，除了自己，還會有誰呢？父母總不可能知道你無時無刻在想什麼吧xD</p>
+<p>所以說，最關鍵的，還是得靠自己去摸索、去感受。永遠要記得：人生沒有所謂的標準答案，適合自己的答案，你可以去詢問他人的建議，但最終還是得靠自己去找尋和做決定！文章當中也提到：「強項不只是你天生擅長的事情，也是你透過人生經歷、後天學習而來的技能和行為。」一切都得靠自己去領悟，最重要的，就是要願意踏出去那每一步，嘗試成功也好、失敗也好，累積經驗，幫助自己在做下一次決策時，能夠更加順利！</p>
+<p>除此之外，文章提到的「自信」真的也非常重要！這個每次都會讓我想到金州勇士的 Jordan Poole。對，我是勇迷。Jordan Poole 在新秀賽季的時候，表現不甚理想，甚至也曾被下放到發展聯盟去磨練。然而，儘管如此，Jordan Poole 呈現出來的感覺就是一個很有自信的人。也許就是因為這樣，「相信自己是能夠做到的」，讓他撐過 NBA 生涯初期的撞牆期，他的表現漸入佳境，甚至在今年十月的時候還和勇士球團簽下四年$1.4 億美金的頂薪合約成功完成續約！如果 Jordan Poole 沒有那爆棚的自信，說不定現在已經被 NBA 淘汰了也說不定，但這樣不是挺可惜的嗎？轉換到我們身上也是一樣，無論在哪個方面，如果我們能夠多一點勇氣和自信，或許會更有機會達到我們想要的高度和目標吧？</p>
+<p>文章也提到重要的一個詞：「好奇心」。有了好奇心，才會驅動我們往未曾探索、體驗過的領域去嘗試。這又讓我想到，我其實以前對 NBA 完全沒有感覺，每次轉到緯來體育台，看到 NBA 比賽就想直接轉掉。誰知道，在 2016 年的某個晚上，我也不知道怎麼搞的，我居然看完了一場勇士對上雷霆的比賽，印象中是西區決賽 Game 6 吧？讓我印象最深刻的是 Kevin Durant 輸球後的沮喪神情（結果後來轉隊來勇士還挺意外的xD）自從那場比賽以後，我就喜歡上了金州勇士，我也不知道，就很神奇，可能是 Klay Thompson、Stephen Curry 和整個團隊呈現出來的感覺我很喜歡吧？扯的真的很遠，我想說的是，如果因為自己不曾多嘗試就認定說某某某自己絕對沒興趣，那我覺得，或許會因為這樣，錯失很多挖到寶的好機會吧？</p>
+<p>最後，再套用文章當中的一句話：「職涯不是跟別人比賽爬階梯，而是畫出專屬於自己迂迴而上的曲折線」。人生也是一樣，你的人生想追求什麼？「認識自我、感受世界、創造價值」，讓我們創造屬於自己的一片天吧！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>決定改部落格文章 Views 的計算方式</title>
+    <url>/2022/06/change-views-count/</url>
+    <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">之前自己寫的</a>，原本 Views 是用 localStorage 來看說這個訪客有沒有造訪過某篇文章：<br>如果沒有的話，Views 就加一，並用 localStorage 來記錄說他造訪過了；<br>如果有的話，也就是 localStorage 有記錄，Views 就不會變動。</p>
+<p>但這樣挺無趣的，每進去一次，就應該要加一才對，所以我決定來修改一下它的計算方式！</p>
+<h2 id="記錄一下"><a href="#記錄一下" class="headerlink" title="記錄一下"></a>記錄一下</h2><p>因為之前所有文章的 Views 即將歸零重新計算了，想說在這邊記錄一下，留個念：</p>
+<ol>
+<li>（2021-07-12） <strong><a href="https://kanido386.github.io/2021/07/hackathon-line-hint/">黑客松 LINE Bot 賽前補帖</a></strong> （161）</li>
+<li>（2021-07-16） <strong><a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a></strong> （114）</li>
+<li>（2021-07-10） <strong><a href="https://kanido386.github.io/2021/07/fsm-line-bot/">用 FSM 及 LINE Messaging API 做一個聊天機器人</a></strong> （113）</li>
+<li>（2021-01-13） <strong><a href="https://kanido386.github.io/2021/01/microprocessor-project/">用 STM32 開發板做一台類似投籃機的遊戲機台</a></strong> （58）</li>
+<li>（2021-01-06） <strong><a href="https://kanido386.github.io/2021/01/asp-final-project/">用 Pure Data 打造吉他效果器</a></strong> （56）</li>
+<li>（2020-09-05） <strong><a href="https://kanido386.github.io/2020/09/summer-project/">用一點樂理和音訊處理技術做簡單的音色轉換</a></strong> （47）</li>
+<li>（2021-06-10） <strong><a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/">用 Hexo 及 GitHub Pages 打造部落格</a></strong> （45）</li>
+<li>（2020-04-27） <strong><a href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">JavaScript ES6 Cheatsheet</a>（</strong>42<strong>）</strong></li>
+<li>（2021-07-06） <strong><a href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">用 Algorithmia 部署 ML Models</a></strong> （34）</li>
+<li>（2021-07-08） <strong><a href="https://kanido386.github.io/2021/07/python-line-blockchain/">當 Python 遇上了 LINE Blockchain</a></strong> （33）</li>
+<li>（2021-07-04） <strong><a href="https://kanido386.github.io/2021/07/python-android-phone/">用 Python 操作 Android 手機</a></strong> （25）</li>
+<li>（2021-06-13） <strong><a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a></strong> （24）</li>
+<li>（2022-01-09） <strong><a href="https://kanido386.github.io/2022/01/spotify-side-project-plan/">做 Spotify 相關的 side project</a></strong> （19）</li>
+<li>（2021-09-26） <strong><a href="https://kanido386.github.io/2021/09/just-do-it/">不完美行動</a></strong> （19）</li>
+<li>（2021-06-14） <strong><a href="https://kanido386.github.io/2021/06/dragon-boat-festival/">端午節立蛋</a></strong> （19）</li>
+<li>（2022-03-25） <strong><a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">【心得】LINE Developers Meetup #16</a></strong> （18）</li>
+<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/freshman-career-73-64/">【職涯路上】73~64</a></strong> （15）</li>
+<li>（2021-10-01） <strong><a href="https://kanido386.github.io/2021/10/senior-first/">即將展開的大四上</a></strong> （13）</li>
+<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/">【心得】2022 Yourator 數位職涯博覽會</a></strong> （11）</li>
+<li>（2022-03-12） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-92/">【職涯路上】92，交大就業博覽會</a></strong> （11）</li>
+<li>（2021-11-14） <strong><a href="https://kanido386.github.io/2021/11/next-10000-hours/">【閱讀筆記】下個10000小時，你打算怎樣過？</a></strong> （11）</li>
+<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a></strong> （10）</li>
+<li>（2022-03-30） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-76-74/">【職涯路上】76~74</a></strong> （10）</li>
+<li>（2022-05-25） <strong><a href="https://kanido386.github.io/2022/05/nosql-introduction/">【技術筆記】NoSQL、Data Replica、Sharding</a></strong> （9）</li>
+<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-84-77/">【職涯路上】84~77</a></strong> （8）</li>
+<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/driving-school/">駕訓班裡的點點滴滴</a></strong> （8）</li>
+<li>（2022-04-27） <strong><a href="https://kanido386.github.io/2022/04/ssl-for-free/">用 SSL For Free 免費申請 SSL 憑證</a></strong> （7）</li>
+<li>（2020-05-16） <strong><a href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">Moleculer CRUD Guide</a></strong> （7）</li>
+<li>（2022-06-03） <strong><a href="https://kanido386.github.io/2022/06/2022-dragon-boat-festival/">2022 端午節立蛋</a></strong> （6）</li>
+<li>（2021-12-19） <strong><a href="https://kanido386.github.io/2021/12/soft-skills/">停下來思考</a></strong> （6）</li>
+<li>（2022-03-14） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-91-90/">【職涯路上】91~90，越挫越勇！</a></strong> （5）</li>
+<li>（2022-03-07） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-100-97/">【職涯路上】100~97，開始行動！</a></strong> （5）</li>
+<li>（2022-01-28） <strong><a href="https://kanido386.github.io/2022/01/help-you-take-action/">助你行動</a></strong> （5）</li>
+<li>（2022-06-05） <strong><a href="https://kanido386.github.io/2022/06/youbike-helper/">用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</a></strong> （4）</li>
+<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-96-93/">【職涯路上】96~93，自我懷疑⋯⋯</a></strong> （4）</li>
+<li>（2021-12-11） <strong><a href="https://kanido386.github.io/2021/12/synth-one-with-logic-pro/">免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</a></strong> （4）</li>
+<li>（2022-03-18） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-89-86/">【職涯路上】89~86，再廢也不要停止反思</a></strong> （3）</li>
+<li>（2021-12-15） <strong><a href="https://kanido386.github.io/2021/12/rest-is-important/">【閱讀筆記】一流的人如何保持巔峰</a></strong> （3）</li>
+<li>（2021-12-12） <strong><a href="https://kanido386.github.io/2021/12/live-in-the-moment/">專注當下</a></strong> （3）</li>
+<li>（2022-06-12） <strong><a href="https://kanido386.github.io/2022/06/freshman-career-63-0/">【職涯路上】63~0，Commencement</a></strong> （2）</li>
+<li>（2022-03-19） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-85/">【職涯路上】85，不想徒具形式</a></strong> （2）</li>
+<li>（2021-10-07） <strong><a href="https://kanido386.github.io/2021/10/logic-pro-plug-in-compatibility/">如何解決 Logic Pro Plug-In Compatibility 的問題</a></strong> （2）</li>
+</ol>
+<h2 id="來改吧"><a href="#來改吧" class="headerlink" title="來改吧"></a>來改吧</h2><ol>
+<li>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">我之前寫的</a>，去 Firestore Database → 規則，來編輯規則： <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">service cloud.firestore &#123;</span><br><span class="line">  match /databases/&#123;database&#125;/documents &#123;</span><br><span class="line">    match /articles/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 新規則</span></span><br><span class="line">    match /views/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 編輯完以後，記得按「發布」</li>
+<li>到 theme 的 config 檔 <code>/themes/next/_config.yml</code>，修改關於 firestore 的設置： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># collection: articles</span></span><br><span class="line">  <span class="attr">collection:</span> <span class="string">views</span> <span class="comment"># Required, a string collection name to access firestore database</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&lt;網路</span> <span class="string">API</span> <span class="string">金鑰&gt;</span></span><br><span class="line">  <span class="attr">projectId:</span> <span class="string">&lt;專案</span> <span class="string">ID&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>去到 <code>/themes/next/layout/_third-party/statistics/firestore.swig</code> 修改計算方式： <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 其實就是註解掉第 51~56 行</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">localStorage</span>.getItem(title)) &#123;</span><br><span class="line">  increaseCount = <span class="literal">false</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// Mark as visited</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(title, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<br>
+這樣就改好囉，就是這麼簡單😎]]></content>
   </entry>
   <entry>
     <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
@@ -470,91 +610,11 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
+        <tag>API</tag>
+        <tag>Python</tag>
         <tag>LINE</tag>
         <tag>Bot</tag>
-        <tag>Python</tag>
-        <tag>API</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>職涯＆人生方面的省思</title>
-    <url>/2022/12/career-life-thought/</url>
-    <content><![CDATA[<p>讀文章寫心得：<a href="https://readingoutpost.com/squiggly-career/">《職場天賦》讀後心得：實用的職涯指南和三個重點</a></p>
-<p>隨機選到這篇文章挺不錯的，剛好才工作三個多月，很需要多多關注職涯方面的思考。也許能透過這篇文章，反思出一些關於職涯發展方面的想法吧？</p>
-<p>（試試看在公司午休吃飽飯以後，花個大概半小時的時間寫一篇，感受一下這段時間閱讀和思考的感覺 → 花了大概 50 分鐘，但挺不錯的）</p>
-<span id="more"></span>
-
-<p>我們往往都會認為，職涯路上總是有一個固定的標準答案，好像一定要遵循著那條路，才能達到所謂的「成功」。然而，就如同文章裡面提到的：「那些在別人眼中看起來很優質的好工作，並不一定是最吸引你的工作。」在還沒出社會之前，我們可能會覺得，只要做著別人常說的「好工作」就一定一路順遂，而且可以做得很開心因為是「好工作」，但很可能當我們開始做了「好工作」以後，才發覺那不是自己真正想要的。</p>
-<p>究竟「好工作」到底是什麼？雖然我自己也還在摸索當中，但我認為，「好工作」或者是說「對自己來說的好工作」，應該是很客製化的。因為每個人感興趣的、符合個性的、擅長的、所認同的價值觀都不盡相同，如果想用一個描述去完美定義「好工作」，那實在是太不切實際了！</p>
-<p>或許，我們可以嘗試改用「不斷優化」的角度去思考這件事情：如果發現，現在做的工作自己沒到很喜歡，會不會主要是因為自己才剛接觸，需要點時間和耐心去學習、熟悉和適應呢？如果真的做了一段時間，體會到這工作可能真的不適合我吧？那再另尋其他出路也不遲。偶爾，也可以在下班時間之餘，嘗試接觸看看其他領域，體驗一下，或許能出乎意料之外發覺到自己原來對某方面挺感興趣的，發展成副業甚至想辦法變成正職不是挺賺的嗎？這「不斷優化」的過程中最重要的事情，就是多多跟自己對話。畢竟，最了解自己的人，除了自己，還會有誰呢？父母總不可能知道你無時無刻在想什麼吧xD</p>
-<p>所以說，最關鍵的，還是得靠自己去摸索、去感受。永遠要記得：人生沒有所謂的標準答案，適合自己的答案，你可以去詢問他人的建議，但最終還是得靠自己去找尋和做決定！文章當中也提到：「強項不只是你天生擅長的事情，也是你透過人生經歷、後天學習而來的技能和行為。」一切都得靠自己去領悟，最重要的，就是要願意踏出去那每一步，嘗試成功也好、失敗也好，累積經驗，幫助自己在做下一次決策時，能夠更加順利！</p>
-<p>除此之外，文章提到的「自信」真的也非常重要！這個每次都會讓我想到金州勇士的 Jordan Poole。對，我是勇迷。Jordan Poole 在新秀賽季的時候，表現不甚理想，甚至也曾被下放到發展聯盟去磨練。然而，儘管如此，Jordan Poole 呈現出來的感覺就是一個很有自信的人。也許就是因為這樣，「相信自己是能夠做到的」，讓他撐過 NBA 生涯初期的撞牆期，他的表現漸入佳境，甚至在今年十月的時候還和勇士球團簽下四年$1.4 億美金的頂薪合約成功完成續約！如果 Jordan Poole 沒有那爆棚的自信，說不定現在已經被 NBA 淘汰了也說不定，但這樣不是挺可惜的嗎？轉換到我們身上也是一樣，無論在哪個方面，如果我們能夠多一點勇氣和自信，或許會更有機會達到我們想要的高度和目標吧？</p>
-<p>文章也提到重要的一個詞：「好奇心」。有了好奇心，才會驅動我們往未曾探索、體驗過的領域去嘗試。這又讓我想到，我其實以前對 NBA 完全沒有感覺，每次轉到緯來體育台，看到 NBA 比賽就想直接轉掉。誰知道，在 2016 年的某個晚上，我也不知道怎麼搞的，我居然看完了一場勇士對上雷霆的比賽，印象中是西區決賽 Game 6 吧？讓我印象最深刻的是 Kevin Durant 輸球後的沮喪神情（結果後來轉隊來勇士還挺意外的xD）自從那場比賽以後，我就喜歡上了金州勇士，我也不知道，就很神奇，可能是 Klay Thompson、Stephen Curry 和整個團隊呈現出來的感覺我很喜歡吧？扯的真的很遠，我想說的是，如果因為自己不曾多嘗試就認定說某某某自己絕對沒興趣，那我覺得，或許會因為這樣，錯失很多挖到寶的好機會吧？</p>
-<p>最後，再套用文章當中的一句話：「職涯不是跟別人比賽爬階梯，而是畫出專屬於自己迂迴而上的曲折線」。人生也是一樣，你的人生想追求什麼？「認識自我、感受世界、創造價值」，讓我們創造屬於自己的一片天吧！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>決定改部落格文章 Views 的計算方式</title>
-    <url>/2022/06/change-views-count/</url>
-    <content><![CDATA[<p>想說這樣比較直覺，也比較有趣😂</p>
-<span id="more"></span>
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">之前自己寫的</a>，原本 Views 是用 localStorage 來看說這個訪客有沒有造訪過某篇文章：<br>如果沒有的話，Views 就加一，並用 localStorage 來記錄說他造訪過了；<br>如果有的話，也就是 localStorage 有記錄，Views 就不會變動。</p>
-<p>但這樣挺無趣的，每進去一次，就應該要加一才對，所以我決定來修改一下它的計算方式！</p>
-<h2 id="記錄一下"><a href="#記錄一下" class="headerlink" title="記錄一下"></a>記錄一下</h2><p>因為之前所有文章的 Views 即將歸零重新計算了，想說在這邊記錄一下，留個念：</p>
-<ol>
-<li>（2021-07-12） <strong><a href="https://kanido386.github.io/2021/07/hackathon-line-hint/">黑客松 LINE Bot 賽前補帖</a></strong> （161）</li>
-<li>（2021-07-16） <strong><a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a></strong> （114）</li>
-<li>（2021-07-10） <strong><a href="https://kanido386.github.io/2021/07/fsm-line-bot/">用 FSM 及 LINE Messaging API 做一個聊天機器人</a></strong> （113）</li>
-<li>（2021-01-13） <strong><a href="https://kanido386.github.io/2021/01/microprocessor-project/">用 STM32 開發板做一台類似投籃機的遊戲機台</a></strong> （58）</li>
-<li>（2021-01-06） <strong><a href="https://kanido386.github.io/2021/01/asp-final-project/">用 Pure Data 打造吉他效果器</a></strong> （56）</li>
-<li>（2020-09-05） <strong><a href="https://kanido386.github.io/2020/09/summer-project/">用一點樂理和音訊處理技術做簡單的音色轉換</a></strong> （47）</li>
-<li>（2021-06-10） <strong><a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/">用 Hexo 及 GitHub Pages 打造部落格</a></strong> （45）</li>
-<li>（2020-04-27） <strong><a href="https://kanido386.github.io/2020/04/javascript-es6-cheatsheet/">JavaScript ES6 Cheatsheet</a>（</strong>42<strong>）</strong></li>
-<li>（2021-07-06） <strong><a href="https://kanido386.github.io/2021/07/algorithmia-ml-models/">用 Algorithmia 部署 ML Models</a></strong> （34）</li>
-<li>（2021-07-08） <strong><a href="https://kanido386.github.io/2021/07/python-line-blockchain/">當 Python 遇上了 LINE Blockchain</a></strong> （33）</li>
-<li>（2021-07-04） <strong><a href="https://kanido386.github.io/2021/07/python-android-phone/">用 Python 操作 Android 手機</a></strong> （25）</li>
-<li>（2021-06-13） <strong><a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a></strong> （24）</li>
-<li>（2022-01-09） <strong><a href="https://kanido386.github.io/2022/01/spotify-side-project-plan/">做 Spotify 相關的 side project</a></strong> （19）</li>
-<li>（2021-09-26） <strong><a href="https://kanido386.github.io/2021/09/just-do-it/">不完美行動</a></strong> （19）</li>
-<li>（2021-06-14） <strong><a href="https://kanido386.github.io/2021/06/dragon-boat-festival/">端午節立蛋</a></strong> （19）</li>
-<li>（2022-03-25） <strong><a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/">【心得】LINE Developers Meetup #16</a></strong> （18）</li>
-<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/freshman-career-73-64/">【職涯路上】73~64</a></strong> （15）</li>
-<li>（2021-10-01） <strong><a href="https://kanido386.github.io/2021/10/senior-first/">即將展開的大四上</a></strong> （13）</li>
-<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/">【心得】2022 Yourator 數位職涯博覽會</a></strong> （11）</li>
-<li>（2022-03-12） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-92/">【職涯路上】92，交大就業博覽會</a></strong> （11）</li>
-<li>（2021-11-14） <strong><a href="https://kanido386.github.io/2021/11/next-10000-hours/">【閱讀筆記】下個10000小時，你打算怎樣過？</a></strong> （11）</li>
-<li>（2022-04-09） <strong><a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a></strong> （10）</li>
-<li>（2022-03-30） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-76-74/">【職涯路上】76~74</a></strong> （10）</li>
-<li>（2022-05-25） <strong><a href="https://kanido386.github.io/2022/05/nosql-introduction/">【技術筆記】NoSQL、Data Replica、Sharding</a></strong> （9）</li>
-<li>（2022-03-27） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-84-77/">【職涯路上】84~77</a></strong> （8）</li>
-<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/driving-school/">駕訓班裡的點點滴滴</a></strong> （8）</li>
-<li>（2022-04-27） <strong><a href="https://kanido386.github.io/2022/04/ssl-for-free/">用 SSL For Free 免費申請 SSL 憑證</a></strong> （7）</li>
-<li>（2020-05-16） <strong><a href="https://kanido386.github.io/2020/05/moleculer-crud-guide/">Moleculer CRUD Guide</a></strong> （7）</li>
-<li>（2022-06-03） <strong><a href="https://kanido386.github.io/2022/06/2022-dragon-boat-festival/">2022 端午節立蛋</a></strong> （6）</li>
-<li>（2021-12-19） <strong><a href="https://kanido386.github.io/2021/12/soft-skills/">停下來思考</a></strong> （6）</li>
-<li>（2022-03-14） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-91-90/">【職涯路上】91~90，越挫越勇！</a></strong> （5）</li>
-<li>（2022-03-07） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-100-97/">【職涯路上】100~97，開始行動！</a></strong> （5）</li>
-<li>（2022-01-28） <strong><a href="https://kanido386.github.io/2022/01/help-you-take-action/">助你行動</a></strong> （5）</li>
-<li>（2022-06-05） <strong><a href="https://kanido386.github.io/2022/06/youbike-helper/">用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</a></strong> （4）</li>
-<li>（2022-03-11） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-96-93/">【職涯路上】96~93，自我懷疑⋯⋯</a></strong> （4）</li>
-<li>（2021-12-11） <strong><a href="https://kanido386.github.io/2021/12/synth-one-with-logic-pro/">免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</a></strong> （4）</li>
-<li>（2022-03-18） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-89-86/">【職涯路上】89~86，再廢也不要停止反思</a></strong> （3）</li>
-<li>（2021-12-15） <strong><a href="https://kanido386.github.io/2021/12/rest-is-important/">【閱讀筆記】一流的人如何保持巔峰</a></strong> （3）</li>
-<li>（2021-12-12） <strong><a href="https://kanido386.github.io/2021/12/live-in-the-moment/">專注當下</a></strong> （3）</li>
-<li>（2022-06-12） <strong><a href="https://kanido386.github.io/2022/06/freshman-career-63-0/">【職涯路上】63~0，Commencement</a></strong> （2）</li>
-<li>（2022-03-19） <strong><a href="https://kanido386.github.io/2022/03/freshman-career-85/">【職涯路上】85，不想徒具形式</a></strong> （2）</li>
-<li>（2021-10-07） <strong><a href="https://kanido386.github.io/2021/10/logic-pro-plug-in-compatibility/">如何解決 Logic Pro Plug-In Compatibility 的問題</a></strong> （2）</li>
-</ol>
-<h2 id="來改吧"><a href="#來改吧" class="headerlink" title="來改吧"></a>來改吧</h2><ol>
-<li>參考<a href="https://kanido386.github.io/2021/06/hexo-github-pages-blog/#%E9%A1%AF%E7%A4%BA%E6%96%87%E7%AB%A0%E9%96%B1%E8%AE%80%E6%AC%A1%E6%95%B8">我之前寫的</a>，去 Firestore Database → 規則，來編輯規則： <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">service cloud.firestore &#123;</span><br><span class="line">  match /databases/&#123;database&#125;/documents &#123;</span><br><span class="line">    match /articles/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 新規則</span></span><br><span class="line">    match /views/&#123;any&#125; &#123;</span><br><span class="line">      allow read: if <span class="literal">true</span>;</span><br><span class="line">      allow write: if <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
- 編輯完以後，記得按「發布」</li>
-<li>到 theme 的 config 檔 <code>/themes/next/_config.yml</code>，修改關於 firestore 的設置： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">firestore:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># collection: articles</span></span><br><span class="line">  <span class="attr">collection:</span> <span class="string">views</span> <span class="comment"># Required, a string collection name to access firestore database</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&lt;網路</span> <span class="string">API</span> <span class="string">金鑰&gt;</span></span><br><span class="line">  <span class="attr">projectId:</span> <span class="string">&lt;專案</span> <span class="string">ID&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>去到 <code>/themes/next/layout/_third-party/statistics/firestore.swig</code> 修改計算方式： <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 其實就是註解掉第 51~56 行</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">localStorage</span>.getItem(title)) &#123;</span><br><span class="line">  increaseCount = <span class="literal">false</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// Mark as visited</span></span><br><span class="line">  <span class="built_in">localStorage</span>.setItem(title, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<br>
-這樣就改好囉，就是這麼簡單😎]]></content>
   </entry>
   <entry>
     <title>別被時間綁住了！</title>
@@ -571,66 +631,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>沒有所謂通往成功之路的標準答案，路，是自己走出來的！當然每個人對於「何謂成功」的定義不盡相同，這也一樣沒有唯一解！</p>
 <p>結論就是：時間早晚不是重點，關鍵在於你怎麼去看待它。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>用 Algorithmia 部署 ML Models</title>
-    <url>/2021/07/algorithmia-ml-models/</url>
-    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
-<span id="more"></span>
-
-<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
-<hr>
-<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
-<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
-<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
-<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
-<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
-<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
-<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
-<hr>
-<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
-<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
-<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
-<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
-<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
-<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
-<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
-<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
-<p>像我原本以為是這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<p>後來才知道應該要這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
-<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
-
-<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
-<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
-<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
-<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
-
-<p>就是這麼簡單 😎</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>Python</tag>
-        <tag>API</tag>
-        <tag>Machine Learning</tag>
-        <tag>Deploy</tag>
-        <tag>黑客松</tag>
-        <tag>教學</tag>
-      </tags>
   </entry>
   <entry>
     <title>端午節立蛋</title>
@@ -1380,6 +1380,35 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
   </entry>
   <entry>
+    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
+    <url>/2022/03/freshman-career-96-93/</url>
+    <content><![CDATA[<p>卡卡的感覺😅</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
+<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
+<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
+<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
+<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
+<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
+<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
+<p>所以早上沒得做 project。</p>
+<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
+<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
+<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
+<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
+<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
+<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
+<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
+<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
+<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
+<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
+<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
+<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
+<br>
+沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
+  </entry>
+  <entry>
     <title>【職涯路上】92，交大就業博覽會</title>
     <url>/2022/03/freshman-career-92/</url>
     <content><![CDATA[<p>趁現在印象還很清楚的時候來記錄一下。</p>
@@ -1424,35 +1453,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p><strong>就業博覽會的重點：大量問就對了！</strong>我有個想法，如果突然不知道要問什麼，或許可以問說，請問別人有問了您什麼很好的問題嗎？因為感覺很多人問的問題，問得超好，我自己也很想知道啊！</p>
 <br>
 今天這樣逛，真的值得😎]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
-    <url>/2022/03/freshman-career-96-93/</url>
-    <content><![CDATA[<p>卡卡的感覺😅</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
-<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
-<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
-<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
-<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
-<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
-<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
-<p>所以早上沒得做 project。</p>
-<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
-<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
-<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
-<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
-<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
-<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
-<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
-<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
-<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
-<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
-<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
-<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
-<br>
-沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
   </entry>
   <entry>
     <title>用 FSM 及 LINE Messaging API 做一個聊天機器人</title>
@@ -1593,12 +1593,12 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
       <tags>
-        <tag>交大</tag>
-        <tag>LINE</tag>
-        <tag>Bot</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
+        <tag>交大</tag>
         <tag>教學</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
         <tag>Heroku</tag>
         <tag>ngrok</tag>
         <tag>Flask</tag>
@@ -1748,12 +1748,12 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
-        <tag>交大</tag>
-        <tag>LINE</tag>
-        <tag>Bot</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
+        <tag>交大</tag>
         <tag>教學</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
         <tag>Firebase</tag>
       </tags>
   </entry>
@@ -2383,29 +2383,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>嘗試看看一種閱讀寫作的方式</title>
-    <url>/2022/12/input-output-with-read-write/</url>
-    <content><![CDATA[<p>讓自己盡量去習慣輸入和輸出，也在過程當中，連結文章及個人經驗，反思一點東西。</p>
-<p>現階段主要是希望自己透過卡尼多隨筆來認識自己多一點，雖然沒有說一定得幾天之內就寫一篇出來，但如果久久沒寫停了下來，要再行動去更新或者是說產生新的內容，那真的頗不容易，而且也很難去進步😅</p>
-<span id="more"></span>
-
-<p>關於新點子，簡單來說：</p>
-<ul>
-<li>利用零碎時間讀文章，分享連結給大家，然後寫出一篇簡單的心得文，慢慢累積（頻率可隨意，主要目的是習慣寫作和進行反思，每次量可不多）</li>
-</ul>
-<p>具體的流程大概會是這樣：</p>
-<ol>
-<li>我有用 Feedly 訂閱一些文章來源，像是閱讀前哨站、遠見雜誌、科技報橘等等的。我大概會一個禮拜認真整理一次，挑選出比較想看的文章出來，然後放進 Notion 裡面。不直接透過 Feedly 而是先透過篩選再列進 Notion 的原因是，Feedly 上面的內容頗雜亂的，如果要讀之前還得「做選擇」要讀哪篇文章，光來回切換（篩選、閱讀）就耗費不少寶貴的精力了，更何況還要進行反思！所以我就想說，先篩選，放進 Notion 一個 Page 裡面，有零碎時間想讀文章的時候，直接打開那個 Page 隨機挑一篇讀即可，不會有多餘的選擇障礙。至於 Page 裡面的分類？我目前純粹是簡單照文章來源來分的啦😅</li>
-<li>只能讀 Feedly 裡面的文章嗎？當然不是。如果有在其他地方，像是臉書、google 的時候隨意找到的，有挖到想讀的，那一樣可以放進 Notion Page 裡面，等到之後的零碎時間再來閱讀這樣～</li>
-<li>到了零碎時間想讀文章的時候就打開 Notion Page 開讀，就是這麼簡單，不必再耗費時間和精力做篩選，可隨機點一篇也就是「隨點即讀」，很方便！</li>
-<li>讀完一篇文章，無論讀起來感覺怎麼樣：覺得寫得很好有產生共鳴？讀完其實感覺還好不怎麼感興趣？發現讀到了一篇廢文浪費了時間？都把那篇文章附有超連結的標題移進一個 Notion toggle 裡，為下一步的文字輸出做準備。因為無論文章內容再怎麼糟糕，總是會有一個點讓自己萌生出想法，所以等於是透過文章來導引出自己的想法，至於文章本身怎麼樣就不是這麼重要了。</li>
-<li>（還沒開始行動，我目前的下一步）決定要開始寫文章的時候，用 random 的方式從 toggle 裡面挑文章出來。之所以用 random，是因為可以讓自己多嘗試讀和寫不同類型的文章，不然很可能只會挑自己比較想寫的，或是選擇障礙不知道要挑什麼😂</li>
-<li>（一樣尚未行動所以不確定成效或感覺如何）寫完文章以後，就清空那個 toggle 裡面的文章，鼓勵自己再去讀新的文章，然後再加進那個 toggle！</li>
-</ol>
-<p>大概是這樣囉～</p>
-]]></content>
-  </entry>
-  <entry>
     <title>JavaScript ES6 Cheatsheet</title>
     <url>/2020/04/javascript-es6-cheatsheet/</url>
     <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2497,6 +2474,61 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
         <tag>ES6</tag>
         <tag>Cheatsheet</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>嘗試看看一種閱讀寫作的方式</title>
+    <url>/2022/12/input-output-with-read-write/</url>
+    <content><![CDATA[<p>讓自己盡量去習慣輸入和輸出，也在過程當中，連結文章及個人經驗，反思一點東西。</p>
+<p>現階段主要是希望自己透過卡尼多隨筆來認識自己多一點，雖然沒有說一定得幾天之內就寫一篇出來，但如果久久沒寫停了下來，要再行動去更新或者是說產生新的內容，那真的頗不容易，而且也很難去進步😅</p>
+<span id="more"></span>
+
+<p>關於新點子，簡單來說：</p>
+<ul>
+<li>利用零碎時間讀文章，分享連結給大家，然後寫出一篇簡單的心得文，慢慢累積（頻率可隨意，主要目的是習慣寫作和進行反思，每次量可不多）</li>
+</ul>
+<p>具體的流程大概會是這樣：</p>
+<ol>
+<li>我有用 Feedly 訂閱一些文章來源，像是閱讀前哨站、遠見雜誌、科技報橘等等的。我大概會一個禮拜認真整理一次，挑選出比較想看的文章出來，然後放進 Notion 裡面。不直接透過 Feedly 而是先透過篩選再列進 Notion 的原因是，Feedly 上面的內容頗雜亂的，如果要讀之前還得「做選擇」要讀哪篇文章，光來回切換（篩選、閱讀）就耗費不少寶貴的精力了，更何況還要進行反思！所以我就想說，先篩選，放進 Notion 一個 Page 裡面，有零碎時間想讀文章的時候，直接打開那個 Page 隨機挑一篇讀即可，不會有多餘的選擇障礙。至於 Page 裡面的分類？我目前純粹是簡單照文章來源來分的啦😅</li>
+<li>只能讀 Feedly 裡面的文章嗎？當然不是。如果有在其他地方，像是臉書、google 的時候隨意找到的，有挖到想讀的，那一樣可以放進 Notion Page 裡面，等到之後的零碎時間再來閱讀這樣～</li>
+<li>到了零碎時間想讀文章的時候就打開 Notion Page 開讀，就是這麼簡單，不必再耗費時間和精力做篩選，可隨機點一篇也就是「隨點即讀」，很方便！</li>
+<li>讀完一篇文章，無論讀起來感覺怎麼樣：覺得寫得很好有產生共鳴？讀完其實感覺還好不怎麼感興趣？發現讀到了一篇廢文浪費了時間？都把那篇文章附有超連結的標題移進一個 Notion toggle 裡，為下一步的文字輸出做準備。因為無論文章內容再怎麼糟糕，總是會有一個點讓自己萌生出想法，所以等於是透過文章來導引出自己的想法，至於文章本身怎麼樣就不是這麼重要了。</li>
+<li>（還沒開始行動，我目前的下一步）決定要開始寫文章的時候，用 random 的方式從 toggle 裡面挑文章出來。之所以用 random，是因為可以讓自己多嘗試讀和寫不同類型的文章，不然很可能只會挑自己比較想寫的，或是選擇障礙不知道要挑什麼😂</li>
+<li>（一樣尚未行動所以不確定成效或感覺如何）寫完文章以後，就清空那個 toggle 裡面的文章，鼓勵自己再去讀新的文章，然後再加進那個 toggle！</li>
+</ol>
+<p>大概是這樣囉～</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>卡尼多隨筆？</title>
+    <url>/2022/10/keep-moving-forward/</url>
+    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>不完美行動</title>
+    <url>/2021/09/just-do-it/</url>
+    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
+<span id="more"></span>
+<hr>
+<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
+<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
+<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
+<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
+<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
+<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
+<hr>
+<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
+<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
+<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
+<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
+<p>但，不去行動，怎麼會有結果呢？</p>
+<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
+<hr>
+<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
+<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
+<hr>
+<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
+]]></content>
   </entry>
   <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
@@ -2603,38 +2635,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <hr>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一次參加社群活動，覺得滿載而歸，會讓我想繼續參加類似的活動！</p>
 <p>加油，多方嘗試、比過去的自己更進步、不要怕出糗、多接收外界刺激讓自己體會不一樣的事物，你我都可以越來越來靠近心目中的理想自我的！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>不完美行動</title>
-    <url>/2021/09/just-do-it/</url>
-    <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
-<span id="more"></span>
-<hr>
-<p>時間過得真快，距離上次更新部落格已經有兩個多月的時間了！</p>
-<p>我在想之所以會這樣，是不是因為自己都等不到心中所謂的「完美時機」</p>
-<p>這有點難去用言語表達，畢竟我國文不好，不過大概的感覺是：<br>「非得讓自己的行動看起來是完美的才肯去行動。」</p>
-<p>然而，要等到那個時機來臨並不容易，往往因為這樣，遲遲不展開行動。</p>
-<p>我現在寫這篇文其實還蠻不舒服的，內心「追求完美」的那一部份不斷阻撓我，希望我快點停手，不要再繼續寫下去⋯⋯（邊寫，邊在意說語句、文法到底對不對、通不通順，然後就卡住了）</p>
-<p>不管了，先不去理會那一部份的我怎樣地批評指責，繼續寫下去吧！（但還是會掙扎）</p>
-<hr>
-<p>那你可能會想說，既然這樣，為何還要寫這一篇沒什麼意義的文章呢？很間單，因為我希望自己能「展開行動」，就算這個行動再怎樣「不完美」，它能讓我有種前進的感覺之外，也能稍微讓我擺脫「拖延懶惰」的慣性！<br><strong>（牛頓第一運動定律：「靜者恆靜，動者恆作等速度運動」，需要靠名為「行動」的外力方能改變狀態，就算那個行動再怎麼小也行）</strong></p>
-<p>試著去分析自己為何兩個多月都遲遲不肯動筆：<br>除了上面提到的「追求完美」之外，咦，好像就是這個原因。但總不能就這樣歸咎於「追求完美」，而當作什麼事都沒發生吧？</p>
-<p>我在想會不會是因為我之前每一篇文都會特意去 <a href="https://unsplash.com/">Unsplash</a> 上面找適合的圖片，到後來就會覺得沒放好像又怪怪的，沒有「有始有終」的精神。但其實根本就沒差，誰說之前的自己達到什麼標準，之後的自己都得跟上？</p>
-<p>我發現這真的是問題所在欸，當然「之前放圖所以之後都要放圖」只是問題概念的其中一個實體，我真的常常會因為自己一開始做得比想像中好，覺得說之後若做同樣事情也要一樣好甚至更傑出，然而就是因為這個想法，往往導致我裹足不前，「在還沒確定自己會做得更好之前，絕不去破壞那完美的感覺」，但事實上，根本沒有所謂的完美⋯⋯（像我的「<a href="https://www.youtube.com/channel/UCa73p-0ChCqtxubUc4Lq41A">卡尼多玩聲音</a>」YouTube 頻道，到今天仍舊只有兩小段音樂而已，都積灰塵了呢⋯⋯）</p>
-<p>但，不去行動，怎麼會有結果呢？</p>
-<p>不論結果是好是壞，同樣都會帶來價值，有些時候，那些令自己感到不滿意的結果，反而更能成為進步的養分呢！（這讓我想起《未來小子》這部電影，電影裡面的哲理我很喜歡）</p>
-<hr>
-<p>「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的<a href="https://www.youtube.com/watch?v=eVKC1JZ4gDU">這個影片</a>我覺得還不錯，他介紹了他對於「不完美行動」的定義及心法。<br>當然有一點我得再次提醒自己，不要把所有接收到的資訊都當作是真理，也要懂得去做篩選。</p>
-<p>有點不知所云了，反正寫這篇主要是希望自己不要侷限於一個框架，「完美」看似美好，但綁手綁腳的感覺實在難受。對於「卡尼多隨筆」，接下來我不再追求「完美」，而是當有什麼東西想和大家分享時，就用我可能語句不通順但是最貼近我的文字去做分享，不要太在意說如果寫了一篇主觀上認為「沒什麼質感」的文章會不會破壞「卡尼多隨筆」的整體(?)或完美性，因為太在意，反而會讓自己停滯不前，以為不行動沒犯錯就 perfect，但這樣子其實只是停留在原點。</p>
-<hr>
-<p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>卡尼多隨筆？</title>
-    <url>/2022/10/keep-moving-forward/</url>
-    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
 ]]></content>
   </entry>
   <entry>
@@ -3286,11 +3286,11 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
-        <tag>交大</tag>
-        <tag>LINE</tag>
         <tag>Python</tag>
         <tag>黑客松</tag>
+        <tag>交大</tag>
         <tag>教學</tag>
+        <tag>LINE</tag>
         <tag>Blockchain</tag>
       </tags>
   </entry>
@@ -3745,6 +3745,87 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>【軟實力】53. 債務危機</title>
+    <url>/2023/05/soft-skills-53/</url>
+    <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
+<span id="more"></span>
+
+<p>債務都不好嗎？書中提到：「如果你利用債務賺取的利息，勝過你付給債務的利息，那就是好的債務。」這道理很容易懂，但感覺我們常常會因為它是「債務」而覺得它就是不好的。試著在腦海裡記住這個看似在講廢話的建言吧！</p>
+<p>還有：「背負債務之前，底線是要確認債務實際上是投資，債務所產生的報酬，要高於你為債務所付的利息，只有在真正緊急的情況下，才不得不揹上無法獲利的債務。」已經有車了想買新車？選擇貸款買？不如暫時繼續開舊車，然後可能開一個新帳戶「新車基金」，先存夠錢再買新車！原因是，你為新車存的錢，會隨時間為你累積利息（先貸款這點就變成了機會成本），而不是繳利息給別人，除此之外，買新車也不是「真正緊急的情況」，所以也沒必要急著貸款買。</p>
+<p>再特別記一點好了，雖然感覺不太適合套用到房貸：「最不理智的事就是在有負債的時候還存錢，是為了緊急的資金需求或為未來存錢？以信用卡為例，除非銀行給你的存款利息超過信用卡的循環利息，不然最好還是把這筆存款拿去還清債務。」合理，不過房貸可不是一筆小數目。或許可以從其他角度去切入？比方房子總價 1500 萬，購屋前直接先加上房貸的利息把它看成是 2000 萬？之類的。我目前還不是很懂，之後會找機會好好來了解一番！不過剛剛好奇查了一下，看起來目前「房貸的最高利率只會到 4% 左右」，印象中蠻多(?)人的投資報酬率可以勝過 4%？（感覺牛頭不對馬嘴，但這點先當成是一顆種子，播種在我心中名為投資理財的土壤裡好了）</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
+<p>列出你所有的債務，把他們分成兩種：好的債務和不好的債務。<br><strong>「按照利率高低排列壞債務的優先順序」</strong>，計算看看要花多久時間才能還清這些債務。</p>
+</blockquote>
+<p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
+<p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>54. 如何累積真正的財富？</title>
+    <url>/2023/07/soft-skills-54/</url>
+    <content><![CDATA[<p>這一章節提供了心態方面的建議！</p>
+<span id="more"></span>
+
+<h3 id="知足常樂"><a href="#知足常樂" class="headerlink" title="知足常樂"></a>知足常樂</h3><p>俗話說得好：「知足常樂。」套用到財務方面也同樣適用，作者在書中是這麼說的：</p>
+<blockquote>
+<p>想要致富，最快的方法不是賺很多很多的錢，而是減少開銷。如果你能靠少少的金錢生活，只需要少量的被動收入，你就可以實現財務自由，真正主宰你的時間與人生。</p>
+</blockquote>
+<p>這裡的致「富」，即為作者所定義的「富有」：</p>
+<blockquote>
+<p>個人所擁有的供應資源遠超過個人所需，不必很有錢，甚至完全稱不上有錢的人，也能視為富有。</p>
+</blockquote>
+<p>想要變得富有，只要做兩件簡單的事：</p>
+<ol>
+<li>個人所擁有的供應資源會自動更新</li>
+<li>你的需求要低於供應量</li>
+</ol>
+<blockquote>
+<p>變得富有比變得有錢更重要。有錢是相對的數字，沒有人知道究竟怎樣才算是真正的有錢人。要論人生的財務成功，富有是更適合的指標。</p>
+</blockquote>
+<p>針對這一點，作者又補充：</p>
+<blockquote>
+<p>就算年收入少於定義的貧窮線，但只要開銷低於「收入」（目的是確保永續的財富），而且不必為那份「收入」工作（也就是作者所說的會自動更新的資源，即為被動收入），就能認定為富有。</p>
+</blockquote>
+<blockquote>
+<p>但這不表示你必須過著小氣或節儉的生活才能變得富有，只要你的被動收入提升了，開銷方面也能夠因此而提高。</p>
+</blockquote>
+<h3 id="永不乾涸的井"><a href="#永不乾涸的井" class="headerlink" title="永不乾涸的井"></a>永不乾涸的井</h3><p>關於「會自動更新的資源」，作者用了一個很具象化的方式來描述它：「永不乾涸的井」。</p>
+<p>遊戲世界不也有類似的東西嗎？利用現有資源去購入一個可以隨著時間逐漸累積出資源的資產。而當這項資產升級的時候，它資源累積的速度也會跟著變快，因此能夠創造出更多的被動現金流。</p>
+<blockquote>
+<p>原理就是井會重新填滿，這口財富井每個月湧出的收入，你可以全數花光，因為你知道這筆錢下個月又會再次補滿，不像來自工作的收入是你必須持續工作才能獲得的。</p>
+</blockquote>
+<p>但是一開始被動收入才那麼一點點，難道永遠只能這樣用少少的金錢生活下去了嗎？作者知道讀者會產生出這樣的疑問，因此他也在書中解惑道：</p>
+<blockquote>
+<p>可能要花點時間累積和省吃儉用，資產產生的收入才能達到你生活的水準，但是跟虹吸管原理一樣，一旦啟動就永遠不會停止。事實上，只要你持續將工作或事業賺來的金錢，投入更多到資產上，你的財富井就會隨著時間越來越深。</p>
+</blockquote>
+<p>我們要做的就是秉持著耐心並 trust the process，相信複利效應所帶來的成果！</p>
+<h3 id="自我投資"><a href="#自我投資" class="headerlink" title="自我投資"></a>自我投資</h3><p>最後，也是最重要的事：</p>
+<blockquote>
+<p>也別忘了投資在自己身上，這項作法會增加你的收入，進而增加你的儲蓄，日後要投資時才有大量的資金，這一點其實影響很大。</p>
+</blockquote>
+<p>這讓我聯想到「<a href="https://open.spotify.com/episode/4i53FwnKufNLsso8RM0G3Z?si=1fa4d1a411514854">社會新鮮人的小資理財之道：增長，是比存錢更重要的一件事</a>」這集 podcast 的內容，也分享給大家一點筆記：</p>
+<ul>
+<li>年輕人，節流不如開源，每月存兩萬不如拿那兩萬投資在自己身上，提升自我方能以較快的速度提升薪資的成長幅度，比傻傻都把錢存著但不去提升自己的價值好太多了！</li>
+<li>你會怎麼做選擇：每月存很多但不去投資自己 → 錢是有存到但開源速度沒什麼改變 vs 很樂意花錢在投資自己這件事情上 → 提升開源速度也因此能存到更多錢</li>
+<li>聽完額外的延伸：所以不要為了省錢亂吃、吃太簡單，久了沒多存到多少錢之外，也賠了健康，超級不划算的！</li>
+</ul>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><p>作者提出了「財富金三角」：金錢、投資報酬率、時間。讓我們針對這三方面來實驗並嘗試從中發現點什麼。</p>
+<blockquote>
+<p>現在該換你玩玩複利計算器了。請找一個你喜歡的線上複利計算器，然後開始帶入不同的情境，試著針對現金、複利率和時間，選擇不同的設定量，猜猜看會出現什麼結果，許多效果或許會讓你大吃一驚。</p>
+</blockquote>
+<p>上網找哪一款複利計算器都行，隨意玩了一下，真的能感受複利效應所帶來的強大威力！</p>
+<p>別忘了，不只是金錢，其他方面也同樣適用，像是每一次的思考及行動，雖然看似微不足道，但累積起來，可是會深深影響著我們的未來呢！</p>
+<blockquote>
+<p>現在請使用同一個複利計算器，推算出你目前的投資軌跡。如果你認為透過目前的投資策略，將來能讓你致富，那麼請將投資成果畫出來看看，其結果有可能會讓你大失所望。</p>
+</blockquote>
+<p>😮</p>
+<p>愛因斯坦曾經說過：「什麼叫瘋子，就是重複做同樣的事情還期待會出現不同的結果。」</p>
+<p>沒關係，當發覺到不太滿意時，就做出調整吧！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>停下來思考</title>
     <url>/2021/12/soft-skills/</url>
     <content><![CDATA[<p>生活瑣事一大堆，導致我們常常忽略了人生中更重要、更值得關注的事情！<br>（但我發現，感覺自己很忙，實際上只是心理狀態上的忙、盲、茫⋯⋯）</p>
@@ -4028,23 +4109,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       <tags>
         <tag>閱讀</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>【軟實力】53. 債務危機</title>
-    <url>/2023/05/soft-skills-53/</url>
-    <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
-<span id="more"></span>
-
-<p>債務都不好嗎？書中提到：「如果你利用債務賺取的利息，勝過你付給債務的利息，那就是好的債務。」這道理很容易懂，但感覺我們常常會因為它是「債務」而覺得它就是不好的。試著在腦海裡記住這個看似在講廢話的建言吧！</p>
-<p>還有：「背負債務之前，底線是要確認債務實際上是投資，債務所產生的報酬，要高於你為債務所付的利息，只有在真正緊急的情況下，才不得不揹上無法獲利的債務。」已經有車了想買新車？選擇貸款買？不如暫時繼續開舊車，然後可能開一個新帳戶「新車基金」，先存夠錢再買新車！原因是，你為新車存的錢，會隨時間為你累積利息（先貸款這點就變成了機會成本），而不是繳利息給別人，除此之外，買新車也不是「真正緊急的情況」，所以也沒必要急著貸款買。</p>
-<p>再特別記一點好了，雖然感覺不太適合套用到房貸：「最不理智的事就是在有負債的時候還存錢，是為了緊急的資金需求或為未來存錢？以信用卡為例，除非銀行給你的存款利息超過信用卡的循環利息，不然最好還是把這筆存款拿去還清債務。」合理，不過房貸可不是一筆小數目。或許可以從其他角度去切入？比方房子總價 1500 萬，購屋前直接先加上房貸的利息把它看成是 2000 萬？之類的。我目前還不是很懂，之後會找機會好好來了解一番！不過剛剛好奇查了一下，看起來目前「房貸的最高利率只會到 4% 左右」，印象中蠻多(?)人的投資報酬率可以勝過 4%？（感覺牛頭不對馬嘴，但這點先當成是一顆種子，播種在我心中名為投資理財的土壤裡好了）</p>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
-<p>列出你所有的債務，把他們分成兩種：好的債務和不好的債務。<br><strong>「按照利率高低排列壞債務的優先順序」</strong>，計算看看要花多久時間才能還清這些債務。</p>
-</blockquote>
-<p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
-<p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
-]]></content>
   </entry>
   <entry>
     <title>做 Spotify 相關的 side project</title>
@@ -4459,36 +4523,6 @@ go go!!!]]></content>
 ]]></content>
   </entry>
   <entry>
-    <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
-    <url>/2022/09/zsh-z/</url>
-    <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
-<span id="more"></span>
-
-<h2 id="為何想推-zsh-z？"><a href="#為何想推-zsh-z？" class="headerlink" title="為何想推 zsh-z？"></a>為何想推 zsh-z？</h2><p>試想個情境：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
-
-<p>今天你的 working directory 位於 <code>./B/123/abc/hello/</code>，如果想切換目錄到裡面有 <code>wow.txt</code> 的目錄底下，你會怎麼做呢？</p>
-<p>可能是 <code>cd ../../../../A/123/abc/wow/</code> ？這樣不是挺麻煩的嗎？</p>
-<p>身為一個<del>懶惰</del>不斷尋找優化可能性的軟體工程師，怎能允許自己浪費寶貴的時間在這種事情上呢？</p>
-<p>於是乎，在某種因緣際會之下，我認識了「zsh-z」這個酷工具，它可以解決問題！</p>
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>首先，照著<a href="https://github.com/agkozak/zsh-z">這個</a>裝吧！</p>
-<p>以 oh-my-zsh 的使用者為例：</p>
-<ol>
-<li>打開 terminal，輸入： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/agkozak/zsh-z <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-z</span><br></pre></td></tr></table></figure>
-</li>
-<li>編輯家目錄底下的 <code>.zshrc</code>：找到 <code>plugins=()</code>，將 <code>zsh-z</code> 加進 <code>()</code> 裡面，像 <code>plugins=( git zsh-z )</code> 這樣</li>
-<li>重開新的 terminal，或是 <code>source ~/.zshrc</code> 以後就可以用囉！</li>
-</ol>
-<h2 id="怎麼用？"><a href="#怎麼用？" class="headerlink" title="怎麼用？"></a>怎麼用？</h2><p>超級方便，你只要輸入 <code>z [一點線索]</code>，就可以跳到你之前造訪過的目錄！</p>
-<p>以最一開始的情境為例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
-
-<p>你今天在 <code>./B/123/abc/hello/</code>，想快速切換到曾經造訪過的 <code>./A/123/abc/wow/</code>，你只要 <code>z wow</code>，神奇的事情就會發生在你眼前 🥳（你真的就會 wow）</p>
-<p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
-<br>
-是不是真的很方便呢？]]></content>
-  </entry>
-  <entry>
     <title>用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</title>
     <url>/2022/06/youbike-helper/</url>
     <content><![CDATA[<p>這個 Project 主要是用來熟悉 RabbitMQ、MongoDB、Docker 及 Kubernetes。<br>接下來我會用筆記的方式分享整個過程的點點滴滴（和一些我踩過的坑 😅）</p>
@@ -4792,5 +4826,35 @@ go go!!!]]></content>
 <h3 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h3><p>參考文有放「<strong><strong>Kubernetes Dashboard</strong></strong>」的操作教學，這邊就不贅述了～</p>
 <br>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
+    <url>/2022/09/zsh-z/</url>
+    <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
+<span id="more"></span>
+
+<h2 id="為何想推-zsh-z？"><a href="#為何想推-zsh-z？" class="headerlink" title="為何想推 zsh-z？"></a>為何想推 zsh-z？</h2><p>試想個情境：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
+
+<p>今天你的 working directory 位於 <code>./B/123/abc/hello/</code>，如果想切換目錄到裡面有 <code>wow.txt</code> 的目錄底下，你會怎麼做呢？</p>
+<p>可能是 <code>cd ../../../../A/123/abc/wow/</code> ？這樣不是挺麻煩的嗎？</p>
+<p>身為一個<del>懶惰</del>不斷尋找優化可能性的軟體工程師，怎能允許自己浪費寶貴的時間在這種事情上呢？</p>
+<p>於是乎，在某種因緣際會之下，我認識了「zsh-z」這個酷工具，它可以解決問題！</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>首先，照著<a href="https://github.com/agkozak/zsh-z">這個</a>裝吧！</p>
+<p>以 oh-my-zsh 的使用者為例：</p>
+<ol>
+<li>打開 terminal，輸入： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/agkozak/zsh-z <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-z</span><br></pre></td></tr></table></figure>
+</li>
+<li>編輯家目錄底下的 <code>.zshrc</code>：找到 <code>plugins=()</code>，將 <code>zsh-z</code> 加進 <code>()</code> 裡面，像 <code>plugins=( git zsh-z )</code> 這樣</li>
+<li>重開新的 terminal，或是 <code>source ~/.zshrc</code> 以後就可以用囉！</li>
+</ol>
+<h2 id="怎麼用？"><a href="#怎麼用？" class="headerlink" title="怎麼用？"></a>怎麼用？</h2><p>超級方便，你只要輸入 <code>z [一點線索]</code>，就可以跳到你之前造訪過的目錄！</p>
+<p>以最一開始的情境為例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── A</span><br><span class="line">│   └── 123</span><br><span class="line">│       └── abc</span><br><span class="line">│           └── wow</span><br><span class="line">│               └── wow.txt</span><br><span class="line">└── B</span><br><span class="line">    └── 123</span><br><span class="line">        └── abc</span><br><span class="line">            └── hello</span><br><span class="line">                └── hello.txt</span><br></pre></td></tr></table></figure>
+
+<p>你今天在 <code>./B/123/abc/hello/</code>，想快速切換到曾經造訪過的 <code>./A/123/abc/wow/</code>，你只要 <code>z wow</code>，神奇的事情就會發生在你眼前 🥳（你真的就會 wow）</p>
+<p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
+<br>
+是不是真的很方便呢？]]></content>
   </entry>
 </search>
