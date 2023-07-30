@@ -116,30 +116,6 @@
 有些時候，或許可以嘗試換個角度，也或許，就可能只是還沒放對地方而已。]]></content>
   </entry>
   <entry>
-    <title>關於「抽象化」的一點隨想</title>
-    <url>/2023/06/abstract-thinking/</url>
-    <content><![CDATA[<p>好文分享：<a href="https://blog.heron.me/%E6%8A%BD%E8%B1%A1%E5%B1%A4-%E9%87%8D%E8%A6%81%E7%9A%84%E5%B9%BE%E4%BB%B6%E4%BA%8B-dd354a38c52b">抽象層 — 重要的幾件事</a></p>
-<span id="more"></span>
-
-<h3 id="工具的進步"><a href="#工具的進步" class="headerlink" title="工具的進步"></a>工具的進步</h3><p>講到「抽象層」，讓我立刻聯想到的就是最近很夯的「ChatGPT」。</p>
-<p>ChatGPT 可以幫忙摘要文章、可以列點提供建議、甚至可以邊產生程式碼邊解釋為什麼它要這樣寫，有太多太多事情，只要問的人夠會問問題（下足夠精確的 prompt 給它），ChatGPT 幾乎都能做到，而且產出的內容往往令人嘆為觀止！</p>
-<h3 id="擔心被取代？"><a href="#擔心被取代？" class="headerlink" title="擔心被取代？"></a>擔心被取代？</h3><p>我們會擔心，突然出現一個這麼強大的工具，要是因為這樣被取代了該怎麼辦？</p>
-<p>讀完這篇文章以後，我試著從另外一個角度去切入這個議題：過去不也經歷過類似的事情嗎？從機械工業革命、電器工業革命、到資訊革命，我們有因為每一次的新突破被取代而什麼事都沒得讓我們去做嗎？沒有，是吧！</p>
-<p>或者更精確來說，被取代的並不是「我們」本身，而是我們的「工作內容」。因為每一次的新突破，讓我們的工作內容變得越來越「高層次」，可以用更 high-level 的方式來完成一件事！</p>
-<p>什麼意思？舉個例子：過去農夫需要親自下田一個一個慢慢來，有了機械，就能透過開著機械車來更快完成，後來又有資訊科技的輔助，或許根本不用親自下田，一切交給電腦去處理，未來人工智慧越來越普及，或許就能達到更精確的境界，也就是需要買多少種子、什麼時間播種、該灌溉多少水等等的，靠著人工智慧的輔助，達到以更低的成本產生出更高效益的成果。如此以來，農夫就能有更多時間和精力善用他們對農業方面的智慧，去創造出更高層次的各種可能（這我描述得挺模糊，可以把它想成就是能帶來更高的價值，比方研發新品種或是開發出新觀光型態）！</p>
-<h3 id="終身學習的重要性"><a href="#終身學習的重要性" class="headerlink" title="終身學習的重要性"></a>終身學習的重要性</h3><p>所以這也是為什麼，「終身學習」那麼重要了。以剛剛的例子來說，願意學習怎麼開機械車、操作電腦、接觸人工智慧工具，可以大大優化農夫工作的方式，甚至有更多工作以外的時間能夠好好運用。</p>
-<p>因此，或許我們該擔心的不是會不會被人工智慧取代，而是自己是否已逐漸失去學習新事物的熱忱。未來的工作內容或許會有很大的不同，我們能做的，就是透過新科技來 power up 自己的思考方式，與時俱進，跟著科技的進步一起成長。即使未來工作內容很不同，也可以用「更高層次」的思維，創造出前所未見的新價值！</p>
-<h3 id="親身體悟"><a href="#親身體悟" class="headerlink" title="親身體悟"></a>親身體悟</h3><p>除了 ChatGPT，「抽象層」也讓我聯想到「處理一件事情的方式」，簡單分享一下：</p>
-<p><img src="1.png" alt="1.png"></p>
-<p>這是近期工作當中的深刻體會。</p>
-<p>我有個任務是要在既有的系統上新增功能，但要新增那個功能，必須要改動系統當中的很多「部分」。</p>
-<p>一開始我是想到什麼就把它記在一個筆記裡，像是可以怎麼改動程式碼、需要跟 PM 和 tech lead 討論什麼、會遇到什麼阻礙。這麼做有個好處，就是不會忘記我那些突然湧現的靈感，但壞處在於，各種類型的資訊集結在同一個地方，而且還沒被有邏輯地分類，當要實際執行的時候，發現筆記內容過於發散，裡頭都是屬於「低層次」的小行動，沒有一個比較「big picture」的內容，當下會不知道要怎麼開始，因而遲遲難以展開。</p>
-<h3 id="處理事情-Power-Up"><a href="#處理事情-Power-Up" class="headerlink" title="處理事情 Power-Up"></a>處理事情 Power-Up</h3><p>後來請教了同事，他建議我先依照各個「部分」來整理那些小行動（以「部分」來當作小標題，小行動則在下面列點），然後試著收斂那些小行動。於是乎，我花大概一個上午整理那篇雜亂無章的筆記，讓它看起來井然有序、更容易被執行，到了下午，嘗試回過頭來繼續做的時候，發現那個任務其實沒到想像中那麼 mission impossible，之前覺得困難的地方，在於 coding 前沒有妥善的 planning！</p>
-<p>後來就是因為用更高層次的方式來看這件事，才讓我得以更好地去進行它！以「高層次」來看事情，以「低層次」來執行，對於能順利完成較為複雜的任務，兩者真的缺一不可啊！</p>
-<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>所以說，這就是為什麼我會很想推薦這篇文章，「抽象層」這個思維模型真的很值得了解和拿來運用，它能夠幫助我們生活當中的各個層面😎</p>
-]]></content>
-  </entry>
-  <entry>
     <title>用 Algorithmia 部署 ML Models</title>
     <url>/2021/07/algorithmia-ml-models/</url>
     <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
@@ -282,6 +258,30 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>很開心能夠成為 AppWorks School 大家庭的一份子，更開心有這個機會在此和大家分享我在 AppWorks School 這段期間的點點滴滴，未來還請各位多多指教了🙏</p>
 <br>
 希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
+  </entry>
+  <entry>
+    <title>關於「抽象化」的一點隨想</title>
+    <url>/2023/06/abstract-thinking/</url>
+    <content><![CDATA[<p>好文分享：<a href="https://blog.heron.me/%E6%8A%BD%E8%B1%A1%E5%B1%A4-%E9%87%8D%E8%A6%81%E7%9A%84%E5%B9%BE%E4%BB%B6%E4%BA%8B-dd354a38c52b">抽象層 — 重要的幾件事</a></p>
+<span id="more"></span>
+
+<h3 id="工具的進步"><a href="#工具的進步" class="headerlink" title="工具的進步"></a>工具的進步</h3><p>講到「抽象層」，讓我立刻聯想到的就是最近很夯的「ChatGPT」。</p>
+<p>ChatGPT 可以幫忙摘要文章、可以列點提供建議、甚至可以邊產生程式碼邊解釋為什麼它要這樣寫，有太多太多事情，只要問的人夠會問問題（下足夠精確的 prompt 給它），ChatGPT 幾乎都能做到，而且產出的內容往往令人嘆為觀止！</p>
+<h3 id="擔心被取代？"><a href="#擔心被取代？" class="headerlink" title="擔心被取代？"></a>擔心被取代？</h3><p>我們會擔心，突然出現一個這麼強大的工具，要是因為這樣被取代了該怎麼辦？</p>
+<p>讀完這篇文章以後，我試著從另外一個角度去切入這個議題：過去不也經歷過類似的事情嗎？從機械工業革命、電器工業革命、到資訊革命，我們有因為每一次的新突破被取代而什麼事都沒得讓我們去做嗎？沒有，是吧！</p>
+<p>或者更精確來說，被取代的並不是「我們」本身，而是我們的「工作內容」。因為每一次的新突破，讓我們的工作內容變得越來越「高層次」，可以用更 high-level 的方式來完成一件事！</p>
+<p>什麼意思？舉個例子：過去農夫需要親自下田一個一個慢慢來，有了機械，就能透過開著機械車來更快完成，後來又有資訊科技的輔助，或許根本不用親自下田，一切交給電腦去處理，未來人工智慧越來越普及，或許就能達到更精確的境界，也就是需要買多少種子、什麼時間播種、該灌溉多少水等等的，靠著人工智慧的輔助，達到以更低的成本產生出更高效益的成果。如此以來，農夫就能有更多時間和精力善用他們對農業方面的智慧，去創造出更高層次的各種可能（這我描述得挺模糊，可以把它想成就是能帶來更高的價值，比方研發新品種或是開發出新觀光型態）！</p>
+<h3 id="終身學習的重要性"><a href="#終身學習的重要性" class="headerlink" title="終身學習的重要性"></a>終身學習的重要性</h3><p>所以這也是為什麼，「終身學習」那麼重要了。以剛剛的例子來說，願意學習怎麼開機械車、操作電腦、接觸人工智慧工具，可以大大優化農夫工作的方式，甚至有更多工作以外的時間能夠好好運用。</p>
+<p>因此，或許我們該擔心的不是會不會被人工智慧取代，而是自己是否已逐漸失去學習新事物的熱忱。未來的工作內容或許會有很大的不同，我們能做的，就是透過新科技來 power up 自己的思考方式，與時俱進，跟著科技的進步一起成長。即使未來工作內容很不同，也可以用「更高層次」的思維，創造出前所未見的新價值！</p>
+<h3 id="親身體悟"><a href="#親身體悟" class="headerlink" title="親身體悟"></a>親身體悟</h3><p>除了 ChatGPT，「抽象層」也讓我聯想到「處理一件事情的方式」，簡單分享一下：</p>
+<p><img src="1.png" alt="1.png"></p>
+<p>這是近期工作當中的深刻體會。</p>
+<p>我有個任務是要在既有的系統上新增功能，但要新增那個功能，必須要改動系統當中的很多「部分」。</p>
+<p>一開始我是想到什麼就把它記在一個筆記裡，像是可以怎麼改動程式碼、需要跟 PM 和 tech lead 討論什麼、會遇到什麼阻礙。這麼做有個好處，就是不會忘記我那些突然湧現的靈感，但壞處在於，各種類型的資訊集結在同一個地方，而且還沒被有邏輯地分類，當要實際執行的時候，發現筆記內容過於發散，裡頭都是屬於「低層次」的小行動，沒有一個比較「big picture」的內容，當下會不知道要怎麼開始，因而遲遲難以展開。</p>
+<h3 id="處理事情-Power-Up"><a href="#處理事情-Power-Up" class="headerlink" title="處理事情 Power-Up"></a>處理事情 Power-Up</h3><p>後來請教了同事，他建議我先依照各個「部分」來整理那些小行動（以「部分」來當作小標題，小行動則在下面列點），然後試著收斂那些小行動。於是乎，我花大概一個上午整理那篇雜亂無章的筆記，讓它看起來井然有序、更容易被執行，到了下午，嘗試回過頭來繼續做的時候，發現那個任務其實沒到想像中那麼 mission impossible，之前覺得困難的地方，在於 coding 前沒有妥善的 planning！</p>
+<p>後來就是因為用更高層次的方式來看這件事，才讓我得以更好地去進行它！以「高層次」來看事情，以「低層次」來執行，對於能順利完成較為複雜的任務，兩者真的缺一不可啊！</p>
+<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>所以說，這就是為什麼我會很想推薦這篇文章，「抽象層」這個思維模型真的很值得了解和拿來運用，它能夠幫助我們生活當中的各個層面😎</p>
+]]></content>
   </entry>
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
@@ -1132,15 +1132,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】84~77</title>
     <url>/2022/03/freshman-career-84-77/</url>
     <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
@@ -1189,6 +1180,15 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
 <p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
 ]]></content>
   </entry>
   <entry>
@@ -1426,35 +1426,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 今天這樣逛，真的值得😎]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
-    <url>/2022/03/freshman-career-96-93/</url>
-    <content><![CDATA[<p>卡卡的感覺😅</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
-<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
-<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
-<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
-<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
-<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
-<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
-<p>所以早上沒得做 project。</p>
-<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
-<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
-<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
-<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
-<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
-<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
-<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
-<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
-<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
-<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
-<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
-<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
-<br>
-沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
-  </entry>
-  <entry>
     <title>用 FSM 及 LINE Messaging API 做一個聊天機器人</title>
     <url>/2021/07/fsm-line-bot/</url>
     <content><![CDATA[<p><a href="/2021/07/fsm-line-bot"><img src="https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
@@ -1603,90 +1574,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
         <tag>ngrok</tag>
         <tag>Flask</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>【學習筆記】人機互動概論 - 1</title>
-    <url>/2022/08/hci-note-1/</url>
-    <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
-<p>後來在 YouTube 找到了「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
-<span id="more"></span>
-
-<br>
-廢話不多說，讓我們直接進到筆記的部分吧！
-
-<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
-<li>科技始終來自於人性</li>
-<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
-</ul>
-<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
-<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
-<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
-<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
-</ul>
-</li>
-<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
-<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
-<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
-<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
-</ul>
-</li>
-<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
-<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
-<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
-<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
-</ul>
-</li>
-<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
-<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
-</ul>
-</li>
-<li>「跨領域」的人機互動<ul>
-<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
-<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
-<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
-<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
-</ul>
-</li>
-<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
-<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
-</ul>
-</li>
-</ul>
-<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
-<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
-<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
-<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
-<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
-</ul>
-</li>
-<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
-<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
-</ul>
-<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
-<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
-<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
-<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
-<li>有沒有類似經驗<ul>
-<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
-<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
-</ul>
-</li>
-<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
-<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
-<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
-<li>什麼門是好設計？<ul>
-<li>外型設計要相當直覺</li>
-<li>逃生門  <img src="2.png"></li>
-<li>車子的門  <img src="3.png"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
-<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
-</ul>
-<br>
-未完待續，stay tuned!]]></content>
   </entry>
   <entry>
     <title>黑客松 LINE Bot 賽前補帖</title>
@@ -1842,6 +1729,119 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>【學習筆記】人機互動概論 - 1</title>
+    <url>/2022/08/hci-note-1/</url>
+    <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
+<p>後來在 YouTube 找到了「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」這個系列影片，邊看邊做了筆記 (幾乎都是影片內容及字幕)，目的是希望之後只要讀筆記就能快速回憶起影片的內容。</p>
+<span id="more"></span>
+
+<br>
+廢話不多說，讓我們直接進到筆記的部分吧！
+
+<h3 id="關於人機互動這件事"><a href="#關於人機互動這件事" class="headerlink" title="關於人機互動這件事"></a><a href="https://www.youtube.com/watch?v=pR-kh31zIUo&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=1">關於人機互動這件事</a></h3><ul>
+<li>科技始終來自於人性</li>
+<li>「人機互動」的研究者所好奇的主題：科技的發展還有設計，到底怎樣被人性影響？而我們的人性，怎麼樣反過來被科技影響？</li>
+</ul>
+<h3 id="人機互動到底是什麼？能吃嗎？"><a href="#人機互動到底是什麼？能吃嗎？" class="headerlink" title="人機互動到底是什麼？能吃嗎？"></a><a href="https://www.youtube.com/watch?v=_qIFvuHo6qk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=2">人機互動到底是什麼？能吃嗎？</a></h3><ul>
+<li>人機互動 (<strong>H</strong>uman-<strong>C</strong>omputer <strong>I</strong>nteraction，簡稱 HCI)：探討使用者 (Human) 與電腦 (Computer) 之間彼此感知並作出回應 (互動) 的過程<ul>
+<li>舉例：瀏覽網頁時廣告突然跳出來 → 使用者會感知到「有個廣告跳出來」 → 也許對廣告感興趣 or 不感興趣 → 使用者感知而用滑鼠對廣告作出回應 → 電腦透過感知工具 (像是滑鼠、鍵盤) 感知使用者的行為 → 像是使用者關掉廣告 → 電腦會依據這個感知做出相對應的回應</li>
+<li>因此就在使用者感知電腦、電腦感知使用者這樣互相感知之下，就會形成了一種互動，也就是 interaction</li>
+</ul>
+</li>
+<li>在探討互動的時候，電腦部份，我們可以探討「整體的電腦系統」，也可以把它限縮到「小部分的零件按鈕」，比方說鍵盤的排列設計 or 警告訊息的顏色設計，這些都是人機互動的議題！</li>
+<li>computer 不僅限於筆電、桌電，其實也可以代表車子、手機、智慧手錶等等，這些裝置也都是 computer 的一種。所以說，跟這些不同的裝置也會有不同的互動方式，如何做互動，也是人機互動在探討的。</li>
+<li>思考一下：「早上」用電腦跟「晚上」用電腦做的事情會一樣嗎？還是不一樣呢？<ul>
+<li>我們在不同時間 / 環境 / 脈絡 (context)，這些因素都會影響我們怎麼樣跟這些機器做互動</li>
+</ul>
+</li>
+<li>除了外在的脈絡、外在的環境，我們人的內在環境 (像是情緒狀態) 也是會影響到我們怎麼跟機器還有系統做互動<ul>
+<li>今天很開心：看別人分享很蠢的笑話 → 覺得好笑 → 按讚</li>
+<li>今天覺得諸事不順：看別人分享很蠢的笑話 → 反而覺得更生氣 → 按怒</li>
+<li>以上可以體現出：使用者的內在狀態，也會大大影響使用者怎麼樣跟「同一個」東西、同一個資訊做互動</li>
+</ul>
+</li>
+<li>剛剛都只是比較侷限在「我自己」使用者跟電腦的互動，然而，人機互動還可以再進一步延伸到：我們使用者如何透過電腦或是系統作為媒介，與「其他人」溝通或者是互動<ul>
+<li>舉例：遠端跟別人開會，視訊、音訊都開 vs 只開音訊，感覺是很不一樣的！</li>
+</ul>
+</li>
+<li>「跨領域」的人機互動<ul>
+<li>「機」器方面：computer science，知道怎麼做出一個電腦、電腦系統、網路系統，還有可以能讓使用者遠端溝通的通訊科學</li>
+<li>人：社會學、行為學、認知神經科學、認知科學。以「認知科學」為例，可以幫助我們了解，為什麼人腦在感知到某些刺激以後，會有這樣的行為；為什麼總是會被特定的事物去吸引住注意力</li>
+<li>人因工程：像是警鈴要多大聲大家才聽得到、椅子要怎麼設計才會符合人體工學</li>
+<li>還有更多領域都會被應用在人機互動的研究當中，像是 AI 等等，太廣了！</li>
+</ul>
+</li>
+<li>人機互動好像只有看電腦、看網頁、動手操作網頁、聽到一些影片的聲音，只有看、聽、摸？其實還可以「吃」！<ul>
+<li>有篇 paper：Communication by Changes in Taste，探討「利用電流刺激」改變味覺，以及改變味覺可以如何促進人之間的交流</li>
+</ul>
+</li>
+</ul>
+<h3 id="人機互動的發展歷史"><a href="#人機互動的發展歷史" class="headerlink" title="人機互動的發展歷史"></a><a href="https://www.youtube.com/watch?v=LUPDpNqjmzI&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=3">人機互動的發展歷史</a></h3><ul>
+<li>今天一打開電腦，就可以看到桌面有很多 icon 代表不同的軟體，然後我們可以用滑鼠去點這些軟體。這些我們感覺很平常的事情，在過去很多年前，其實都是天馬行空的想像跟發明！</li>
+<li>HCI 早期承先啟後的重要研究：圖形使用者介面、文字編輯系統<ul>
+<li>圖形使用者介面：採用圖形方式顯示的電腦操作使用者介面（例如：網頁視窗、按鈕、鼠標等等）</li>
+<li>文字編輯系統：主要用於用來編寫和檢視文字檔案</li>
+</ul>
+</li>
+<li>其他的創意研究：視窗、電腦輔助設計軟體、虛擬實境與擴增實境</li>
+<li>這些不同領域的專家學者，願意結合他們的專長以及發揮對未來科技還有社會的想像，我們才會有這麼多令人驚豔的研究跟產品在我們的日常生活當中！</li>
+</ul>
+<h3 id="日常生活中的好設計"><a href="#日常生活中的好設計" class="headerlink" title="日常生活中的好設計"></a><a href="https://www.youtube.com/watch?v=mkqnA9hWedg&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=4">日常生活中的好設計</a></h3><ul>
+<li>這些人機互動的小觀念跟知識，都會大大影響我們在日常生活中的便利性</li>
+<li>對於人機互動有更多想要了解的話，非常推薦去看 Don Norman 的《The Design of Everyday Things》</li>
+<li>「門」這麼簡單的裝置，跟聽起來很複雜、很玄的「人機互動」有什麼關係？<ul>
+<li>有沒有類似經驗<ul>
+<li>開門時，怎麼推都推不開，想說是不是有人鎖門了？後來才發現門是要拉開的⋯⋯</li>
+<li>門怎麼拉推都打不開，後來才發現要往右滑開</li>
+</ul>
+</li>
+<li>若是在設計這麼簡單的東西，都沒有考慮使用者，會如何從這個東西原本設計的形體中直接理解它的使用方式，若沒考慮到這件事，就會遇到很多類似剛剛的狀況</li>
+<li>同樣形狀的門有不同的表現方式 → 屬於不好的設計  <img src="1.png"></li>
+<li>一個設計良好的門，應該要讓使用者可以直接從外觀上知道到底要如何去使用（中間會牽扯到許多人機互動裡面會提到的設計要素）</li>
+<li>什麼門是好設計？<ul>
+<li>外型設計要相當直覺</li>
+<li>逃生門  <img src="2.png"></li>
+<li>車子的門  <img src="3.png"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>日常生活中的好設計：符合人機互動的<strong>好設計</strong>，是要<strong>很直覺</strong>地讓使用者知道使用方法</li>
+<li>為何以「門」來當做例子？因為光是「門」平常都會碰到又這麼簡單的裝置，就已經牽扯到許多與人機互動有關的知識和議題！</li>
+</ul>
+<br>
+未完待續，stay tuned!]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
+    <url>/2022/03/freshman-career-96-93/</url>
+    <content><![CDATA[<p>卡卡的感覺😅</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
+<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
+<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
+<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
+<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
+<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
+<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
+<p>所以早上沒得做 project。</p>
+<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
+<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
+<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
+<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
+<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
+<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
+<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
+<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
+<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
+<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
+<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
+<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
+<br>
+沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
+  </entry>
+  <entry>
     <title>【學習筆記】人機互動概論 - 2</title>
     <url>/2022/10/hci-note-2/</url>
     <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第二彈～</p>
@@ -1960,6 +1960,42 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </ul>
 <br>
 未完待續，stay tuned!]]></content>
+  </entry>
+  <entry>
+    <title>【學習筆記】人機互動概論 - 3</title>
+    <url>/2022/11/hci-note-3/</url>
+    <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第三彈～</p>
+<span id="more"></span>
+
+<h3 id="從影視作品聊聊人工智慧"><a href="#從影視作品聊聊人工智慧" class="headerlink" title="從影視作品聊聊人工智慧"></a><a href="https://www.youtube.com/watch?v=jTbPJLOrMt0&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=13">從影視作品聊聊人工智慧</a></h3><ul>
+<li>會不會我們未來人類都找不到工作，因為人工智慧太厲害都取代我們的工作了？</li>
+<li>人工智慧已融入到我們的生活裡面，許多我們覺得很方便的事情，其實都已經離不開人工智慧了<ul>
+<li>你還可以不依賴 Google Map 到一個陌生不熟悉的地方嗎？</li>
+<li>掃地機器人</li>
+</ul>
+</li>
+</ul>
+<h3 id="那些隱藏在我們生活中的機器人"><a href="#那些隱藏在我們生活中的機器人" class="headerlink" title="那些隱藏在我們生活中的機器人"></a><a href="https://www.youtube.com/watch?v=Tmyc6T2Fk0c&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=14">那些隱藏在我們生活中的機器人</a></h3><ul>
+<li>人與機器人之間的互動是非常多樣化的</li>
+<li>機器人的溝通方式相當擬人化，用肢體動作甚至是情緒來表達自己的狀態</li>
+<li>在這個人工智慧還有智慧家電以及機器人越來越多的年代，我們跟這些設計物的互動，除了變得更加即時以及多元之外，同時也變得更加複雜了</li>
+</ul>
+<h3 id="人工智慧與人類的共生關係"><a href="#人工智慧與人類的共生關係" class="headerlink" title="人工智慧與人類的共生關係"></a><a href="https://www.youtube.com/watch?v=EUKRZ7gZUAE&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=15">人工智慧與人類的共生關係</a></h3><ul>
+<li>為什麼有些人工智慧或智慧系統，我們覺得很好用，而有些我們卻覺得沒有那麼好用？<ul>
+<li>其實就跟設計一些裝置或是物體一樣，設計這些人工智慧系統，其實也牽扯到許多人類心理學以及設計法則！</li>
+</ul>
+</li>
+<li>推薦書籍《設計與未來生活》（The Design of Future Things）<ul>
+<li>雖然這是 2008 年出版的書籍，但是在 AI 大爆炸的時代，裡面提到的許多設計準則及概念，都還是可以很好地被應用在現在許多人工智慧系統上面</li>
+<li>這代表人類與智慧機器溝通的需求以及期待的方式其實一直都沒有改變</li>
+</ul>
+</li>
+<li>機器如果能達成我們希望他們做的，那是好的。但是如果機器失敗了，或是導致本來很有生產力、創造性的人變成機器的僕人，而這些僕人隨時都在監控修理或維護機器，那就是不好的設計。<ul>
+<li>因此，當我們給機器更多的自發性、更多的智慧和更多情緒還有個性的時候，我們就需要考慮如何跟這些更有智慧的機器做互動。</li>
+</ul>
+</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>助你行動</title>
@@ -2367,42 +2403,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <li>（一樣尚未行動所以不確定成效或感覺如何）寫完文章以後，就清空那個 toggle 裡面的文章，鼓勵自己再去讀新的文章，然後再加進那個 toggle！</li>
 </ol>
 <p>大概是這樣囉～</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【學習筆記】人機互動概論 - 3</title>
-    <url>/2022/11/hci-note-3/</url>
-    <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第三彈～</p>
-<span id="more"></span>
-
-<h3 id="從影視作品聊聊人工智慧"><a href="#從影視作品聊聊人工智慧" class="headerlink" title="從影視作品聊聊人工智慧"></a><a href="https://www.youtube.com/watch?v=jTbPJLOrMt0&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=13">從影視作品聊聊人工智慧</a></h3><ul>
-<li>會不會我們未來人類都找不到工作，因為人工智慧太厲害都取代我們的工作了？</li>
-<li>人工智慧已融入到我們的生活裡面，許多我們覺得很方便的事情，其實都已經離不開人工智慧了<ul>
-<li>你還可以不依賴 Google Map 到一個陌生不熟悉的地方嗎？</li>
-<li>掃地機器人</li>
-</ul>
-</li>
-</ul>
-<h3 id="那些隱藏在我們生活中的機器人"><a href="#那些隱藏在我們生活中的機器人" class="headerlink" title="那些隱藏在我們生活中的機器人"></a><a href="https://www.youtube.com/watch?v=Tmyc6T2Fk0c&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=14">那些隱藏在我們生活中的機器人</a></h3><ul>
-<li>人與機器人之間的互動是非常多樣化的</li>
-<li>機器人的溝通方式相當擬人化，用肢體動作甚至是情緒來表達自己的狀態</li>
-<li>在這個人工智慧還有智慧家電以及機器人越來越多的年代，我們跟這些設計物的互動，除了變得更加即時以及多元之外，同時也變得更加複雜了</li>
-</ul>
-<h3 id="人工智慧與人類的共生關係"><a href="#人工智慧與人類的共生關係" class="headerlink" title="人工智慧與人類的共生關係"></a><a href="https://www.youtube.com/watch?v=EUKRZ7gZUAE&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=15">人工智慧與人類的共生關係</a></h3><ul>
-<li>為什麼有些人工智慧或智慧系統，我們覺得很好用，而有些我們卻覺得沒有那麼好用？<ul>
-<li>其實就跟設計一些裝置或是物體一樣，設計這些人工智慧系統，其實也牽扯到許多人類心理學以及設計法則！</li>
-</ul>
-</li>
-<li>推薦書籍《設計與未來生活》（The Design of Future Things）<ul>
-<li>雖然這是 2008 年出版的書籍，但是在 AI 大爆炸的時代，裡面提到的許多設計準則及概念，都還是可以很好地被應用在現在許多人工智慧系統上面</li>
-<li>這代表人類與智慧機器溝通的需求以及期待的方式其實一直都沒有改變</li>
-</ul>
-</li>
-<li>機器如果能達成我們希望他們做的，那是好的。但是如果機器失敗了，或是導致本來很有生產力、創造性的人變成機器的僕人，而這些僕人隨時都在監控修理或維護機器，那就是不好的設計。<ul>
-<li>因此，當我們給機器更多的自發性、更多的智慧和更多情緒還有個性的時候，我們就需要考慮如何跟這些更有智慧的機器做互動。</li>
-</ul>
-</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
@@ -2990,6 +2990,65 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
+    <url>/2021/11/next-10000-hours/</url>
+    <content><![CDATA[<p>給正在思索未來的你～</p>
+<span id="more"></span>
+
+<br>
+（本篇由書中引起我共鳴的句子集結而成）
+
+<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
+<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
+<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
+<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
+<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
+<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
+<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
+<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
+<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
+</ul>
+<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
+<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
+<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
+<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
+<li>選擇比努力重要！</li>
+<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
+<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
+<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
+</ul>
+<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
+<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
+<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
+</ul>
+<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
+<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
+<li>窮困不怕，怕的是窮的心態。</li>
+<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
+</ul>
+<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
+<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
+<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
+<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
+<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
+</ul>
+<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
+<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
+<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
+<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
+<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
+<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
+<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
+<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
+<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
+</ul>
+<br>
+希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
+      <tags>
+        <tag>閱讀</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【技術筆記】NoSQL、Data Replica、Sharding</title>
     <url>/2022/05/nosql-introduction/</url>
     <content><![CDATA[<p>上台 Presentation 前做的筆記，在這邊記錄一下～</p>
@@ -3106,65 +3165,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
-    <title>【閱讀筆記】下個10000小時，你打算怎樣過？</title>
-    <url>/2021/11/next-10000-hours/</url>
-    <content><![CDATA[<p>給正在思索未來的你～</p>
-<span id="more"></span>
-
-<br>
-（本篇由書中引起我共鳴的句子集結而成）
-
-<h3 id="輸在起點的人，未來在哪裡"><a href="#輸在起點的人，未來在哪裡" class="headerlink" title="輸在起點的人，未來在哪裡"></a>輸在起點的人，未來在哪裡</h3><ul>
-<li>如果你不滿現狀卻不去改變方向，那麼你將沿著現有的方向一直走下去，不會更好，只會更壞。</li>
-<li>你越早規劃你的人生越好，因為這樣你就知道自己的方向，你要做什麼，朝哪些方面努力。</li>
-<li>員工：「我有十年工作經驗。」老闆：「你沒有十年的經驗，你只是同一個經驗用了十年。」</li>
-<li>假如你是一個女孩子，你願意嫁給現在的自己嗎？假如今天你是公司老闆，你是否願意聘用現在的你呢？</li>
-<li>今天你值不值錢，是由以往決定的。而未來你值不值錢，由現在決定。</li>
-<li>才30多歲，就覺得人生已經沒有辦法再改變了，這樣的人，我想就算是讓他們從頭再來，也是會和現在一樣原地踏步吧。</li>
-<li>明天會怎樣 (像是產業)，其實不用恐慌。如果明天的我比今天更強，我就可以無所畏懼。</li>
-<li>從今天開始，答應自己，別說你不行，如果你還沒開始做。</li>
-</ul>
-<h3 id="10000個小時後，成為你想成為的人"><a href="#10000個小時後，成為你想成為的人" class="headerlink" title="10000個小時後，成為你想成為的人"></a>10000個小時後，成為你想成為的人</h3><ul>
-<li>人生是一個不斷累積的過程，你所有的經歷都會成為日後的財富。</li>
-<li>你打算花十年時間去修建屬於自己的管道讓水源源不斷地流進來，還是打算花十年時間去每天提著桶裝水回來？</li>
-<li>絕大多數人，都在提桶，在忙碌的工作中，以戰術上的勤奮來掩蓋戰略上的懶惰。</li>
-<li>選擇比努力重要！</li>
-<li>今天的生活現狀，是昨天思考和選擇的結果。</li>
-<li>未來十年的時間裡，你是願意繼續幹一天的工作拿一天的錢，還是建設管道為自己帶來真正的保障？或者找個正在「建管道」的公司，然後等待某一天與它共同分享成功的喜悅？選擇的權利，在你自己手裡。</li>
-<li>你的願景是否足夠清晰明確，對其是否能夠實現有重要影響。</li>
-</ul>
-<h3 id="你缺的不是時間，而是時間管理"><a href="#你缺的不是時間，而是時間管理" class="headerlink" title="你缺的不是時間，而是時間管理"></a>你缺的不是時間，而是時間管理</h3><ul>
-<li>很多人為了節省時間，一拿到事情馬上就動手去做，一頭栽進去，雖然努力了，可是由於計畫不周，往往缺乏條理，從而效率不彰。</li>
-<li>平時我們的工作也是一樣的，在收到一項任務的時候，首先要分析一下，先做什麼，後做什麼，思路清晰之後再去動手做，你會發現這樣會事半功倍。</li>
-</ul>
-<h3 id="當你變「strong」了，你就不會那麼「low」了"><a href="#當你變「strong」了，你就不會那麼「low」了" class="headerlink" title="當你變「strong」了，你就不會那麼「low」了"></a>當你變「strong」了，你就不會那麼「low」了</h3><ul>
-<li>如果你還沒能過上自己喜歡的生活，那你恐怕只能反省自己，因為思路決定出路。</li>
-<li>窮困不怕，怕的是窮的心態。</li>
-<li>艱難的不是困境本身，而是改變現狀。只要你有在困難中做出改變的決心，總會想到打破困境的方法。走出困境沒有你想像的那麼艱難，你需要做的就是一點點地去改變，一旦量變成為質變，你就會獲得完全不同的結局。</li>
-</ul>
-<h3 id="多認識點人，多充點電，一定不會錯"><a href="#多認識點人，多充點電，一定不會錯" class="headerlink" title="多認識點人，多充點電，一定不會錯"></a>多認識點人，多充點電，一定不會錯</h3><ul>
-<li>沒有計劃未來的人生，永遠沒有未來。高質量的人生，要透過規劃獲得。</li>
-<li>經營人脈，是一件與提升自己工作能力相輔相成的事，是為了讓更多的人知道自己的價值，從而獲得最大限度發揮自己才能的機會。強大的人脈和強大的能力結合在一起才是成功，缺任何一個都不能實現最終的成功。</li>
-<li>一天比別人多出一兩個小時，長年累月，其差距是可想而知的。</li>
-<li>那些現在看起來沒有用的事情，也許恰恰是你未來的依靠。將來，你需要它脫穎而出。</li>
-</ul>
-<h3 id="改變你的格局，人生才會逆襲"><a href="#改變你的格局，人生才會逆襲" class="headerlink" title="改變你的格局，人生才會逆襲"></a>改變你的格局，人生才會逆襲</h3><ul>
-<li>人生的路上如果總是鮮花和掌聲，反而會蒙蔽我們的心靈，遮住我們的眼睛。或許正是這些「傷」，讓我們更早知道了我們的短處。</li>
-<li>只要平靜下來，你就能體會到人生的樂趣，而沒有必要在浮躁的世界中去追求那些不切實際的東西。</li>
-<li>那些能夠忍受寂寞，在寂寞的過程中注重自身能力的積累，厚積薄發的人，一旦時機來臨，成功自然會水到渠成。</li>
-<li>什麼是成功？我思索了很多以後發現，成功不是財源廣進，也不是位高權重。用一句話總結成功，那就是能夠按照自己的方式快樂地生活。</li>
-<li>生活方式沒有高低貴賤之分，適合自己的，能讓自己快樂的才是最好的。歸根究底，生活就是人的存在形式，生活方式便是人的生活習慣。</li>
-<li>羨慕或許是一種難以避免的情緒，那就把它轉化為珍惜今天的力量。站在當前，就要活出當前的精彩，那樣生命才沒有遺憾。</li>
-<li>我們一定要清楚地知道自己想要什麼，結合自己的實際情況，為自己量身打造一套在現代環境下最適合自己的幸福計劃。</li>
-<li>生活的壓力可能讓你過得很累，適當抽一點時間放鬆心情，選擇一種讓自己愉快的方法，慰勞自己疲憊的身心。適當地休息，才能走更長遠的路。</li>
-</ul>
-<br>
-希望書中的這些句子，能對你在人生方面的思考上有所幫助 😀]]></content>
-      <tags>
-        <tag>閱讀</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 PlantUML 畫 Sequence Diagram</title>
     <url>/2022/10/plantuml-sequence-diagram/</url>
     <content><![CDATA[<p>簡單好用！</p>
@@ -3177,6 +3177,57 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <h3 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h3><p>搭配<a href="https://plantuml.com/en/sequence-diagram">官方文檔</a>及<a href="https://blog.wu-boy.com/2022/09/three-tools-design-system-architecture-and-flow/">那篇文章的程式碼</a>，很好理解可以怎麼畫，會覺得，哇，真的很方便！</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>話說，<a href="https://blog.wu-boy.com/2022/09/three-tools-design-system-architecture-and-flow/">文章</a>裡面提到的「<a href="https://excalidraw.com/">Excalidraw</a>」這套繪製流程圖的線上軟體，感覺也是挺有意思的，風格看起來很像是在手繪😂</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>用 Python 操作 Android 手機</title>
+    <url>/2021/07/python-android-phone/</url>
+    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
+<span id="more"></span>
+
+<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
+<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
+<p><img src="1.png"></p>
+<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
+<hr>
+<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
+<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
+<hr>
+<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
+<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
+<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
+<hr>
+<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
+<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
+<hr>
+<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
+<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
+<p><img src="2.gif"></p>
+<p>拍賣的畫面更有感！</p>
+<p><img src="3.gif"></p>
+<p>酷斃了 😎</p>
+<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Android</tag>
+        <tag>小工具</tag>
+      </tags>
   </entry>
   <entry>
     <title>當 Python 遇上了 LINE Blockchain</title>
@@ -3308,57 +3359,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       <tags>
         <tag>Python</tag>
         <tag>小工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 Python 操作 Android 手機</title>
-    <url>/2021/07/python-android-phone/</url>
-    <content><![CDATA[<p><a href="/2021/07/python-android-phone"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>玩遊戲有些時候，常常需要一直點、一直點、一直點，實在有夠浪費時間⋯⋯</p>
-<span id="more"></span>
-
-<p>像我玩 NBA LIVE 的時候，每次拍賣過期的物品都要一個一個去關閉，而且每個點完還需要再等大概 3 秒才能再點下一個！</p>
-<p>試算一下，如圖，我還有 96 個還沒關閉，一個以 3 秒來計算，96 * 3 = 288 秒，我得花快 5 分鐘才能全部點完，而且是要一直手點哦！</p>
-<p><img src="1.png"></p>
-<p>幸好，無意間在網路上找到了「<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">How you can Control your Android Device with Python</a>」這篇文，解救了我的時間，也讓我大開眼界～</p>
-<hr>
-<h2 id="裝-adb"><a href="#裝-adb" class="headerlink" title="裝 adb"></a>裝 adb</h2><h3 id="adb-是什麼呢？"><a href="#adb-是什麼呢？" class="headerlink" title="adb 是什麼呢？"></a>adb 是什麼呢？</h3><p><a href="https://developer.android.com/studio/command-line/adb">官方文檔</a>上是這樣寫的：<br>Android Debug Bridge (adb) is a versatile command-line tool that lets you communicate with a device.</p>
-<h3 id="用-Homebrew-裝"><a href="#用-Homebrew-裝" class="headerlink" title="用 Homebrew 裝"></a>用 Homebrew 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>當你在終端機輸入 <code>adb</code> 有秀出東西就代表裝成功了！<br>（其他安裝方式可以參考<a href="https://stackoverflow.com/questions/17901692/set-up-adb-on-mac-os-x">這一篇</a>）</p>
-<hr>
-<h2 id="裝-pure-python-adb"><a href="#裝-pure-python-adb" class="headerlink" title="裝 pure-python-adb"></a>裝 pure-python-adb</h2><h3 id="它是什麼？"><a href="#它是什麼？" class="headerlink" title="它是什麼？"></a>它是什麼？</h3><p>可以把它想成，這個套件可以讓我們透過 Python，用更簡單地方式來和 adb 做溝通。<br>也就是能用更高階的 interface，去操作底層的東西。</p>
-<h3 id="用-pip-裝"><a href="#用-pip-裝" class="headerlink" title="用 pip 裝"></a>用 pip 裝</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pure-python-adb</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="手機端的設置"><a href="#手機端的設置" class="headerlink" title="手機端的設置"></a>手機端的設置</h2><h3 id="啟用開發人員選項"><a href="#啟用開發人員選項" class="headerlink" title="啟用開發人員選項"></a>啟用開發人員選項</h3><p>以我的 HTC U11 plus 為例：<br>設定 → 系統 → 關於手機 → 軟體資訊 → 更多 → <strong>連續點 7 下「版本號碼」</strong></p>
-<h3 id="允許連接-USB-時進入偵錯模式"><a href="#允許連接-USB-時進入偵錯模式" class="headerlink" title="允許連接 USB 時進入偵錯模式"></a>允許連接 USB 時進入偵錯模式</h3><p>設定 → 系統 → 開發人員選項 → 開啟「USB 偵錯」</p>
-<hr>
-<h2 id="手機連電腦"><a href="#手機連電腦" class="headerlink" title="手機連電腦"></a>手機連電腦</h2><p>手機用 USB 接上電腦後，就可以來試驗囉！</p>
-<h3 id="啟動-adb-server"><a href="#啟動-adb-server" class="headerlink" title="啟動 adb server"></a>啟動 adb server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
-
-<p>此時，手機畫面上會出現「允許 USB 偵錯嗎？」，按確定就行了。</p>
-<hr>
-<h2 id="寫-code-解決問題"><a href="#寫-code-解決問題" class="headerlink" title="寫 code 解決問題"></a>寫 code 解決問題</h2><h3 id="找出螢幕某一點的位置"><a href="#找出螢幕某一點的位置" class="headerlink" title="找出螢幕某一點的位置"></a>找出螢幕某一點的位置</h3><p>如果想用 pure-python-adb 點螢幕，就必須要給它座標。<br>該怎麼找呢？設定 → 系統 → 開發人員選項 → 打開「輸入」底下的「指標位置」<br>如此一來，點螢幕的時候，螢幕最上面就看得到座標了！</p>
-<h3 id="寫程式"><a href="#寫程式" class="headerlink" title="寫程式"></a>寫程式</h3><p>啟發我靈感的<a href="https://itnext.io/how-you-can-control-your-android-device-with-python-45c3ab15e260">這篇文</a>有解釋程式碼的部分，這邊就不重複了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ppadb.client <span class="keyword">import</span> Client <span class="keyword">as</span> AdbClient</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect</span>():</span></span><br><span class="line"></span><br><span class="line">  client = AdbClient(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5037</span>)</span><br><span class="line"></span><br><span class="line">  devices = client.devices()</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(devices) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No devices&#x27;</span>)</span><br><span class="line">    quit()</span><br><span class="line"></span><br><span class="line">  device = devices[<span class="number">0</span>]</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;Connected to <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> device, client</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  device, client = connect()</span><br><span class="line"></span><br><span class="line">  close_button = <span class="string">&#x27;2120 325&#x27;</span>   <span class="comment"># x y 這邊填上按鈕的指標位置</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    device.shell(<span class="string">f&#x27;input tap <span class="subst">&#123;close_button&#125;</span>&#x27;</span>)   <span class="comment"># 點按指定的位置</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p>跑程式以後，手機就照著指令動作了！（畫面最上面就是顯示指標位置的 bar）</p>
-<p><img src="2.gif"></p>
-<p>拍賣的畫面更有感！</p>
-<p><img src="3.gif"></p>
-<p>酷斃了 😎</p>
-<h3 id="用完把-adb-server-給關掉"><a href="#用完把-adb-server-給關掉" class="headerlink" title="用完把 adb server 給關掉"></a>用完把 adb server 給關掉</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他相關工具"><a href="#其他相關工具" class="headerlink" title="其他相關工具"></a>其他相關工具</h3><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>Python</tag>
-        <tag>小工具</tag>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3698,6 +3698,14 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 今天的分享就到這邊囉，我們下篇文見～]]></content>
   </entry>
   <entry>
+    <title>【軟實力】1. 這是一本你從未見過的軟體開發書</title>
+    <url>/2023/05/soft-skills-1/</url>
+    <content><![CDATA[<p>時間過得真是快，轉眼間，已經做了八個多月的軟體工程師了！但老實說，我覺得自己沒成長多少，原因在於工作了以後，我好像也沒好好去善用下班之後的時間，常常會覺得時間怎麼咻一下就過去了，自己也沒幹嘛😂</p>
+<p>於是乎，在不久前，買了這本《Soft Skills 軟實力：軟體開發人員的生存手冊》，期許自己在閱讀並寫作的過程當中，逐漸成為一名全方位的軟體開發人員。想成為一名全方位的軟體開發人員，需要的不只是寫程式而已，還有職涯、自我行銷、學習、生產力、理財、健身、心靈等等的領域需要我們去灌溉培養。</p>
+<p>因此，讓我們一起跟著這本書，多多去關注個人成長，發展人生中的不同面向，朝著「全方位」的目標邁進吧！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>【軟實力】2. 將職涯發展視為企業經營</title>
     <url>/2023/05/soft-skills-2/</url>
     <content><![CDATA[<p>「關於工作，最大的錯誤，就是沒有把自己的職涯視為企業來經營！」</p>
@@ -3737,6 +3745,50 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>【軟實力】51. 房地產是最好的投資</title>
+    <url>/2023/07/soft-skills-51/</url>
+    <content><![CDATA[<p>每次聽到「房地產」這三個字，總是覺得它離我還非常遙遠而沒去了解它。<br>讀完這個章節以後，雖然還是有差不多的感覺，但至少對它有個初步的認識，而且在閱讀的過程中也讓我思考了一點東西，也是挺不錯的。</p>
+<span id="more"></span>
+
+<p>作者建議我們以開放的心態來看本章的內容，因為不論我們是否決定要投資房地產，都應該要對房地產有足夠的認識，了解它的運作方式，以及它能提供怎樣的機會給我們。多知道新東西來增廣見聞不是也挺好的嗎？畢竟知識就是力量，那些知識能在什麼時機點帶來價值我們永遠不會知道。</p>
+<h3 id="房地產是最好的投資"><a href="#房地產是最好的投資" class="headerlink" title="房地產是最好的投資"></a>房地產是最好的投資</h3><p>為什麼作者認為房地產是最好的投資呢？作者除了在本章節當中用了一點篇幅舉了個例子，也總結道：</p>
+<blockquote>
+<p>因為如果你買出租用的房地產，每個月還固定的貸款，租金收入穩定，就能以銀行的錢做為大部分房地產的資金，透過財務槓桿的力量，給你大量的好處。當所有事情都受到通貨膨漲的影響時，房地產投資仍然能從中獲益，作為保值的工具。</p>
+</blockquote>
+<h3 id="報價建議"><a href="#報價建議" class="headerlink" title="報價建議"></a>報價建議</h3><p>此外，在出租用房地產報價建議的部分，作者的這一番話挺耐人尋味的：</p>
+<blockquote>
+<p>這不過是數字遊戲，報了五十個低價，你只需要有一個賣家接受，搞不好能撿到一個低於市價百分之五十的房子，因為賣家急於脫手或者是不在乎價格。你不會相信，其實有許多賣家因為各種理由，並不太在乎價格。</p>
+</blockquote>
+<p>（感覺人生很多方面也同樣可以這樣嘗試看看，雖然套用到感情方面好像就不太妥當😅）</p>
+<h3 id="延伸的想法"><a href="#延伸的想法" class="headerlink" title="延伸的想法"></a>延伸的想法</h3><p>作者分享的下面這兩點，讓我激盪出了一點想法：</p>
+<ol>
+<li>假設房子看起來很好，你也簽了房地產合約，下一步就是檢查房子，<strong>我一定會找最好而且最細心的房屋檢驗師來檢查</strong>，我想在投入更多金錢之前，確認房子是否有任何問題。</li>
+<li>買了房地產之後，我會建議你落實房地產管理，但<strong>強列不建議由自己來管理出租的房地產。</strong>在我看來，不值得投入精力去管理，或者是讓自己頭痛。我每個月的花費裡，<strong>最划算的就是付錢給房地產管理公司，請他們管理我的出租物件。</strong>好的物件管理公司會打理所有一切跟出租物件有關的事項，包含尋找房客、執行租賃權、篩選房客、維修房子以及收取租金。</li>
+</ol>
+<p>這兩點，以軟體工程師的角度來看，讓我聯想到：很多事情其實可以不用自己造輪子，我們可以利用其他套件 or 服務，來滿足自己的需求。</p>
+<p><strong>凡事不用什麼都自己來，所以不用擔心說自己一定要什麼都懂。很多東西不會怎麼辦？沒關係，懂得去 call API，串接各種服務，打造出屬於自己更多樣豐富的人生</strong>，或許才是一個比較理想的方式。</p>
+<p>（小時候被灌輸成績至上，一定要第一名長大以後才能出人頭地，也就讓我誤以為自己什麼都得懂不然就是廢物⋯⋯真希望早點領悟到剛剛聯想到的道理啊，小時候的觀念太傷了😂）</p>
+<h3 id="但如果我住的地方很貴怎麼辦？"><a href="#但如果我住的地方很貴怎麼辦？" class="headerlink" title="但如果我住的地方很貴怎麼辦？"></a>但如果我住的地方很貴怎麼辦？</h3><p>難道因為這樣就和「出租用房地產」絕緣了嗎？</p>
+<blockquote>
+<p>居住在高房價區域不應該是你無法投資房地產的原因，因為沒有規定你一定要在自己居住的區域投資房地產。</p>
+</blockquote>
+<p>為什麼？作者認為：</p>
+<blockquote>
+<p>房地產投資最終完全是看數字，並非取決於你個人的感受（學習這項經驗能讓你受益匪淺）</p>
+</blockquote>
+<p>這番話值得再三咀嚼🤔️</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
+<p>今天就走出去買個出租物件，祝你好運！</p>
+</blockquote>
+<p>不是吧？</p>
+<blockquote>
+<p>我是開玩笑的！相反地去找你那一區的出租物件廣告，透過所有的數字進行演練，根據不同頭期款金額，試算看看，是否有可能買那個物件，而且要確定現金流是正的，至少也要損益兩平。</p>
+</blockquote>
+<p>好的，已加進我個人的待辦清單裡了。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>【軟實力】53. 債務危機</title>
     <url>/2023/05/soft-skills-53/</url>
     <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
@@ -3751,14 +3803,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </blockquote>
 <p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
 <p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】1. 這是一本你從未見過的軟體開發書</title>
-    <url>/2023/05/soft-skills-1/</url>
-    <content><![CDATA[<p>時間過得真是快，轉眼間，已經做了八個多月的軟體工程師了！但老實說，我覺得自己沒成長多少，原因在於工作了以後，我好像也沒好好去善用下班之後的時間，常常會覺得時間怎麼咻一下就過去了，自己也沒幹嘛😂</p>
-<p>於是乎，在不久前，買了這本《Soft Skills 軟實力：軟體開發人員的生存手冊》，期許自己在閱讀並寫作的過程當中，逐漸成為一名全方位的軟體開發人員。想成為一名全方位的軟體開發人員，需要的不只是寫程式而已，還有職涯、自我行銷、學習、生產力、理財、健身、心靈等等的領域需要我們去灌溉培養。</p>
-<p>因此，讓我們一起跟著這本書，多多去關注個人成長，發展人生中的不同面向，朝著「全方位」的目標邁進吧！</p>
 ]]></content>
   </entry>
   <entry>
