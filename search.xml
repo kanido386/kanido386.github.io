@@ -116,6 +116,30 @@
 有些時候，或許可以嘗試換個角度，也或許，就可能只是還沒放對地方而已。]]></content>
   </entry>
   <entry>
+    <title>關於「抽象化」的一點隨想</title>
+    <url>/2023/06/abstract-thinking/</url>
+    <content><![CDATA[<p>好文分享：<a href="https://blog.heron.me/%E6%8A%BD%E8%B1%A1%E5%B1%A4-%E9%87%8D%E8%A6%81%E7%9A%84%E5%B9%BE%E4%BB%B6%E4%BA%8B-dd354a38c52b">抽象層 — 重要的幾件事</a></p>
+<span id="more"></span>
+
+<h3 id="工具的進步"><a href="#工具的進步" class="headerlink" title="工具的進步"></a>工具的進步</h3><p>講到「抽象層」，讓我立刻聯想到的就是最近很夯的「ChatGPT」。</p>
+<p>ChatGPT 可以幫忙摘要文章、可以列點提供建議、甚至可以邊產生程式碼邊解釋為什麼它要這樣寫，有太多太多事情，只要問的人夠會問問題（下足夠精確的 prompt 給它），ChatGPT 幾乎都能做到，而且產出的內容往往令人嘆為觀止！</p>
+<h3 id="擔心被取代？"><a href="#擔心被取代？" class="headerlink" title="擔心被取代？"></a>擔心被取代？</h3><p>我們會擔心，突然出現一個這麼強大的工具，要是因為這樣被取代了該怎麼辦？</p>
+<p>讀完這篇文章以後，我試著從另外一個角度去切入這個議題：過去不也經歷過類似的事情嗎？從機械工業革命、電器工業革命、到資訊革命，我們有因為每一次的新突破被取代而什麼事都沒得讓我們去做嗎？沒有，是吧！</p>
+<p>或者更精確來說，被取代的並不是「我們」本身，而是我們的「工作內容」。因為每一次的新突破，讓我們的工作內容變得越來越「高層次」，可以用更 high-level 的方式來完成一件事！</p>
+<p>什麼意思？舉個例子：過去農夫需要親自下田一個一個慢慢來，有了機械，就能透過開著機械車來更快完成，後來又有資訊科技的輔助，或許根本不用親自下田，一切交給電腦去處理，未來人工智慧越來越普及，或許就能達到更精確的境界，也就是需要買多少種子、什麼時間播種、該灌溉多少水等等的，靠著人工智慧的輔助，達到以更低的成本產生出更高效益的成果。如此以來，農夫就能有更多時間和精力善用他們對農業方面的智慧，去創造出更高層次的各種可能（這我描述得挺模糊，可以把它想成就是能帶來更高的價值，比方研發新品種或是開發出新觀光型態）！</p>
+<h3 id="終身學習的重要性"><a href="#終身學習的重要性" class="headerlink" title="終身學習的重要性"></a>終身學習的重要性</h3><p>所以這也是為什麼，「終身學習」那麼重要了。以剛剛的例子來說，願意學習怎麼開機械車、操作電腦、接觸人工智慧工具，可以大大優化農夫工作的方式，甚至有更多工作以外的時間能夠好好運用。</p>
+<p>因此，或許我們該擔心的不是會不會被人工智慧取代，而是自己是否已逐漸失去學習新事物的熱忱。未來的工作內容或許會有很大的不同，我們能做的，就是透過新科技來 power up 自己的思考方式，與時俱進，跟著科技的進步一起成長。即使未來工作內容很不同，也可以用「更高層次」的思維，創造出前所未見的新價值！</p>
+<h3 id="親身體悟"><a href="#親身體悟" class="headerlink" title="親身體悟"></a>親身體悟</h3><p>除了 ChatGPT，「抽象層」也讓我聯想到「處理一件事情的方式」，簡單分享一下：</p>
+<p><img src="1.png" alt="1.png"></p>
+<p>這是近期工作當中的深刻體會。</p>
+<p>我有個任務是要在既有的系統上新增功能，但要新增那個功能，必須要改動系統當中的很多「部分」。</p>
+<p>一開始我是想到什麼就把它記在一個筆記裡，像是可以怎麼改動程式碼、需要跟 PM 和 tech lead 討論什麼、會遇到什麼阻礙。這麼做有個好處，就是不會忘記我那些突然湧現的靈感，但壞處在於，各種類型的資訊集結在同一個地方，而且還沒被有邏輯地分類，當要實際執行的時候，發現筆記內容過於發散，裡頭都是屬於「低層次」的小行動，沒有一個比較「big picture」的內容，當下會不知道要怎麼開始，因而遲遲難以展開。</p>
+<h3 id="處理事情-Power-Up"><a href="#處理事情-Power-Up" class="headerlink" title="處理事情 Power-Up"></a>處理事情 Power-Up</h3><p>後來請教了同事，他建議我先依照各個「部分」來整理那些小行動（以「部分」來當作小標題，小行動則在下面列點），然後試著收斂那些小行動。於是乎，我花大概一個上午整理那篇雜亂無章的筆記，讓它看起來井然有序、更容易被執行，到了下午，嘗試回過頭來繼續做的時候，發現那個任務其實沒到想像中那麼 mission impossible，之前覺得困難的地方，在於 coding 前沒有妥善的 planning！</p>
+<p>後來就是因為用更高層次的方式來看這件事，才讓我得以更好地去進行它！以「高層次」來看事情，以「低層次」來執行，對於能順利完成較為複雜的任務，兩者真的缺一不可啊！</p>
+<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>所以說，這就是為什麼我會很想推薦這篇文章，「抽象層」這個思維模型真的很值得了解和拿來運用，它能夠幫助我們生活當中的各個層面😎</p>
+]]></content>
+  </entry>
+  <entry>
     <title>用 Algorithmia 部署 ML Models</title>
     <url>/2021/07/algorithmia-ml-models/</url>
     <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
@@ -260,28 +284,125 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
   </entry>
   <entry>
-    <title>關於「抽象化」的一點隨想</title>
-    <url>/2023/06/abstract-thinking/</url>
-    <content><![CDATA[<p>好文分享：<a href="https://blog.heron.me/%E6%8A%BD%E8%B1%A1%E5%B1%A4-%E9%87%8D%E8%A6%81%E7%9A%84%E5%B9%BE%E4%BB%B6%E4%BA%8B-dd354a38c52b">抽象層 — 重要的幾件事</a></p>
+    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
+    <url>/2021/07/baymax-with-us/</url>
+    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpg" style="width:50vw;" /> -->
+
+<p>做一個 LINE Bot 版的杯麵～</p>
 <span id="more"></span>
 
-<h3 id="工具的進步"><a href="#工具的進步" class="headerlink" title="工具的進步"></a>工具的進步</h3><p>講到「抽象層」，讓我立刻聯想到的就是最近很夯的「ChatGPT」。</p>
-<p>ChatGPT 可以幫忙摘要文章、可以列點提供建議、甚至可以邊產生程式碼邊解釋為什麼它要這樣寫，有太多太多事情，只要問的人夠會問問題（下足夠精確的 prompt 給它），ChatGPT 幾乎都能做到，而且產出的內容往往令人嘆為觀止！</p>
-<h3 id="擔心被取代？"><a href="#擔心被取代？" class="headerlink" title="擔心被取代？"></a>擔心被取代？</h3><p>我們會擔心，突然出現一個這麼強大的工具，要是因為這樣被取代了該怎麼辦？</p>
-<p>讀完這篇文章以後，我試著從另外一個角度去切入這個議題：過去不也經歷過類似的事情嗎？從機械工業革命、電器工業革命、到資訊革命，我們有因為每一次的新突破被取代而什麼事都沒得讓我們去做嗎？沒有，是吧！</p>
-<p>或者更精確來說，被取代的並不是「我們」本身，而是我們的「工作內容」。因為每一次的新突破，讓我們的工作內容變得越來越「高層次」，可以用更 high-level 的方式來完成一件事！</p>
-<p>什麼意思？舉個例子：過去農夫需要親自下田一個一個慢慢來，有了機械，就能透過開著機械車來更快完成，後來又有資訊科技的輔助，或許根本不用親自下田，一切交給電腦去處理，未來人工智慧越來越普及，或許就能達到更精確的境界，也就是需要買多少種子、什麼時間播種、該灌溉多少水等等的，靠著人工智慧的輔助，達到以更低的成本產生出更高效益的成果。如此以來，農夫就能有更多時間和精力善用他們對農業方面的智慧，去創造出更高層次的各種可能（這我描述得挺模糊，可以把它想成就是能帶來更高的價值，比方研發新品種或是開發出新觀光型態）！</p>
-<h3 id="終身學習的重要性"><a href="#終身學習的重要性" class="headerlink" title="終身學習的重要性"></a>終身學習的重要性</h3><p>所以這也是為什麼，「終身學習」那麼重要了。以剛剛的例子來說，願意學習怎麼開機械車、操作電腦、接觸人工智慧工具，可以大大優化農夫工作的方式，甚至有更多工作以外的時間能夠好好運用。</p>
-<p>因此，或許我們該擔心的不是會不會被人工智慧取代，而是自己是否已逐漸失去學習新事物的熱忱。未來的工作內容或許會有很大的不同，我們能做的，就是透過新科技來 power up 自己的思考方式，與時俱進，跟著科技的進步一起成長。即使未來工作內容很不同，也可以用「更高層次」的思維，創造出前所未見的新價值！</p>
-<h3 id="親身體悟"><a href="#親身體悟" class="headerlink" title="親身體悟"></a>親身體悟</h3><p>除了 ChatGPT，「抽象層」也讓我聯想到「處理一件事情的方式」，簡單分享一下：</p>
-<p><img src="1.png" alt="1.png"></p>
-<p>這是近期工作當中的深刻體會。</p>
-<p>我有個任務是要在既有的系統上新增功能，但要新增那個功能，必須要改動系統當中的很多「部分」。</p>
-<p>一開始我是想到什麼就把它記在一個筆記裡，像是可以怎麼改動程式碼、需要跟 PM 和 tech lead 討論什麼、會遇到什麼阻礙。這麼做有個好處，就是不會忘記我那些突然湧現的靈感，但壞處在於，各種類型的資訊集結在同一個地方，而且還沒被有邏輯地分類，當要實際執行的時候，發現筆記內容過於發散，裡頭都是屬於「低層次」的小行動，沒有一個比較「big picture」的內容，當下會不知道要怎麼開始，因而遲遲難以展開。</p>
-<h3 id="處理事情-Power-Up"><a href="#處理事情-Power-Up" class="headerlink" title="處理事情 Power-Up"></a>處理事情 Power-Up</h3><p>後來請教了同事，他建議我先依照各個「部分」來整理那些小行動（以「部分」來當作小標題，小行動則在下面列點），然後試著收斂那些小行動。於是乎，我花大概一個上午整理那篇雜亂無章的筆記，讓它看起來井然有序、更容易被執行，到了下午，嘗試回過頭來繼續做的時候，發現那個任務其實沒到想像中那麼 mission impossible，之前覺得困難的地方，在於 coding 前沒有妥善的 planning！</p>
-<p>後來就是因為用更高層次的方式來看這件事，才讓我得以更好地去進行它！以「高層次」來看事情，以「低層次」來執行，對於能順利完成較為複雜的任務，兩者真的缺一不可啊！</p>
-<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>所以說，這就是為什麼我會很想推薦這篇文章，「抽象層」這個思維模型真的很值得了解和拿來運用，它能夠幫助我們生活當中的各個層面😎</p>
-]]></content>
+<div class="note success">
+    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
+</div>
+
+<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
+<hr>
+<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
+<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
+<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
+<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
+<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
+<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
+<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
+</ol>
+<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
+<hr>
+<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
+</ul>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>隨機聽</code></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
+<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
+<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
+<li>後面就是「指定聽歌」的步驟了</li>
+</ol>
+<hr>
+<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
+</ul>
+<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
+<hr>
+<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
+</ul>
+<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
+<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
+<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
+<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
+<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
+</ol>
+<hr>
+<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
+<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
+</ul>
+<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
+<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
+</ol>
+<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
+<hr>
+<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
+<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
+</ul>
+<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
+<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
+<hr>
+<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
+<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
+</ul>
+<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
+<li>將新功能的名稱和描述填入 email 的 content 當中</li>
+<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
+<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
+</ol>
+<hr>
+<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
+<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
+</ul>
+<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
+      </tags>
   </entry>
   <entry>
     <title>用 Pure Data 打造吉他效果器</title>
@@ -413,127 +534,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
         <tag>Pure Data</tag>
         <tag>課程</tag>
         <tag>專題</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
-    <url>/2021/07/baymax-with-us/</url>
-    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpg" style="width:50vw;" /> -->
-
-<p>做一個 LINE Bot 版的杯麵～</p>
-<span id="more"></span>
-
-<div class="note success">
-    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
-</div>
-
-<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
-<hr>
-<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
-</ul>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
-<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
-<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
-<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
-<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
-<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
-<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
-</ol>
-<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
-<hr>
-<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
-</ul>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>隨機聽</code></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
-<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
-<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
-<li>後面就是「指定聽歌」的步驟了</li>
-</ol>
-<hr>
-<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
-<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
-</ul>
-<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
-<hr>
-<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
-<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
-</ul>
-<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
-<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
-<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
-<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
-<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
-</ol>
-<hr>
-<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
-<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
-</ul>
-<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
-<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
-</ol>
-<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
-<hr>
-<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
-<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
-</ul>
-<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
-<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
-<hr>
-<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
-<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
-</ul>
-<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
-<li>將新功能的名稱和描述填入 email 的 content 當中</li>
-<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
-<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
-</ol>
-<hr>
-<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
-<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
-</ul>
-<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
-<br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
-      <tags>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>LINE</tag>
-        <tag>Bot</tag>
       </tags>
   </entry>
   <entry>
@@ -1426,6 +1426,35 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 今天這樣逛，真的值得😎]]></content>
   </entry>
   <entry>
+    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
+    <url>/2022/03/freshman-career-96-93/</url>
+    <content><![CDATA[<p>卡卡的感覺😅</p>
+<span id="more"></span>
+
+<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
+<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
+<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
+<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
+<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
+<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
+<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
+<p>所以早上沒得做 project。</p>
+<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
+<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
+<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
+<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
+<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
+<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
+<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
+<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
+<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
+<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
+<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
+<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
+<br>
+沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
+  </entry>
+  <entry>
     <title>用 FSM 及 LINE Messaging API 做一個聊天機器人</title>
     <url>/2021/07/fsm-line-bot/</url>
     <content><![CDATA[<p><a href="/2021/07/fsm-line-bot"><img src="https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
@@ -1811,35 +1840,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </ul>
 <br>
 未完待續，stay tuned!]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
-    <url>/2022/03/freshman-career-96-93/</url>
-    <content><![CDATA[<p>卡卡的感覺😅</p>
-<span id="more"></span>
-
-<h2 id="前面廢話"><a href="#前面廢話" class="headerlink" title="前面廢話"></a>前面廢話</h2><p>這幾天實在沒做什麼，說來實在慚愧啊xD<br>本來想說就當作沒這回事，反正文章也沒人看，偷懶應該沒差吧？<br>但這樣下去不行啊，這條路是我選擇的，我要負起責任，對得起自己的人生啊！<br>所以，雖然很廢，但還是決定要打這一篇文，試著去檢討為何這幾天會覺得自己都沒在軌道上。</p>
-<h2 id="3-8-禮拜二"><a href="#3-8-禮拜二" class="headerlink" title="3/8 禮拜二"></a>3/8 禮拜二</h2><p>早上嘗試把自己「<a href="https://kanido386.github.io/2021/06/python-pdf-to-png/">用 Python 將 PDF 文檔轉成 PNG 圖檔</a>」這一篇文的功能，用一個 Flask Web APP 包起來，但因為 12. 半要上課，暫停了以後，後來就沒繼續做下去了⋯⋯</p>
-<p>其實感覺應該沒有到太困難，但可能是因為完美主義作祟，讓我想要在做 project 的過程中能夠看起來「很完美」，於是乎，就很沒意義地學別人先做一個 template project，再開始動工，想當然耳，耗費了太多不必要的時間 (畢竟自己做的那個 template 超級陽春，沒什麼用的感覺)，也就因此沒在上課前做完，那又因為要做的 project 不怎麼有趣 (但想想其實只是太在意一定要很完美什麼的)，導致那個 project 目前就沒後續了⋯⋯</p>
-<p>還有一個可能的原因，因為之前做 project 完會寫成部落格文章，像是「<a href="https://kanido386.github.io/2021/07/baymax-with-us/">喜歡《大英雄天團》杯麵？何不自己做一個！</a>」這一篇，我的潛意識會希望之後每做完 project 都能夠產出相同品質的紀錄文章。但這個想法反而有點阻撓我，讓我沒辦法 focus 在開發上面，而是顧慮太多那些五四三。其實，若真要寫文章，開發完再去構思不就好了嗎？畢竟是自己做的 project，不用擔心說會忘記太多什麼的，啊真的擔心，就把查到的相關文章或是一些關鍵先累積丟在一個地方，做完之後再來整理寫成文章不就好了？就不要太追求完美，沒有所謂的標準答案啊！</p>
-<p>這學期我有修「和聲學」，下午五點多上完課後，吃完晚餐，就會去圖書館做和聲學的作業。每次都會花上禮拜二一整個晚上和一點點其他天的時間，該是思考怎麼解決這個困難點的時候了！嗯🤔 可能就期許自己作業「先求有再求好」吧？就以完成為目標，然後做的時候盡量保持專注，下週再試試看吧xD（本來還打算退掉呢，但現在覺得學那些樂理好像也挺有意思的，沒修，未來幾乎不可能會再碰到那一塊的，修了，說不定在某一天突然就能派上用場）</p>
-<h2 id="3-9-禮拜三"><a href="#3-9-禮拜三" class="headerlink" title="3/9 禮拜三"></a>3/9 禮拜三</h2><p>早上上圖形識別，幾乎都是數學啊😅</p>
-<p>下次上課前來彌補一番，目前的我看到數學就想逃，但其實仔細一看，啊就符號比較嚇人而已啊，試著用心去理解它，相信會有收穫的！（看能不能下次上課前試著搞懂前面的部分，前面的部分我幾乎都在神遊啊xD）</p>
-<p>所以早上沒得做 project。</p>
-<p>下午吃完弄完衣服就搭車回台北了，回到家以後⋯⋯整個陷入自我懷疑、提不起勁的漩渦裡面，所以 project 相關的東西也是沒任何進展。</p>
-<p>昨晚室友在睡前跟我談到「財務自由」的話題，我那個時候真的超累，但還是硬聽了他對於財務自由的想法。後來他問我有什麼想法，我⋯⋯居然沒想法！當下我真的覺得我超廢，怎麼沒認真去思考自己的人生，都24歲了，到底都在做什麼啊！抱著這種埋怨的心情，睡去，然而睡不好，因為那感覺使人煩躁，早上起床的時候頭頗痛⋯⋯</p>
-<p>找時間好好思考關於投資理財，甚至是人生其他面向的事情！太重要了！</p>
-<h2 id="3-10-禮拜四"><a href="#3-10-禮拜四" class="headerlink" title="3/10 禮拜四"></a>3/10 禮拜四</h2><p>前一天太煩躁，禮拜四就好多了。</p>
-<p>早上透過「整理數位的東西」梳理情緒，就這樣早上就沒了。（但的確有療癒的效果）</p>
-<p>下午先到駕訓班練車，因為隔天要考照。練完車以後，跟朋友去打球，聊到了他爸：</p>
-<p>他說他爸是他最熟悉的陌生人，長時間出國在外工作，跟家人疏遠，錢是賺不少啦，年薪至少有200萬，但，這樣真的值得嗎？</p>
-<p>我朋友是希望以此為警惕，我聽了也想了很多，雖然還沒出社會沒感受到錢的重要性，但還是會覺得追求幸福比成功還來得重要！</p>
-<p>追求成功不見得能體會到心靈上的幸福 (世俗眼光上的算什麼東西)，而追求幸福，雖非主要目的，但或許也能夠伴隨一點點的「成功」。</p>
-<p>打球、聊天的過程挺愉快的，加上疏洪道那邊的風很舒服，那一段真的讓人心曠神怡啊！</p>
-<p>回到家隨便弄一弄就又晚上了，練完車後又打了球，實在累，所以就也沒弄 project 的東西⋯⋯</p>
-<h2 id="3-11-禮拜五"><a href="#3-11-禮拜五" class="headerlink" title="3/11 禮拜五"></a>3/11 禮拜五</h2><p>考駕照 → 寫文章 → 寫和聲學作業 → 再寫文章。<br>就這樣，今天就過去了xD 一樣沒弄 project！</p>
-<br>
-沒關係，明天就又是新的一天了呢，放下完美主義的念頭，發揮創意「打造」人生一波吧！]]></content>
   </entry>
   <entry>
     <title>【學習筆記】人機互動概論 - 2</title>
@@ -2752,13 +2752,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
     <url>/2021/10/logic-pro-plug-in-compatibility/</url>
     <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
@@ -2776,6 +2769,13 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       <tags>
         <tag>Logic Pro</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
   </entry>
   <entry>
     <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
@@ -3745,6 +3745,48 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>【軟實力】26. 撰寫文章，進而出版書籍</title>
+    <url>/2023/08/soft-skills-26/</url>
+    <content><![CDATA[<blockquote>
+<p>書籍和雜誌的出版商喜歡本身已經有相當粉絲數的作者，這意味著能保障這本書的銷量。</p>
+</blockquote>
+<p>作者建議先從寫部落格開始，然後拿部落格文章投稿到小型雜誌上，在過程中慢慢累積經驗，並逐步在所屬的專業領域建立名聲，一段時間之後，嘗試去挑戰更大型的出版之路。</p>
+<span id="more"></span>
+
+<p>想在寫作上取得成功？我們必須與讀者交流，並提供讀者一些價值，建立更強的連結，雖然不是寫作的主要目的，但或許也能獲得一點支持。字裡行間，就像是在和讀者面對面聊天，而不是自顧自地說。</p>
+<p>不過現在停下來反思了一下，我前面的內容挺空洞的，原因是因為，我內心還是會想要追求「完美」，所以就直接拿閱讀時記錄的內文，改一改，然後放上來而已。但讀了這個章節以後，就會覺得，如果想要帶來價值，我們要做的，不是自顧自地在意自己寫的文章內容是否接近「標準答案」而達到「看起來的完美」，或是字數一定要很多所以想方設法充數一下，而是有沒有和讀者進行交流，分享一些相關但不一樣的內容，像是結合個人經驗之類的，不然讀者直接去讀原文就好，何必再花寶貴時間讀被精簡而且可能被斷章取義的版本😂（ChatGPT 做得比我好太多了）</p>
+<p>剛剛提到「結合個人經驗」，但… 如果覺得自己的經驗沒什麼，完全不值得提怎麼辦？沒關係，我完全懂，因為我在嘗試分享個人事物的時候，也會因為覺得那些沒什麼價值而感到不好意思。但我還是會說服自己一下：如果能讓一位讀者，因為讀了文章而獲得了一點啟發，我覺得就很足夠了。而且在把那些事物轉化成文字的過程當中，有時也能讓自己獲得意想不到的收穫呢！</p>
+<p>此時，我們心底可能又會冒出這樣的聲音：但我不擅長寫作欸，怎麼辦？這本書的作者說自己也不擅長寫作，但他還是在寫書。</p>
+<p>我直接拿內文出來好了，會比較有說服力：</p>
+<blockquote>
+<p>究竟我做了什麼？我想只是因為每天寫作的關係，當然，大部分的原因是起始於寫部落格文章。一開始我的文章很糟，後來才逐漸改善，雖然我的文筆還追不上大文豪海明威，但至少現在多數的時間裡，我能有效地利用文字，傳達我的觀點與想法。</p>
+<p>重點是不要擔心自己不擅長寫作，這不重要，重要的是你要開始寫作，而且堅持下去，隨著時間自然就能改善你的寫作技巧。</p>
+</blockquote>
+<p>學生時期的我國文一直都很不好，每次到了要寫作文的時候都很頭痛，不管怎麼寫，往往拿不到好看的分數，我的作文也都不會出現在國文老師上課分享給大家的精選佳作。覺得難過。但 2020 那年的暑假，不知道怎麼搞的，可能因為剛好做了一個跟「音訊處理」有關的小專題，加上專題結束前需要有個 presentation，但我那個時候很不擅長 presentation 所以就寫了個逐字稿，想說，為何不建立一個屬於自己分享東西的地方，來放個我那篇逐字稿呢？因此後來就決定建個部落格，偶爾可以上來記錄點東西，也沒想那麼多。（現在的這個部落格是第二版，上一版是用 hugo，這一版是用 hexo）</p>
+<p>剛剛說的那篇記錄專題的文章在<a href="https://kanido386.github.io/2020/09/summer-project/" target="_blank">這裡</a>，是不是很有逐字稿的味道呢😂</p>
+<p>反正寫就對了，現在不會有國文老師出來評論你的文章內容。寫作，不是為了生成一篇「完美」的文章（請 ChatGPT 就可以做到了），而是在寫作的過程當中沉澱、思考、行動、改變，如果也能為讀者帶來點價值，那就更好了！</p>
+<p>回到這個章節的主題「寫書」。作者分享：寫書不是為了賺錢，寫書是為了提升個人名聲，甚至能間接為你帶來機會。</p>
+<p>怎麼說？作者在書中是這麼說的：</p>
+<blockquote>
+<p>「他寫了關於這個主題的書。」書籍對作者來說特別有影響力，一個人會因為寫了一本書，而被視為具有某種程度的誠信，所以合理來看，如果你想在業界被視為有誠信的人，就應該寫本書。</p>
+</blockquote>
+<p>此外，關於書籍主題選擇的建議，作者提到：</p>
+<blockquote>
+<p>書籍的主題越專注、越精確，就越容易提供自己的專業知識，但相對地，市場中潛在的讀者數可能也越少，所以必須在這兩者間取得平衡點，才能吸引出版商為你出版著作。</p>
+</blockquote>
+<p>所以說，why not 展開行動嘗試一波呢？</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
+<p>瀏覽 Amazon 的暢銷書榜，看看軟體開發這個分類裡，哪些書賣得最好。</p>
+</blockquote>
+<p>👀</p>
+<blockquote>
+<p>試著先寫一些短篇文章，例如，寫雜誌專欄，再著手進行書籍寫作。找幾個發行量少的軟體開發雜誌試試水溫，向他們提交文章摘要。（你可以到書店翻翻雜誌，或是上網搜尋軟體開發雜誌。）</p>
+</blockquote>
+<p>我先從現在的部落格開始好了，而且也挺久沒寫偏「技術文章」的內容了😂<br>技術方面，比起寫文章，目前我更想要透過做 project 的方式來弄：<a href="https://www.youtube.com/@kanispher">kanispher</a>。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>【軟實力】51. 房地產是最好的投資</title>
     <url>/2023/07/soft-skills-51/</url>
     <content><![CDATA[<p>每次聽到「房地產」這三個字，總是覺得它離我還非常遙遠而沒去了解它。<br>讀完這個章節以後，雖然還是有差不多的感覺，但至少對它有個初步的認識，而且在閱讀的過程中也讓我思考了一點東西，也是挺不錯的。</p>
@@ -3803,70 +3845,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 </blockquote>
 <p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
 <p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】54. 如何累積真正的財富？</title>
-    <url>/2023/07/soft-skills-54/</url>
-    <content><![CDATA[<p>這一章節提供了心態方面的建議！</p>
-<span id="more"></span>
-
-<h3 id="知足常樂"><a href="#知足常樂" class="headerlink" title="知足常樂"></a>知足常樂</h3><p>俗話說得好：「知足常樂。」套用到財務方面也同樣適用，作者在書中是這麼說的：</p>
-<blockquote>
-<p>想要致富，最快的方法不是賺很多很多的錢，而是減少開銷。如果你能靠少少的金錢生活，只需要少量的被動收入，你就可以實現財務自由，真正主宰你的時間與人生。</p>
-</blockquote>
-<p>這裡的致「富」，即為作者所定義的「富有」：</p>
-<blockquote>
-<p>個人所擁有的供應資源遠超過個人所需，不必很有錢，甚至完全稱不上有錢的人，也能視為富有。</p>
-</blockquote>
-<p>想要變得富有，只要做兩件簡單的事：</p>
-<ol>
-<li>個人所擁有的供應資源會自動更新</li>
-<li>你的需求要低於供應量</li>
-</ol>
-<blockquote>
-<p>變得富有比變得有錢更重要。有錢是相對的數字，沒有人知道究竟怎樣才算是真正的有錢人。要論人生的財務成功，富有是更適合的指標。</p>
-</blockquote>
-<p>針對這一點，作者又補充：</p>
-<blockquote>
-<p>就算年收入少於定義的貧窮線，但只要開銷低於「收入」（目的是確保永續的財富），而且不必為那份「收入」工作（也就是作者所說的會自動更新的資源，即為被動收入），就能認定為富有。</p>
-</blockquote>
-<blockquote>
-<p>但這不表示你必須過著小氣或節儉的生活才能變得富有，只要你的被動收入提升了，開銷方面也能夠因此而提高。</p>
-</blockquote>
-<h3 id="永不乾涸的井"><a href="#永不乾涸的井" class="headerlink" title="永不乾涸的井"></a>永不乾涸的井</h3><p>關於「會自動更新的資源」，作者用了一個很具象化的方式來描述它：「永不乾涸的井」。</p>
-<p>遊戲世界不也有類似的東西嗎？利用現有資源去購入一個可以隨著時間逐漸累積出資源的資產。而當這項資產升級的時候，它資源累積的速度也會跟著變快，因此能夠創造出更多的被動現金流。</p>
-<blockquote>
-<p>原理就是井會重新填滿，這口財富井每個月湧出的收入，你可以全數花光，因為你知道這筆錢下個月又會再次補滿，不像來自工作的收入是你必須持續工作才能獲得的。</p>
-</blockquote>
-<p>但是一開始被動收入才那麼一點點，難道永遠只能這樣用少少的金錢生活下去了嗎？作者知道讀者會產生出這樣的疑問，因此他也在書中解惑道：</p>
-<blockquote>
-<p>可能要花點時間累積和省吃儉用，資產產生的收入才能達到你生活的水準，但是跟虹吸管原理一樣，一旦啟動就永遠不會停止。事實上，只要你持續將工作或事業賺來的金錢，投入更多到資產上，你的財富井就會隨著時間越來越深。</p>
-</blockquote>
-<p>我們要做的就是秉持著耐心並 trust the process，相信複利效應所帶來的成果！</p>
-<h3 id="自我投資"><a href="#自我投資" class="headerlink" title="自我投資"></a>自我投資</h3><p>最後，也是最重要的事：</p>
-<blockquote>
-<p>也別忘了投資在自己身上，這項作法會增加你的收入，進而增加你的儲蓄，日後要投資時才有大量的資金，這一點其實影響很大。</p>
-</blockquote>
-<p>這讓我聯想到「<a href="https://open.spotify.com/episode/4i53FwnKufNLsso8RM0G3Z?si=1fa4d1a411514854">社會新鮮人的小資理財之道：增長，是比存錢更重要的一件事</a>」這集 podcast 的內容，也分享給大家一點筆記：</p>
-<ul>
-<li>年輕人，節流不如開源，每月存兩萬不如拿那兩萬投資在自己身上，提升自我方能以較快的速度提升薪資的成長幅度，比傻傻都把錢存著但不去提升自己的價值好太多了！</li>
-<li>你會怎麼做選擇：每月存很多但不去投資自己 → 錢是有存到但開源速度沒什麼改變 vs 很樂意花錢在投資自己這件事情上 → 提升開源速度也因此能存到更多錢</li>
-<li>聽完額外的延伸：所以不要為了省錢亂吃、吃太簡單，久了沒多存到多少錢之外，也賠了健康，超級不划算的！</li>
-</ul>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><p>作者提出了「財富金三角」：金錢、投資報酬率、時間。讓我們針對這三方面來實驗並嘗試從中發現點什麼。</p>
-<blockquote>
-<p>現在該換你玩玩複利計算器了。請找一個你喜歡的線上複利計算器，然後開始帶入不同的情境，試著針對現金、複利率和時間，選擇不同的設定量，猜猜看會出現什麼結果，許多效果或許會讓你大吃一驚。</p>
-</blockquote>
-<p>上網找哪一款複利計算器都行，隨意玩了一下，真的能感受複利效應所帶來的強大威力！</p>
-<p>別忘了，不只是金錢，其他方面也同樣適用，像是每一次的思考及行動，雖然看似微不足道，但累積起來，可是會深深影響著我們的未來呢！</p>
-<blockquote>
-<p>現在請使用同一個複利計算器，推算出你目前的投資軌跡。如果你認為透過目前的投資策略，將來能讓你致富，那麼請將投資成果畫出來看看，其結果有可能會讓你大失所望。</p>
-</blockquote>
-<p>😮</p>
-<p>愛因斯坦曾經說過：「什麼叫瘋子，就是重複做同樣的事情還期待會出現不同的結果。」</p>
-<p>沒關係，當發覺到不太滿意時，就做出調整吧！</p>
 ]]></content>
   </entry>
   <entry>
@@ -4155,47 +4133,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 SSL For Free 免費申請 SSL 憑證</title>
     <url>/2022/04/ssl-for-free/</url>
     <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
@@ -4231,6 +4168,70 @@ go go!!!]]></content>
 <li>回到最一開始 ZeroSSL 頁面 → Check Certificate → 完成！</li>
 <li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>【軟實力】54. 如何累積真正的財富？</title>
+    <url>/2023/07/soft-skills-54/</url>
+    <content><![CDATA[<p>這一章節提供了心態方面的建議！</p>
+<span id="more"></span>
+
+<h3 id="知足常樂"><a href="#知足常樂" class="headerlink" title="知足常樂"></a>知足常樂</h3><p>俗話說得好：「知足常樂。」套用到財務方面也同樣適用，作者在書中是這麼說的：</p>
+<blockquote>
+<p>想要致富，最快的方法不是賺很多很多的錢，而是減少開銷。如果你能靠少少的金錢生活，只需要少量的被動收入，你就可以實現財務自由，真正主宰你的時間與人生。</p>
+</blockquote>
+<p>這裡的致「富」，即為作者所定義的「富有」：</p>
+<blockquote>
+<p>個人所擁有的供應資源遠超過個人所需，不必很有錢，甚至完全稱不上有錢的人，也能視為富有。</p>
+</blockquote>
+<p>想要變得富有，只要做兩件簡單的事：</p>
+<ol>
+<li>個人所擁有的供應資源會自動更新</li>
+<li>你的需求要低於供應量</li>
+</ol>
+<blockquote>
+<p>變得富有比變得有錢更重要。有錢是相對的數字，沒有人知道究竟怎樣才算是真正的有錢人。要論人生的財務成功，富有是更適合的指標。</p>
+</blockquote>
+<p>針對這一點，作者又補充：</p>
+<blockquote>
+<p>就算年收入少於定義的貧窮線，但只要開銷低於「收入」（目的是確保永續的財富），而且不必為那份「收入」工作（也就是作者所說的會自動更新的資源，即為被動收入），就能認定為富有。</p>
+</blockquote>
+<blockquote>
+<p>但這不表示你必須過著小氣或節儉的生活才能變得富有，只要你的被動收入提升了，開銷方面也能夠因此而提高。</p>
+</blockquote>
+<h3 id="永不乾涸的井"><a href="#永不乾涸的井" class="headerlink" title="永不乾涸的井"></a>永不乾涸的井</h3><p>關於「會自動更新的資源」，作者用了一個很具象化的方式來描述它：「永不乾涸的井」。</p>
+<p>遊戲世界不也有類似的東西嗎？利用現有資源去購入一個可以隨著時間逐漸累積出資源的資產。而當這項資產升級的時候，它資源累積的速度也會跟著變快，因此能夠創造出更多的被動現金流。</p>
+<blockquote>
+<p>原理就是井會重新填滿，這口財富井每個月湧出的收入，你可以全數花光，因為你知道這筆錢下個月又會再次補滿，不像來自工作的收入是你必須持續工作才能獲得的。</p>
+</blockquote>
+<p>但是一開始被動收入才那麼一點點，難道永遠只能這樣用少少的金錢生活下去了嗎？作者知道讀者會產生出這樣的疑問，因此他也在書中解惑道：</p>
+<blockquote>
+<p>可能要花點時間累積和省吃儉用，資產產生的收入才能達到你生活的水準，但是跟虹吸管原理一樣，一旦啟動就永遠不會停止。事實上，只要你持續將工作或事業賺來的金錢，投入更多到資產上，你的財富井就會隨著時間越來越深。</p>
+</blockquote>
+<p>我們要做的就是秉持著耐心並 trust the process，相信複利效應所帶來的成果！</p>
+<h3 id="自我投資"><a href="#自我投資" class="headerlink" title="自我投資"></a>自我投資</h3><p>最後，也是最重要的事：</p>
+<blockquote>
+<p>也別忘了投資在自己身上，這項作法會增加你的收入，進而增加你的儲蓄，日後要投資時才有大量的資金，這一點其實影響很大。</p>
+</blockquote>
+<p>這讓我聯想到「<a href="https://open.spotify.com/episode/4i53FwnKufNLsso8RM0G3Z?si=1fa4d1a411514854">社會新鮮人的小資理財之道：增長，是比存錢更重要的一件事</a>」這集 podcast 的內容，也分享給大家一點筆記：</p>
+<ul>
+<li>年輕人，節流不如開源，每月存兩萬不如拿那兩萬投資在自己身上，提升自我方能以較快的速度提升薪資的成長幅度，比傻傻都把錢存著但不去提升自己的價值好太多了！</li>
+<li>你會怎麼做選擇：每月存很多但不去投資自己 → 錢是有存到但開源速度沒什麼改變 vs 很樂意花錢在投資自己這件事情上 → 提升開源速度也因此能存到更多錢</li>
+<li>聽完額外的延伸：所以不要為了省錢亂吃、吃太簡單，久了沒多存到多少錢之外，也賠了健康，超級不划算的！</li>
+</ul>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><p>作者提出了「財富金三角」：金錢、投資報酬率、時間。讓我們針對這三方面來實驗並嘗試從中發現點什麼。</p>
+<blockquote>
+<p>現在該換你玩玩複利計算器了。請找一個你喜歡的線上複利計算器，然後開始帶入不同的情境，試著針對現金、複利率和時間，選擇不同的設定量，猜猜看會出現什麼結果，許多效果或許會讓你大吃一驚。</p>
+</blockquote>
+<p>上網找哪一款複利計算器都行，隨意玩了一下，真的能感受複利效應所帶來的強大威力！</p>
+<p>別忘了，不只是金錢，其他方面也同樣適用，像是每一次的思考及行動，雖然看似微不足道，但累積起來，可是會深深影響著我們的未來呢！</p>
+<blockquote>
+<p>現在請使用同一個複利計算器，推算出你目前的投資軌跡。如果你認為透過目前的投資策略，將來能讓你致富，那麼請將投資成果畫出來看看，其結果有可能會讓你大失所望。</p>
+</blockquote>
+<p>😮</p>
+<p>愛因斯坦曾經說過：「什麼叫瘋子，就是重複做同樣的事情還期待會出現不同的結果。」</p>
+<p>沒關係，當發覺到不太滿意時，就做出調整吧！</p>
 ]]></content>
   </entry>
   <entry>
@@ -4430,6 +4431,47 @@ go go!!!]]></content>
       </tags>
   </entry>
   <entry>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
+<span id="more"></span>
+
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
     <url>/2021/12/synth-one-with-logic-pro/</url>
     <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
@@ -4477,6 +4519,26 @@ go go!!!]]></content>
 <p>回來以後，拿家裡椅子的照片和我查到的資訊去問了另一間傢俱店（是幾年前買電腦椅的那間，但原本想說因為有認識但很久沒聯絡的，就不太想去現場挑新椅子），結論是，買得到我現在在坐的這款，畢竟已經坐習慣了，當然會想要繼續坐同款式的，而且只要 1200！哇嗚，酷～</p>
 <p>現在回想起來，真的幸好有那段「看似浪費時間的無用(?)時間」，才讓我得以緩下來去 approach「買椅子」這件事情。所以說，<ins><strong>真的有「浪費時間」這回事嗎？很多時候，如果沒有那些「浪費時間」，結局就不一定能往比較好的方向發展呢！</strong></ins></p>
 <p>反思了一下，對於「浪費時間」這件事，或許可以試著 reframe 一下：嘗試從「waste time」轉換成是在「invest time」，像這次的經驗，不就是一個挺賺的 investment 嗎？</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>猶豫不決？先行動再說！</title>
+    <url>/2022/12/why-not-just-start/</url>
+    <content><![CDATA[<p>有時候能挖掘到寶藏，會感謝願意動身的自己😂</p>
+<span id="more"></span>
+
+<p>大概快半年前做的 side project「<a href="https://github.com/kanido386/guess-songs-king">猜歌我最強</a>」，開始工作以來一直希望能找出時間對它進行優化，原因很簡單，我希望能養成下班後繼續接觸技術相關東西的習慣，畢竟軟體工程師這個行業，如果不與時俱進，感覺很容易會被淘汰。</p>
+<p>然而，我一直沒展開行動，可能因為下班回到家以後身心俱疲，想要做點什麼都很困難了，更何況是更具挑戰性的「做 side project」？</p>
+<p>但不管怎樣，昨天我終於開始行動了！開始先試著讓那個 project 能夠在公司筆電上面 run 起來，而且是能夠註冊、建立歌曲集、製作不同效果的音檔、能夠開始遊戲跟玩家互動。</p>
+<p>其實昨天在決定優化「猜歌我最強」之前，也是猶豫了一段時間，在想：到底該讀最近剛買的書「怡辰老師的高效時間管理課」呢？還是該為了自己在公司定的「2022Q4 OKR」而弄點 side project 的東西呢？沒錯，為了督促自己養成持續精進技術的習慣，我 11 月底在定 OKR 的時候，特別加上了這方面的 goal，希望能藉此多推進一點，讓自己不會因為完全沒壓力而放著不管。</p>
+<p>猶豫了一段時間，擔心會不會又步入上禮拜日的後塵(?)。那一天，早上看 NBA，心想，看完比賽還有好多時間呢，真好，所以整個人就很放鬆，因為「體感」今天還有很多時間可以「做很多事情」。吃了午餐到了下午，突然有點覺得今天好像只剩一半了，怎麼都沒做什麼事情，於是乎，責備自己的小聲音開始在腦海裡干擾著我，有點寸步難行因為有雜音。這個時候，其實我還是沒做什麼事哦，但慶幸的是，至少有刷牙洗臉啦😂 印象中到了差不多三四五點，認真覺得不行了，再這樣下去，今天不就廢了一天？不找點事情做，真的無法接受啊！然而，困難的來了：現在的我，到底該彈吉他（但每次彈都那幾首）、玩 Logic Pro（幾個禮拜前有玩過，很享受沒錯，但感覺對自己來說又不太能像精進開發技術一樣，為職涯帶來太大的幫助）、去健身房運動（但上班以後根本沒去過）、學技術（每次只累積一點真的有幫助嗎）、做 side project（感覺很花時間，這樣難得假日的時間不就都被吃掉了嗎）、出去外面逛逛體驗點什麼（但外面又濕又冷實在很不適合）、看書（那不是睡前拿來催眠用的嗎）、打籃球（想跟朋友打但天氣母湯）、……。</p>
+<p>就是這樣，禮拜日因為心底的各種猶豫不決和各種看似合理但都是藉口的藉口，讓我那一天完全不知道自己在做什麼，白白浪費掉了。</p>
+<p>有點扯遠了😅</p>
+<p>所以昨天後來，我也沒想那麼多，直接選擇優化 side project。那個時候差不多快十點半吧？想說，可能弄到十一點初，然後切換看書催眠一下就準備上床睡覺。令我感到驚訝和驚喜的地方是，我以為會很痛苦，畢竟它不像看球賽、看電影那樣坐著享受就可以了，它是要去花心思動身去做的！沒想到過程當中我十分享受，甚至忘記時間，持續弄到了十二點多！昨天說過了嘛，我喜歡創造的感覺，如果能因此帶來價值，那我會更有成就感。順利在公司筆電上面跑起來的片刻，真的很感動，雖然這件事情回想起來難度其實並不高，但看著自己願意嘗試擺脫懶散怠惰的束縛去行動，我就心滿意足了！</p>
+<p>有了行動，有了推進，才有機會成長進步啊！</p>
+<p>這篇文章的重點在於，有時候真的不要想那麼多，想說做了這個就不能做那個（機會成本）的話該怎麼辦，但其實享受當下正在做的事情才是真的。想太多，對我自己來說，很多時候的結局就會像上禮拜日一樣廢廢不知道自己在哪在做何事。有了行動，即使後來發現好像沒那麼喜歡或是感覺不太對，那就再調整即可，我們是自己的主人，又不像國高中，限制一堆。</p>
+<p>所以說，跟隨著自己的 flow，follow your heart，去探索更多有趣的可能性，並享受於其中吧！</p>
+<p>好了，差不多要到站了，下次見啦😃</p>
 ]]></content>
   </entry>
   <entry>
@@ -4545,26 +4607,6 @@ go go!!!]]></content>
 <h3 id="存進資料庫"><a href="#存進資料庫" class="headerlink" title="存進資料庫"></a>存進資料庫</h3><p>找團隊有用到跟短網址 table 寫入有關的 function 的 repo 和相對應的 route，copy and paste 成一個新的 path，<code>npm run dev</code> 跑起來以後，借助 Postman 來 call 那隻 API，原因是短網址和原網址清單的文字檔在本地端，利用這樣的方式，就能透過 <code>fs</code> module 來讀，拿到相對應的短網址和原網址以後，藉此 insert 新 record 進 DB。</p>
 <br>
 原本以為這個 task 會有大量的「重複性人工操作」，沒想到居然能找到比較優雅的做法，也是挺有意思的～]]></content>
-  </entry>
-  <entry>
-    <title>猶豫不決？先行動再說！</title>
-    <url>/2022/12/why-not-just-start/</url>
-    <content><![CDATA[<p>有時候能挖掘到寶藏，會感謝願意動身的自己😂</p>
-<span id="more"></span>
-
-<p>大概快半年前做的 side project「<a href="https://github.com/kanido386/guess-songs-king">猜歌我最強</a>」，開始工作以來一直希望能找出時間對它進行優化，原因很簡單，我希望能養成下班後繼續接觸技術相關東西的習慣，畢竟軟體工程師這個行業，如果不與時俱進，感覺很容易會被淘汰。</p>
-<p>然而，我一直沒展開行動，可能因為下班回到家以後身心俱疲，想要做點什麼都很困難了，更何況是更具挑戰性的「做 side project」？</p>
-<p>但不管怎樣，昨天我終於開始行動了！開始先試著讓那個 project 能夠在公司筆電上面 run 起來，而且是能夠註冊、建立歌曲集、製作不同效果的音檔、能夠開始遊戲跟玩家互動。</p>
-<p>其實昨天在決定優化「猜歌我最強」之前，也是猶豫了一段時間，在想：到底該讀最近剛買的書「怡辰老師的高效時間管理課」呢？還是該為了自己在公司定的「2022Q4 OKR」而弄點 side project 的東西呢？沒錯，為了督促自己養成持續精進技術的習慣，我 11 月底在定 OKR 的時候，特別加上了這方面的 goal，希望能藉此多推進一點，讓自己不會因為完全沒壓力而放著不管。</p>
-<p>猶豫了一段時間，擔心會不會又步入上禮拜日的後塵(?)。那一天，早上看 NBA，心想，看完比賽還有好多時間呢，真好，所以整個人就很放鬆，因為「體感」今天還有很多時間可以「做很多事情」。吃了午餐到了下午，突然有點覺得今天好像只剩一半了，怎麼都沒做什麼事情，於是乎，責備自己的小聲音開始在腦海裡干擾著我，有點寸步難行因為有雜音。這個時候，其實我還是沒做什麼事哦，但慶幸的是，至少有刷牙洗臉啦😂 印象中到了差不多三四五點，認真覺得不行了，再這樣下去，今天不就廢了一天？不找點事情做，真的無法接受啊！然而，困難的來了：現在的我，到底該彈吉他（但每次彈都那幾首）、玩 Logic Pro（幾個禮拜前有玩過，很享受沒錯，但感覺對自己來說又不太能像精進開發技術一樣，為職涯帶來太大的幫助）、去健身房運動（但上班以後根本沒去過）、學技術（每次只累積一點真的有幫助嗎）、做 side project（感覺很花時間，這樣難得假日的時間不就都被吃掉了嗎）、出去外面逛逛體驗點什麼（但外面又濕又冷實在很不適合）、看書（那不是睡前拿來催眠用的嗎）、打籃球（想跟朋友打但天氣母湯）、……。</p>
-<p>就是這樣，禮拜日因為心底的各種猶豫不決和各種看似合理但都是藉口的藉口，讓我那一天完全不知道自己在做什麼，白白浪費掉了。</p>
-<p>有點扯遠了😅</p>
-<p>所以昨天後來，我也沒想那麼多，直接選擇優化 side project。那個時候差不多快十點半吧？想說，可能弄到十一點初，然後切換看書催眠一下就準備上床睡覺。令我感到驚訝和驚喜的地方是，我以為會很痛苦，畢竟它不像看球賽、看電影那樣坐著享受就可以了，它是要去花心思動身去做的！沒想到過程當中我十分享受，甚至忘記時間，持續弄到了十二點多！昨天說過了嘛，我喜歡創造的感覺，如果能因此帶來價值，那我會更有成就感。順利在公司筆電上面跑起來的片刻，真的很感動，雖然這件事情回想起來難度其實並不高，但看著自己願意嘗試擺脫懶散怠惰的束縛去行動，我就心滿意足了！</p>
-<p>有了行動，有了推進，才有機會成長進步啊！</p>
-<p>這篇文章的重點在於，有時候真的不要想那麼多，想說做了這個就不能做那個（機會成本）的話該怎麼辦，但其實享受當下正在做的事情才是真的。想太多，對我自己來說，很多時候的結局就會像上禮拜日一樣廢廢不知道自己在哪在做何事。有了行動，即使後來發現好像沒那麼喜歡或是感覺不太對，那就再調整即可，我們是自己的主人，又不像國高中，限制一堆。</p>
-<p>所以說，跟隨著自己的 flow，follow your heart，去探索更多有趣的可能性，並享受於其中吧！</p>
-<p>好了，差不多要到站了，下次見啦😃</p>
-]]></content>
   </entry>
   <entry>
     <title>用 Docker 和 Kubernetes 部署一個使用到 RabbitMQ 及 MongoDB 的 Express App</title>
