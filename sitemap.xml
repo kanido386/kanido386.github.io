@@ -683,27 +683,6 @@
   </url>
   
   <url>
-    <loc>https://kanido386.github.io/tags/Hexo/</loc>
-    <lastmod>2024-06-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/GitHub-Pages/</loc>
-    <lastmod>2024-06-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kanido386.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/</loc>
-    <lastmod>2024-06-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kanido386.github.io/tags/JavaScript/</loc>
     <lastmod>2024-06-10</lastmod>
     <changefreq>daily</changefreq>
@@ -725,7 +704,21 @@
   </url>
   
   <url>
-    <loc>https://kanido386.github.io/tags/Logic-Pro/</loc>
+    <loc>https://kanido386.github.io/tags/Hexo/</loc>
+    <lastmod>2024-06-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/GitHub-Pages/</loc>
+    <lastmod>2024-06-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kanido386.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/</loc>
     <lastmod>2024-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -760,6 +753,13 @@
   </url>
   
   <url>
+    <loc>https://kanido386.github.io/tags/Logic-Pro/</loc>
+    <lastmod>2024-06-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kanido386.github.io/tags/Moleculer/</loc>
     <lastmod>2024-06-10</lastmod>
     <changefreq>daily</changefreq>
@@ -781,7 +781,7 @@
   </url>
   
   <url>
-    <loc>https://kanido386.github.io/tags/Blockchain/</loc>
+    <loc>https://kanido386.github.io/tags/Android/</loc>
     <lastmod>2024-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -795,7 +795,7 @@
   </url>
   
   <url>
-    <loc>https://kanido386.github.io/tags/Android/</loc>
+    <loc>https://kanido386.github.io/tags/Blockchain/</loc>
     <lastmod>2024-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
