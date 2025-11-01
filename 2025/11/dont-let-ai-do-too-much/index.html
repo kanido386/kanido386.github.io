@@ -21,24 +21,19 @@
     var CONFIG = {"hostname":"kanido386.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="米奇">
+  <meta name="description" content="這篇文章是我在開發過程中的實際經驗，透過 AI 協助整理成文字記錄下來。希望這個踩坑經驗能幫助到其他人。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://kanido386.github.io/2021/06/test/index.html">
+<meta property="og:title" content="AI 應用的關鍵原則：別讓 AI 做太多事">
+<meta property="og:url" content="https://kanido386.github.io/2025/11/dont-let-ai-do-too-much/index.html">
 <meta property="og:site_name" content="卡尼多隨筆">
-<meta property="og:description" content="米奇">
+<meta property="og:description" content="這篇文章是我在開發過程中的實際經驗，透過 AI 協助整理成文字記錄下來。希望這個踩坑經驗能幫助到其他人。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://kanido386.github.io/2021/06/test/mickey.jpg">
-<meta property="article:published_time" content="2021-06-04T09:08:41.000Z">
-<meta property="article:modified_time" content="2021-06-07T10:49:17.000Z">
+<meta property="article:published_time" content="2025-11-01T04:26:39.000Z">
+<meta property="article:modified_time" content="2025-11-01T04:38:09.092Z">
 <meta property="article:author" content="卡尼多">
-<meta property="article:tag" content="tag1">
-<meta property="article:tag" content="tag2">
-<meta property="article:tag" content="tag3">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kanido386.github.io/2021/06/test/mickey.jpg">
 
-<link rel="canonical" href="https://kanido386.github.io/2021/06/test/">
+<link rel="canonical" href="https://kanido386.github.io/2025/11/dont-let-ai-do-too-much/">
 
 
 <script id="page-configurations">
@@ -51,7 +46,7 @@
   };
 </script>
 
-  <title>test | 卡尼多隨筆</title><meta name="robots" content="noindex">
+  <title>AI 應用的關鍵原則：別讓 AI 做太多事 | 卡尼多隨筆</title>
   
 
 
@@ -190,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2021/06/test/">
+    <link itemprop="mainEntityOfPage" href="https://kanido386.github.io/2025/11/dont-let-ai-do-too-much/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -203,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          test
+          AI 應用的關鍵原則：別讓 AI 做太多事
         </h1>
 
         <div class="post-meta">
@@ -213,7 +208,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-06-04 17:08:41" itemprop="dateCreated datePublished" datetime="2021-06-04T17:08:41+08:00">2021-06-04</time>
+              <time title="Created: 2025-11-01 12:26:39" itemprop="dateCreated datePublished" datetime="2025-11-01T12:26:39+08:00">2025-11-01</time>
             </span>
 
           
@@ -227,7 +222,96 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="米奇"><a href="#米奇" class="headerlink" title="米奇"></a>米奇</h3><img src="/2021/06/test/mickey.jpg" class=""><!-- flag of hidden posts -->
+        <p>這篇文章是我在開發過程中的實際經驗，透過 AI 協助整理成文字記錄下來。<br>希望這個踩坑經驗能幫助到其他人。</p>
+<span id="more"></span>
+
+<h2 id="問題：一個-Prompt-想解決所有事"><a href="#問題：一個-Prompt-想解決所有事" class="headerlink" title="問題：一個 Prompt 想解決所有事"></a>問題：一個 Prompt 想解決所有事</h2><p>開發記帳 bot 時，我想讓 AI 一次搞定費用分類：</p>
+<ol>
+<li>讀取 76 筆消費記錄</li>
+<li>分類到 8 個類別（家裡煮、生活用品、鮮奶…）</li>
+<li>計算每個類別總金額</li>
+<li>由大到小排序</li>
+<li>格式化輸出</li>
+</ol>
+<p><strong>聽起來很合理？結果慘不忍睹。</strong></p>
+<p>無論怎麼優化 prompt（加粗體、加警告、加範例），AI 照樣出錯：</p>
+<ul>
+<li>❌ 項目重複分類（鮮奶同時出現在兩個類別）</li>
+<li>❌ 計算錯誤（350+280 顯示成 350）</li>
+<li>❌ 排序亂掉（6333 &gt; 5141 卻排反）</li>
+<li>❌ 總和對不上</li>
+</ul>
+<h2 id="突破：兩步驟比一步驟準"><a href="#突破：兩步驟比一步驟準" class="headerlink" title="突破：兩步驟比一步驟準"></a>突破：兩步驟比一步驟準</h2><p><strong>核心洞察：AI 擅長語義理解，不擅長精確計算。</strong></p>
+<h3 id="舊方法（AI-做所有事）"><a href="#舊方法（AI-做所有事）" class="headerlink" title="舊方法（AI 做所有事）"></a>舊方法（AI 做所有事）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">給 AI 一個超長 Prompt</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│  AI 一把抓    │</span><br><span class="line">│  • 分類       │</span><br><span class="line">│  • 計算       │</span><br><span class="line">│  • 排序       │</span><br><span class="line">│  • 格式化     │</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">  完整報表</span><br><span class="line">❌ 錯誤率高</span><br></pre></td></tr></table></figure>
+
+<h3 id="新方法（職責分離）"><a href="#新方法（職責分離）" class="headerlink" title="新方法（職責分離）"></a>新方法（職責分離）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Step 1: AI 只做分類</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   AI 分類     │ ← AI 擅長的</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">分類 JSON</span><br><span class="line">&#123;&quot;id&quot;: 1, &quot;category&quot;: &quot;水果&quot;&#125;</span><br><span class="line">&#123;&quot;id&quot;: 2, &quot;category&quot;: &quot;家裡煮&quot;&#125;</span><br><span class="line">      ↓</span><br><span class="line">Step 2: 程式處理</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│ 程式計算排序   │ ← 程式擅長的</span><br><span class="line">│ • 按類別分組   │</span><br><span class="line">│ • 計算總額     │</span><br><span class="line">│ • 排序        │</span><br><span class="line">│ • 格式化      │</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">  完整報表</span><br><span class="line">✅ 100% 準確</span><br></pre></td></tr></table></figure>
+
+<h2 id="實測結果"><a href="#實測結果" class="headerlink" title="實測結果"></a>實測結果</h2><p>同樣 76 筆消費記錄的表現：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>舊方法（AI 全做）</th>
+<th>新方法（分工）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>項目完整性</td>
+<td>❌ 有時重複或遺漏</td>
+<td>✅ 100% 完整</td>
+</tr>
+<tr>
+<td>總額計算</td>
+<td>❌ 經常出錯</td>
+<td>✅ 絕對正確</td>
+</tr>
+<tr>
+<td>排序</td>
+<td>❌ 偶爾錯誤</td>
+<td>✅ 完美</td>
+</tr>
+<tr>
+<td>可驗證性</td>
+<td>❌ 難以檢查</td>
+<td>✅ 每步可驗證</td>
+</tr>
+</tbody></table>
+<h2 id="實用原則"><a href="#實用原則" class="headerlink" title="實用原則"></a>實用原則</h2><p>把任務拆成「AI 做什麼」和「程式做什麼」：</p>
+<table>
+<thead>
+<tr>
+<th>任務類型</th>
+<th>交給誰</th>
+<th>為什麼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分類、語義理解</td>
+<td>AI</td>
+<td>理解上下文和模糊語意</td>
+</tr>
+<tr>
+<td>計算、排序、格式化</td>
+<td>程式</td>
+<td>確定性、零錯誤</td>
+</tr>
+<tr>
+<td>決策邏輯</td>
+<td>程式</td>
+<td>可控、可測試</td>
+</tr>
+</tbody></table>
+<h2 id="延伸思考"><a href="#延伸思考" class="headerlink" title="延伸思考"></a>延伸思考</h2><p>這原則適用所有 AI 整合：</p>
+<ul>
+<li><strong>客服機器人</strong>：AI 理解問題意圖 → 程式決定回覆流程</li>
+<li><strong>資料分析</strong>：AI 找出趨勢洞察 → 程式產生精確圖表</li>
+<li><strong>程式碼生成</strong>：AI 寫主要邏輯 → Linter/測試確保品質</li>
+</ul>
+<p><strong>記住：AI 是工具，不是魔法。讓它做擅長的事，剩下的交給程式碼。</strong></p>
+<hr>
+<p>💡 這個方法讓錯誤率從「經常出錯」降到「零錯誤」。</p>
+<p>完整實作：<a target="_blank" rel="noopener" href="https://github.com/kanido386/family-expense-bot">GitHub Repository</a></p>
+
     </div>
 
     
@@ -235,16 +319,18 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/tag1/" rel="tag"># tag1</a>
-              <a href="/tags/tag2/" rel="tag"># tag2</a>
-              <a href="/tags/tag3/" rel="tag"># tag3</a>
-          </div>
 
         
 
 
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/05/2025-dragon-boat-festival/" rel="prev" title="2025 端午節立蛋">
+      <i class="fa fa-chevron-left"></i> 2025 端午節立蛋
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
     
   </article>
@@ -302,7 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%B3%E5%A5%87"><span class="nav-number">1.</span> <span class="nav-text">米奇</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%EF%BC%9A%E4%B8%80%E5%80%8B-Prompt-%E6%83%B3%E8%A7%A3%E6%B1%BA%E6%89%80%E6%9C%89%E4%BA%8B"><span class="nav-number">1.</span> <span class="nav-text">問題：一個 Prompt 想解決所有事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%81%E7%A0%B4%EF%BC%9A%E5%85%A9%E6%AD%A5%E9%A9%9F%E6%AF%94%E4%B8%80%E6%AD%A5%E9%A9%9F%E6%BA%96"><span class="nav-number">2.</span> <span class="nav-text">突破：兩步驟比一步驟準</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%88%8A%E6%96%B9%E6%B3%95%EF%BC%88AI-%E5%81%9A%E6%89%80%E6%9C%89%E4%BA%8B%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">舊方法（AI 做所有事）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E6%96%B9%E6%B3%95%EF%BC%88%E8%81%B7%E8%B2%AC%E5%88%86%E9%9B%A2%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">新方法（職責分離）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E6%B8%AC%E7%B5%90%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">實測結果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E7%94%A8%E5%8E%9F%E5%89%87"><span class="nav-number">4.</span> <span class="nav-text">實用原則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E6%80%9D%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">延伸思考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
