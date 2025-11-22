@@ -1,44 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【聽講筆記】Jamie’s AMA</title>
-    <url>/2022/08/2022-05-jamie-ama/</url>
-    <content><![CDATA[<p>五月中的時候，在 AppWorks School 聽了 Jamie’s AMA (Ask Me Anything)，邊聽邊記了一點筆記，想說整理在這邊，可能還夾雜一點個人的補充，分享給大家～（這篇應該會蠻隨筆性質的）</p>
-<span id="more"></span>
-
-<h3 id="中午吃什麼？"><a href="#中午吃什麼？" class="headerlink" title="中午吃什麼？"></a>中午吃什麼？</h3><p>不知道中午要吃什麼？求方便的話，可以讓別人來決定，或是可以從外送平台上做挑選。<br>也可以根據一些特殊情況來做選擇：因為疫情的關係，變得比較少運動，這時可以挑比較健康的沙拉來吃，讓自己感覺起來比較健康！</p>
-<h3 id="No-Code-成趨勢，軟體工程師何去何從？"><a href="#No-Code-成趨勢，軟體工程師何去何從？" class="headerlink" title="No-Code 成趨勢，軟體工程師何去何從？"></a>No-Code 成趨勢，軟體工程師何去何從？</h3><p>未來不會真的達到所謂的「no-code」，只是不同層級 (比較 low-level) 的 abstraction 或自動化，讓軟體工程師能夠專注在更 high-level 的事情上，如此一來，可以提升單位生產力。</p>
-<p>像是對比較早期的開發而言，library 的出現就是一種 abstraction。</p>
-<p>若舉農夫為例，因為機械工具的發明，讓農夫只要專注在 high-level 的工作即可，其他 low-level 的事情大部分都可以交給機械工具去處理。</p>
-<p>所以，軟體工程師何去何從？即便是如此，業界對於軟體工程師的需求還是會不斷上升，因為什麼都講求數位化，需求只會越來越高，像目前金融業大概只有 2-3% 的數位轉型呢！</p>
-<h3 id="遠端工作"><a href="#遠端工作" class="headerlink" title="遠端工作"></a>遠端工作</h3><p>因為疫情的關係，遠端工作更為普遍，也就因此，我們更容易得到國外的工作機會。<br>所以說，累積實力和提升語言能力挺重要的，地域因素並不是個限制！</p>
-<h3 id="校園-vs-業界"><a href="#校園-vs-業界" class="headerlink" title="校園 vs 業界"></a>校園 vs 業界</h3><p>業界並不像學校，什麼問題都 well-defined，我們要學會自己去定義問題！<br>這一行不是只有純寫程式而已，所以如果程式能力沒到很頂，沒關係，天生我材必有用，這一行還有其他方面啊！<br>就像車子不是只有引擎而已，還有操作手感、座椅舒適度等等的元素需要去顧及。</p>
-<h3 id="如何成長更快？"><a href="#如何成長更快？" class="headerlink" title="如何成長更快？"></a>如何成長更快？</h3><p>從失敗、犯錯中學習。失敗為成功之母！</p>
-<h3 id="不是本科的怎麼辦？"><a href="#不是本科的怎麼辦？" class="headerlink" title="不是本科的怎麼辦？"></a>不是本科的怎麼辦？</h3><p>每個人都有他的強項，大家各自發揮所長以 improve 整體的表現。<br>但其實那也只是名義上的本科／非本科，那只會決定我們的課表長怎樣，至於實際我們想學什麼、想成為什麼樣的人，都得看我們自己怎麼去行動。</p>
-<h3 id="國外工作一定讚？"><a href="#國外工作一定讚？" class="headerlink" title="國外工作一定讚？"></a>國外工作一定讚？</h3><p>比較一下：在台灣工作，可能月薪 6-10 萬，而在美國矽谷工作，年薪會有個 30 萬美金；但是，在台灣，物價低很多，而在美國矽谷那邊，以那樣的薪水生活，可能會挺辛苦的。<br>所以說，看事情不要只看其中一面，卻忽略掉其他也同等重要的考量點！</p>
-<h3 id="關於區塊鏈"><a href="#關於區塊鏈" class="headerlink" title="關於區塊鏈"></a>關於區塊鏈</h3><p>區塊鏈「去中心化」的特性，大大改變「價值交換」的方式。<br>過去的 https protocol 是從 server copy 一份給 client，然後 display 出來；而區塊鏈不一樣，它是「這邊消滅，那邊 create」。<br>可能在未來 30 年、50 年，區塊鏈將會顛覆地政、證券交易所等行業！</p>
-<h3 id="自己人生，自己做主！"><a href="#自己人生，自己做主！" class="headerlink" title="自己人生，自己做主！"></a>自己人生，自己做主！</h3><p>有人曾對 Jamie 說過：「Jamie 你傻傻，創投在台灣那麼沙漠，你還要搞？」<br>然而現在看起來是挺不錯的。<br>所以，別因為別人撥冷水就不去嘗試了（但也要自己去判斷，而不是隨意行動）</p>
-<h3 id="學習是能遷移的"><a href="#學習是能遷移的" class="headerlink" title="學習是能遷移的"></a>學習是能遷移的</h3><p>「學ＸＸＸ技術或是領域會不會找不到工作？」永遠會有，像是 mainframe😂<br>當中最關鍵是「能力能帶著走」，所以，別太糾結這一點，專注在提升自我吧！</p>
-<h3 id="壓力調適"><a href="#壓力調適" class="headerlink" title="壓力調適"></a>壓力調適</h3><p>如何排解壓力？或者問說，為何會覺得有壓力？<br>那是因為，我們對於失敗或是最慘情況太過於模糊，就像是半夜上廁所太暗令人害怕。<br>所以說，試著想像「失敗」以後的最慘情況吧！<br>在過程中你或許會發現，其實還好，就僅僅只是「沒那麼成功」而已，想得夠清楚一點，你就會發現實際上沒那麼恐怖。<br>簡單來說，會壓力大的主要原因：對未來感到不明確。</p>
-<p>除此之外，多運動吧，可以先從簡單的散步和慢跑開始。<br>最重要的是，讓自己開心，常保愉快心情！</p>
-<h3 id="思維的價值所在"><a href="#思維的價值所在" class="headerlink" title="思維的價值所在"></a>思維的價值所在</h3><p>有人曾問 Jamie：「為何你不當工程師？」<br>然而，Jamie 說他其實是把自己視為 engineer 的。<br>只不過是把「engineering 的技術」套用在 social engineering，因此，「engineering 的技術」其實是可以帶著走、套用於其他領域的「思維」!!!<br>所以很多事情，對於從小學 engineering 的 Jamie 來說，都是一種 engineer！</p>
-<h3 id="面試心態"><a href="#面試心態" class="headerlink" title="面試心態"></a>面試心態</h3><p>關於面試，不要覺得自己是在面試，而是在進行一場「媒合會」。<br>找工作可能會花上幾個月，但確定工作實際上班是好幾年的！<br>因此，別急，多面幾間公司，挑個對自己來說最好的，像是覺得自己在過程當中會不會有成就感、公司整體帶給你的感覺。</p>
-<p>切記，這是一個雙方互相了解的過程，也當成是你在面試他們！<br>不要將就，而且，真的別急啊！</p>
-<h3 id="怎麼做時間管理？"><a href="#怎麼做時間管理？" class="headerlink" title="怎麼做時間管理？"></a>怎麼做時間管理？</h3><ol>
-<li>sleep hacking。Jamie 的睡眠時間為 11pm ~ 5am 六個小時，找個適合自己的睡眠時間吧！</li>
-<li>用 engineering 的思維去 approach。可以 implement 新的 feature 去 improve 人生作業系統，以 email 為例，可以弄個 Gmail filter (因為每一封郵件看似一點點，但累積起來可是很可觀的)。反正就是多 try，找出最 fit 自己的方式！</li>
-</ol>
-<h3 id="寫作價值連城"><a href="#寫作價值連城" class="headerlink" title="寫作價值連城"></a>寫作價值連城</h3><p>對 Jamie 而言，在大量寫網誌的過程當中更加了解自己。<br>因為如果你今天要發布，你會希望文章結構是嚴謹且有架構的，這時你會不斷跟自己 talk，也就會越來越清楚自己是誰。（這呼應我的：認識自我 • 感受世界 • 創造價值）</p>
-<p>而且，對於 Jamie 來說，寫作和運動是 engineer 最基本的工夫！</p>
-<h3 id="關於設定目標：成功與失敗"><a href="#關於設定目標：成功與失敗" class="headerlink" title="關於設定目標：成功與失敗"></a>關於設定目標：成功與失敗</h3><p>把最失敗的情況想清楚，像是：School 一年賠 100 萬而且沒有幫助到任何人。<br>把最基本的成功定義清楚，像是：School 每年幫助到一個人。</p>
-<p>所以說，成功、失敗不是絕對的 0 與 1，它是一段光譜！</p>
-<h3 id="思考的深與淺"><a href="#思考的深與淺" class="headerlink" title="思考的深與淺"></a>思考的深與淺</h3><p>不要「我不喜歡那個」就沒了，而是要知道「我喜歡什麼」。</p>
-<p>舉個例：想去國外工作 → 國外＝非國內 → 你要矽谷？北歐？東南亞？</p>
-<h3 id="最該投資的是自己"><a href="#最該投資的是自己" class="headerlink" title="最該投資的是自己"></a>最該投資的是自己</h3><p>多花點時間了解自己，如同 Steve Jobs 所說的，點終究會連起來的！</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-  </entry>
-  <entry>
     <title>2022 端午節立蛋</title>
     <url>/2022/06/2022-dragon-boat-festival/</url>
     <content><![CDATA[<p>端午節不立蛋嗎？</p>
@@ -92,6 +54,30 @@
 加油，在精進自我的路上，你，並不孤單！]]></content>
   </entry>
   <entry>
+    <title>2023 端午節立蛋</title>
+    <url>/2023/06/2023-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節就是要立蛋！</p>
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:35～13:03 共 88 分鐘，立了 15 + 3 顆蛋。</p>
+<p><img src="1.png"></p>
+<p>最後一顆被我立起來的蛋，也就是照片裡面用黃線圈起來的那顆，花了我超過半小時吧？</p>
+<p><img src="2.png"></p>
+<p>原因在於它表面積比較大的那一側，上頭有不規則而且左右不平均的顆粒狀突起，讓它特別難被立起來。</p>
+<p>既然這樣，換一顆立不就好了嗎？為什麼還要花那麼多的時間執著在這一顆蛋上面呢？<br>考試的時候卡住了，為什麼不先跳下一題，還想繼續在這一題上面掙扎呢？</p>
+<p>那是因為，我跟我爸都覺得：「哎呀上頭有那些顆粒狀突起，這顆蛋怎麼可能立得起來呢？」</p>
+<p>但當下立馬又想到，欸不對欸，我們常常視為的「不可能」，它真的就是不可能嗎？為何不趁現在立蛋的機會來打破它呢？</p>
+<p>本來想說看今年戰績能不能勝過去年的，但比起從小到大已經習慣膩了且感到厭煩的「成績與比較」，我更想要嘗試去「打破它」。</p>
+<p>我就不信，他人一派輕鬆、不用負起任何責任的否定言語，我們就只能順著那樣的劇本走。</p>
+<p>於是乎，我就帶著這樣的心境，將想要推翻那一切的蠢蠢欲動，全然投射於我現在正在立蛋的這件事情上面。心無旁騖。</p>
+<p><img src="3.png"></p>
+<p>嘗試了超過半小時仍未如願，難道只能屈服於過去習以為常的框架當中了嗎？<br>覺得無能為力，但，好像也就只能無能為力了⋯⋯</p>
+<p>誰知道，哪來的靈機一動，突然想到說可以嘗試看看自己「從來都沒有嘗試過」的，改用表面積比較小、也就是比較尖的那一面來立。</p>
+<p>完完全全沒有預料到，才嘗試了應該不到一分鐘吧？那顆蛋居然就這樣被我立起來了！</p>
+<br />
+有些時候，或許可以嘗試換個角度，也或許，就可能只是還沒放對地方而已。]]></content>
+  </entry>
+  <entry>
     <title>2024 端午節立蛋</title>
     <url>/2024/06/2024-dragon-boat-festival/</url>
     <content><![CDATA[<p>又到了一年一度的端午節立蛋啦！</p>
@@ -111,6 +97,16 @@
 <p>就先這樣吧，想吃東西了。</p>
 <p>但說實話，今天立蛋的體驗真的很寶貴，記得這份心路歷程，帶往其他方面吧！</p>
 <p>（吃完東西，回來補充：其實仔細想想，第二個策略效果好像也沒有比較突出，整個過程，我覺得重點是「要有個信念讓自己可以持續下去」，畢竟「意義」是我們去賦予的，沒有一個標準答案說它就是要這樣或那樣，でしょう？）</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>2025 端午節立蛋</title>
+    <url>/2025/05/2025-dragon-boat-festival/</url>
+    <content><![CDATA[<p>端午節欸，不立蛋嗎？</p>
+<span id="more"></span>
+
+<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:30～12:21 共 51 分鐘，立了 18 顆蛋。</p>
+<p><img src="1.jpg"></p>
 ]]></content>
   </entry>
   <entry>
@@ -136,90 +132,6 @@
 <p>後來就是因為用更高層次的方式來看這件事，才讓我得以更好地去進行它！以「高層次」來看事情，以「低層次」來執行，對於能順利完成較為複雜的任務，兩者真的缺一不可啊！</p>
 <h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p>所以說，這就是為什麼我會很想推薦這篇文章，「抽象層」這個思維模型真的很值得了解和拿來運用，它能夠幫助我們生活當中的各個層面😎</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>用 Algorithmia 部署 ML Models</title>
-    <url>/2021/07/algorithmia-ml-models/</url>
-    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpeg" style="width:50vw;" /> -->
-
-<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
-<span id="more"></span>
-
-<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
-<hr>
-<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
-<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
-<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
-<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
-<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
-<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
-<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
-<hr>
-<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
-<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
-<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
-<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
-<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
-<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
-<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
-<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
-<p>像我原本以為是這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<p>後來才知道應該要這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
-
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
-<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
-
-<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
-<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
-<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
-<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
-
-<p>就是這麼簡單 😎</p>
-<br>
-希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
-      <tags>
-        <tag>Machine Learning</tag>
-        <tag>Deploy</tag>
-        <tag>API</tag>
-        <tag>Python</tag>
-        <tag>黑客松</tag>
-        <tag>交大</tag>
-        <tag>教學</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023 端午節立蛋</title>
-    <url>/2023/06/2023-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節就是要立蛋！</p>
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:35～13:03 共 88 分鐘，立了 15 + 3 顆蛋。</p>
-<p><img src="1.png"></p>
-<p>最後一顆被我立起來的蛋，也就是照片裡面用黃線圈起來的那顆，花了我超過半小時吧？</p>
-<p><img src="2.png"></p>
-<p>原因在於它表面積比較大的那一側，上頭有不規則而且左右不平均的顆粒狀突起，讓它特別難被立起來。</p>
-<p>既然這樣，換一顆立不就好了嗎？為什麼還要花那麼多的時間執著在這一顆蛋上面呢？<br>考試的時候卡住了，為什麼不先跳下一題，還想繼續在這一題上面掙扎呢？</p>
-<p>那是因為，我跟我爸都覺得：「哎呀上頭有那些顆粒狀突起，這顆蛋怎麼可能立得起來呢？」</p>
-<p>但當下立馬又想到，欸不對欸，我們常常視為的「不可能」，它真的就是不可能嗎？為何不趁現在立蛋的機會來打破它呢？</p>
-<p>本來想說看今年戰績能不能勝過去年的，但比起從小到大已經習慣膩了且感到厭煩的「成績與比較」，我更想要嘗試去「打破它」。</p>
-<p>我就不信，他人一派輕鬆、不用負起任何責任的否定言語，我們就只能順著那樣的劇本走。</p>
-<p>於是乎，我就帶著這樣的心境，將想要推翻那一切的蠢蠢欲動，全然投射於我現在正在立蛋的這件事情上面。心無旁騖。</p>
-<p><img src="3.png"></p>
-<p>嘗試了超過半小時仍未如願，難道只能屈服於過去習以為常的框架當中了嗎？<br>覺得無能為力，但，好像也就只能無能為力了⋯⋯</p>
-<p>誰知道，哪來的靈機一動，突然想到說可以嘗試看看自己「從來都沒有嘗試過」的，改用表面積比較小、也就是比較尖的那一面來立。</p>
-<p>完完全全沒有預料到，才嘗試了應該不到一分鐘吧？那顆蛋居然就這樣被我立起來了！</p>
-<br />
-有些時候，或許可以嘗試換個角度，也或許，就可能只是還沒放對地方而已。]]></content>
   </entry>
   <entry>
     <title>回顧在 AppWorks School 的那段日子</title>
@@ -306,124 +218,101 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 希望讀完這篇文章的你能夠有所收穫，如果有任何問題，歡迎寫 Email 給我哦😀]]></content>
   </entry>
   <entry>
-    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
-    <url>/2021/07/baymax-with-us/</url>
-    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="0.jpg" style="width:50vw;" /> -->
-
-<p>做一個 LINE Bot 版的杯麵～</p>
+    <title>【聽講筆記】Jamie’s AMA</title>
+    <url>/2022/08/2022-05-jamie-ama/</url>
+    <content><![CDATA[<p>五月中的時候，在 AppWorks School 聽了 Jamie’s AMA (Ask Me Anything)，邊聽邊記了一點筆記，想說整理在這邊，可能還夾雜一點個人的補充，分享給大家～（這篇應該會蠻隨筆性質的）</p>
 <span id="more"></span>
 
-<div class="note success">
-    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
-</div>
-
-<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
-<hr>
-<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
-</ul>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
-<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
-<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
-<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
-<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
-<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
-<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
+<h3 id="中午吃什麼？"><a href="#中午吃什麼？" class="headerlink" title="中午吃什麼？"></a>中午吃什麼？</h3><p>不知道中午要吃什麼？求方便的話，可以讓別人來決定，或是可以從外送平台上做挑選。<br>也可以根據一些特殊情況來做選擇：因為疫情的關係，變得比較少運動，這時可以挑比較健康的沙拉來吃，讓自己感覺起來比較健康！</p>
+<h3 id="No-Code-成趨勢，軟體工程師何去何從？"><a href="#No-Code-成趨勢，軟體工程師何去何從？" class="headerlink" title="No-Code 成趨勢，軟體工程師何去何從？"></a>No-Code 成趨勢，軟體工程師何去何從？</h3><p>未來不會真的達到所謂的「no-code」，只是不同層級 (比較 low-level) 的 abstraction 或自動化，讓軟體工程師能夠專注在更 high-level 的事情上，如此一來，可以提升單位生產力。</p>
+<p>像是對比較早期的開發而言，library 的出現就是一種 abstraction。</p>
+<p>若舉農夫為例，因為機械工具的發明，讓農夫只要專注在 high-level 的工作即可，其他 low-level 的事情大部分都可以交給機械工具去處理。</p>
+<p>所以，軟體工程師何去何從？即便是如此，業界對於軟體工程師的需求還是會不斷上升，因為什麼都講求數位化，需求只會越來越高，像目前金融業大概只有 2-3% 的數位轉型呢！</p>
+<h3 id="遠端工作"><a href="#遠端工作" class="headerlink" title="遠端工作"></a>遠端工作</h3><p>因為疫情的關係，遠端工作更為普遍，也就因此，我們更容易得到國外的工作機會。<br>所以說，累積實力和提升語言能力挺重要的，地域因素並不是個限制！</p>
+<h3 id="校園-vs-業界"><a href="#校園-vs-業界" class="headerlink" title="校園 vs 業界"></a>校園 vs 業界</h3><p>業界並不像學校，什麼問題都 well-defined，我們要學會自己去定義問題！<br>這一行不是只有純寫程式而已，所以如果程式能力沒到很頂，沒關係，天生我材必有用，這一行還有其他方面啊！<br>就像車子不是只有引擎而已，還有操作手感、座椅舒適度等等的元素需要去顧及。</p>
+<h3 id="如何成長更快？"><a href="#如何成長更快？" class="headerlink" title="如何成長更快？"></a>如何成長更快？</h3><p>從失敗、犯錯中學習。失敗為成功之母！</p>
+<h3 id="不是本科的怎麼辦？"><a href="#不是本科的怎麼辦？" class="headerlink" title="不是本科的怎麼辦？"></a>不是本科的怎麼辦？</h3><p>每個人都有他的強項，大家各自發揮所長以 improve 整體的表現。<br>但其實那也只是名義上的本科／非本科，那只會決定我們的課表長怎樣，至於實際我們想學什麼、想成為什麼樣的人，都得看我們自己怎麼去行動。</p>
+<h3 id="國外工作一定讚？"><a href="#國外工作一定讚？" class="headerlink" title="國外工作一定讚？"></a>國外工作一定讚？</h3><p>比較一下：在台灣工作，可能月薪 6-10 萬，而在美國矽谷工作，年薪會有個 30 萬美金；但是，在台灣，物價低很多，而在美國矽谷那邊，以那樣的薪水生活，可能會挺辛苦的。<br>所以說，看事情不要只看其中一面，卻忽略掉其他也同等重要的考量點！</p>
+<h3 id="關於區塊鏈"><a href="#關於區塊鏈" class="headerlink" title="關於區塊鏈"></a>關於區塊鏈</h3><p>區塊鏈「去中心化」的特性，大大改變「價值交換」的方式。<br>過去的 https protocol 是從 server copy 一份給 client，然後 display 出來；而區塊鏈不一樣，它是「這邊消滅，那邊 create」。<br>可能在未來 30 年、50 年，區塊鏈將會顛覆地政、證券交易所等行業！</p>
+<h3 id="自己人生，自己做主！"><a href="#自己人生，自己做主！" class="headerlink" title="自己人生，自己做主！"></a>自己人生，自己做主！</h3><p>有人曾對 Jamie 說過：「Jamie 你傻傻，創投在台灣那麼沙漠，你還要搞？」<br>然而現在看起來是挺不錯的。<br>所以，別因為別人撥冷水就不去嘗試了（但也要自己去判斷，而不是隨意行動）</p>
+<h3 id="學習是能遷移的"><a href="#學習是能遷移的" class="headerlink" title="學習是能遷移的"></a>學習是能遷移的</h3><p>「學ＸＸＸ技術或是領域會不會找不到工作？」永遠會有，像是 mainframe😂<br>當中最關鍵是「能力能帶著走」，所以，別太糾結這一點，專注在提升自我吧！</p>
+<h3 id="壓力調適"><a href="#壓力調適" class="headerlink" title="壓力調適"></a>壓力調適</h3><p>如何排解壓力？或者問說，為何會覺得有壓力？<br>那是因為，我們對於失敗或是最慘情況太過於模糊，就像是半夜上廁所太暗令人害怕。<br>所以說，試著想像「失敗」以後的最慘情況吧！<br>在過程中你或許會發現，其實還好，就僅僅只是「沒那麼成功」而已，想得夠清楚一點，你就會發現實際上沒那麼恐怖。<br>簡單來說，會壓力大的主要原因：對未來感到不明確。</p>
+<p>除此之外，多運動吧，可以先從簡單的散步和慢跑開始。<br>最重要的是，讓自己開心，常保愉快心情！</p>
+<h3 id="思維的價值所在"><a href="#思維的價值所在" class="headerlink" title="思維的價值所在"></a>思維的價值所在</h3><p>有人曾問 Jamie：「為何你不當工程師？」<br>然而，Jamie 說他其實是把自己視為 engineer 的。<br>只不過是把「engineering 的技術」套用在 social engineering，因此，「engineering 的技術」其實是可以帶著走、套用於其他領域的「思維」!!!<br>所以很多事情，對於從小學 engineering 的 Jamie 來說，都是一種 engineer！</p>
+<h3 id="面試心態"><a href="#面試心態" class="headerlink" title="面試心態"></a>面試心態</h3><p>關於面試，不要覺得自己是在面試，而是在進行一場「媒合會」。<br>找工作可能會花上幾個月，但確定工作實際上班是好幾年的！<br>因此，別急，多面幾間公司，挑個對自己來說最好的，像是覺得自己在過程當中會不會有成就感、公司整體帶給你的感覺。</p>
+<p>切記，這是一個雙方互相了解的過程，也當成是你在面試他們！<br>不要將就，而且，真的別急啊！</p>
+<h3 id="怎麼做時間管理？"><a href="#怎麼做時間管理？" class="headerlink" title="怎麼做時間管理？"></a>怎麼做時間管理？</h3><ol>
+<li>sleep hacking。Jamie 的睡眠時間為 11pm ~ 5am 六個小時，找個適合自己的睡眠時間吧！</li>
+<li>用 engineering 的思維去 approach。可以 implement 新的 feature 去 improve 人生作業系統，以 email 為例，可以弄個 Gmail filter (因為每一封郵件看似一點點，但累積起來可是很可觀的)。反正就是多 try，找出最 fit 自己的方式！</li>
 </ol>
-<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
-<hr>
-<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
-<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
-</ul>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>隨機聽</code></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
-<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
-<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
-<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
-<li>後面就是「指定聽歌」的步驟了</li>
-</ol>
-<hr>
-<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
-<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
-</ul>
-<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
-<hr>
-<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
-<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
-</ul>
-<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
-<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
-<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
-<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
-<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
-</ol>
-<hr>
-<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
-<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
-</ul>
-<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
-<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
-<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
-</ol>
-<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
-<hr>
-<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
-<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
-</ul>
-<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
-<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
-<hr>
-<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
-<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
-</ul>
-<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
-<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
-<li>將新功能的名稱和描述填入 email 的 content 當中</li>
-<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
-<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
-</ol>
-<hr>
-<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
-<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
-<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
-</ul>
-<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
+<h3 id="寫作價值連城"><a href="#寫作價值連城" class="headerlink" title="寫作價值連城"></a>寫作價值連城</h3><p>對 Jamie 而言，在大量寫網誌的過程當中更加了解自己。<br>因為如果你今天要發布，你會希望文章結構是嚴謹且有架構的，這時你會不斷跟自己 talk，也就會越來越清楚自己是誰。（這呼應我的：認識自我 • 感受世界 • 創造價值）</p>
+<p>而且，對於 Jamie 來說，寫作和運動是 engineer 最基本的工夫！</p>
+<h3 id="關於設定目標：成功與失敗"><a href="#關於設定目標：成功與失敗" class="headerlink" title="關於設定目標：成功與失敗"></a>關於設定目標：成功與失敗</h3><p>把最失敗的情況想清楚，像是：School 一年賠 100 萬而且沒有幫助到任何人。<br>把最基本的成功定義清楚，像是：School 每年幫助到一個人。</p>
+<p>所以說，成功、失敗不是絕對的 0 與 1，它是一段光譜！</p>
+<h3 id="思考的深與淺"><a href="#思考的深與淺" class="headerlink" title="思考的深與淺"></a>思考的深與淺</h3><p>不要「我不喜歡那個」就沒了，而是要知道「我喜歡什麼」。</p>
+<p>舉個例：想去國外工作 → 國外＝非國內 → 你要矽谷？北歐？東南亞？</p>
+<h3 id="最該投資的是自己"><a href="#最該投資的是自己" class="headerlink" title="最該投資的是自己"></a>最該投資的是自己</h3><p>多花點時間了解自己，如同 Steve Jobs 所說的，點終究會連起來的！</p>
 <br>
-今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
+  </entry>
+  <entry>
+    <title>用 Algorithmia 部署 ML Models</title>
+    <url>/2021/07/algorithmia-ml-models/</url>
+    <content><![CDATA[<p><a href="/2021/07/algorithmia-ml-models"><img src="https://images.unsplash.com/photo-1508610023868-3ba76d5122ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1338&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpeg" style="width:50vw;" /> -->
+
+<p>這樣就不必在自己的 server 上裝很肥的套件了！只需要 call API 😎</p>
+<span id="more"></span>
+
+<p>本篇用簡單的方式來記錄一下好了，這樣之後需要的話，可以快速想起來當初是怎麼用的！</p>
+<hr>
+<h1 id="碎碎念一下"><a href="#碎碎念一下" class="headerlink" title="碎碎念一下"></a>碎碎念一下</h1><h2 id="我為何研究這個？"><a href="#我為何研究這個？" class="headerlink" title="我為何研究這個？"></a>我為何研究這個？</h2><p>2021 年的 7/1~7/3 參加了一場黑客松，我們這組其中有項 feature 要做：使用者傳皮膚照片給 LINE Bot，我們要把 model 預測出來的結果回傳給使用者。（預測是否僅是黑色素，或是有癌性的症狀）</p>
+<p>我們當中的一個組員 Justin 把 model 的部分搞定了，但問題來了，該怎麼把 model 的部分結合進我們的 Flask 後端呢？</p>
+<p>原本是想說，就直接在 pipenv 的環境下裝 tensorflow-cpu，但因為我們用來部署後端的 Heroku 免費帳戶有空間限制，這麼做是不可行的，除非花錢升級，但我覺得 CP 值不高⋯⋯</p>
+<p>現在回過頭想，真的是非常感謝 Justin 對於這項 feature 的堅持，我們原本想說乾脆這個部分直接用模擬的算了，反正黑客松比較重要的是創新的 idea。倘若我們放棄掉了那項 feature，我看，這篇文應該也不會誕生，我也依然不知道該用什麼其他方法部署 ML models！</p>
+<p>所以說，提個外話，人生就是這樣，你不去試，你永遠不會知道⋯⋯（詞窮了，反正你懂我意思xD）</p>
+<h2 id="我怎麼找到的？"><a href="#我怎麼找到的？" class="headerlink" title="我怎麼找到的？"></a>我怎麼找到的？</h2><p>我忘記我下什麼關鍵詞了，好像是「deploy ml model free」吧(?)<br>找到了這一篇：<br><a href="https://www.freecodecamp.org/news/deploy-your-machine-learning-models-for-free/">How to Deploy a Machine Learning Model for Free – 7 ML Model Deployment Cloud Platforms</a></p>
+<p>第一個就是 <a href="https://algorithmia.com/">Algorithmia</a> 了，也沒想太多，就立馬註冊來試試。</p>
+<hr>
+<h1 id="Server-端"><a href="#Server-端" class="headerlink" title="Server 端"></a>Server 端</h1><p>我是參考上面提到的那一篇推薦的「<a href="https://www.freecodecamp.org/news/deploy-ml-model-to-production-as-api/">How to Deploy your NLP Model to Production as an API with Algorithmia</a>」，寫得很好，不過我還是簡單記錄一下，讓之後能更快上手：</p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="寫好-model（或-function）"><a href="#寫好-model（或-function）" class="headerlink" title="寫好 model（或 function）"></a>寫好 model（或 function）</h3><p>就是寫好一個 input 餵給它，它能 output 出東西的 model。<br>這個部分，先在自己的環境上完成吧！（或 <a href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> 之類的雲端環境）</p>
+<p>為何我還說「或 function」呢？因為如果拿 <a href="https://algorithmia.com/">Algorithmia</a> 做非 ML 的 API 好像也行，只是就有點殺雞用牛刀的感覺了。</p>
+<h3 id="註冊-Algorithmia-帳戶"><a href="#註冊-Algorithmia-帳戶" class="headerlink" title="註冊 Algorithmia 帳戶"></a>註冊 Algorithmia 帳戶</h3><p><a href="https://teams.algorithmia.com/signup">https://teams.algorithmia.com/signup</a></p>
+<h3 id="Create-一個新的-Algorithm"><a href="#Create-一個新的-Algorithm" class="headerlink" title="Create 一個新的 Algorithm"></a>Create 一個新的 Algorithm</h3><p>Home → Create New → Algorithm → 填一填 → Create New Algorithm<br>這樣就創建好囉！</p>
+<h3 id="上傳靜態檔案"><a href="#上傳靜態檔案" class="headerlink" title="上傳靜態檔案"></a>上傳靜態檔案</h3><p>像是 pre-trained 好的 model 或者是 csv 檔之類的靜態檔案。<br>Data Sources → My Hosted Data → New Collection → 填一填 → Create Collection → 你會的<br>上傳完以後，檔案右側會出現「垂直的三個點點」，點開後有個「Copy Path」，複製起來，待會會需要用到，其格式為：<code>data://:username/:collection/:filename</code></p>
+<h2 id="把-code-加進去"><a href="#把-code-加進去" class="headerlink" title="把 code 加進去"></a>把 code 加進去</h2><p>Algorithms → Source Code → 把之前寫好的 code 加進去<br>咦？直接複製貼上就行了嗎？不！有些要點，我把它列下來：</p>
+<h3 id="import-套件"><a href="#import-套件" class="headerlink" title="import 套件"></a>import 套件</h3><p>套件直接 import 進來沒問題，要記得在上方的 <code>DEPENDENCIES</code> 加進套件，這樣在 build 的時候，環境就會幫我們裝好那些套件囉！<br>（套件名稱請參考 <a href="https://pypi.org/">PyPI</a>）</p>
+<h3 id="存取靜態檔案"><a href="#存取靜態檔案" class="headerlink" title="存取靜態檔案"></a>存取靜態檔案</h3><p>剛上傳的靜態檔案該怎麼加進來呢？這個部分花了我不少時間 debug，後來才發現，必須要用到 Algorithmia 這個套件才能存取！</p>
+<p>像我原本以為是這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model_file = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<p>後來才知道應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">client = Algorithmia.client()</span><br><span class="line">file_path = <span class="string">&#x27;data://:username/:collection/:filename&#x27;</span></span><br><span class="line">model_file = client.file(file_path).getFile().name</span><br><span class="line">model.load_weights(model_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>function 的部分，也可以直接把它當成一般的 function 來寫，但有一個 function 比較特別，它叫做 <code>apply(input)</code>。</p>
+<p>它是什麼？可以把它想成，它就是 C++ 裡面的 main function，而實際上，它就是能讓外部 call 它的 interface！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># API calls will begin at the apply() method, with the request body passed as &#x27;input&#x27;</span></span><br><span class="line"><span class="comment"># For more details, see algorithmia.com/developers/algorithm-development/languages</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply</span>(<span class="params"><span class="built_in">input</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">input</span>)</span><br></pre></td></tr></table></figure>
+
+<p>所以說，其他的 function 都只是輔助，最後要把那些 function 放進 <code>apply(input)</code> 裡面才有作用哦！</p>
+<h3 id="input"><a href="#input" class="headerlink" title="input"></a>input</h3><p><code>input</code> 這個 parameter 的格式呢？該怎麼去處理呢？注意哦，<code>apply()</code> 好像只能有一個 parameter，所以如果想傳很多 parameter 給它，可以把 <code>input</code> 當成一個 dictionary 來看：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 外部傳進來的 input 格式</span></span><br><span class="line">&#123; <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>, <span class="string">&quot;option&quot;</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 內部處理方式</span></span><br><span class="line">food = <span class="built_in">input</span>[<span class="string">&#x27;food&#x27;</span>]</span><br><span class="line">option = <span class="built_in">input</span>[<span class="string">&#x27;option&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>這是我目前想到最好的解決辦法，或許還有更好的方式處理這部分(?)</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>BUILD → 等它處理一段時間 → 可以在下方的 Console 直接輸入 input 測試一下，像是 <code>&#123; &quot;food&quot;: &quot;草莓果醬&quot;, &quot;option&quot;: 2 &#125;</code> → PUBLISH → 後面就照著步驟走</p>
+<h1 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h1><p>Algorithms → Overview → 往下滑有個 Install and Use → 照著上面做就行囉！<br>大概會長這樣：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Algorithmia</span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span> = &#123;</span><br><span class="line">  <span class="string">&quot;food&quot;</span>: <span class="string">&quot;草莓果醬&quot;</span>,</span><br><span class="line">  <span class="string">&quot;option&quot;</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">client = Algorithmia.client(<span class="string">&#x27;&lt;default-key&gt;&#x27;</span>)</span><br><span class="line">algo = client.algo(<span class="string">&#x27;&lt;username&gt;/&lt;algorithm&gt;/&lt;version&gt;&#x27;</span>)</span><br><span class="line">algo.set_options(timeout=<span class="number">300</span>) <span class="comment"># optional</span></span><br><span class="line"><span class="built_in">print</span>(algo.pipe(<span class="built_in">input</span>).result)</span><br></pre></td></tr></table></figure>
+
+<p>就是這麼簡單 😎</p>
+<br>
+希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
       <tags>
+        <tag>Machine Learning</tag>
+        <tag>Deploy</tag>
         <tag>API</tag>
         <tag>Python</tag>
-        <tag>LINE</tag>
-        <tag>Bot</tag>
+        <tag>黑客松</tag>
+        <tag>交大</tag>
+        <tag>教學</tag>
       </tags>
   </entry>
   <entry>
@@ -559,6 +448,127 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>喜歡《大英雄天團》杯麵？何不自己做一個！</title>
+    <url>/2021/07/baymax-with-us/</url>
+    <content><![CDATA[<p><a href="/2021/07/baymax-with-us"><img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1614&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="0.jpg" style="width:50vw;" /> -->
+
+<p>做一個 LINE Bot 版的杯麵～</p>
+<span id="more"></span>
+
+<div class="note success">
+    這篇文將簡單分享所有功能的實作細節，至於 demo，可以到我的 <mark><a href="https://github.com/kanido386/baymax-with-us#readme" target="_blank">GitHub repo</a></mark> 那邊看看。
+</div>
+
+<p>也想做一個 LINE Bot？可以參考我「<a href="https://kanido386.github.io/2021/07/fsm-line-bot/" target="_blank">用 FSM 及 LINE Messaging API 做一個聊天機器人</a>」這篇文。<br>想讓自己的 LINE Bot 更 powerful？可以參考我「<a href="https://kanido386.github.io/2021/07/hackathon-line-hint/" target="_blank">黑客松 LINE Bot 賽前補帖</a>」這篇文。</p>
+<hr>
+<h2 id="指定聽歌"><a href="#指定聽歌" class="headerlink" title="指定聽歌"></a>指定聽歌</h2><p>Powered by <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L17">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L83">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/youtube.py">實作細節</a></li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>聽 王藍茵 惡作劇</code></li>
+<li>借助 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a>，以「王藍茵 惡作劇」當作 query，取得 video 的搜尋結果</li>
+<li>只取前三個最相關影片的 id，前面加上 <code>https://www.youtube.com/watch?v=</code> 就是影片網址了</li>
+<li>除了 id，還能從 response 拿到影片標題和縮圖</li>
+<li>用 <code>TemplateSendMessage</code> 包一包，傳送給使用者</li>
+<li>使用者點按「聽這個！」以後，因為 <code>MessageTemplateAction</code>，會傳送所選影片的網址</li>
+<li>因為 LINE 的設計，可以直接在 LINE 裡面看 YouTube 影片，也就因此，能直接收聽音樂了</li>
+</ol>
+<p>（因為 <a href="https://developers.google.com/youtube/v3">YouTube Data API</a> 有每日額度限制，超過的話，使用者只會收到「用完每日額度了」）</p>
+<hr>
+<h2 id="隨機聽歌"><a href="#隨機聽歌" class="headerlink" title="隨機聽歌"></a>隨機聽歌</h2><p>Powered by <a href="https://docs-en.kkbox.codes/">KKBOX Open API</a> &amp; <a href="https://developers.google.com/youtube/v3">YouTube Data API</a></p>
+<h3 id="程式碼-1"><a href="#程式碼-1" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L22">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L97">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py">實作細節</a></li>
+</ul>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>隨機聽</code></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts">KKBOX Open API</a> 的 <code>/charts</code>，隨選當中五個排行榜，並用 <code>QuickReply</code> 的方式，讓使用者選取感興趣的排行榜</li>
+<li>因為是用 <code>PostbackAction</code>，所以接下來會觸發<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L27">這個條件</a>、進到<a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L105">這個狀態</a>，並呼叫 <a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/kkbox.py#L45">send_random_tracks</a></li>
+<li>借助 <a href="https://docs-en.kkbox.codes/#get-/charts/{playlist_id}/tracks">KKBOX Open API</a> 的 <code>/charts/&#123;playlist_id&#125;/tracks</code>，隨選該排行榜當中的五首歌曲，並用 <code>FlexSendMessage</code> 的方式，讓使用者選五首當中想聽的（文字顏色是隨機的，讓畫面變得有趣不單調）</li>
+<li>使用者點按想聽的歌曲以後，因為 <code>MessageTemplateAction</code>，會傳送 <code>聽 [誰的] [歌曲名]</code></li>
+<li>後面就是「指定聽歌」的步驟了</li>
+</ol>
+<hr>
+<h2 id="做運動"><a href="#做運動" class="headerlink" title="做運動"></a>做運動</h2><p>這比較單純。</p>
+<h3 id="程式碼-2"><a href="#程式碼-2" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L33">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L116">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/exercise.py">實作細節</a></li>
+</ul>
+<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>其實就是寫死運動教學影片網址，然後隨機傳其中一個給使用者而已。</p>
+<hr>
+<h2 id="查證訊息"><a href="#查證訊息" class="headerlink" title="查證訊息"></a>查證訊息</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> ＆<br><a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a></p>
+<h3 id="程式碼-3"><a href="#程式碼-3" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L38">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L125">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/fact_checking.py">實作細節</a></li>
+</ul>
+<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>查證 [可疑訊息]</code></li>
+<li>借助 <a href="https://www.google.com/">Google</a> 及 <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a> 這個套件，以你貼上的可疑訊息當作 query，取得搜尋結果的前幾個網頁連結</li>
+<li>一一對那幾個網頁連結去做判斷，若網址包含 <code>tfc-taiwan.org.tw</code> 等等的關鍵詞，也就是屬於<a href="https://tfc-taiwan.org.tw/">台灣事實查核中心</a>、<a href="https://cofacts.tw/">Cofacts 真的假的</a>、<a href="https://www.mygopen.com/">MyGoPen</a>、<a href="https://fact-checker.line.me/">LINE訊息查證</a>、<a href="https://www.rumtoast.com/">蘭姆酒吐司</a>其中一個的網頁，就存在相對應的 list 裡面</li>
+<li>結果用 <code>FlexSendMessage</code> 的方式呈現，button 的顏色是根據來源網站的配色決定的，像 MyGoPen 的 logo 橘色較多，所以我選用橘色來當 MyGoPen 的 button 色</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該查證網站的頁面</li>
+<li>若前幾個搜尋結果都不是來自那五個查證網站，使用者會收到「找不太到欸」，畢竟其他來源的消息是真是偽比較不能保證</li>
+</ol>
+<hr>
+<h2 id="玩遊戲"><a href="#玩遊戲" class="headerlink" title="玩遊戲"></a>玩遊戲</h2><p>Powered by 我爸常傳到群組的消遣遊戲們 😂</p>
+<h3 id="程式碼-4"><a href="#程式碼-4" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L43">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L137">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/game.py">實作細節</a></li>
+</ul>
+<h3 id="解析-4"><a href="#解析-4" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>玩遊戲</code> 以後，聊天機器人會用 <code>QuickReply</code> 的方式，問使用者要當消遣還是挑戰（至於我怎麼區分消遣、挑戰？看 source code 應該能略知一二 😁）</li>
+<li>依照使用者的選擇，用 <code>FlexSendMessage</code> 的方式，隨機傳送該類別的遊戲給使用者</li>
+<li>因為 <code>FlexSendMessage</code> 的 button 一樣是屬於 uri action，當使用者按下 button 以後，會直接在 LINE 裡面開啟該遊戲的頁面</li>
+</ol>
+<p>（遊戲連結和說明一樣是事先寫好的，至於不直接傳連結給使用者是因為，這樣畫面就少了點美感，而且更破壞了玩遊戲前的情緒和氛圍）</p>
+<hr>
+<h2 id="查天氣"><a href="#查天氣" class="headerlink" title="查天氣"></a>查天氣</h2><p>Powered by <a href="https://www.google.com/">Google</a> ＆ <a href="https://pypi.org/project/googlesearch-python/">googlesearch-python</a></p>
+<h3 id="程式碼-5"><a href="#程式碼-5" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L58">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L161">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/weather.py">實作細節</a></li>
+</ul>
+<h3 id="解析-5"><a href="#解析-5" class="headerlink" title="解析"></a>解析</h3><p>這個非常陽春，其實就是直接用 <code>[地點] 天氣</code> 去 google，只是多用 <code>FlexSendMessage</code> 包裝而已。</p>
+<p>（本來是想說用氣象局的 API 啦，但想說既然自己平常也習慣 google「天氣」的介面了，直接拿來用或許更簡單也更符合需求）</p>
+<hr>
+<h2 id="請求新功能"><a href="#請求新功能" class="headerlink" title="請求新功能"></a>請求新功能</h2><p>Powered by <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a><br>參考自 <a href="https://www.learncodewithmike.com/">Learn Code With Mike</a> 的 <a href="https://www.learncodewithmike.com/2020/02/python-email.html">[Python實戰應用]Python寄送Gmail電子郵件實作教學</a></p>
+<h3 id="程式碼-6"><a href="#程式碼-6" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L63">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L171">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/email.py">實作細節</a></li>
+</ul>
+<h3 id="解析-6"><a href="#解析-6" class="headerlink" title="解析"></a>解析</h3><ol>
+<li>使用者輸入 <code>新功能 [名稱] [描述]</code></li>
+<li>將新功能的名稱和描述填入 email 的 content 當中</li>
+<li>利用 <a href="https://docs.python.org/3/library/smtplib.html">SMTP protocol client</a>，傳送 content 給指定的 email address 也就是我，這麼做，是為了讓我知道有使用者想新增功能</li>
+<li>若寄信失敗，則傳送給使用者「增加新功能的服務出了點狀況」</li>
+</ol>
+<hr>
+<h2 id="功能一覽"><a href="#功能一覽" class="headerlink" title="功能一覽"></a>功能一覽</h2><p>這頗單純。</p>
+<h3 id="程式碼-7"><a href="#程式碼-7" class="headerlink" title="程式碼"></a>程式碼</h3><ul>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L68">觸發條件</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/fsm.py#L182">前處理</a></li>
+<li><a href="https://github.com/kanido386/baymax-with-us/blob/master/src/service/feature.py">實作細節</a></li>
+</ul>
+<h3 id="解析-7"><a href="#解析-7" class="headerlink" title="解析"></a>解析</h3><p>用 <code>QuickReply</code>，讓使用者點選想嘗試的功能，因為是 <code>MessageAction</code>，所以後續就能觸發上述的功能了！</p>
+<br>
+今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+      <tags>
+        <tag>API</tag>
+        <tag>Python</tag>
+        <tag>LINE</tag>
+        <tag>Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>職涯＆人生方面的省思</title>
     <url>/2022/12/career-life-thought/</url>
     <content><![CDATA[<p>讀文章寫心得：<a href="https://readingoutpost.com/squiggly-career/">《職場天賦》讀後心得：實用的職涯指南和三個重點</a></p>
@@ -639,6 +649,100 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 這樣就改好囉，就是這麼簡單😎]]></content>
   </entry>
   <entry>
+    <title>AI 應用的關鍵原則：別讓 AI 做太多事</title>
+    <url>/2025/11/dont-let-ai-do-too-much/</url>
+    <content><![CDATA[<p>這篇文章是我在開發過程中的實際經驗，透過 AI 協助整理成文字記錄下來。<br>希望這個踩坑經驗能幫助到其他人。</p>
+<span id="more"></span>
+
+<h2 id="問題：一個-Prompt-想解決所有事"><a href="#問題：一個-Prompt-想解決所有事" class="headerlink" title="問題：一個 Prompt 想解決所有事"></a>問題：一個 Prompt 想解決所有事</h2><p>開發記帳 bot 時，我想讓 AI 一次搞定費用分類：</p>
+<ol>
+<li>讀取 76 筆消費記錄</li>
+<li>分類到 8 個類別（家裡煮、生活用品、鮮奶…）</li>
+<li>計算每個類別總金額</li>
+<li>由大到小排序</li>
+<li>格式化輸出</li>
+</ol>
+<p><strong>聽起來很合理？結果慘不忍睹。</strong></p>
+<p>無論怎麼優化 prompt（加粗體、加警告、加範例），AI 照樣出錯：</p>
+<ul>
+<li>❌ 項目重複分類（鮮奶同時出現在兩個類別）</li>
+<li>❌ 計算錯誤（350+280 顯示成 350）</li>
+<li>❌ 排序亂掉（6333 &gt; 5141 卻排反）</li>
+<li>❌ 總和對不上</li>
+</ul>
+<h2 id="突破：兩步驟比一步驟準"><a href="#突破：兩步驟比一步驟準" class="headerlink" title="突破：兩步驟比一步驟準"></a>突破：兩步驟比一步驟準</h2><p><strong>核心洞察：AI 擅長語義理解，不擅長精確計算。</strong></p>
+<h3 id="舊方法（AI-做所有事）"><a href="#舊方法（AI-做所有事）" class="headerlink" title="舊方法（AI 做所有事）"></a>舊方法（AI 做所有事）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">給 AI 一個超長 Prompt</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│  AI 一把抓    │</span><br><span class="line">│  • 分類       │</span><br><span class="line">│  • 計算       │</span><br><span class="line">│  • 排序       │</span><br><span class="line">│  • 格式化     │</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">  完整報表</span><br><span class="line">❌ 錯誤率高</span><br></pre></td></tr></table></figure>
+
+<h3 id="新方法（職責分離）"><a href="#新方法（職責分離）" class="headerlink" title="新方法（職責分離）"></a>新方法（職責分離）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Step 1: AI 只做分類</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   AI 分類     │ ← AI 擅長的</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">分類 JSON</span><br><span class="line">&#123;&quot;id&quot;: 1, &quot;category&quot;: &quot;水果&quot;&#125;</span><br><span class="line">&#123;&quot;id&quot;: 2, &quot;category&quot;: &quot;家裡煮&quot;&#125;</span><br><span class="line">      ↓</span><br><span class="line">Step 2: 程式處理</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│ 程式計算排序   │ ← 程式擅長的</span><br><span class="line">│ • 按類別分組   │</span><br><span class="line">│ • 計算總額     │</span><br><span class="line">│ • 排序        │</span><br><span class="line">│ • 格式化      │</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">  完整報表</span><br><span class="line">✅ 100% 準確</span><br></pre></td></tr></table></figure>
+
+<h2 id="實測結果"><a href="#實測結果" class="headerlink" title="實測結果"></a>實測結果</h2><p>同樣 76 筆消費記錄的表現：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>舊方法（AI 全做）</th>
+<th>新方法（分工）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>項目完整性</td>
+<td>❌ 有時重複或遺漏</td>
+<td>✅ 100% 完整</td>
+</tr>
+<tr>
+<td>總額計算</td>
+<td>❌ 經常出錯</td>
+<td>✅ 絕對正確</td>
+</tr>
+<tr>
+<td>排序</td>
+<td>❌ 偶爾錯誤</td>
+<td>✅ 完美</td>
+</tr>
+<tr>
+<td>可驗證性</td>
+<td>❌ 難以檢查</td>
+<td>✅ 每步可驗證</td>
+</tr>
+</tbody></table>
+<h2 id="實用原則"><a href="#實用原則" class="headerlink" title="實用原則"></a>實用原則</h2><p>把任務拆成「AI 做什麼」和「程式做什麼」：</p>
+<table>
+<thead>
+<tr>
+<th>任務類型</th>
+<th>交給誰</th>
+<th>為什麼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分類、語義理解</td>
+<td>AI</td>
+<td>理解上下文和模糊語意</td>
+</tr>
+<tr>
+<td>計算、排序、格式化</td>
+<td>程式</td>
+<td>確定性、零錯誤</td>
+</tr>
+<tr>
+<td>決策邏輯</td>
+<td>程式</td>
+<td>可控、可測試</td>
+</tr>
+</tbody></table>
+<h2 id="延伸思考"><a href="#延伸思考" class="headerlink" title="延伸思考"></a>延伸思考</h2><p>這原則適用所有 AI 整合：</p>
+<ul>
+<li><strong>客服機器人</strong>：AI 理解問題意圖 → 程式決定回覆流程</li>
+<li><strong>資料分析</strong>：AI 找出趨勢洞察 → 程式產生精確圖表</li>
+<li><strong>程式碼生成</strong>：AI 寫主要邏輯 → Linter/測試確保品質</li>
+</ul>
+<p><strong>記住：AI 是工具，不是魔法。讓它做擅長的事，剩下的交給程式碼。</strong></p>
+<hr>
+<p>💡 這個方法讓錯誤率從「經常出錯」降到「零錯誤」。</p>
+<p>完整實作：<a href="https://github.com/kanido386/family-expense-bot">GitHub Repository</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>別被時間綁住了！</title>
     <url>/2022/12/dont-stuck-in-time/</url>
     <content><![CDATA[<p>讀文章寫心得：<a href="https://www.managertoday.com.tw/books/view/66080">領導大師的人生課：年輕不下定決心，年老認為自己無用，都是畫地自限</a></p>
@@ -671,6 +775,131 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p><img src="6.gif"></p>
 <br>
 今天的分享就到這邊，我們下篇文見吧 😃]]></content>
+  </entry>
+  <entry>
+    <title>第一次出國獻給了麗星郵輪探索星號</title>
+    <url>/2025/05/first-abroad-star-navigator/</url>
+    <content><![CDATA[<p>簡單記錄一下行前準備、注意事項、旅遊過程。<br>寫完發現蠻凌亂的XD 但總比沒寫出來好。</p>
+<span id="more"></span>
+
+<h2 id="辦護照"><a href="#辦護照" class="headerlink" title="辦護照"></a>辦護照</h2><p>因為之前沒出國過，所以需要辦護照。</p>
+<p>原本以為流程會很複雜，但還好，先去相館拍護照用的大頭照 (2 寸的那種, 上一次拍已經有一段時間了, 想說拍個新的好了)，隔幾天拿到了以後，帶著身分證、2 張 2 寸護照用大頭照、護照規費 1300 元 (也多帶一些, 因為如果去便利商店之類的地方繳費, 需要另外付手續費 15 元) 到戶政事務所，抽號碼等待 (禮拜一下午人真的挺多的)，等待的同時，可以先填申請表 (對了, 記得來之前可以預先想一下要用什麼外文姓名)，叫到號碼，後續就照著人員的引導就可以了。過了差不多 10 個工作天以後，就可以拿到護照了！至於領照方式，看你當初是選「自行到原送件戶所領取護照」，還是「由外交部將護照快遞至指定地址」，後者的話，寄達時需要自付郵資。<br>（上面的流程僅供參考，我有可能會漏掉一些細節）</p>
+<p>話說，當初辦護照並不是為了這次的出國旅遊，而是下一次的，是因為親戚邀約 (邀約的時間點差不多是出發前的一個月)，加上剛好也辦好護照，所以就成行了😂</p>
+<h2 id="行前準備＆注意事項"><a href="#行前準備＆注意事項" class="headerlink" title="行前準備＆注意事項"></a>行前準備＆注意事項</h2><p>好的，假設現在已經辦好護照，也報名好「麗星郵輪探索星號」了 (因為是親戚幫忙處理, 流程我就不清楚了)，然後呢？</p>
+<p>我的話是 google「麗星郵輪 出發準備」，可以挖到很多圖文並茂而且很優質的文章，這時候就可以邊讀邊記在自己的筆記裡面，過程也是蠻有趣的，然後找個時間整理起來，該列的待辦事項列一列，方便提醒自己哪些事情要記得做。</p>
+<p>我這邊來大概列一下我查到、問到、體驗到的事項：</p>
+<ul>
+<li>印象中這些文章是我之前看完覺得不錯的<ul>
+<li><a href="https://tiyama.net/starcruises/">https://tiyama.net/starcruises/</a></li>
+<li><a href="https://jas38.tw/starnavigator/">https://jas38.tw/starnavigator/</a></li>
+<li><a href="https://myjourney.tw/cruise-travel-notice/">https://myjourney.tw/cruise-travel-notice/</a></li>
+</ul>
+</li>
+<li>原來台灣的 ATM 可以提領日幣啊！</li>
+<li>需要準備「萬國插頭」或是「變壓器」嗎？<ul>
+<li>只充手機的話是不需要的。以 iPhone 的豆腐頭來說，是可以插在艙房內的插座的！</li>
+<li>郵輪上的電壓是 220-240 伏特</li>
+</ul>
+</li>
+<li>郵輪上的網路可以登船以後再買嗎？<ul>
+<li>可以的，而且好像是登船以後才能加購 (因為「內網」的關係，待會會再提到)</li>
+<li>郵輪使用的是衛星網路</li>
+</ul>
+</li>
+<li>船上的每日郵報 The Daily 已全面電子化，登船後連上船上的 WiFi，掃船上 QR code，就可以進去啦～<ul>
+<li>那個 WiFi 是內網的概念，不需要加購，但無法連到網際網路，所以如果想在船上用 LINE、看 YouTube、滑 IG，還是得加購網路</li>
+<li>到時候你就能體會到，看郵報真的是船上重要的娛樂之一啊XD 明明每天的內容都一樣，但就是會沒事的時候點開來看</li>
+</ul>
+</li>
+<li>郵輪上的時間都是採用「台灣時間」，包含各種活動、集合時間等等的，旅途中手機可能會自動跳轉到「日本時間」，可以事先把手機的「自動設定時區」功能給關起來，這點需要特別注意！<ul>
+<li>怎麼關「自動設定時區」呢？以 iPhone 為例，設定 → 一般 → 日期與時間 → 切換「自動設定」，就可以囉！</li>
+<li>也可以加入「城市數位時間」之類的小工具到手機桌面，提醒自己看台灣時間</li>
+</ul>
+</li>
+<li>可以事先買好 <a href="https://www.kkday.com/zh-tw/product/146851">eSIM</a>，我是前一晚買的，買好就收到 QR code 了，超迅速XD<ul>
+<li>需要注意，不是每款手機都支援 eSIM 哦，買之前務必確認</li>
+<li>手機怎麼設定 eSIM？我是參考<a href="https://youtu.be/9lQQv20XsH8?feature=shared&t=98">這個影片</a>，蠻簡單的</li>
+<li>只需要買岸上那段期間的，離陸地很遠的海上用不了！</li>
+<li>我買了 3 GB x 2 天 (我那個時候不確定是不是掃 QR code 設定完就算啟用了, 所以想說保險起見多買個一天, 但感覺起來, 應該是連到當地的網路才開始算🤔 不過老實說, 我到現在還不是 100% 確定)，但後來我只用了差不多 300 多 MB 而已</li>
+<li>對了，在台灣設定好 eSIM，沒多久手機跳出「無法啟用 eSIM」的通知可以不用理他，因為收不到當地的訊號嘛XD (那時候看到通知, 心想完蛋了, 浪費錢錢了, 難道不是這樣設定?)</li>
+</ul>
+</li>
+<li>基隆港旅客中心有分「西」岸和「東」岸，不同航次，報到地點可能會不一樣哦！</li>
+<li>建議可以帶筆去，填申報單什麼的會更方便～</li>
+<li>「網上登船手續」好像不需要，我有事先登入填好，但好像也沒用到，不確定</li>
+<li>登船證可以先列印下來，當然，當天要用電子的給他看也 ok</li>
+<li>需要備好護照影本，我們是用彩色的，但黑白的應該也行，記得是用 A4 1:1 而且不能裁切，掃描有名字和大頭照的那兩面<ul>
+<li>可以額外帶類似拉鍊袋的東西來裝護照、護照影本、申報單等等的重要資料，收納起來更方便，也比較好找</li>
+</ul>
+</li>
+<li>郵輪上的消費，除了娛樂場，都是用房卡 (所以房卡非常非常重要啊, 難怪會附吊繩)，下船前再結清，看是要到七樓櫃檯結帳，或是用線上自助的也可以<ul>
+<li>建議可以自己額外帶吊牌證件套，內艙房的只有附吊繩，房卡放證件套裡面感覺會更安心一點</li>
+<li>對了，內側艙房每位旅客每晚會有一筆 600 元的服務費 (每種房型會有自己的費用)，還要再加 18%，所以如果沒額外消費但卻看到有消費紀錄，就是這個哦</li>
+</ul>
+</li>
+</ul>
+<h2 id="旅遊過程"><a href="#旅遊過程" class="headerlink" title="旅遊過程"></a>旅遊過程</h2><p>我越到後面寫得越簡略😅</p>
+<h3 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h3><p>預定大概 12:30 左右到登船的地方 (在基隆, 郵輪預計 13:30-14:00 關櫃, 15:00 離港, 我看我們的 check-in time 是寫 12:30~13:00)，所以可以睡稍微飽一點差不多 08:00 起床。</p>
+<p>行李箱大概 14.5 公斤、後背包大概 3.7 公斤，走去搭公車，搭到板橋公車站轉搭火車，差不多一小時後到了基隆車站，車站出去左手邊，就可以看到「基隆港西岸旅客中心」了，比預定早了一小時到！</p>
+<p>原本想說，早到會不會無聊，完完全全不會，因為那個時間點去非常剛好，已經可以開始排隊走各種流程了。甚至覺得，再晚一點就會更塞呢，不如早點到、早點登船、早點開始享受！</p>
+<p>⭐️ 這邊有個點需要特別提：不能完全相信在櫃檯發東西的人員，因為會有漏給東西的可能！這個就被我們遇到了⋯⋯ 拿完東西以後，看到別人有房卡的吊繩但我們怎麼沒有？問了其他人員，才知道是對方漏給，更誇張的是，居然還漏給「攜帶品．後送物品申報單」，沒了這個，會不會就不能進入日本境內呢🤔 所以說，拿完東西以後，可以再稍微觀察一下別人拿了什麼，避免發生類似這樣的情況⋯⋯</p>
+<p>上船後，可以先到自己的房間放東西，這個時候有可能房間還在整理或是行李還沒送到房間門口，ok 的，一段時間以後他們就會處理完畢。</p>
+<p>午餐先是到免費的「麗都自助餐廳」品嚐，就 buffet 那種，還不錯。</p>
+<p>接著到七樓甲板參加逃生演習，跟想像中不一樣，你去了就知道XD 還為了這個演習，時間有點趕的關係，午餐吃特別多滷肉飯來快速填飽肚子呢😅 不過他們的滷肉飯是真的不錯，味道我很喜歡！</p>
+<p>有點可惜的是，第一天天氣不好，下雨風又大，所以很多地方都濕濕滑滑的QQ</p>
+<p>16:30，我們到七樓船中的大堂玩趣味遊戲，這邊有個小建議，可以提早卡前面一點的座位，這樣主持人問有誰想上台玩的時候，就更有機會可以上去玩XD 就不暴雷在玩什麼了，還蠻有趣的。</p>
+<p>接著玩賓果，需要買票，獎金挺高的，現場一定會有人中，因為是看誰先中 Bingo 卡上面所有的數字，如果有多個人在某次的數字同時集滿，看是要平分獎金還是比大小XD 賓果在旅途中有好幾場哦。</p>
+<p>差不多 18:00 去吃「絲路花舞中餐廳」的「片皮鴨兩吃」還有「蝦鬆」，味道不錯，菊花茶喝起來很像非常清淡的海帶湯，我蠻喜歡的XD</p>
+<p>話說，你一定會覺得怎麼郵輪上都有一股香氣，會不會是有人打翻了什麼，後來注意到電梯裡的某樣東西，才恍然大悟，這點就等你去探索啦😂</p>
+<p>19:00 到 12 樓船頭的棕櫚閣唱開放式卡拉OK，需要點飲料 (一樣會有 18 % 服務費哦)，每桌可以點 2 首～</p>
+<p>時間拉快到 21:00，我們到七樓船尾的星座劇院觀賞表演，很震撼，尤其最後快結束的時候，觀眾參與度滿滿呢XD</p>
+<p>00:00~01:30 在七樓船中的大堂有個「卡拉OK之夜」，現場的大家輪流唱自己點的歌 (通常是一首)，還蠻有趣的。</p>
+<h3 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h3><p>NAHA PORT → 泊港漁市場吃生魚片 → 波上宮 → 7-ELEVEN 喝「ベリーベリーヨーグルトスムージー」，蠻特別也蠻好喝的 → 吃沖繩麵，湯頭我很喜歡，加上七味粉風味又更棒了 → BLUE SEAL <a href="https://www.blueseal.co.jp/cn/"></a>吃可麗餅冰淇淋 → 到 AEON MALL 逛逛還有採買，「すみません、いちごは どこですが」，結帳以後，別忘了可以拿護照影本申請退稅，在結帳處出來一點的地方可以看到櫃檯 → 晚餐吃星宴餐廳的西餐 → 星座劇場看表演</p>
+<h3 id="第三天"><a href="#第三天" class="headerlink" title="第三天"></a>第三天</h3><p>絲路花舞中餐廳吃港式早餐 → VR探索館玩幾台設施</p>
+<h2 id="最後想說的是"><a href="#最後想說的是" class="headerlink" title="最後想說的是"></a>最後想說的是</h2><p>旅遊當下可能覺得沒什麼，但回去以後會想說怎麼當初沒錄多一點，所以可以多錄影和拍照留念～</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>東京旅遊趣</title>
+    <url>/2025/11/first-plane-tokyo-trip/</url>
+    <content><![CDATA[<p>大家還記得第一次搭飛機出國的感覺嗎？</p>
+<span id="more"></span>
+
+<p>今年十月初，我第一次搭飛機去日本東京。<br>所以連在 UNIQLO 逛衣服，看到一整疊免費的 LifeWear 雜誌，我都覺得：<br>「拿一本回去當紀念好像不錯！」</p>
+<p>我完全沒想到，這個「順手拿一下」的動作，<br>後來居然會在最意想不到的時刻派上用場。</p>
+<hr>
+<p>第一天我們去迪士尼陸地。</p>
+<p>一走進去，那個經典的城堡、夢幻的音樂、<br>還有大家身上各種迪士尼造型的裝飾——<br>整個人都覺得：「哇～我真的是在迪士尼耶！」</p>
+<p>我還買了一件杯麵花襯衫，穿著在樂園裡趴趴走，心情特別好。</p>
+<p>原本以為這種美好的感覺會一直延續，<br>結果沒多久，當腎上腺素退去之後，<br>我深深感受到的，是一股濃濃的疲憊感。</p>
+<p>就連看劇場表演的時候，我都一直打瞌睡。<br>不是因為表演無聊，而是因為——我們是搭紅眼班機來的。</p>
+<hr>
+<p>第二天去迪士尼海洋。</p>
+<p>整體的氛圍和設施都非常棒。<br>我最喜歡的是「冰雪奇緣」，不管是視覺還是音樂都讓人感動。<br>還有那個滾球進洞的遊戲，也很有趣，<br>最後還拿到了萬聖節主題的抱枕。</p>
+<p>但最讓我印象深刻的，是「小飛俠夢幻島歷險記」。</p>
+<p>這個設施要戴 3D 眼鏡體驗。<br>玩的時候，我一直覺得畫面好像不太立體，<br>心想：「該不會是要把自己的眼鏡拿下來吧？不對啊，應該不用才對！」<br>過程中，我努力說服自己：<br>「有啦有啦，這已經有立體了，可能只是我沒睡飽而已⋯⋯」</p>
+<p>我百思不得其解！</p>
+<p>直到回國看照片，我才發現——<br>什麼？我的 3D 眼鏡居然少了一片鏡片！<br>那一刻我真的覺得無奈又好笑。</p>
+<hr>
+<p>旅程越到後面，買的東西越來越多，<br>我開始擔心行李會不會塞不下，<br>那本 UNIQLO 雜誌也變得越來越礙眼。</p>
+<p>我心裡想著：「要不要乾脆丟掉算了？反正也不會看它吧？」</p>
+<hr>
+<p>到了迪士尼海洋閉園前半小時，我們都累壞了。<br>腳步慢了下來，突然，無意間發現排雲霄飛車的人好少，居然只要五分鐘！<br>於是我們立刻走去排。</p>
+<p>就在那時，夜空突然亮了起來——<br>哇，是煙火！</p>
+<p>那一刻我真的覺得超幸運。</p>
+<hr>
+<p>最後一天準備回國，我們又是紅眼班機。</p>
+<p>晚上十二點多就到了羽田機場，要一路等到凌晨五點。<br>我的手機和行動電源都快沒電，好不容易找到的座位，居然沒有插座。<br>也沒辦法安心睡覺，只好呆坐在那裡。</p>
+<p>這時，我突然想起那本 UNIQLO 雜誌。</p>
+<p>想說反正現在也沒別的事，就翻來看看吧。<br>翻著翻著，覺得還挺有意思的。<br>時間慢慢過去，心情也逐漸平靜了下來。</p>
+<p>那一刻我才明白，<br>原來那本雜誌的價值，不是拿回家做紀念，<br>而是在那個漫長的夜裡，<br>陪我打發時間，也讓我好好沉澱一下。</p>
+<hr>
+<p>回國後，我們把滿滿的戰利品全部擺在桌上拍照——衣服、伴手禮、扭蛋等等的，<br>數量多到自己都嚇一跳，感覺擺起來都可以開一個小攤位了。</p>
+<p>但真正讓我感到滿足的，<br>不是買了多少東西，<br>而是那些在旅途中發生的小故事。</p>
+<p>這趟東京旅遊，讓我更確定——<br>旅行不只是看風景，<br>而是去感受每一個容易被忽略的當下。</p>
+<p>可能是幾場看睡著的表演，<br>可能是一副壞掉的眼鏡，<br>可能是放慢腳步後的煙火，<br>也可能，只是一本差點被嫌棄的雜誌。</p>
+<p>這些看似微不足道的小片段，最後卻成了這趟旅途中，最有溫度、最值得回味的收穫。</p>
+]]></content>
   </entry>
   <entry>
     <title>駕訓班裡的點點滴滴</title>
@@ -760,89 +989,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>人生其他方面也該是相同道理吧🤔</p>
 <br>
 感謝吳教練的諄諄教誨啊😎]]></content>
-  </entry>
-  <entry>
-    <title>第一次出國獻給了麗星郵輪探索星號</title>
-    <url>/2025/05/first-abroad-star-navigator/</url>
-    <content><![CDATA[<p>簡單記錄一下行前準備、注意事項、旅遊過程。<br>寫完發現蠻凌亂的XD 但總比沒寫出來好。</p>
-<span id="more"></span>
-
-<h2 id="辦護照"><a href="#辦護照" class="headerlink" title="辦護照"></a>辦護照</h2><p>因為之前沒出國過，所以需要辦護照。</p>
-<p>原本以為流程會很複雜，但還好，先去相館拍護照用的大頭照 (2 寸的那種, 上一次拍已經有一段時間了, 想說拍個新的好了)，隔幾天拿到了以後，帶著身分證、2 張 2 寸護照用大頭照、護照規費 1300 元 (也多帶一些, 因為如果去便利商店之類的地方繳費, 需要另外付手續費 15 元) 到戶政事務所，抽號碼等待 (禮拜一下午人真的挺多的)，等待的同時，可以先填申請表 (對了, 記得來之前可以預先想一下要用什麼外文姓名)，叫到號碼，後續就照著人員的引導就可以了。過了差不多 10 個工作天以後，就可以拿到護照了！至於領照方式，看你當初是選「自行到原送件戶所領取護照」，還是「由外交部將護照快遞至指定地址」，後者的話，寄達時需要自付郵資。<br>（上面的流程僅供參考，我有可能會漏掉一些細節）</p>
-<p>話說，當初辦護照並不是為了這次的出國旅遊，而是下一次的，是因為親戚邀約 (邀約的時間點差不多是出發前的一個月)，加上剛好也辦好護照，所以就成行了😂</p>
-<h2 id="行前準備＆注意事項"><a href="#行前準備＆注意事項" class="headerlink" title="行前準備＆注意事項"></a>行前準備＆注意事項</h2><p>好的，假設現在已經辦好護照，也報名好「麗星郵輪探索星號」了 (因為是親戚幫忙處理, 流程我就不清楚了)，然後呢？</p>
-<p>我的話是 google「麗星郵輪 出發準備」，可以挖到很多圖文並茂而且很優質的文章，這時候就可以邊讀邊記在自己的筆記裡面，過程也是蠻有趣的，然後找個時間整理起來，該列的待辦事項列一列，方便提醒自己哪些事情要記得做。</p>
-<p>我這邊來大概列一下我查到、問到、體驗到的事項：</p>
-<ul>
-<li>印象中這些文章是我之前看完覺得不錯的<ul>
-<li><a href="https://tiyama.net/starcruises/">https://tiyama.net/starcruises/</a></li>
-<li><a href="https://jas38.tw/starnavigator/">https://jas38.tw/starnavigator/</a></li>
-<li><a href="https://myjourney.tw/cruise-travel-notice/">https://myjourney.tw/cruise-travel-notice/</a></li>
-</ul>
-</li>
-<li>原來台灣的 ATM 可以提領日幣啊！</li>
-<li>需要準備「萬國插頭」或是「變壓器」嗎？<ul>
-<li>只充手機的話是不需要的。以 iPhone 的豆腐頭來說，是可以插在艙房內的插座的！</li>
-<li>郵輪上的電壓是 220-240 伏特</li>
-</ul>
-</li>
-<li>郵輪上的網路可以登船以後再買嗎？<ul>
-<li>可以的，而且好像是登船以後才能加購 (因為「內網」的關係，待會會再提到)</li>
-<li>郵輪使用的是衛星網路</li>
-</ul>
-</li>
-<li>船上的每日郵報 The Daily 已全面電子化，登船後連上船上的 WiFi，掃船上 QR code，就可以進去啦～<ul>
-<li>那個 WiFi 是內網的概念，不需要加購，但無法連到網際網路，所以如果想在船上用 LINE、看 YouTube、滑 IG，還是得加購網路</li>
-<li>到時候你就能體會到，看郵報真的是船上重要的娛樂之一啊XD 明明每天的內容都一樣，但就是會沒事的時候點開來看</li>
-</ul>
-</li>
-<li>郵輪上的時間都是採用「台灣時間」，包含各種活動、集合時間等等的，旅途中手機可能會自動跳轉到「日本時間」，可以事先把手機的「自動設定時區」功能給關起來，這點需要特別注意！<ul>
-<li>怎麼關「自動設定時區」呢？以 iPhone 為例，設定 → 一般 → 日期與時間 → 切換「自動設定」，就可以囉！</li>
-<li>也可以加入「城市數位時間」之類的小工具到手機桌面，提醒自己看台灣時間</li>
-</ul>
-</li>
-<li>可以事先買好 <a href="https://www.kkday.com/zh-tw/product/146851">eSIM</a>，我是前一晚買的，買好就收到 QR code 了，超迅速XD<ul>
-<li>需要注意，不是每款手機都支援 eSIM 哦，買之前務必確認</li>
-<li>手機怎麼設定 eSIM？我是參考<a href="https://youtu.be/9lQQv20XsH8?feature=shared&t=98">這個影片</a>，蠻簡單的</li>
-<li>只需要買岸上那段期間的，離陸地很遠的海上用不了！</li>
-<li>我買了 3 GB x 2 天 (我那個時候不確定是不是掃 QR code 設定完就算啟用了, 所以想說保險起見多買個一天, 但感覺起來, 應該是連到當地的網路才開始算🤔 不過老實說, 我到現在還不是 100% 確定)，但後來我只用了差不多 300 多 MB 而已</li>
-<li>對了，在台灣設定好 eSIM，沒多久手機跳出「無法啟用 eSIM」的通知可以不用理他，因為收不到當地的訊號嘛XD (那時候看到通知, 心想完蛋了, 浪費錢錢了, 難道不是這樣設定?)</li>
-</ul>
-</li>
-<li>基隆港旅客中心有分「西」岸和「東」岸，不同航次，報到地點可能會不一樣哦！</li>
-<li>建議可以帶筆去，填申報單什麼的會更方便～</li>
-<li>「網上登船手續」好像不需要，我有事先登入填好，但好像也沒用到，不確定</li>
-<li>登船證可以先列印下來，當然，當天要用電子的給他看也 ok</li>
-<li>需要備好護照影本，我們是用彩色的，但黑白的應該也行，記得是用 A4 1:1 而且不能裁切，掃描有名字和大頭照的那兩面<ul>
-<li>可以額外帶類似拉鍊袋的東西來裝護照、護照影本、申報單等等的重要資料，收納起來更方便，也比較好找</li>
-</ul>
-</li>
-<li>郵輪上的消費，除了娛樂場，都是用房卡 (所以房卡非常非常重要啊, 難怪會附吊繩)，下船前再結清，看是要到七樓櫃檯結帳，或是用線上自助的也可以<ul>
-<li>建議可以自己額外帶吊牌證件套，內艙房的只有附吊繩，房卡放證件套裡面感覺會更安心一點</li>
-<li>對了，內側艙房每位旅客每晚會有一筆 600 元的服務費 (每種房型會有自己的費用)，還要再加 18%，所以如果沒額外消費但卻看到有消費紀錄，就是這個哦</li>
-</ul>
-</li>
-</ul>
-<h2 id="旅遊過程"><a href="#旅遊過程" class="headerlink" title="旅遊過程"></a>旅遊過程</h2><p>我越到後面寫得越簡略😅</p>
-<h3 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h3><p>預定大概 12:30 左右到登船的地方 (在基隆, 郵輪預計 13:30-14:00 關櫃, 15:00 離港, 我看我們的 check-in time 是寫 12:30~13:00)，所以可以睡稍微飽一點差不多 08:00 起床。</p>
-<p>行李箱大概 14.5 公斤、後背包大概 3.7 公斤，走去搭公車，搭到板橋公車站轉搭火車，差不多一小時後到了基隆車站，車站出去左手邊，就可以看到「基隆港西岸旅客中心」了，比預定早了一小時到！</p>
-<p>原本想說，早到會不會無聊，完完全全不會，因為那個時間點去非常剛好，已經可以開始排隊走各種流程了。甚至覺得，再晚一點就會更塞呢，不如早點到、早點登船、早點開始享受！</p>
-<p>⭐️ 這邊有個點需要特別提：不能完全相信在櫃檯發東西的人員，因為會有漏給東西的可能！這個就被我們遇到了⋯⋯ 拿完東西以後，看到別人有房卡的吊繩但我們怎麼沒有？問了其他人員，才知道是對方漏給，更誇張的是，居然還漏給「攜帶品．後送物品申報單」，沒了這個，會不會就不能進入日本境內呢🤔 所以說，拿完東西以後，可以再稍微觀察一下別人拿了什麼，避免發生類似這樣的情況⋯⋯</p>
-<p>上船後，可以先到自己的房間放東西，這個時候有可能房間還在整理或是行李還沒送到房間門口，ok 的，一段時間以後他們就會處理完畢。</p>
-<p>午餐先是到免費的「麗都自助餐廳」品嚐，就 buffet 那種，還不錯。</p>
-<p>接著到七樓甲板參加逃生演習，跟想像中不一樣，你去了就知道XD 還為了這個演習，時間有點趕的關係，午餐吃特別多滷肉飯來快速填飽肚子呢😅 不過他們的滷肉飯是真的不錯，味道我很喜歡！</p>
-<p>有點可惜的是，第一天天氣不好，下雨風又大，所以很多地方都濕濕滑滑的QQ</p>
-<p>16:30，我們到七樓船中的大堂玩趣味遊戲，這邊有個小建議，可以提早卡前面一點的座位，這樣主持人問有誰想上台玩的時候，就更有機會可以上去玩XD 就不暴雷在玩什麼了，還蠻有趣的。</p>
-<p>接著玩賓果，需要買票，獎金挺高的，現場一定會有人中，因為是看誰先中 Bingo 卡上面所有的數字，如果有多個人在某次的數字同時集滿，看是要平分獎金還是比大小XD 賓果在旅途中有好幾場哦。</p>
-<p>差不多 18:00 去吃「絲路花舞中餐廳」的「片皮鴨兩吃」還有「蝦鬆」，味道不錯，菊花茶喝起來很像非常清淡的海帶湯，我蠻喜歡的XD</p>
-<p>話說，你一定會覺得怎麼郵輪上都有一股香氣，會不會是有人打翻了什麼，後來注意到電梯裡的某樣東西，才恍然大悟，這點就等你去探索啦😂</p>
-<p>19:00 到 12 樓船頭的棕櫚閣唱開放式卡拉OK，需要點飲料 (一樣會有 18 % 服務費哦)，每桌可以點 2 首～</p>
-<p>時間拉快到 21:00，我們到七樓船尾的星座劇院觀賞表演，很震撼，尤其最後快結束的時候，觀眾參與度滿滿呢XD</p>
-<p>00:00~01:30 在七樓船中的大堂有個「卡拉OK之夜」，現場的大家輪流唱自己點的歌 (通常是一首)，還蠻有趣的。</p>
-<h3 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h3><p>NAHA PORT → 泊港漁市場吃生魚片 → 波上宮 → 7-ELEVEN 喝「ベリーベリーヨーグルトスムージー」，蠻特別也蠻好喝的 → 吃沖繩麵，湯頭我很喜歡，加上七味粉風味又更棒了 → BLUE SEAL <a href="https://www.blueseal.co.jp/cn/"></a>吃可麗餅冰淇淋 → 到 AEON MALL 逛逛還有採買，「すみません、いちごは どこですが」，結帳以後，別忘了可以拿護照影本申請退稅，在結帳處出來一點的地方可以看到櫃檯 → 晚餐吃星宴餐廳的西餐 → 星座劇場看表演</p>
-<h3 id="第三天"><a href="#第三天" class="headerlink" title="第三天"></a>第三天</h3><p>絲路花舞中餐廳吃港式早餐 → VR探索館玩幾台設施</p>
-<h2 id="最後想說的是"><a href="#最後想說的是" class="headerlink" title="最後想說的是"></a>最後想說的是</h2><p>旅遊當下可能覺得沒什麼，但回去以後會想說怎麼當初沒錄多一點，所以可以多錄影和拍照留念～</p>
-]]></content>
   </entry>
   <entry>
     <title>【圖文教學】免費在 AWS 上建一個 Node.js Web Server</title>
@@ -1048,42 +1194,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>【職涯路上】73~64</title>
-    <url>/2022/04/freshman-career-73-64/</url>
-    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
-<span id="more"></span>
-
-<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
-<ul>
-<li>(3/31) 完成和聲學作業六</li>
-<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
-<li>我後面一律簡稱 AWSCP</li>
-</ul>
-</li>
-<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
-<li>結果我還是沒開始碰 Laravel 😅</li>
-</ul>
-</li>
-<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
-<li>但最後也沒照那個計畫走</li>
-</ul>
-</li>
-<li>(4/2) 完成 AWSCP 前置任務<ul>
-<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
-</ul>
-</li>
-<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
-<li>(4/5~4/9) 準備奧丁丁面試<ul>
-<li>覺得自己好像都在原地踏步😢</li>
-</ul>
-</li>
-<li>(4/7) 完成圖形識別 Homework 2</li>
-</ul>
-<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
-<p>加加油吧！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>【職涯路上】63~0，Commencement</title>
     <url>/2022/06/freshman-career-63-0/</url>
     <content><![CDATA[<p>時間過得真是快啊！轉眼間，來到了這系列文的最終章。</p>
@@ -1184,116 +1294,39 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>【職涯路上】76~74</title>
-    <url>/2022/03/freshman-career-76-74/</url>
-    <content><![CDATA[<p>連假前來個小回顧。</p>
+    <title>【職涯路上】73~64</title>
+    <url>/2022/04/freshman-career-73-64/</url>
+    <content><![CDATA[<p>這幾天有種「帕金森定律」的感覺🤔</p>
 <span id="more"></span>
 
-<h2 id="3-28-一"><a href="#3-28-一" class="headerlink" title="3/28 (一)"></a>3/28 (一)</h2><p>早上搭車的時候，邊收看「<a href="https://youtu.be/lHGYdq1X9dU">2022 WorkLife Opening 未來工作生活大解構</a>」邊做點筆記，收穫滿滿，對工作及生活有著大開眼界般的見解！</p>
-<h3 id="學-Photoshop-做筆記"><a href="#學-Photoshop-做筆記" class="headerlink" title="學 Photoshop 做筆記"></a>學 Photoshop 做筆記</h3><p>下午旁聽影像合成課，學到了 Photoshop 去背、修臉的技巧，我也是邊上課邊做筆記，這幫助我之後再看的時候能快速回憶起來。</p>
-<p>來放其中一段筆記當作例子：</p>
-<p><strong>主角很多細節的去背</strong></p>
-<p>（before）</p>
-<p><img src="1.jpg"></p>
-<ol>
-<li>右下角在圖層旁邊的「色版」→ 選一個顏色的色版複製一個 → 反白也就是選取那個色版（其他的不能動到，不然完成都開起來後顏色會變）</li>
-<li>影像 → 調整 → 亮度/對比 → 「對比」調到最高，這樣等等會更好抓髮絲的紋路</li>
-<li>這樣等等會更好塗色不會超出範圍：背景單純的圖可先用「魔術棒」點選背景 → 選取 → 反轉</li>
-<li>塗黑主角：前景色調成黑色 → 筆刷工具 → 把要的人物非黑的部分塗黑（可調大筆刷更快狠準）有沒塗到的部分再放大去一一塗</li>
-</ol>
-<p>（中間產物）</p>
-<p><img src="2.png"></p>
-<ol start="5">
-<li>呈現剪影效果：影像 → 調整 → 色階 → 黑白都往中間拉 → 按確定</li>
-<li>選取人物：魔術棒工具點背景(不要勾連續) → 選取 → 反轉</li>
-<li>色版 → 打開 RGB → 圖層 → 增加遮色片 → 剛剛複製出來的色版可以丟掉了</li>
-</ol>
-<p>（after）</p>
-<p><img src="3.png"></p>
-<p>圖看起來有些白邊，怎麼修？我有記筆記，但礙於篇幅(?)，可能就不先放上來了😅</p>
-<h3 id="後來勒"><a href="#後來勒" class="headerlink" title="後來勒"></a>後來勒</h3><p>上完課就去圖書館寫「圖形識別 Homework 2」，效率奇佳！（做事前沒想那麼多，開始做就對了，想太多反而會成為阻礙）</p>
-<p>吃晚餐的空檔，拜讀了何則文老師的「<a href="https://www.linkedin.com/posts/wherder_nhlniwniwjcijfcjcahaynjliljlhskqfiljjpvllyjwgnha-activity-6909755387239960576-PpNa?utm_source=linkedin_share&utm_medium=android_app">從對目標受眾的理解來建設EVP</a>」，剛好跟早上搭車看的影片有關聯，覺得還蠻有趣的xD</p>
-<p>晚上決定跟著「<a href="https://youtu.be/3xrko3GpYoU">🔴 Let’s build Spotify 2.0 with NEXT.JS 12.0! (Middleware, Spotify API, Tailwind, NextAuth, Recoil)</a>」這個影片來學怎麼 clone Spotify，影片有4小時，最近會慢慢跟完。<br>雖然常聽到說跟著影片模仿學比較沒有效果(?)，但我想說透過看影片模仿的方式，來擴增我的資料庫或者說是技能包。（「<a href="https://github.com/kanido386/tutorial-spotify-clone">tutorial-spotify-clone</a>」我會放在 GitHub 上，目前我 GitHub 實在太空😅）</p>
-<hr>
-<h2 id="3-29-二"><a href="#3-29-二" class="headerlink" title="3/29 (二)"></a>3/29 (二)</h2><p>早上讀「跟著柴鼠學FQ」，結束前用「自由書寫」的方式來記錄體悟，以免讀完整本書以後，很多東西都忘得一乾二淨了。（總是要留點什麼才好，不然有點可惜）</p>
-<p>因為昨天的教學影片用的是 Next.js，讓我間接找到了 Next.js 官方的 <a href="https://nextjs.org/learn/foundations/about-nextjs">Learn Next.js</a>，意外發現讀起來好讀又有趣之外，也包含很多跳脫 Next.js 的網頁開發相關知識，覺得挖到寶，之後會繼續用零碎時間把它啃完！<br>心裡多少會有個聲音：「只是讀，沒跟著操作有什麼用？」啊就讀了以後，真的有學到新東西啊，實作的話，可以等跟著影片 clone Spoitfy 的時候來熟悉，而且感覺在實作之前先懂它的邏輯，會更知道自己在做什麼。（哎呀，人生沒有標準答案啊！相信自己的直覺吧！）</p>
-<p>接著就是上電腦動畫與特效＆和聲學。（流水帳xD）</p>
-<p>吃完晚餐寫和聲學作業，然後打球跟別人三打三的時候全身冒煙，都懷疑自己是不是巨人了😂</p>
-<hr>
-<h2 id="3-30-三"><a href="#3-30-三" class="headerlink" title="3/30 (三)"></a>3/30 (三)</h2><p>早上上圖形識別。</p>
-<h3 id="作品集可以怎樣優化"><a href="#作品集可以怎樣優化" class="headerlink" title="作品集可以怎樣優化"></a>作品集可以怎樣優化</h3><p>午餐配「<a href="https://www.youtube.com/watch?v=SvtSza13sk8">Portfolio Projects that Get you Hired</a>」這個影片，頻道主秀出 stand-out-to-him 的作品集頁面。我那個時候忘記做點筆記，但還有點印象：</p>
-<blockquote>
+<h2 id="這次沒什麼內容"><a href="#這次沒什麼內容" class="headerlink" title="這次沒什麼內容"></a>這次沒什麼內容</h2><p>說實在話，感覺這幾天蠻不踏實的，有點不知道自己在做什麼⋯⋯<br>大概就是：</p>
 <ul>
-<li>招募者可沒空 register 去試你的 APP，何不做個 demo 的 GIF 來展現呢？</li>
-<li>可以讓人看出來你使用了哪些核心功能或技術，像是 authentication、database CRUD、串接第三方 API</li>
-<li>可以用條列的方式來簡述你做了什麼，招募者可沒那麼多時間讀故事啊</li>
+<li>(3/31) 完成和聲學作業六</li>
+<li>(4/1) 收到 <a href="https://kanido386.github.io/2022/03/freshman-career-84-77/#3-25-五" target="_blank">AppWorks School Software Engineering Campus Program</a> 錄取通知<ul>
+<li>我後面一律簡稱 AWSCP</li>
 </ul>
-</blockquote>
-<p>好像還有一些不錯的建議，真的有點可惜沒記下來😅</p>
-<h3 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h3><p>零碎時間，不管是排隊買午餐還是搭車，都在讀 <a href="https://nextjs.org/learn/foundations/about-nextjs">Learn Next.js</a>，沒辦法，它太讚了xD</p>
-<p>下午搭車前去測 Inbody，想了解自己的身體狀況！（學校資源真的要好好運用啊）</p>
-<p>晚上遠端幫朋友解決 Windows 上面 Python 環境設定的問題以及一點小教學，才知道有「<a href="https://www.teamviewer.com/tw/">TeamViewer</a>」這麼方便的遠端工具！（也才又找回小時候喜歡教同學的感覺）</p>
-<br>
-職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】84~77</title>
-    <url>/2022/03/freshman-career-84-77/</url>
-    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
-<span id="more"></span>
-
-<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
-<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
-<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
-<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
-<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
-<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
-<p>所以說，路真的不會白走啊！</p>
-<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
-<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
-<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
-<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
-<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
-<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
-<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
-<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
-<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
-<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
-<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
-<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
-<p>就連自己也不知道自己在講什麼。</p>
-<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
-<p>甚至面試官問我最後一題：</p>
-<blockquote>
-<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
-</blockquote>
-<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
-<p>後來想想，我應該要這麼回答：</p>
-<blockquote>
-<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
-</blockquote>
-<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
-<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
-<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
-<p>我那天寫給自己：</p>
-<blockquote>
-<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
-</blockquote>
-<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
-<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
-<p>整體來說挺值得的！</p>
-<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
-<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
-<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】85，不想徒具形式</title>
-    <url>/2022/03/freshman-career-85/</url>
-    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
-<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
-<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
-<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
+</li>
+<li>(4/1) 收到<a href="https://kanido386.github.io/2022/03/freshman-career-92/#奧丁丁集團" target="_blank">奧丁丁</a>面試邀請<ul>
+<li>結果我還是沒開始碰 Laravel 😅</li>
+</ul>
+</li>
+<li>(4/2) AWSCP 有提供 Pre-study 學習清單，試著去規劃這幾天該怎麼分配時間學習<ul>
+<li>但最後也沒照那個計畫走</li>
+</ul>
+</li>
+<li>(4/2) 完成 AWSCP 前置任務<ul>
+<li>跟我「<a href="https://kanido386.github.io/2022/04/free-aws-nodejs-web-server/" target="_blank">【圖文教學】免費在 AWS 上建一個 Node.js Web Server</a>」這篇有關</li>
+</ul>
+</li>
+<li>(4/3~4/9) 學習 AWSCP Pre-study</li>
+<li>(4/5~4/9) 準備奧丁丁面試<ul>
+<li>覺得自己好像都在原地踏步😢</li>
+</ul>
+</li>
+<li>(4/7) 完成圖形識別 Homework 2</li>
+</ul>
+<h2 id="再說點什麼"><a href="#再說點什麼" class="headerlink" title="再說點什麼"></a>再說點什麼</h2><p>準備迎接人生第一場正式面試，那焦慮感還蠻不好惹的xD<br>有嘗試要練習怎麼回答可能會被問到的問題，但就⋯⋯</p>
+<p>加加油吧！</p>
 ]]></content>
   </entry>
   <entry>
@@ -1384,6 +1417,57 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 <br>
 話說，明天又是新的一天了呢😂]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】84~77</title>
+    <url>/2022/03/freshman-career-84-77/</url>
+    <content><![CDATA[<p>簡單回顧一下這週都做了些什麼。</p>
+<span id="more"></span>
+
+<h2 id="3-20-日"><a href="#3-20-日" class="headerlink" title="3/20 (日)"></a>3/20 (日)</h2><p>那天陷入焦慮情緒當中，有種「好像永遠都無法再提起勁一樣」的無力感，想一直前進，但感覺不太到那種 fu，腦袋整個一團混亂⋯⋯</p>
+<p>最後那天做了「電腦動畫與特效 HW1」3 小時 41 分鐘又 8 秒，雖然心情很糟，但還是有不錯的進度。</p>
+<p>那個時候很希望能從那心之牢籠當中逃脫出來，關掉筆電、平板、手機，讓自己靜一靜。</p>
+<p>沒想到，晚上 10. 多，突然起了一個念頭，不知怎地，原本打算幾天後再去申請的 <a href="https://school.appworks.tw/software-engineering-campus-program/">AppWorks School Software Engineering Campus Program</a>，突然打算那個 moment 去做那件事，沒多想什麼，也沒去管今天的狀態是好是壞，就去行動，也很神奇地，非常高效地填完表單問題，還錄了個自我介紹影片，雖然搞到快 1.，但真的很感謝自己願意把負面情緒拋在腦後，起身去行動！</p>
+<p>就不要想那麼多，真的做就對了，讓心思 focus 在那件事情上。</p>
+<p>這邊有個小心得，之所以能高效完成表單，是因為之前累積了一些關於我自己的相關資料，像是準備面試的筆記、<a href="https://kanido386.github.io/about/" target="_blank">關於我</a>的頁面、申請其他東西填的內容，就都可以拿來參考寫進去，反正都是自己寫的嘛！拿來用有什麼不對嗎xD 這道理就跟我之前<a href="https://kanido386.github.io/2022/03/freshman-career-100-97/#豁然開朗" target="_blank">寫過的道理</a>一樣啊！</p>
+<p>所以說，路真的不會白走啊！</p>
+<h2 id="3-21-一"><a href="#3-21-一" class="headerlink" title="3/21 (一)"></a>3/21 (一)</h2><p>沒做啥，早上搭車，下午旁聽影像合成，傍晚到系電腦教室測試那個「電腦動畫與特效 HW1」然後交出去，晚上打球。</p>
+<h2 id="3-22-二"><a href="#3-22-二" class="headerlink" title="3/22 (二)"></a>3/22 (二)</h2><p>早上起來閱讀「跟著柴鼠學FQ」，希望自己能多一點投資理財的意識。</p>
+<p>下午遠端上電腦動畫與特效都在做其他事xD 接著上和聲學。</p>
+<p>晚上去圖書館寫和聲學作業，也嘗試參考「<a href="https://www.youtube.com/watch?v=MsbzY6QbRVA">讓我拿到FAANG面試的履歷</a>」這個影片做英文履歷，但很不順利，主要是因為「覺得自己沒資格列出我做過那些事情」的心理作祟吧？還有「具體把每個經歷用幾行英文句子寫出來」對我來說有點挑戰吧？OK的，之後可以再回來弄～</p>
+<h2 id="3-23-三"><a href="#3-23-三" class="headerlink" title="3/23 (三)"></a>3/23 (三)</h2><p>早上一樣有專心聽講「圖形識別」哦！</p>
+<p>下午和晚上去圖書館做事，解決了和聲學作業～<br>難得第二天就完成交出去，以為成績會很差，沒想到拿到了自己的新高 A-！</p>
+<p>英文履歷的部分，因為那個時候效率不佳，就⋯⋯<br>又不像和聲學作業，可以隨便寫一寫交出去，要我做一份垃圾履歷，我還寧願不做呢，所以後來就沒繼續弄了。</p>
+<h2 id="3-24-四"><a href="#3-24-四" class="headerlink" title="3/24 (四)"></a>3/24 (四)</h2><p>今天參加了 LINE Developers 舉辦的 Meetup，原本以為可以免費參加，沒想到⋯⋯ 在公館圓環沒兩段式左轉，被開了 600 元的罰單，剛剛還特地查了一下，原來「台北市取締未兩段式左轉公館圓環5213件連3年居冠」，沒辦法⋯⋯</p>
+<p>至於那場活動我有什麼感悟，詳見這一篇「<a href="https://kanido386.github.io/2022/03/line-developers-meetup-16/" target="_blank">【心得】LINE Developers Meetup #16</a>」</p>
+<h2 id="3-25-五"><a href="#3-25-五" class="headerlink" title="3/25 (五)"></a>3/25 (五)</h2><p>因為禮拜日填的申請表單有獲得青睞，今天去 AppWorks School 面談。</p>
+<p>面完後，對於自己的表現，我還蠻失落的⋯⋯</p>
+<p>一整場完整呈現出我口語表達能力極差的樣貌，而當兩位面試官越是提到這一點，我越是往那方面(口語表達能力極差所該展現出來的感覺)去表現⋯⋯</p>
+<p>就連自己也不知道自己在講什麼。</p>
+<p>更誇張的是，我忘記準備要提問的問題了，居然還問面試官「其他面試者都怎麼問」，真的是愚蠢到家⋯⋯</p>
+<p>甚至面試官問我最後一題：</p>
+<blockquote>
+<p>如果你今天在外面拿到 offer，又同時錄取了這個計畫，你會怎麼做選擇？</p>
+</blockquote>
+<p>我居然回答，可是我覺得我目前在外面拿到 offer 的「機率」很低欸，就整個呈現出我對自己很沒信心的感覺⋯⋯</p>
+<p>後來想想，我應該要這麼回答：</p>
+<blockquote>
+<p>如果我在外面拿到了 offer，我當然就會去，畢竟加入這個計畫的最終目的就是要找到一份理想的工作，上了的話，這個目的就達成了！</p>
+</blockquote>
+<p>所以深刻體會到自己真該好好提升口語表達能力！！！</p>
+<p>下禮拜五之前結果會出來，當然還是很希望能夠錄取，但真的不敢抱持什麼太大的希望。</p>
+<p>那天面談結束後的失落感其實還蠻大的，但不要就此氣餒，找到了可以改進的地方，試著去修正，多加練習口語表達，即使最後真的沒被錄取也要做點 side project 沈浸在寫 code 的感覺，而不是只是嘴巴上說說，社群也可以多跑，甚至可以嘗試上台做分享！</p>
+<p>我那天寫給自己：</p>
+<blockquote>
+<p>職涯之路不會因為這次的錄取與否而停止，即使跌倒，我也會爬起來繼續前進，加油！</p>
+</blockquote>
+<h2 id="3-26-六"><a href="#3-26-六" class="headerlink" title="3/26 (六)"></a>3/26 (六)</h2><p>今天去台北小巨蛋逛 Yourator 主辦的數位職涯博覽會，詳見「<a href="https://kanido386.github.io/2022/03/2022-yourator-career-fair/" target="_blank">【心得】2022 Yourator 數位職涯博覽會</a>」</p>
+<p>逛到最後的時候超級累，背著不輕的背包到處趴趴走，還很不像我地到處找別人開口講話，這對我目前的腦袋瓜來說 loading 很重啊xD</p>
+<p>整體來說挺值得的！</p>
+<h2 id="3-27-日"><a href="#3-27-日" class="headerlink" title="3/27 (日)"></a>3/27 (日)</h2><p>幾乎都在寫部落格文章😅</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這週還挺充實的，讚讚～</p>
+<p>所以真的不要覺得一天很廢，就會永遠廢下去，總是會有起伏的嘛！</p>
+]]></content>
   </entry>
   <entry>
     <title>【職涯路上】91~90，越挫越勇！</title>
@@ -1483,52 +1567,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <br>
 雖然多花了不少時間，但路是不會白走的！<br>
 相信這次的體驗，也能成為職涯路上，成長茁壯的重要滋養 🌱]]></content>
-  </entry>
-  <entry>
-    <title>【職涯路上】92，交大就業博覽會</title>
-    <url>/2022/03/freshman-career-92/</url>
-    <content><![CDATA[<p>趁現在印象還很清楚的時候來記錄一下。</p>
-<span id="more"></span>
-
-<h2 id="前面扯淡"><a href="#前面扯淡" class="headerlink" title="前面扯淡"></a>前面扯淡</h2><p>今天交大就業博覽會，對於正在探索人生職涯的我而言，怎能缺席呢？</p>
-<p>昨天剛在新北考完駕照，今早就搭車回新竹。之前沒禮拜六南下不知道，原來那麼塞！十點多上客運，十二點左右才到學校⋯⋯ 但那時候想說，隨便啦，反正逛攤位應該不會那麼花時間吧？啊不就拿拿傳單、填填資料、抽抽獎品而已！（但我錯了xD）</p>
-<p>我們有分三大區，我幾乎都待在綜合一館B1那一區，因為那一區有我比較感興趣的「資訊軟體」類別的攤位。</p>
-<p>廢話不多說，直接進到重點好了。</p>
-<hr>
-<h2 id="逛攤位"><a href="#逛攤位" class="headerlink" title="逛攤位"></a>逛攤位</h2><p>我等等列出我比較有印象而且有心得的攤位。</p>
-<h3 id="開必拓數據"><a href="#開必拓數據" class="headerlink" title="開必拓數據"></a>開必拓數據</h3><p>這是我今天第一間詢問關於後端職缺的企業。</p>
-<p>原本還擔心說會不會沒人理我，沒想到當他們的人員聽到我想了解後端工作，立馬請了他們的後端工程師向我說明他們在做什麼。</p>
-<p>於是乎，這就成為了我繼續找其他企業詢問有關後端工作的契機，因為那過程真的還蠻有趣的，很多企業都很熱情地介紹他們的工作！</p>
-<p>就不要怕去問，真的問就對了，聊聊的過程，也會更清楚知道自己想要什麼、不想要什麼，挺有意思的。</p>
-<h3 id="Dcard"><a href="#Dcard" class="headerlink" title="Dcard"></a>Dcard</h3><p>這間我並沒有去詢問職缺相關的問題 (剛去博覽會沒多久還很菜xD 就還不知道在博覽會那邊就是不斷提問就對了)，我反倒是覺得他們的宣傳手法很有意思！</p>
-<p>因為在就業博覽會這種類型的活動，逛的人一定會拿到各種大大小小的東西，這個時候，就會非常希望能夠有個大袋子裝東西。</p>
-<p>而 Dcard 就很聰明地給參與者很大的手提袋，上頭印著大大的「Dcard」，參與者拿完手提袋以後，一定還會再逛其他攤位嘛，會繼續趴趴走，咦，這樣拿著手提袋到處走的人不就成為 Dcard 的免費移動宣傳嗎？</p>
-<p>這都是我的猜測啦，但若真的是這樣的話，實在是太高明了！</p>
-<h3 id="奧丁丁集團"><a href="#奧丁丁集團" class="headerlink" title="奧丁丁集團"></a>奧丁丁集團</h3><p>這是今天對我來說最大的收穫吧？直接跟他們的技術長聊了好一段時間。</p>
-<p>技術長先向我說明奧丁丁在做什麼，用很有邏輯、條理的方式一一介紹提供的服務。</p>
-<p>首先，和台灣許多小農及中小型商家合作成為了「奧丁丁市集」，像是台灣鮮乳地圖、台灣水果地圖，等於是幫它們讓更多人看見，協助推廣的概念。</p>
-<p>有了推廣「商品」，怎能少了推廣「體驗」，畢竟那些產業也會有很多的體驗活動，有了「奧丁丁體驗」，整合了國內外上千位嚮導合作、彙整熱門景點、套裝行程等等的資訊。</p>
-<p>有了體驗，當然也就能夠有「旅遊」的概念，所以也就有了「奧丁丁揪你 (Journey)」。</p>
-<p>有了旅遊，當然也就需要「住宿」，旅宿業者原本就有用其他平台來做這一塊，但「奧丁丁區塊鏈旅宿管理服務」可以幫忙做整合的動作，就可能不必再 1. 自己找人做網站 2. 得自己煩惱要投放到哪些訂房網站 3. 思考管理系統的建置該怎麼解決。</p>
-<p>有訂房，那也就需要「支付」，所以也有「奧丁丁支付服務」。</p>
-<p>當然還有其他服務，這一整個，儼然形成了一個生態圈，也的確是他們正在用心經營的！</p>
-<p>除了向我介紹他們在做什麼，我也問了技術長會希望面試者能夠具備什麼樣的能力。</p>
-<p>他說，他看重的是面試者在做 side project 的過程當中，是如何思考他要什麼、遇到什麼困難、怎麼解決問題這類的軟實力，技術倒是其次，可以靠學習來彌補！因為畢竟到業界工作就是要幫企業解決問題，需要具備獨立思考能力，遇到挑戰時，能夠去思考該怎麼解決。</p>
-<p>我最喜歡這間企業後端工程師職缺的部分，是他們在開發的時候是會了解公司的整體產品，完了開始有點語無倫次了，我想表達的是，在你開發前，你是會了解公司所有產品到底是在做什麼並參與到，而不是可能只是一個小功能而已。尤其所有服務又有種生態系的感覺，我還蠻喜歡這種「大整合」的概念，像 LINE 一樣xD（music、pay、tv、bank…）若又能參與開發，我會覺得很有意義！</p>
-<p>他們主要使用的技術是 PHP，跟 KKBOX 的 backend engineer 一樣，或許該是學習 Laravel 的好契機了xD</p>
-<h3 id="Appier"><a href="#Appier" class="headerlink" title="Appier"></a>Appier</h3><p>跟我介紹 backend 的人建議，面試的時候可做簡報輔助，把作品集整理起來，簡報上頭可以清楚秀出架構之類的東西，好讓面試官了解，也幫助自己更能從容應答。</p>
-<p>他還提到一個有趣的點，如果被問了你覺得簡單的問題，可以反問面試官相關但更難的問題，看對方實力到哪，然後不斷來回循環 (當然自己實力要夠不然就糗啦)，畢竟上頭夠厲害對自己職涯方面的成長會比較有利，這麼做感覺就是當成一種篩技術成長環境的方式xD</p>
-<p>還有一個點我覺得很有收穫。會 Python，是要會到什麼程度呢？會寫 Flask 就是會 Python？那你懂底層的 garbage collection、python 2 vs python 3、GIL 嗎？所以，你懂的xD 要有自信說出自己會某某語言，最好懂一下它底層相關的知識和運作方式吧！</p>
-<h3 id="賈桃樂學習主題館"><a href="#賈桃樂學習主題館" class="headerlink" title="賈桃樂學習主題館"></a>賈桃樂學習主題館</h3><p>原來新竹有免費提供就業相關的諮詢服務啊，超棒的欸！</p>
-<p>來這攤並不是直接為了職缺，而是希望能提升職涯方面的東西(?)，而我也因此得知了有免費的諮詢服務，賺到了！</p>
-<hr>
-<h2 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h2><p>想精進職涯方面？真的多參加職涯活動準沒錯！</p>
-<p>透過跟企業端聊工作內容、公司在做什麼，那心底的輪廓真的會有越趨清晰的感覺。</p>
-<p>而且多聊、多了解，更了解各種產業之外，也會更清楚自己比較想往哪條路走，有時候甚至能對你原本既定的印象產生了改變，我覺得那交流的過程真的讓人很有收穫！</p>
-<p>（我真的累了，連續寫了一小時半，開始不知道自己在寫什麼了xD）</p>
-<p><strong>就業博覽會的重點：大量問就對了！</strong>我有個想法，如果突然不知道要問什麼，或許可以問說，請問別人有問了您什麼很好的問題嗎？因為感覺很多人問的問題，問得超好，我自己也很想知道啊！</p>
-<br>
-今天這樣逛，真的值得😎]]></content>
   </entry>
   <entry>
     <title>【職涯路上】96~93，自我懷疑⋯⋯</title>
@@ -1710,6 +1748,68 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>【職涯路上】76~74</title>
+    <url>/2022/03/freshman-career-76-74/</url>
+    <content><![CDATA[<p>連假前來個小回顧。</p>
+<span id="more"></span>
+
+<h2 id="3-28-一"><a href="#3-28-一" class="headerlink" title="3/28 (一)"></a>3/28 (一)</h2><p>早上搭車的時候，邊收看「<a href="https://youtu.be/lHGYdq1X9dU">2022 WorkLife Opening 未來工作生活大解構</a>」邊做點筆記，收穫滿滿，對工作及生活有著大開眼界般的見解！</p>
+<h3 id="學-Photoshop-做筆記"><a href="#學-Photoshop-做筆記" class="headerlink" title="學 Photoshop 做筆記"></a>學 Photoshop 做筆記</h3><p>下午旁聽影像合成課，學到了 Photoshop 去背、修臉的技巧，我也是邊上課邊做筆記，這幫助我之後再看的時候能快速回憶起來。</p>
+<p>來放其中一段筆記當作例子：</p>
+<p><strong>主角很多細節的去背</strong></p>
+<p>（before）</p>
+<p><img src="1.jpg"></p>
+<ol>
+<li>右下角在圖層旁邊的「色版」→ 選一個顏色的色版複製一個 → 反白也就是選取那個色版（其他的不能動到，不然完成都開起來後顏色會變）</li>
+<li>影像 → 調整 → 亮度/對比 → 「對比」調到最高，這樣等等會更好抓髮絲的紋路</li>
+<li>這樣等等會更好塗色不會超出範圍：背景單純的圖可先用「魔術棒」點選背景 → 選取 → 反轉</li>
+<li>塗黑主角：前景色調成黑色 → 筆刷工具 → 把要的人物非黑的部分塗黑（可調大筆刷更快狠準）有沒塗到的部分再放大去一一塗</li>
+</ol>
+<p>（中間產物）</p>
+<p><img src="2.png"></p>
+<ol start="5">
+<li>呈現剪影效果：影像 → 調整 → 色階 → 黑白都往中間拉 → 按確定</li>
+<li>選取人物：魔術棒工具點背景(不要勾連續) → 選取 → 反轉</li>
+<li>色版 → 打開 RGB → 圖層 → 增加遮色片 → 剛剛複製出來的色版可以丟掉了</li>
+</ol>
+<p>（after）</p>
+<p><img src="3.png"></p>
+<p>圖看起來有些白邊，怎麼修？我有記筆記，但礙於篇幅(?)，可能就不先放上來了😅</p>
+<h3 id="後來勒"><a href="#後來勒" class="headerlink" title="後來勒"></a>後來勒</h3><p>上完課就去圖書館寫「圖形識別 Homework 2」，效率奇佳！（做事前沒想那麼多，開始做就對了，想太多反而會成為阻礙）</p>
+<p>吃晚餐的空檔，拜讀了何則文老師的「<a href="https://www.linkedin.com/posts/wherder_nhlniwniwjcijfcjcahaynjliljlhskqfiljjpvllyjwgnha-activity-6909755387239960576-PpNa?utm_source=linkedin_share&utm_medium=android_app">從對目標受眾的理解來建設EVP</a>」，剛好跟早上搭車看的影片有關聯，覺得還蠻有趣的xD</p>
+<p>晚上決定跟著「<a href="https://youtu.be/3xrko3GpYoU">🔴 Let’s build Spotify 2.0 with NEXT.JS 12.0! (Middleware, Spotify API, Tailwind, NextAuth, Recoil)</a>」這個影片來學怎麼 clone Spotify，影片有4小時，最近會慢慢跟完。<br>雖然常聽到說跟著影片模仿學比較沒有效果(?)，但我想說透過看影片模仿的方式，來擴增我的資料庫或者說是技能包。（「<a href="https://github.com/kanido386/tutorial-spotify-clone">tutorial-spotify-clone</a>」我會放在 GitHub 上，目前我 GitHub 實在太空😅）</p>
+<hr>
+<h2 id="3-29-二"><a href="#3-29-二" class="headerlink" title="3/29 (二)"></a>3/29 (二)</h2><p>早上讀「跟著柴鼠學FQ」，結束前用「自由書寫」的方式來記錄體悟，以免讀完整本書以後，很多東西都忘得一乾二淨了。（總是要留點什麼才好，不然有點可惜）</p>
+<p>因為昨天的教學影片用的是 Next.js，讓我間接找到了 Next.js 官方的 <a href="https://nextjs.org/learn/foundations/about-nextjs">Learn Next.js</a>，意外發現讀起來好讀又有趣之外，也包含很多跳脫 Next.js 的網頁開發相關知識，覺得挖到寶，之後會繼續用零碎時間把它啃完！<br>心裡多少會有個聲音：「只是讀，沒跟著操作有什麼用？」啊就讀了以後，真的有學到新東西啊，實作的話，可以等跟著影片 clone Spoitfy 的時候來熟悉，而且感覺在實作之前先懂它的邏輯，會更知道自己在做什麼。（哎呀，人生沒有標準答案啊！相信自己的直覺吧！）</p>
+<p>接著就是上電腦動畫與特效＆和聲學。（流水帳xD）</p>
+<p>吃完晚餐寫和聲學作業，然後打球跟別人三打三的時候全身冒煙，都懷疑自己是不是巨人了😂</p>
+<hr>
+<h2 id="3-30-三"><a href="#3-30-三" class="headerlink" title="3/30 (三)"></a>3/30 (三)</h2><p>早上上圖形識別。</p>
+<h3 id="作品集可以怎樣優化"><a href="#作品集可以怎樣優化" class="headerlink" title="作品集可以怎樣優化"></a>作品集可以怎樣優化</h3><p>午餐配「<a href="https://www.youtube.com/watch?v=SvtSza13sk8">Portfolio Projects that Get you Hired</a>」這個影片，頻道主秀出 stand-out-to-him 的作品集頁面。我那個時候忘記做點筆記，但還有點印象：</p>
+<blockquote>
+<ul>
+<li>招募者可沒空 register 去試你的 APP，何不做個 demo 的 GIF 來展現呢？</li>
+<li>可以讓人看出來你使用了哪些核心功能或技術，像是 authentication、database CRUD、串接第三方 API</li>
+<li>可以用條列的方式來簡述你做了什麼，招募者可沒那麼多時間讀故事啊</li>
+</ul>
+</blockquote>
+<p>好像還有一些不錯的建議，真的有點可惜沒記下來😅</p>
+<h3 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h3><p>零碎時間，不管是排隊買午餐還是搭車，都在讀 <a href="https://nextjs.org/learn/foundations/about-nextjs">Learn Next.js</a>，沒辦法，它太讚了xD</p>
+<p>下午搭車前去測 Inbody，想了解自己的身體狀況！（學校資源真的要好好運用啊）</p>
+<p>晚上遠端幫朋友解決 Windows 上面 Python 環境設定的問題以及一點小教學，才知道有「<a href="https://www.teamviewer.com/tw/">TeamViewer</a>」這麼方便的遠端工具！（也才又找回小時候喜歡教同學的感覺）</p>
+<br>
+職涯路上，那些看似平凡無奇的事物，仔細一看，其實還挺有意思的😎]]></content>
+  </entry>
+  <entry>
+    <title>【職涯路上】85，不想徒具形式</title>
+    <url>/2022/03/freshman-career-85/</url>
+    <content><![CDATA[<p>之後【職涯路上】系列文，改成一週一篇好了，我目前的做法，讓我覺得，我好像每天都一定要在職涯方面做點什麼才可以⋯⋯</p>
+<p>不給自己喘息空間，然後又一直在這邊發沒什麼營養的廢文，有點捨本逐末了！</p>
+<p>畢竟休息時間也是很重要的，不斷低等勤奮，實在沒什麼意義。</p>
+<p>（不想再看到自己為了發文章而發文章，而是真的有什麼體悟或收穫，再來這邊做分享）</p>
+]]></content>
+  </entry>
+  <entry>
     <title>黑客松 LINE Bot 賽前補帖</title>
     <url>/2021/07/hackathon-line-hint/</url>
     <content><![CDATA[<p><a href="/2021/07/hackathon-line-hint"><img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80" style="width:50vw;" /></a></p>
@@ -1863,6 +1963,52 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>【職涯路上】92，交大就業博覽會</title>
+    <url>/2022/03/freshman-career-92/</url>
+    <content><![CDATA[<p>趁現在印象還很清楚的時候來記錄一下。</p>
+<span id="more"></span>
+
+<h2 id="前面扯淡"><a href="#前面扯淡" class="headerlink" title="前面扯淡"></a>前面扯淡</h2><p>今天交大就業博覽會，對於正在探索人生職涯的我而言，怎能缺席呢？</p>
+<p>昨天剛在新北考完駕照，今早就搭車回新竹。之前沒禮拜六南下不知道，原來那麼塞！十點多上客運，十二點左右才到學校⋯⋯ 但那時候想說，隨便啦，反正逛攤位應該不會那麼花時間吧？啊不就拿拿傳單、填填資料、抽抽獎品而已！（但我錯了xD）</p>
+<p>我們有分三大區，我幾乎都待在綜合一館B1那一區，因為那一區有我比較感興趣的「資訊軟體」類別的攤位。</p>
+<p>廢話不多說，直接進到重點好了。</p>
+<hr>
+<h2 id="逛攤位"><a href="#逛攤位" class="headerlink" title="逛攤位"></a>逛攤位</h2><p>我等等列出我比較有印象而且有心得的攤位。</p>
+<h3 id="開必拓數據"><a href="#開必拓數據" class="headerlink" title="開必拓數據"></a>開必拓數據</h3><p>這是我今天第一間詢問關於後端職缺的企業。</p>
+<p>原本還擔心說會不會沒人理我，沒想到當他們的人員聽到我想了解後端工作，立馬請了他們的後端工程師向我說明他們在做什麼。</p>
+<p>於是乎，這就成為了我繼續找其他企業詢問有關後端工作的契機，因為那過程真的還蠻有趣的，很多企業都很熱情地介紹他們的工作！</p>
+<p>就不要怕去問，真的問就對了，聊聊的過程，也會更清楚知道自己想要什麼、不想要什麼，挺有意思的。</p>
+<h3 id="Dcard"><a href="#Dcard" class="headerlink" title="Dcard"></a>Dcard</h3><p>這間我並沒有去詢問職缺相關的問題 (剛去博覽會沒多久還很菜xD 就還不知道在博覽會那邊就是不斷提問就對了)，我反倒是覺得他們的宣傳手法很有意思！</p>
+<p>因為在就業博覽會這種類型的活動，逛的人一定會拿到各種大大小小的東西，這個時候，就會非常希望能夠有個大袋子裝東西。</p>
+<p>而 Dcard 就很聰明地給參與者很大的手提袋，上頭印著大大的「Dcard」，參與者拿完手提袋以後，一定還會再逛其他攤位嘛，會繼續趴趴走，咦，這樣拿著手提袋到處走的人不就成為 Dcard 的免費移動宣傳嗎？</p>
+<p>這都是我的猜測啦，但若真的是這樣的話，實在是太高明了！</p>
+<h3 id="奧丁丁集團"><a href="#奧丁丁集團" class="headerlink" title="奧丁丁集團"></a>奧丁丁集團</h3><p>這是今天對我來說最大的收穫吧？直接跟他們的技術長聊了好一段時間。</p>
+<p>技術長先向我說明奧丁丁在做什麼，用很有邏輯、條理的方式一一介紹提供的服務。</p>
+<p>首先，和台灣許多小農及中小型商家合作成為了「奧丁丁市集」，像是台灣鮮乳地圖、台灣水果地圖，等於是幫它們讓更多人看見，協助推廣的概念。</p>
+<p>有了推廣「商品」，怎能少了推廣「體驗」，畢竟那些產業也會有很多的體驗活動，有了「奧丁丁體驗」，整合了國內外上千位嚮導合作、彙整熱門景點、套裝行程等等的資訊。</p>
+<p>有了體驗，當然也就能夠有「旅遊」的概念，所以也就有了「奧丁丁揪你 (Journey)」。</p>
+<p>有了旅遊，當然也就需要「住宿」，旅宿業者原本就有用其他平台來做這一塊，但「奧丁丁區塊鏈旅宿管理服務」可以幫忙做整合的動作，就可能不必再 1. 自己找人做網站 2. 得自己煩惱要投放到哪些訂房網站 3. 思考管理系統的建置該怎麼解決。</p>
+<p>有訂房，那也就需要「支付」，所以也有「奧丁丁支付服務」。</p>
+<p>當然還有其他服務，這一整個，儼然形成了一個生態圈，也的確是他們正在用心經營的！</p>
+<p>除了向我介紹他們在做什麼，我也問了技術長會希望面試者能夠具備什麼樣的能力。</p>
+<p>他說，他看重的是面試者在做 side project 的過程當中，是如何思考他要什麼、遇到什麼困難、怎麼解決問題這類的軟實力，技術倒是其次，可以靠學習來彌補！因為畢竟到業界工作就是要幫企業解決問題，需要具備獨立思考能力，遇到挑戰時，能夠去思考該怎麼解決。</p>
+<p>我最喜歡這間企業後端工程師職缺的部分，是他們在開發的時候是會了解公司的整體產品，完了開始有點語無倫次了，我想表達的是，在你開發前，你是會了解公司所有產品到底是在做什麼並參與到，而不是可能只是一個小功能而已。尤其所有服務又有種生態系的感覺，我還蠻喜歡這種「大整合」的概念，像 LINE 一樣xD（music、pay、tv、bank…）若又能參與開發，我會覺得很有意義！</p>
+<p>他們主要使用的技術是 PHP，跟 KKBOX 的 backend engineer 一樣，或許該是學習 Laravel 的好契機了xD</p>
+<h3 id="Appier"><a href="#Appier" class="headerlink" title="Appier"></a>Appier</h3><p>跟我介紹 backend 的人建議，面試的時候可做簡報輔助，把作品集整理起來，簡報上頭可以清楚秀出架構之類的東西，好讓面試官了解，也幫助自己更能從容應答。</p>
+<p>他還提到一個有趣的點，如果被問了你覺得簡單的問題，可以反問面試官相關但更難的問題，看對方實力到哪，然後不斷來回循環 (當然自己實力要夠不然就糗啦)，畢竟上頭夠厲害對自己職涯方面的成長會比較有利，這麼做感覺就是當成一種篩技術成長環境的方式xD</p>
+<p>還有一個點我覺得很有收穫。會 Python，是要會到什麼程度呢？會寫 Flask 就是會 Python？那你懂底層的 garbage collection、python 2 vs python 3、GIL 嗎？所以，你懂的xD 要有自信說出自己會某某語言，最好懂一下它底層相關的知識和運作方式吧！</p>
+<h3 id="賈桃樂學習主題館"><a href="#賈桃樂學習主題館" class="headerlink" title="賈桃樂學習主題館"></a>賈桃樂學習主題館</h3><p>原來新竹有免費提供就業相關的諮詢服務啊，超棒的欸！</p>
+<p>來這攤並不是直接為了職缺，而是希望能提升職涯方面的東西(?)，而我也因此得知了有免費的諮詢服務，賺到了！</p>
+<hr>
+<h2 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h2><p>想精進職涯方面？真的多參加職涯活動準沒錯！</p>
+<p>透過跟企業端聊工作內容、公司在做什麼，那心底的輪廓真的會有越趨清晰的感覺。</p>
+<p>而且多聊、多了解，更了解各種產業之外，也會更清楚自己比較想往哪條路走，有時候甚至能對你原本既定的印象產生了改變，我覺得那交流的過程真的讓人很有收穫！</p>
+<p>（我真的累了，連續寫了一小時半，開始不知道自己在寫什麼了xD）</p>
+<p><strong>就業博覽會的重點：大量問就對了！</strong>我有個想法，如果突然不知道要問什麼，或許可以問說，請問別人有問了您什麼很好的問題嗎？因為感覺很多人問的問題，問得超好，我自己也很想知道啊！</p>
+<br>
+今天這樣逛，真的值得😎]]></content>
+  </entry>
+  <entry>
     <title>【學習筆記】人機互動概論 - 1</title>
     <url>/2022/08/hci-note-1/</url>
     <content><![CDATA[<p>面試的時候，面試官推薦我去了解有關於「人機互動」的領域，加上覺得未來工作很可能會派上用場，因此決定找資源學習這一塊。</p>
@@ -1983,6 +2129,126 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>【學習筆記】人機互動概論 - 2</title>
+    <url>/2022/10/hci-note-2/</url>
+    <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第二彈～</p>
+<span id="more"></span>
+
+<h2 id="影響物品設計好壞的-5-大要素"><a href="#影響物品設計好壞的-5-大要素" class="headerlink" title="影響物品設計好壞的 5 大要素"></a>影響物品設計好壞的 5 大要素</h2><h3 id="Discoverability-可見性"><a href="#Discoverability-可見性" class="headerlink" title="Discoverability (可見性)"></a><a href="https://www.youtube.com/watch?v=vagbsPQSdc4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=5">Discoverability (可見性)</a></h3><ul>
+<li>當我們在<strong>看到</strong>互動物體時，是否可以了解到：<ul>
+<li>我們可以執行哪些行為？</li>
+<li>如何在這個物體上執行這些行為來達到我們預期的效果？</li>
+</ul>
+</li>
+<li>以「門」為例  <img src="1.png"></li>
+<li>除了上述的例子，很多設計物，它其實也都利用了「可見性」這個要素，讓這些設計物在我們日常生活中變得更方便去使用！<ul>
+<li>馬克杯的把手也是「可見性」的展示，告訴我們要靠手去抓握拿起來</li>
+<li>飯店房卡＆房間門長長細細的洞 → 讓使用者發現到需要做的動作，是可以把房卡往這個洞裡面放，來開房間門</li>
+</ul>
+</li>
+<li>以上這些例子都是我們在日常生活中，都會遇到的各種不同物品，它們利用「可見性」這個要素，來自然地與使用者溝通它應該怎麼被使用</li>
+</ul>
+<h3 id="Affordance"><a href="#Affordance" class="headerlink" title="Affordance"></a><a href="https://www.youtube.com/watch?v=A_Qkrjb4xUY&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=6">Affordance</a></h3><ul>
+<li>網路上能找到的翻譯：承擔特質／直觀功能／示能性／預設用途（但很難精準地用中文去翻）</li>
+<li>定義：物體的<strong>實質特性</strong> (形狀, 材質, 大小, 高低, 機械結構等等) 或<strong>物體所處的環境條件</strong> (像是被擺放在很高的地方, 一個有斜坡的地方) 讓使用者可以自然且直覺地了解怎麼使用物體，並且達到他預期想要的效果</li>
+<li>平面：具有支撐的性質（具有支撐的 Affordance）<ul>
+<li>因此當看到一張椅子的時候，可以從椅子它的座椅那邊有平面，知道說這個座椅的平面有承載、支撐的 Affordance，因此會知道我要坐在平面的座椅上，而不是把椅子翻過來坐在椅子的腳上，也不是坐在旁邊尖尖的扶手上</li>
+<li>椅子利用「座椅平面」這個 Affordance 去讓使用者知道如何去跟椅子做互動</li>
+</ul>
+</li>
+<li>手機座：如圖片所示，此為手機架所具備 Affordance 的性質，因此這個手機架不需要特別再寫個標籤，寫說「請把手機放在這個凹槽」，它只要呈現它原本的樣子，就足夠傳達這樣的意思給使用者了  <img src="2.png"></li>
+<li>電腦桌面：本身就是依據 Affordance 這樣的設計要素被製造的！<ul>
+<li>大家一定都有用過 (實體的) 桌面，我們會在桌面上擺上一份份的文件、垃圾桶可以丟點小東西，因此在虛擬的電腦裡，他們就把「桌面」這個具體實際物件搬到虛擬電腦中，這樣使用者可以了解到，我可以隨時回到這個桌面上，而在桌面上，可以把我虛擬的一些文件放在桌面上，當我不需要某文件的時候，就用滑鼠去點文件 (就像是用手去拿起文件)，並且將它拖曳到「垃圾桶」的 icon，就可以丟掉了！</li>
+<li>就像真實世界的桌面，我們可以把文件、文件夾跟垃圾桶放到桌面上，把這個概念應用在電腦世界的虛擬資料上</li>
+<li>利用我們日常生活、我們之前的經驗中具有的一些性質，把這個 Affordance 放在一個虛擬的電腦環境裡面</li>
+</ul>
+</li>
+<li>Affordance 指的其實不只是物體本身的性質 or 這個環境它自己本身的條件，而是物體的性質以及環境所在的條件所傳達出來的意象，怎麼被使用者感知到之後，使用者知道有哪些可能的動作，可以去應用在這個物體以及環境上（該物體與使用者之間的關係）</li>
+<li>Affordance：物體與環境承載的特質如何被使用者感知與理解</li>
+<li>Is there a difference between affordance and discovery?<ul>
+<li>Affordance is related to the object itself. Eg: A button looks clickable. Discoverability is related to the product/solution. Eg: An image-manipulation toolbar shows all features it is possible to use when you want to work with an image.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Signifiers-能指、所指"><a href="#Signifiers-能指、所指" class="headerlink" title="Signifiers (能指、所指)"></a><a href="https://www.youtube.com/watch?v=5NZp2VleG-Q&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=7">Signifiers (能指、所指)</a></h3><ul>
+<li>用英文比較可以準確地傳達這個要素的定義</li>
+<li>定義：向使用者<strong>「傳遞訊號」</strong>在物體的哪個部分要執行這些操作</li>
+<li>使用者在第一次接觸一項新物品的時候，第一時間會先從物品的表面、形狀、材質、大小、高低、機械結構等等，去探索可能可以怎麼樣去操控這個物品</li>
+<li>一個設計良好的物品，是能夠用各種方式向使用者傳達，可以怎麼使用、怎麼樣去對我做哪些動作的「訊號」，也就是「signifiers」</li>
+<li>舉例：鍵盤。<ul>
+<li>每個按鍵都有英文和注音符號的標示，這些標示就是在告訴使用者，如果你想要打出特定的字母或是特定的中文字時，你應該要按哪些特定的按鍵，才能達到你的目的。</li>
+<li>形狀不一樣的按鍵，也直接向使用者傳達說，假設你要按字母的話，是按這種形狀的按鍵，你要按 Enter 鍵的話，你要去找某種特定形狀的按鍵，所以物品的 signifier 也可以用物品的形狀來表達</li>
+<li>鍵盤按鍵的佈局配置 (主鍵盤區、數字鍵區、特殊功能鍵區) 也是一種 signifier</li>
+<li>鍵盤是利用<strong>「視覺」</strong>的 signifiers 向使用者傳遞要在哪個部分執行操作</li>
+</ul>
+</li>
+<li>不僅限於「視覺」，signifiers 有許多不同的表達方式，像是聽覺、觸覺、味覺、體感回饋等等</li>
+<li>舉例：聽覺的 signifiers<ul>
+<li>救護車「喔咿喔咿」的聲音</li>
+<li>救護車是利用「聽覺」的 signifiers，較為急促、高頻地傳達緊急狀況</li>
+</ul>
+</li>
+</ul>
+<h3 id="Feedback-回饋性"><a href="#Feedback-回饋性" class="headerlink" title="Feedback (回饋性)"></a><a href="https://www.youtube.com/watch?v=eA_r19WYzCk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=8">Feedback (回饋性)</a></h3><ul>
+<li>定義：讓使用者可以知道，裝置跟系統有依照使用者的需求在運作</li>
+<li>裝置可以透過使用者的<strong>「各種感官」</strong>給予回饋，像是亮燈提示、發出小小的提示音</li>
+<li>公車下車鈴可以有「聲音提示」，或者是有「閃爍燈號」來回饋給乘客，如此一來，可以讓使用者更好地知道，剛剛做了「按按鈕」的行為，是不是有成功引起這個裝置應該要有的結果</li>
+<li>要注意的地方：這些回饋必須在動作結束之後立刻發生，並且必須要正確的傳達行為所造成的結果</li>
+<li>發生錯誤的回饋性可能因素：沒有立即給予反饋 (按了下車鈴很久才有回饋音效)、給予誤導的反饋 (給的是不恰當的提示音像是答錯的音效)</li>
+</ul>
+<h3 id="Mapping-映射、對應性"><a href="#Mapping-映射、對應性" class="headerlink" title="Mapping (映射、對應性)"></a><a href="https://www.youtube.com/watch?v=zH-o3UjrXo4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=9">Mapping (映射、對應性)</a></h3><ul>
+<li>描述的是一種對應關係</li>
+<li>解釋：Mapping 主要是借用數學裡面名詞而來，主要講述的是「不同集合的元素之間互相映射」的關係</li>
+<li>把「對應性」放在人機互動的框架下＋白話的方式，「對應性」指的是：我們如何把 (1) 裝置的運作、(2) 使用者對裝置做的操作、(3) 裝置產生的效果，聯繫在一起。<ul>
+<li>如果這三者之間的聯繫，可以很自然、很直覺被使用者察覺到、學習起來並且記憶起來的話，我們就會說，這個裝置的設計有很好的對應性</li>
+</ul>
+</li>
+<li>「對應性」有很多種種類<ul>
+<li>「行為」上的相似性所產生的對應性：像是自動筆與筆芯。因為我往下按 (操作裝置的方向) 跟筆芯跑出來的行為 (產生效果的行為)，這個方向是一致的，反映了行為上的對應性，所以對我們來說，這種往下按就會跑出筆芯的設計就會非常好理解和被記得</li>
+<li>「意義」上的相似性所產生的對應性：像是開關燈。手勢往上有增強加大的意義、手勢往下有減弱縮小的意義 → 通常把開關往下按就是把電燈關起來，開關往上按就是電燈打開<ul>
+<li>虛擬的電腦世界也可以看到這樣子對應性的設計：像是 volume slide bar，往上就是音量調大，往下則是音量調小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缺少對應性會造成問題的例子：教室一堆的電燈開關。「開關面板的設計」與「電燈的位置」並沒有使用對應性，對使用者來說，很難從開關設計去理解、去學習，到底我要關前排燈要按哪個開關<ul>
+<li>如果要改善，我們可以想想看，如何讓開關的位置與對應電燈的位置有所關聯，像是前排電燈的開關在上排，後排電燈在下排</li>
+<li>像是這樣做一點點簡單的設計調整，其實都可以大大去改善這個缺乏對應性所造成的問題</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他影響好設計要素的原因"><a href="#其他影響好設計要素的原因" class="headerlink" title="其他影響好設計要素的原因"></a><a href="https://www.youtube.com/watch?v=4kG18j201SU&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=10">其他影響好設計要素的原因</a></h2><ul>
+<li>很多好設計都會同時具備一個以上的要素，而一些不好的設計也都同時缺少多個要素</li>
+<li>通常一個讓我們覺得用起來很順手的設計，背後隱藏了很多設計師，還有開發人員的心血與巧思，這些巧思與心血，讓這些設計可以同時具備了多個好的要素，因此使用者在使用的時候，才會覺得這個東西怎麼那麼好用 → 類似「一日之所需，百工斯為備」</li>
+<li>不好的設計，加上其他設計好要素，可以獲得好的改善<ul>
+<li>Signifiers：向使用者「傳遞訊號」，在物體的哪個部分要執行這些操作</li>
+</ul>
+  <img src="3.png"></li>
+<li>好設計的要素改善，會帶給我們什麼影響？消費者的喜好、安全性 (像是駕駛飛機時) 等等。</li>
+<li>不同文化的使用者，對於物品如何呈現這些要素的需求都會不一樣  <img src="4.png"></li>
+<li>因此，要做出好設計的裝置或系統，除了要考慮上述的好設計要素之外，我們也要把一些因素同時納入考量，才可以達到我們所要達到的效果</li>
+</ul>
+<h2 id="新世代與電腦的互動裝置"><a href="#新世代與電腦的互動裝置" class="headerlink" title="新世代與電腦的互動裝置"></a><a href="https://www.youtube.com/watch?v=VoYZJOkg4VM&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=11">新世代與電腦的互動裝置</a></h2><ul>
+<li>思考一下，還有沒有更酷或是更科幻的與電腦互動方式呢？<ul>
+<li>滑鼠、鍵盤 → 觸控螢幕 → ???</li>
+<li>鋼鐵人電影裡面的操作方式：Holographic User Interfaces、Gesture-based User Interfaces、in-air gesture</li>
+<li>鐘點站裡面的倒數計時：on-skin interfaces、touch interaction</li>
+</ul>
+</li>
+<li>Air+Touch: Interweaving Touch &amp; In-Air Gestures<ul>
+<li>在一個智慧型手機的上方加上一個深度的攝影機，透過深度的攝影機，它可以知道現在這個手指跟螢幕之間還有上下的距離，把這些距離的資訊再利用電腦做分析，就可以去偵測手指的位置、可能是什麼樣的手勢</li>
+</ul>
+</li>
+<li>Air+Touch 用了哪些好設計的要素？<ul>
+<li>Mapping 對應性：螢幕上空的位置較遠，觸控螢幕的圓圈較大</li>
+<li>另一個 Mapping 對應性：點擊之後，使用者可以在空中轉圈圈，就像 (音量) 旋鈕一樣，去微調在螢幕上地圖的大小</li>
+</ul>
+</li>
+</ul>
+<br>
+未完待續，stay tuned!]]></content>
+  </entry>
+  <entry>
     <title>助你行動</title>
     <url>/2022/01/help-you-take-action/</url>
     <content><![CDATA[<p>平日蒐集一些讓我很有感觸的句子，把它們彙整起來分享給大家～</p>
@@ -2078,29 +2344,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>有很多理由和藉口？一一提出來質疑一番吧！<br>對呀，為何不能是你呢？</p>
 <br>
 希望這篇文章能助你一臂之力💪]]></content>
-  </entry>
-  <entry>
-    <title>嘗試看看一種閱讀寫作的方式</title>
-    <url>/2022/12/input-output-with-read-write/</url>
-    <content><![CDATA[<p>讓自己盡量去習慣輸入和輸出，也在過程當中，連結文章及個人經驗，反思一點東西。</p>
-<p>現階段主要是希望自己透過卡尼多隨筆來認識自己多一點，雖然沒有說一定得幾天之內就寫一篇出來，但如果久久沒寫停了下來，要再行動去更新或者是說產生新的內容，那真的頗不容易，而且也很難去進步😅</p>
-<span id="more"></span>
-
-<p>關於新點子，簡單來說：</p>
-<ul>
-<li>利用零碎時間讀文章，分享連結給大家，然後寫出一篇簡單的心得文，慢慢累積（頻率可隨意，主要目的是習慣寫作和進行反思，每次量可不多）</li>
-</ul>
-<p>具體的流程大概會是這樣：</p>
-<ol>
-<li>我有用 Feedly 訂閱一些文章來源，像是閱讀前哨站、遠見雜誌、科技報橘等等的。我大概會一個禮拜認真整理一次，挑選出比較想看的文章出來，然後放進 Notion 裡面。不直接透過 Feedly 而是先透過篩選再列進 Notion 的原因是，Feedly 上面的內容頗雜亂的，如果要讀之前還得「做選擇」要讀哪篇文章，光來回切換（篩選、閱讀）就耗費不少寶貴的精力了，更何況還要進行反思！所以我就想說，先篩選，放進 Notion 一個 Page 裡面，有零碎時間想讀文章的時候，直接打開那個 Page 隨機挑一篇讀即可，不會有多餘的選擇障礙。至於 Page 裡面的分類？我目前純粹是簡單照文章來源來分的啦😅</li>
-<li>只能讀 Feedly 裡面的文章嗎？當然不是。如果有在其他地方，像是臉書、google 的時候隨意找到的，有挖到想讀的，那一樣可以放進 Notion Page 裡面，等到之後的零碎時間再來閱讀這樣～</li>
-<li>到了零碎時間想讀文章的時候就打開 Notion Page 開讀，就是這麼簡單，不必再耗費時間和精力做篩選，可隨機點一篇也就是「隨點即讀」，很方便！</li>
-<li>讀完一篇文章，無論讀起來感覺怎麼樣：覺得寫得很好有產生共鳴？讀完其實感覺還好不怎麼感興趣？發現讀到了一篇廢文浪費了時間？都把那篇文章附有超連結的標題移進一個 Notion toggle 裡，為下一步的文字輸出做準備。因為無論文章內容再怎麼糟糕，總是會有一個點讓自己萌生出想法，所以等於是透過文章來導引出自己的想法，至於文章本身怎麼樣就不是這麼重要了。</li>
-<li>（還沒開始行動，我目前的下一步）決定要開始寫文章的時候，用 random 的方式從 toggle 裡面挑文章出來。之所以用 random，是因為可以讓自己多嘗試讀和寫不同類型的文章，不然很可能只會挑自己比較想寫的，或是選擇障礙不知道要挑什麼😂</li>
-<li>（一樣尚未行動所以不確定成效或感覺如何）寫完文章以後，就清空那個 toggle 裡面的文章，鼓勵自己再去讀新的文章，然後再加進那個 toggle！</li>
-</ol>
-<p>大概是這樣囉～</p>
-]]></content>
   </entry>
   <entry>
     <title>用 Hexo 及 GitHub Pages 打造部落格</title>
@@ -2391,6 +2634,29 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>嘗試看看一種閱讀寫作的方式</title>
+    <url>/2022/12/input-output-with-read-write/</url>
+    <content><![CDATA[<p>讓自己盡量去習慣輸入和輸出，也在過程當中，連結文章及個人經驗，反思一點東西。</p>
+<p>現階段主要是希望自己透過卡尼多隨筆來認識自己多一點，雖然沒有說一定得幾天之內就寫一篇出來，但如果久久沒寫停了下來，要再行動去更新或者是說產生新的內容，那真的頗不容易，而且也很難去進步😅</p>
+<span id="more"></span>
+
+<p>關於新點子，簡單來說：</p>
+<ul>
+<li>利用零碎時間讀文章，分享連結給大家，然後寫出一篇簡單的心得文，慢慢累積（頻率可隨意，主要目的是習慣寫作和進行反思，每次量可不多）</li>
+</ul>
+<p>具體的流程大概會是這樣：</p>
+<ol>
+<li>我有用 Feedly 訂閱一些文章來源，像是閱讀前哨站、遠見雜誌、科技報橘等等的。我大概會一個禮拜認真整理一次，挑選出比較想看的文章出來，然後放進 Notion 裡面。不直接透過 Feedly 而是先透過篩選再列進 Notion 的原因是，Feedly 上面的內容頗雜亂的，如果要讀之前還得「做選擇」要讀哪篇文章，光來回切換（篩選、閱讀）就耗費不少寶貴的精力了，更何況還要進行反思！所以我就想說，先篩選，放進 Notion 一個 Page 裡面，有零碎時間想讀文章的時候，直接打開那個 Page 隨機挑一篇讀即可，不會有多餘的選擇障礙。至於 Page 裡面的分類？我目前純粹是簡單照文章來源來分的啦😅</li>
+<li>只能讀 Feedly 裡面的文章嗎？當然不是。如果有在其他地方，像是臉書、google 的時候隨意找到的，有挖到想讀的，那一樣可以放進 Notion Page 裡面，等到之後的零碎時間再來閱讀這樣～</li>
+<li>到了零碎時間想讀文章的時候就打開 Notion Page 開讀，就是這麼簡單，不必再耗費時間和精力做篩選，可隨機點一篇也就是「隨點即讀」，很方便！</li>
+<li>讀完一篇文章，無論讀起來感覺怎麼樣：覺得寫得很好有產生共鳴？讀完其實感覺還好不怎麼感興趣？發現讀到了一篇廢文浪費了時間？都把那篇文章附有超連結的標題移進一個 Notion toggle 裡，為下一步的文字輸出做準備。因為無論文章內容再怎麼糟糕，總是會有一個點讓自己萌生出想法，所以等於是透過文章來導引出自己的想法，至於文章本身怎麼樣就不是這麼重要了。</li>
+<li>（還沒開始行動，我目前的下一步）決定要開始寫文章的時候，用 random 的方式從 toggle 裡面挑文章出來。之所以用 random，是因為可以讓自己多嘗試讀和寫不同類型的文章，不然很可能只會挑自己比較想寫的，或是選擇障礙不知道要挑什麼😂</li>
+<li>（一樣尚未行動所以不確定成效或感覺如何）寫完文章以後，就清空那個 toggle 裡面的文章，鼓勵自己再去讀新的文章，然後再加進那個 toggle！</li>
+</ol>
+<p>大概是這樣囉～</p>
+]]></content>
+  </entry>
+  <entry>
     <title>JavaScript ES6 Cheatsheet</title>
     <url>/2020/04/javascript-es6-cheatsheet/</url>
     <content><![CDATA[<p><a href="/2020/04/javascript-es6-cheatsheet"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" style="width:50vw;" /></a></p>
@@ -2484,6 +2750,12 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>卡尼多隨筆？</title>
+    <url>/2022/10/keep-moving-forward/</url>
+    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
+]]></content>
+  </entry>
+  <entry>
     <title>不完美行動</title>
     <url>/2021/09/just-do-it/</url>
     <content><![CDATA[<p>任何偉大的成果，都是由一連串不完美行動所連接起來的。<br>（節錄自「<a href="https://www.youtube.com/channel/UCu545MWig-4D4TxYhr0UBAA">Ryan Wu</a>」的「<a href="https://www.youtube.com/watch?v=LWNz1pgJftQ">不完美行動</a>」）</p>
@@ -2508,126 +2780,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <hr>
 <p>反正結論就是，接下來想寫什麼就寫什麼囉！<br><br></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>【學習筆記】人機互動概論 - 2</title>
-    <url>/2022/10/hci-note-2/</url>
-    <content><![CDATA[<p>「<a href="https://www.youtube.com/playlist?list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y">人機互動概論：探索人與科技交會的新思維</a>」系列影片，筆記第二彈～</p>
-<span id="more"></span>
-
-<h2 id="影響物品設計好壞的-5-大要素"><a href="#影響物品設計好壞的-5-大要素" class="headerlink" title="影響物品設計好壞的 5 大要素"></a>影響物品設計好壞的 5 大要素</h2><h3 id="Discoverability-可見性"><a href="#Discoverability-可見性" class="headerlink" title="Discoverability (可見性)"></a><a href="https://www.youtube.com/watch?v=vagbsPQSdc4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=5">Discoverability (可見性)</a></h3><ul>
-<li>當我們在<strong>看到</strong>互動物體時，是否可以了解到：<ul>
-<li>我們可以執行哪些行為？</li>
-<li>如何在這個物體上執行這些行為來達到我們預期的效果？</li>
-</ul>
-</li>
-<li>以「門」為例  <img src="1.png"></li>
-<li>除了上述的例子，很多設計物，它其實也都利用了「可見性」這個要素，讓這些設計物在我們日常生活中變得更方便去使用！<ul>
-<li>馬克杯的把手也是「可見性」的展示，告訴我們要靠手去抓握拿起來</li>
-<li>飯店房卡＆房間門長長細細的洞 → 讓使用者發現到需要做的動作，是可以把房卡往這個洞裡面放，來開房間門</li>
-</ul>
-</li>
-<li>以上這些例子都是我們在日常生活中，都會遇到的各種不同物品，它們利用「可見性」這個要素，來自然地與使用者溝通它應該怎麼被使用</li>
-</ul>
-<h3 id="Affordance"><a href="#Affordance" class="headerlink" title="Affordance"></a><a href="https://www.youtube.com/watch?v=A_Qkrjb4xUY&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=6">Affordance</a></h3><ul>
-<li>網路上能找到的翻譯：承擔特質／直觀功能／示能性／預設用途（但很難精準地用中文去翻）</li>
-<li>定義：物體的<strong>實質特性</strong> (形狀, 材質, 大小, 高低, 機械結構等等) 或<strong>物體所處的環境條件</strong> (像是被擺放在很高的地方, 一個有斜坡的地方) 讓使用者可以自然且直覺地了解怎麼使用物體，並且達到他預期想要的效果</li>
-<li>平面：具有支撐的性質（具有支撐的 Affordance）<ul>
-<li>因此當看到一張椅子的時候，可以從椅子它的座椅那邊有平面，知道說這個座椅的平面有承載、支撐的 Affordance，因此會知道我要坐在平面的座椅上，而不是把椅子翻過來坐在椅子的腳上，也不是坐在旁邊尖尖的扶手上</li>
-<li>椅子利用「座椅平面」這個 Affordance 去讓使用者知道如何去跟椅子做互動</li>
-</ul>
-</li>
-<li>手機座：如圖片所示，此為手機架所具備 Affordance 的性質，因此這個手機架不需要特別再寫個標籤，寫說「請把手機放在這個凹槽」，它只要呈現它原本的樣子，就足夠傳達這樣的意思給使用者了  <img src="2.png"></li>
-<li>電腦桌面：本身就是依據 Affordance 這樣的設計要素被製造的！<ul>
-<li>大家一定都有用過 (實體的) 桌面，我們會在桌面上擺上一份份的文件、垃圾桶可以丟點小東西，因此在虛擬的電腦裡，他們就把「桌面」這個具體實際物件搬到虛擬電腦中，這樣使用者可以了解到，我可以隨時回到這個桌面上，而在桌面上，可以把我虛擬的一些文件放在桌面上，當我不需要某文件的時候，就用滑鼠去點文件 (就像是用手去拿起文件)，並且將它拖曳到「垃圾桶」的 icon，就可以丟掉了！</li>
-<li>就像真實世界的桌面，我們可以把文件、文件夾跟垃圾桶放到桌面上，把這個概念應用在電腦世界的虛擬資料上</li>
-<li>利用我們日常生活、我們之前的經驗中具有的一些性質，把這個 Affordance 放在一個虛擬的電腦環境裡面</li>
-</ul>
-</li>
-<li>Affordance 指的其實不只是物體本身的性質 or 這個環境它自己本身的條件，而是物體的性質以及環境所在的條件所傳達出來的意象，怎麼被使用者感知到之後，使用者知道有哪些可能的動作，可以去應用在這個物體以及環境上（該物體與使用者之間的關係）</li>
-<li>Affordance：物體與環境承載的特質如何被使用者感知與理解</li>
-<li>Is there a difference between affordance and discovery?<ul>
-<li>Affordance is related to the object itself. Eg: A button looks clickable. Discoverability is related to the product/solution. Eg: An image-manipulation toolbar shows all features it is possible to use when you want to work with an image.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Signifiers-能指、所指"><a href="#Signifiers-能指、所指" class="headerlink" title="Signifiers (能指、所指)"></a><a href="https://www.youtube.com/watch?v=5NZp2VleG-Q&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=7">Signifiers (能指、所指)</a></h3><ul>
-<li>用英文比較可以準確地傳達這個要素的定義</li>
-<li>定義：向使用者<strong>「傳遞訊號」</strong>在物體的哪個部分要執行這些操作</li>
-<li>使用者在第一次接觸一項新物品的時候，第一時間會先從物品的表面、形狀、材質、大小、高低、機械結構等等，去探索可能可以怎麼樣去操控這個物品</li>
-<li>一個設計良好的物品，是能夠用各種方式向使用者傳達，可以怎麼使用、怎麼樣去對我做哪些動作的「訊號」，也就是「signifiers」</li>
-<li>舉例：鍵盤。<ul>
-<li>每個按鍵都有英文和注音符號的標示，這些標示就是在告訴使用者，如果你想要打出特定的字母或是特定的中文字時，你應該要按哪些特定的按鍵，才能達到你的目的。</li>
-<li>形狀不一樣的按鍵，也直接向使用者傳達說，假設你要按字母的話，是按這種形狀的按鍵，你要按 Enter 鍵的話，你要去找某種特定形狀的按鍵，所以物品的 signifier 也可以用物品的形狀來表達</li>
-<li>鍵盤按鍵的佈局配置 (主鍵盤區、數字鍵區、特殊功能鍵區) 也是一種 signifier</li>
-<li>鍵盤是利用<strong>「視覺」</strong>的 signifiers 向使用者傳遞要在哪個部分執行操作</li>
-</ul>
-</li>
-<li>不僅限於「視覺」，signifiers 有許多不同的表達方式，像是聽覺、觸覺、味覺、體感回饋等等</li>
-<li>舉例：聽覺的 signifiers<ul>
-<li>救護車「喔咿喔咿」的聲音</li>
-<li>救護車是利用「聽覺」的 signifiers，較為急促、高頻地傳達緊急狀況</li>
-</ul>
-</li>
-</ul>
-<h3 id="Feedback-回饋性"><a href="#Feedback-回饋性" class="headerlink" title="Feedback (回饋性)"></a><a href="https://www.youtube.com/watch?v=eA_r19WYzCk&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=8">Feedback (回饋性)</a></h3><ul>
-<li>定義：讓使用者可以知道，裝置跟系統有依照使用者的需求在運作</li>
-<li>裝置可以透過使用者的<strong>「各種感官」</strong>給予回饋，像是亮燈提示、發出小小的提示音</li>
-<li>公車下車鈴可以有「聲音提示」，或者是有「閃爍燈號」來回饋給乘客，如此一來，可以讓使用者更好地知道，剛剛做了「按按鈕」的行為，是不是有成功引起這個裝置應該要有的結果</li>
-<li>要注意的地方：這些回饋必須在動作結束之後立刻發生，並且必須要正確的傳達行為所造成的結果</li>
-<li>發生錯誤的回饋性可能因素：沒有立即給予反饋 (按了下車鈴很久才有回饋音效)、給予誤導的反饋 (給的是不恰當的提示音像是答錯的音效)</li>
-</ul>
-<h3 id="Mapping-映射、對應性"><a href="#Mapping-映射、對應性" class="headerlink" title="Mapping (映射、對應性)"></a><a href="https://www.youtube.com/watch?v=zH-o3UjrXo4&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=9">Mapping (映射、對應性)</a></h3><ul>
-<li>描述的是一種對應關係</li>
-<li>解釋：Mapping 主要是借用數學裡面名詞而來，主要講述的是「不同集合的元素之間互相映射」的關係</li>
-<li>把「對應性」放在人機互動的框架下＋白話的方式，「對應性」指的是：我們如何把 (1) 裝置的運作、(2) 使用者對裝置做的操作、(3) 裝置產生的效果，聯繫在一起。<ul>
-<li>如果這三者之間的聯繫，可以很自然、很直覺被使用者察覺到、學習起來並且記憶起來的話，我們就會說，這個裝置的設計有很好的對應性</li>
-</ul>
-</li>
-<li>「對應性」有很多種種類<ul>
-<li>「行為」上的相似性所產生的對應性：像是自動筆與筆芯。因為我往下按 (操作裝置的方向) 跟筆芯跑出來的行為 (產生效果的行為)，這個方向是一致的，反映了行為上的對應性，所以對我們來說，這種往下按就會跑出筆芯的設計就會非常好理解和被記得</li>
-<li>「意義」上的相似性所產生的對應性：像是開關燈。手勢往上有增強加大的意義、手勢往下有減弱縮小的意義 → 通常把開關往下按就是把電燈關起來，開關往上按就是電燈打開<ul>
-<li>虛擬的電腦世界也可以看到這樣子對應性的設計：像是 volume slide bar，往上就是音量調大，往下則是音量調小</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>缺少對應性會造成問題的例子：教室一堆的電燈開關。「開關面板的設計」與「電燈的位置」並沒有使用對應性，對使用者來說，很難從開關設計去理解、去學習，到底我要關前排燈要按哪個開關<ul>
-<li>如果要改善，我們可以想想看，如何讓開關的位置與對應電燈的位置有所關聯，像是前排電燈的開關在上排，後排電燈在下排</li>
-<li>像是這樣做一點點簡單的設計調整，其實都可以大大去改善這個缺乏對應性所造成的問題</li>
-</ul>
-</li>
-</ul>
-<h2 id="其他影響好設計要素的原因"><a href="#其他影響好設計要素的原因" class="headerlink" title="其他影響好設計要素的原因"></a><a href="https://www.youtube.com/watch?v=4kG18j201SU&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=10">其他影響好設計要素的原因</a></h2><ul>
-<li>很多好設計都會同時具備一個以上的要素，而一些不好的設計也都同時缺少多個要素</li>
-<li>通常一個讓我們覺得用起來很順手的設計，背後隱藏了很多設計師，還有開發人員的心血與巧思，這些巧思與心血，讓這些設計可以同時具備了多個好的要素，因此使用者在使用的時候，才會覺得這個東西怎麼那麼好用 → 類似「一日之所需，百工斯為備」</li>
-<li>不好的設計，加上其他設計好要素，可以獲得好的改善<ul>
-<li>Signifiers：向使用者「傳遞訊號」，在物體的哪個部分要執行這些操作</li>
-</ul>
-  <img src="3.png"></li>
-<li>好設計的要素改善，會帶給我們什麼影響？消費者的喜好、安全性 (像是駕駛飛機時) 等等。</li>
-<li>不同文化的使用者，對於物品如何呈現這些要素的需求都會不一樣  <img src="4.png"></li>
-<li>因此，要做出好設計的裝置或系統，除了要考慮上述的好設計要素之外，我們也要把一些因素同時納入考量，才可以達到我們所要達到的效果</li>
-</ul>
-<h2 id="新世代與電腦的互動裝置"><a href="#新世代與電腦的互動裝置" class="headerlink" title="新世代與電腦的互動裝置"></a><a href="https://www.youtube.com/watch?v=VoYZJOkg4VM&list=PLQn99bzkJv9xK8KR9foKdNC3dLyL77u3Y&index=11">新世代與電腦的互動裝置</a></h2><ul>
-<li>思考一下，還有沒有更酷或是更科幻的與電腦互動方式呢？<ul>
-<li>滑鼠、鍵盤 → 觸控螢幕 → ???</li>
-<li>鋼鐵人電影裡面的操作方式：Holographic User Interfaces、Gesture-based User Interfaces、in-air gesture</li>
-<li>鐘點站裡面的倒數計時：on-skin interfaces、touch interaction</li>
-</ul>
-</li>
-<li>Air+Touch: Interweaving Touch &amp; In-Air Gestures<ul>
-<li>在一個智慧型手機的上方加上一個深度的攝影機，透過深度的攝影機，它可以知道現在這個手指跟螢幕之間還有上下的距離，把這些距離的資訊再利用電腦做分析，就可以去偵測手指的位置、可能是什麼樣的手勢</li>
-</ul>
-</li>
-<li>Air+Touch 用了哪些好設計的要素？<ul>
-<li>Mapping 對應性：螢幕上空的位置較遠，觸控螢幕的圓圈較大</li>
-<li>另一個 Mapping 對應性：點擊之後，使用者可以在空中轉圈圈，就像 (音量) 旋鈕一樣，去微調在螢幕上地圖的大小</li>
-</ul>
-</li>
-</ul>
-<br>
-未完待續，stay tuned!]]></content>
   </entry>
   <entry>
     <title>【心得】LINE Developers Meetup &amp;#35;16</title>
@@ -2737,17 +2889,23 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>專注當下</title>
-    <url>/2021/12/live-in-the-moment/</url>
-    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
-<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>卡尼多隨筆？</title>
-    <url>/2022/10/keep-moving-forward/</url>
-    <content><![CDATA[<p>目前一點都不隨筆，該開始隨筆起來了！<br><a href="https://www.youtube.com/channel/UCVJOQCQI-lK7bTcKVG7ArYw/featured">卡尼多</a>也是，灰塵好像積太多了🤔</p>
-]]></content>
+    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
+    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
+    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
+<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+<span id="more"></span>
+
+<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
+<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
+<p><img src="2.png" alt="2.png"></p>
+<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
+<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
+<p><img src="3.png" alt="3.png"></p>
+<br>
+這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+      <tags>
+        <tag>Logic Pro</tag>
+      </tags>
   </entry>
   <entry>
     <title>實用 Linux 指令</title>
@@ -2864,22 +3022,69 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
-    <title>如何解決 Logic Pro Plug-In Compatibility 的問題</title>
-    <url>/2021/10/logic-pro-plug-in-compatibility/</url>
-    <content><![CDATA[<p>上配樂製作課時，裝完 EastWest 的 Opus 和 Play 之後，在 Plug-In Manager「Compatibility」的欄位上居然不是顯示 <code>successfully validated</code>，卻分別是 <code>couldn&#39;t be opened</code> 和 <code>crashed validation</code>！</p>
-<p>這一篇將告訴你：如何用非常簡單的方法解決這個問題。雖然不能百分之百確定這個方法能解決所有類似的問題，但至少我試了以後問題就排除了～</p>
+    <title>專注當下</title>
+    <url>/2021/12/live-in-the-moment/</url>
+    <content><![CDATA[<p>過去的就讓它過去，未來如何由自己創造。</p>
+<p>2021年12月12日 星期日 18:00 開始，專注每個當下，期許自己！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
+    <url>/2021/01/microprocessor-project/</url>
+    <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
+<!-- <img src="1.jpeg" style="width:50vw;" /> -->
+
+<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
 <span id="more"></span>
 
-<h3 id="打開-Plug-in-Manager"><a href="#打開-Plug-in-Manager" class="headerlink" title="打開 Plug-in Manager"></a>打開 Plug-in Manager</h3><p><img src="1.png" alt="1.png"></p>
-<h3 id="用名稱搜尋出-Plug-in"><a href="#用名稱搜尋出-Plug-in" class="headerlink" title="用名稱搜尋出 Plug-in"></a>用名稱搜尋出 Plug-in</h3><p>截圖前已解決，所以圖中「Compatibility」顯示的是 <code>successfully validated</code>。</p>
-<p><img src="2.png" alt="2.png"></p>
-<h3 id="Reset-amp-Rescan-Selection"><a href="#Reset-amp-Rescan-Selection" class="headerlink" title="Reset &amp; Rescan Selection"></a>Reset &amp; Rescan Selection</h3><p>按一下你想修復的 plug-in，然後按 <code>Reset &amp; Rescan Selection</code>。</p>
-<p>按完之後會跑出「Audio Unit Validation Result」，我猜是 Logic 給 plug-in 跑一些測試，通過之後，就核發 <code>successfully validated</code> 吧？（蠻像是軟體工程界的 unit test）</p>
-<p><img src="3.png" alt="3.png"></p>
-<br>
-這樣就大功告成囉！（我原本還以為解決過程會很繁瑣呢xD）]]></content>
+<p>這次僅做簡單的紀錄。</p>
+<hr>
+<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
+<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
+<hr>
+<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
+  <!-- <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" /> -->
+  <img src="2.jpg" style="width:30vw;" />
+  <figcaption>來玩機台囉！</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" /> -->
+  <img src="3.jpg" style="width:30vw;" />
+  <figcaption>挖掉杯子底部，讓球通過</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" /> -->
+  <img src="4.jpg" style="width:30vw;" />
+  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
+</figure>
+<figure>
+  <!-- <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" /> -->
+  <img src="5.jpg" style="width:30vw;" />
+  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
+</figure>
+
+<hr>
+<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
+<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
+]]></content>
       <tags>
-        <tag>Logic Pro</tag>
+        <tag>交大</tag>
+        <tag>課程</tag>
+        <tag>專題</tag>
+        <tag>微處理機</tag>
+        <tag>STM32</tag>
+        <tag>開發板</tag>
+        <tag>投籃機</tag>
       </tags>
   </entry>
   <entry>
@@ -3033,65 +3238,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
         <tag>JavaScript</tag>
         <tag>Moleculer</tag>
         <tag>CRUD</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用 STM32 開發板做一台類似投籃機的遊戲機台</title>
-    <url>/2021/01/microprocessor-project/</url>
-    <content><![CDATA[<p><a href="/2021/01/microprocessor-project"><img src="https://images.unsplash.com/photo-1514031231291-fee925070a61?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" style="width:50vw;" /></a></p>
-<!-- <img src="1.jpeg" style="width:50vw;" /> -->
-
-<p>大三上修「微處理機系統實驗」時所做的期末專題。</p>
-<span id="more"></span>
-
-<p>這次僅做簡單的紀錄。</p>
-<hr>
-<h2 id="開發過程寫的文件"><a href="#開發過程寫的文件" class="headerlink" title="開發過程寫的文件"></a>開發過程寫的文件</h2><h3 id="專題提案"><a href="#專題提案" class="headerlink" title="專題提案"></a>專題提案</h3><p>知道到底要做什麼是首要之務。<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/專題提案.pdf" target="_blank">這是專題提案～</a></p>
-<h3 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h3><p>開始行動前，如果能先有個大概方向，往往更有利於進度的推進。<br>後來我又列出實作細節，非常 detailed 的那種，這不但讓我克服了拖延，也讓我因為能更容易地各個擊破而產生很大的成就感！<br><a href="https://github.com/kanido386/playground/blob/master/microprocessor-project/實作方向.pdf" target="_blank">這是實作方向～</a></p>
-<hr>
-<h2 id="用影片來記錄"><a href="#用影片來記錄" class="headerlink" title="用影片來記錄"></a>用影片來記錄</h2><h3 id="前一天測試"><a href="#前一天測試" class="headerlink" title="前一天測試"></a>前一天測試</h3><p>終於花非常多時間弄完有的沒的事情以後，來進行個測試。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dAJFhHayooc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="demo當天再測試"><a href="#demo當天再測試" class="headerlink" title="demo當天再測試"></a>demo當天再測試</h3><p>在教授和助教們來評分以前，趕快再來測試一番，出了什麼差錯就功虧一簣了！</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M_ND80FLdWY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="機台拆解"><a href="#機台拆解" class="headerlink" title="機台拆解"></a>機台拆解</h3><p>期末展結束以後要把所有器材還給助教，不得不拆解這個花我非常多心思的機台 😢<br>剩下的紙箱、杯子留著也不能做什麼，只好回收掉⋯⋯</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jmL-ML8BDvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr>
-<h2 id="一些照片"><a href="#一些照片" class="headerlink" title="一些照片"></a>一些照片</h2><figure>
-  <!-- <img src="https://i.imgur.com/4S5wvKm.jpg" style="width:30vw;" /> -->
-  <img src="2.jpg" style="width:30vw;" />
-  <figcaption>來玩機台囉！</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/vXYNK6y.jpg" style="width:30vw;" /> -->
-  <img src="3.jpg" style="width:30vw;" />
-  <figcaption>挖掉杯子底部，讓球通過</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/qbR9bUC.jpg" style="width:30vw;" /> -->
-  <img src="4.jpg" style="width:30vw;" />
-  <figcaption>機台是放斜的，這樣可以讓球滾下來</figcaption>
-</figure>
-<figure>
-  <!-- <img src="https://i.imgur.com/jPt5Qn1.jpg" style="width:30vw;" /> -->
-  <img src="5.jpg" style="width:30vw;" />
-  <figcaption>這就是最麻煩無趣的部分：接線（機台裡面超亂）</figcaption>
-</figure>
-
-<hr>
-<h2 id="至少程式碼不會和我分開"><a href="#至少程式碼不會和我分開" class="headerlink" title="至少程式碼不會和我分開"></a>至少程式碼不會和我分開</h2><p><a href="https://github.com/kanido386/playground/tree/master/microprocessor-project" target="_blank">這是專案資料夾～</a><br>只需要看 <code>/final-project/src/</code> 裡面的 code 就行囉！<br>（邏輯的部分在 <code>main.c</code> 裡面～）</p>
-<p>原本我是用一個叫 SystemWorkbench 的 IDE 來開發，但後來發現，其實用 Visual Studio Code 來寫 code 會比較有效率，能不能同時縮排很多行 code 真的差非常多！<br>（GitHub 上面呈現 code 的縮排看起來有點恐怖，就不要計較了啦 😂）<br><br><br>今天的分享就到這邊，我們下篇文見吧 😃</p>
-]]></content>
-      <tags>
-        <tag>交大</tag>
-        <tag>課程</tag>
-        <tag>專題</tag>
-        <tag>微處理機</tag>
-        <tag>STM32</tag>
-        <tag>開發板</tag>
-        <tag>投籃機</tag>
       </tags>
   </entry>
   <entry>
@@ -3842,6 +3988,14 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 ]]></content>
   </entry>
   <entry>
+    <title>【軟實力】1. 這是一本你從未見過的軟體開發書</title>
+    <url>/2023/05/soft-skills-1/</url>
+    <content><![CDATA[<p>時間過得真是快，轉眼間，已經做了八個多月的軟體工程師了！但老實說，我覺得自己沒成長多少，原因在於工作了以後，我好像也沒好好去善用下班之後的時間，常常會覺得時間怎麼咻一下就過去了，自己也沒幹嘛😂</p>
+<p>於是乎，在不久前，買了這本《Soft Skills 軟實力：軟體開發人員的生存手冊》，期許自己在閱讀並寫作的過程當中，逐漸成為一名全方位的軟體開發人員。想成為一名全方位的軟體開發人員，需要的不只是寫程式而已，還有職涯、自我行銷、學習、生產力、理財、健身、心靈等等的領域需要我們去灌溉培養。</p>
+<p>因此，讓我們一起跟著這本書，多多去關注個人成長，發展人生中的不同面向，朝著「全方位」的目標邁進吧！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>【軟實力】26. 撰寫文章，進而出版書籍</title>
     <url>/2023/08/soft-skills-26/</url>
     <content><![CDATA[<blockquote>
@@ -3881,217 +4035,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>試著先寫一些短篇文章，例如，寫雜誌專欄，再著手進行書籍寫作。找幾個發行量少的軟體開發雜誌試試水溫，向他們提交文章摘要。（你可以到書店翻翻雜誌，或是上網搜尋軟體開發雜誌。）</p>
 </blockquote>
 <p>我先從現在的部落格開始好了，而且也挺久沒寫偏「技術文章」的內容了😂<br>技術方面，比起寫文章，目前我更想要透過做 project 的方式來弄：<a href="https://www.youtube.com/@kanispher">kanispher</a>。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】1. 這是一本你從未見過的軟體開發書</title>
-    <url>/2023/05/soft-skills-1/</url>
-    <content><![CDATA[<p>時間過得真是快，轉眼間，已經做了八個多月的軟體工程師了！但老實說，我覺得自己沒成長多少，原因在於工作了以後，我好像也沒好好去善用下班之後的時間，常常會覺得時間怎麼咻一下就過去了，自己也沒幹嘛😂</p>
-<p>於是乎，在不久前，買了這本《Soft Skills 軟實力：軟體開發人員的生存手冊》，期許自己在閱讀並寫作的過程當中，逐漸成為一名全方位的軟體開發人員。想成為一名全方位的軟體開發人員，需要的不只是寫程式而已，還有職涯、自我行銷、學習、生產力、理財、健身、心靈等等的領域需要我們去灌溉培養。</p>
-<p>因此，讓我們一起跟著這本書，多多去關注個人成長，發展人生中的不同面向，朝著「全方位」的目標邁進吧！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】51. 房地產是最好的投資</title>
-    <url>/2023/07/soft-skills-51/</url>
-    <content><![CDATA[<p>每次聽到「房地產」這三個字，總是覺得它離我還非常遙遠而沒去了解它。<br>讀完這個章節以後，雖然還是有差不多的感覺，但至少對它有個初步的認識，而且在閱讀的過程中也讓我思考了一點東西，也是挺不錯的。</p>
-<span id="more"></span>
-
-<p>作者建議我們以開放的心態來看本章的內容，因為不論我們是否決定要投資房地產，都應該要對房地產有足夠的認識，了解它的運作方式，以及它能提供怎樣的機會給我們。多知道新東西來增廣見聞不是也挺好的嗎？畢竟知識就是力量，那些知識能在什麼時機點帶來價值我們永遠不會知道。</p>
-<h3 id="房地產是最好的投資"><a href="#房地產是最好的投資" class="headerlink" title="房地產是最好的投資"></a>房地產是最好的投資</h3><p>為什麼作者認為房地產是最好的投資呢？作者除了在本章節當中用了一點篇幅舉了個例子，也總結道：</p>
-<blockquote>
-<p>因為如果你買出租用的房地產，每個月還固定的貸款，租金收入穩定，就能以銀行的錢做為大部分房地產的資金，透過財務槓桿的力量，給你大量的好處。當所有事情都受到通貨膨漲的影響時，房地產投資仍然能從中獲益，作為保值的工具。</p>
-</blockquote>
-<h3 id="報價建議"><a href="#報價建議" class="headerlink" title="報價建議"></a>報價建議</h3><p>此外，在出租用房地產報價建議的部分，作者的這一番話挺耐人尋味的：</p>
-<blockquote>
-<p>這不過是數字遊戲，報了五十個低價，你只需要有一個賣家接受，搞不好能撿到一個低於市價百分之五十的房子，因為賣家急於脫手或者是不在乎價格。你不會相信，其實有許多賣家因為各種理由，並不太在乎價格。</p>
-</blockquote>
-<p>（感覺人生很多方面也同樣可以這樣嘗試看看，雖然套用到感情方面好像就不太妥當😅）</p>
-<h3 id="延伸的想法"><a href="#延伸的想法" class="headerlink" title="延伸的想法"></a>延伸的想法</h3><p>作者分享的下面這兩點，讓我激盪出了一點想法：</p>
-<ol>
-<li>假設房子看起來很好，你也簽了房地產合約，下一步就是檢查房子，<strong>我一定會找最好而且最細心的房屋檢驗師來檢查</strong>，我想在投入更多金錢之前，確認房子是否有任何問題。</li>
-<li>買了房地產之後，我會建議你落實房地產管理，但<strong>強列不建議由自己來管理出租的房地產。</strong>在我看來，不值得投入精力去管理，或者是讓自己頭痛。我每個月的花費裡，<strong>最划算的就是付錢給房地產管理公司，請他們管理我的出租物件。</strong>好的物件管理公司會打理所有一切跟出租物件有關的事項，包含尋找房客、執行租賃權、篩選房客、維修房子以及收取租金。</li>
-</ol>
-<p>這兩點，以軟體工程師的角度來看，讓我聯想到：很多事情其實可以不用自己造輪子，我們可以利用其他套件 or 服務，來滿足自己的需求。</p>
-<p><strong>凡事不用什麼都自己來，所以不用擔心說自己一定要什麼都懂。很多東西不會怎麼辦？沒關係，懂得去 call API，串接各種服務，打造出屬於自己更多樣豐富的人生</strong>，或許才是一個比較理想的方式。</p>
-<p>（小時候被灌輸成績至上，一定要第一名長大以後才能出人頭地，也就讓我誤以為自己什麼都得懂不然就是廢物⋯⋯真希望早點領悟到剛剛聯想到的道理啊，小時候的觀念太傷了😂）</p>
-<h3 id="但如果我住的地方很貴怎麼辦？"><a href="#但如果我住的地方很貴怎麼辦？" class="headerlink" title="但如果我住的地方很貴怎麼辦？"></a>但如果我住的地方很貴怎麼辦？</h3><p>難道因為這樣就和「出租用房地產」絕緣了嗎？</p>
-<blockquote>
-<p>居住在高房價區域不應該是你無法投資房地產的原因，因為沒有規定你一定要在自己居住的區域投資房地產。</p>
-</blockquote>
-<p>為什麼？作者認為：</p>
-<blockquote>
-<p>房地產投資最終完全是看數字，並非取決於你個人的感受（學習這項經驗能讓你受益匪淺）</p>
-</blockquote>
-<p>這番話值得再三咀嚼🤔️</p>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
-<p>今天就走出去買個出租物件，祝你好運！</p>
-</blockquote>
-<p>不是吧？</p>
-<blockquote>
-<p>我是開玩笑的！相反地去找你那一區的出租物件廣告，透過所有的數字進行演練，根據不同頭期款金額，試算看看，是否有可能買那個物件，而且要確定現金流是正的，至少也要損益兩平。</p>
-</blockquote>
-<p>好的，已加進我個人的待辦清單裡了。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】53. 債務危機</title>
-    <url>/2023/05/soft-skills-53/</url>
-    <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
-<span id="more"></span>
-
-<p>債務都不好嗎？書中提到：「如果你利用債務賺取的利息，勝過你付給債務的利息，那就是好的債務。」這道理很容易懂，但感覺我們常常會因為它是「債務」而覺得它就是不好的。試著在腦海裡記住這個看似在講廢話的建言吧！</p>
-<p>還有：「背負債務之前，底線是要確認債務實際上是投資，債務所產生的報酬，要高於你為債務所付的利息，只有在真正緊急的情況下，才不得不揹上無法獲利的債務。」已經有車了想買新車？選擇貸款買？不如暫時繼續開舊車，然後可能開一個新帳戶「新車基金」，先存夠錢再買新車！原因是，你為新車存的錢，會隨時間為你累積利息（先貸款這點就變成了機會成本），而不是繳利息給別人，除此之外，買新車也不是「真正緊急的情況」，所以也沒必要急著貸款買。</p>
-<p>再特別記一點好了，雖然感覺不太適合套用到房貸：「最不理智的事就是在有負債的時候還存錢，是為了緊急的資金需求或為未來存錢？以信用卡為例，除非銀行給你的存款利息超過信用卡的循環利息，不然最好還是把這筆存款拿去還清債務。」合理，不過房貸可不是一筆小數目。或許可以從其他角度去切入？比方房子總價 1500 萬，購屋前直接先加上房貸的利息把它看成是 2000 萬？之類的。我目前還不是很懂，之後會找機會好好來了解一番！不過剛剛好奇查了一下，看起來目前「房貸的最高利率只會到 4% 左右」，印象中蠻多(?)人的投資報酬率可以勝過 4%？（感覺牛頭不對馬嘴，但這點先當成是一顆種子，播種在我心中名為投資理財的土壤裡好了）</p>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
-<p>列出你所有的債務，把他們分成兩種：好的債務和不好的債務。<br><strong>「按照利率高低排列壞債務的優先順序」</strong>，計算看看要花多久時間才能還清這些債務。</p>
-</blockquote>
-<p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
-<p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】59. 找出動機並且持續下去</title>
-    <url>/2024/10/soft-skills-59/</url>
-    <content><![CDATA[<p>（上次寫這篇文章是去年的 7/17 XD）</p>
-<p>這個章節作者是以健身為例，在此我來嘗試套到我玩「健身環大冒險」這件事情上好了。</p>
-<span id="more"></span>
-
-<p>作者在這個章節當中有提到，我們能否實現我們所設定的目標，最困難的不是設定目標、知道怎麼採取行動、投入心力去努力，而是持續下去的動力。</p>
-<p>雖然和健身相比，有持續在玩健身環大冒險感覺上應該容易多了。是也沒錯，上健身房前，我們還得準備好水壺毛巾入場費、換好裝、走一段路前往健身房尤其最近天氣熱更增加了行動上的難度，玩健身環大冒險則不需要那麼大費周章。然而，健身環大冒險也不是想玩就能「立刻」玩。在開始遊玩 (運動) 前，必須先去房間把 Switch 拿出來裝一裝 (因為某些因素家裡平日時不適合一直放 Switch 在電視機旁)，還有瑜珈墊也得拿出來搭配不然有些動作會很難做甚至會痛，此外，增加更多難度的是，必須還要考量到肚子當下飽的狀態，如果吃完東西沒過一陣子再來玩，不舒服之外，也會有反效果。所以對我來說，平日可以說是幾乎不可能玩了，因為回到家再吃完晚餐通常都已經是九點後了😅</p>
-<p>因此，如果是我的話，要持續去玩健身環大冒險也不是一件那麼容易的事。</p>
-<p>關於這一點，為了能夠持續「在家也能運動」的習慣，總得想個辦法解決！</p>
-<p>先等等，讀到這邊的你，可能會覺得，不就只是在遊玩 (運動) 前有一點前置作業和條件而已，沒那麼困難吧？</p>
-<p>但你懂的，人嘛，往往會有惰性的，如果開始一件事情前還得先「額外」做一點事，就算那額外的事情再怎麼容易，其他人我不確定會怎麼想，但至少對我來說，「額外之事」會大大降低我展開行動的意願。</p>
-<p>雖然不全然有關，但這讓我聯想到，《原子習慣》四步驟裡的第一步「提示」驅動我們去覺察，繼而引發後續的種種。可見，少了它，還真的是不太行呢⋯⋯</p>
-<p>那麼，為了能夠讓自己持續去玩健身環大冒險，我後來是怎麼做調整的呢？</p>
-<p>在延伸我個人的經驗及想法前，先看一下作者分享了什麼吧！（因為等等我會蠻跳 tone 地想到什麼就寫什麼，會模糊焦點😂）</p>
-<p>作者說，我們可以花點時間思考：什麼最能激發我們持續下去的動力？因為就算我們找到了很棒的動機，像是變得更健康，我們還是有可能會慢慢喪失動力。</p>
-<p>關於健身，作者分享了三個維持動力的技巧：</p>
-<ol>
-<li>到處張貼能激勵自己的照片，來提醒自己之所以展開健身是因為想要擁有那樣的身材</li>
-<li>進度繪製成圖表，透過視覺化的方式，持續提醒自己已經走了多遠</li>
-<li>遊戲化 (Gamification）</li>
-</ol>
-<p>「遊戲化」這一點，回過頭來看我的例子，不就是一個讓玩家持續去玩健身環大冒險的最佳催化劑嗎？</p>
-<p>此外，合適的獎勵時機也是很重要的。錯誤的獎勵時機會扼殺我們努力的動力。像是在目標確實完成前就獎勵自己，因為已經得到獎勵，動機自然會隨之降低甚至消失，而且會讓人誤以為已經實現了目標。想要盡可能地擁有源源不絕的動力，我們可以嘗試實現目標之後再允許自己獲得獎勵。（作者：試著告訴自己，如果可以持續慢跑三個月，就獎勵自己一台嶄新的跑步機和全新的慢跑鞋）</p>
-<p>好了，現在輪到我的回合了，來分享一點我個人的拙見。</p>
-<p>回到剛剛的疑問句：為了能夠讓自己持續去玩健身環大冒險，我後來是怎麼做調整的呢？</p>
-<p>《原子習慣》在書中有提到<a href="https://hackmd.io/@flab/S1WYF_2O5">「習慣堆疊」以及「誘惑綑綁」</a>：</p>
-<ol>
-<li>做完〔目前的習慣〕之後，我會執行〔我需要的習慣〕</li>
-<li>做完〔我需要的習慣〕之後，我會執行〔我想要的習慣〕</li>
-</ol>
-<p>在嘗試我現在的作法 (而且還真的是有效果呢) 前，我是有讀過這部分兩遍，因為《原子習慣》這本書我讀了兩遍 (睡前催眠真好用)。然而，並不是因為書中這樣寫讓我決定這麼做，並沒有一個翻開《原子習慣》進行腦力激盪「翻到那部分才決定那樣嘗試」的過程，而是事後回想起來才發覺到，原來自己並沒有意識到自己其實運用了書中的這項技巧呢！</p>
-<p>所以說，行動才是開始，想法不是，有時可以相信自己的直覺。很多理論或者是專有名詞或許也是前人照著自己的直覺行動累積出來的智慧所集結出來的精華，有可能你當下湧現出來的直覺，宇宙中還沒有一個適合的專有名詞來去定義它呢！</p>
-<p>這不代表理論就不重要了，透過學習理論，我們可以以高 CP 值的方式吸收前人的智慧而不用全部都得自己去摸索，但實務或者是照著直覺 (based on 過去無論是透過理論或是實務所累積出來的智慧) 去行動，才能在這不斷變動的環境下有更多新的可能性。</p>
-<p>這讓我聯想到：忘記之前在什麼時候看過一個影片，裡頭一位某國原住民的吉他手彈著一個很酷炫獨特的技巧，採訪的人問他在彈什麼，但他自己也不知道自己在彈的技巧叫做什麼「名字」，而只是跟著自己的感覺彈出來，久了變成屬於自己獨一無二的技巧罷了。</p>
-<p>因此，不要被所謂的標準答案給束縛住了！</p>
-<p>老實說，我自己也常常被束縛，因為日積月累觀念已根深蒂固，正在嘗試去轉念當中🏝️</p>
-<p>（真的扯太遠甚至已經偏離主題了😅）</p>
-<p>有時發現自己還是缺乏動力，怎麼辦？作者分享了「就是要完成！」的心法：</p>
-<blockquote>
-<p>透過事先規劃，能盡量減少生活中需要作出判斷的時機。確實了解自己每天應該吃什麼，做什麼運動，就不會做出錯誤的決定，使自己過度依賴激勵這項手段。</p>
-</blockquote>
-<p>的確，「做決定」是一個蠻耗費心神的事情，如果在每次行動前都有一個稍微清晰的輪廓讓自己知道怎麼去展開，會更容易一點呢！</p>
-<blockquote>
-<p>當你發現自己缺乏堅持下去的力量時，原則會代替動機鼓勵你。每次我累到不想跑步的時候，有時會用原則來提醒自己，這也是我非常重視的一項原則——有始有終。找幾個能激勵你人生的格言，遇到困難時提醒自己，堅持不懈。</p>
-</blockquote>
-<p>當然，不是說我們「每次」都「一定」要完成，偶爾 call 個 timeout 做點調整或是讓自己休息也是挺不錯的，最重要的 follow your heart 而不是一板一眼的 rules！</p>
-<hr>
-<h3 id="即知即行"><a href="#即知即行" class="headerlink" title="即知即行"></a>即知即行</h3><ol>
-<li>提出你想塑身或改善健康的理由。從這些理由裡，挑出三個最大的動機，然後印出來貼在你每天都會看見的幾個地方。</li>
-<li>挑幾個本章所介紹的維持動力的技巧，融入你的生活之中。可能是找幾張名人的照片激勵你，把這些照片貼在你能看見的地方，或是下載新的健身應用程式，讓你的運動計劃更有樂趣。<ul>
-<li>健身環大冒險直接自帶 gamification 😎</li>
-</ul>
-</li>
-<li>達成健身計劃的某個里程碑後，給自己來點獎勵。繪製進度表，鼓勵自己達成目標時就能獲得獎勵。<ul>
-<li>健身環大冒險讓我不需要額外繪製進度表，它會幫我記錄不同動作做了幾下之外，最鮮明的是它的「等級制度」！</li>
-<li>我內心是有「達到某個等級可以獲得獎勵」的想法啦，但我試著不要讓這個想法太清楚，模糊一點，這樣比較⋯⋯（找不到一個適合的詞來形容這種感覺）</li>
-</ul>
-</li>
-<li>當你想中斷前進的步伐時，就停下來自問：如果不放棄，三個月後、一年後我會怎樣。不管怎樣，堅持下去，成功終將到來。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】62. 啟動跑步計畫</title>
-    <url>/2024/09/soft-skills-62/</url>
-    <content><![CDATA[<p>（上次撰寫這篇文章的一版已經是去年的 6/20 了，真是懶惰得過分⋯⋯現在還是不怎麼想整理發布之類的，但⋯⋯就來做這件事吧！）</p>
-<span id="more"></span>
-
-<p>跑步有許多好處：改善心血管系統、消耗多餘的熱量、促進多巴胺及血清素的分泌讓心情感到愉悅、強化膝蓋和其他關節、提升脊椎和大腿的骨密度、降低罹癌風險、延長壽命。</p>
-<p>而且跑步很方便，不管在哪，只要穿上跑鞋就能夠開始。可以到附近的田徑場跑個幾圈（很多人陪著你運動讓你比較有動力😂），也可以到河濱公園一邊欣賞風景一邊慢跑流流汗。跑步，不僅是一項對身心靈都有助益的運動，也能夠很好地融入生活呢！</p>
-<p>不瞞你說，前面那些話我也同時在嘗試告訴自己的潛意識：跑步那麼多好處，是不是該來跑個啊😏 也不瞞你說，上次我打前面兩段已經是 17 天前了（時間拉回到現在，當時的 17 天根本只是小 case…），可見我潛意識有多麼不願意去面對「跑步」這件事情，一直不想要繼續寫這篇會帶給我有點矛盾感受的文章… 而且而且，我上次跑步也已經是快一個月前的事情了，還蠻久的了😅（上次去公園田徑場跑步嘛⋯⋯根本已經不可考了XD）</p>
-<p>作者說，其實他一開始也很討厭跑步，但不管怎樣，他還是跑了。（有點像我現在的心境，雖然很不想寫，但還是寫了）（左邊是上次寫的，現在這邊是現在寫的，還真不想繼續寫啊XD）</p>
-<p>作者每週固定三天會跑步，每次跑三英哩，就這樣持續了五年。而且作者也有提到，他這樣跑了兩年，在某次跑步的時候突然出現了突破點，從平常的跑 3.1 英哩，無意間跑了 7 英哩多，或許這就是持之以恆的回報？</p>
-<p>這讓我聯想到馬刺隊休息室裡掛著的一段話：「當一切努力看似無用，我會去看石匠敲打石頭。可能敲了一百下，石頭上連一條裂縫都沒有，但就在第一百零一下，石頭斷裂為兩半。然後我了解到，把石頭劈成兩半的不是最後那一下，而是先前的每一次敲擊。」讓球員們專注於每一天的練習，而不是冠軍獎盃。（順便分享一下剛剛找到那句話的<a href="https://www.businesstoday.com.tw/article/category/80407/post/201912090022/">這篇文章</a>，節錄自《原子習慣》）</p>
-<p>所以說，該如何啟動跑步計畫呢？在此列點列出作者的建議：</p>
-<blockquote>
-<ul>
-<li>適合跑步新手的訓練計畫：「<strong>Couch-to-5K</strong>」<ul>
-<li>（計畫名稱的意思是從賴在沙發上轉變成能夠跑 5K 嗎😂）</li>
-<li>整個訓練計畫要花兩個月的時問完成</li>
-<li>每週跑步三次，每次跑二十到三十分鐘</li>
-</ul>
-</li>
-<li>長跑的關鍵是制定跑步計畫，隨著時間逐步增加跑步的距離。<ul>
-<li>（嘗試其他方面的事情也可以套用這樣的 mindset）</li>
-<li>剛開始練習時，不要太在意進度。</li>
-<li>可能剛開始的幾週會邊跑邊走，這也是「Couch-to-5K」計畫所主張的做法。</li>
-<li>隨著時間慢慢增加跑步距離，最終到達目標。</li>
-<li>你必須堅持下去，而且有耐心。</li>
-<li>如果一開始就把訓練弄得很辛苦，很快地你就會沮喪，然後放棄。</li>
-<li>（我從平常練習吉他演奏曲深刻感受到作者這些建議的價值啊！）</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>最後，直接原汁原味分享作者是怎麼愛上跑步的好了，會更具有說服力：</p>
-<blockquote>
-<p>是什麼改變了我？我是怎麼愛上跑步的？這個嘛，我的發現是，當你跑的距離拉長時，實際上會開始體會到更多心理健康所帶來的效益。你會擁有更多跑步者的喜悅，不斷推進的路程會鼓勵你繼續跑下去。此外，我很享受跑步時間，因為我會邊跑邊聽有聲書，依照我安排的瘋狂跑步計畫，一整年下來，我最後可以聽到 50本左右的有聲書（我是以3倍速聽）。雖然我從沒想過這句話會從我口中說出，但我真的愛上跑步⋯⋯哇。</p>
-</blockquote>
-<p>Life isn’t about finding yourself. Life is about creating yourself.</p>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><ol>
-<li>在「Cool Running」的官方網站上了解「Couch-to-5K」訓練計畫的內容。</li>
-<li>如果你想開始跑步，請下載應用程式「Couch-to-5K 」，在你的行事曆上規劃每週有哪幾天要跑步，然後下定決心完成計畫。你可以找個人陪你一起進行訓練計畫，這能讓你更有責任感，也更有樂趣。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>【軟實力】64. 站立工作與其他飲食訣竅</title>
-    <url>/2023/09/soft-skills-64/</url>
-    <content><![CDATA[<p>這個章節引起我共鳴的，反倒不是這個章節的主題，而是作者 approach 事情的方式。</p>
-<span id="more"></span>
-
-<p>章節中有這麼一段話：</p>
-<blockquote>
-<p>身為軟體開發人員，你可能會像我一樣，不管什麼事都喜歡找找看有沒有捷徑或訣竅，有助於更快、更省力達成健身目標。我一直都在找各種方法，試著提升效率，同時又能減少所需投入的心力，讓我事半功倍。</p>
-</blockquote>
-<p>身為軟體工程師的我，的確，生活當中的很多事情都會想要實驗嘗試一下，看要怎麼做、怎麼調整，才能花最少時間和心力來完成，但同時也能保有一定的品質。或許會這樣是因為思考方式的關係？認為既然同樣是一個 task，很可能會有更好的演算法、用更低的時間和空間複雜度來完成，改善一開始嘗試和摸索時期的「暴力解」，試著從當中找出適合自己的「足夠好」解（最佳解不見得都適合自己），並透過一次次的反思來迭代優化。</p>
-<p>當然，我可能描述得過於誇張，在我做事情的時候，不可能每次都還得拿出紙筆分析演算法的時間和空間複雜度，還要想到底該套用哪類型的演算法，才能更有效率地去處理事情。我只是用比較誇張鮮明的敘述，來呈現出有時候做事情的思考方式，雖然沒那麼「一板一眼」，但還是有丁點類似。</p>
-<p>寫在這邊的「演算法」看起來可能不太好親近，不過事實上，它只是做事情的步驟、方法和思維模式，給我的感覺有點類似 design “pattern” 或是很生活化的「習慣」，它是一個在未來能提供我們重複調用、配有一些參數來根據不同情節做調整的 function，讓我們不必每次都得用比較 low-level 的方式從頭思考該怎麼做，節省做事情時的時間和心力。</p>
-<p>這就是為什麼我們要養成好習慣，以及儘量去摒除壞習慣，因為不論我們「事先自動編寫好的 function」內容是好是壞，我們都會傾向去呼叫它來 save our time and energy，沒辦法，這就是生物運作的其中一項機制，和它頑抗，不如善用它。而編寫和修改的過程會需要時間和毅力，沒那麼輕鬆，但如果儘可能地堅持下去，到後來調整出一版不錯用的 function 以後，是挺值得的！（但別忘了，那個 function 還是會不斷在背景模式進行調適，不要想說好像達到了就開始隨便，可是會故態復萌的哦）</p>
-<p>再補充一小點好了，我們不會只有一個 function，而且不同 function 間也是可以交互作用和組裝堆疊的，大概是那種感覺🤔️</p>
-<p>回到章節內容，作者舉了一個他自己的例子：</p>
-<blockquote>
-<p>由於我一直都很忙碌，而且真的不想出去採購食物或煮飯，所以我發現另一個很棒的訣竅就是聘請私廚或利用膳食服務。</p>
-<p>選擇這項做法確實不便宜，但對我來說很值得，因為可以節省時間。我在廣告網站 Craigslist 上刊登廣告，聘請了一位私廚幫我準備餐點，精準地符合我對巨量營養素的需求。</p>
-</blockquote>
-<p>這一點我在之前寫的「<a href="https://kanido386.github.io/2023/07/soft-skills-51/" target="_blank">51. 房地產是最好的投資</a>」這篇文章裡面有提到：</p>
-<blockquote>
-<p>很多事情其實可以不用自己造輪子，我們可以利用其他套件 or 服務，來滿足自己的需求。</p>
-</blockquote>
-<p><strong>凡事不用什麼都自己來，所以不用擔心說自己一定要什麼都懂。很多東西不會怎麼辦？沒關係，懂得去 call API，串接各種服務，打造出屬於自己更多樣豐富的人生</strong>，或許才是一個比較理想的方式。</p>
-<p>作者的例子，完全體現出這樣的生活哲學呢！</p>
-<hr>
-<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><ol>
-<li>請思考本章有沒有訣竅是你可以應用在生活中，幫助你更輕鬆達成健身目標。</li>
-<li>檢視一下你自己現在的行程表和健身計畫，確認日常生活中最煩人和最耗時的部分是什麼。有沒有訣竅可以讓事情更簡單呢？</li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -4156,6 +4099,145 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <p>😮</p>
 <p>愛因斯坦曾經說過：「什麼叫瘋子，就是重複做同樣的事情還期待會出現不同的結果。」</p>
 <p>沒關係，當發覺到不太滿意時，就做出調整吧！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【軟實力】53. 債務危機</title>
+    <url>/2023/05/soft-skills-53/</url>
+    <content><![CDATA[<p>現階段的我還不算面臨到真正的車貸、房貸之類的債務壓力，但有點債務方面的意識也是挺重要的。</p>
+<span id="more"></span>
+
+<p>債務都不好嗎？書中提到：「如果你利用債務賺取的利息，勝過你付給債務的利息，那就是好的債務。」這道理很容易懂，但感覺我們常常會因為它是「債務」而覺得它就是不好的。試著在腦海裡記住這個看似在講廢話的建言吧！</p>
+<p>還有：「背負債務之前，底線是要確認債務實際上是投資，債務所產生的報酬，要高於你為債務所付的利息，只有在真正緊急的情況下，才不得不揹上無法獲利的債務。」已經有車了想買新車？選擇貸款買？不如暫時繼續開舊車，然後可能開一個新帳戶「新車基金」，先存夠錢再買新車！原因是，你為新車存的錢，會隨時間為你累積利息（先貸款這點就變成了機會成本），而不是繳利息給別人，除此之外，買新車也不是「真正緊急的情況」，所以也沒必要急著貸款買。</p>
+<p>再特別記一點好了，雖然感覺不太適合套用到房貸：「最不理智的事就是在有負債的時候還存錢，是為了緊急的資金需求或為未來存錢？以信用卡為例，除非銀行給你的存款利息超過信用卡的循環利息，不然最好還是把這筆存款拿去還清債務。」合理，不過房貸可不是一筆小數目。或許可以從其他角度去切入？比方房子總價 1500 萬，購屋前直接先加上房貸的利息把它看成是 2000 萬？之類的。我目前還不是很懂，之後會找機會好好來了解一番！不過剛剛好奇查了一下，看起來目前「房貸的最高利率只會到 4% 左右」，印象中蠻多(?)人的投資報酬率可以勝過 4%？（感覺牛頭不對馬嘴，但這點先當成是一顆種子，播種在我心中名為投資理財的土壤裡好了）</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
+<p>列出你所有的債務，把他們分成兩種：好的債務和不好的債務。<br><strong>「按照利率高低排列壞債務的優先順序」</strong>，計算看看要花多久時間才能還清這些債務。</p>
+</blockquote>
+<p>目前僅有好的債務：近期幫自己買新筆電以及幫我們家買一台空氣清淨機。</p>
+<p>為什麼我認為它們是好的債務呢？明明在金錢上沒有賺啊？那是因為，除了都能用信用卡零利率分期之外，以筆電來說，它能讓我更有生產力地去完成我想完成的事情，不然繼續用 2016 年買的那台筆電，常常會很受不了它的卡頓，拖累整個做事的 flow；而空氣清淨機，它帶來的是更好的室內空氣品質，對於家人的健康來說，不是一個挺值得的投資嗎？</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【軟實力】51. 房地產是最好的投資</title>
+    <url>/2023/07/soft-skills-51/</url>
+    <content><![CDATA[<p>每次聽到「房地產」這三個字，總是覺得它離我還非常遙遠而沒去了解它。<br>讀完這個章節以後，雖然還是有差不多的感覺，但至少對它有個初步的認識，而且在閱讀的過程中也讓我思考了一點東西，也是挺不錯的。</p>
+<span id="more"></span>
+
+<p>作者建議我們以開放的心態來看本章的內容，因為不論我們是否決定要投資房地產，都應該要對房地產有足夠的認識，了解它的運作方式，以及它能提供怎樣的機會給我們。多知道新東西來增廣見聞不是也挺好的嗎？畢竟知識就是力量，那些知識能在什麼時機點帶來價值我們永遠不會知道。</p>
+<h3 id="房地產是最好的投資"><a href="#房地產是最好的投資" class="headerlink" title="房地產是最好的投資"></a>房地產是最好的投資</h3><p>為什麼作者認為房地產是最好的投資呢？作者除了在本章節當中用了一點篇幅舉了個例子，也總結道：</p>
+<blockquote>
+<p>因為如果你買出租用的房地產，每個月還固定的貸款，租金收入穩定，就能以銀行的錢做為大部分房地產的資金，透過財務槓桿的力量，給你大量的好處。當所有事情都受到通貨膨漲的影響時，房地產投資仍然能從中獲益，作為保值的工具。</p>
+</blockquote>
+<h3 id="報價建議"><a href="#報價建議" class="headerlink" title="報價建議"></a>報價建議</h3><p>此外，在出租用房地產報價建議的部分，作者的這一番話挺耐人尋味的：</p>
+<blockquote>
+<p>這不過是數字遊戲，報了五十個低價，你只需要有一個賣家接受，搞不好能撿到一個低於市價百分之五十的房子，因為賣家急於脫手或者是不在乎價格。你不會相信，其實有許多賣家因為各種理由，並不太在乎價格。</p>
+</blockquote>
+<p>（感覺人生很多方面也同樣可以這樣嘗試看看，雖然套用到感情方面好像就不太妥當😅）</p>
+<h3 id="延伸的想法"><a href="#延伸的想法" class="headerlink" title="延伸的想法"></a>延伸的想法</h3><p>作者分享的下面這兩點，讓我激盪出了一點想法：</p>
+<ol>
+<li>假設房子看起來很好，你也簽了房地產合約，下一步就是檢查房子，<strong>我一定會找最好而且最細心的房屋檢驗師來檢查</strong>，我想在投入更多金錢之前，確認房子是否有任何問題。</li>
+<li>買了房地產之後，我會建議你落實房地產管理，但<strong>強列不建議由自己來管理出租的房地產。</strong>在我看來，不值得投入精力去管理，或者是讓自己頭痛。我每個月的花費裡，<strong>最划算的就是付錢給房地產管理公司，請他們管理我的出租物件。</strong>好的物件管理公司會打理所有一切跟出租物件有關的事項，包含尋找房客、執行租賃權、篩選房客、維修房子以及收取租金。</li>
+</ol>
+<p>這兩點，以軟體工程師的角度來看，讓我聯想到：很多事情其實可以不用自己造輪子，我們可以利用其他套件 or 服務，來滿足自己的需求。</p>
+<p><strong>凡事不用什麼都自己來，所以不用擔心說自己一定要什麼都懂。很多東西不會怎麼辦？沒關係，懂得去 call API，串接各種服務，打造出屬於自己更多樣豐富的人生</strong>，或許才是一個比較理想的方式。</p>
+<p>（小時候被灌輸成績至上，一定要第一名長大以後才能出人頭地，也就讓我誤以為自己什麼都得懂不然就是廢物⋯⋯真希望早點領悟到剛剛聯想到的道理啊，小時候的觀念太傷了😂）</p>
+<h3 id="但如果我住的地方很貴怎麼辦？"><a href="#但如果我住的地方很貴怎麼辦？" class="headerlink" title="但如果我住的地方很貴怎麼辦？"></a>但如果我住的地方很貴怎麼辦？</h3><p>難道因為這樣就和「出租用房地產」絕緣了嗎？</p>
+<blockquote>
+<p>居住在高房價區域不應該是你無法投資房地產的原因，因為沒有規定你一定要在自己居住的區域投資房地產。</p>
+</blockquote>
+<p>為什麼？作者認為：</p>
+<blockquote>
+<p>房地產投資最終完全是看數字，並非取決於你個人的感受（學習這項經驗能讓你受益匪淺）</p>
+</blockquote>
+<p>這番話值得再三咀嚼🤔️</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><blockquote>
+<p>今天就走出去買個出租物件，祝你好運！</p>
+</blockquote>
+<p>不是吧？</p>
+<blockquote>
+<p>我是開玩笑的！相反地去找你那一區的出租物件廣告，透過所有的數字進行演練，根據不同頭期款金額，試算看看，是否有可能買那個物件，而且要確定現金流是正的，至少也要損益兩平。</p>
+</blockquote>
+<p>好的，已加進我個人的待辦清單裡了。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【軟實力】64. 站立工作與其他飲食訣竅</title>
+    <url>/2023/09/soft-skills-64/</url>
+    <content><![CDATA[<p>這個章節引起我共鳴的，反倒不是這個章節的主題，而是作者 approach 事情的方式。</p>
+<span id="more"></span>
+
+<p>章節中有這麼一段話：</p>
+<blockquote>
+<p>身為軟體開發人員，你可能會像我一樣，不管什麼事都喜歡找找看有沒有捷徑或訣竅，有助於更快、更省力達成健身目標。我一直都在找各種方法，試著提升效率，同時又能減少所需投入的心力，讓我事半功倍。</p>
+</blockquote>
+<p>身為軟體工程師的我，的確，生活當中的很多事情都會想要實驗嘗試一下，看要怎麼做、怎麼調整，才能花最少時間和心力來完成，但同時也能保有一定的品質。或許會這樣是因為思考方式的關係？認為既然同樣是一個 task，很可能會有更好的演算法、用更低的時間和空間複雜度來完成，改善一開始嘗試和摸索時期的「暴力解」，試著從當中找出適合自己的「足夠好」解（最佳解不見得都適合自己），並透過一次次的反思來迭代優化。</p>
+<p>當然，我可能描述得過於誇張，在我做事情的時候，不可能每次都還得拿出紙筆分析演算法的時間和空間複雜度，還要想到底該套用哪類型的演算法，才能更有效率地去處理事情。我只是用比較誇張鮮明的敘述，來呈現出有時候做事情的思考方式，雖然沒那麼「一板一眼」，但還是有丁點類似。</p>
+<p>寫在這邊的「演算法」看起來可能不太好親近，不過事實上，它只是做事情的步驟、方法和思維模式，給我的感覺有點類似 design “pattern” 或是很生活化的「習慣」，它是一個在未來能提供我們重複調用、配有一些參數來根據不同情節做調整的 function，讓我們不必每次都得用比較 low-level 的方式從頭思考該怎麼做，節省做事情時的時間和心力。</p>
+<p>這就是為什麼我們要養成好習慣，以及儘量去摒除壞習慣，因為不論我們「事先自動編寫好的 function」內容是好是壞，我們都會傾向去呼叫它來 save our time and energy，沒辦法，這就是生物運作的其中一項機制，和它頑抗，不如善用它。而編寫和修改的過程會需要時間和毅力，沒那麼輕鬆，但如果儘可能地堅持下去，到後來調整出一版不錯用的 function 以後，是挺值得的！（但別忘了，那個 function 還是會不斷在背景模式進行調適，不要想說好像達到了就開始隨便，可是會故態復萌的哦）</p>
+<p>再補充一小點好了，我們不會只有一個 function，而且不同 function 間也是可以交互作用和組裝堆疊的，大概是那種感覺🤔️</p>
+<p>回到章節內容，作者舉了一個他自己的例子：</p>
+<blockquote>
+<p>由於我一直都很忙碌，而且真的不想出去採購食物或煮飯，所以我發現另一個很棒的訣竅就是聘請私廚或利用膳食服務。</p>
+<p>選擇這項做法確實不便宜，但對我來說很值得，因為可以節省時間。我在廣告網站 Craigslist 上刊登廣告，聘請了一位私廚幫我準備餐點，精準地符合我對巨量營養素的需求。</p>
+</blockquote>
+<p>這一點我在之前寫的「<a href="https://kanido386.github.io/2023/07/soft-skills-51/" target="_blank">51. 房地產是最好的投資</a>」這篇文章裡面有提到：</p>
+<blockquote>
+<p>很多事情其實可以不用自己造輪子，我們可以利用其他套件 or 服務，來滿足自己的需求。</p>
+</blockquote>
+<p><strong>凡事不用什麼都自己來，所以不用擔心說自己一定要什麼都懂。很多東西不會怎麼辦？沒關係，懂得去 call API，串接各種服務，打造出屬於自己更多樣豐富的人生</strong>，或許才是一個比較理想的方式。</p>
+<p>作者的例子，完全體現出這樣的生活哲學呢！</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><ol>
+<li>請思考本章有沒有訣竅是你可以應用在生活中，幫助你更輕鬆達成健身目標。</li>
+<li>檢視一下你自己現在的行程表和健身計畫，確認日常生活中最煩人和最耗時的部分是什麼。有沒有訣竅可以讓事情更簡單呢？</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>【軟實力】62. 啟動跑步計畫</title>
+    <url>/2024/09/soft-skills-62/</url>
+    <content><![CDATA[<p>（上次撰寫這篇文章的一版已經是去年的 6/20 了，真是懶惰得過分⋯⋯現在還是不怎麼想整理發布之類的，但⋯⋯就來做這件事吧！）</p>
+<span id="more"></span>
+
+<p>跑步有許多好處：改善心血管系統、消耗多餘的熱量、促進多巴胺及血清素的分泌讓心情感到愉悅、強化膝蓋和其他關節、提升脊椎和大腿的骨密度、降低罹癌風險、延長壽命。</p>
+<p>而且跑步很方便，不管在哪，只要穿上跑鞋就能夠開始。可以到附近的田徑場跑個幾圈（很多人陪著你運動讓你比較有動力😂），也可以到河濱公園一邊欣賞風景一邊慢跑流流汗。跑步，不僅是一項對身心靈都有助益的運動，也能夠很好地融入生活呢！</p>
+<p>不瞞你說，前面那些話我也同時在嘗試告訴自己的潛意識：跑步那麼多好處，是不是該來跑個啊😏 也不瞞你說，上次我打前面兩段已經是 17 天前了（時間拉回到現在，當時的 17 天根本只是小 case…），可見我潛意識有多麼不願意去面對「跑步」這件事情，一直不想要繼續寫這篇會帶給我有點矛盾感受的文章… 而且而且，我上次跑步也已經是快一個月前的事情了，還蠻久的了😅（上次去公園田徑場跑步嘛⋯⋯根本已經不可考了XD）</p>
+<p>作者說，其實他一開始也很討厭跑步，但不管怎樣，他還是跑了。（有點像我現在的心境，雖然很不想寫，但還是寫了）（左邊是上次寫的，現在這邊是現在寫的，還真不想繼續寫啊XD）</p>
+<p>作者每週固定三天會跑步，每次跑三英哩，就這樣持續了五年。而且作者也有提到，他這樣跑了兩年，在某次跑步的時候突然出現了突破點，從平常的跑 3.1 英哩，無意間跑了 7 英哩多，或許這就是持之以恆的回報？</p>
+<p>這讓我聯想到馬刺隊休息室裡掛著的一段話：「當一切努力看似無用，我會去看石匠敲打石頭。可能敲了一百下，石頭上連一條裂縫都沒有，但就在第一百零一下，石頭斷裂為兩半。然後我了解到，把石頭劈成兩半的不是最後那一下，而是先前的每一次敲擊。」讓球員們專注於每一天的練習，而不是冠軍獎盃。（順便分享一下剛剛找到那句話的<a href="https://www.businesstoday.com.tw/article/category/80407/post/201912090022/">這篇文章</a>，節錄自《原子習慣》）</p>
+<p>所以說，該如何啟動跑步計畫呢？在此列點列出作者的建議：</p>
+<blockquote>
+<ul>
+<li>適合跑步新手的訓練計畫：「<strong>Couch-to-5K</strong>」<ul>
+<li>（計畫名稱的意思是從賴在沙發上轉變成能夠跑 5K 嗎😂）</li>
+<li>整個訓練計畫要花兩個月的時問完成</li>
+<li>每週跑步三次，每次跑二十到三十分鐘</li>
+</ul>
+</li>
+<li>長跑的關鍵是制定跑步計畫，隨著時間逐步增加跑步的距離。<ul>
+<li>（嘗試其他方面的事情也可以套用這樣的 mindset）</li>
+<li>剛開始練習時，不要太在意進度。</li>
+<li>可能剛開始的幾週會邊跑邊走，這也是「Couch-to-5K」計畫所主張的做法。</li>
+<li>隨著時間慢慢增加跑步距離，最終到達目標。</li>
+<li>你必須堅持下去，而且有耐心。</li>
+<li>如果一開始就把訓練弄得很辛苦，很快地你就會沮喪，然後放棄。</li>
+<li>（我從平常練習吉他演奏曲深刻感受到作者這些建議的價值啊！）</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>最後，直接原汁原味分享作者是怎麼愛上跑步的好了，會更具有說服力：</p>
+<blockquote>
+<p>是什麼改變了我？我是怎麼愛上跑步的？這個嘛，我的發現是，當你跑的距離拉長時，實際上會開始體會到更多心理健康所帶來的效益。你會擁有更多跑步者的喜悅，不斷推進的路程會鼓勵你繼續跑下去。此外，我很享受跑步時間，因為我會邊跑邊聽有聲書，依照我安排的瘋狂跑步計畫，一整年下來，我最後可以聽到 50本左右的有聲書（我是以3倍速聽）。雖然我從沒想過這句話會從我口中說出，但我真的愛上跑步⋯⋯哇。</p>
+</blockquote>
+<p>Life isn’t about finding yourself. Life is about creating yourself.</p>
+<hr>
+<h3 id="來思考一下吧！"><a href="#來思考一下吧！" class="headerlink" title="來思考一下吧！"></a>來思考一下吧！</h3><ol>
+<li>在「Cool Running」的官方網站上了解「Couch-to-5K」訓練計畫的內容。</li>
+<li>如果你想開始跑步，請下載應用程式「Couch-to-5K 」，在你的行事曆上規劃每週有哪幾天要跑步，然後下定決心完成計畫。你可以找個人陪你一起進行訓練計畫，這能讓你更有責任感，也更有樂趣。</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -4475,42 +4557,45 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
-    <title>用 SSL For Free 免費申請 SSL 憑證</title>
-    <url>/2022/04/ssl-for-free/</url>
-    <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
+    <title>做 Spotify 相關的 side project</title>
+    <url>/2022/01/spotify-side-project-plan/</url>
+    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
 <span id="more"></span>
 
-<ol>
-<li>進到 <a href="https://www.sslforfree.com/">SSL For Free</a> → 點 Create Free SSL Certificate → 註冊 or 登入</li>
-<li>點左側 Dashboard → 下面有個 Create SSL Certificate，點右邊的 New Certificate</li>
-<li>在 Enter Domains 的地方填你 EC2 的 Elastic IP Address → Next Step</li>
-<li>因為是免費方案，Validity 選 90-Day Certificate → Next Step</li>
-<li>雖然不知道那是什麼，但感覺開啟 Auto-Generate CSR 即可 → Next Step</li>
-<li>此時會看到 Free 被 Selected → Next Step</li>
-<li>Verification Method for <code>[Elastic IP Address]</code> 選 HTTP File Upload → 有些步驟要跟著指示做</li>
-<li>Download Auth File → 連進你的 EC2 → 在專案 <code>/public</code> 底下建立 <code>/.well-known/pki-validation/</code> 資料夾，指令：<code>cd</code> 到 <code>/public</code> 以後，輸入 <code>mkdir -p .well-known/pki-validation</code></li>
-<li><code>cd .well-known/pki-validation/</code> 進到裡面之後，準備把剛剛 Download Auth File 載下來的東西傳到裡面</li>
-<li>在本地端開新的終端機介面 → 輸入 <code>scp -i [/path/to/EC2/XXX].pem [剛載下來的].txt ec2-user@[Elastic IP Address]:~</code> 即可將那個檔案傳進 EC2 裡面</li>
-<li>回到 EC2，<code>cd ~</code>，用 <code>ls</code> 一看，還真的有欸 → 移動到剛剛新建的資料夾裡面吧<br><code>mv [剛傳進來的].txt Campus-Program01/students/[path/to]/public/.well-known/pki-validation/</code></li>
-<li>在 Express 主程式，可能叫做 app.js 的當中記得加上<br><code>app.use(express.static(path.join(__dirname, &#39;public&#39;)));</code>，<br>前面或許還需要 <code>var path = require(&#39;path&#39;);</code>，這樣才能讓對方讀到那個 txt 檔</li>
-<li>回到 SSL Certificate 申請頁面，點 Make sure your file is available under the following link 旁邊的連結，新視窗有文字檔裡面的東西代表到目前為止一切順利 → Next Step</li>
-<li>Verify Domain → 會顯示 Congratulations, your domains have been verified. This means that our system is issuing your certificate at the moment. This page will refresh automatically every few seconds. → Your certificate has been issued and is ready for installation. To continue, please follow the steps below.</li>
-<li>選你的 Server Type，通常不是 Apache 就是 NGINX，我是 NGINX → Download Certificate (.zip) → Next Step</li>
-<li>Follow the steps below to install your certificate → 照著指示做吧！接下來我以 NGINX 為例，Apache 的設定或許也是照著指示做就能順利完成</li>
-<li>Unzip 剛剛載下來的 zip → 裡面的東西都傳到 EC2<br><code>scp -i [/path/to/EC2/XXX].pem ca_bundle.crt certificate.crt private.key ec2-user@[Elastic IP Address]:~</code></li>
-<li>回到 EC2 → 進到你剛剛傳東西進去的目錄底下 → <code>cat certificate.crt ca_bundle.crt &gt;&gt; certificate.crt</code> → 跳出 <code>cat: certificate.crt: input file is output file</code> 不用理它</li>
-<li><code>sudo mv certificate.crt private.key /etc/ssl/</code></li>
-<li>輸入 <code>history | grep nginx</code> 看你當初是去哪設定 nginx 的，用 vim 打開來編輯吧！（我的是  <code>sudo vim /etc/nginx/nginx.conf</code>）</li>
-<li>下面的東西加進去！（加在哪要稍微注意一下，我 port 是 3000 所以 <code>proxy_pass http://localhost:3000;</code>）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    listen               443 ssl http2;</span><br><span class="line">    listen               [::]:443 ssl http2;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ssl                  on;</span><br><span class="line">    ssl_certificate      /etc/ssl/certificate.crt; </span><br><span class="line">    ssl_certificate_key  /etc/ssl/private.key;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    server_name  _;</span><br><span class="line">    access_log   /var/log/nginx/nginx.vhost.access.log;</span><br><span class="line">    error_log    /var/log/nginx/nginx.vhost.error.log;</span><br><span class="line"></span><br><span class="line">    # Load configuration files for the default server block.</span><br><span class="line">    include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="22">
-<li><code>sudo service nginx restart</code> 重啟 web server</li>
-<li>回到最一開始 ZeroSSL 頁面 → Check Certificate → 完成！</li>
-<li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
-</ol>
-]]></content>
+<hr>
+<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
+<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
+<hr>
+<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
+<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
+<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
+<hr>
+<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
+<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
+<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
+<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
+<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
+<hr>
+<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
+<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
+<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
+<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
+<hr>
+<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
+<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
+<hr>
+<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
+<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
+<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
+<hr>
+<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
+<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
+<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
+<br>
+go go!!!]]></content>
+      <tags>
+        <tag>side project</tag>
+      </tags>
   </entry>
   <entry>
     <title>用一點樂理和音訊處理技術做簡單的音色轉換</title>
@@ -4709,6 +4794,44 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
       </tags>
   </entry>
   <entry>
+    <title>用 SSL For Free 免費申請 SSL 憑證</title>
+    <url>/2022/04/ssl-for-free/</url>
+    <content><![CDATA[<p>簡單記錄一下我整個設定的過程！</p>
+<span id="more"></span>
+
+<ol>
+<li>進到 <a href="https://www.sslforfree.com/">SSL For Free</a> → 點 Create Free SSL Certificate → 註冊 or 登入</li>
+<li>點左側 Dashboard → 下面有個 Create SSL Certificate，點右邊的 New Certificate</li>
+<li>在 Enter Domains 的地方填你 EC2 的 Elastic IP Address → Next Step</li>
+<li>因為是免費方案，Validity 選 90-Day Certificate → Next Step</li>
+<li>雖然不知道那是什麼，但感覺開啟 Auto-Generate CSR 即可 → Next Step</li>
+<li>此時會看到 Free 被 Selected → Next Step</li>
+<li>Verification Method for <code>[Elastic IP Address]</code> 選 HTTP File Upload → 有些步驟要跟著指示做</li>
+<li>Download Auth File → 連進你的 EC2 → 在專案 <code>/public</code> 底下建立 <code>/.well-known/pki-validation/</code> 資料夾，指令：<code>cd</code> 到 <code>/public</code> 以後，輸入 <code>mkdir -p .well-known/pki-validation</code></li>
+<li><code>cd .well-known/pki-validation/</code> 進到裡面之後，準備把剛剛 Download Auth File 載下來的東西傳到裡面</li>
+<li>在本地端開新的終端機介面 → 輸入 <code>scp -i [/path/to/EC2/XXX].pem [剛載下來的].txt ec2-user@[Elastic IP Address]:~</code> 即可將那個檔案傳進 EC2 裡面</li>
+<li>回到 EC2，<code>cd ~</code>，用 <code>ls</code> 一看，還真的有欸 → 移動到剛剛新建的資料夾裡面吧<br><code>mv [剛傳進來的].txt Campus-Program01/students/[path/to]/public/.well-known/pki-validation/</code></li>
+<li>在 Express 主程式，可能叫做 app.js 的當中記得加上<br><code>app.use(express.static(path.join(__dirname, &#39;public&#39;)));</code>，<br>前面或許還需要 <code>var path = require(&#39;path&#39;);</code>，這樣才能讓對方讀到那個 txt 檔</li>
+<li>回到 SSL Certificate 申請頁面，點 Make sure your file is available under the following link 旁邊的連結，新視窗有文字檔裡面的東西代表到目前為止一切順利 → Next Step</li>
+<li>Verify Domain → 會顯示 Congratulations, your domains have been verified. This means that our system is issuing your certificate at the moment. This page will refresh automatically every few seconds. → Your certificate has been issued and is ready for installation. To continue, please follow the steps below.</li>
+<li>選你的 Server Type，通常不是 Apache 就是 NGINX，我是 NGINX → Download Certificate (.zip) → Next Step</li>
+<li>Follow the steps below to install your certificate → 照著指示做吧！接下來我以 NGINX 為例，Apache 的設定或許也是照著指示做就能順利完成</li>
+<li>Unzip 剛剛載下來的 zip → 裡面的東西都傳到 EC2<br><code>scp -i [/path/to/EC2/XXX].pem ca_bundle.crt certificate.crt private.key ec2-user@[Elastic IP Address]:~</code></li>
+<li>回到 EC2 → 進到你剛剛傳東西進去的目錄底下 → <code>cat certificate.crt ca_bundle.crt &gt;&gt; certificate.crt</code> → 跳出 <code>cat: certificate.crt: input file is output file</code> 不用理它</li>
+<li><code>sudo mv certificate.crt private.key /etc/ssl/</code></li>
+<li>輸入 <code>history | grep nginx</code> 看你當初是去哪設定 nginx 的，用 vim 打開來編輯吧！（我的是  <code>sudo vim /etc/nginx/nginx.conf</code>）</li>
+<li>下面的東西加進去！（加在哪要稍微注意一下，我 port 是 3000 所以 <code>proxy_pass http://localhost:3000;</code>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    listen               443 ssl http2;</span><br><span class="line">    listen               [::]:443 ssl http2;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ssl                  on;</span><br><span class="line">    ssl_certificate      /etc/ssl/certificate.crt; </span><br><span class="line">    ssl_certificate_key  /etc/ssl/private.key;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    server_name  _;</span><br><span class="line">    access_log   /var/log/nginx/nginx.vhost.access.log;</span><br><span class="line">    error_log    /var/log/nginx/nginx.vhost.error.log;</span><br><span class="line"></span><br><span class="line">    # Load configuration files for the default server block.</span><br><span class="line">    include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="22">
+<li><code>sudo service nginx restart</code> 重啟 web server</li>
+<li>回到最一開始 ZeroSSL 頁面 → Check Certificate → 完成！</li>
+<li>想再確認是否真的成功？<br><code>http://[Elastic IP Address]/你的路徑</code> 和 <code>https://[Elastic IP Address]/你的路徑</code> 都試試看吧！如果後者有個鎖頭在上面，就代表設定成功了！<br>（如果後者進到的是錯誤頁面，可以看一下 <code>/var/log/nginx/nginx.vhost.error.log</code> 裡面寫什麼，再來一一 debug）</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>免費 iOS 合成器 App《Synth One》也能搭配 Logic Pro 玩音樂？</title>
     <url>/2021/12/synth-one-with-logic-pro/</url>
     <content><![CDATA[<p>以 iPad 為例，用條列步驟的方式簡單分享給大家～</p>
@@ -4748,47 +4871,6 @@ P.S. 接下來我會一一介紹每一階段大概都在做什麼，小標後面
 <pre><code>       Focus on the present and the progress, not what it looks like.
 </code></pre>
 ]]></content>
-  </entry>
-  <entry>
-    <title>做 Spotify 相關的 side project</title>
-    <url>/2022/01/spotify-side-project-plan/</url>
-    <content><![CDATA[<p>做個感興趣的 side project 來推自己一把xD</p>
-<span id="more"></span>
-
-<hr>
-<p>參考學習地圖：<a href="https://training.pada-x.com/career/backend-developer-roadmap.jsp">如何成為後端工程師？</a></p>
-<p>參考影片：<a href="https://www.youtube.com/watch?v=Xcet6msf3eE">How To Build A Better Spotify With React</a></p>
-<hr>
-<h2 id="一、程式語言入門"><a href="#一、程式語言入門" class="headerlink" title="一、程式語言入門"></a>一、程式語言入門</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><p>目前不打算特地學，決定先用「從做中學」的方式來彌補這個部分。</p>
-<p>（暫時先把它們當成積木，不去研究構造、組成、原理，而是直接拿來組裝拼湊出我想要的東西）</p>
-<h3 id="成果檢核"><a href="#成果檢核" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>✅ 程式測驗基礎題   ⏳ 函式與物件導向   ⏳ 檔案讀取與寫入</p>
-<hr>
-<h2 id="二、網站伺服器架設"><a href="#二、網站伺服器架設" class="headerlink" title="二、網站伺服器架設"></a>二、網站伺服器架設</h2><h3 id="規劃-1"><a href="#規劃-1" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片用的是 Express，所以就先學習/使用 Express 囉！</p>
-<p>主要是專注在實作的部分，若是要的話，可以沒事讀一下 <a href="https://expressjs.com/">Express 的文檔</a>，一方面學習相關知識，一方面習慣一下讀文檔的感覺。</p>
-<p>（或許也可以讀 Medium 之類的文章，看看別人是如何敘述知識的，可以學習）</p>
-<p>至於 API 文件的部分，完成 API 以後再看看要用什麼來做吧！</p>
-<h3 id="成果檢核-1"><a href="#成果檢核-1" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 能在本機架設網站   ⏳ 能提供 API 給前端   ⏳ 撰寫適當的 API 文件</p>
-<hr>
-<h2 id="三、資料庫系統"><a href="#三、資料庫系統" class="headerlink" title="三、資料庫系統"></a>三、資料庫系統</h2><h3 id="規劃-2"><a href="#規劃-2" class="headerlink" title="規劃"></a>規劃</h3><p>參考影片當中是沒有資料庫的部分啦，但或許可以加上一些「需要有資料庫」才能做的功能，像是可以讓使用者自己加上文字說明之類的。</p>
-<p>屬於 SQL 的 MySQL 和屬於 NoSQL 的 MongoDB 都加進來看看，當作同時碰兩種不同類型資料庫的練習。</p>
-<p>利用零碎時間看 Medium 之類的文章來學習好了，完整時間就直接上網參考資料來實作！</p>
-<h3 id="成果檢核-2"><a href="#成果檢核-2" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 簡易會員註冊系統   ⏳ 索引、主鍵與外鍵   ⏳ 了解 SQL 和 NoSQL 的差異</p>
-<hr>
-<h2 id="四、雲端服務架構"><a href="#四、雲端服務架構" class="headerlink" title="四、雲端服務架構"></a>四、雲端服務架構</h2><h3 id="規劃-3"><a href="#規劃-3" class="headerlink" title="規劃"></a>規劃</h3><p>先簡單用 Heroku 來部署好了，心有餘力的話，再來嘗試看看用 AWS、GCP 部署。</p>
-<h3 id="成果檢核-3"><a href="#成果檢核-3" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 利用 AWS 上線服務   ⏳ 利用 GCP 上線服務   ⏳ 正確說明、畫出系統架構</p>
-<hr>
-<h2 id="五、實作專案開發"><a href="#五、實作專案開發" class="headerlink" title="五、實作專案開發"></a>五、實作專案開發</h2><h3 id="規劃-4"><a href="#規劃-4" class="headerlink" title="規劃"></a>規劃</h3><p>現在就是在做這件事情了！</p>
-<p>想說直接從做中學，或許成效會更好之外，也能好好磨練實際解決問題、容忍挫折(?)的能力。</p>
-<h3 id="成果檢核-4"><a href="#成果檢核-4" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 上線的專案作品   ⏳ 可供查閱的程式碼</p>
-<hr>
-<h2 id="六、準備履歷、面試"><a href="#六、準備履歷、面試" class="headerlink" title="六、準備履歷、面試"></a>六、準備履歷、面試</h2><h3 id="規劃-5"><a href="#規劃-5" class="headerlink" title="規劃"></a>規劃</h3><p>履歷持續修改中。</p>
-<p>面試對現階段的我而言，感覺是一個需要多關注、多磨練的一環啊！</p>
-<h3 id="成果檢核-5"><a href="#成果檢核-5" class="headerlink" title="成果檢核"></a><strong>成果檢核</strong></h3><p>⏳ 面試邀約的次數   ⏳ 成功錄取的次數和品質</p>
-<br>
-go go!!!]]></content>
-      <tags>
-        <tag>side project</tag>
-      </tags>
   </entry>
   <entry>
     <title>VS Code 開太多視窗覺得亂？這一招可以解決！</title>
@@ -4917,10 +4999,29 @@ go go!!!]]></content>
 ]]></content>
   </entry>
   <entry>
-    <title>《曠野之息》</title>
-    <url>/2025/05/zelda-breath-of-the-wild/</url>
-    <content><![CDATA[<p><a href="/2025/05/zelda-breath-of-the-wild"><img src="https://i.imgur.com/SPXlsRd.jpeg" style="width:50vw;" /></a></p>
-<p>即將展開未知的旅程。</p>
+    <title>沒嘗試過，怎麼知道自己喜不喜歡？</title>
+    <url>/2025/05/why-not-try/</url>
+    <content><![CDATA[<p>最近感覺比較提不起勁，萌生了「買 PS5」的念頭 🤔</p>
+<span id="more"></span>
+
+<p>國小的時候，都很期待每個禮拜六晚上去爺爺奶奶家玩 PS (初代的XD)，真懷念那種無憂無慮的感覺啊⋯⋯<br>搭配上最近的心境，突然覺得：「再入手個 PS5，應該也不錯吧？生活什麼的應該都會更美好吧？」<br>但再想想我那積灰塵的 Switch，心想：「會不會到時候真的買了 PS5，也是一樣的下場？」<br>一台 PS5 也不便宜欸，最便宜的也要 10000 多⋯⋯</p>
+<p>再深入想了一下：「Switch 之所以會積灰塵，啊不就是因為我買的遊戲片已經讓我興致缺缺？」<br>很多人是為了薩爾達才買 Switch 的，而我，Switch 買到現在快 2 年了，居然還沒玩過《曠野之息》還有《王國之淚》？<br>以前是有在 Wii 上玩過《曙光公主》啦，但我總覺得開放世界類型的遊戲，我怎麼可能會有興趣？那兩款大作，真的有這麼強大的魔力讓大家愛不釋手嗎？甚至當初推出《王國之淚》的時候，居然還有「薩爾達假」的有趣現象？</p>
+<p>然而，<span style="color:blue;">沒嘗試過，怎麼知道自己喜不喜歡？</span><br></p>
+<p>以前我每次電視轉到 NBA 都會立刻轉掉，就覺得，這有什麼好看的？那麼多人這麼愛看是怎樣？<br>誰知道，我到現在支持了一個球隊，已經差不多有 9 年了！</p>
+<p>所以說，或許這也是個讓 Switch 停止繼續機灰塵的好契機吧？<br>反正《曠野之息》1000 多的價格，相比 PS5，負擔低了許多，如果到時候真的覺得那款遊戲不是我的菜，也還可以接受 😅<br>那如果玩了以後，發現「哇塞真的超好玩的」，不就賺到了？</p>
+<p>最近就來入手個《曠野之息》試試吧 🎮</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>「哇😲～出口！」</title>
+    <url>/2025/05/wow-gorgeous/</url>
+    <content><![CDATA[<p>昨天玩《曠野之息》，我媽帶的小孩看到畫面上一開始的某一幕時，在一旁如此讚嘆道 😂</p>
+<span id="more"></span>
+
+<p>對小朋友來說，這世界充滿了新鮮感。<br>也沒有刻意說要帶著好奇心，因為好奇心真的就是他們的一部份！</p>
+<p>好久沒有那種「哇～」的開闊感了啊，印象中上次，應該是國小還國中的校外教學了 🤔<br>可能是目前的生活實在是太一成不變了，依舊是不斷的複製貼上⋯⋯<br>轉眼間，出社會工作已經快三年了啊！</p>
+<p>特別在這邊記錄一下，看近期有沒有機會改善、找到屬於自己的出口。</p>
+<p>我看，之後就刻意在他面前玩《曠野之息》好了，多了不少樂趣呢！<br>那種感覺，就像在電影院廳裡面，跟很多小朋友一起看搞笑的動畫電影XD</p>
 ]]></content>
   </entry>
   <entry>
@@ -5229,6 +5330,77 @@ go go!!!]]></content>
 希望讀完這篇文章的您能夠有所收穫，我們下篇文見啦 😃]]></content>
   </entry>
   <entry>
+    <title>【軟實力】59. 找出動機並且持續下去</title>
+    <url>/2024/10/soft-skills-59/</url>
+    <content><![CDATA[<p>（上次寫這篇文章是去年的 7/17 XD）</p>
+<p>這個章節作者是以健身為例，在此我來嘗試套到我玩「健身環大冒險」這件事情上好了。</p>
+<span id="more"></span>
+
+<p>作者在這個章節當中有提到，我們能否實現我們所設定的目標，最困難的不是設定目標、知道怎麼採取行動、投入心力去努力，而是持續下去的動力。</p>
+<p>雖然和健身相比，有持續在玩健身環大冒險感覺上應該容易多了。是也沒錯，上健身房前，我們還得準備好水壺毛巾入場費、換好裝、走一段路前往健身房尤其最近天氣熱更增加了行動上的難度，玩健身環大冒險則不需要那麼大費周章。然而，健身環大冒險也不是想玩就能「立刻」玩。在開始遊玩 (運動) 前，必須先去房間把 Switch 拿出來裝一裝 (因為某些因素家裡平日時不適合一直放 Switch 在電視機旁)，還有瑜珈墊也得拿出來搭配不然有些動作會很難做甚至會痛，此外，增加更多難度的是，必須還要考量到肚子當下飽的狀態，如果吃完東西沒過一陣子再來玩，不舒服之外，也會有反效果。所以對我來說，平日可以說是幾乎不可能玩了，因為回到家再吃完晚餐通常都已經是九點後了😅</p>
+<p>因此，如果是我的話，要持續去玩健身環大冒險也不是一件那麼容易的事。</p>
+<p>關於這一點，為了能夠持續「在家也能運動」的習慣，總得想個辦法解決！</p>
+<p>先等等，讀到這邊的你，可能會覺得，不就只是在遊玩 (運動) 前有一點前置作業和條件而已，沒那麼困難吧？</p>
+<p>但你懂的，人嘛，往往會有惰性的，如果開始一件事情前還得先「額外」做一點事，就算那額外的事情再怎麼容易，其他人我不確定會怎麼想，但至少對我來說，「額外之事」會大大降低我展開行動的意願。</p>
+<p>雖然不全然有關，但這讓我聯想到，《原子習慣》四步驟裡的第一步「提示」驅動我們去覺察，繼而引發後續的種種。可見，少了它，還真的是不太行呢⋯⋯</p>
+<p>那麼，為了能夠讓自己持續去玩健身環大冒險，我後來是怎麼做調整的呢？</p>
+<p>在延伸我個人的經驗及想法前，先看一下作者分享了什麼吧！（因為等等我會蠻跳 tone 地想到什麼就寫什麼，會模糊焦點😂）</p>
+<p>作者說，我們可以花點時間思考：什麼最能激發我們持續下去的動力？因為就算我們找到了很棒的動機，像是變得更健康，我們還是有可能會慢慢喪失動力。</p>
+<p>關於健身，作者分享了三個維持動力的技巧：</p>
+<ol>
+<li>到處張貼能激勵自己的照片，來提醒自己之所以展開健身是因為想要擁有那樣的身材</li>
+<li>進度繪製成圖表，透過視覺化的方式，持續提醒自己已經走了多遠</li>
+<li>遊戲化 (Gamification）</li>
+</ol>
+<p>「遊戲化」這一點，回過頭來看我的例子，不就是一個讓玩家持續去玩健身環大冒險的最佳催化劑嗎？</p>
+<p>此外，合適的獎勵時機也是很重要的。錯誤的獎勵時機會扼殺我們努力的動力。像是在目標確實完成前就獎勵自己，因為已經得到獎勵，動機自然會隨之降低甚至消失，而且會讓人誤以為已經實現了目標。想要盡可能地擁有源源不絕的動力，我們可以嘗試實現目標之後再允許自己獲得獎勵。（作者：試著告訴自己，如果可以持續慢跑三個月，就獎勵自己一台嶄新的跑步機和全新的慢跑鞋）</p>
+<p>好了，現在輪到我的回合了，來分享一點我個人的拙見。</p>
+<p>回到剛剛的疑問句：為了能夠讓自己持續去玩健身環大冒險，我後來是怎麼做調整的呢？</p>
+<p>《原子習慣》在書中有提到<a href="https://hackmd.io/@flab/S1WYF_2O5">「習慣堆疊」以及「誘惑綑綁」</a>：</p>
+<ol>
+<li>做完〔目前的習慣〕之後，我會執行〔我需要的習慣〕</li>
+<li>做完〔我需要的習慣〕之後，我會執行〔我想要的習慣〕</li>
+</ol>
+<p>在嘗試我現在的作法 (而且還真的是有效果呢) 前，我是有讀過這部分兩遍，因為《原子習慣》這本書我讀了兩遍 (睡前催眠真好用)。然而，並不是因為書中這樣寫讓我決定這麼做，並沒有一個翻開《原子習慣》進行腦力激盪「翻到那部分才決定那樣嘗試」的過程，而是事後回想起來才發覺到，原來自己並沒有意識到自己其實運用了書中的這項技巧呢！</p>
+<p>所以說，行動才是開始，想法不是，有時可以相信自己的直覺。很多理論或者是專有名詞或許也是前人照著自己的直覺行動累積出來的智慧所集結出來的精華，有可能你當下湧現出來的直覺，宇宙中還沒有一個適合的專有名詞來去定義它呢！</p>
+<p>這不代表理論就不重要了，透過學習理論，我們可以以高 CP 值的方式吸收前人的智慧而不用全部都得自己去摸索，但實務或者是照著直覺 (based on 過去無論是透過理論或是實務所累積出來的智慧) 去行動，才能在這不斷變動的環境下有更多新的可能性。</p>
+<p>這讓我聯想到：忘記之前在什麼時候看過一個影片，裡頭一位某國原住民的吉他手彈著一個很酷炫獨特的技巧，採訪的人問他在彈什麼，但他自己也不知道自己在彈的技巧叫做什麼「名字」，而只是跟著自己的感覺彈出來，久了變成屬於自己獨一無二的技巧罷了。</p>
+<p>因此，不要被所謂的標準答案給束縛住了！</p>
+<p>老實說，我自己也常常被束縛，因為日積月累觀念已根深蒂固，正在嘗試去轉念當中🏝️</p>
+<p>（真的扯太遠甚至已經偏離主題了😅）</p>
+<p>有時發現自己還是缺乏動力，怎麼辦？作者分享了「就是要完成！」的心法：</p>
+<blockquote>
+<p>透過事先規劃，能盡量減少生活中需要作出判斷的時機。確實了解自己每天應該吃什麼，做什麼運動，就不會做出錯誤的決定，使自己過度依賴激勵這項手段。</p>
+</blockquote>
+<p>的確，「做決定」是一個蠻耗費心神的事情，如果在每次行動前都有一個稍微清晰的輪廓讓自己知道怎麼去展開，會更容易一點呢！</p>
+<blockquote>
+<p>當你發現自己缺乏堅持下去的力量時，原則會代替動機鼓勵你。每次我累到不想跑步的時候，有時會用原則來提醒自己，這也是我非常重視的一項原則——有始有終。找幾個能激勵你人生的格言，遇到困難時提醒自己，堅持不懈。</p>
+</blockquote>
+<p>當然，不是說我們「每次」都「一定」要完成，偶爾 call 個 timeout 做點調整或是讓自己休息也是挺不錯的，最重要的 follow your heart 而不是一板一眼的 rules！</p>
+<hr>
+<h3 id="即知即行"><a href="#即知即行" class="headerlink" title="即知即行"></a>即知即行</h3><ol>
+<li>提出你想塑身或改善健康的理由。從這些理由裡，挑出三個最大的動機，然後印出來貼在你每天都會看見的幾個地方。</li>
+<li>挑幾個本章所介紹的維持動力的技巧，融入你的生活之中。可能是找幾張名人的照片激勵你，把這些照片貼在你能看見的地方，或是下載新的健身應用程式，讓你的運動計劃更有樂趣。<ul>
+<li>健身環大冒險直接自帶 gamification 😎</li>
+</ul>
+</li>
+<li>達成健身計劃的某個里程碑後，給自己來點獎勵。繪製進度表，鼓勵自己達成目標時就能獲得獎勵。<ul>
+<li>健身環大冒險讓我不需要額外繪製進度表，它會幫我記錄不同動作做了幾下之外，最鮮明的是它的「等級制度」！</li>
+<li>我內心是有「達到某個等級可以獲得獎勵」的想法啦，但我試著不要讓這個想法太清楚，模糊一點，這樣比較⋯⋯（找不到一個適合的詞來形容這種感覺）</li>
+</ul>
+</li>
+<li>當你想中斷前進的步伐時，就停下來自問：如果不放棄，三個月後、一年後我會怎樣。不管怎樣，堅持下去，成功終將到來。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>《曠野之息》</title>
+    <url>/2025/05/zelda-breath-of-the-wild/</url>
+    <content><![CDATA[<p><a href="/2025/05/zelda-breath-of-the-wild"><img src="https://i.imgur.com/SPXlsRd.jpeg" style="width:50vw;" /></a></p>
+<p>即將展開未知的旅程。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>用 zsh-z 快速切換到曾經造訪過的目錄</title>
     <url>/2022/09/zsh-z/</url>
     <content><![CDATA[<p>簡單 share 給大家這個方便的酷工具～</p>
@@ -5257,135 +5429,5 @@ go go!!!]]></content>
 <p>啊如果想了解更多使用方式，像是怎麼移除掉之前造訪過目錄的紀錄，避免切換到一些你根本不想去的地方，可以下 <code>z -h</code> 來看它的使用說明～</p>
 <br>
 是不是真的很方便呢？]]></content>
-  </entry>
-  <entry>
-    <title>「哇😲～出口！」</title>
-    <url>/2025/05/wow-gorgeous/</url>
-    <content><![CDATA[<p>昨天玩《曠野之息》，我媽帶的小孩看到畫面上一開始的某一幕時，在一旁如此讚嘆道 😂</p>
-<span id="more"></span>
-
-<p>對小朋友來說，這世界充滿了新鮮感。<br>也沒有刻意說要帶著好奇心，因為好奇心真的就是他們的一部份！</p>
-<p>好久沒有那種「哇～」的開闊感了啊，印象中上次，應該是國小還國中的校外教學了 🤔<br>可能是目前的生活實在是太一成不變了，依舊是不斷的複製貼上⋯⋯<br>轉眼間，出社會工作已經快三年了啊！</p>
-<p>特別在這邊記錄一下，看近期有沒有機會改善、找到屬於自己的出口。</p>
-<p>我看，之後就刻意在他面前玩《曠野之息》好了，多了不少樂趣呢！<br>那種感覺，就像在電影院廳裡面，跟很多小朋友一起看搞笑的動畫電影XD</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>沒嘗試過，怎麼知道自己喜不喜歡？</title>
-    <url>/2025/05/why-not-try/</url>
-    <content><![CDATA[<p>最近感覺比較提不起勁，萌生了「買 PS5」的念頭 🤔</p>
-<span id="more"></span>
-
-<p>國小的時候，都很期待每個禮拜六晚上去爺爺奶奶家玩 PS (初代的XD)，真懷念那種無憂無慮的感覺啊⋯⋯<br>搭配上最近的心境，突然覺得：「再入手個 PS5，應該也不錯吧？生活什麼的應該都會更美好吧？」<br>但再想想我那積灰塵的 Switch，心想：「會不會到時候真的買了 PS5，也是一樣的下場？」<br>一台 PS5 也不便宜欸，最便宜的也要 10000 多⋯⋯</p>
-<p>再深入想了一下：「Switch 之所以會積灰塵，啊不就是因為我買的遊戲片已經讓我興致缺缺？」<br>很多人是為了薩爾達才買 Switch 的，而我，Switch 買到現在快 2 年了，居然還沒玩過《曠野之息》還有《王國之淚》？<br>以前是有在 Wii 上玩過《曙光公主》啦，但我總覺得開放世界類型的遊戲，我怎麼可能會有興趣？那兩款大作，真的有這麼強大的魔力讓大家愛不釋手嗎？甚至當初推出《王國之淚》的時候，居然還有「薩爾達假」的有趣現象？</p>
-<p>然而，<span style="color:blue;">沒嘗試過，怎麼知道自己喜不喜歡？</span><br></p>
-<p>以前我每次電視轉到 NBA 都會立刻轉掉，就覺得，這有什麼好看的？那麼多人這麼愛看是怎樣？<br>誰知道，我到現在支持了一個球隊，已經差不多有 9 年了！</p>
-<p>所以說，或許這也是個讓 Switch 停止繼續機灰塵的好契機吧？<br>反正《曠野之息》1000 多的價格，相比 PS5，負擔低了許多，如果到時候真的覺得那款遊戲不是我的菜，也還可以接受 😅<br>那如果玩了以後，發現「哇塞真的超好玩的」，不就賺到了？</p>
-<p>最近就來入手個《曠野之息》試試吧 🎮</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>2025 端午節立蛋</title>
-    <url>/2025/05/2025-dragon-boat-festival/</url>
-    <content><![CDATA[<p>端午節欸，不立蛋嗎？</p>
-<span id="more"></span>
-
-<h3 id="今年戰績"><a href="#今年戰績" class="headerlink" title="今年戰績"></a>今年戰績</h3><p>11:30～12:21 共 51 分鐘，立了 18 顆蛋。</p>
-<p><img src="1.jpg"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>AI 應用的關鍵原則：別讓 AI 做太多事</title>
-    <url>/2025/11/dont-let-ai-do-too-much/</url>
-    <content><![CDATA[<p>這篇文章是我在開發過程中的實際經驗，透過 AI 協助整理成文字記錄下來。<br>希望這個踩坑經驗能幫助到其他人。</p>
-<span id="more"></span>
-
-<h2 id="問題：一個-Prompt-想解決所有事"><a href="#問題：一個-Prompt-想解決所有事" class="headerlink" title="問題：一個 Prompt 想解決所有事"></a>問題：一個 Prompt 想解決所有事</h2><p>開發記帳 bot 時，我想讓 AI 一次搞定費用分類：</p>
-<ol>
-<li>讀取 76 筆消費記錄</li>
-<li>分類到 8 個類別（家裡煮、生活用品、鮮奶…）</li>
-<li>計算每個類別總金額</li>
-<li>由大到小排序</li>
-<li>格式化輸出</li>
-</ol>
-<p><strong>聽起來很合理？結果慘不忍睹。</strong></p>
-<p>無論怎麼優化 prompt（加粗體、加警告、加範例），AI 照樣出錯：</p>
-<ul>
-<li>❌ 項目重複分類（鮮奶同時出現在兩個類別）</li>
-<li>❌ 計算錯誤（350+280 顯示成 350）</li>
-<li>❌ 排序亂掉（6333 &gt; 5141 卻排反）</li>
-<li>❌ 總和對不上</li>
-</ul>
-<h2 id="突破：兩步驟比一步驟準"><a href="#突破：兩步驟比一步驟準" class="headerlink" title="突破：兩步驟比一步驟準"></a>突破：兩步驟比一步驟準</h2><p><strong>核心洞察：AI 擅長語義理解，不擅長精確計算。</strong></p>
-<h3 id="舊方法（AI-做所有事）"><a href="#舊方法（AI-做所有事）" class="headerlink" title="舊方法（AI 做所有事）"></a>舊方法（AI 做所有事）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">給 AI 一個超長 Prompt</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│  AI 一把抓    │</span><br><span class="line">│  • 分類       │</span><br><span class="line">│  • 計算       │</span><br><span class="line">│  • 排序       │</span><br><span class="line">│  • 格式化     │</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">  完整報表</span><br><span class="line">❌ 錯誤率高</span><br></pre></td></tr></table></figure>
-
-<h3 id="新方法（職責分離）"><a href="#新方法（職責分離）" class="headerlink" title="新方法（職責分離）"></a>新方法（職責分離）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Step 1: AI 只做分類</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   AI 分類     │ ← AI 擅長的</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">分類 JSON</span><br><span class="line">&#123;&quot;id&quot;: 1, &quot;category&quot;: &quot;水果&quot;&#125;</span><br><span class="line">&#123;&quot;id&quot;: 2, &quot;category&quot;: &quot;家裡煮&quot;&#125;</span><br><span class="line">      ↓</span><br><span class="line">Step 2: 程式處理</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│ 程式計算排序   │ ← 程式擅長的</span><br><span class="line">│ • 按類別分組   │</span><br><span class="line">│ • 計算總額     │</span><br><span class="line">│ • 排序        │</span><br><span class="line">│ • 格式化      │</span><br><span class="line">└──────────────┘</span><br><span class="line">      ↓</span><br><span class="line">  完整報表</span><br><span class="line">✅ 100% 準確</span><br></pre></td></tr></table></figure>
-
-<h2 id="實測結果"><a href="#實測結果" class="headerlink" title="實測結果"></a>實測結果</h2><p>同樣 76 筆消費記錄的表現：</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>舊方法（AI 全做）</th>
-<th>新方法（分工）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>項目完整性</td>
-<td>❌ 有時重複或遺漏</td>
-<td>✅ 100% 完整</td>
-</tr>
-<tr>
-<td>總額計算</td>
-<td>❌ 經常出錯</td>
-<td>✅ 絕對正確</td>
-</tr>
-<tr>
-<td>排序</td>
-<td>❌ 偶爾錯誤</td>
-<td>✅ 完美</td>
-</tr>
-<tr>
-<td>可驗證性</td>
-<td>❌ 難以檢查</td>
-<td>✅ 每步可驗證</td>
-</tr>
-</tbody></table>
-<h2 id="實用原則"><a href="#實用原則" class="headerlink" title="實用原則"></a>實用原則</h2><p>把任務拆成「AI 做什麼」和「程式做什麼」：</p>
-<table>
-<thead>
-<tr>
-<th>任務類型</th>
-<th>交給誰</th>
-<th>為什麼</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>分類、語義理解</td>
-<td>AI</td>
-<td>理解上下文和模糊語意</td>
-</tr>
-<tr>
-<td>計算、排序、格式化</td>
-<td>程式</td>
-<td>確定性、零錯誤</td>
-</tr>
-<tr>
-<td>決策邏輯</td>
-<td>程式</td>
-<td>可控、可測試</td>
-</tr>
-</tbody></table>
-<h2 id="延伸思考"><a href="#延伸思考" class="headerlink" title="延伸思考"></a>延伸思考</h2><p>這原則適用所有 AI 整合：</p>
-<ul>
-<li><strong>客服機器人</strong>：AI 理解問題意圖 → 程式決定回覆流程</li>
-<li><strong>資料分析</strong>：AI 找出趨勢洞察 → 程式產生精確圖表</li>
-<li><strong>程式碼生成</strong>：AI 寫主要邏輯 → Linter/測試確保品質</li>
-</ul>
-<p><strong>記住：AI 是工具，不是魔法。讓它做擅長的事，剩下的交給程式碼。</strong></p>
-<hr>
-<p>💡 這個方法讓錯誤率從「經常出錯」降到「零錯誤」。</p>
-<p>完整實作：<a href="https://github.com/kanido386/family-expense-bot">GitHub Repository</a></p>
-]]></content>
   </entry>
 </search>
